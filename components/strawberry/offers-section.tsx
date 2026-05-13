@@ -9,7 +9,7 @@ const OFFERS = [
   {
     id: "foundation",
     badge: "Foundation",
-    price: "2,500",
+    price: "2,500€",
     color: "#e63946",
     glow: "rgba(230,57,70,0.35)",
     title: "Brand Intelligence System",
@@ -26,11 +26,12 @@ const OFFERS = [
     outcome: "Total strategic clarity — you know who you are and where you win.",
     weeks: "4-week delivery",
     checkoutUrl: "https://buy.stripe.com/aFadR2b2AfDeeYK1N6f7i02",
+    detailPath: "/brand-intelligence",
   },
   {
     id: "authority",
     badge: "Authority",
-    price: "5,000",
+    price: "5,000€",
     color: "#ff1a1a",
     glow: "rgba(255,26,26,0.35)",
     title: "Content Domination System",
@@ -47,11 +48,12 @@ const OFFERS = [
     outcome: "90 days of content — without creative friction. Authority by design.",
     weeks: "12-week system",
     checkoutUrl: "https://buy.stripe.com/00wcMY4EcfDe3g28buf7i03",
+    detailPath: "/content-domination",
   },
   {
     id: "revenue",
     badge: "Revenue",
-    price: "2,500",
+    price: "2,500€",
     color: "#dc2626",
     glow: "rgba(220,38,38,0.35)",
     title: "Revenue Architecture System",
@@ -68,6 +70,7 @@ const OFFERS = [
     outcome: "Your audience naturally moves toward buying — systematically.",
     weeks: "6-week delivery",
     checkoutUrl: "https://buy.stripe.com/bJe8wIeeMfDe8Am4Zif7i04",
+    detailPath: "/revenue-architecture",
   },
 ]
 
@@ -104,6 +107,8 @@ export function OffersSection() {
                 position: "relative",
                 overflow: "hidden",
                 cursor: "default",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <div style={{
@@ -114,6 +119,7 @@ export function OffersSection() {
                 padding: "4px 14px", borderRadius: 100,
                 fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em",
                 marginBottom: 28,
+                alignSelf: "flex-start",
               }}>{o.badge.toUpperCase()}</div>
               <div style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(1.4rem,2.5vw,2rem)", color: "#fff", fontWeight: 700, marginBottom: 6, lineHeight: 1.2 }}>{o.title}</div>
               <div style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.4)", fontSize: 14, marginBottom: 28, lineHeight: 1.5 }}>{o.tagline}</div>
@@ -131,25 +137,43 @@ export function OffersSection() {
                   </div>
                 ))}
               </div>
-              <div style={{ padding: "16px 20px", borderRadius: 12, background: `${o.color}0f`, border: `1px solid ${o.color}22`, marginBottom: 32 }}>
+              <div style={{ padding: "16px 20px", borderRadius: 12, background: `${o.color}0f`, border: `1px solid ${o.color}22`, marginBottom: 24 }}>
                 <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: o.color, fontSize: 13, lineHeight: 1.5, margin: 0, fontWeight: 500 }}>&#10022; {o.outcome}</p>
               </div>
-              <a
-                href={o.checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "block", textAlign: "center",
-                  background: active === i ? `linear-gradient(135deg,${o.color},${o.color}bb)` : "rgba(255,255,255,0.08)",
-                  color: active === i ? "#fff" : "rgba(255,255,255,0.6)",
-                  padding: "15px 24px", borderRadius: 100,
-                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 14, fontWeight: 700,
-                  textDecoration: "none", letterSpacing: "0.06em",
-                  transition: "all 0.3s ease",
-                  boxShadow: active === i ? `0 8px 24px ${o.glow}` : "none",
-                }}>
-                Get Started
-              </a>
+
+              {/* Dual CTA */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: "auto" }}>
+                <a
+                  href={o.checkoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block", textAlign: "center",
+                    background: active === i ? `linear-gradient(135deg,${o.color},${o.color}bb)` : `linear-gradient(135deg,${o.color}cc,${o.color}99)`,
+                    color: "#fff",
+                    padding: "15px 24px", borderRadius: 100,
+                    fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 14, fontWeight: 700,
+                    textDecoration: "none", letterSpacing: "0.06em",
+                    transition: "all 0.3s ease",
+                    boxShadow: active === i ? `0 8px 24px ${o.glow}` : "none",
+                  }}>
+                  Get Started
+                </a>
+                <Link
+                  href={o.detailPath}
+                  style={{
+                    display: "block", textAlign: "center",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "rgba(255,255,255,0.75)",
+                    padding: "14px 24px", borderRadius: 100,
+                    fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 13, fontWeight: 600,
+                    textDecoration: "none", letterSpacing: "0.06em",
+                    transition: "all 0.3s ease",
+                  }}>
+                  Learn More →
+                </Link>
+              </div>
             </div>
           ))}
         </div>
@@ -171,7 +195,7 @@ export function OffersSection() {
               color: "#fff", fontSize: 12, fontWeight: 700,
               padding: "8px 20px", borderRadius: 100, letterSpacing: "0.1em",
               fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-            }}>SAVE 2,500</div>
+            }}>SAVE 2,500€</div>
           </div>
           <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
             <div style={{ flex: 1 }}>
@@ -184,9 +208,9 @@ export function OffersSection() {
               </p>
             </div>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.4)", fontSize: 14, textDecoration: "line-through", marginBottom: 4 }}>10,000</div>
+              <div style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.4)", fontSize: 14, textDecoration: "line-through", marginBottom: 4 }}>10,000€</div>
               <div style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "4rem", color: "#e63946", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1 }}>
-                7,500
+                7,500€
               </div>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 24 }}>
                 <a
@@ -202,7 +226,7 @@ export function OffersSection() {
                     boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
                     transition: "transform 0.2s, box-shadow 0.2s",
                   }}>
-                  Get The Bundle
+                  Get Started
                 </a>
                 <Link href="/empire-bundle" style={{
                   display: "inline-block",
