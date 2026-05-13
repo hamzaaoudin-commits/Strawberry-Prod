@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 
+// Using absolute paths with hash (/#section) so the links work
+// from any page (/, /about, /manifesto, /empire-bundle).
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/#home" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "#services" },
-  { label: "Offers", href: "#offers" },
+  { label: "Services", href: "/#services" },
+  { label: "Offers", href: "/#offers" },
   { label: "Manifesto", href: "/manifesto" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 export function NavBar() {
@@ -54,32 +56,19 @@ export function NavBar() {
         {/* Desktop nav */}
         <div className="hidden md:flex" style={{ gap: 36, alignItems: "center" }}>
           {NAV_LINKS.map((l) => (
-            l.href.startsWith("#") ? (
-              <a
-                key={l.href}
-                href={l.href}
-                className="nav-link"
-                style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "color 0.2s" }}
-                onMouseEnter={e => (e.target as HTMLElement).style.color = "#fff"}
-                onMouseLeave={e => (e.target as HTMLElement).style.color = "rgba(255,255,255,0.65)"}
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="nav-link"
-                style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "color 0.2s" }}
-                onMouseEnter={e => (e.target as HTMLElement).style.color = "#fff"}
-                onMouseLeave={e => (e.target as HTMLElement).style.color = "rgba(255,255,255,0.65)"}
-              >
-                {l.label}
-              </Link>
-            )
+            <Link
+              key={l.href}
+              href={l.href}
+              className="nav-link"
+              style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.target as HTMLElement).style.color = "#fff"}
+              onMouseLeave={e => (e.target as HTMLElement).style.color = "rgba(255,255,255,0.65)"}
+            >
+              {l.label}
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             style={{
               background: "linear-gradient(135deg,#e63946,#ff1a1a)",
               color: "#fff",
@@ -96,7 +85,7 @@ export function NavBar() {
             onMouseLeave={e => { (e.target as HTMLElement).style.opacity = "1"; (e.target as HTMLElement).style.transform = "scale(1)"; }}
           >
             {"Let's Talk"}
-          </a>
+          </Link>
         </div>
       </div>
       
@@ -114,28 +103,17 @@ export function NavBar() {
         }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {NAV_LINKS.map((l) => (
-              l.href.startsWith("#") ? (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setMobileOpen(false)}
-                  style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}
-                >
-                  {l.label}
-                </a>
-              ) : (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setMobileOpen(false)}
-                  style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}
-                >
-                  {l.label}
-                </Link>
-              )
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}
+              >
+                {l.label}
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setMobileOpen(false)}
               style={{
                 background: "linear-gradient(135deg,#e63946,#ff1a1a)",
@@ -150,7 +128,7 @@ export function NavBar() {
               }}
             >
               {"Let's Talk"}
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -25,6 +25,7 @@ const OFFERS = [
     ],
     outcome: "Total strategic clarity — you know who you are and where you win.",
     weeks: "4-week delivery",
+    checkoutUrl: "https://buy.stripe.com/aFadR2b2AfDeeYK1N6f7i02",
   },
   {
     id: "authority",
@@ -45,6 +46,7 @@ const OFFERS = [
     ],
     outcome: "90 days of content — without creative friction. Authority by design.",
     weeks: "12-week system",
+    checkoutUrl: "https://buy.stripe.com/00wcMY4EcfDe3g28buf7i03",
   },
   {
     id: "revenue",
@@ -65,8 +67,11 @@ const OFFERS = [
     ],
     outcome: "Your audience naturally moves toward buying — systematically.",
     weeks: "6-week delivery",
+    checkoutUrl: "https://buy.stripe.com/bJe8wIeeMfDe8Am4Zif7i04",
   },
 ]
+
+const EMPIRE_BUNDLE_URL = "https://buy.stripe.com/7sYfZaeeMbmYbMy77qf7i05"
 
 export function OffersSection() {
   const [ref, vis] = useScrollReveal()
@@ -129,17 +134,21 @@ export function OffersSection() {
               <div style={{ padding: "16px 20px", borderRadius: 12, background: `${o.color}0f`, border: `1px solid ${o.color}22`, marginBottom: 32 }}>
                 <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: o.color, fontSize: 13, lineHeight: 1.5, margin: 0, fontWeight: 500 }}>&#10022; {o.outcome}</p>
               </div>
-              <a href="#contact" style={{
-                display: "block", textAlign: "center",
-                background: active === i ? `linear-gradient(135deg,${o.color},${o.color}bb)` : "rgba(255,255,255,0.08)",
-                color: active === i ? "#fff" : "rgba(255,255,255,0.6)",
-                padding: "15px 24px", borderRadius: 100,
-                fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 14, fontWeight: 700,
-                textDecoration: "none", letterSpacing: "0.06em",
-                transition: "all 0.3s ease",
-                boxShadow: active === i ? `0 8px 24px ${o.glow}` : "none",
-              }}>
-                Book Your Strategy Call
+              <a
+                href={o.checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "block", textAlign: "center",
+                  background: active === i ? `linear-gradient(135deg,${o.color},${o.color}bb)` : "rgba(255,255,255,0.08)",
+                  color: active === i ? "#fff" : "rgba(255,255,255,0.6)",
+                  padding: "15px 24px", borderRadius: 100,
+                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 14, fontWeight: 700,
+                  textDecoration: "none", letterSpacing: "0.06em",
+                  transition: "all 0.3s ease",
+                  boxShadow: active === i ? `0 8px 24px ${o.glow}` : "none",
+                }}>
+                Get Started
               </a>
             </div>
           ))}
@@ -179,17 +188,33 @@ export function OffersSection() {
               <div style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "4rem", color: "#e63946", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1 }}>
                 7,500
               </div>
-              <Link href="/empire-bundle" style={{
-                display: "inline-block", marginTop: 24,
-                background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-                color: "#fff", padding: "16px 40px", borderRadius: 100,
-                fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 700,
-                textDecoration: "none", letterSpacing: "0.06em",
-                boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-              }}>
-                Learn More
-              </Link>
+              <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 24 }}>
+                <a
+                  href={EMPIRE_BUNDLE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    background: "linear-gradient(135deg,#e63946,#ff1a1a)",
+                    color: "#fff", padding: "16px 40px", borderRadius: 100,
+                    fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 700,
+                    textDecoration: "none", letterSpacing: "0.06em",
+                    boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                  }}>
+                  Get The Bundle
+                </a>
+                <Link href="/empire-bundle" style={{
+                  display: "inline-block",
+                  background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)",
+                  color: "rgba(255,255,255,0.8)", padding: "16px 32px", borderRadius: 100,
+                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 600,
+                  textDecoration: "none", letterSpacing: "0.06em",
+                  transition: "all 0.2s",
+                }}>
+                  Learn More
+                </Link>
+              </div>
             </div>
           </div>
         </div>
