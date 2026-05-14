@@ -1,201 +1,181 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { AnimatedOrb } from "@/components/strawberry/animated-orb"
-import { GlassCard } from "@/components/strawberry/glass-card"
-import { useScrollReveal } from "@/hooks/use-strawberry"
 
-const MANIFESTO_POINTS = [
-  {
-    title: "Break Indifference",
-    content: "In a world of infinite scroll, being good is not enough. You must be impossible to ignore. We engineer narratives that command attention — not request it.",
-  },
-  {
-    title: "Perception is Reality",
-    content: "Your audience doesn't buy your product. They buy the story they tell themselves about your product. We architect that story from the ground up.",
-  },
-  {
-    title: "Cinematic Precision",
-    content: "Every frame matters. Every word carries weight. We apply big-screen storytelling codes to create content that triggers emotion and maximizes retention.",
-  },
-  {
-    title: "The Aesthetic Edge",
-    content: "Every project deserves a distinct aura — a 'Main Character Energy' that commands respect. We don't do average. We don't do forgettable.",
-  },
-  {
-    title: "Neuro-Cinema",
-    content: "The fusion of neuroscience and cinematic craft. We use psychological structures proven to capture attention, trigger emotion, and drive action.",
-  },
-  {
-    title: "Empire Building",
-    content: "We don't fix your marketing. We redesign how the world perceives you. One unified vision. One cohesive narrative. One dominant presence.",
-  },
+const SERIF = "var(--font-playfair), 'Playfair Display', serif"
+const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
+const COLOR = "#e63946"
+const GLOW = "rgba(230,57,70,0.4)"
+
+const MANIFESTO_URL = "/manifesto-reader.html"
+
+const ACTS = [
+  { n: "I", title: "The Saturation Problem", line: "Why more content stopped working." },
+  { n: "II", title: "Perception as Substrate", line: "What the audience actually buys before the product." },
+  { n: "III", title: "The Cinematic Frame", line: "Borrowing structure from cinema, not from marketing." },
+  { n: "IV", title: "Narrative Gravity", line: "Why some brands pull and others push." },
+  { n: "V", title: "Status Architecture", line: "Engineering the room the buyer wants to enter." },
+  { n: "VI", title: "Signal Density", line: "Compression as a form of authority." },
+  { n: "VII", title: "Compounding Belief", line: "What makes a content asset appreciate." },
+  { n: "VIII", title: "The Long Tail of Worldview", line: "Building an empire that survives platform shifts." },
+  { n: "IX", title: "The Author Position", line: "Why every founder is, eventually, a narrator." },
 ]
 
+type Status = "idle" | "sending" | "sent" | "error"
+
 export default function ManifestoPage() {
-  const [ref, vis] = useScrollReveal()
-  const [ref2, vis2] = useScrollReveal()
-  
+  const [modalOpen, setModalOpen] = useState(false)
+  const [email, setEmail] = useState("")
+  const [firstName, setFirstName] = useState("")
+  const [status, setStatus] = useState<Status>("idle")
+  const [errorMsg, setErrorMsg] = useState("")
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden"
+      return () => { document.body.style.overflow = "" }
+    }
+  }, [modalOpen])
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setTimeout(() => {
+      setEmail(""); setFirstName(""); setStatus("idle"); setErrorMsg("")
+    }, 300)
+  }
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus("sending")
+    setErrorMsg("")
+    try {
+      const res = await fetch("/api/manifesto-subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, firstName }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok && data?.success) setStatus("sent")
+      else { setStatus("error"); setErrorMsg(data?.error || "Something went wrong.") }
+    } catch {
+      setStatus("error")
+      setErrorMsg("Could not connect. Try again.")
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-[#0a0a0a]">
+    <main className="min-h-screen" style={{ background: "#0a0a0a", color: "#fff" }}>
       <NavBar />
-      
-      {/* Hero */}
-      <section style={{ minHeight: "80vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden", paddingTop: 100 }}>
-        <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="50%" y="30%" opacity={0.12} />
-        <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={400} x="10%" y="70%" opacity={0.08} />
-        
-        <div style={{ 
-          position: "absolute", inset: 0, zIndex: 0,
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)",
-          backgroundSize: "80px 80px",
-          maskImage: "radial-gradient(ellipse 60% 60% at 50% 50%,black 20%,transparent 100%)",
-        }} />
-        
-        <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 clamp(1.5rem,4vw,4rem)", position: "relative", zIndex: 1, textAlign: "center" }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(230,57,70,0.12)", border: "1px solid rgba(230,57,70,0.35)",
-            borderRadius: 100, padding: "8px 20px", marginBottom: 40,
-          }}>
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946" }} />
-            <span style={{ color: "#e63946", fontSize: 12, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.14em", fontWeight: 600 }}>FREE LEAD MAGNET</span>
+
+      <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 80px", position: "relative", overflow: "hidden" }}>
+        <div aria-hidden style={{ position: "absolute", top: "-10%", left: "50%", transform: "translateX(-50%)", width: 1000, height: 1000, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.1, filter: "blur(100px)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
+          <div style={{ display: "inline-block", background: `${COLOR}1a`, border: `1px solid ${COLOR}44`, color: COLOR, fontSize: 11, fontFamily: SANS, fontWeight: 700, padding: "6px 18px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 32 }}>
+            FREE · 9 ACTS · INTERACTIVE
           </div>
-          
-          <h1 style={{
-            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-            fontSize: "clamp(3rem,8vw,6rem)",
-            fontWeight: 700,
-            lineHeight: 1.05,
-            color: "#fff",
-            marginBottom: 32,
-            letterSpacing: "-0.03em",
-          }}>
-            The Neuro Cinema{" "}
-            <span style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Manifesto
-            </span>
+          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.8rem, 7vw, 5.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 32 }}>
+            The Strawberry<br />
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Manifesto</span>
           </h1>
-          
-          <p style={{
-            fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-            fontSize: "clamp(1.1rem,2vw,1.4rem)",
-            color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.7,
-            maxWidth: 700,
-            margin: "0 auto 48px",
-          }}>
-            The secret framework we use to engineer narratives that break through the noise, capture attention, and transform audiences into believers.
+          <p style={{ fontFamily: SANS, fontSize: 20, lineHeight: 1.7, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto 44px" }}>
+            Nine acts on perception, narrative, and the architecture of attention. The full thesis behind every system we build — open and free.
           </p>
-          
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#download" style={{
-              background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-              color: "#fff", padding: "18px 44px", borderRadius: 100,
-              fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 16, fontWeight: 700,
-              textDecoration: "none", letterSpacing: "0.04em",
-              boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
-              transition: "transform 0.2s, box-shadow 0.2s",
-            }}>
-              Download Free
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
+            <a href={MANIFESTO_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 40px", borderRadius: 100, fontFamily: SANS, fontSize: 16, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 16px 48px ${GLOW}` }}>
+              Read the Manifesto →
             </a>
+            <button onClick={() => setModalOpen(true)} style={{ display: "inline-block", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.85)", padding: "20px 40px", borderRadius: 100, fontFamily: SANS, fontSize: 16, fontWeight: 600, cursor: "pointer", letterSpacing: "0.06em" }}>
+              ✉ Email me a copy
+            </button>
           </div>
+          <p style={{ fontFamily: SANS, fontSize: 13, color: "rgba(255,255,255,0.35)", marginTop: 28 }}>
+            Read instantly in your browser, or get it sent to your inbox.
+          </p>
         </div>
       </section>
 
-      {/* What's Inside */}
-      <section ref={ref} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", background: "#0d0d0d", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(40px)", transition: "all 0.9s" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 72 }}>
-            <div style={{ fontSize: 11, color: "#e63946", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.14em", fontWeight: 600, marginBottom: 20 }}>WHAT YOU&apos;LL DISCOVER</div>
-            <h2 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", fontWeight: 700, marginBottom: 16 }}>
-              The Core Principles
-            </h2>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.45)", fontSize: 17, maxWidth: 560, margin: "0 auto" }}>
-              Six foundational beliefs that guide every narrative we create.
-            </p>
+      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem) 120px", background: "#0d0d0d" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <div style={{ fontSize: 11, color: COLOR, fontFamily: SANS, letterSpacing: "0.14em", fontWeight: 600, marginBottom: 20 }}>TABLE OF CONTENTS</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>The nine acts.</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {MANIFESTO_POINTS.map((point, i) => (
-              <GlassCard key={i} style={{ padding: "40px 32px" }}>
-                <div style={{ 
-                  width: 44, height: 44, borderRadius: 12,
-                  background: "rgba(230,57,70,0.15)", border: "1px solid rgba(230,57,70,0.3)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  marginBottom: 24,
-                }}>
-                  <span style={{ color: "#e63946", fontSize: 18, fontWeight: 700, fontFamily: "var(--font-playfair), 'Playfair Display', serif" }}>{String(i + 1).padStart(2, "0")}</span>
+          <div style={{ display: "grid", gap: 14 }}>
+            {ACTS.map((a) => (
+              <div key={a.n} style={{ display: "grid", gridTemplateColumns: "60px 1fr", gap: 24, padding: "22px 28px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, alignItems: "center" }}>
+                <div style={{ fontFamily: SERIF, fontSize: 28, color: COLOR, fontWeight: 700, fontStyle: "italic", letterSpacing: "0.04em" }}>{a.n}.</div>
+                <div>
+                  <div style={{ fontFamily: SERIF, fontSize: 19, fontWeight: 700, marginBottom: 4 }}>{a.title}</div>
+                  <div style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>{a.line}</div>
                 </div>
-                <h3 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#fff", fontSize: 20, fontWeight: 700, marginBottom: 16, lineHeight: 1.3 }}>{point.title}</h3>
-                <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 15, lineHeight: 1.8, margin: 0 }}>{point.content}</p>
-              </GlassCard>
+              </div>
             ))}
           </div>
+          <div style={{ textAlign: "center", marginTop: 56 }}>
+            <Link href="/#offers" style={{ fontFamily: SANS, fontSize: 13, color: "rgba(255,255,255,0.45)", textDecoration: "none", letterSpacing: "0.06em" }}>
+              Or see our offers →
+            </Link>
+          </div>
         </div>
-      </section>
-
-      {/* Download CTA */}
-      <section id="download" ref={ref2} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", position: "relative", opacity: vis2 ? 1 : 0, transform: vis2 ? "none" : "translateY(40px)", transition: "all 0.9s" }}>
-        <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={500} x="20%" y="50%" opacity={0.1} />
-        <div style={{ maxWidth: 800, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <GlassCard style={{ padding: "64px clamp(32px,6vw,80px)", textAlign: "center" }}>
-            <div style={{ fontSize: 56, marginBottom: 32 }}>🍓</div>
-            <h2 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(1.8rem,4vw,2.5rem)", color: "#fff", fontWeight: 700, marginBottom: 20, lineHeight: 1.2 }}>
-              Get The Neuro Cinema Manifesto
-            </h2>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 17, lineHeight: 1.8, marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>
-              Enter your email below and we&apos;ll send you the complete manifesto — the same framework we use to create narratives that dominate categories.
-            </p>
-            
-            <form style={{ display: "flex", gap: 12, maxWidth: 500, margin: "0 auto", flexWrap: "wrap", justifyContent: "center" }} onSubmit={e => { e.preventDefault(); alert("Thank you! Check your email for the manifesto."); }}>
-              <input
-                type="email"
-                required
-                placeholder="your@email.com"
-                style={{
-                  flex: "1 1 280px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: 100, padding: "16px 24px", color: "#fff", fontSize: 16,
-                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", outline: "none",
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-                  color: "#fff", border: "none", borderRadius: 100, padding: "16px 36px",
-                  fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 700,
-                  cursor: "pointer", letterSpacing: "0.04em",
-                  boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Send Me The Manifesto
-              </button>
-            </form>
-            
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.3)", fontSize: 13, marginTop: 24 }}>
-              No spam. Unsubscribe anytime. Your data is safe.
-            </p>
-          </GlassCard>
-        </div>
-      </section>
-
-      {/* Back to Home */}
-      <section style={{ padding: "60px clamp(1.5rem,4vw,4rem)", textAlign: "center" }}>
-        <Link href="/" style={{
-          color: "rgba(255,255,255,0.5)", fontSize: 15,
-          fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", textDecoration: "none",
-          borderBottom: "1px solid rgba(255,255,255,0.2)",
-          paddingBottom: 2, transition: "color 0.2s",
-        }}>
-          ← Back to Home
-        </Link>
       </section>
 
       <Footer />
+
+      {modalOpen && (
+        <div onClick={closeModal} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.78)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ position: "relative", width: "100%", maxWidth: 480, background: "linear-gradient(160deg, #131313, #0d0d0d)", border: `1px solid ${COLOR}33`, borderRadius: 24, padding: "44px 40px", boxShadow: `0 24px 80px rgba(0,0,0,0.6), 0 0 60px ${GLOW}` }}>
+            <button onClick={closeModal} aria-label="Close" style={{ position: "absolute", top: 16, right: 16, width: 36, height: 36, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "50%", color: "rgba(255,255,255,0.7)", fontSize: 18, cursor: "pointer" }}>✕</button>
+
+            {status === "sent" ? (
+              <div style={{ textAlign: "center", padding: "20px 0 8px" }}>
+                <div style={{ fontSize: 54, marginBottom: 20 }}>🍓</div>
+                <h3 style={{ fontFamily: SERIF, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 14 }}>Check your inbox.</h3>
+                <p style={{ fontFamily: SANS, fontSize: 15, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", marginBottom: 28 }}>
+                  The manifesto is on its way to <strong style={{ color: "#fff" }}>{email}</strong>. Check Promotions or Spam if you don&apos;t see it.
+                </p>
+                <a href={MANIFESTO_URL} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "14px 24px", borderRadius: 100, fontFamily: SANS, fontSize: 14, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em" }}>
+                  Read it now while you wait →
+                </a>
+              </div>
+            ) : (
+              <form onSubmit={submit}>
+                <div style={{ display: "inline-block", background: `${COLOR}1a`, border: `1px solid ${COLOR}44`, color: COLOR, fontSize: 10, fontFamily: SANS, fontWeight: 700, padding: "5px 14px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 16 }}>FREE · NO SPAM</div>
+                <h3 style={{ fontFamily: SERIF, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.2 }}>
+                  Get the Manifesto<br />in your inbox.
+                </h3>
+                <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 28 }}>
+                  Nine acts on perception and narrative. Yours to keep, re-read, and forward.
+                </p>
+
+                <div style={{ marginBottom: 14 }}>
+                  <label style={{ fontFamily: SANS, color: "rgba(255,255,255,0.45)", fontSize: 11, letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>FIRST NAME (OPTIONAL)</label>
+                  <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="Your name" style={{ width: "100%", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "13px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", boxSizing: "border-box" }} />
+                </div>
+
+                <div style={{ marginBottom: 20 }}>
+                  <label style={{ fontFamily: SANS, color: "rgba(255,255,255,0.45)", fontSize: 11, letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>EMAIL</label>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" required autoFocus style={{ width: "100%", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "13px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", boxSizing: "border-box" }} />
+                </div>
+
+                {status === "error" && errorMsg && (
+                  <div style={{ fontFamily: SANS, fontSize: 13, color: "#ff8a8a", background: "rgba(230,57,70,0.08)", border: "1px solid rgba(230,57,70,0.3)", borderRadius: 10, padding: "10px 14px", marginBottom: 16 }}>{errorMsg}</div>
+                )}
+
+                <button type="submit" disabled={status === "sending"} style={{ width: "100%", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", border: "none", borderRadius: 100, padding: "15px 24px", fontFamily: SANS, fontSize: 15, fontWeight: 700, cursor: status === "sending" ? "wait" : "pointer", letterSpacing: "0.06em", boxShadow: `0 12px 36px ${GLOW}`, opacity: status === "sending" ? 0.7 : 1 }}>
+                  {status === "sending" ? "Sending..." : "Send me the Manifesto"}
+                </button>
+
+                <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: 16, marginBottom: 0 }}>
+                  One email. Unsubscribe anytime. We never sell your address.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   )
 }
