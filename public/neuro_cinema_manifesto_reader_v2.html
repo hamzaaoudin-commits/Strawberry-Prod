@@ -1,0 +1,746 @@
+<div id="nc-root" style="font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #050505; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 0 1px rgba(225,29,72,0.08); padding: 0 0 56px;">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+#nc-root .nc-page { display: none; padding: 0; }
+#nc-root .nc-page.active { display: block; animation: fadeIn 0.55s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+#nc-root .serif { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+#nc-root .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+#nc-root .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+#nc-root .letterbox-top, #nc-root .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+#nc-root .letterbox-top { top: 0; border-bottom: 0.5px solid rgba(245,245,245,0.06); }
+#nc-root .letterbox-bot { bottom: 0; border-top: 0.5px solid rgba(245,245,245,0.06); }
+
+#nc-root .page-frame { position: relative; min-height: 720px; padding: 80px 64px; background: #050505; overflow: hidden; }
+#nc-root .page-frame.cover { padding: 0; min-height: 820px; }
+
+#nc-root .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+#nc-root .cm-tl { top: 48px; left: 64px; }
+#nc-root .cm-tr { top: 48px; right: 64px; }
+#nc-root .cm-bl { bottom: 48px; left: 64px; }
+#nc-root .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+
+#nc-root .red { color: #E11D48; }
+#nc-root .dim { color: rgba(245,245,245,0.55); }
+#nc-root .faint { color: rgba(245,245,245,0.32); }
+#nc-root .rule { height: 0.5px; background: rgba(245,245,245,0.15); width: 100%; }
+#nc-root .rule-red { height: 1px; background: #E11D48; width: 48px; }
+
+#nc-root .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; font-weight: 400; margin-bottom: 24px; }
+
+#nc-root .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; color: #F5F5F5; }
+#nc-root .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.01em; color: #F5F5F5; }
+#nc-root .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; color: #F5F5F5; }
+#nc-root .h-sm { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; color: #F5F5F5; }
+
+#nc-root .body { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); letter-spacing: 0.005em; }
+#nc-root .quote { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); letter-spacing: 0; }
+
+#nc-root .blur-word { filter: blur(1.2px); opacity: 0.85; }
+#nc-root .blur-word-strong { filter: blur(2.5px); opacity: 0.7; }
+
+#nc-root .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 56px; background: #000; border-top: 0.5px solid rgba(245,245,245,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 10; }
+#nc-root .nav-btn { background: transparent; border: 0.5px solid rgba(245,245,245,0.25); color: #F5F5F5; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 18px; cursor: pointer; transition: all 0.2s; font-weight: 400; }
+#nc-root .nav-btn:hover { border-color: #E11D48; color: #E11D48; }
+#nc-root .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: rgba(245,245,245,0.1); }
+#nc-root .nav-counter { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: rgba(245,245,245,0.4); text-transform: uppercase; }
+#nc-root .nav-counter .red { font-weight: 500; }
+
+#nc-root .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 36px; align-items: start; }
+#nc-root .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+
+#nc-root .strike { position: relative; display: inline; }
+#nc-root .strike::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 1px; background: #E11D48; transform: rotate(-2deg); }
+
+#nc-root .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); letter-spacing: -0.04em; }
+
+#nc-root .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+#nc-root .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+#nc-root .compare-table .row:last-child { border-bottom: none; }
+#nc-root .compare-table .cell { padding: 18px 20px; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+#nc-root .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.5); font-weight: 300; }
+#nc-root .compare-table .right { color: #F5F5F5; font-weight: 400; border-left: 1px solid #E11D48; }
+
+#nc-root .ad-block { background: rgba(245,245,245,0.02); border-left: 2px solid rgba(245,245,245,0.15); padding: 20px 24px; margin: 14px 0; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.7; color: rgba(245,245,245,0.6); font-weight: 300; }
+#nc-root .ad-block.cine { border-left-color: #E11D48; background: rgba(225,29,72,0.04); color: #F5F5F5; }
+#nc-root .ad-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.35); margin-bottom: 10px; font-weight: 500; }
+#nc-root .ad-block.cine .ad-label { color: #E11D48; }
+#nc-root .cue { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; opacity: 0.7; letter-spacing: 0.05em; }
+
+#nc-root .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: start; }
+#nc-root .layer-row:last-child { border-bottom: none; }
+#nc-root .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+#nc-root .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #F5F5F5; margin-bottom: 8px; line-height: 1.1; }
+#nc-root .layer-desc { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+#nc-root .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+
+#nc-root .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root .case-side { padding: 28px 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+#nc-root .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+#nc-root .case-side:last-child .case-label { color: #E11D48; }
+#nc-root .case-item { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+#nc-root .case-item .mark { color: #E11D48; margin-right: 8px; }
+
+#nc-root .phase-card { border: 0.5px solid rgba(245,245,245,0.12); padding: 28px 32px; margin-bottom: 18px; position: relative; background: rgba(245,245,245,0.015); }
+#nc-root .phase-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.7; }
+#nc-root .phase-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 6px; }
+#nc-root .phase-tag .red { color: #E11D48; }
+#nc-root .phase-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: #F5F5F5; margin-bottom: 4px; line-height: 1.1; }
+#nc-root .phase-obj { font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(245,245,245,0.55); font-style: italic; margin-bottom: 16px; font-weight: 300; }
+#nc-root .phase-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300; }
+#nc-root .phase-list div::before { content: '— '; color: rgba(225,29,72,0.6); }
+#nc-root .phase-deliv { margin-top: 16px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.08); font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(245,245,245,0.5); font-weight: 300; }
+#nc-root .phase-deliv strong { color: #F5F5F5; font-weight: 500; }
+
+#nc-root .invented-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 24px 28px; margin: 24px 0 32px; background: rgba(225,29,72,0.03); position: relative; }
+#nc-root .invented-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+#nc-root .invented-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 20px; height: 20px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+#nc-root .invented-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 10px; text-transform: uppercase; }
+#nc-root .invented-text { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.45; color: #F5F5F5; }
+#nc-root .invented-text strong { font-style: normal; font-weight: 600; color: #F5F5F5; }
+
+#nc-root .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: baseline; cursor: pointer; transition: all 0.2s; gap: 20px; }
+#nc-root .toc-row:hover { padding-left: 8px; }
+#nc-root .toc-row:hover .toc-title { color: #E11D48; }
+#nc-root .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; letter-spacing: 0.1em; }
+#nc-root .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #F5F5F5; transition: color 0.2s; }
+#nc-root .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+</style>
+
+<!-- ============ PAGE 0 : COVER ============ -->
+<div class="nc-page active" data-page="0">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>Strawberry Production</span>
+        <span class="red">N° 001 / Vol. I</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 8%, rgba(245,245,245,0.1) 8%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2;">
+      <div class="scene-tag">Manifesto</div>
+      <div class="serif" style="font-size: 88px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; color: #F5F5F5; margin-bottom: 28px;">
+        The<br/>
+        <span style="font-style: italic; font-weight: 400;">Neuro-Cinema</span><br/>
+        <span class="red">Manifesto.</span>
+      </div>
+      <div style="max-width: 480px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7); letter-spacing: 0;">
+        The Strawberry Method — how elite brands build <span style="color: #F5F5F5; font-style: normal;">unforgettable identity</span> when everyone else sounds like a <span class="blur-word">machine</span>.
+      </div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; letter-spacing: -0.01em;">Strawberry Production</div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase; font-weight: 300;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.4); letter-spacing: 0.1em;">PARIS · LOS ANGELES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 1 : TOC ============ -->
+<div class="nc-page" data-page="1">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Strawberry · Manifesto</div>
+    <div class="corner-mark cm-tr red">i. Index</div>
+    <div class="corner-mark cm-bl">001</div>
+    <div class="corner-mark cm-br">N. Production · 2026</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Table of Contents</div>
+      <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">script</span>.</div>
+
+      <div class="toc-row" data-goto="2">
+        <div class="toc-num">01</div>
+        <div class="toc-title">The Great Forgetting</div>
+        <div class="toc-page">P. 02</div>
+      </div>
+      <div class="toc-row" data-goto="3">
+        <div class="toc-num">02</div>
+        <div class="toc-title">The Strawberry Doctrine</div>
+        <div class="toc-page">P. 03</div>
+      </div>
+      <div class="toc-row" data-goto="4">
+        <div class="toc-num">03</div>
+        <div class="toc-title">The Three Pillars</div>
+        <div class="toc-page">P. 04</div>
+      </div>
+      <div class="toc-row" data-goto="5">
+        <div class="toc-num">04</div>
+        <div class="toc-title">The Anti-AI Framework</div>
+        <div class="toc-page">P. 05</div>
+      </div>
+      <div class="toc-row" data-goto="6">
+        <div class="toc-num">05</div>
+        <div class="toc-title">Case Study · The Metamorphosis</div>
+        <div class="toc-page">P. 06</div>
+      </div>
+      <div class="toc-row" data-goto="7">
+        <div class="toc-num">06</div>
+        <div class="toc-title">The Strawberry System</div>
+        <div class="toc-page">P. 07</div>
+      </div>
+      <div class="toc-row" data-goto="8">
+        <div class="toc-num">07</div>
+        <div class="toc-title">The Invitation</div>
+        <div class="toc-page">P. 08</div>
+      </div>
+      <div class="toc-row" data-goto="9">
+        <div class="toc-num">08</div>
+        <div class="toc-title">End Card</div>
+        <div class="toc-page">P. 09</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 : THE CRISIS ============ -->
+<div class="nc-page" data-page="2">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div>
+    <div class="corner-mark cm-tr red">The Crisis</div>
+    <div class="corner-mark cm-bl">002</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 01</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">The Great <span style="font-style: italic;" class="red">Forgetting</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 48px;">Why 99% of content dies in 48 hours.</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+        <div style="padding-right: 40px;">
+          <div class="quote">
+            "In 2026, over four billion pieces of content are published <span class="red">daily</span>.<br/><br/>
+            Ninety-eight percent of it is now <span class="blur-word">AI-assisted</span>.<br/><br/>
+            The result? A monochrome ocean of <span style="text-decoration: line-through; text-decoration-color: #E11D48;">optimized</span> emptiness."
+          </div>
+        </div>
+        <div style="background: rgba(245,245,245,0.1);"></div>
+        <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+          <div class="h-sm red" style="margin-bottom: 12px;">Result</div>
+          <div class="serif" style="font-size: 32px; font-weight: 400; font-style: italic; line-height: 1.15; color: #F5F5F5;">
+            Clean.<br/>
+            Correct.<br/>
+            Completely <span class="blur-word-strong">forgettable</span>.
+          </div>
+          <div style="margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— WELCOME TO THE ATTENTION APOCALYPSE.</div>
+        </div>
+      </div>
+
+      <div class="rule-red" style="margin-bottom: 18px;"></div>
+      <div class="h-sm" style="margin-bottom: 28px;">Three Uncomfortable Truths</div>
+
+      <div class="three-col">
+        <div class="col-num">01</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">AI democratized production.<br/><span class="red" style="font-style: italic;">It murdered differentiation.</span></div>
+          <div class="body">Anyone can generate a script, an ad, a post. But no one remembers it three seconds later.</div>
+        </div>
+      </div>
+      <div class="three-col">
+        <div class="col-num">02</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">The market doesn't reward quality.<br/><span class="red" style="font-style: italic;">It rewards presence.</span></div>
+          <div class="body">Technical perfection is the baseline now. Emotional architecture is the new luxury.</div>
+        </div>
+      </div>
+      <div class="three-col" style="margin-bottom: 40px;">
+        <div class="col-num">03</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">Your competitor isn't another brand.<br/><span class="red" style="font-style: italic;">It's algorithmic indifference.</span></div>
+          <div class="body">If you don't trigger emotion in 0.8 seconds, you're invisible.</div>
+        </div>
+      </div>
+
+      <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 28px; max-width: 560px;">
+        <div class="quote" style="color: #F5F5F5;">
+          "So how do you survive when everyone has access to the same tools?<br/>
+          <span style="color: rgba(245,245,245,0.4);">You don't compete on content.</span><br/>
+          <span class="red" style="font-style: normal; font-weight: 500;">You compete on perception.</span>"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 : DOCTRINE ============ -->
+<div class="nc-page" data-page="3">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 02 · Doctrine</div>
+    <div class="corner-mark cm-tr red">The Method</div>
+    <div class="corner-mark cm-bl">003</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 02</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;"><span style="font-style: italic;">Neuro-</span>Cinema.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 28px;">The only methodology that builds narrative immunity.</div>
+
+      <div class="invented-frame">
+        <div class="invented-label">— A Strawberry Production original method —</div>
+        <div class="invented-text">
+          The Neuro-Cinema methodology was <strong>conceived, named and developed</strong> by Strawberry Production. <span style="color: rgba(245,245,245,0.65);">No agency, no consultant, no AI invented this framework. We did. This document is its founding charter.</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 44px;">
+        <div>
+          <div class="h-sm red" style="margin-bottom: 18px;">— Definition</div>
+          <div class="quote" style="font-size: 26px;">
+            "Neuro-Cinema isn't <span class="strike">storytelling</span>.<br/>
+            <span style="color: #E11D48; font-style: normal; font-weight: 500;">It's perception engineering.</span>"
+          </div>
+        </div>
+        <div>
+          <div class="h-sm" style="margin-bottom: 18px; color: rgba(245,245,245,0.55);">— In practice</div>
+          <div class="body" style="font-size: 14px;">
+            The deliberate use of <span style="color: #F5F5F5;">cinematic architecture</span> — pacing, tension, visual rhythm, emotional triggers — to bypass rational filters and create <span class="red">involuntary attention</span>.
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-red" style="margin-bottom: 18px;"></div>
+      <div class="h-sm" style="margin-bottom: 32px;">The Three Pillars · Overture</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px;">
+        <div style="border-top: 1px solid #E11D48; padding-top: 18px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; margin-bottom: 12px;">PILLAR I</div>
+          <div class="serif" style="font-size: 22px; font-weight: 500; line-height: 1.1; margin-bottom: 10px;">Cinematic<br/>Structure</div>
+          <div class="body" style="font-size: 12.5px; line-height: 1.6;">Not linear storytelling — engineered tension, cold opens, signature exits.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 18px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; margin-bottom: 12px;">PILLAR II</div>
+          <div class="serif" style="font-size: 22px; font-weight: 500; line-height: 1.1; margin-bottom: 10px;">Psychological<br/>Architecture</div>
+          <div class="body" style="font-size: 12.5px; line-height: 1.6;">Not copywriting — we don't sell features, we sell identity.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 18px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; margin-bottom: 12px;">PILLAR III</div>
+          <div class="serif" style="font-size: 22px; font-weight: 500; line-height: 1.1; margin-bottom: 10px;">Aesthetic<br/>Authority</div>
+          <div class="body" style="font-size: 12.5px; line-height: 1.6;">Not good design — visual identity unmistakable in 0.3 seconds.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 : THREE PILLARS DETAIL ============ -->
+<div class="nc-page" data-page="4">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 03 · Architecture</div>
+    <div class="corner-mark cm-tr red">Three Pillars</div>
+    <div class="corner-mark cm-bl">004</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 03 — Inside the Method</div>
+      <div class="h-large serif" style="margin-bottom: 36px;">Architecture of an <span style="font-style: italic;" class="red">unforgettable</span> brand.</div>
+
+      <!-- Pillar 01 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Cinematic Structure</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Not linear storytelling — <span style="font-style: italic; color: rgba(245,245,245,0.6);">engineered tension.</span></div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin-bottom: 18px;">
+            <div class="body" style="font-size: 12.5px;"><span class="red">— Cold Open.</span> Visual hook, immediate.</div>
+            <div class="body" style="font-size: 12.5px;"><span class="red">— Tension Architecture.</span> Micro-cliffhangers every 7–12s.</div>
+            <div class="body" style="font-size: 12.5px;"><span class="red">— Emotional Peaks.</span> Engineered dopamine triggers.</div>
+            <div class="body" style="font-size: 12.5px;"><span class="red">— Signature Exit.</span> The "rewatch" effect.</div>
+          </div>
+          <div class="ad-block">
+            <div class="ad-label">Classic Ad</div>
+            <span style="color: rgba(245,245,245,0.4);">"We're an agency that helps entrepreneurs find their voice through quality storytelling and digital campaigns…"</span>
+          </div>
+          <div class="ad-block cine">
+            <div class="ad-label">Neuro-Cinema</div>
+            <div class="cue">[ EXT. — CLOSE-UP. GRAIN. SILENCE. ]</div>
+            <div style="margin-top: 6px;">"Most people think visibility is about <span style="text-decoration: line-through; text-decoration-color: #E11D48;">posting more</span>.<br/>They're wrong.<br/><span class="red">And they'll stay invisible forever.</span>"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 02 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Psychological Architecture</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 18px;">We don't sell features. <span style="font-style: italic;">We sell <span class="red">identity</span>.</span></div>
+
+          <div class="compare-table">
+            <div class="row"><div class="cell left">"We write scripts"</div><div class="cell right">"We architect legends"</div></div>
+            <div class="row"><div class="cell left">"High-quality content"</div><div class="cell right">"Narrative immunity systems"</div></div>
+            <div class="row"><div class="cell left">"Results-driven"</div><div class="cell right">"You become unforgettable. Or you disappear."</div></div>
+          </div>
+
+          <div style="background: rgba(225,29,72,0.04); border-left: 2px solid #E11D48; padding: 16px 20px; margin-top: 14px;">
+            <div class="h-sm red" style="font-size: 10px; margin-bottom: 8px;">Signature Technique — Authority Inversion</div>
+            <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.4;">"We work with those <span class="red">bold enough</span> to become iconic."</div>
+            <div class="body" style="font-size: 11.5px; margin-top: 10px; color: rgba(245,245,245,0.5);">Stop proving. Start selecting. Result: instant desirability.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 03 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Aesthetic Authority</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">If your identity could work for any other brand — <span style="font-style: italic; color: #E11D48;">it's decoration, not identity.</span></div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 10px;">THE STRAWBERRY TEST</div>
+              <div class="body" style="font-size: 12.5px;">— Recognizable in 0.3s?<br/>— Imitable with a Canva template?<br/>— Aura, or just a style guide?</div>
+            </div>
+            <div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 10px;">OUR APPROACH</div>
+              <div class="body" style="font-size: 12.5px;">— Cinematic grain, not flat digital.<br/>— High-contrast emotion, not pastel.<br/>— Signature imperfection, not algorithmic.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 : ANTI-AI FRAMEWORK ============ -->
+<div class="nc-page" data-page="5">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 04 · Resistance</div>
+    <div class="corner-mark cm-tr red">Anti-AI</div>
+    <div class="corner-mark cm-bl">005</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 04 — Narrative Immunity</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">The four <span style="font-style: italic;" class="red">layers</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 42px;">Why the machine can imitate everything — except this.</div>
+
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0;">
+        <div style="position: relative;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 12px; width: 1px; background: linear-gradient(to bottom, #E11D48 0%, #E11D48 25%, rgba(225,29,72,0.5) 100%);"></div>
+          <div style="position: relative; height: 25%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #E11D48; border: 3px solid #050505;"></div></div>
+          <div style="position: relative; height: 25%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 25%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 25%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        </div>
+
+        <div>
+          <div class="layer-row">
+            <div class="layer-tag">L · 01</div>
+            <div>
+              <div class="layer-title">Taste <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ goût éditorial</span></div>
+              <div class="layer-desc">AI <em>optimizes</em>. It doesn't choose. Strawberry knows what to <em>remove</em> — not just what to add. Perfection is the subtraction of the obvious.</div>
+            </div>
+          </div>
+
+          <div class="layer-row">
+            <div class="layer-tag">L · 02</div>
+            <div>
+              <div class="layer-title">Tension <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ architecture émotionnelle</span></div>
+              <div class="layer-desc">AI generates smooth content. Comfortable. Dead. We engineer <em>micro-discomforts</em> that force attention. Example — "You're not ready for this." A hook that repels and attracts.</div>
+            </div>
+          </div>
+
+          <div class="layer-row">
+            <div class="layer-tag">L · 03</div>
+            <div>
+              <div class="layer-title">Subtext <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ ce qui n'est pas dit</span></div>
+              <div class="layer-desc">AI writes literally. We write in subtext. A Strawberry line operates on <em>three levels</em>: the explicit message, the implicit positioning, the cultural identity.</div>
+            </div>
+          </div>
+
+          <div class="layer-row">
+            <div class="layer-tag">L · 04</div>
+            <div>
+              <div class="layer-title">Aura <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ présence intangible</span></div>
+              <div class="layer-desc">AI can copy a style. It cannot create a presence. Each project carries a <em>unique vibrational signature</em>. Main Character Energy — impossible to standardize.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 : CASE STUDY ============ -->
+<div class="nc-page" data-page="6">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 05 · Case File</div>
+    <div class="corner-mark cm-tr red">Metamorphosis</div>
+    <div class="corner-mark cm-bl">006</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 05 — Case Study</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">From anonymous to <span style="font-style: italic;" class="red">iconic</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">A 90-day narrative metamorphosis.</div>
+
+      <div class="case-grid">
+        <div class="case-side">
+          <div class="case-label">Before · Day 00</div>
+          <div class="case-item"><span class="mark">×</span>"Entrepreneur coach looking for visibility"</div>
+          <div class="case-item"><span class="mark">×</span>Generic content output</div>
+          <div class="case-item"><span class="mark">×</span>Zero differentiation</div>
+          <div class="case-item"><span class="mark">×</span>"One of thousands"</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— Invisible by default.</div>
+        </div>
+        <div class="case-side">
+          <div class="case-label">After · Day 90</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Repositioned: <em>Performance Architect for Outliers</em></div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Obsessive narrative identity</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Immediate aesthetic authority</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span><span class="red" style="font-weight: 500;">+340%</span> engagement · <span class="red" style="font-weight: 500;">+180%</span> conversions</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "People don't just follow him. They <span class="red">quote him</span>."</div>
+        </div>
+      </div>
+
+      <div class="h-sm" style="margin: 32px 0 20px;">Three Key Interventions</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">INTERVENTION I</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Narrative Bible Rewrite</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">From <span style="text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.6);">"I help you..."</span> to <span style="color: #F5F5F5; font-style: italic;">"I only work with those who refuse mediocrity."</span></div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">INTERVENTION II</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Cinematic Content System</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">Each post structured as a film scene — tension, reveal, signature exit.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">INTERVENTION III</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Aesthetic Overhaul</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">From <span style="text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.6);">"clean & modern"</span> to <span style="color: #F5F5F5;">cinematic & uncompromising</span>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 7 : SYSTEM ============ -->
+<div class="nc-page" data-page="7">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 06 · The Protocol</div>
+    <div class="corner-mark cm-tr red">System</div>
+    <div class="corner-mark cm-bl">007</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 06 — The Strawberry System</div>
+      <div class="h-large serif" style="margin-bottom: 8px;">The 3-Phase <span style="font-style: italic;" class="red">Transformation</span>.</div>
+      <div class="body" style="margin-bottom: 36px; max-width: 560px;">Identity. Offer. Narrative. Three reels. One unforgettable brand.</div>
+
+      <div class="phase-card">
+        <div class="phase-tag"><span class="red">PHASE I</span> · ACT ONE</div>
+        <div class="phase-title">Identity & Positioning System</div>
+        <div class="phase-obj">Objective — define who you are in a saturated world.</div>
+        <div class="phase-list">
+          <div>Brand Perception Audit</div>
+          <div>Competitor Differentiation Map</div>
+          <div>Narrative DNA Extraction</div>
+          <div>Identity Manifesto Creation</div>
+        </div>
+        <div class="phase-deliv"><strong>Deliverable —</strong> your Narrative Constitution. The document that dictates everything.</div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-tag"><span class="red">PHASE II</span> · ACT TWO</div>
+        <div class="phase-title">Offer & Conversion System</div>
+        <div class="phase-obj">Objective — turn expertise into desire.</div>
+        <div class="phase-list">
+          <div>Psychological Barrier Analysis</div>
+          <div>Offer Architecture · service → experience</div>
+          <div>Sales Page Neuro-Cinema Rewrite</div>
+          <div>Authority Pricing Strategy</div>
+        </div>
+        <div class="phase-deliv"><strong>Deliverable —</strong> Magnetic Offer System. Selling without "selling".</div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-tag"><span class="red">PHASE III</span> · ACT THREE</div>
+        <div class="phase-title">Narrative & Content System</div>
+        <div class="phase-obj">Objective — build an attention machine.</div>
+        <div class="phase-list">
+          <div>Content Strategy · YouTube · TikTok · Newsletter</div>
+          <div>Cinematic Script Templates</div>
+          <div>Retention Engineering Frameworks</div>
+          <div>Visual Direction Guidelines</div>
+        </div>
+        <div class="phase-deliv"><strong>Deliverable —</strong> a complete narrative production system.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 : INVITATION ============ -->
+<div class="nc-page" data-page="8">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Final Scene · Invitation</div>
+    <div class="corner-mark cm-tr red">The Choice</div>
+    <div class="corner-mark cm-bl">008</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Final Scene — The Invitation</div>
+      <div class="h-massive serif" style="margin-bottom: 16px;">Are you ready to be <span style="font-style: italic;" class="red">seen</span>?</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+        <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">OPTION 01 · DEFAULT</div>
+          <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep doing what everyone does.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Same AI tools. Same content. Pray the algorithm notices. <span class="blur-word">Stay invisible.</span></div>
+        </div>
+        <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">OPTION 02 · COLLABORATE</div>
+          <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Build a narrative so visceral, indifference is impossible.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">We select projects — and individuals — <span class="red">bold enough to become iconic</span>.</div>
+        </div>
+      </div>
+
+      <div style="margin: 40px 0 0; max-width: 620px;">
+        <div class="quote" style="font-size: 24px;">"The question isn't <span style="color: rgba(245,245,245,0.5);">if you're talented</span>.<br/>The question is — <span class="red" style="font-style: normal; font-weight: 500;">are you ready to be seen?</span>"</div>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+          <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Turn the page.</div>
+        </div>
+        <div style="text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">
+          STRAWBERRY · PRODUCTION<br/>
+          PARIS · LOS ANGELES
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 9 : END CARD ============ -->
+<div class="nc-page" data-page="9">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>End Card</span>
+        <span class="red">Reel I / Complete</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+      <div class="serif" style="font-size: 72px; font-weight: 300; font-style: italic; line-height: 1; color: #F5F5F5; margin-bottom: 32px;">"We don't write<br/><span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">content</span>.</div>
+      <div class="serif" style="font-size: 72px; font-weight: 700; line-height: 1; color: #F5F5F5;">We design how<br/>you are <span class="red" style="font-style: italic; font-weight: 400;">remembered</span>."</div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+        <div>
+          <div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          Paris · Los Angeles<br/>
+          <span class="red">© MMXXVI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION BAR ============ -->
+<div class="nav-bar">
+  <button class="nav-btn" id="nc-prev">← Prev</button>
+  <div class="nav-counter">
+    <span id="nc-current" class="red">00</span>
+    <span style="margin: 0 12px; color: rgba(245,245,245,0.2);">/</span>
+    <span id="nc-total">09</span>
+  </div>
+  <button class="nav-btn" id="nc-next">Next →</button>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const root = document.getElementById('nc-root');
+  const pages = root.querySelectorAll('.nc-page');
+  const total = pages.length;
+  let current = 0;
+
+  const cur = document.getElementById('nc-current');
+  const tot = document.getElementById('nc-total');
+  const prev = document.getElementById('nc-prev');
+  const next = document.getElementById('nc-next');
+  tot.textContent = String(total).padStart(2,'0');
+
+  function show(i){
+    if (i < 0 || i >= total) return;
+    pages.forEach(p => p.classList.remove('active'));
+    pages[i].classList.add('active');
+    current = i;
+    cur.textContent = String(i).padStart(2,'0');
+    prev.disabled = (i === 0);
+    next.disabled = (i === total - 1);
+    root.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+
+  root.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', () => {
+      const n = parseInt(el.getAttribute('data-goto'), 10);
+      show(n);
+    });
+  });
+
+  show(0);
+})();
+</script>
