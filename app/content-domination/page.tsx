@@ -6,7 +6,7 @@ import { Footer } from "@/components/strawberry/footer"
 
 const COLOR = "#ff1a1a"
 const GLOW = "rgba(255,26,26,0.35)"
-const STRIPE_URL = "https://buy.stripe.com/00wcMY4EcfDe3g28buf7i03"
+const STRIPE_URL = "https://buy.stripe.com/3cIaEQ2w49eQ8Am9fyf7i07"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
