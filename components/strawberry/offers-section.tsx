@@ -20,7 +20,7 @@ const OFFERS = [
       "90-day go-to-market plan",
       "50-idea content territory map",
     ],
-    stripe: "https://buy.stripe.com/aFadR2b2AfDeeYK1N6f7i02",
+    stripe: "https://buy.stripe.com/9B6eV63A8aiU2bYcrKf7i06",
     detail: "/brand-intelligence",
   },
   {
@@ -37,7 +37,7 @@ const OFFERS = [
       "1 premium lead magnet / month",
       "Omnichannel distribution system",
     ],
-    stripe: "https://buy.stripe.com/00wcMY4EcfDe3g28buf7i03",
+    stripe: "https://buy.stripe.com/3cIaEQ2w49eQ8Am9fyf7i07",
     detail: "/content-domination",
   },
   {
@@ -54,14 +54,14 @@ const OFFERS = [
       "Checkout flow optimization",
       "Revenue dashboard with KPIs that matter",
     ],
-    stripe: "https://buy.stripe.com/bJe8wIeeMfDe8Am4Zif7i04",
+    stripe: "https://buy.stripe.com/9B6dR25IgfDe03Q1N6f7i08",
     detail: "/revenue-architecture",
   },
 ]
 
 const BUNDLE_COLOR = "#e63946"
 const BUNDLE_GLOW = "rgba(230,57,70,0.35)"
-const BUNDLE_STRIPE = "https://buy.stripe.com/7sYfZaeeMbmYbMy77qf7i05"
+const BUNDLE_STRIPE = "https://buy.stripe.com/4gM5kw9YwbmYg2O9fyf7i09"
 
 export function OffersSection() {
   return (
