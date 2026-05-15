@@ -42,7 +42,7 @@ export default function BrandIntelligencePage() {
         <div aria-hidden style={{ position: "absolute", top: "10%", right: "5%", width: 600, height: 600, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.12, filter: "blur(60px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 980, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "inline-block", background: `${COLOR}1a`, border: `1px solid ${COLOR}44`, color: COLOR, fontSize: 11, fontFamily: SANS, fontWeight: 700, padding: "6px 18px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 28 }}>
-            FOUNDATION · 2,500€
+            FOUNDATION · 5,000€
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 28 }}>
             Brand Intelligence<br />
@@ -53,7 +53,7 @@ export default function BrandIntelligencePage() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
             <a href={STRIPE_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontFamily: SANS, fontSize: 15, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}` }}>
-              Get Started — 2,500€
+              Get Started — 5,000€
             </a>
             <Link href="/#offers" style={{ display: "inline-block", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)", padding: "16px 32px", borderRadius: 100, fontFamily: SANS, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.06em" }}>
               ← Compare all systems
@@ -126,9 +126,9 @@ export default function BrandIntelligencePage() {
       <section style={{ padding: "100px clamp(1.5rem,4vw,4rem)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ fontSize: 11, color: COLOR, fontFamily: SANS, letterSpacing: "0.14em", fontWeight: 600, marginBottom: 20 }}>WHY THIS PRICE</div>
-          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, marginBottom: 28, lineHeight: 1.2 }}>2,500€ is not the cost. It&apos;s the floor.</h2>
+          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 700, marginBottom: 28, lineHeight: 1.2 }}>5,000€ is not the cost. It&apos;s the floor.</h2>
           <p style={{ fontFamily: SANS, fontSize: 17, lineHeight: 1.8, color: "rgba(255,255,255,0.6)", marginBottom: 18 }}>
-            A McKinsey junior bills this in 3 days. A branding agency would charge 15–25k for less depth and more buzzwords. We&apos;re positioned where the actual work is happening — at the founder level, with the kind of granularity you&apos;d only otherwise get by hiring full-time.
+            A McKinsey junior bills this in 5 days. A branding agency would charge 20–35k for less depth and more buzzwords. We&apos;re positioned where the actual work is happening — at the founder level, with the kind of granularity you&apos;d only otherwise get by hiring full-time.
           </p>
           <p style={{ fontFamily: SANS, fontSize: 17, lineHeight: 1.8, color: "rgba(255,255,255,0.6)" }}>
             Most clients recoup it within the first quarter — usually from a single positioning shift that lets them raise prices or close a deal that was previously stuck.
@@ -156,7 +156,7 @@ export default function BrandIntelligencePage() {
             4-week delivery. 14-day revision window. Payment in full or two installments at checkout.
           </p>
           <a href={STRIPE_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 56px", borderRadius: 100, fontFamily: SANS, fontSize: 17, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 16px 48px ${GLOW}` }}>
-            Get Started — 2,500€
+            Get Started — 5,000€
           </a>
         </div>
       </section>
