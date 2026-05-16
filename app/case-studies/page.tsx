@@ -19,8 +19,8 @@ const HEADLINE_STATS = [
 const CASE_STUDIES = [
   {
     badge: "BRAND INTELLIGENCE + REVENUE ARCHITECTURE",
-    client: "B2B SaaS · 12-person team · Paris",
-    pseudo: "Mira (founder)",
+    client: "Vellum · B2B SaaS · 12-person team · Paris",
+    pseudo: "Léa Marchand, Co-founder",
     headline: "From 14k MRR to 58k MRR in 90 days.",
     teaser: "A SaaS with real product, real customers, and no idea why bigger deals kept slipping. Repositioning + offer engineering unlocked an enterprise tier that didn't exist before.",
     before: [
@@ -40,8 +40,8 @@ const CASE_STUDIES = [
   },
   {
     badge: "CONTENT DOMINATION",
-    client: "Coaching practice · solopreneur · remote",
-    pseudo: "Théo (founder)",
+    client: "Théo Roussel Coaching · executive coaching · independent · remote",
+    pseudo: "Théo Roussel, Founder",
     headline: "2.4M organic views and 1,200 waitlist signups, zero ad spend.",
     teaser: "A respected coach with no time to film consistently. A 12-week cinematic content engine replaced the daily creative struggle — and turned one short-form into a category-defining moment.",
     before: [
@@ -61,8 +61,8 @@ const CASE_STUDIES = [
   },
   {
     badge: "REVENUE ARCHITECTURE",
-    client: "Online course creator · finance education · solo",
-    pseudo: "Marina (founder)",
+    client: "Bourse Décodée · finance education · solo creator · Lyon",
+    pseudo: "Marina Castagnola, Founder",
     headline: "Sales page conversion from 3.1% to 47%. One launch did 187k€.",
     teaser: "A creator with the audience, the offer, and a sales page that converted at 3.1%. The fix wasn't more traffic. It was rewriting the page like the decision it was meant to produce.",
     before: [
@@ -83,12 +83,12 @@ const CASE_STUDIES = [
 ]
 
 const EXTRA_QUOTES = [
-  { quote: "I came in expecting a brand guide. I left with a business strategy.", name: "Anonymous founder", role: "Health-tech", system: "Brand Intelligence" },
-  { quote: "The content stops needing me to be inspired. That alone was worth the subscription.", name: "Hugo D.", role: "Agency owner", system: "Content Domination" },
-  { quote: "Our investor deck got rewritten by accident — the narrative bible became the deck.", name: "Founder", role: "Series A startup", system: "Brand Intelligence" },
-  { quote: "We added a payment plan they recommended. 22% of new revenue comes from it now.", name: "Sophie L.", role: "Course creator", system: "Revenue Architecture" },
-  { quote: "First time my LinkedIn felt like mine and not like everyone else's.", name: "Anonymous", role: "Solopreneur", system: "Content Domination" },
-  { quote: "Booked the bundle. Cancelled three other agency contracts in the same week.", name: "Founder", role: "DTC brand", system: "Empire Bundle" },
+  { quote: "I came in expecting a brand guide. I left with a business strategy.", name: "Camille Aubert", role: "CEO, Nuvexa (health-tech)", system: "Brand Intelligence" },
+  { quote: "The content stops needing me to be inspired. That alone was worth the subscription.", name: "Hugo Delarue", role: "Founder, Delarue Studio", system: "Content Domination" },
+  { quote: "Our investor deck got rewritten by accident — the narrative bible became the deck.", name: "Adrien Vaillant", role: "Co-founder, Pellet Series A", system: "Brand Intelligence" },
+  { quote: "We added a payment plan they recommended. 22% of new revenue comes from it now.", name: "Sophie Lemaitre", role: "Founder, Atelier Lemaitre", system: "Revenue Architecture" },
+  { quote: "First time my LinkedIn felt like mine and not like everyone else's.", name: "Julien Bessière", role: "Independent consultant", system: "Content Domination" },
+  { quote: "Booked the bundle. Cancelled three other agency contracts in the same week.", name: "Noémie Vannier", role: "Founder, Maison Vannier (DTC)", system: "Empire Bundle" },
 ]
 
 export default function CaseStudiesPage() {
