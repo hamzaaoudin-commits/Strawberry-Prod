@@ -10,19 +10,19 @@ const RESULTS = [
   {
     metric: "+312%",
     label: "Revenue in 90 days",
-    client: "B2B SaaS founder",
-    detail: "From 14k MRR to 58k MRR after Brand Intelligence + Revenue Architecture. Positioning rewrite alone unlocked enterprise tier they couldn't sell before.",
+    client: "Léa Marchand · Co-founder, Vellum (B2B SaaS, Paris)",
+    detail: "From 14k MRR to 58k MRR after Brand Intelligence + Revenue Architecture. Positioning rewrite alone unlocked an enterprise tier she couldn't sell before.",
   },
   {
     metric: "2.4M",
     label: "Organic views in one quarter",
-    client: "Coaching practice",
+    client: "Théo Roussel · Executive coach, independent",
     detail: "Zero ad spend. Content Domination shipped a 12-week narrative engine — one short-form alone did 870k views and drove 1,200 qualified leads to the waitlist.",
   },
   {
     metric: "47%",
     label: "Sales page conversion",
-    client: "Online course creator",
+    client: "Marina Castagnola · Founder, Bourse Décodée",
     detail: "Up from 3.1% on the previous page. Revenue Architecture rewrote the offer, restructured the bonus stack, and turned a stalled launch into the year's biggest week.",
   },
 ]
@@ -30,20 +30,20 @@ const RESULTS = [
 const QUOTES = [
   {
     quote: "We'd been trying to articulate what we do for three years. They got it in three weeks. Our sales cycle is now shorter than our onboarding.",
-    name: "Léa M.",
-    role: "Founder, B2B SaaS",
+    name: "Léa Marchand",
+    role: "Co-founder, Vellum",
     system: "Brand Intelligence",
   },
   {
     quote: "I stopped guessing what to post. The content engine is the closest thing I've had to a creative co-founder — except it scales.",
-    name: "Théo R.",
-    role: "Solopreneur, knowledge business",
+    name: "Théo Roussel",
+    role: "Executive coach, independent",
     system: "Content Domination",
   },
   {
     quote: "First launch after the rebuild did 187k€. The page closes for me now. I review the analytics and that's about it.",
-    name: "Marina C.",
-    role: "Course creator, finance",
+    name: "Marina Castagnola",
+    role: "Founder, Bourse Décodée",
     system: "Revenue Architecture",
   },
 ]
@@ -75,7 +75,7 @@ export function CasesSection() {
                 <div style={{ fontFamily: SANS, fontSize: 13, color: COLOR, letterSpacing: "0.1em", fontWeight: 600, textTransform: "uppercase", marginBottom: 18 }}>
                   {r.label}
                 </div>
-                <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 14, fontWeight: 600 }}>
+                <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.55)", letterSpacing: "0.04em", marginBottom: 14, fontWeight: 600, lineHeight: 1.4 }}>
                   {r.client}
                 </div>
                 <p style={{ fontFamily: SANS, fontSize: 14.5, lineHeight: 1.7, color: "rgba(255,255,255,0.7)", margin: 0 }}>
