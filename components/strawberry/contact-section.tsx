@@ -5,6 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 import { GlassCard } from "./glass-card"
 
+const FORMSPREE_URL = "https://formspree.io/f/xnjwroeq"
+
 const CONTACT_INFO = [
   { label: "Email", value: "Strawberryprod.contact@gmail.com", icon: "✉" },
   { label: "Instagram", value: "@strawberry_prods", icon: "◈" },
@@ -13,14 +15,45 @@ const CONTACT_INFO = [
 
 const GOALS = ["Brand Identity", "Content Domination", "Scale Revenue", "Full Empire"]
 
+type Status = "idle" | "sending" | "sent" | "error"
+
 export function ContactSection() {
   const [ref, vis] = useScrollReveal()
   const [form, setForm] = useState({ name: "", email: "", goal: "", message: "" })
-  const [sent, setSent] = useState(false)
-  
-  const submit = (e: React.FormEvent) => { 
+  const [status, setStatus] = useState<Status>("idle")
+  const [errorMsg, setErrorMsg] = useState("")
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true) 
+    setStatus("sending")
+    setErrorMsg("")
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          goal: form.goal,
+          message: form.message,
+          _subject: `New contact from ${form.name} — ${form.goal || "no goal selected"}`,
+        }),
+      })
+      if (res.ok) {
+        setStatus("sent")
+      } else {
+        let msg = "Something went wrong. Please email us directly at Strawberryprod.contact@gmail.com."
+        try {
+          const data = await res.json()
+          if (data?.errors?.[0]?.message) msg = data.errors[0].message
+        } catch {}
+        setStatus("error")
+        setErrorMsg(msg)
+      }
+    } catch {
+      setStatus("error")
+      setErrorMsg("Could not connect. Please email us directly at Strawberryprod.contact@gmail.com.")
+    }
   }
 
   return (
@@ -50,7 +83,7 @@ export function ContactSection() {
           </div>
 
           <GlassCard style={{ padding: "48px 44px" }}>
-            {sent ? (
+            {status === "sent" ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
                 <div style={{ fontSize: 64, marginBottom: 24 }}>🍓</div>
                 <h3 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "#fff", fontSize: 28, fontWeight: 700, marginBottom: 16 }}>Message received.</h3>
@@ -67,6 +100,7 @@ export function ContactSection() {
                     <div key={f.key}>
                       <label style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.45)", fontSize: 12, letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>{f.label.toUpperCase()}</label>
                       <input
+                        type={f.key === "email" ? "email" : "text"}
                         value={form[f.key]}
                         onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
                         placeholder={f.placeholder}
@@ -110,6 +144,7 @@ export function ContactSection() {
                     onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
                     placeholder="Tell us about your brand and what you want to achieve..."
                     rows={4}
+                    required
                     style={{
                       width: "100%", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
                       borderRadius: 12, padding: "14px 18px", color: "#fff", fontSize: 15,
@@ -121,20 +156,26 @@ export function ContactSection() {
                   />
                 </div>
 
+                {status === "error" && errorMsg && (
+                  <div style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 13, color: "#ff8a8a", background: "rgba(230,57,70,0.08)", border: "1px solid rgba(230,57,70,0.3)", borderRadius: 10, padding: "12px 16px", marginBottom: 16 }}>
+                    {errorMsg}
+                  </div>
+                )}
+
                 <button
                   type="submit"
+                  disabled={status === "sending"}
                   style={{
                     width: "100%", background: "linear-gradient(135deg,#e63946,#ff1a1a)",
                     color: "#fff", border: "none", borderRadius: 100, padding: "17px 24px",
                     fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 700,
-                    cursor: "pointer", letterSpacing: "0.06em",
+                    cursor: status === "sending" ? "wait" : "pointer", letterSpacing: "0.06em",
                     boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
                     transition: "transform 0.2s, box-shadow 0.2s",
+                    opacity: status === "sending" ? 0.7 : 1,
                   }}
-                  onMouseEnter={e => { (e.target as HTMLElement).style.transform = "translateY(-2px)"; (e.target as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.55)"; }}
-                  onMouseLeave={e => { (e.target as HTMLElement).style.transform = "none"; (e.target as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
                 >
-                  {"Send & Start the Audit"}
+                  {status === "sending" ? "Sending..." : "Send & Start the Audit"}
                 </button>
               </form>
             )}
