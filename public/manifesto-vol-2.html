@@ -1,0 +1,722 @@
+<div id="nc-root2" style="font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #050505; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 0 1px rgba(225,29,72,0.08); padding: 0 0 56px;">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+#nc-root2 .nc-page { display: none; padding: 0; }
+#nc-root2 .nc-page.active { display: block; animation: fadeIn 0.55s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+#nc-root2 .serif { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+#nc-root2 .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+#nc-root2 .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+#nc-root2 .letterbox-top, #nc-root2 .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+#nc-root2 .letterbox-top { top: 0; border-bottom: 0.5px solid rgba(245,245,245,0.06); }
+#nc-root2 .letterbox-bot { bottom: 0; border-top: 0.5px solid rgba(245,245,245,0.06); }
+
+#nc-root2 .page-frame { position: relative; min-height: 720px; padding: 80px 64px; background: #050505; overflow: hidden; }
+#nc-root2 .page-frame.cover { padding: 0; min-height: 820px; }
+
+#nc-root2 .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+#nc-root2 .cm-tl { top: 48px; left: 64px; }
+#nc-root2 .cm-tr { top: 48px; right: 64px; }
+#nc-root2 .cm-bl { bottom: 48px; left: 64px; }
+#nc-root2 .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+
+#nc-root2 .red { color: #E11D48; }
+#nc-root2 .dim { color: rgba(245,245,245,0.55); }
+#nc-root2 .faint { color: rgba(245,245,245,0.32); }
+#nc-root2 .rule { height: 0.5px; background: rgba(245,245,245,0.15); width: 100%; }
+#nc-root2 .rule-red { height: 1px; background: #E11D48; width: 48px; }
+
+#nc-root2 .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; font-weight: 400; margin-bottom: 24px; }
+
+#nc-root2 .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; color: #F5F5F5; }
+#nc-root2 .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.01em; color: #F5F5F5; }
+#nc-root2 .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; color: #F5F5F5; }
+#nc-root2 .h-sm { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; color: #F5F5F5; }
+
+#nc-root2 .body { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); letter-spacing: 0.005em; }
+#nc-root2 .quote { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); letter-spacing: 0; }
+
+#nc-root2 .blur-word { filter: blur(1.2px); opacity: 0.85; }
+#nc-root2 .blur-word-strong { filter: blur(2.5px); opacity: 0.7; }
+
+#nc-root2 .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 56px; background: #000; border-top: 0.5px solid rgba(245,245,245,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 10; }
+#nc-root2 .nav-btn { background: transparent; border: 0.5px solid rgba(245,245,245,0.25); color: #F5F5F5; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 18px; cursor: pointer; transition: all 0.2s; font-weight: 400; }
+#nc-root2 .nav-btn:hover { border-color: #E11D48; color: #E11D48; }
+#nc-root2 .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: rgba(245,245,245,0.1); }
+#nc-root2 .nav-counter { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: rgba(245,245,245,0.4); text-transform: uppercase; }
+#nc-root2 .nav-counter .red { font-weight: 500; }
+
+#nc-root2 .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+#nc-root2 .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+
+#nc-root2 .strike { position: relative; display: inline; }
+#nc-root2 .strike::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 1px; background: #E11D48; transform: rotate(-2deg); }
+
+#nc-root2 .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); letter-spacing: -0.04em; }
+
+#nc-root2 .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+#nc-root2 .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+#nc-root2 .compare-table .row:last-child { border-bottom: none; }
+#nc-root2 .compare-table .cell { padding: 18px 20px; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+#nc-root2 .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.5); font-weight: 300; }
+#nc-root2 .compare-table .right { color: #F5F5F5; font-weight: 400; border-left: 1px solid #E11D48; }
+
+#nc-root2 .law-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+#nc-root2 .law-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+#nc-root2 .law-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+#nc-root2 .law-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #F5F5F5; margin-bottom: 10px; line-height: 1.15; }
+#nc-root2 .law-body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+#nc-root2 .law-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+
+#nc-root2 .stage-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: start; }
+#nc-root2 .stage-row:last-child { border-bottom: none; }
+#nc-root2 .stage-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+#nc-root2 .stage-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #F5F5F5; margin-bottom: 8px; line-height: 1.1; }
+#nc-root2 .stage-desc { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+#nc-root2 .stage-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+
+#nc-root2 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root2 .case-side { padding: 28px 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root2 .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+#nc-root2 .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+#nc-root2 .case-side:last-child .case-label { color: #E11D48; }
+#nc-root2 .case-item { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+#nc-root2 .case-item .mark { color: #E11D48; margin-right: 8px; }
+
+#nc-root2 .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: baseline; cursor: pointer; transition: all 0.2s; gap: 20px; }
+#nc-root2 .toc-row:hover { padding-left: 8px; }
+#nc-root2 .toc-row:hover .toc-title { color: #E11D48; }
+#nc-root2 .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; letter-spacing: 0.1em; }
+#nc-root2 .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #F5F5F5; transition: color 0.2s; }
+#nc-root2 .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+
+#nc-root2 .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+#nc-root2 .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+#nc-root2 .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+
+#nc-root2 .wave-bg { position: absolute; inset: 0; opacity: 0.12; pointer-events: none; z-index: 1; }
+</style>
+
+<!-- ============ PAGE 0 : COVER ============ -->
+<div class="nc-page active" data-page="0">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <!-- Wave silhouette in background -->
+    <div class="wave-bg">
+      <svg width="100%" height="100%" viewBox="0 0 680 820" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 600 Q170 480 340 560 T680 520 L680 820 L0 820 Z" fill="#E11D48" opacity="0.4"/>
+        <path d="M0 680 Q170 560 340 640 T680 600 L680 820 L0 820 Z" fill="#E11D48" opacity="0.3"/>
+        <path d="M0 740 Q170 640 340 720 T680 680 L680 820 L0 820 Z" fill="#F5F5F5" opacity="0.15"/>
+      </svg>
+    </div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>Strawberry Production</span>
+        <span class="red">N° 002 / Vol. II</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 8%, rgba(245,245,245,0.1) 8%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2;">
+      <div class="scene-tag">Manifesto · Volume II</div>
+      <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; color: #F5F5F5; margin-bottom: 28px;">
+        The<br/>
+        <span style="font-style: italic; font-weight: 400;">Tribe</span><br/>
+        <span class="red">Doctrine.</span>
+      </div>
+      <div style="max-width: 500px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7); letter-spacing: 0;">
+        Why rewriting your company's narrative is the only way to survive the <span class="blur-word">AI wave</span>. And how to build a <span style="color: #F5F5F5; font-style: normal;">tribe that won't disappear</span> with it.
+      </div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; letter-spacing: -0.01em;">Strawberry Production</div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase; font-weight: 300;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.4); letter-spacing: 0.1em;">PARIS · LOS ANGELES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 1 : TOC ============ -->
+<div class="nc-page" data-page="1">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Strawberry · Manifesto II</div>
+    <div class="corner-mark cm-tr red">i. Index</div>
+    <div class="corner-mark cm-bl">001</div>
+    <div class="corner-mark cm-br">N. Production · 2026</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Table of Contents</div>
+      <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">rally</span>.</div>
+
+      <div class="toc-row" data-goto="2">
+        <div class="toc-num">01</div>
+        <div class="toc-title">The Flood — why the old narrative is dying</div>
+        <div class="toc-page">P. 02</div>
+      </div>
+      <div class="toc-row" data-goto="3">
+        <div class="toc-num">02</div>
+        <div class="toc-title">The Tribe Doctrine</div>
+        <div class="toc-page">P. 03</div>
+      </div>
+      <div class="toc-row" data-goto="4">
+        <div class="toc-num">03</div>
+        <div class="toc-title">The Five Laws of Survival</div>
+        <div class="toc-page">P. 04</div>
+      </div>
+      <div class="toc-row" data-goto="5">
+        <div class="toc-num">04</div>
+        <div class="toc-title">The Anatomy of a Manifesto</div>
+        <div class="toc-page">P. 05</div>
+      </div>
+      <div class="toc-row" data-goto="6">
+        <div class="toc-num">05</div>
+        <div class="toc-title">From Audience to Tribe — Case File</div>
+        <div class="toc-page">P. 06</div>
+      </div>
+      <div class="toc-row" data-goto="7">
+        <div class="toc-num">06</div>
+        <div class="toc-title">The Rewriting Protocol</div>
+        <div class="toc-page">P. 07</div>
+      </div>
+      <div class="toc-row" data-goto="8">
+        <div class="toc-num">07</div>
+        <div class="toc-title">The Summons</div>
+        <div class="toc-page">P. 08</div>
+      </div>
+      <div class="toc-row" data-goto="9">
+        <div class="toc-num">08</div>
+        <div class="toc-title">End Card</div>
+        <div class="toc-page">P. 09</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 : THE FLOOD ============ -->
+<div class="nc-page" data-page="2">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div>
+    <div class="corner-mark cm-tr red">The Flood</div>
+    <div class="corner-mark cm-bl">002</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 01</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">The <span style="font-style: italic;" class="red">Flood</span> is here.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">Your old story is already underwater.</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+        <div style="padding-right: 40px;">
+          <div class="quote">
+            "Every product page, every <em>about us</em>, every founder story — <span class="red">written ten years ago</span> for a market that no longer exists.<br/><br/>
+            The AI wave didn't just flood the channels. It dissolved the <span style="text-decoration: line-through; text-decoration-color: #E11D48;">trust</span> that held them together."
+          </div>
+        </div>
+        <div style="background: rgba(245,245,245,0.1);"></div>
+        <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+          <div class="h-sm red" style="margin-bottom: 12px;">Truth</div>
+          <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15; color: #F5F5F5;">
+            You don't need<br/>
+            more <span class="blur-word">content</span>.<br/>
+            You need a<br/>
+            <span class="red" style="font-style: normal; font-weight: 500;">flag to follow</span>.
+          </div>
+          <div style="margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— THE AGE OF AUDIENCES IS OVER.</div>
+        </div>
+      </div>
+
+      <div class="rule-red" style="margin-bottom: 18px;"></div>
+      <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Drowning Brand</div>
+
+      <div class="three-col">
+        <div class="col-num">01</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">Your customers can't <span style="font-style: italic;">finish your sentences</span>.<br/><span class="red" style="font-style: italic;">They forget you between purchases.</span></div>
+          <div class="body">A brand with no narrative is a brand with no echo. The relationship resets every time.</div>
+        </div>
+      </div>
+      <div class="three-col">
+        <div class="col-num">02</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">Your team can't articulate <span style="font-style: italic;">why you exist</span>.<br/><span class="red" style="font-style: italic;">Beyond what you sell.</span></div>
+          <div class="body">If your own people give five different answers to "what do you stand for?", your audience gives zero.</div>
+        </div>
+      </div>
+      <div class="three-col" style="margin-bottom: 32px;">
+        <div class="col-num">03</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">An AI competitor can replicate your offer <span style="font-style: italic;">in a week</span>.<br/><span class="red" style="font-style: italic;">And nobody would notice.</span></div>
+          <div class="body">Because what they would copy is your product. Not your reason. Reasons are uncopyable.</div>
+        </div>
+      </div>
+
+      <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 600px;">
+        <div class="quote" style="color: #F5F5F5;">
+          "When everyone can produce, only those with <span class="red" style="font-style: normal; font-weight: 500;">a cause</span> get followed.<br/>
+          <span style="color: rgba(245,245,245,0.4);">The rest become noise.</span>"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 : TRIBE DOCTRINE ============ -->
+<div class="nc-page" data-page="3">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 02 · Doctrine</div>
+    <div class="corner-mark cm-tr red">The Tribe</div>
+    <div class="corner-mark cm-bl">003</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 02</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">From <span style="font-style: italic;">audience</span> to <span class="red">tribe</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">A shift in physics, not in tactics.</div>
+
+      <div class="charter-frame">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— A Strawberry Production doctrine —</div>
+        <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">
+          The <strong style="font-style: normal; font-weight: 600;">Tribe Doctrine</strong> is the second pillar of the Strawberry framework. <span style="color: rgba(245,245,245,0.65);">Where the Neuro-Cinema Manifesto taught how to be unforgettable, the Tribe Doctrine teaches how to be followed. One builds memory. The other builds movement.</span>
+        </div>
+      </div>
+
+      <div class="compare-table">
+        <div class="row"><div class="cell left">Audience</div><div class="cell right">Tribe</div></div>
+        <div class="row"><div class="cell left">Watches you</div><div class="cell right">Speaks for you</div></div>
+        <div class="row"><div class="cell left">Buys when convenient</div><div class="cell right">Defends when challenged</div></div>
+        <div class="row"><div class="cell left">Leaves when the algorithm shifts</div><div class="cell right">Migrates with you when platforms die</div></div>
+        <div class="row"><div class="cell left">Knows your product</div><div class="cell right">Knows your enemy</div></div>
+      </div>
+
+      <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+        <div>
+          <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+          <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3; color: #F5F5F5;">
+            Manifesto + <span class="red">Enemy</span> + Ritual = Tribe.
+          </div>
+          <div class="body" style="font-size: 13px; margin-top: 14px;">Three ingredients. None optional. Skip one and you have customers — never believers.</div>
+        </div>
+        <div>
+          <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+          <div class="body" style="font-size: 13.5px;">AI dissolves brand differentiation by the day. The only assets it <span class="red">cannot replicate</span> are belonging, belief, and shared resistance. Tribes own all three.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 : FIVE LAWS ============ -->
+<div class="nc-page" data-page="4">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 03 · The Laws</div>
+    <div class="corner-mark cm-tr red">Five Laws</div>
+    <div class="corner-mark cm-bl">004</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 03 — The Laws</div>
+      <div class="h-large serif" style="margin-bottom: 32px;">The five <span style="font-style: italic;" class="red">survival</span> laws.</div>
+
+      <div class="law-block">
+        <div class="law-num">LAW I</div>
+        <div class="law-title">A brand without an enemy is a brand without <span style="font-style: italic;">gravity</span>.</div>
+        <div class="law-body">You don't need to attack a competitor. You need to name a <em>condition</em> you refuse — mediocrity, conformity, performative ethics, generic AI slop. The enemy is the gravity well that holds the tribe in orbit.</div>
+      </div>
+
+      <div class="law-block">
+        <div class="law-num">LAW II</div>
+        <div class="law-title">Your manifesto is the <span style="font-style: italic;">contract</span>, not the copy.</div>
+        <div class="law-body">A manifesto isn't a tagline written by marketing. It's a public commitment that filters who joins and who walks. If it doesn't <em>repel</em> someone, it won't attract anyone.</div>
+      </div>
+
+      <div class="law-block">
+        <div class="law-num">LAW III</div>
+        <div class="law-title">The founder must be the <span style="font-style: italic;">signal</span>, not the logo.</div>
+        <div class="law-body">In the AI age, faces beat brands. People follow people. A logo cannot have a worldview — a founder can. Your face is now <em>infrastructure</em>.</div>
+      </div>
+
+      <div class="law-block">
+        <div class="law-num">LAW IV</div>
+        <div class="law-title">Rituals matter more than <span style="font-style: italic;">campaigns</span>.</div>
+        <div class="law-body">A campaign ends. A ritual repeats. A weekly letter, a monthly drop, a quarterly gathering — these become the tribe's <em>heartbeat</em>. Without rhythm, there's no body.</div>
+      </div>
+
+      <div class="law-block">
+        <div class="law-num">LAW V</div>
+        <div class="law-title">A tribe is built on <span style="font-style: italic;">what you refuse</span>, not what you offer.</div>
+        <div class="law-body">Subtraction is positioning. Saying no — to clients, channels, formats, trends — is the strongest narrative move you can make. The market remembers <em>what you walked away from</em>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 : ANATOMY OF A MANIFESTO ============ -->
+<div class="nc-page" data-page="5">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 04 · Anatomy</div>
+    <div class="corner-mark cm-tr red">The Manifesto</div>
+    <div class="corner-mark cm-bl">005</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 04 — Anatomy</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of a <span style="font-style: italic;" class="red">manifesto</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 42px;">Six pieces. Nothing optional.</div>
+
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0;">
+        <div style="position: relative;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 12px; width: 1px; background: linear-gradient(to bottom, #E11D48 0%, #E11D48 30%, rgba(225,29,72,0.4) 100%);"></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #E11D48; border: 3px solid #050505;"></div></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 16.66%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        </div>
+
+        <div>
+          <div class="stage-row">
+            <div class="stage-tag">M · 01</div>
+            <div>
+              <div class="stage-title">The Provocation</div>
+              <div class="stage-desc">A sentence that <em>indicts</em> the current state of your industry. Not complaint — accusation. Without it, the manifesto has no urgency.</div>
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-tag">M · 02</div>
+            <div>
+              <div class="stage-title">The Refusal</div>
+              <div class="stage-desc">What you will <em>not</em> do, no matter the money. Public, specific, costly. The market measures conviction by what you sacrifice.</div>
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-tag">M · 03</div>
+            <div>
+              <div class="stage-title">The Vision</div>
+              <div class="stage-desc">The world as it should be in five years — with you in it. <em>Concrete</em>, not corporate. Picture, not platitude.</div>
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-tag">M · 04</div>
+            <div>
+              <div class="stage-title">The Filter</div>
+              <div class="stage-desc">Who this is for — and who it isn't. The line that makes the wrong reader close the tab and the right one <em>recognize themselves</em>.</div>
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-tag">M · 05</div>
+            <div>
+              <div class="stage-title">The Promise</div>
+              <div class="stage-desc">What you owe the tribe in return for their belief. Bigger than a guarantee — closer to an <em>oath</em>.</div>
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-tag">M · 06</div>
+            <div>
+              <div class="stage-title">The Call</div>
+              <div class="stage-desc">A single line that names what joining looks like. Not "sign up." A <em>verb of belonging</em>: walk with us, build with us, refuse with us.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 : CASE STUDY ============ -->
+<div class="nc-page" data-page="6">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 05 · Case File</div>
+    <div class="corner-mark cm-tr red">Audience → Tribe</div>
+    <div class="corner-mark cm-bl">006</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 05 — Case File</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">When the <span style="font-style: italic;" class="red">flag</span> rises.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">A founder rewrites her company's narrative in 60 days.</div>
+
+      <div class="case-grid">
+        <div class="case-side">
+          <div class="case-label">Before · The Audience</div>
+          <div class="case-item"><span class="mark">×</span>Tagline: "We help brands grow."</div>
+          <div class="case-item"><span class="mark">×</span>Newsletter: 8,400 subs · 12% open rate</div>
+          <div class="case-item"><span class="mark">×</span>Inbound: "Can you send a proposal?"</div>
+          <div class="case-item"><span class="mark">×</span>Team unable to explain the "why"</div>
+          <div class="case-item"><span class="mark">×</span>Replaceable by any agency in the city</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— A vendor among vendors.</div>
+        </div>
+        <div class="case-side">
+          <div class="case-label">After · The Tribe</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Manifesto: <em>"We don't grow brands. We arm them."</em></div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Newsletter: <span class="red" style="font-weight: 500;">5,200</span> subs · <span class="red" style="font-weight: 500;">61%</span> open rate</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Inbound: "I read your manifesto. When can we start?"</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Team articulates the cause in one sentence</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span><span class="red" style="font-weight: 500;">+220%</span> qualified leads · <span class="red" style="font-weight: 500;">3.4×</span> avg. deal size</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "She doesn't sell services. She <span class="red">runs a movement</span>."</div>
+        </div>
+      </div>
+
+      <div class="h-sm" style="margin: 32px 0 20px;">Three Decisive Moves</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Naming the Enemy</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">From <span style="text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.6);">"helping brands"</span> to <em style="color: #F5F5F5; font-style: italic;">declaring war on generic visibility</em>.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Publishing the Refusal</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">Six client types listed publicly as <span style="color: #F5F5F5;">"we will not work with."</span> The list itself became the magnet.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Building the Ritual</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">A weekly Friday dispatch. Same hour. Same form. <span style="color: #F5F5F5;">Never missed once.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 7 : REWRITING PROTOCOL ============ -->
+<div class="nc-page" data-page="7">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 06 · The Protocol</div>
+    <div class="corner-mark cm-tr red">Rewriting</div>
+    <div class="corner-mark cm-bl">007</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 06 — The Rewriting Protocol</div>
+      <div class="h-large serif" style="margin-bottom: 8px;">How to rewrite your <span style="font-style: italic;" class="red">narrative</span>.</div>
+      <div class="body" style="margin-bottom: 36px; max-width: 600px;">Excavate. Declare. Ritualize. Three movements. One company transformed.</div>
+
+      <!-- Phase 1 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Movement I · Excavate</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Find the <span style="font-style: italic; color: rgba(245,245,245,0.6);">buried convictions.</span></div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">Every company that lasted past three years has a hidden belief that drove it. Most have forgotten it. We dig it back out — through founder interviews, archived decisions, the projects you've refused.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>Founder origin interviews</div>
+            <div><span class="red">— </span>Refused-client archaeology</div>
+            <div><span class="red">— </span>Team conviction audit</div>
+            <div><span class="red">— </span>Customer language mining</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Movement II · Declare</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Write the <span style="font-style: italic;">manifesto</span> the company couldn't write alone.</div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">We assemble the six pieces — provocation, refusal, vision, filter, promise, call — into a single document. Then we stress-test it. If it doesn't make at least 30% of your current audience uncomfortable, it isn't sharp enough.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>The Six-Part Manifesto Draft</div>
+            <div><span class="red">— </span>Internal alignment session</div>
+            <div><span class="red">— </span>Repulsion test</div>
+            <div><span class="red">— </span>Public charter publication</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Movement III · Ritualize</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Build the <span style="font-style: italic;">rhythm</span> that turns readers into a tribe.</div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">A manifesto without ritual is a poster on a wall. We design the recurring drumbeat — the weekly dispatch, the monthly drop, the annual gathering — that gives the tribe a body and a calendar to live by.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>Signature ritual design</div>
+            <div><span class="red">— </span>Editorial cadence system</div>
+            <div><span class="red">— </span>Tribe-only artifacts</div>
+            <div><span class="red">— </span>Twelve-month rhythm map</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 : THE SUMMONS ============ -->
+<div class="nc-page" data-page="8">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Final Scene · The Summons</div>
+    <div class="corner-mark cm-tr red">The Choice</div>
+    <div class="corner-mark cm-bl">008</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Final Scene — The Summons</div>
+      <div class="h-massive serif" style="margin-bottom: 16px;">Will you build a <span style="font-style: italic;" class="red">flag</span>?</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+        <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · DRIFT</div>
+          <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep optimizing the old story.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Polish the tagline. Run the ads. Watch the open rates fall while a machine writes the same emails faster. <span class="blur-word">Dissolve quietly.</span></div>
+        </div>
+        <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · RALLY</div>
+          <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Rewrite the narrative. Plant the flag. Gather the tribe.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Become a company people <span class="red">defend</span> — not just one they buy from.</div>
+        </div>
+      </div>
+
+      <div style="margin: 40px 0 0; max-width: 620px;">
+        <div class="quote" style="font-size: 24px;">"The companies that survive this decade <span style="color: rgba(245,245,245,0.5);">won't be the most efficient</span>.<br/>They'll be the ones with — <span class="red" style="font-style: normal; font-weight: 500;">a tribe that won't let them disappear.</span>"</div>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+          <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Turn the page.</div>
+        </div>
+        <div style="text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">
+          STRAWBERRY · PRODUCTION<br/>
+          PARIS · LOS ANGELES
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 9 : END CARD ============ -->
+<div class="nc-page" data-page="9">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>End Card</span>
+        <span class="red">Reel II / Complete</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+      <div class="serif" style="font-size: 68px; font-weight: 300; font-style: italic; line-height: 1; color: #F5F5F5; margin-bottom: 32px;">"In the age of the<br/><span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">machine</span>,</div>
+      <div class="serif" style="font-size: 68px; font-weight: 700; line-height: 1; color: #F5F5F5;">only those with<br/>a <span class="red" style="font-style: italic; font-weight: 400;">tribe</span> remain."</div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+        <div>
+          <div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          Paris · Los Angeles<br/>
+          <span class="red">© MMXXVI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar">
+  <button class="nav-btn" id="nc-prev2">← Prev</button>
+  <div class="nav-counter">
+    <span id="nc-current2" class="red">00</span>
+    <span style="margin: 0 12px; color: rgba(245,245,245,0.2);">/</span>
+    <span id="nc-total2">09</span>
+  </div>
+  <button class="nav-btn" id="nc-next2">Next →</button>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const root = document.getElementById('nc-root2');
+  const pages = root.querySelectorAll('.nc-page');
+  const total = pages.length;
+  let current = 0;
+
+  const cur = document.getElementById('nc-current2');
+  const tot = document.getElementById('nc-total2');
+  const prev = document.getElementById('nc-prev2');
+  const next = document.getElementById('nc-next2');
+  tot.textContent = String(total).padStart(2,'0');
+
+  function show(i){
+    if (i < 0 || i >= total) return;
+    pages.forEach(p => p.classList.remove('active'));
+    pages[i].classList.add('active');
+    current = i;
+    cur.textContent = String(i).padStart(2,'0');
+    prev.disabled = (i === 0);
+    next.disabled = (i === total - 1);
+    root.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+
+  root.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', () => {
+      const n = parseInt(el.getAttribute('data-goto'), 10);
+      show(n);
+    });
+  });
+
+  show(0);
+})();
+</script>
