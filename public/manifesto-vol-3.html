@@ -1,0 +1,718 @@
+<div id="nc-root3" style="font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #050505; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 0 1px rgba(225,29,72,0.08); padding: 0 0 56px;">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+#nc-root3 .nc-page { display: none; padding: 0; }
+#nc-root3 .nc-page.active { display: block; animation: fadeIn 0.55s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+#nc-root3 .serif { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+#nc-root3 .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+#nc-root3 .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+#nc-root3 .letterbox-top, #nc-root3 .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+#nc-root3 .letterbox-top { top: 0; border-bottom: 0.5px solid rgba(245,245,245,0.06); }
+#nc-root3 .letterbox-bot { bottom: 0; border-top: 0.5px solid rgba(245,245,245,0.06); }
+
+#nc-root3 .page-frame { position: relative; min-height: 720px; padding: 80px 64px; background: #050505; overflow: hidden; }
+#nc-root3 .page-frame.cover { padding: 0; min-height: 820px; }
+
+#nc-root3 .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+#nc-root3 .cm-tl { top: 48px; left: 64px; }
+#nc-root3 .cm-tr { top: 48px; right: 64px; }
+#nc-root3 .cm-bl { bottom: 48px; left: 64px; }
+#nc-root3 .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+
+#nc-root3 .red { color: #E11D48; }
+#nc-root3 .dim { color: rgba(245,245,245,0.55); }
+#nc-root3 .faint { color: rgba(245,245,245,0.32); }
+#nc-root3 .rule { height: 0.5px; background: rgba(245,245,245,0.15); width: 100%; }
+#nc-root3 .rule-red { height: 1px; background: #E11D48; width: 48px; }
+
+#nc-root3 .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; font-weight: 400; margin-bottom: 24px; }
+
+#nc-root3 .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; color: #F5F5F5; }
+#nc-root3 .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; letter-spacing: -0.01em; color: #F5F5F5; }
+#nc-root3 .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; color: #F5F5F5; }
+#nc-root3 .h-sm { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; color: #F5F5F5; }
+
+#nc-root3 .body { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); letter-spacing: 0.005em; }
+#nc-root3 .quote { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); letter-spacing: 0; }
+
+#nc-root3 .blur-word { filter: blur(1.2px); opacity: 0.85; }
+#nc-root3 .blur-word-strong { filter: blur(2.5px); opacity: 0.7; }
+
+#nc-root3 .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 56px; background: #000; border-top: 0.5px solid rgba(245,245,245,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 10; }
+#nc-root3 .nav-btn { background: transparent; border: 0.5px solid rgba(245,245,245,0.25); color: #F5F5F5; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 18px; cursor: pointer; transition: all 0.2s; font-weight: 400; }
+#nc-root3 .nav-btn:hover { border-color: #E11D48; color: #E11D48; }
+#nc-root3 .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: rgba(245,245,245,0.1); }
+#nc-root3 .nav-counter { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: rgba(245,245,245,0.4); text-transform: uppercase; }
+#nc-root3 .nav-counter .red { font-weight: 500; }
+
+#nc-root3 .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+#nc-root3 .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+
+#nc-root3 .strike { position: relative; display: inline; }
+#nc-root3 .strike::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 1px; background: #E11D48; transform: rotate(-2deg); }
+
+#nc-root3 .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); letter-spacing: -0.04em; }
+
+#nc-root3 .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+#nc-root3 .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+#nc-root3 .compare-table .row:last-child { border-bottom: none; }
+#nc-root3 .compare-table .cell { padding: 18px 20px; font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+#nc-root3 .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; text-decoration-color: rgba(225,29,72,0.5); font-weight: 300; }
+#nc-root3 .compare-table .right { color: #F5F5F5; font-weight: 400; border-left: 1px solid #E11D48; }
+
+#nc-root3 .doc-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+#nc-root3 .doc-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+#nc-root3 .doc-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+#nc-root3 .doc-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #F5F5F5; margin-bottom: 10px; line-height: 1.15; }
+#nc-root3 .doc-body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+#nc-root3 .doc-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+
+#nc-root3 .pillar-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: start; }
+#nc-root3 .pillar-row:last-child { border-bottom: none; }
+#nc-root3 .pillar-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+#nc-root3 .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: #F5F5F5; margin-bottom: 8px; line-height: 1.1; }
+#nc-root3 .pillar-desc { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+#nc-root3 .pillar-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+
+#nc-root3 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root3 .case-side { padding: 28px 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+#nc-root3 .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+#nc-root3 .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+#nc-root3 .case-side:last-child .case-label { color: #E11D48; }
+#nc-root3 .case-item { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+#nc-root3 .case-item .mark { color: #E11D48; margin-right: 8px; }
+
+#nc-root3 .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: baseline; cursor: pointer; transition: all 0.2s; gap: 20px; }
+#nc-root3 .toc-row:hover { padding-left: 8px; }
+#nc-root3 .toc-row:hover .toc-title { color: #E11D48; }
+#nc-root3 .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; letter-spacing: 0.1em; }
+#nc-root3 .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #F5F5F5; transition: color 0.2s; }
+#nc-root3 .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+
+#nc-root3 .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+#nc-root3 .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+#nc-root3 .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+
+#nc-root3 .empire-bg { position: absolute; inset: 0; opacity: 0.10; pointer-events: none; z-index: 1; }
+</style>
+
+<!-- ============ PAGE 0 : COVER ============ -->
+<div class="nc-page active" data-page="0">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <!-- Editorial-empire silhouette in background -->
+    <div class="empire-bg">
+      <svg width="100%" height="100%" viewBox="0 0 680 820" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tall typographic columns suggesting newspaper plates / broadcast towers -->
+        <rect x="60" y="380" width="36" height="440" fill="#F5F5F5" opacity="0.18"/>
+        <rect x="110" y="320" width="36" height="500" fill="#E11D48" opacity="0.55"/>
+        <rect x="160" y="420" width="36" height="400" fill="#F5F5F5" opacity="0.12"/>
+        <rect x="540" y="360" width="36" height="460" fill="#F5F5F5" opacity="0.15"/>
+        <rect x="590" y="280" width="36" height="540" fill="#E11D48" opacity="0.45"/>
+        <rect x="640" y="400" width="36" height="420" fill="#F5F5F5" opacity="0.18"/>
+        <!-- Horizontal datum lines -->
+        <rect x="0" y="780" width="680" height="0.5" fill="#F5F5F5" opacity="0.3"/>
+        <rect x="0" y="790" width="680" height="0.5" fill="#F5F5F5" opacity="0.2"/>
+        <rect x="0" y="800" width="680" height="0.5" fill="#F5F5F5" opacity="0.15"/>
+      </svg>
+    </div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>Strawberry Production</span>
+        <span class="red">N° 003 / Vol. III</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 8%, rgba(245,245,245,0.1) 8%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2;">
+      <div class="scene-tag">Manifesto · Volume III</div>
+      <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; color: #F5F5F5; margin-bottom: 28px;">
+        The<br/>
+        <span style="font-style: italic; font-weight: 400;">Editorial</span><br/>
+        <span class="red">Empire.</span>
+      </div>
+      <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7); letter-spacing: 0;">
+        Why every serious brand will become <span style="color: #F5F5F5; font-style: normal;">a media house</span> — or be erased by the ones that did. The infrastructure of <span class="blur-word">narrative power</span>.
+      </div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; letter-spacing: -0.01em;">Strawberry Production</div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase; font-weight: 300;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.4); letter-spacing: 0.1em;">PARIS · LOS ANGELES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 1 : TOC ============ -->
+<div class="nc-page" data-page="1">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Strawberry · Manifesto III</div>
+    <div class="corner-mark cm-tr red">i. Index</div>
+    <div class="corner-mark cm-bl">001</div>
+    <div class="corner-mark cm-br">N. Production · 2026</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Table of Contents</div>
+      <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">broadcast</span>.</div>
+
+      <div class="toc-row" data-goto="2">
+        <div class="toc-num">01</div>
+        <div class="toc-title">The End of Renting Attention</div>
+        <div class="toc-page">P. 02</div>
+      </div>
+      <div class="toc-row" data-goto="3">
+        <div class="toc-num">02</div>
+        <div class="toc-title">The Editorial Doctrine</div>
+        <div class="toc-page">P. 03</div>
+      </div>
+      <div class="toc-row" data-goto="4">
+        <div class="toc-num">03</div>
+        <div class="toc-title">The Four Pillars of an Empire</div>
+        <div class="toc-page">P. 04</div>
+      </div>
+      <div class="toc-row" data-goto="5">
+        <div class="toc-num">04</div>
+        <div class="toc-title">The Editorial Stack</div>
+        <div class="toc-page">P. 05</div>
+      </div>
+      <div class="toc-row" data-goto="6">
+        <div class="toc-num">05</div>
+        <div class="toc-title">Case File — The Founder Who Bought His Channel</div>
+        <div class="toc-page">P. 06</div>
+      </div>
+      <div class="toc-row" data-goto="7">
+        <div class="toc-num">06</div>
+        <div class="toc-title">The Empire Construction Protocol</div>
+        <div class="toc-page">P. 07</div>
+      </div>
+      <div class="toc-row" data-goto="8">
+        <div class="toc-num">07</div>
+        <div class="toc-title">The Coronation</div>
+        <div class="toc-page">P. 08</div>
+      </div>
+      <div class="toc-row" data-goto="9">
+        <div class="toc-num">08</div>
+        <div class="toc-title">End Card</div>
+        <div class="toc-page">P. 09</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 : THE END OF RENTING ============ -->
+<div class="nc-page" data-page="2">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div>
+    <div class="corner-mark cm-tr red">The Rent</div>
+    <div class="corner-mark cm-bl">002</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 01</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">You don't <span style="font-style: italic;" class="red">own</span> anything.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">You've been renting attention for ten years. The lease is up.</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+        <div style="padding-right: 40px;">
+          <div class="quote">
+            "Every follower you have lives on <span style="text-decoration: line-through; text-decoration-color: #E11D48;">borrowed land</span>.<br/><br/>
+            Every reach you bought, every algorithm you befriended, every viral post — <span class="red">temporary</span>.<br/><br/>
+            One platform shift, one policy change, one AI feed reshuffle. And you start from zero."
+          </div>
+        </div>
+        <div style="background: rgba(245,245,245,0.1);"></div>
+        <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+          <div class="h-sm red" style="margin-bottom: 12px;">The Shift</div>
+          <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15; color: #F5F5F5;">
+            Stop being a<br/>
+            <span class="blur-word">tenant</span> on someone<br/>
+            else's platform.<br/>
+            <span class="red" style="font-style: normal; font-weight: 500;">Become the platform.</span>
+          </div>
+          <div style="margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— THE AGE OF DISTRIBUTION IS OVER. THE AGE OF OWNERSHIP BEGINS.</div>
+        </div>
+      </div>
+
+      <div class="rule-red" style="margin-bottom: 18px;"></div>
+      <div class="h-sm" style="margin-bottom: 28px;">Three Costs of Renting</div>
+
+      <div class="three-col">
+        <div class="col-num">01</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">You pay forever, and own <span style="font-style: italic;">nothing</span>.<br/><span class="red" style="font-style: italic;">No asset, no leverage, no compounding.</span></div>
+          <div class="body">A decade of ads buys reach today. Stop paying — disappear tomorrow. Renters die when the rent rises.</div>
+        </div>
+      </div>
+      <div class="three-col">
+        <div class="col-num">02</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">The platform writes your <span style="font-style: italic;">contract</span>.<br/><span class="red" style="font-style: italic;">And rewrites it without notice.</span></div>
+          <div class="body">Reach cut overnight. Format changed. Account suspended. The landlord always wins — that's the structure.</div>
+        </div>
+      </div>
+      <div class="three-col" style="margin-bottom: 32px;">
+        <div class="col-num">03</div>
+        <div>
+          <div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #F5F5F5;">AI is now the new <span style="font-style: italic;">landlord</span>.<br/><span class="red" style="font-style: italic;">And it doesn't take tenants seriously.</span></div>
+          <div class="body">Algorithmic feeds increasingly favor publishers with depth, archives, and consistency. Brands with content debt are filtered out.</div>
+        </div>
+      </div>
+
+      <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 600px;">
+        <div class="quote" style="color: #F5F5F5;">
+          "Renters compete on ads. Owners compete on <span class="red" style="font-style: normal; font-weight: 500;">archives</span>.<br/>
+          <span style="color: rgba(245,245,245,0.4);">Guess which one survives the next decade.</span>"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 : EDITORIAL DOCTRINE ============ -->
+<div class="nc-page" data-page="3">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 02 · Doctrine</div>
+    <div class="corner-mark cm-tr red">The Empire</div>
+    <div class="corner-mark cm-bl">003</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 02</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">From <span style="font-style: italic;">brand</span> to <span class="red">publisher</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">A change of identity, not a change of strategy.</div>
+
+      <div class="charter-frame">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The third volume of the Strawberry doctrine —</div>
+        <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">
+          The <strong style="font-style: normal; font-weight: 600;">Editorial Empire</strong> closes the Strawberry trilogy. <span style="color: rgba(245,245,245,0.65);">Vol. I built memory. Vol. II built movement. Vol. III builds infrastructure — the owned, compounding, indestructible engine that carries the first two through every platform shift to come.</span>
+        </div>
+      </div>
+
+      <div class="compare-table">
+        <div class="row"><div class="cell left">Brand</div><div class="cell right">Editorial Empire</div></div>
+        <div class="row"><div class="cell left">Posts campaigns</div><div class="cell right">Publishes a body of work</div></div>
+        <div class="row"><div class="cell left">Rents reach from platforms</div><div class="cell right">Owns the distribution channel</div></div>
+        <div class="row"><div class="cell left">Optimizes for engagement</div><div class="cell right">Optimizes for depth and return</div></div>
+        <div class="row"><div class="cell left">Forgotten between launches</div><div class="cell right">Present every week, on schedule</div></div>
+        <div class="row"><div class="cell left">Measures in clicks</div><div class="cell right">Measures in subscribers and citations</div></div>
+      </div>
+
+      <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+        <div>
+          <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+          <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3; color: #F5F5F5;">
+            Owned Channel + <span class="red">Editorial Voice</span> + Archive = Empire.
+          </div>
+          <div class="body" style="font-size: 13px; margin-top: 14px;">A channel you control. A voice nobody can mimic. An archive that <span class="red">compounds</span> while you sleep.</div>
+        </div>
+        <div>
+          <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+          <div class="body" style="font-size: 13.5px;">AI floods every feed with synthetic content. The signal-to-noise ratio collapses. Owned editorial channels — newsletters, podcasts, drops — become the <span class="red">scarce premium real estate</span> of the next decade.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 : FOUR PILLARS ============ -->
+<div class="nc-page" data-page="4">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 03 · The Pillars</div>
+    <div class="corner-mark cm-tr red">Four Pillars</div>
+    <div class="corner-mark cm-bl">004</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 03 — The Foundations</div>
+      <div class="h-large serif" style="margin-bottom: 32px;">The four <span style="font-style: italic;" class="red">load-bearing</span> walls.</div>
+
+      <div class="doc-block">
+        <div class="doc-num">PILLAR I</div>
+        <div class="doc-title">Owned <span style="font-style: italic;">land</span>.</div>
+        <div class="doc-body">A primary channel you fully control — a newsletter you host, a podcast you publish, a domain you own. Social platforms are <em>secondary distribution</em>, never the asset. If a single decision by a platform CEO can erase your audience, you don't have an audience. You have a lease.</div>
+      </div>
+
+      <div class="doc-block">
+        <div class="doc-num">PILLAR II</div>
+        <div class="doc-title">An <span style="font-style: italic;">editorial voice</span> nobody can imitate.</div>
+        <div class="doc-body">Not a tone-of-voice document. A <em>worldview</em>. Recurring obsessions, recognizable rhythm, signature pieces. The voice should be so specific that a competitor reading it can recognize the author without a byline. AI imitates style — it cannot imitate <em>obsession</em>.</div>
+      </div>
+
+      <div class="doc-block">
+        <div class="doc-num">PILLAR III</div>
+        <div class="doc-title">A <span style="font-style: italic;">rhythm</span> that nobody else can match.</div>
+        <div class="doc-body">Same hour. Same day. Same format. For years. The rhythm itself becomes the asset — readers organize their week around it. Inconsistency is the cheapest way to forfeit authority. <em>Showing up is the moat.</em></div>
+      </div>
+
+      <div class="doc-block">
+        <div class="doc-num">PILLAR IV</div>
+        <div class="doc-title">An <span style="font-style: italic;">archive</span> that compounds in your sleep.</div>
+        <div class="doc-body">Every issue, every episode, every drop is a <em>permanent deposit</em> in the empire's vault. After 24 months, your archive does more work than your new content. After 60 months, it becomes a cultural reference. AI competitors restart from zero every week. You don't.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 : THE EDITORIAL STACK ============ -->
+<div class="nc-page" data-page="5">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 04 · The Stack</div>
+    <div class="corner-mark cm-tr red">Architecture</div>
+    <div class="corner-mark cm-bl">005</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 04 — The Editorial Stack</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">The five-layer <span style="font-style: italic;" class="red">stack</span>.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 42px;">How an empire actually broadcasts.</div>
+
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0;">
+        <div style="position: relative;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 12px; width: 1px; background: linear-gradient(to bottom, #E11D48 0%, #E11D48 25%, rgba(225,29,72,0.4) 100%);"></div>
+          <div style="position: relative; height: 20%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #E11D48; border: 3px solid #050505;"></div></div>
+          <div style="position: relative; height: 20%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 20%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 20%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+          <div style="position: relative; height: 20%; display: flex; align-items: flex-start;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        </div>
+
+        <div>
+          <div class="pillar-row">
+            <div class="pillar-tag">L · 01</div>
+            <div>
+              <div class="pillar-title">The Cornerstone <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ owned primary</span></div>
+              <div class="pillar-desc">One owned channel that holds the empire's <em>full voice</em>. Usually a newsletter or a longform publication. The asset you'd keep if every social platform vanished tomorrow.</div>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <div class="pillar-tag">L · 02</div>
+            <div>
+              <div class="pillar-title">The Cinema <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ longform video</span></div>
+              <div class="pillar-desc">YouTube, podcast, or both. The <em>depth medium</em> where your worldview is fully embodied. AI-generated competitors collapse here — the bar for sustained craft is too high.</div>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <div class="pillar-tag">L · 03</div>
+            <div>
+              <div class="pillar-title">The Broadcast <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ social distribution</span></div>
+              <div class="pillar-desc">LinkedIn, X, Instagram, TikTok — used as <em>amplifiers</em>, never as the asset. Every post points home. You rent the megaphone; you never live in it.</div>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <div class="pillar-tag">L · 04</div>
+            <div>
+              <div class="pillar-title">The Artifacts <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ drops &amp; objects</span></div>
+              <div class="pillar-desc">Manifestos, reports, lookbooks, limited editions. <em>Tangible objects</em> the tribe can hold, share, archive. These become collectible — and citable. Status compounds.</div>
+            </div>
+          </div>
+
+          <div class="pillar-row">
+            <div class="pillar-tag">L · 05</div>
+            <div>
+              <div class="pillar-title">The Salon <span style="color: rgba(245,245,245,0.35); font-style: italic; font-size: 18px;">/ live convening</span></div>
+              <div class="pillar-desc">Dinners, talks, private gatherings, annual events. The <em>physical wing</em> of the empire. Nothing creates loyalty faster than a room. AI cannot host a room.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 : CASE STUDY ============ -->
+<div class="nc-page" data-page="6">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 05 · Case File</div>
+    <div class="corner-mark cm-tr red">The Founder</div>
+    <div class="corner-mark cm-bl">006</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 05 — Case File</div>
+      <div class="h-massive serif" style="margin-bottom: 12px;">The founder who <span style="font-style: italic;" class="red">bought</span> his channel.</div>
+      <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From paid ads to a paid newsletter. In 18 months.</div>
+
+      <div class="case-grid">
+        <div class="case-side">
+          <div class="case-label">Before · The Tenant</div>
+          <div class="case-item"><span class="mark">×</span>€18K/month in paid social ads</div>
+          <div class="case-item"><span class="mark">×</span>Audience: 42K followers across platforms</div>
+          <div class="case-item"><span class="mark">×</span>Reach down 60% after one algorithm update</div>
+          <div class="case-item"><span class="mark">×</span>Zero owned data — emails on a third-party CRM</div>
+          <div class="case-item"><span class="mark">×</span>Every campaign starts from zero</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— Paying rent on borrowed land.</div>
+        </div>
+        <div class="case-side">
+          <div class="case-label">After · The Publisher</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Weekly newsletter — <span class="red" style="font-weight: 500;">14,200</span> subscribers, owned</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Paid tier launched — <span class="red" style="font-weight: 500;">€41K MRR</span> in month 14</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Podcast: 70K monthly listeners · top 5 in category</div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Ad spend cut <span class="red" style="font-weight: 500;">82%</span> · pipeline up <span class="red" style="font-weight: 500;">3.1×</span></div>
+          <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Archive of 78 issues compounding monthly</div>
+          <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "I stopped being a company. I became <span class="red">a publication</span>."</div>
+        </div>
+      </div>
+
+      <div class="h-sm" style="margin: 32px 0 20px;">Three Editorial Decisions</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">DECISION I</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Friday Edict</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">A weekly essay published every Friday at <span style="color: #F5F5F5;">7:00 AM CET</span>. Never moved. Never skipped. Eighteen months without a miss.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">DECISION II</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Owned Domain</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">Migrated off rented platforms onto <span style="color: #F5F5F5;">a self-hosted publishing stack</span>. Every subscriber now lives in his database.</div>
+        </div>
+        <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">DECISION III</div>
+          <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Quarterly Drop</div>
+          <div class="body" style="font-size: 12px; line-height: 1.6;">A printed quarterly report mailed to paid subscribers. <span style="color: #F5F5F5;">Physical, scarce, citable.</span> Status object.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 7 : EMPIRE PROTOCOL ============ -->
+<div class="nc-page" data-page="7">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Scene 06 · The Protocol</div>
+    <div class="corner-mark cm-tr red">Construction</div>
+    <div class="corner-mark cm-bl">007</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Scene 06 — Construction Protocol</div>
+      <div class="h-large serif" style="margin-bottom: 8px;">How to build the <span style="font-style: italic;" class="red">empire</span>.</div>
+      <div class="body" style="margin-bottom: 36px; max-width: 600px;">Plant. Publish. Compound. Three eras. One indestructible engine.</div>
+
+      <!-- Era 1 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Era I · Plant the Cornerstone</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Choose <span style="font-style: italic; color: rgba(245,245,245,0.6);">one</span> primary channel. Own it fully.</div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">Newsletter on a self-hosted stack, podcast on your own RSS, longform site on your own domain. <em>One</em> cornerstone. Not three. Founders who try to launch on five channels at once die on all five.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>Cornerstone channel selection</div>
+            <div><span class="red">— </span>Owned-stack architecture</div>
+            <div><span class="red">— </span>Editorial voice definition</div>
+            <div><span class="red">— </span>Signature format design</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Era 2 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Era II · Publish the Rhythm</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Show up for <span style="font-style: italic;">twelve months</span> without flinching.</div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">A publication is judged on its 24th issue, not its first. We build the production system that makes weekly publishing sustainable — editorial calendar, signature pieces, repeatable formats, the supporting amplification on rented channels. <em>Consistency becomes the moat.</em></div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>Twelve-month editorial calendar</div>
+            <div><span class="red">— </span>Signature recurring sections</div>
+            <div><span class="red">— </span>Production system &amp; cadence</div>
+            <div><span class="red">— </span>Cross-channel amplification map</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Era 3 -->
+      <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="h-sm red" style="margin-bottom: 6px;">Era III · Compound the Archive</div>
+          <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Make the <span style="font-style: italic;">old work</span> louder than the new.</div>
+          <div class="body" style="font-size: 13px; line-height: 1.65; margin-bottom: 14px;">After year one, the archive is the empire. We build the systems that make old issues compound — pillar pieces, cross-linking, evergreen sequences, paid tiers, printed editions, salons. The cornerstone stops being a publication and becomes <em>an institution</em>.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-family: 'Inter', sans-serif; font-size: 12.5px; color: rgba(245,245,245,0.7); font-weight: 300;">
+            <div><span class="red">— </span>Pillar-piece architecture</div>
+            <div><span class="red">— </span>Paid tier &amp; subscriber economics</div>
+            <div><span class="red">— </span>Printed quarterly &amp; artifacts</div>
+            <div><span class="red">— </span>Salon &amp; live convening design</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 : THE CORONATION ============ -->
+<div class="nc-page" data-page="8">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Final Scene · The Coronation</div>
+    <div class="corner-mark cm-tr red">The Choice</div>
+    <div class="corner-mark cm-bl">008</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="scene-tag">Final Scene — The Coronation</div>
+      <div class="h-massive serif" style="margin-bottom: 16px;">Will you <span style="font-style: italic;" class="red">build</span>, or keep renting?</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+        <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · TENANT</div>
+          <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep paying the platforms.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">More ads. More posts. More dependency on landlords who change the rules. Compete against AI on the AI's home turf. <span class="blur-word">Lose by attrition.</span></div>
+        </div>
+        <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · OWNER</div>
+          <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Build the channel. Publish the work. Own the archive.</div>
+          <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Become a company AI competitors cannot catch — because they will never have <span class="red">your back catalog</span>.</div>
+        </div>
+      </div>
+
+      <div style="margin: 40px 0 0; max-width: 640px;">
+        <div class="quote" style="font-size: 24px;">"In ten years, two kinds of companies will remain. <span style="color: rgba(245,245,245,0.5);">Those who pay for distribution</span>,<br/>and — <span class="red" style="font-style: normal; font-weight: 500;">those who are the distribution.</span>"</div>
+      </div>
+
+      <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO · TRILOGY COMPLETE —</div>
+          <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Turn the page.</div>
+        </div>
+        <div style="text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">
+          STRAWBERRY · PRODUCTION<br/>
+          PARIS · LOS ANGELES
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 9 : END CARD ============ -->
+<div class="nc-page" data-page="9">
+  <div class="page-frame cover" style="display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>End Card</span>
+        <span class="red">Reel III / Complete · Trilogy Closed</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 88%, #E11D48 88%);"></div>
+    </div>
+
+    <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+      <div class="serif" style="font-size: 64px; font-weight: 300; font-style: italic; line-height: 1; color: #F5F5F5; margin-bottom: 32px;">"You don't<br/><span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">post</span>.</div>
+      <div class="serif" style="font-size: 64px; font-weight: 700; line-height: 1; color: #F5F5F5;">You <span class="red" style="font-style: italic; font-weight: 400;">publish</span>.<br/>You <span class="red" style="font-style: italic; font-weight: 400;">own</span>.<br/>You <span class="red" style="font-style: italic; font-weight: 400;">remain</span>."</div>
+    </div>
+
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+        <div>
+          <div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: rgba(245,245,245,0.45); margin-top: 6px;">VOL. I · II · III</div>
+        </div>
+        <div style="text-align: right;">
+          Paris · Los Angeles<br/>
+          <span class="red">© MMXXVI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar">
+  <button class="nav-btn" id="nc-prev3">← Prev</button>
+  <div class="nav-counter">
+    <span id="nc-current3" class="red">00</span>
+    <span style="margin: 0 12px; color: rgba(245,245,245,0.2);">/</span>
+    <span id="nc-total3">09</span>
+  </div>
+  <button class="nav-btn" id="nc-next3">Next →</button>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const root = document.getElementById('nc-root3');
+  const pages = root.querySelectorAll('.nc-page');
+  const total = pages.length;
+  let current = 0;
+
+  const cur = document.getElementById('nc-current3');
+  const tot = document.getElementById('nc-total3');
+  const prev = document.getElementById('nc-prev3');
+  const next = document.getElementById('nc-next3');
+  tot.textContent = String(total).padStart(2,'0');
+
+  function show(i){
+    if (i < 0 || i >= total) return;
+    pages.forEach(p => p.classList.remove('active'));
+    pages[i].classList.add('active');
+    current = i;
+    cur.textContent = String(i).padStart(2,'0');
+    prev.disabled = (i === 0);
+    next.disabled = (i === total - 1);
+    root.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+
+  root.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', () => {
+      const n = parseInt(el.getAttribute('data-goto'), 10);
+      show(n);
+    });
+  });
+
+  show(0);
+})();
+</script>
