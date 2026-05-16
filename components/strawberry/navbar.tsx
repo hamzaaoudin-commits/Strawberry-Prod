@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: "Offers", href: "/#offers" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Manifesto", href: "/manifesto" },
-  { label: "Contact", href: "/#contact" },
 ]
 
 export function NavBar() {
