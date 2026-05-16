@@ -1,0 +1,327 @@
+<div id="bs-root" style="font-family: 'Inter', system-ui, sans-serif; color: #F5F5F5; background: #050505; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 0 0 1px rgba(225,29,72,0.08); padding: 0 0 56px;">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+#bs-root .bs-page { display: none; padding: 0; }
+#bs-root .bs-page.active { display: block; animation: fadeIn 0.6s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+#bs-root .serif { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+#bs-root .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+#bs-root .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 240px 60px rgba(0,0,0,0.9); }
+#bs-root .letterbox-top, #bs-root .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 4; }
+#bs-root .letterbox-top { top: 0; border-bottom: 0.5px solid rgba(245,245,245,0.06); }
+#bs-root .letterbox-bot { bottom: 0; border-top: 0.5px solid rgba(245,245,245,0.06); }
+
+#bs-root .page-frame { position: relative; min-height: 900px; padding: 80px 64px; background: #050505; overflow: hidden; }
+
+#bs-root .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 3; }
+#bs-root .cm-tl { top: 48px; left: 64px; }
+#bs-root .cm-tr { top: 48px; right: 64px; }
+#bs-root .cm-bl { bottom: 48px; left: 64px; }
+#bs-root .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+
+#bs-root .red { color: #E11D48; }
+#bs-root .serif-i { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+#bs-root .blur-word { filter: blur(1.2px); opacity: 0.85; }
+
+#bs-root .nav-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 56px; background: #000; border-top: 0.5px solid rgba(245,245,245,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; z-index: 10; }
+#bs-root .nav-btn { background: transparent; border: 0.5px solid rgba(245,245,245,0.25); color: #F5F5F5; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 18px; cursor: pointer; transition: all 0.2s; font-weight: 400; }
+#bs-root .nav-btn:hover { border-color: #E11D48; color: #E11D48; }
+#bs-root .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: rgba(245,245,245,0.1); }
+#bs-root .nav-counter { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.4em; color: rgba(245,245,245,0.4); text-transform: uppercase; }
+#bs-root .nav-counter .red { font-weight: 500; }
+
+#bs-root .seal-ring { position: relative; width: 92px; height: 92px; }
+</style>
+
+<!-- ============ PAGE 0 : THE FRONT COVER (SLEEVE) ============ -->
+<div class="bs-page active" data-page="0">
+  <div class="page-frame" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 920px;">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+
+    <!-- The three spines silhouette in background -->
+    <div style="position: absolute; left: 50%; top: 320px; transform: translateX(-50%); width: 540px; height: 380px; z-index: 1; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 540 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shadow under the books -->
+        <ellipse cx="270" cy="365" rx="240" ry="10" fill="#000" opacity="0.55"/>
+
+        <!-- VOL III (back, slightly behind) -->
+        <g transform="translate(330,40)">
+          <rect x="0" y="0" width="62" height="320" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5" opacity="0.95"/>
+          <rect x="0" y="0" width="62" height="6" fill="#E11D48" opacity="0.85"/>
+          <rect x="0" y="314" width="62" height="6" fill="#E11D48" opacity="0.85"/>
+          <text x="31" y="80" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="11" font-weight="500" letter-spacing="2" transform="rotate(90, 31, 80)">VOL. III</text>
+          <text x="31" y="200" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="14" font-weight="500" font-style="italic" transform="rotate(90, 31, 200)">Editorial Empire</text>
+          <text x="31" y="295" text-anchor="middle" fill="#E11D48" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="2" transform="rotate(90, 31, 295)">STRAWBERRY</text>
+        </g>
+
+        <!-- VOL II (middle) -->
+        <g transform="translate(240,30)">
+          <rect x="0" y="0" width="68" height="330" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5"/>
+          <rect x="0" y="0" width="68" height="6" fill="#E11D48"/>
+          <rect x="0" y="324" width="68" height="6" fill="#E11D48"/>
+          <text x="34" y="82" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="11" font-weight="500" letter-spacing="2" transform="rotate(90, 34, 82)">VOL. II</text>
+          <text x="34" y="210" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="14" font-weight="500" font-style="italic" transform="rotate(90, 34, 210)">Tribe Doctrine</text>
+          <text x="34" y="305" text-anchor="middle" fill="#E11D48" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="2" transform="rotate(90, 34, 305)">STRAWBERRY</text>
+        </g>
+
+        <!-- VOL I (front, tallest impact) -->
+        <g transform="translate(150,20)">
+          <rect x="0" y="0" width="74" height="340" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5"/>
+          <rect x="0" y="0" width="74" height="7" fill="#E11D48"/>
+          <rect x="0" y="333" width="74" height="7" fill="#E11D48"/>
+          <text x="37" y="85" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="11" font-weight="500" letter-spacing="2" transform="rotate(90, 37, 85)">VOL. I</text>
+          <text x="37" y="220" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="14" font-weight="500" font-style="italic" transform="rotate(90, 37, 220)">Neuro-Cinema</text>
+          <text x="37" y="315" text-anchor="middle" fill="#E11D48" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="2" transform="rotate(90, 37, 315)">STRAWBERRY</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- TOP MASTHEAD -->
+    <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); font-weight: 300;">
+        <span>Strawberry Production</span>
+        <span class="red">The Trilogy · Box Set</span>
+      </div>
+      <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 14%, rgba(245,245,245,0.1) 14%);"></div>
+    </div>
+
+    <!-- CENTER TITLE BLOCK (above books) -->
+    <div style="padding: 12px 64px 0; position: relative; z-index: 2; text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.5em; color: #E11D48; margin-bottom: 14px;">— A TRILOGY IN THREE REELS —</div>
+      <div class="serif" style="font-size: 96px; line-height: 0.9; font-weight: 800; letter-spacing: -0.03em; color: #F5F5F5;">
+        The<br/>
+        <span class="serif-i" style="font-size: 88px;">Strawberry</span><br/>
+        <span class="red">Trilogy.</span>
+      </div>
+    </div>
+
+    <!-- BOTTOM BLOCK -->
+    <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <div class="serif" style="font-size: 22px; font-style: italic; font-weight: 300; color: rgba(245,245,245,0.75); max-width: 540px; margin: 0 auto; line-height: 1.4;">
+          Three manifestos. One doctrine. <span style="color: #F5F5F5; font-style: normal;">A complete blueprint</span> for brands that refuse to <span class="blur-word">disappear</span>.
+        </div>
+      </div>
+
+      <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 24px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 8px;">A COLLECTION BY</div>
+          <div class="serif" style="font-size: 22px; font-weight: 500; letter-spacing: -0.01em;">Strawberry Production</div>
+          <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase; font-weight: 300;">Narrative Perception Engineering</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.4); letter-spacing: 0.1em; line-height: 1.8;">
+            EDITION I · MMXXVI<br/>
+            <span class="red">PARIS · LOS ANGELES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 1 : INSIDE FLAP — THE OVERVIEW ============ -->
+<div class="bs-page" data-page="1">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Inside Flap · Overview</div>
+    <div class="corner-mark cm-tr red">The Doctrine</div>
+    <div class="corner-mark cm-bl">i</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div style="font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; font-weight: 400; margin-bottom: 24px;">Foreword · Why Three Volumes</div>
+      <div class="serif" style="font-size: 56px; line-height: 0.96; font-weight: 700; letter-spacing: -0.02em; color: #F5F5F5; margin-bottom: 36px;">One doctrine,<br/>told in <span class="serif-i red">three movements</span>.</div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+        <div>
+          <div class="serif" style="font-size: 22px; font-weight: 400; font-style: italic; line-height: 1.45; color: rgba(245,245,245,0.85);">
+            "The wave hit faster than anyone admitted. <span style="color: #F5F5F5; font-style: normal;">AI didn't just change the tools</span> — it collapsed the floor under every brand that built its identity on production speed.<br/><br/>
+            What remains is what cannot be automated: <span class="red" style="font-style: normal; font-weight: 500;">memory, belief, and ownership</span>.<br/><br/>
+            One volume could not hold the whole answer."
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.45); margin-bottom: 14px; text-transform: uppercase;">— The Reading Order</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.75; color: rgba(245,245,245,0.7); font-weight: 300;">
+            Each volume can stand alone. Together they form a <span style="color: #F5F5F5;">complete operating system</span> for surviving the AI decade.<br/><br/>
+            Read Vol. I to be <span class="red">remembered</span>.<br/>
+            Read Vol. II to be <span class="red">followed</span>.<br/>
+            Read Vol. III to <span class="red">remain</span>.<br/><br/>
+            Read all three to become an institution.
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature / official seal -->
+      <div style="border-top: 0.5px solid rgba(245,245,245,0.1); padding-top: 28px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; color: #F5F5F5; line-height: 1;">Strawberry Production.</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.45); margin-top: 6px; text-transform: uppercase;">Founder &amp; Editor</div>
+        </div>
+        <div class="seal-ring">
+          <svg width="100%" height="100%" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="46" cy="46" r="44" fill="none" stroke="#E11D48" stroke-width="0.5"/>
+            <circle cx="46" cy="46" r="36" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.6"/>
+            <text x="46" y="40" text-anchor="middle" fill="#E11D48" font-family="Cormorant Garamond, serif" font-size="20" font-weight="700" font-style="italic">S</text>
+            <text x="46" y="58" text-anchor="middle" fill="#E11D48" font-family="JetBrains Mono, monospace" font-size="6" letter-spacing="1.5">PROD · 2026</text>
+            <path d="M46 14 L48 18 L44 18 Z" fill="#E11D48"/>
+            <path d="M46 78 L48 74 L44 74 Z" fill="#E11D48"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 : THE BACK COVER — CATALOG OF THE THREE ============ -->
+<div class="bs-page" data-page="2">
+  <div class="page-frame">
+    <div class="grain"></div>
+    <div class="letterbox-top"></div>
+    <div class="letterbox-bot"></div>
+    <div class="corner-mark cm-tl">Back Cover · Catalog</div>
+    <div class="corner-mark cm-tr red">Three Volumes</div>
+    <div class="corner-mark cm-bl">ii</div>
+    <div class="corner-mark cm-br">Strawberry Prod.</div>
+
+    <div style="position: relative; z-index: 2;">
+      <div style="font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; font-weight: 400; margin-bottom: 24px;">Catalog · The Three Volumes</div>
+      <div class="serif" style="font-size: 44px; line-height: 1.0; font-weight: 600; letter-spacing: -0.01em; color: #F5F5F5; margin-bottom: 40px;">What's inside the <span class="serif-i red">box</span>.</div>
+
+      <!-- VOL I -->
+      <div style="display: grid; grid-template-columns: 100px 1fr 140px; gap: 32px; padding: 24px 0; border-top: 0.5px solid rgba(245,245,245,0.12); align-items: start;">
+        <div>
+          <!-- mini spine -->
+          <svg width="60" height="120" viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="60" height="120" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5"/>
+            <rect x="0" y="0" width="60" height="4" fill="#E11D48"/>
+            <rect x="0" y="116" width="60" height="4" fill="#E11D48"/>
+            <text x="30" y="40" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="1.5" transform="rotate(90, 30, 40)">VOL. I</text>
+            <text x="30" y="92" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="10" font-style="italic" transform="rotate(90, 30, 92)">Neuro-Cinema</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px;">VOL. I · N° 001</div>
+          <div class="serif" style="font-size: 28px; font-weight: 600; line-height: 1.1; margin-bottom: 8px;">The Neuro-Cinema <span class="serif-i">Manifesto</span>.</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300;">How elite brands build unforgettable identity when everyone else sounds like a machine. The architecture of <span style="color: #E11D48;">narrative immunity</span>.</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(245,245,245,0.4); margin-bottom: 6px;">THE VERB</div>
+          <div class="serif" style="font-size: 32px; font-style: italic; font-weight: 400; color: #F5F5F5; line-height: 1;">Remember.</div>
+        </div>
+      </div>
+
+      <!-- VOL II -->
+      <div style="display: grid; grid-template-columns: 100px 1fr 140px; gap: 32px; padding: 24px 0; border-top: 0.5px solid rgba(245,245,245,0.12); align-items: start;">
+        <div>
+          <svg width="60" height="120" viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="60" height="120" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5"/>
+            <rect x="0" y="0" width="60" height="4" fill="#E11D48"/>
+            <rect x="0" y="116" width="60" height="4" fill="#E11D48"/>
+            <text x="30" y="40" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="1.5" transform="rotate(90, 30, 40)">VOL. II</text>
+            <text x="30" y="92" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="10" font-style="italic" transform="rotate(90, 30, 92)">Tribe Doctrine</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px;">VOL. II · N° 002</div>
+          <div class="serif" style="font-size: 28px; font-weight: 600; line-height: 1.1; margin-bottom: 8px;">The Tribe <span class="serif-i">Doctrine</span>.</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300;">Why rewriting your company's narrative is the only way to survive the AI wave. And how to build a <span style="color: #E11D48;">tribe that won't disappear</span> with it.</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(245,245,245,0.4); margin-bottom: 6px;">THE VERB</div>
+          <div class="serif" style="font-size: 32px; font-style: italic; font-weight: 400; color: #F5F5F5; line-height: 1;">Rally.</div>
+        </div>
+      </div>
+
+      <!-- VOL III -->
+      <div style="display: grid; grid-template-columns: 100px 1fr 140px; gap: 32px; padding: 24px 0; border-top: 0.5px solid rgba(245,245,245,0.12); border-bottom: 0.5px solid rgba(245,245,245,0.12); align-items: start;">
+        <div>
+          <svg width="60" height="120" viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="60" height="120" fill="#0a0a0a" stroke="#E11D48" stroke-width="0.5"/>
+            <rect x="0" y="0" width="60" height="4" fill="#E11D48"/>
+            <rect x="0" y="116" width="60" height="4" fill="#E11D48"/>
+            <text x="30" y="40" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="1.5" transform="rotate(90, 30, 40)">VOL. III</text>
+            <text x="30" y="92" text-anchor="middle" fill="#F5F5F5" font-family="Cormorant Garamond, serif" font-size="10" font-style="italic" transform="rotate(90, 30, 92)">Editorial Empire</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px;">VOL. III · N° 003</div>
+          <div class="serif" style="font-size: 28px; font-weight: 600; line-height: 1.1; margin-bottom: 8px;">The Editorial <span class="serif-i">Empire</span>.</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300;">Why every serious brand will become a media house — or be erased by the ones that did. The infrastructure of <span style="color: #E11D48;">narrative power</span>.</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(245,245,245,0.4); margin-bottom: 6px;">THE VERB</div>
+          <div class="serif" style="font-size: 32px; font-style: italic; font-weight: 400; color: #F5F5F5; line-height: 1;">Remain.</div>
+        </div>
+      </div>
+
+      <!-- Bottom signature line -->
+      <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; color: rgba(245,245,245,0.6);">
+          "Three verbs. <span class="red">One survival.</span>"
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); text-transform: uppercase;">
+          A Strawberry edition · MMXXVI
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar">
+  <button class="nav-btn" id="bs-prev">← Prev Face</button>
+  <div class="nav-counter">
+    <span id="bs-current" class="red">01</span>
+    <span style="margin: 0 12px; color: rgba(245,245,245,0.2);">/</span>
+    <span id="bs-total">03</span>
+    <span style="margin-left: 14px; color: rgba(245,245,245,0.35);" id="bs-label">FRONT</span>
+  </div>
+  <button class="nav-btn" id="bs-next">Next Face →</button>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const root = document.getElementById('bs-root');
+  const pages = root.querySelectorAll('.bs-page');
+  const total = pages.length;
+  const labels = ['FRONT COVER', 'INSIDE FLAP', 'BACK COVER'];
+  let current = 0;
+
+  const cur = document.getElementById('bs-current');
+  const tot = document.getElementById('bs-total');
+  const lab = document.getElementById('bs-label');
+  const prev = document.getElementById('bs-prev');
+  const next = document.getElementById('bs-next');
+  tot.textContent = String(total).padStart(2,'0');
+
+  function show(i){
+    if (i < 0 || i >= total) return;
+    pages.forEach(p => p.classList.remove('active'));
+    pages[i].classList.add('active');
+    current = i;
+    cur.textContent = String(i + 1).padStart(2,'0');
+    lab.textContent = labels[i] || '';
+    prev.disabled = (i === 0);
+    next.disabled = (i === total - 1);
+    root.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+
+  show(0);
+})();
+</script>
