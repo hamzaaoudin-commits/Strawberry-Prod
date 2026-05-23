@@ -66,25 +66,19 @@ function useReveal() {
   return { ref, visible }
 }
 
-// ============ SVG MOCKUPS ============
-
 function MockupCover() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      {/* Crimson accent line top */}
       <rect x="40" y="60" width="40" height="2" fill="#e63946" />
-      {/* Small label */}
       <text x="40" y="88" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">N° 001</text>
-      {/* Main title */}
-      <text x="40" y="240" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="34" fontWeight="700">The Brand</text>
-      <text x="40" y="278" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="34" fontWeight="700">Narrative</text>
-      <text x="40" y="316" fill="#e63946" fontFamily="'Playfair Display', serif" fontSize="34" fontStyle="italic" fontWeight="400">Audit.</text>
-      {/* Bottom info */}
+      <text x="40" y="240" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">The Brand</text>
+      <text x="40" y="278" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">Narrative</text>
+      <text x="40" y="316" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="34" fontStyle="italic" fontWeight="400">Audit.</text>
       <line x1="40" y1="430" x2="360" y2="430" stroke="#2a2a2a" strokeWidth="1" />
       <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMISSIONED FOR</text>
-      <text x="40" y="472" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="14" fontStyle="italic">[ The House ]</text>
+      <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">The House</text>
       <text x="360" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="end">STRAWBERRY PROD.</text>
     </svg>
   )
@@ -95,16 +89,13 @@ function MockupSpine() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      {/* Top meta */}
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">PILLAR I</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 04</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      {/* Title */}
       <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE NARRATIVE SPINE</text>
-      <text x="30" y="140" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="22" fontWeight="700">A house is not</text>
-      <text x="30" y="166" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="22" fontWeight="700">a positioning.</text>
-      <text x="30" y="192" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="22" fontStyle="italic" fontWeight="400">It is a mythology.</text>
-      {/* Body text simulation */}
+      <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">A house is not</text>
+      <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">a positioning.</text>
+      <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">It is a mythology.</text>
       <g fill="rgba(255,255,255,0.35)">
         <rect x="30" y="230" width="340" height="3" />
         <rect x="30" y="240" width="320" height="3" />
@@ -113,19 +104,16 @@ function MockupSpine() {
         <rect x="30" y="270" width="310" height="3" />
         <rect x="30" y="280" width="325" height="3" />
       </g>
-      {/* Pull quote */}
       <line x1="30" y1="320" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
-      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="'Playfair Display', serif" fontSize="13" fontStyle="italic">The conviction the</text>
-      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="'Playfair Display', serif" fontSize="13" fontStyle="italic">founder holds when</text>
-      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="'Playfair Display', serif" fontSize="13" fontStyle="italic">no one is watching.</text>
-      {/* Body bottom */}
+      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">The conviction the</text>
+      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">founder holds when</text>
+      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">no one is watching.</text>
       <g fill="rgba(255,255,255,0.35)">
         <rect x="30" y="415" width="340" height="3" />
         <rect x="30" y="425" width="305" height="3" />
         <rect x="30" y="435" width="320" height="3" />
         <rect x="30" y="445" width="280" height="3" />
       </g>
-      {/* Bottom */}
       <line x1="30" y1="485" x2="370" y2="485" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="500" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
     </svg>
@@ -141,22 +129,16 @@ function MockupPerceptionMap() {
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 12</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE PERCEPTION MAP</text>
-      <text x="30" y="120" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="18" fontWeight="700">Where the field stands.</text>
-      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="'Playfair Display', serif" fontSize="13" fontStyle="italic">And where it has left ground unclaimed.</text>
-
-      {/* The map */}
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Where the field stands.</text>
+      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">And where it has left ground unclaimed.</text>
       <g transform="translate(60, 180)">
-        {/* Axes */}
         <line x1="140" y1="0" x2="140" y2="280" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <line x1="0" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-        {/* Frame */}
         <rect x="0" y="0" width="280" height="280" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        {/* Axis labels */}
         <text x="140" y="-10" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">EMOTIONAL</text>
         <text x="140" y="298" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">RATIONAL</text>
         <text x="-8" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="end">QUIET</text>
         <text x="288" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">LOUD</text>
-        {/* Competitor dots */}
         <circle cx="200" cy="90" r="4" fill="rgba(255,255,255,0.3)" />
         <text x="208" y="93" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. A</text>
         <circle cx="220" cy="170" r="4" fill="rgba(255,255,255,0.3)" />
@@ -165,7 +147,6 @@ function MockupPerceptionMap() {
         <text x="188" y="223" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. C</text>
         <circle cx="100" cy="180" r="4" fill="rgba(255,255,255,0.3)" />
         <text x="108" y="183" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. D</text>
-        {/* The vacuum — our position */}
         <circle cx="70" cy="70" r="14" fill="#e63946" opacity="0.2" />
         <circle cx="70" cy="70" r="7" fill="#e63946" />
         <text x="70" y="55" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" textAnchor="middle" fontWeight="700">THE HOUSE</text>
@@ -183,34 +164,25 @@ function MockupArchetype() {
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 24</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE FOUNDER ARCHETYPE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="20" fontWeight="700">The Outsider Operator.</text>
-
-      {/* Portrait silhouette */}
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">The Outsider Operator.</text>
       <g transform="translate(40, 160)">
         <rect x="0" y="0" width="100" height="130" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
         <circle cx="50" cy="45" r="22" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1" />
         <path d="M 22 110 Q 22 75 50 75 Q 78 75 78 110 Z" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1" />
       </g>
-
-      {/* Profile fields */}
       <g transform="translate(160, 160)">
         <text x="0" y="0" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">POSTURE</text>
-        <text x="0" y="16" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11" fontStyle="italic">Refuses the consensus.</text>
-
+        <text x="0" y="16" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Refuses the consensus.</text>
         <text x="0" y="44" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">OBSESSION</text>
-        <text x="0" y="60" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11" fontStyle="italic">What others won't say.</text>
-
+        <text x="0" y="60" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">What others will not say.</text>
         <text x="0" y="88" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">REFERENCES</text>
-        <text x="0" y="104" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11" fontStyle="italic">Didion. Burnham. Lynch.</text>
-
+        <text x="0" y="104" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Didion. Burnham. Lynch.</text>
         <text x="0" y="132" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">VOICE</text>
-        <text x="0" y="148" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11" fontStyle="italic">Cinematic. Unhurried.</text>
+        <text x="0" y="148" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Cinematic. Unhurried.</text>
       </g>
-
-      {/* Audience section */}
       <line x1="30" y1="335" x2="370" y2="335" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="360" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">AUDIENCE · 01 of 04</text>
-      <text x="30" y="385" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="16" fontWeight="700">The Quiet Operator.</text>
+      <text x="30" y="385" fill="#fff" fontFamily="Playfair Display, serif" fontSize="16" fontWeight="700">The Quiet Operator.</text>
       <g fill="rgba(255,255,255,0.4)">
         <rect x="30" y="405" width="340" height="3" />
         <rect x="30" y="415" width="310" height="3" />
@@ -235,46 +207,41 @@ function MockupDoctrine() {
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 38</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE 90-DAY DOCTRINE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="20" fontWeight="700">Three months,</text>
-      <text x="30" y="146" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="20" fontStyle="italic" fontWeight="400">one arc.</text>
-
-      {/* Timeline */}
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Three months,</text>
+      <text x="30" y="146" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">one arc.</text>
       <g transform="translate(30, 200)">
-        {/* Main horizontal line */}
         <line x1="0" y1="40" x2="340" y2="40" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-
-        {/* Week markers */}
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((w) => (
-          <line key={w} x1={w * 31} y1="35" x2={w * 31} y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        ))}
-
-        {/* Phase blocks */}
+        <line x1="0" y1="35" x2="0" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="31" y1="35" x2="31" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="62" y1="35" x2="62" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="93" y1="35" x2="93" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="124" y1="35" x2="124" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="155" y1="35" x2="155" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="186" y1="35" x2="186" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="217" y1="35" x2="217" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="248" y1="35" x2="248" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="279" y1="35" x2="279" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="310" y1="35" x2="310" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+        <line x1="341" y1="35" x2="341" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
         <rect x="0" y="20" width="93" height="4" fill="#e63946" opacity="0.7" />
         <text x="0" y="14" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 01 · SET THE FRAME</text>
-
         <rect x="93" y="60" width="124" height="4" fill="#e63946" opacity="0.5" />
         <text x="93" y="80" fill="rgba(255,255,255,0.65)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 02 · BUILD THE GRAVITY</text>
-
         <rect x="217" y="20" width="123" height="4" fill="#e63946" opacity="0.3" />
         <text x="217" y="14" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 03 · COMPOUND</text>
-
-        {/* Key moments dots */}
         <circle cx="30" cy="40" r="4" fill="#e63946" />
         <circle cx="62" cy="40" r="3" fill="#fff" />
         <circle cx="155" cy="40" r="5" fill="#e63946" />
         <circle cx="217" cy="40" r="3" fill="#fff" />
         <circle cx="310" cy="40" r="4" fill="#e63946" />
       </g>
-
-      {/* Listed pieces */}
       <g transform="translate(30, 340)">
         <text x="0" y="0" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">CADENCE</text>
-        <text x="0" y="20" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11">✦ One foundational essay / month</text>
-        <text x="0" y="38" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11">✦ Two short-form pieces / week</text>
-        <text x="0" y="56" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11">✦ One signature campaign / quarter</text>
-        <text x="0" y="74" fill="#fff" fontFamily="'Playfair Display', serif" fontSize="11">✦ Distribution sequenced, not random</text>
+        <text x="0" y="20" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ One foundational essay / month</text>
+        <text x="0" y="38" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ Two short-form pieces / week</text>
+        <text x="0" y="56" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ One signature campaign / quarter</text>
+        <text x="0" y="74" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ Distribution sequenced, not random</text>
       </g>
-
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
     </svg>
@@ -289,8 +256,6 @@ const MOCKUPS = [
   { component: <MockupDoctrine />, label: "The 90-Day Doctrine", caption: "The first three months sequenced as one arc." },
 ]
 
-// ============ PAGE ============
-
 export default function BrandNarrativeAuditPage() {
   const hero = useReveal()
   const problem = useReveal()
@@ -304,7 +269,6 @@ export default function BrandNarrativeAuditPage() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
-      {/* HERO */}
       <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
@@ -312,7 +276,7 @@ export default function BrandNarrativeAuditPage() {
             The Signature Commission · 9,500€
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
-            We don't build brands.<br />
+            We don&apos;t build brands.<br />
             <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>We build the universe<br />they live in.</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 56px", lineHeight: 1.6 }}>
@@ -324,7 +288,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* PROBLEM */}
       <section ref={problem.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: problem.visible ? 1 : 0, transform: problem.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>The Saturation</div>
@@ -337,7 +300,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* PILLARS */}
       <section ref={pillars.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", opacity: pillars.visible ? 1 : 0, transform: pillars.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
@@ -360,7 +322,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* INSIDE THE AUDIT — SVG MOCKUPS */}
       <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -376,7 +337,7 @@ export default function BrandNarrativeAuditPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28 }}>
             {MOCKUPS.map((m, i) => (
-              <figure key={i} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 16, transition: "transform 0.4s ease", cursor: "default" }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)"} onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = "translateY(0)"}>
+              <figure key={i} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 <div style={{ boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)`, borderRadius: 2, overflow: "hidden" }}>
                   {m.component}
                 </div>
@@ -394,13 +355,12 @@ export default function BrandNarrativeAuditPage() {
 
           <div style={{ marginTop: 80, textAlign: "center" }}>
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Stylized previews · Final document delivered as PDF and printable hardback
+              Stylized previews · Final document delivered as PDF
             </p>
           </div>
         </div>
       </section>
 
-      {/* PROCESS */}
       <section ref={process.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", opacity: process.visible ? 1 : 0, transform: process.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
@@ -421,7 +381,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* FOR WHOM */}
       <section ref={whom.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: whom.visible ? 1 : 0, transform: whom.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase", textAlign: "center" }}>For Whom</div>
@@ -448,7 +407,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* INVESTMENT */}
       <section ref={invest.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>The Investment</div>
@@ -462,7 +420,6 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
