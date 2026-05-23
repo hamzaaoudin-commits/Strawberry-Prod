@@ -58,13 +58,15 @@ function useReveal() {
           obs.disconnect()
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     )
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
   return { ref, visible }
 }
+
+// ============ MOCKUPS ============
 
 function MockupCover() {
   return (
@@ -80,6 +82,80 @@ function MockupCover() {
       <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMISSIONED FOR</text>
       <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">The House</text>
       <text x="360" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="end">STRAWBERRY PROD.</text>
+    </svg>
+  )
+}
+
+function MockupDedication() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— DEDICATION —</text>
+      <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
+      <text x="200" y="200" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">To the founders</text>
+      <text x="200" y="230" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">who refuse</text>
+      <text x="200" y="260" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">to sound like</text>
+      <text x="200" y="290" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">everyone else.</text>
+      <line x1="180" y1="330" x2="220" y2="330" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      <text x="200" y="360" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">This document is</text>
+      <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">your constitution.</text>
+      <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Treat it as one.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 02 · THE BRAND NARRATIVE AUDIT</text>
+    </svg>
+  )
+}
+
+function MockupIndex() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">CONTENTS</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 03</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="100" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Index.</text>
+
+      <g transform="translate(30, 150)">
+        <text x="0" y="0" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">I.</text>
+        <text x="30" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="13">The Narrative Spine</text>
+        <text x="340" y="0" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">04</text>
+        <line x1="160" y1="-3" x2="320" y2="-3" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 3" />
+
+        <text x="0" y="38" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">II.</text>
+        <text x="30" y="38" fill="#fff" fontFamily="Playfair Display, serif" fontSize="13">The Perception Map</text>
+        <text x="340" y="38" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">12</text>
+        <line x1="170" y1="35" x2="320" y2="35" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 3" />
+
+        <text x="0" y="76" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">III.</text>
+        <text x="30" y="76" fill="#fff" fontFamily="Playfair Display, serif" fontSize="13">The Founder Archetype</text>
+        <text x="340" y="76" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">20</text>
+        <line x1="190" y1="73" x2="320" y2="73" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 3" />
+
+        <text x="0" y="114" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">IV.</text>
+        <text x="30" y="114" fill="#fff" fontFamily="Playfair Display, serif" fontSize="13">The Audience Universe</text>
+        <text x="340" y="114" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">28</text>
+        <line x1="190" y1="111" x2="320" y2="111" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 3" />
+
+        <text x="0" y="152" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">V.</text>
+        <text x="30" y="152" fill="#fff" fontFamily="Playfair Display, serif" fontSize="13">The 90-Day Doctrine</text>
+        <text x="340" y="152" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">36</text>
+        <line x1="180" y1="149" x2="320" y2="149" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 3" />
+
+        <line x1="0" y1="190" x2="340" y2="190" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+
+        <text x="0" y="220" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">APPENDIX</text>
+        <text x="0" y="248" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="12">Distribution Map</text>
+        <text x="340" y="248" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">42</text>
+        <text x="0" y="270" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="12">Walkthrough Notes</text>
+        <text x="340" y="270" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">44</text>
+        <text x="0" y="292" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="12">Signature</text>
+        <text x="340" y="292" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="10" textAnchor="end">45</text>
+      </g>
+
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
     </svg>
   )
 }
@@ -248,13 +324,142 @@ function MockupDoctrine() {
   )
 }
 
-const MOCKUPS = [
+function MockupDistribution() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">APPENDIX</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 42</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DISTRIBUTION MAP</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Where the universe</text>
+      <text x="30" y="146" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">meets the world.</text>
+
+      <g transform="translate(200, 290)">
+        <circle cx="0" cy="0" r="44" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1.5" />
+        <text x="0" y="-3" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="middle" fontWeight="700">THE HOUSE</text>
+        <text x="0" y="11" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">narrative core</text>
+
+        <line x1="0" y1="-44" x2="0" y2="-90" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="0" cy="-105" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="0" y="-101" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">LONG</text>
+        <text x="0" y="-91" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">essays</text>
+
+        <line x1="38" y1="-22" x2="80" y2="-46" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="98" cy="-57" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="98" y="-53" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">SHORT</text>
+        <text x="98" y="-43" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">posts</text>
+
+        <line x1="42" y1="14" x2="90" y2="34" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="110" cy="44" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="110" y="48" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">VIDEO</text>
+
+        <line x1="0" y1="44" x2="0" y2="90" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="0" cy="105" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="0" y="109" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">EMAIL</text>
+
+        <line x1="-42" y1="14" x2="-90" y2="34" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="-110" cy="44" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="-110" y="48" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">PODCAST</text>
+
+        <line x1="-38" y1="-22" x2="-80" y2="-46" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
+        <circle cx="-98" cy="-57" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="-98" y="-53" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">EVENT</text>
+        <text x="-98" y="-43" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">irl</text>
+      </g>
+
+      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Six surfaces. One voice. One narrative.</text>
+      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+    </svg>
+  )
+}
+
+function MockupSignature() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— THE END —</text>
+      <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
+
+      <text x="200" y="170" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">This was your house.</text>
+      <text x="200" y="200" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">Now build it.</text>
+
+      <line x1="100" y1="260" x2="300" y2="260" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+
+      <text x="200" y="290" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">COMMISSION</text>
+      <text x="200" y="312" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">N° 001</text>
+
+      <text x="200" y="350" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">DELIVERED</text>
+      <text x="200" y="372" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">[ Date of delivery ]</text>
+
+      <text x="200" y="410" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">SIGNED</text>
+      <text x="200" y="438" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="18" fontStyle="italic" textAnchor="middle">Strawberry Production</text>
+
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 45 · THE BRAND NARRATIVE AUDIT</text>
+    </svg>
+  )
+}
+
+const ACT_I = [
   { component: <MockupCover />, label: "The Cover", caption: "A numbered edition. Your house, given its name." },
+  { component: <MockupDedication />, label: "The Dedication", caption: "The opening invocation. The reason this document exists." },
+  { component: <MockupIndex />, label: "The Index", caption: "Five pillars, three appendices. The architecture, declared." },
+]
+
+const ACT_II = [
   { component: <MockupSpine />, label: "The Narrative Spine", caption: "The mythology, articulated in pages — not slogans." },
   { component: <MockupPerceptionMap />, label: "The Perception Map", caption: "The cultural field, with the unclaimed ground located." },
   { component: <MockupArchetype />, label: "Founder Archetype & Audience", caption: "Characters, not personas. Posture, obsessions, voice." },
   { component: <MockupDoctrine />, label: "The 90-Day Doctrine", caption: "The first three months sequenced as one arc." },
 ]
+
+const ACT_III = [
+  { component: <MockupDistribution />, label: "The Distribution Map", caption: "Six surfaces, one voice. Where the universe meets the world." },
+  { component: <MockupSignature />, label: "The Signature Page", caption: "Numbered. Dated. Signed. A document built to be kept." },
+]
+
+function MockupGrid({ items }: { items: typeof ACT_I }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28 }}>
+      {items.map((m, i) => (
+        <figure key={i} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)`, borderRadius: 2, overflow: "hidden" }}>
+            {m.component}
+          </div>
+          <figcaption>
+            <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 6, textTransform: "uppercase", fontFamily: SANS }}>
+              {m.label}
+            </div>
+            <p style={{ fontFamily: SERIF, fontSize: "0.95rem", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
+              {m.caption}
+            </p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  )
+}
+
+function ActTitle({ roman, title }: { roman: string; title: string }) {
+  return (
+    <div style={{ textAlign: "center", marginBottom: 48, marginTop: 24 }}>
+      <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: COLOR, fontStyle: "italic", marginBottom: 8, letterSpacing: "-0.01em" }}>
+        Act {roman}
+      </div>
+      <div style={{ width: 40, height: 1, background: COLOR, margin: "0 auto 16px" }} />
+      <div style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: "0.3em", textTransform: "uppercase" }}>
+        {title}
+      </div>
+    </div>
+  )
+}
+
+// ============ PAGE ============
 
 export default function BrandNarrativeAuditPage() {
   const hero = useReveal()
@@ -322,38 +527,34 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
+      <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Audit</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
               A glimpse of the artifact.
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7 }}>
-              The Audit is delivered as a single editorial document. Forty-five pages, set in serif, designed to be read like a manifesto and consulted like a constitution. Below, a preview of what lives inside.
+              The Audit is delivered as a single editorial document. Forty-five pages, set in serif, designed to be read like a manifesto and consulted like a constitution. Below, the architecture of the book, page by page.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28 }}>
-            {MOCKUPS.map((m, i) => (
-              <figure key={i} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)`, borderRadius: 2, overflow: "hidden" }}>
-                  {m.component}
-                </div>
-                <figcaption>
-                  <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 6, textTransform: "uppercase", fontFamily: SANS }}>
-                    {String(i + 1).padStart(2, "0")} — {m.label}
-                  </div>
-                  <p style={{ fontFamily: SERIF, fontSize: "0.95rem", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
-                    {m.caption}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <ActTitle roman="I" title="The Frame" />
+          <MockupGrid items={ACT_I} />
 
-          <div style={{ marginTop: 80, textAlign: "center" }}>
+          <div style={{ height: 100 }} />
+
+          <ActTitle roman="II" title="The Pillars" />
+          <MockupGrid items={ACT_II} />
+
+          <div style={{ height: 100 }} />
+
+          <ActTitle roman="III" title="The Closing" />
+          <MockupGrid items={ACT_III} />
+
+          <div style={{ marginTop: 100, textAlign: "center" }}>
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Stylized previews · Final document delivered as PDF
             </p>
