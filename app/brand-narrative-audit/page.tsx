@@ -25,6 +25,38 @@ const PHASES = [
   { week: "Week 4", title: "Delivery", body: "Final 45+ page intelligence report. Walkthrough session. The house is given its constitution." },
 ]
 
+const HUMAN_PACT = [
+  {
+    title: "Anyone can prompt 45 pages in three minutes.",
+    body: "Most do. The result reads like every other brand document. The Audit is what happens when a human spends four weeks listening, refusing, and choosing — when the goal is not to be produced, but to be unforgettable. The AI can write 45 pages about your house. It cannot decide which page deserves to be torn out.",
+  },
+  {
+    title: "Written once. For you only.",
+    body: "Each Audit is built from scratch. The doctrine I write for your house will never appear — not adapted, not echoed, not inspired by — in another Audit. AI recycles. I do not.",
+  },
+  {
+    title: "From Paris. By inheritance.",
+    body: "This studio operates from Paris — heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed. The Audit carries that lineage.",
+  },
+  {
+    title: "Four commissions per quarter. No more.",
+    body: "Not a sales tactic — a structural choice. AI scales infinitely. I do not. Four houses per quarter, written by hand, week by week. If you commission the Audit, you receive an artifact built only for you, by someone whose attention is rationed by design.",
+  },
+]
+
+const ALSO_RECEIVE = [
+  {
+    label: "The Walkthrough",
+    title: "A walkthrough. Thirty days later.",
+    body: "One month after delivery, we meet again. Ninety minutes, on call or in person. I ask one question: what have you changed? The Audit is a document. The walkthrough is the moment it becomes operational. AI has no memory of your house. I do.",
+  },
+  {
+    label: "The Object",
+    title: "The artifact, optionally bound.",
+    body: "On request, the Audit is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object.",
+  },
+]
+
 function useReveal() {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
@@ -322,7 +354,7 @@ function MockupMarketSizing() {
         <text x="0" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">€48M</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Top-down & bottom-up. 5-year CAGR projections.</text>
+      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Top-down and bottom-up. 5-year CAGR projections.</text>
       <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
     </svg>
@@ -520,19 +552,19 @@ function MockupContentIdeas() {
       <g transform="translate(30, 160)">
         <rect x="0" y="0" width="340" height="48" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
         <text x="12" y="20" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">AUTHORITY · 10 ideas</text>
-        <text x="12" y="38" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why I refuse the playbook · The thing nobody says about scaling · ...</text>
+        <text x="12" y="38" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why I refuse the playbook. The thing nobody says about scaling.</text>
         <rect x="0" y="56" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="76" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">CONTRARIAN · 10 ideas</text>
-        <text x="12" y="94" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The myth of growth hacks · Why your funnel is dead · ...</text>
+        <text x="12" y="94" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The myth of growth hacks. Why your funnel is dead.</text>
         <rect x="0" y="112" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="132" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">TRANSFORMATION · 10 ideas</text>
-        <text x="12" y="150" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">From service provider to category leader · The identity shift · ...</text>
+        <text x="12" y="150" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">From service provider to category leader. The identity shift.</text>
         <rect x="0" y="168" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="188" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">INTIMACY · 10 ideas</text>
-        <text x="12" y="206" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The night I almost quit · What clients never ask about · ...</text>
+        <text x="12" y="206" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The night I almost quit. What clients never ask about.</text>
         <rect x="0" y="224" width="340" height="48" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
         <text x="12" y="244" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PROOF · 10 ideas</text>
-        <text x="12" y="262" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Case study · 312% in 90 days · The before / after of a real house · ...</text>
+        <text x="12" y="262" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Case study. The before / after of a real house.</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
       <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Each idea framed. Sequenced. Ready to be filmed, written, sent.</text>
@@ -685,9 +717,11 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
 export default function BrandNarrativeAuditPage() {
   const hero = useReveal()
   const problem = useReveal()
+  const human = useReveal()
   const pillars = useReveal()
   const inside = useReveal()
   const process = useReveal()
+  const also = useReveal()
   const whom = useReveal()
   const invest = useReveal()
   const cta = useReveal()
@@ -726,6 +760,44 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
+      {/* WHY A HUMAN — IA-proof manifesto */}
+      <section ref={human.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
+        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.18, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: human.visible ? 1 : 0, transform: human.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ textAlign: "center", marginBottom: 88 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Why a Human</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4.5vw,3.25rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.1 }}>
+              The AI-proof pact.
+            </h2>
+            <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
+              In a market about to be saturated by machine-made identity, what makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            {HUMAN_PACT.map((p, i) => (
+              <div key={i} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,2.5rem)", display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>
+                  0{i + 1}.
+                </div>
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.2rem,1.8vw,1.5rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
+                  {p.title}
+                </h3>
+                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
+                  {p.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 64, textAlign: "center" }}>
+            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontStyle: "italic", color: COLOR, letterSpacing: "-0.01em", lineHeight: 1.5, maxWidth: 700, margin: "0 auto" }}>
+              When everyone has access to the same machine, the only edge left is the one a human refuses to share.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section ref={pillars.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", opacity: pillars.visible ? 1 : 0, transform: pillars.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
@@ -751,7 +823,6 @@ export default function BrandNarrativeAuditPage() {
       <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Audit</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
@@ -803,6 +874,35 @@ export default function BrandNarrativeAuditPage() {
                 <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, textTransform: "uppercase" }}>{ph.week}</div>
                 <h3 style={{ fontFamily: SERIF, fontSize: "1.5rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{ph.title}</h3>
                 <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{ph.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT YOU ALSO RECEIVE — the rituals */}
+      <section ref={also.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
+        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.15, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: also.visible ? 1 : 0, transform: also.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ textAlign: "center", marginBottom: 80 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What You Also Receive</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              Beyond the document.
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 28 }}>
+            {ALSO_RECEIVE.map((r, i) => (
+              <div key={i} style={{ padding: "44px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>
+                  {r.label}
+                </div>
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem,2vw,1.6rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
+                  {r.title}
+                </h3>
+                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
+                  {r.body}
+                </p>
               </div>
             ))}
           </div>
