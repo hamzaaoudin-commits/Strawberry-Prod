@@ -10,37 +10,50 @@ const GLOW = "rgba(230,57,70,0.35)"
 
 const STRIPE_URL = "https://buy.stripe.com/4gMeV6eeMdv6g2O3Vef7i0a"
 
-const PILLARS = [
-  { n: "I", title: "The Narrative Spine", body: "The core mythology your house is built on. Origin, conviction, enemy, promise — written as a constitution, not a tagline." },
-  { n: "II", title: "The Perception Map", body: "How the world sees your category today, where the cultural vacuums are, and which territory you can own without permission." },
-  { n: "III", title: "The Founder Archetype", body: "The figure your audience needs you to be. Posture, voice, references, recurring obsessions — the persona made operational." },
-  { n: "IV", title: "The Audience Universe", body: "Four psychographic profiles written like film characters. What they fear at 3am, what they want to be seen as, what they refuse to say out loud." },
-  { n: "V", title: "The 90-Day Doctrine", body: "The first three months of execution mapped as a single narrative arc. What to say, in what order, on what surface, and why each piece compounds the next." },
-]
-
-const PHASES = [
-  { week: "Week 1", title: "Immersion", body: "Deep interviews, archive review, market and cultural intake. We absorb the house from the inside." },
-  { week: "Week 2", title: "Architecture", body: "The narrative spine is drafted. Perception map and archetype defined. First doctrine sketch." },
-  { week: "Week 3", title: "Refinement", body: "Audience profiles written. The 90-day doctrine laid out. Two rounds of revision with the founder." },
-  { week: "Week 4", title: "Delivery", body: "Final 45+ page intelligence report. Walkthrough session. The house is given its constitution." },
+const DELIVERABLES = [
+  {
+    n: "01",
+    title: "The Differentiation Diagnostic",
+    body: "An analysis of your narrative competitive field: what your 5-6 direct competitors say, the words and promises they all share, and a map of the territories already saturated. You see in black and white why you all sound alike — and the open ground no one occupies, that you will take.",
+  },
+  {
+    n: "02",
+    title: "The Narrative Platform",
+    body: "Your unique position written as one defensible sentence. Your brand story structured — origin, fight, vision. And your 3-4 message pillars: the ideas you will hammer until people associate them with you instinctively.",
+  },
+  {
+    n: "03",
+    title: "The Language System",
+    body: "Your tone of voice described with precision. Your lexicon: the words that belong to you, and the forbidden list — your competitors' words — so you never sound like them. With before/after examples drawn from your own communications.",
+  },
+  {
+    n: "04",
+    title: "The Deployment Kit",
+    body: "The part you use the Monday after. Ready-to-use copy, not abstract recommendations: a rewrite of your homepage (headline, subhead, key sections); your presentation line in three formats (one line / one paragraph / 30-second pitch); 10 to 15 speaking angles ready to turn into posts, articles or newsletters, each tied to one of your pillars; a reusable bio and company description.",
+  },
+  {
+    n: "05",
+    title: "The Coherence Guide",
+    body: "A short document that lets anyone on your team write in your voice without consulting you: rules, examples, do/don't. Your identity holds, even when you are not the one writing.",
+  },
 ]
 
 const HUMAN_PACT = [
   {
     title: "Anyone can prompt 45 pages in three minutes.",
-    body: "Most do. The result reads like every other brand document. The Audit is what happens when a human spends four weeks listening, refusing, and choosing — when the goal is not to be produced, but to be unforgettable. The AI can write 45 pages about your house. It cannot decide which page deserves to be torn out.",
+    body: "Most do. The result reads like every other brand document. This is what happens when a human spends weeks listening, refusing, and choosing — when the goal is not to be produced, but to be unforgettable. The AI can write a brand document. It cannot decide which sentence deserves to be torn out.",
   },
   {
     title: "Written once. For you only.",
-    body: "Each Audit is built from scratch. The doctrine I write for your house will never appear — not adapted, not echoed, not inspired by — in another Audit. AI recycles. I do not.",
+    body: "Each brand is built from scratch. The narrative I write for your house will never appear — not adapted, not echoed, not inspired by — in another commission. AI recycles. I do not.",
   },
   {
     title: "From Paris. By inheritance.",
-    body: "This studio operates from Paris — heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed. The Audit carries that lineage.",
+    body: "This studio operates from Paris — heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed.",
   },
   {
     title: "Four commissions per quarter. No more.",
-    body: "Not a sales tactic — a structural choice. AI scales infinitely. I do not. Four houses per quarter, written by hand, week by week. If you commission the Audit, you receive an artifact built only for you, by someone whose attention is rationed by design.",
+    body: "Not a sales tactic — a structural choice. AI scales infinitely. I do not. Four houses per quarter, written by hand. If you commission this work, you receive something built only for you, by someone whose attention is rationed by design.",
   },
 ]
 
@@ -48,13 +61,20 @@ const ALSO_RECEIVE = [
   {
     label: "The Walkthrough",
     title: "A walkthrough. Thirty days later.",
-    body: "One month after delivery, we meet again. Ninety minutes, on call or in person. I ask one question: what have you changed? The Audit is a document. The walkthrough is the moment it becomes operational. AI has no memory of your house. I do.",
+    body: "One month after delivery, we meet again. Ninety minutes, on call or in person. I ask one question: what have you changed? The document is the artifact. The walkthrough is the moment it becomes operational. AI has no memory of your house. I do.",
   },
   {
     label: "The Object",
     title: "The artifact, optionally bound.",
-    body: "On request, the Audit is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object.",
+    body: "On request, the work is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object.",
   },
+]
+
+const SUCCESS_SIGNALS = [
+  "You are cited as a reference, not just another option",
+  "People come to you, instead of you chasing them",
+  "You hold your prices without negotiating them down",
+  "People start repeating your own words back to you",
 ]
 
 function useReveal() {
@@ -81,9 +101,9 @@ function MockupCover() {
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <rect x="40" y="60" width="40" height="2" fill="#e63946" />
       <text x="40" y="88" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">N° 001</text>
-      <text x="40" y="240" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">The Brand</text>
-      <text x="40" y="278" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">Narrative</text>
-      <text x="40" y="316" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="34" fontStyle="italic" fontWeight="400">Audit.</text>
+      <text x="40" y="236" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">The Brand</text>
+      <text x="40" y="272" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">Narrative</text>
+      <text x="40" y="308" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="30" fontStyle="italic" fontWeight="400">Architecture.</text>
       <line x1="40" y1="430" x2="360" y2="430" stroke="#2a2a2a" strokeWidth="1" />
       <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMISSIONED FOR</text>
       <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">The House</text>
@@ -108,7 +128,7 @@ function MockupDedication() {
       <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">your constitution.</text>
       <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Treat it as one.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 02 · THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 02 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -123,46 +143,43 @@ function MockupIndex() {
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="100" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Index.</text>
       <g transform="translate(30, 150)">
-        <text x="0" y="0" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">I.</text>
-        <text x="26" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Narrative Bible</text>
+        <text x="0" y="0" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">01.</text>
+        <text x="34" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Differentiation Diagnostic</text>
         <text x="340" y="0" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">04</text>
-        <text x="0" y="32" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">II.</text>
-        <text x="26" y="32" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Narrative Audit & Strategy</text>
-        <text x="340" y="32" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">14</text>
-        <text x="0" y="64" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">III.</text>
-        <text x="26" y="64" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Business Intelligence</text>
-        <text x="340" y="64" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">22</text>
-        <text x="0" y="96" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">IV.</text>
-        <text x="26" y="96" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Content Flywheel Blueprint</text>
-        <text x="340" y="96" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">36</text>
-        <line x1="0" y1="130" x2="340" y2="130" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="0" y="158" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">APPENDIX</text>
-        <text x="0" y="184" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">Executive Synthesis</text>
-        <text x="340" y="184" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">42</text>
-        <text x="0" y="204" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">Decision Matrix</text>
-        <text x="340" y="204" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">43</text>
-        <text x="0" y="224" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">Quick Wins · 14 days</text>
-        <text x="340" y="224" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">44</text>
-        <text x="0" y="244" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">Signature</text>
-        <text x="340" y="244" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">45</text>
+        <text x="0" y="36" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">02.</text>
+        <text x="34" y="36" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Narrative Platform</text>
+        <text x="340" y="36" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">10</text>
+        <text x="0" y="72" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">03.</text>
+        <text x="34" y="72" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Language System</text>
+        <text x="340" y="72" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">16</text>
+        <text x="0" y="108" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">04.</text>
+        <text x="34" y="108" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Deployment Kit</text>
+        <text x="340" y="108" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">22</text>
+        <text x="0" y="144" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">05.</text>
+        <text x="34" y="144" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Coherence Guide</text>
+        <text x="340" y="144" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">28</text>
+        <line x1="0" y1="180" x2="340" y2="180" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <text x="0" y="210" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">APPENDIX</text>
+        <text x="0" y="236" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">Signature</text>
+        <text x="340" y="236" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">32</text>
       </g>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
 
-// ============ ACT II — THE SOUL ============
+// ============ ACT II — THE IDENTITY ============
 
 function MockupSpine() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION I · BIBLE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 04</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 10</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE NARRATIVE SPINE</text>
+      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE NARRATIVE PLATFORM</text>
       <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">A house is not</text>
       <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">a positioning.</text>
       <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">It is a mythology.</text>
@@ -185,7 +202,7 @@ function MockupSpine() {
         <rect x="30" y="445" width="280" height="3" />
       </g>
       <line x1="30" y1="485" x2="370" y2="485" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="500" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="500" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -195,8 +212,8 @@ function MockupOrigin() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION I · BIBLE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 06</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 12</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE ORIGIN STORY</text>
       <text x="30" y="130" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">The moment</text>
@@ -224,7 +241,7 @@ function MockupOrigin() {
         <rect x="30" y="450" width="290" height="3" />
       </g>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -247,24 +264,22 @@ function MockupManifesto() {
       <text x="200" y="395" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">This is our house.</text>
       <text x="200" y="415" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">Built to be remembered.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 12 · THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 14 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
-
-// ============ ACT III — THE INTELLIGENCE ============
 
 function MockupPerceptionMap() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION II · AUDIT</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 14</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">01 · DIAGNOSTIC</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 06</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE PERCEPTION MAP</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DIFFERENTIATION DIAGNOSTIC</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Where the field stands.</text>
-      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">And where ground is unclaimed.</text>
+      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">And the ground no one occupies.</text>
       <g transform="translate(60, 180)">
         <line x1="140" y1="0" x2="140" y2="280" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <line x1="0" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
@@ -294,282 +309,65 @@ function MockupArchetype() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION II · AUDIT</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 18</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">03 · LANGUAGE</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 16</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE FOUNDER ARCHETYPE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">The Outsider Operator.</text>
-      <g transform="translate(40, 160)">
-        <rect x="0" y="0" width="100" height="130" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
-        <circle cx="50" cy="45" r="22" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1" />
-        <path d="M 22 110 Q 22 75 50 75 Q 78 75 78 110 Z" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE LANGUAGE SYSTEM</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Words that belong to you.</text>
+      <g transform="translate(30, 150)">
+        <text x="0" y="0" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">WORDS WE USE</text>
+        <text x="0" y="22" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">house · doctrine · craft · refuse</text>
+        <text x="0" y="42" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">unforgettable · constitution</text>
+        <text x="0" y="78" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">WORDS WE NEVER USE</text>
+        <text x="0" y="100" fill="rgba(255,255,255,0.4)" fontFamily="Playfair Display, serif" fontSize="12" textDecoration="line-through">solutions · synergy · leverage</text>
+        <text x="0" y="120" fill="rgba(255,255,255,0.4)" fontFamily="Playfair Display, serif" fontSize="12" textDecoration="line-through">disrupt · game-changer · ROI</text>
       </g>
-      <g transform="translate(160, 160)">
-        <text x="0" y="0" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">POSTURE</text>
-        <text x="0" y="16" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Refuses the consensus.</text>
-        <text x="0" y="44" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">OBSESSION</text>
-        <text x="0" y="60" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">What others will not say.</text>
-        <text x="0" y="88" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">REFERENCES</text>
-        <text x="0" y="104" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Didion. Burnham. Lynch.</text>
-        <text x="0" y="132" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">VOICE</text>
-        <text x="0" y="148" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Cinematic. Unhurried.</text>
-      </g>
-      <line x1="30" y1="335" x2="370" y2="335" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="360" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">AUDIENCE · 01 of 04</text>
-      <text x="30" y="385" fill="#fff" fontFamily="Playfair Display, serif" fontSize="16" fontWeight="700">The Quiet Operator.</text>
-      <g fill="rgba(255,255,255,0.4)">
-        <rect x="30" y="405" width="340" height="3" />
-        <rect x="30" y="415" width="310" height="3" />
-        <rect x="30" y="425" width="335" height="3" />
-        <rect x="30" y="435" width="280" height="3" />
-        <rect x="30" y="445" width="320" height="3" />
-        <rect x="30" y="455" width="295" height="3" />
-        <rect x="30" y="465" width="315" height="3" />
-      </g>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
-    </svg>
-  )
-}
-
-function MockupMarketSizing() {
-  return (
-    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="400" height="520" fill="#0d0d0d" />
-      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION III · INTELLIGENCE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 22</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">MARKET SIZING · TAM / SAM / SOM</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">How big the ground is.</text>
-      <g transform="translate(200, 290)">
-        <circle cx="0" cy="0" r="115" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-        <text x="0" y="-95" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="middle">TAM</text>
-        <text x="0" y="-78" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">€8.4B</text>
-        <circle cx="0" cy="20" r="75" fill="rgba(230,57,70,0.08)" stroke="rgba(230,57,70,0.4)" strokeWidth="1" />
-        <text x="0" y="-40" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="middle">SAM</text>
-        <text x="0" y="-24" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">€1.2B</text>
-        <circle cx="0" cy="40" r="35" fill="#e63946" opacity="0.3" stroke="#e63946" strokeWidth="1.5" />
-        <text x="0" y="42" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="middle" fontWeight="700">SOM</text>
-        <text x="0" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">€48M</text>
-      </g>
-      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Top-down and bottom-up. 5-year CAGR projections.</text>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
-    </svg>
-  )
-}
-
-function MockupCompetitive() {
-  return (
-    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="400" height="520" fill="#0d0d0d" />
-      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION III · INTELLIGENCE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 26</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">COMPETITIVE LANDSCAPE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Top 10. The moats.</text>
-      <g transform="translate(30, 160)">
-        <line x1="0" y1="0" x2="340" y2="0" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <text x="0" y="-8" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">RANK</text>
-        <text x="80" y="-8" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">ACTOR</text>
-        <text x="220" y="-8" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">REVENUE</text>
-        <text x="310" y="-8" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">MOAT</text>
-        <g fill="rgba(255,255,255,0.75)" fontFamily="Playfair Display, serif" fontSize="11">
-          <text x="0" y="22">01</text><text x="80" y="22">Atelier A.</text><text x="220" y="22">€42M</text><text x="310" y="22" fill="#e63946">★★★★</text>
-          <text x="0" y="46">02</text><text x="80" y="46">Maison B.</text><text x="220" y="46">€28M</text><text x="310" y="46" fill="#e63946">★★★</text>
-          <text x="0" y="70">03</text><text x="80" y="70">Studio C.</text><text x="220" y="70">€19M</text><text x="310" y="70" fill="#e63946">★★★</text>
-          <text x="0" y="94">04</text><text x="80" y="94">House D.</text><text x="220" y="94">€14M</text><text x="310" y="94" fill="#e63946">★★</text>
-          <text x="0" y="118">05</text><text x="80" y="118">Order E.</text><text x="220" y="118">€11M</text><text x="310" y="118" fill="#e63946">★★</text>
-          <text x="0" y="142">06</text><text x="80" y="142">Brand F.</text><text x="220" y="142">€8M</text><text x="310" y="142" fill="#e63946">★</text>
-          <text x="0" y="166">07</text><text x="80" y="166">Lab G.</text><text x="220" y="166">€6M</text><text x="310" y="166" fill="#e63946">★</text>
-          <text x="0" y="190">08</text><text x="80" y="190">Office H.</text><text x="220" y="190">€4M</text><text x="310" y="190" fill="#e63946">★</text>
-          <text x="0" y="214">09</text><text x="80" y="214">Bureau I.</text><text x="220" y="214">€3M</text><text x="310" y="214" fill="rgba(255,255,255,0.3)">—</text>
-          <text x="0" y="238">10</text><text x="80" y="238">Press J.</text><text x="220" y="238">€2M</text><text x="310" y="238" fill="rgba(255,255,255,0.3)">—</text>
-        </g>
-        <line x1="0" y1="260" x2="340" y2="260" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      </g>
-      <g transform="translate(30, 440)">
-        <rect x="0" y="0" width="340" height="30" fill="rgba(230,57,70,0.08)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
-        <text x="170" y="19" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">White space identified · 3 territories unclaimed</text>
-      </g>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
-    </svg>
-  )
-}
-
-function MockupSwot() {
-  return (
-    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="400" height="520" fill="#0d0d0d" />
-      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION III · INTELLIGENCE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 30</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">SWOT · PORTER FIVE FORCES</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Strategic terrain.</text>
-      <g transform="translate(30, 160)">
-        <rect x="0" y="0" width="165" height="100" fill="rgba(230,57,70,0.05)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
-        <text x="12" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">STRENGTHS</text>
-        <text x="12" y="42" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Narrative depth</text>
-        <text x="12" y="58" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Founder authority</text>
-        <text x="12" y="74" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Cultural fluency</text>
-        <text x="12" y="90" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Premium positioning</text>
-        <rect x="175" y="0" width="165" height="100" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <text x="187" y="22" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">WEAKNESSES</text>
-        <text x="187" y="42" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Operational scale</text>
-        <text x="187" y="58" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Tech depth</text>
-        <text x="187" y="74" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Distribution gaps</text>
-        <text x="187" y="90" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Founder dependency</text>
-        <rect x="0" y="110" width="165" height="100" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <text x="12" y="132" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">OPPORTUNITIES</text>
-        <text x="12" y="152" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ AI saturation</text>
-        <text x="12" y="168" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Trust collapse</text>
-        <text x="12" y="184" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Editorial revival</text>
-        <text x="12" y="200" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="10">✦ Premium ceiling</text>
-        <rect x="175" y="110" width="165" height="100" fill="rgba(230,57,70,0.05)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
-        <text x="187" y="132" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">THREATS</text>
-        <text x="187" y="152" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Commoditization</text>
-        <text x="187" y="168" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Macro pressure</text>
-        <text x="187" y="184" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ AI-content flood</text>
-        <text x="187" y="200" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">✦ Margin erosion</text>
-      </g>
-      <g transform="translate(30, 390)">
-        <text x="0" y="0" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">PORTER · FIVE FORCES</text>
-        <line x1="0" y1="14" x2="340" y2="14" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <g fontFamily="Inter, sans-serif" fontSize="9" fill="rgba(255,255,255,0.55)">
-          <text x="0" y="34">▸ New entrants</text><rect x="120" y="28" width="40" height="6" fill="#e63946" opacity="0.7" /><text x="170" y="34">HIGH</text>
-          <text x="0" y="54">▸ Substitutes</text><rect x="120" y="48" width="55" height="6" fill="#e63946" /><text x="185" y="54">CRITICAL</text>
-          <text x="0" y="74">▸ Buyer power</text><rect x="120" y="68" width="30" height="6" fill="#e63946" opacity="0.5" /><text x="160" y="74">MED</text>
-          <text x="0" y="94">▸ Supplier power</text><rect x="120" y="88" width="15" height="6" fill="#e63946" opacity="0.3" /><text x="145" y="94">LOW</text>
-        </g>
-      </g>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
-    </svg>
-  )
-}
-
-function MockupCustomerJourney() {
-  return (
-    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="400" height="520" fill="#0d0d0d" />
-      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION III · INTELLIGENCE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 34</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">CUSTOMER JOURNEY MAP</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Awareness to advocacy.</text>
-      <g transform="translate(40, 200)">
-        <path d="M 0 80 Q 80 20 160 60 T 320 100" stroke="#e63946" strokeWidth="2" fill="none" opacity="0.5" />
-        <g fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" fill="rgba(255,255,255,0.6)">
-          <circle cx="0" cy="80" r="5" fill="#e63946" />
-          <text x="0" y="105" textAnchor="middle">AWARE</text>
-          <text x="0" y="135" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic" textAnchor="middle">curiosity</text>
-          <circle cx="80" cy="42" r="5" fill="#e63946" />
-          <text x="80" y="22" textAnchor="middle">CONSIDER</text>
-          <text x="80" y="155" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic" textAnchor="middle">doubt</text>
-          <circle cx="160" cy="60" r="5" fill="#e63946" />
-          <text x="160" y="40" textAnchor="middle">DECIDE</text>
-          <text x="160" y="135" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic" textAnchor="middle">conviction</text>
-          <circle cx="240" cy="80" r="5" fill="#e63946" />
-          <text x="240" y="105" textAnchor="middle">ENGAGE</text>
-          <text x="240" y="155" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic" textAnchor="middle">belonging</text>
-          <circle cx="320" cy="100" r="7" fill="#e63946" />
-          <text x="320" y="125" textAnchor="middle" fill="#e63946" fontWeight="700">ADVOCATE</text>
-          <text x="320" y="155" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic" textAnchor="middle">pride</text>
-        </g>
-      </g>
-      <line x1="30" y1="420" x2="370" y2="420" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="445" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Every friction point named. Every emotion mapped.</text>
-      <g fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9">
-        <text x="30" y="468">▸ 4 stages mapped end-to-end</text>
-        <text x="30" y="484">▸ Friction inventory · 12 points identified</text>
-      </g>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
-    </svg>
-  )
-}
-
-// ============ ACT IV — THE ENGINE ============
-
-function MockupDoctrine() {
-  return (
-    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect width="400" height="520" fill="#0d0d0d" />
-      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION IV · ENGINE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 36</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE 90-DAY DOCTRINE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Three months,</text>
-      <text x="30" y="146" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">one arc.</text>
-      <g transform="translate(30, 200)">
-        <line x1="0" y1="40" x2="340" y2="40" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-        <line x1="0" y1="35" x2="0" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <line x1="62" y1="35" x2="62" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <line x1="124" y1="35" x2="124" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <line x1="186" y1="35" x2="186" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <line x1="248" y1="35" x2="248" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <line x1="310" y1="35" x2="310" y2="45" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-        <rect x="0" y="20" width="93" height="4" fill="#e63946" opacity="0.7" />
-        <text x="0" y="14" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 01 · SET THE FRAME</text>
-        <rect x="93" y="60" width="124" height="4" fill="#e63946" opacity="0.5" />
-        <text x="93" y="80" fill="rgba(255,255,255,0.65)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 02 · BUILD THE GRAVITY</text>
-        <rect x="217" y="20" width="123" height="4" fill="#e63946" opacity="0.3" />
-        <text x="217" y="14" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1">MONTH 03 · COMPOUND</text>
-        <circle cx="30" cy="40" r="4" fill="#e63946" />
-        <circle cx="155" cy="40" r="5" fill="#e63946" />
-        <circle cx="310" cy="40" r="4" fill="#e63946" />
-      </g>
-      <g transform="translate(30, 340)">
-        <text x="0" y="0" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">CADENCE</text>
-        <text x="0" y="20" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ One foundational essay / month</text>
-        <text x="0" y="38" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ Two short-form pieces / week</text>
-        <text x="0" y="56" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ One signature campaign / quarter</text>
-        <text x="0" y="74" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">✦ Distribution sequenced, not random</text>
-      </g>
+      <line x1="30" y1="300" x2="370" y2="300" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="326" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">BEFORE</text>
+      <text x="30" y="346" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">We provide innovative branding solutions</text>
+      <text x="30" y="364" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">to help businesses grow.</text>
+      <text x="30" y="396" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">AFTER</text>
+      <text x="30" y="416" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">We build the universe your brand lives in.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
+
+// ============ ACT III — DEPLOYMENT ============
 
 function MockupContentIdeas() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION IV · ENGINE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 38</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 24</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">50 CONTENT IDEAS · 5 PILLARS</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">The ammunition.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">SPEAKING ANGLES · BY PILLAR</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Ready by Monday.</text>
       <g transform="translate(30, 160)">
-        <rect x="0" y="0" width="340" height="48" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
-        <text x="12" y="20" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">AUTHORITY · 10 ideas</text>
-        <text x="12" y="38" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why I refuse the playbook. The thing nobody says about scaling.</text>
-        <rect x="0" y="56" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="12" y="76" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">CONTRARIAN · 10 ideas</text>
-        <text x="12" y="94" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The myth of growth hacks. Why your funnel is dead.</text>
-        <rect x="0" y="112" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="12" y="132" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">TRANSFORMATION · 10 ideas</text>
-        <text x="12" y="150" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">From service provider to category leader. The identity shift.</text>
-        <rect x="0" y="168" width="340" height="48" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="12" y="188" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">INTIMACY · 10 ideas</text>
-        <text x="12" y="206" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The night I almost quit. What clients never ask about.</text>
-        <rect x="0" y="224" width="340" height="48" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
-        <text x="12" y="244" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PROOF · 10 ideas</text>
-        <text x="12" y="262" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Case study. The before / after of a real house.</text>
+        <rect x="0" y="0" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
+        <text x="12" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR I · AUTHORITY</text>
+        <text x="12" y="40" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why I refuse the playbook everyone follows.</text>
+        <text x="12" y="54" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The thing nobody says about scaling.</text>
+        <rect x="0" y="68" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <text x="12" y="90" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR II · CONTRARIAN</text>
+        <text x="12" y="108" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The myth of growth hacks.</text>
+        <text x="12" y="122" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why your funnel quietly died.</text>
+        <rect x="0" y="136" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <text x="12" y="158" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR III · TRANSFORMATION</text>
+        <text x="12" y="176" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">From service provider to category leader.</text>
+        <text x="12" y="190" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The identity shift nobody prepared you for.</text>
+        <rect x="0" y="204" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
+        <text x="12" y="226" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR IV · PROOF</text>
+        <text x="12" y="244" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The before and after of a real house.</text>
+        <text x="12" y="258" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">What changed when the words changed.</text>
       </g>
-      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Each idea framed. Sequenced. Ready to be filmed, written, sent.</text>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <line x1="30" y1="440" x2="370" y2="440" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="466" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">10-15 angles, each tied to a pillar. Posts, articles, newsletters.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -579,47 +377,41 @@ function MockupDistribution() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SECTION IV · ENGINE</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 40</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">05 · COHERENCE</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 28</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DISTRIBUTION MAP</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Where the universe</text>
-      <text x="30" y="146" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">meets the world.</text>
-      <g transform="translate(200, 310)">
-        <circle cx="0" cy="0" r="44" fill="rgba(230,57,70,0.15)" stroke="#e63946" strokeWidth="1.5" />
-        <text x="0" y="-3" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="middle" fontWeight="700">THE HOUSE</text>
-        <text x="0" y="11" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">narrative core</text>
-        <line x1="0" y1="-44" x2="0" y2="-90" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="0" cy="-105" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="0" y="-101" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">LONG</text>
-        <text x="0" y="-91" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">essays</text>
-        <line x1="38" y1="-22" x2="80" y2="-46" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="98" cy="-57" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="98" y="-53" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">SHORT</text>
-        <text x="98" y="-43" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">posts</text>
-        <line x1="42" y1="14" x2="90" y2="34" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="110" cy="44" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="110" y="48" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">VIDEO</text>
-        <line x1="0" y1="44" x2="0" y2="90" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="0" cy="105" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="0" y="109" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">EMAIL</text>
-        <line x1="-42" y1="14" x2="-90" y2="34" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="-110" cy="44" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="-110" y="48" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">PODCAST</text>
-        <line x1="-38" y1="-22" x2="-80" y2="-46" stroke="rgba(230,57,70,0.5)" strokeWidth="1" />
-        <circle cx="-98" cy="-57" r="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="-98" y="-53" fill="#fff" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">EVENT</text>
-        <text x="-98" y="-43" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="6" textAnchor="middle">irl</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE COHERENCE GUIDE</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">One voice. Any hand.</text>
+      <g transform="translate(30, 160)">
+        <rect x="0" y="0" width="162" height="120" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="1" />
+        <text x="14" y="26" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO</text>
+        <text x="14" y="50" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Lead with conviction</text>
+        <text x="14" y="72" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Name the enemy</text>
+        <text x="14" y="94" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Short. Declarative.</text>
+        <text x="14" y="112" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Cut the qualifier</text>
+        <rect x="178" y="0" width="162" height="120" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <text x="192" y="26" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO NOT</text>
+        <text x="192" y="50" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Hedge with maybe</text>
+        <text x="192" y="72" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Use corporate jargon</text>
+        <text x="192" y="94" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Chase every trend</text>
+        <text x="192" y="112" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Sound like the field</text>
       </g>
-      <line x1="30" y1="460" x2="370" y2="460" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="482" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Six surfaces. One voice. One narrative.</text>
-      <line x1="30" y1="495" x2="370" y2="495" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="510" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">THE BRAND NARRATIVE AUDIT</text>
+      <g transform="translate(30, 320)" fill="rgba(255,255,255,0.35)">
+        <rect x="0" y="0" width="340" height="3" />
+        <rect x="0" y="12" width="310" height="3" />
+        <rect x="0" y="24" width="330" height="3" />
+        <rect x="0" y="36" width="285" height="3" />
+        <rect x="0" y="48" width="320" height="3" />
+      </g>
+      <line x1="30" y1="410" x2="370" y2="410" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Your identity holds, even when you are not the one writing.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
 
-// ============ ACT V — THE SIGNATURE ============
+// ============ ACT IV — THE SIGNATURE ============
 
 function MockupSignature() {
   return (
@@ -638,7 +430,7 @@ function MockupSignature() {
       <text x="200" y="410" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">SIGNED</text>
       <text x="200" y="438" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="18" fontStyle="italic" textAnchor="middle">Strawberry Production</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 45 · THE BRAND NARRATIVE AUDIT</text>
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 32 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -648,31 +440,23 @@ function MockupSignature() {
 const ACT_I = [
   { component: <MockupCover />, label: "The Cover", caption: "A numbered edition. Your house, given its name." },
   { component: <MockupDedication />, label: "The Dedication", caption: "The opening invocation. The reason this document exists." },
-  { component: <MockupIndex />, label: "The Index", caption: "Four sections, five appendices. The architecture, declared." },
+  { component: <MockupIndex />, label: "The Index", caption: "Five deliverables, one signature. The architecture, declared." },
 ]
 
 const ACT_II = [
-  { component: <MockupSpine />, label: "The Narrative Spine", caption: "The mythology, articulated in pages — not slogans." },
+  { component: <MockupPerceptionMap />, label: "The Differentiation Diagnostic", caption: "The narrative field, with the ground no one occupies located." },
+  { component: <MockupSpine />, label: "The Narrative Platform", caption: "Your position, your story, your pillars — articulated." },
   { component: <MockupOrigin />, label: "The Origin Story", caption: "The rupture before. The conviction after. Named with precision." },
   { component: <MockupManifesto />, label: "The Manifesto", caption: "A single page. The doctrine, made unforgettable." },
+  { component: <MockupArchetype />, label: "The Language System", caption: "Your words. The forbidden ones. Before and after." },
 ]
 
 const ACT_III = [
-  { component: <MockupPerceptionMap />, label: "The Perception Map", caption: "The cultural field, with the unclaimed ground located." },
-  { component: <MockupArchetype />, label: "Founder Archetype & Audience", caption: "Characters, not personas. Posture, obsessions, voice." },
-  { component: <MockupMarketSizing />, label: "Market Sizing · TAM/SAM/SOM", caption: "Top-down and bottom-up. Five-year CAGR projections." },
-  { component: <MockupCompetitive />, label: "Competitive Landscape", caption: "Top 10 actors. Revenue, moats, white space." },
-  { component: <MockupSwot />, label: "SWOT · Porter Five Forces", caption: "Strategic terrain. Strengths, threats, force pressure." },
-  { component: <MockupCustomerJourney />, label: "Customer Journey Map", caption: "Awareness to advocacy. Every friction point named." },
+  { component: <MockupContentIdeas />, label: "The Deployment Kit", caption: "Speaking angles by pillar. Ready the Monday after." },
+  { component: <MockupDistribution />, label: "The Coherence Guide", caption: "One voice, any hand. Your identity holds without you." },
 ]
 
 const ACT_IV = [
-  { component: <MockupDoctrine />, label: "The 90-Day Doctrine", caption: "The first three months sequenced as one arc." },
-  { component: <MockupContentIdeas />, label: "50 Content Ideas", caption: "Five pillars. Ten ideas each. Ammunition, framed." },
-  { component: <MockupDistribution />, label: "The Distribution Map", caption: "Six surfaces. One voice. Where the universe meets the world." },
-]
-
-const ACT_V = [
   { component: <MockupSignature />, label: "The Signature Page", caption: "Numbered. Dated. Signed. A document built to be kept." },
 ]
 
@@ -714,53 +498,56 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
 
 // ============ PAGE ============
 
-export default function BrandNarrativeAuditPage() {
+export default function BrandNarrativeArchitecturePage() {
   const hero = useReveal()
-  const problem = useReveal()
+  const why = useReveal()
   const human = useReveal()
-  const pillars = useReveal()
+  const build = useReveal()
+  const extraction = useReveal()
+  const deliver = useReveal()
   const inside = useReveal()
-  const process = useReveal()
+  const success = useReveal()
   const also = useReveal()
-  const whom = useReveal()
   const invest = useReveal()
   const cta = useReveal()
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
+      {/* HERO */}
       <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
-            The Signature Commission · 9,500€
+            Brand Narrative Architecture · 4,500€
           </div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
-            We don&apos;t build brands.<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>We build the universe<br />they live in.</span>
+          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.75rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 32 }}>
+            The brand story that makes you<br />
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>impossible to confuse —<br />and impossible to generate.</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 56px", lineHeight: 1.6 }}>
-            The Brand Narrative Audit is a four-week commission. At the end, your house has a constitution: a 45+ page intelligence report that turns a business into a world worth remembering.
+            The identity, position, and language that make you recognizable at first glance — and impossible to confuse with your competitors, even when they arm themselves with AI.
           </p>
           <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: `0 20px 60px ${GLOW}` }}>
-            Commission the Audit →
+            Commission the Work →
           </Link>
         </div>
       </section>
 
-      <section ref={problem.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: problem.visible ? 1 : 0, transform: problem.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>The Saturation</div>
+      {/* WHY NOW */}
+      <section ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>Why Now</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.25rem)", fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.92)" }}>
-            Most brands today are forgettable before they are seen. A generation of AI-generic identity, founder-led content that sounds like everyone else, and category sameness has made being remembered the hardest commercial problem of the decade.
+            AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.
           </p>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.5rem)", fontWeight: 400, lineHeight: 1.5, color: COLOR, marginTop: 32, fontStyle: "italic" }}>
-            We make houses that survive the noise.
+            What cannot be generated is an identity. Differentiation is no longer a marketing luxury — it is your condition for survival.
           </p>
         </div>
       </section>
 
-      {/* WHY A HUMAN — IA-proof manifesto */}
+      {/* WHY A HUMAN */}
       <section ref={human.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.18, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: human.visible ? 1 : 0, transform: human.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -770,26 +557,18 @@ export default function BrandNarrativeAuditPage() {
               The AI-proof pact.
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
-              In a market about to be saturated by machine-made identity, what makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
+              What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
             </p>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
             {HUMAN_PACT.map((p, i) => (
               <div key={i} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,2.5rem)", display: "flex", flexDirection: "column", gap: 20 }}>
-                <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>
-                  0{i + 1}.
-                </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.2rem,1.8vw,1.5rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
-                  {p.title}
-                </h3>
-                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
-                  {p.body}
-                </p>
+                <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>0{i + 1}.</div>
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.2rem,1.8vw,1.5rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>{p.title}</h3>
+                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>{p.body}</p>
               </div>
             ))}
           </div>
-
           <div style={{ marginTop: 64, textAlign: "center" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontStyle: "italic", color: COLOR, letterSpacing: "-0.01em", lineHeight: 1.5, maxWidth: 700, margin: "0 auto" }}>
               When everyone has access to the same machine, the only edge left is the one a human refuses to share.
@@ -798,21 +577,45 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      <section ref={pillars.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", opacity: pillars.visible ? 1 : 0, transform: pillars.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+      {/* WHAT I BUILD */}
+      <section ref={build.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: build.visible ? 1 : 0, transform: build.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>What I Build</div>
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.6vw,2rem)", fontWeight: 400, lineHeight: 1.45, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.9)" }}>
+            I build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors — even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.
+          </p>
+        </div>
+      </section>
+
+      {/* THE EXTRACTION */}
+      <section ref={extraction.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: extraction.visible ? 1 : 0, transform: extraction.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>How It Happens</div>
+          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 32, lineHeight: 1.2 }}>
+            It begins with an extraction no one can automate.
+          </h2>
+          <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>
+            I make you talk, at length, to reach what makes you genuinely singular — often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.
+          </p>
+        </div>
+      </section>
+
+      {/* WHAT YOU RECEIVE — 5 deliverables */}
+      <section ref={deliver.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", opacity: deliver.visible ? 1 : 0, transform: deliver.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What We Craft</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What You Receive</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Five pillars of a remembered house.
+              Five deliverables. Exploitable Monday.
             </h2>
           </div>
           <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
-            {PILLARS.map((p) => (
-              <div key={p.n} style={{ background: "#0a0a0a", padding: "48px clamp(1.5rem,3vw,3rem)", display: "grid", gridTemplateColumns: "auto 1fr", gap: "clamp(1.5rem,4vw,4rem)", alignItems: "start" }}>
-                <div style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", color: COLOR, fontWeight: 700, lineHeight: 1, minWidth: 80 }}>{p.n}</div>
+            {DELIVERABLES.map((d) => (
+              <div key={d.n} style={{ background: "#0a0a0a", padding: "48px clamp(1.5rem,3vw,3rem)", display: "grid", gridTemplateColumns: "auto 1fr", gap: "clamp(1.5rem,4vw,4rem)", alignItems: "start" }}>
+                <div style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3vw,2.5rem)", color: COLOR, fontWeight: 700, lineHeight: 1, minWidth: 70 }}>{d.n}</div>
                 <div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.75rem)", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{p.title}</h3>
-                  <p style={{ fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>{p.body}</p>
+                  <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.75rem)", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{d.title}</h3>
+                  <p style={{ fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>{d.body}</p>
                 </div>
               </div>
             ))}
@@ -820,16 +623,17 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
+      {/* INSIDE THE ARCHITECTURE — mockups */}
       <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Audit</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Architecture</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              The architecture of the artifact.
+              A glimpse of the artifact.
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7 }}>
-              The Audit is a single editorial document. Forty-five pages, designed to be read like a manifesto and consulted like a constitution. Below, the book itself — page by page.
+              Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself — page by page.
             </p>
           </div>
 
@@ -837,20 +641,16 @@ export default function BrandNarrativeAuditPage() {
           <MockupGrid items={ACT_I} />
 
           <div style={{ height: 100 }} />
-          <ActTitle roman="II" title="The Soul" />
+          <ActTitle roman="II" title="The Identity" />
           <MockupGrid items={ACT_II} />
 
           <div style={{ height: 100 }} />
-          <ActTitle roman="III" title="The Intelligence" />
+          <ActTitle roman="III" title="The Deployment" />
           <MockupGrid items={ACT_III} />
 
           <div style={{ height: 100 }} />
-          <ActTitle roman="IV" title="The Engine" />
+          <ActTitle roman="IV" title="The Signature" />
           <MockupGrid items={ACT_IV} />
-
-          <div style={{ height: 100 }} />
-          <ActTitle roman="V" title="The Signature" />
-          <MockupGrid items={ACT_V} />
 
           <div style={{ marginTop: 100, textAlign: "center" }}>
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
@@ -860,27 +660,30 @@ export default function BrandNarrativeAuditPage() {
         </div>
       </section>
 
-      <section ref={process.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", opacity: process.visible ? 1 : 0, transform: process.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ textAlign: "center", marginBottom: 80 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>The Process</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Four weeks. One constitution.
+      {/* HOW WE'LL KNOW IT WORKED */}
+      <section ref={success.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", opacity: success.visible ? 1 : 0, transform: success.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>How We Will Know It Worked</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+              Remarkable is measurable.
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
-            {PHASES.map((ph, i) => (
-              <div key={i} style={{ padding: "32px 28px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", position: "relative" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, textTransform: "uppercase" }}>{ph.week}</div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.5rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{ph.title}</h3>
-                <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{ph.body}</p>
+          <p style={{ fontFamily: SANS, fontSize: "1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, textAlign: "center", maxWidth: 640, margin: "0 auto 48px" }}>
+            Before we start, we note together how you would describe today what sets you apart — usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+            {SUCCESS_SIGNALS.map((s, i) => (
+              <div key={i} style={{ padding: "28px 28px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", display: "flex", gap: 16, alignItems: "flex-start" }}>
+                <span style={{ color: COLOR, fontSize: 18, lineHeight: 1.4 }}>✦</span>
+                <p style={{ fontFamily: SERIF, fontSize: "1.05rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: 0 }}>{s}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHAT YOU ALSO RECEIVE — the rituals */}
+      {/* WHAT YOU ALSO RECEIVE */}
       <section ref={also.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.15, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: also.visible ? 1 : 0, transform: also.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -890,72 +693,41 @@ export default function BrandNarrativeAuditPage() {
               Beyond the document.
             </h2>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 28 }}>
             {ALSO_RECEIVE.map((r, i) => (
               <div key={i} style={{ padding: "44px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", display: "flex", flexDirection: "column", gap: 20 }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>
-                  {r.label}
-                </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem,2vw,1.6rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
-                  {r.title}
-                </h3>
-                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
-                  {r.body}
-                </p>
+                <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>{r.label}</div>
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem,2vw,1.6rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>{r.title}</h3>
+                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>{r.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section ref={whom.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", opacity: whom.visible ? 1 : 0, transform: whom.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase", textAlign: "center" }}>For Whom</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(2rem,5vw,5rem)" }}>
-            <div>
-              <h3 style={{ fontFamily: SERIF, fontSize: "1.4rem", fontWeight: 600, marginBottom: 24, color: "#fff" }}>Commission this if —</h3>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> You are a founder, not a marketing department</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Your business deserves a world, not a tagline</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> You sense that being remembered will outrun being seen</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> You will read 45 pages and let them change how you operate</li>
-              </ul>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: SERIF, fontSize: "1.4rem", fontWeight: 600, marginBottom: 24, color: "rgba(255,255,255,0.6)" }}>Do not commission this if —</h3>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: "rgba(255,255,255,0.4)" }}>—</span> You want a logo and three brand colors</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: "rgba(255,255,255,0.4)" }}>—</span> You are looking for performance marketing tactics</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: "rgba(255,255,255,0.4)" }}>—</span> You need an answer this week</li>
-                <li style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, paddingLeft: 24, position: "relative" }}><span style={{ position: "absolute", left: 0, color: "rgba(255,255,255,0.4)" }}>—</span> You believe brand is a cost, not the asset</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* INVESTMENT */}
       <section ref={invest.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>The Investment</div>
           <div style={{ fontFamily: SERIF, fontSize: "clamp(4rem,8vw,6rem)", fontWeight: 700, lineHeight: 1, marginBottom: 16, letterSpacing: "-0.04em" }}>
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>9,500€</span>
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>4,500€</span>
           </div>
-          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>One commission · Four weeks · One constitution</div>
+          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>A complete repositioning · Delivered and exploitable</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
-            A McKinsey engagement of comparable depth starts at 80,000€. We are not McKinsey — we are the studio they would commission for the narrative they cannot write themselves.
+            The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, belongs to you and works for you continuously.
           </p>
         </div>
       </section>
 
+      {/* FINAL CTA */}
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 40 }}>
-            Make your house unforgettable.
+            Become impossible to confuse.
           </h2>
           <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: `0 20px 60px ${GLOW}` }}>
-            Commission the Audit →
+            Commission the Work →
           </Link>
           <div style={{ marginTop: 24, fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
             Limited to four commissions per quarter.
