@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/#services" },
-  { label: "The Audit", href: "/brand-narrative-audit" },
+  { label: "The Commission", href: "/brand-narrative-audit" },
   { label: "The Method", href: "/strawberry-method" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Manifesto", href: "/manifesto" },
