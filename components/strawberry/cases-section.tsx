@@ -11,19 +11,19 @@ const RESULTS = [
     metric: "+312%",
     label: "Revenue in 90 days",
     client: "Léa Marchand · Co-founder, Vellum (B2B SaaS, Paris)",
-    detail: "From 14k MRR to 58k MRR after the Brand Narrative Audit. Positioning rewrite alone unlocked an enterprise tier she couldn't sell before.",
+    detail: "From 14k MRR to 58k MRR after the Brand Narrative Architecture. Positioning rewrite alone unlocked an enterprise tier she couldn't sell before.",
   },
   {
     metric: "2.4M",
     label: "Organic views in one quarter",
     client: "Théo Roussel · Executive coach, independent",
-    detail: "Zero ad spend. The Audit gave him a narrative spine and a 90-day doctrine — one short-form alone did 870k views and drove 1,200 qualified leads to the waitlist.",
+    detail: "Zero ad spend. The work gave him a narrative platform and a deployment kit — one short-form alone did 870k views and drove 1,200 qualified leads to the waitlist.",
   },
   {
     metric: "4x",
     label: "Inbound pipeline value",
     client: "Marina Castagnola · Founder, Bourse Décodée",
-    detail: "Before the Audit, leads came in cold and unqualified. After: founders DMing her with exact problems her narrative had named. The pipeline filled itself.",
+    detail: "Before, leads came in cold and unqualified. After: founders DMing her with exact problems her narrative had named. The pipeline filled itself.",
   },
 ]
 
@@ -32,19 +32,19 @@ const QUOTES = [
     quote: "We'd been trying to articulate what we do for three years. They got it in three weeks. Our sales cycle is now shorter than our onboarding.",
     name: "Léa Marchand",
     role: "Co-founder, Vellum",
-    system: "Brand Narrative Audit",
+    system: "Brand Narrative Architecture",
   },
   {
-    quote: "I stopped guessing what to post. The doctrine they wrote is the closest thing I've had to a creative co-founder — except it doesn't sleep.",
+    quote: "I stopped guessing what to post. The language system they wrote is the closest thing I've had to a creative co-founder — except it doesn't sleep.",
     name: "Théo Roussel",
     role: "Executive coach, independent",
-    system: "Brand Narrative Audit",
+    system: "Brand Narrative Architecture",
   },
   {
-    quote: "The Audit named the thing I'd been circling for two years. After delivery, prospects started repeating my own words back to me.",
+    quote: "It named the thing I'd been circling for two years. After delivery, prospects started repeating my own words back to me.",
     name: "Marina Castagnola",
     role: "Founder, Bourse Décodée",
-    system: "Brand Narrative Audit",
+    system: "Brand Narrative Architecture",
   },
 ]
 
@@ -53,7 +53,6 @@ export function CasesSection() {
     <section id="cases" style={{ padding: "140px clamp(1.5rem,4vw,4rem)", background: "#0d0d0d", color: "#fff", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 80 }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
             Selected Results
@@ -63,7 +62,6 @@ export function CasesSection() {
           </h2>
         </div>
 
-        {/* Metrics cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 100 }}>
           {RESULTS.map((r, i) => (
             <div key={i} style={{ padding: "40px 32px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
@@ -83,7 +81,6 @@ export function CasesSection() {
           ))}
         </div>
 
-        {/* Quotes */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 80 }}>
           {QUOTES.map((q, i) => (
             <div key={i} style={{ padding: "36px 28px", borderLeft: `2px solid ${COLOR}`, background: "rgba(255,255,255,0.02)" }}>
@@ -103,7 +100,6 @@ export function CasesSection() {
           ))}
         </div>
 
-        {/* CTA */}
         <div style={{ textAlign: "center" }}>
           <Link href="/case-studies" style={{ display: "inline-block", color: COLOR, fontSize: 14, fontFamily: SANS, letterSpacing: "0.05em", textDecoration: "none", borderBottom: `1px solid ${COLOR}`, paddingBottom: 4 }}>
             See full case studies →
