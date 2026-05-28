@@ -156,7 +156,6 @@ export default function StrawberryMethodPage() {
             Five stages. One doctrine. The repeatable architecture behind every house we make unforgettable.
           </p>
 
-          {/* Letter cards preview */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(8px, 1.5vw, 16px)", maxWidth: 720, margin: "0 auto 48px" }}>
             {LETTERS.map((l) => (
               <div key={l.letter} style={{ textAlign: "center" }}>
@@ -213,7 +212,6 @@ export default function StrawberryMethodPage() {
             </h2>
           </div>
 
-          {/* Giant letter cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(8px, 1.2vw, 16px)", marginBottom: 64 }}>
             {LETTERS.map((l) => (
               <div key={l.letter} style={{ textAlign: "center" }}>
@@ -228,7 +226,6 @@ export default function StrawberryMethodPage() {
             ))}
           </div>
 
-          {/* Journey flow */}
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "clamp(8px, 1.5vw, 20px)", marginBottom: 56 }}>
             {LETTERS.map((l, i) => (
               <div key={l.letter} style={{ display: "flex", alignItems: "center", gap: "clamp(8px, 1.5vw, 20px)" }}>
@@ -262,16 +259,14 @@ export default function StrawberryMethodPage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 64 }}>
-            {STAGES.map((s, i) => (
+            {STAGES.map((s) => (
               <article key={s.letter} style={{ position: "relative", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", padding: "clamp(2rem, 4vw, 3.5rem)", overflow: "hidden" }}>
 
-                {/* Ghost letter */}
                 <div style={{ position: "absolute", bottom: -40, right: -20, fontFamily: SERIF, fontSize: "clamp(8rem, 18vw, 14rem)", fontWeight: 700, color: "rgba(230,57,70,0.05)", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
                   {s.letter}
                 </div>
 
                 <div style={{ position: "relative" }}>
-                  {/* Header */}
                   <div style={{ display: "flex", alignItems: "baseline", gap: 24, marginBottom: 16, flexWrap: "wrap" }}>
                     <div style={{ fontFamily: SERIF, fontSize: "clamp(3rem, 6vw, 4.5rem)", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}>
                       {s.letter}.
@@ -289,7 +284,6 @@ export default function StrawberryMethodPage() {
                     {s.description}
                   </p>
 
-                  {/* What you receive */}
                   <div style={{ marginBottom: 32 }}>
                     <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 20, textTransform: "uppercase", fontFamily: SANS }}>
                       What we craft
@@ -304,7 +298,6 @@ export default function StrawberryMethodPage() {
                     </ul>
                   </div>
 
-                  {/* Output */}
                   <div style={{ borderLeft: `2px solid ${COLOR}`, padding: "20px 24px", background: "rgba(230,57,70,0.04)", maxWidth: 720 }}>
                     <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 10, textTransform: "uppercase", fontFamily: SANS }}>
                       Output
@@ -320,7 +313,7 @@ export default function StrawberryMethodPage() {
         </div>
       </section>
 
-      {/* WHY IT WORKS — Dependency chain */}
+      {/* WHY IT WORKS */}
       <section ref={dependency.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: dependency.visible ? 1 : 0, transform: dependency.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
@@ -357,16 +350,16 @@ export default function StrawberryMethodPage() {
             Run S.T.R.A.W.<br />on your house.
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
-            The Brand Narrative Audit is the method, made operational for your house. Four weeks. Five stages. One constitution.
+            The Brand Narrative Architecture is the method, made operational for your house. Five stages, one extraction no machine can replicate.
           </p>
 
           <div style={{ marginBottom: 32, padding: "24px 32px", border: `1px solid rgba(230,57,70,0.3)`, background: "rgba(230,57,70,0.04)", maxWidth: 520, margin: "0 auto 48px" }}>
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 12, textTransform: "uppercase" }}>The Signature Commission</div>
             <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 700, marginBottom: 8, letterSpacing: "-0.02em" }}>
-              The Brand Narrative Audit
+              Brand Narrative Architecture
             </div>
             <div style={{ fontFamily: SERIF, fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 700, color: COLOR, letterSpacing: "-0.03em" }}>
-              9,500€
+              4,500€
             </div>
           </div>
 
