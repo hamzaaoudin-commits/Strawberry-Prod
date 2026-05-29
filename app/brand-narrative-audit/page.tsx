@@ -8,7 +8,7 @@ const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
-const STRIPE_URL = "https://buy.stripe.com/4gMeV6eeMdv6g2O3Vef7i0a"
+const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 
 const DELIVERABLES = [
   {
@@ -514,7 +514,6 @@ export default function BrandNarrativeArchitecturePage() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
-      {/* HERO */}
       <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
@@ -534,7 +533,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* WHY NOW */}
       <section ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>Why Now</div>
@@ -547,7 +545,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* WHY A HUMAN */}
       <section ref={human.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.18, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: human.visible ? 1 : 0, transform: human.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -577,7 +574,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* WHAT I BUILD */}
       <section ref={build.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: build.visible ? 1 : 0, transform: build.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>What I Build</div>
@@ -587,7 +583,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* THE EXTRACTION */}
       <section ref={extraction.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: extraction.visible ? 1 : 0, transform: extraction.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>How It Happens</div>
@@ -600,7 +595,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* WHAT YOU RECEIVE — 5 deliverables */}
       <section ref={deliver.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", opacity: deliver.visible ? 1 : 0, transform: deliver.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
@@ -623,7 +617,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* INSIDE THE ARCHITECTURE — mockups */}
       <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -660,7 +653,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* HOW WE'LL KNOW IT WORKED */}
       <section ref={success.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: success.visible ? 1 : 0, transform: success.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
@@ -683,7 +675,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* WHAT YOU ALSO RECEIVE */}
       <section ref={also.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.15, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: also.visible ? 1 : 0, transform: also.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -705,7 +696,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* INVESTMENT */}
       <section ref={invest.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>The Investment</div>
@@ -719,7 +709,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
