@@ -8,7 +8,7 @@ const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
-const STRIPE_URL = "https://buy.stripe.com/4gMeV6eeMdv6g2O3Vef7i0a"
+const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 
 const LETTERS = [
   { letter: "S", name: "Soul", verb: "Find the soul." },
