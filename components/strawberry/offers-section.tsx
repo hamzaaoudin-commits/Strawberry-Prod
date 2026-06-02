@@ -55,7 +55,7 @@ export function OffersSection() {
             It begins with an extraction no AI can automate: your truth, your singularity, the thing you no longer see because you are inside it. From it, a complete repositioning — delivered and exploitable the Monday after.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)", marginBottom: 48 }}>
+          <div className="deliverables-grid" style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)", marginBottom: 48 }}>
             {DELIVERABLES.map((d) => (
               <div key={d.n} style={{ background: "#0a0a0a", padding: "24px 18px", textAlign: "center" }}>
                 <div style={{ fontFamily: SERIF, fontSize: "1.5rem", color: COLOR, fontWeight: 700, marginBottom: 8, lineHeight: 1 }}>{d.n}</div>
@@ -63,6 +63,22 @@ export function OffersSection() {
               </div>
             ))}
           </div>
+
+          <style jsx>{`
+            .deliverables-grid {
+              grid-template-columns: repeat(1, 1fr);
+            }
+            @media (min-width: 640px) {
+              .deliverables-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 900px) {
+              .deliverables-grid {
+                grid-template-columns: repeat(5, 1fr);
+              }
+            }
+          `}</style>
 
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
             <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 15px 40px ${GLOW}` }}>
