@@ -557,7 +557,8 @@ export default function BrandNarrativeArchitecturePage() {
               What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
+
+          <div className="pact-grid" style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
             {HUMAN_PACT.map((p, i) => (
               <div key={i} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,2.5rem)", display: "flex", flexDirection: "column", gap: 20 }}>
                 <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>0{i + 1}.</div>
@@ -566,6 +567,18 @@ export default function BrandNarrativeArchitecturePage() {
               </div>
             ))}
           </div>
+
+          <style jsx>{`
+            .pact-grid {
+              grid-template-columns: repeat(1, 1fr);
+            }
+            @media (min-width: 720px) {
+              .pact-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+          `}</style>
+
           <div style={{ marginTop: 64, textAlign: "center" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontStyle: "italic", color: COLOR, letterSpacing: "-0.01em", lineHeight: 1.5, maxWidth: 700, margin: "0 auto" }}>
               When everyone has access to the same machine, the only edge left is the one a human refuses to share.
