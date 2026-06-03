@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 
@@ -63,7 +64,7 @@ export function HeroSection() {
             borderRadius: 100, padding: "6px 16px", marginBottom: 32,
           }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946" }} />
-            <span style={{ color: "#e63946", fontSize: 12, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.12em", fontWeight: 600 }}>NARRATIVE DIRECTION STUDIO · PARIS</span>
+            <span style={{ color: "#e63946", fontSize: 12, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.12em", fontWeight: 600 }}>NARRATIVE PERCEPTION STUDIO · PARIS</span>
           </div>
 
           <h1 style={{
@@ -76,10 +77,10 @@ export function HeroSection() {
             letterSpacing: "-0.03em",
             maxWidth: 900,
           }}>
-            {"Your brand doesn't need more content."}
+            {"We don't build brands."}
             <br />
             <span style={{ background: "linear-gradient(135deg,#e63946 20%,#ff1a1a 60%,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              It needs to be unmistakable.
+              We build the universe they live in.
             </span>
           </h1>
 
@@ -88,14 +89,14 @@ export function HeroSection() {
             fontSize: "clamp(1rem,1.8vw,1.25rem)",
             color: "rgba(255,255,255,0.55)",
             lineHeight: 1.7,
-            maxWidth: 600,
+            maxWidth: 640,
             marginBottom: 52,
           }}>
-            We build narrative perception systems that turn attention into authority — and authority into revenue. For creators, founders, and brands who refuse to blend in.
+            A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris.
           </p>
 
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
-            <a href="#services" style={{
+          <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
+            <Link href="/brand-narrative-audit" style={{
               background: "linear-gradient(135deg,#e63946,#ff1a1a)",
               color: "#fff", padding: "16px 36px", borderRadius: 100,
               fontSize: 15, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 700,
@@ -104,22 +105,23 @@ export function HeroSection() {
               transition: "transform 0.2s, box-shadow 0.2s",
               display: "inline-block",
             }}
-              onMouseEnter={e => { (e.target as HTMLElement).style.transform = "translateY(-3px) scale(1.03)"; (e.target as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.55)"; }}
-              onMouseLeave={e => { (e.target as HTMLElement).style.transform = "translateY(0) scale(1)"; (e.target as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px) scale(1.03)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.55)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(0) scale(1)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
             >
-              See How We Work
-            </a>
-            <a href="#cases" style={{
-              color: "rgba(255,255,255,0.6)", fontSize: 15,
+              Commission the Work →
+            </Link>
+            <Link href="/case-studies" style={{
+              color: "rgba(255,255,255,0.55)", fontSize: 14,
               fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", textDecoration: "none",
-              borderBottom: "1px solid rgba(255,255,255,0.25)",
-              paddingBottom: 2, transition: "color 0.2s",
+              borderBottom: "1px solid rgba(255,255,255,0.2)",
+              paddingBottom: 2, transition: "color 0.2s, border-color 0.2s",
+              letterSpacing: "0.02em",
             }}
-              onMouseEnter={e => (e.target as HTMLElement).style.color = "#fff"}
-              onMouseLeave={e => (e.target as HTMLElement).style.color = "rgba(255,255,255,0.6)"}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#fff"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.5)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.55)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.2)"; }}
             >
-              View Case Studies
-            </a>
+              View case studies
+            </Link>
           </div>
 
           {/* Trust bar */}
