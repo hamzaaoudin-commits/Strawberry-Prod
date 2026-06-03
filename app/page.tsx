@@ -1,7 +1,6 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
 import { ProblemSection } from "@/components/strawberry/problem-section"
-import { ServicesSection } from "@/components/strawberry/services-section"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { AboutSection } from "@/components/strawberry/about-section"
 import { CasesSection } from "@/components/strawberry/cases-section"
@@ -15,7 +14,6 @@ export default function Home() {
       <NavBar />
       <HeroSection />
       <ProblemSection />
-      <ServicesSection />
       <OffersSection />
       <AboutSection />
       <CasesSection />
