@@ -141,8 +141,8 @@ export default function StrawberryMethodPage() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
-      {/* HERO */}
-      <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
+      {/* HERO — bloc letter cards retiré */}
+      <section ref={hero.ref as any} style={{ minHeight: "90vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
@@ -152,26 +152,9 @@ export default function StrawberryMethodPage() {
             The Strawberry<br />
             <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Method.</span>
           </h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 64px", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
             Five stages. One doctrine. The repeatable architecture behind every house we make unforgettable.
           </p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(8px, 1.5vw, 16px)", maxWidth: 720, margin: "0 auto 48px" }}>
-            {LETTERS.map((l) => (
-              <div key={l.letter} style={{ textAlign: "center" }}>
-                <div style={{ border: `1px solid ${COLOR}`, padding: "clamp(12px, 2vw, 20px) 0", fontFamily: SERIF, fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 8, background: "rgba(230,57,70,0.04)" }}>
-                  {l.letter}
-                </div>
-                <div style={{ fontFamily: SANS, fontSize: "clamp(9px, 1.1vw, 11px)", color: "rgba(255,255,255,0.7)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  {l.name}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ fontFamily: SERIF, fontSize: "clamp(0.95rem, 1.4vw, 1.15rem)", fontStyle: "italic", color: "rgba(255,255,255,0.55)", letterSpacing: "0.02em" }}>
-            Not a checklist. A category-creation engine.
-          </div>
         </div>
       </section>
 
@@ -201,7 +184,7 @@ export default function StrawberryMethodPage() {
         </div>
       </section>
 
-      {/* THE REVEAL */}
+      {/* THE REVEAL — bloc unique avec letter cards éclairées + verbes journey */}
       <section ref={reveal.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.3, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", opacity: reveal.visible ? 1 : 0, transform: reveal.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
@@ -212,6 +195,7 @@ export default function StrawberryMethodPage() {
             </h2>
           </div>
 
+          {/* Giant letter cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(8px, 1.2vw, 16px)", marginBottom: 64 }}>
             {LETTERS.map((l) => (
               <div key={l.letter} style={{ textAlign: "center" }}>
@@ -226,6 +210,7 @@ export default function StrawberryMethodPage() {
             ))}
           </div>
 
+          {/* Journey flow */}
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "clamp(8px, 1.5vw, 20px)", marginBottom: 56 }}>
             {LETTERS.map((l, i) => (
               <div key={l.letter} style={{ display: "flex", alignItems: "center", gap: "clamp(8px, 1.5vw, 20px)" }}>
@@ -313,7 +298,7 @@ export default function StrawberryMethodPage() {
         </div>
       </section>
 
-      {/* WHY IT WORKS */}
+      {/* DEPENDENCY CHAIN */}
       <section ref={dependency.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: dependency.visible ? 1 : 0, transform: dependency.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
@@ -350,7 +335,7 @@ export default function StrawberryMethodPage() {
             Run S.T.R.A.W.<br />on your house.
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
-            The Brand Narrative Architecture is the method, made operational for your house. Five stages, one extraction no machine can replicate.
+            The Brand Narrative Architecture is the method, made operational for your house. Four weeks. Five stages. One constitution.
           </p>
 
           <div style={{ marginBottom: 32, padding: "24px 32px", border: `1px solid rgba(230,57,70,0.3)`, background: "rgba(230,57,70,0.04)", maxWidth: 520, margin: "0 auto 48px" }}>
