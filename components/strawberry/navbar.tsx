@@ -6,7 +6,6 @@ import Link from "next/link"
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/#services" },
   { label: "The Commission", href: "/brand-narrative-audit" },
   { label: "The Method", href: "/strawberry-method" },
   { label: "Case Studies", href: "/case-studies" },
@@ -34,9 +33,9 @@ export function NavBar() {
           {mobileOpen ? "✕" : "☰"}
         </button>
 
-        <div className="hidden md:flex" style={{ gap: 26, alignItems: "center" }}>
+        <div className="hidden md:flex" style={{ gap: 28, alignItems: "center" }}>
           {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="nav-link" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "color 0.2s" }} onMouseEnter={e => (e.target as HTMLElement).style.color = "#fff"} onMouseLeave={e => (e.target as HTMLElement).style.color = "rgba(255,255,255,0.65)"}>
+            <Link key={l.href} href={l.href} className="nav-link" style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, textDecoration: "none", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "color 0.2s" }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#fff"} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"}>
               {l.label}
             </Link>
           ))}
