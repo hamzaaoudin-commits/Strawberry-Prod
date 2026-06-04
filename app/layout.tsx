@@ -16,9 +16,66 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Strawberry Production | Narrative Perception Studio',
-  description: 'We build narrative perception systems that turn attention into authority — and authority into revenue. For creators, founders, and brands who refuse to blend in.',
-  generator: 'v0.app',
+  metadataBase: new URL('https://v0-strawberryprod.vercel.app'),
+  title: {
+    default: 'Strawberry Production · Brand Narrative Architecture',
+    template: '%s · Strawberry Production',
+  },
+  description: "A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris. One commission per house, four per quarter.",
+  keywords: [
+    'brand narrative',
+    'narrative architecture',
+    'founder positioning',
+    'brand strategy',
+    'narrative perception studio',
+    'Paris brand consultancy',
+    'founder identity',
+    'AI-proof branding',
+  ],
+  authors: [{ name: 'Hamza El Jaouahiry', url: 'https://v0-strawberryprod.vercel.app' }],
+  creator: 'Hamza El Jaouahiry',
+  publisher: 'Strawberry Production',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    alternateLocale: ['fr_FR'],
+    url: 'https://v0-strawberryprod.vercel.app',
+    siteName: 'Strawberry Production',
+    title: 'Strawberry Production · Narrative Perception Studio',
+    description: "We don't build brands. We build the universe they live in. A narrative perception studio from Paris, for founders who refuse to sound like everyone else.",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Strawberry Production — Narrative Perception Studio · Paris',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Strawberry Production · Narrative Perception Studio',
+    description: "We don't build brands. We build the universe they live in.",
+    images: ['/og-image.png'],
+    creator: '@strawberry_prods',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       {
@@ -36,6 +93,7 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  category: 'business',
 }
 
 export default function RootLayout({
