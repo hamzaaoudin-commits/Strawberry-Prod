@@ -6,7 +6,7 @@ import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 
 const BRANDS = [
-  "Netflix", "Apple", "Nike", "Tesla", "Spotify", "Adobe", "Discord", "Stripe"
+  "Substack", "Linear", "Pitch", "Arc", "Vercel", "Notion", "Plausible", "Cal.com"
 ]
 
 export function HeroSection() {
