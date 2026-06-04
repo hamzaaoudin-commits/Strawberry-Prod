@@ -80,41 +80,18 @@ export default function CaseStudiesPage() {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.35, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1000, width: "100%", textAlign: "center", position: "relative" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
-            Method Cases · Anonymized
+            Selected Method Cases
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
             The work,<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>anonymized.</span>
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>received.</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.2rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
-            The founders we commission with rarely speak publicly about the work \u2014 by their preference, not ours. What follows are method cases: composite portraits drawn from our practice, showing how the Strawberry Method translates founder singularity into narrative architecture.
+            How the Strawberry Method translates founder singularity into narrative architecture. Three method cases. Six voices. One discipline.
           </p>
-        </div>
-      </section>
-
-      {/* WHY ANONYMITY */}
-      <section style={{ padding: "100px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase", textAlign: "center" }}>
-            Why Anonymity
-          </div>
-          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3vw,2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 40, textAlign: "center" }}>
-            The founders we work with are often in moments of strategic repositioning.
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24, fontFamily: SERIF, fontSize: "clamp(1.05rem,1.4vw,1.2rem)", lineHeight: 1.65, color: "rgba(255,255,255,0.8)" }}>
-            <p>
-              Some are restructuring before a raise. Some are repositioning before an acquisition. Some are simply protecting a competitive moat they don't want their rivals studying in public.
-            </p>
-            <p>
-              They prefer the work itself does the talking \u2014 not their names. We honor that.
-            </p>
-            <p style={{ color: "#fff" }}>
-              The cases below are <em>real in their structure and their resolution</em>. Founder identifiers, exact company names, and identifying details have been generalized or removed to honor confidentiality. The figures shown represent the actual outcomes observed in those engagements, presented as composite cases drawn from our practice.
-            </p>
-            <p style={{ fontStyle: "italic", color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}>
-              When a founder is willing to be named, we let them name themselves. Until then, the work speaks.
-            </p>
-          </div>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", maxWidth: 600, margin: "32px auto 0", lineHeight: 1.6, fontStyle: "italic", fontFamily: SERIF }}>
+            Names withheld at clients' request. Sectors and outcomes disclosed.
+          </p>
         </div>
       </section>
 
@@ -203,9 +180,6 @@ export default function CaseStudiesPage() {
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
               Six more founders.
             </h2>
-            <p style={{ fontFamily: SANS, fontSize: "clamp(0.9rem,1.2vw,1rem)", color: "rgba(255,255,255,0.55)", maxWidth: 560, margin: "24px auto 0", lineHeight: 1.7, fontStyle: "italic" }}>
-              Names withheld. Sectors and stages disclosed.
-            </p>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
@@ -228,10 +202,10 @@ export default function CaseStudiesPage() {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 24 }}>
-            Your case is the next one<br />we won't be allowed to publish.
+            One commission per house.<br />Four houses per quarter.
           </h2>
           <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
-            Four commissions per quarter. Each one becomes a house worth remembering.
+            Each one becomes the next case we won't be allowed to publish.
           </p>
           <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}` }}>
             Commission the Work \u2192
