@@ -734,6 +734,11 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ marginTop: 24, fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
             Limited to four commissions per quarter.
           </div>
+          <div style={{ marginTop: 12, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.06)", maxWidth: 320, margin: "12px auto 0" }}>
+            <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: 0 }}>
+              Confidential commission · NDA available
+            </p>
+          </div>
         </div>
       </section>
 
