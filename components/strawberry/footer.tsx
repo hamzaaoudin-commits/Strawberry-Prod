@@ -115,6 +115,9 @@ export function Footer() {
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.5vw, 1.2rem)", fontStyle: "italic", color: "rgba(255,255,255,0.5)", letterSpacing: "-0.01em", lineHeight: 1.5, margin: 0 }}>
             Built to be remembered.
           </p>
+          <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.3)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 16, marginBottom: 0 }}>
+            Confidential by default · NDA available on request
+          </p>
         </div>
 
       </div>
