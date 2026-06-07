@@ -58,51 +58,6 @@ export default function ManifestoPage() {
         </div>
       </section>
 
-      {/* BOX SET — HERO CTA */}
-      <section style={{ padding: "20px clamp(1.5rem,4vw,4rem) 80px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ position: "relative", borderRadius: 28, padding: "clamp(2rem, 4vw, 3.5rem)", background: `linear-gradient(135deg, ${COLOR}1f, rgba(255,255,255,0.02))`, border: `1px solid ${COLOR}55`, overflow: "hidden" }}>
-            <div aria-hidden style={{ position: "absolute", top: "-30%", right: "-10%", width: 700, height: 700, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.2, filter: "blur(90px)", pointerEvents: "none" }} />
-            <div aria-hidden style={{ position: "absolute", bottom: "-30%", left: "-10%", width: 500, height: 500, background: `radial-gradient(circle, #ff1a1a, transparent 70%)`, opacity: 0.12, filter: "blur(80px)", pointerEvents: "none" }} />
-            <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "center" }} className="boxset-grid">
-              <div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 18 }}>
-                  <div style={{ display: "inline-block", background: `${COLOR}33`, color: "#fff", fontSize: 10, fontFamily: SANS, fontWeight: 700, padding: "5px 14px", borderRadius: 100, letterSpacing: "0.14em" }}>BOX SET</div>
-                  <div style={{ display: "inline-block", background: "rgba(255,255,255,0.08)", color: "#fff", fontSize: 10, fontFamily: SANS, fontWeight: 700, padding: "5px 14px", borderRadius: 100, letterSpacing: "0.14em" }}>ALL THREE VOLUMES</div>
-                </div>
-                <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, color: "#fff", marginBottom: 16, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-                  The Trilogy<br />
-                  <span style={{ color: COLOR }}>Box Set.</span>
-                </h2>
-                <p style={{ fontFamily: SANS, fontSize: 16, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: "0 0 8px 0", maxWidth: 620 }}>
-                  The complete trilogy in one immersive reader. Three movements, one operating system for brands that intend to remain.
-                </p>
-                <p style={{ fontFamily: SERIF, fontSize: 17, fontStyle: "italic", color: "rgba(255,255,255,0.6)", margin: "12px 0 0 0", maxWidth: 620, lineHeight: 1.5 }}>
-                  Read Vol. I to be remembered. Vol. II to be followed. Vol. III to remain. Read all three to become an institution.
-                </p>
-              </div>
-              <div style={{ minWidth: 240, display: "flex", flexDirection: "column", gap: 10 }}>
-                <a href="/manifesto-box-set.html" target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "18px 32px", borderRadius: 100, fontFamily: SANS, fontSize: 15, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 16px 48px ${GLOW}` }}>
-                  Read the Box Set →
-                </a>
-                <div style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center", letterSpacing: "0.04em" }}>
-                  Opens in a new tab · Free · Browser reader
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OR — divider */}
-      <section style={{ padding: "20px clamp(1.5rem,4vw,4rem) 40px", textAlign: "center" }}>
-        <div style={{ maxWidth: 280, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.1)" }} />
-          <div style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.2em", fontWeight: 600 }}>OR · ONE AT A TIME</div>
-          <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.1)" }} />
-        </div>
-      </section>
-
       {/* THREE VOLUMES */}
       <section style={{ padding: "20px clamp(1.5rem,4vw,4rem) 120px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -154,12 +109,6 @@ export default function ManifestoPage() {
       </section>
 
       <Footer />
-
-      <style>{`
-        @media (max-width: 720px) {
-          .boxset-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </main>
   )
 }
