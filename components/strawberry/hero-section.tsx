@@ -69,7 +69,7 @@ export function HeroSection() {
 
           <h1 style={{
             fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-            fontSize: "clamp(3rem,7vw,6.5rem)",
+            fontSize: "clamp(2rem,7vw,6.5rem)",
             fontWeight: 700,
             lineHeight: 1.06,
             color: "#fff",
@@ -86,7 +86,7 @@ export function HeroSection() {
 
           <p style={{
             fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-            fontSize: "clamp(1rem,1.8vw,1.25rem)",
+            fontSize: "clamp(0.95rem,1.8vw,1.25rem)",
             color: "rgba(255,255,255,0.55)",
             lineHeight: 1.7,
             maxWidth: 640,
@@ -95,7 +95,7 @@ export function HeroSection() {
             A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris.
           </p>
 
-          <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="hero-cta" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
             <Link href="/brand-narrative-audit" style={{
               background: "linear-gradient(135deg,#e63946,#ff1a1a)",
               color: "#fff", padding: "16px 36px", borderRadius: 100,
@@ -129,7 +129,7 @@ export function HeroSection() {
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", marginBottom: 8 }}>
               Trusted by ambitious creators, founders, and brands who refuse to be ordinary.
             </p>
-            <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center", marginBottom: 24 }}>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", marginBottom: 24 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
                 <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>47+ brands transformed in 2025</span>
@@ -163,6 +163,13 @@ export function HeroSection() {
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        @media (max-width: 640px) {
+          .hero-cta {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 20px !important;
+          }
         }
       `}</style>
     </section>
