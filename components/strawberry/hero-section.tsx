@@ -51,7 +51,7 @@ export function HeroSection() {
         }} />
       ))}
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(1.5rem,4vw,4rem)", position: "relative", zIndex: 1, paddingTop: 120 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(1.5rem,4vw,4rem)", position: "relative", zIndex: 1, paddingTop: 120, width: "100%" }}>
         <div style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateY(0)" : "translateY(30px)",
@@ -62,31 +62,33 @@ export function HeroSection() {
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(230,57,70,0.12)", border: "1px solid rgba(230,57,70,0.35)",
             borderRadius: 100, padding: "6px 16px", marginBottom: 32,
+            maxWidth: "100%", overflow: "hidden",
           }}>
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946" }} />
-            <span style={{ color: "#e63946", fontSize: 12, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.12em", fontWeight: 600 }}>NARRATIVE PERCEPTION STUDIO · PARIS</span>
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946", flexShrink: 0 }} />
+            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>NARRATIVE PERCEPTION STUDIO · PARIS</span>
           </div>
 
           <h1 style={{
             fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-            fontSize: "clamp(2rem,7vw,6.5rem)",
+            fontSize: "clamp(1.7rem,6vw,6.5rem)",
             fontWeight: 700,
-            lineHeight: 1.06,
+            lineHeight: 1.1,
             color: "#fff",
             margin: "0 0 1.5rem",
-            letterSpacing: "-0.03em",
-            maxWidth: 900,
+            letterSpacing: "-0.02em",
+            maxWidth: "100%",
+            wordBreak: "break-word",
           }}>
             {"We don't build brands."}
             <br />
-            <span style={{ background: "linear-gradient(135deg,#e63946 20%,#ff1a1a 60%,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg,#e63946 20%,#ff1a1a 60%,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", display: "block" }}>
               We build the universe they live in.
             </span>
           </h1>
 
           <p style={{
             fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-            fontSize: "clamp(0.95rem,1.8vw,1.25rem)",
+            fontSize: "clamp(0.9rem,1.8vw,1.25rem)",
             color: "rgba(255,255,255,0.55)",
             lineHeight: 1.7,
             maxWidth: 640,
