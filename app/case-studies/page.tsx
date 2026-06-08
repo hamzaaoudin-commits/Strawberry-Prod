@@ -99,7 +99,7 @@ export default function CaseStudiesPage() {
             How the Strawberry Method translates founder singularity into narrative architecture. Three method cases. Six voices. One discipline.
           </p>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", maxWidth: 600, margin: "32px auto 0", lineHeight: 1.6, fontStyle: "italic", fontFamily: SERIF }}>
-            Names withheld at clients' request. Sectors and outcomes disclosed.
+            Names withheld at clients&apos; request. Sectors and outcomes disclosed.
           </p>
         </div>
       </section>
@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
                   <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 14, textTransform: "uppercase" }}>The Problem</div>
                   <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, fontStyle: "italic" }}>{c.problem}</p>
                 </div>
-                <div style={{ marginBottom: 32, borderLeft: `2px solid ${COLOR}`, paddingLeft: 24, background: "rgba(230,57,70,0.03)", padding: "24px 28px" }}>
+                <div style={{ marginBottom: 32, borderLeft: `2px solid ${COLOR}`, background: "rgba(230,57,70,0.03)", padding: "24px 28px" }}>
                   <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 14, textTransform: "uppercase" }}>The Method Applied</div>
                   <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>{c.method}</p>
                 </div>
@@ -159,9 +159,9 @@ export default function CaseStudiesPage() {
                   <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>{c.transformation}</p>
                 </div>
                 <blockquote style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, fontFamily: SERIF, fontSize: "clamp(1.05rem,1.5vw,1.25rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, margin: 0 }}>
-                  "{c.quote}"
+                  &ldquo;{c.quote}&rdquo;
                   <footer style={{ marginTop: 16, fontFamily: SANS, fontSize: 12, fontStyle: "normal", color: "rgba(255,255,255,0.5)", letterSpacing: "0.02em" }}>
-                    — {c.descriptor}
+                    &mdash; {c.descriptor}
                   </footer>
                 </blockquote>
               </article>
@@ -183,7 +183,7 @@ export default function CaseStudiesPage() {
             {TESTIMONIALS.map((t, i) => (
               <div key={i} style={{ padding: "32px 28px", borderLeft: `2px solid ${COLOR}`, background: "rgba(255,255,255,0.02)" }}>
                 <p style={{ fontFamily: SERIF, fontSize: "1.02rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 24 }}>
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </p>
                 <div style={{ fontFamily: SANS, fontSize: 12, color: COLOR, letterSpacing: "0.04em" }}>
                   {t.descriptor}
@@ -199,7 +199,6 @@ export default function CaseStudiesPage() {
         <div aria-hidden style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 800, height: 800, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.06, filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>
 
-          {/* Header */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 80 }} className="atlas-grid">
             <div>
               <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Free Resource</div>
@@ -226,14 +225,13 @@ export default function CaseStudiesPage() {
                   boxShadow: `0 12px 40px ${GLOW}`,
                 }}
               >
-                Read the Atlas →
+                Read the Atlas {'\u2192'}
               </a>
               <div style={{ marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: SANS, letterSpacing: "0.04em" }}>
-                128 pages · PDF · Free · No sign-up
+                128 pages &middot; PDF &middot; Free &middot; No sign-up
               </div>
             </div>
 
-            {/* Cover visual */}
             <div style={{ position: "relative" }}>
               <div style={{
                 background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)",
@@ -244,27 +242,25 @@ export default function CaseStudiesPage() {
               }}>
                 <div style={{ fontSize: 9, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, fontFamily: SANS }}>STRAWBERRY PRODUCTION</div>
                 <div style={{ width: 32, height: 1, background: `${COLOR}66`, marginBottom: 28 }} />
-                <div style={{ fontFamily: SERIF, fontSize: 11, color: "rgba(255,255,255,0.4)", fontStyle: "italic", marginBottom: 12 }}>N° 001</div>
+                <div style={{ fontFamily: SERIF, fontSize: 11, color: "rgba(255,255,255,0.4)", fontStyle: "italic", marginBottom: 12 }}>N&deg; 001</div>
                 <div style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,5vw,4rem)", fontWeight: 700, color: "#fff", lineHeight: 0.95, marginBottom: 8 }}>30</div>
                 <div style={{ fontFamily: SERIF, fontSize: "clamp(1.8rem,3.5vw,2.8rem)", fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 20 }}>Architectures</div>
                 <div style={{ width: 24, height: 1, background: `${COLOR}66`, marginBottom: 16 }} />
                 <div style={{ fontFamily: SERIF, fontSize: 13, fontStyle: "italic", color: COLOR, marginBottom: 40 }}>An Atlas of Narrative Patterns</div>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
                   <div style={{ width: 36, height: 36, border: `1px solid ${COLOR}55`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ color: COLOR, fontSize: 16 }}>✦</span>
+                    <span style={{ color: COLOR, fontSize: 16 }}>&#10022;</span>
                   </div>
                 </div>
                 <div style={{ fontFamily: SERIF, fontSize: 11, fontStyle: "italic", color: "rgba(255,255,255,0.4)", textAlign: "center" }}>Strawberry Production</div>
                 <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: 4, fontFamily: SANS }}>PARIS</div>
               </div>
-              {/* Page count badge */}
               <div style={{ position: "absolute", bottom: -16, right: -16, background: COLOR, color: "#fff", padding: "8px 16px", borderRadius: 100, fontSize: 11, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em" }}>
                 128 pages
               </div>
             </div>
           </div>
 
-          {/* Sample cases preview */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 56 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: "rgba(255,255,255,0.4)", marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>
               A sample of what&apos;s inside
@@ -300,7 +296,7 @@ export default function CaseStudiesPage() {
             Each one becomes the next case we won&apos;t be allowed to publish.
           </p>
           <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}` }}>
-            Commission the Work →
+            Commission the Work {'\u2192'}
           </Link>
         </div>
       </section>
