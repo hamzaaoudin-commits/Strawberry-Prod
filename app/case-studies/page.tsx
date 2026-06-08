@@ -1,4 +1,4 @@
-"use client" 
+"use client"
 
 import Link from "next/link"
 
@@ -213,6 +213,7 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
+              <a
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
