@@ -16,7 +16,7 @@ import { GlassCard } from "./glass-card"
 // ============================================================
 
 const FORMSPREE_ID = "xnjwroeq"
-const CONTACT_EMAIL = "Strawberryprod.contact@gmail.com"
+const CONTACT_EMAIL = "hamza@gostrawberryprod.com"
 
 const CONTACT_INFO = [
   { label: "Email", value: CONTACT_EMAIL, icon: "✉" },
