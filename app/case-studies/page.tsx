@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect, useRef } from "react"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -23,6 +24,7 @@ const METHOD_CASES = [
     method: "Differentiation Diagnostic isolated the territorial vacuum: not a collaborative workflow tool but the operating layer for product teams that refuse to drown in tickets. Narrative Platform articulated the conviction in a single defensible sentence. Language System retired the words every competitor was using — \"collaborate\", \"streamline\", \"empower\" — and installed a new lexicon the buyer could not unsee. The enterprise tier received its own narrative architecture, distinct from the core offer.",
     transformation: "MRR moved from 14k to 58k in the first quarter post-delivery. Two enterprise contracts signed in month two. Average sales cycle cut from 11 weeks to 4. Pipeline doubled the quarter after. The founder reported using the Coherence Guide to brief her first marketing hire — the hire onboarded in three days instead of three weeks.",
     quote: "We'd been trying to articulate what we do for three years. They got it in three weeks. Our sales cycle is now shorter than our onboarding.",
+    chartId: "cs-chart1",
   },
   {
     descriptor: "Executive coaching · Independent · Solo founder",
@@ -32,6 +34,7 @@ const METHOD_CASES = [
     method: "Differentiation Diagnostic isolated the single tension only this founder could own: that high-performers are coached by people who have never operated at high performance. Narrative Platform built the conviction system around that fracture. Deployment Kit gave the founder five content territories tied to each pillar, with hook patterns and reframes ready to deploy. The founder stopped guessing what to post — every piece now traced back to a narrative pillar.",
     transformation: "2.4M organic views across one quarter. 1,200 qualified founders on the waitlist for the next cohort. One short-form essay alone did 870k views and is still pulling leads three months later. The launch sold out without a single ad. The founder now refuses speaking engagements that don't align with one of the five pillars — his calendar reorganized itself around the architecture.",
     quote: "I stopped guessing what to post. The language system they wrote is the closest thing I've had to a creative co-founder — except it doesn't sleep.",
+    chartId: "cs-chart2",
   },
   {
     descriptor: "Financial education · Lyon · Bootstrapped",
@@ -41,6 +44,7 @@ const METHOD_CASES = [
     method: "Differentiation Diagnostic surfaced the unclaimed ground: that financial education in France either condescended to beginners or assumed they were already insiders. Narrative Platform named the third position — the rigorous initiation, not the dumbed-down course. Language System gave her the precise lexicon she had been circling for two years: phrases that pre-qualified prospects before they ever booked a call.",
     transformation: "Inbound pipeline value 4x over the quarter following delivery. Prospects DMing her using the exact phrasing from the Narrative Platform. Cold leads almost disappeared — the people who reached out had already self-qualified through the content. Sales calls became confirmation conversations, not education sessions. The founder reduced her sales call time by 60% while increasing close rate.",
     quote: "It named the thing I'd been circling for two years. After delivery, prospects started repeating my own words back to me.",
+    chartId: "cs-chart3",
   },
 ]
 
@@ -80,7 +84,103 @@ const ATLAS_CASES = [
   { n: "19", title: "We are building something that does not exist. Every prospect tries to put us in a box that already does." },
 ]
 
+function useCharts() {
+  const initialized = useRef(false)
+  useEffect(() => {
+    if (initialized.current) return
+    const script = document.createElement("script")
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+    script.onload = () => {
+      initialized.current = true
+      const Chart = (window as any).Chart
+      const gridColor = "rgba(255,255,255,0.08)"
+      const tickColor = "rgba(255,255,255,0.4)"
+
+      new Chart(document.getElementById("cs-chart1"), {
+        type: "bar",
+        data: {
+          labels: ["Before", "After"],
+          datasets: [{
+            data: [14, 58],
+            backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"],
+            borderRadius: 4,
+            barThickness: 48,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k MRR" } },
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
+            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0, max: 70 },
+          },
+        },
+      })
+
+      new Chart(document.getElementById("cs-chart2"), {
+        type: "line",
+        data: {
+          labels: ["Month 1", "Month 2", "Month 3"],
+          datasets: [{
+            data: [120, 980, 2400],
+            borderColor: "#e63946",
+            backgroundColor: "rgba(230,57,70,0.1)",
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: "#e63946",
+            pointRadius: 5,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k views" } },
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
+            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0 },
+          },
+        },
+      })
+
+      new Chart(document.getElementById("cs-chart3"), {
+        type: "bar",
+        data: {
+          labels: ["Before", "After"],
+          datasets: [{
+            data: [1, 4],
+            backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"],
+            borderRadius: 4,
+            barThickness: 48,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "x pipeline" } },
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
+            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "x" }, min: 0, max: 5 },
+          },
+        },
+      })
+    }
+    document.head.appendChild(script)
+  }, [])
+}
+
 export default function CaseStudiesPage() {
+  useCharts()
+
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
@@ -156,7 +256,12 @@ export default function CaseStudiesPage() {
                 </div>
                 <div style={{ marginBottom: 40 }}>
                   <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 14, textTransform: "uppercase" }}>The Transformation</div>
-                  <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7 }}>{c.transformation}</p>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+                    <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: 0 }}>{c.transformation}</p>
+                    <div style={{ position: "relative", height: 200 }}>
+                      <canvas id={c.chartId} role="img" aria-label={c.headline} />
+                    </div>
+                  </div>
                 </div>
                 <blockquote style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, fontFamily: SERIF, fontSize: "clamp(1.05rem,1.5vw,1.25rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, margin: 0 }}>
                   &ldquo;{c.quote}&rdquo;
@@ -213,7 +318,6 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
-              <a
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
