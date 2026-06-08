@@ -10,7 +10,7 @@ const GLOW = "rgba(230,57,70,0.35)"
 const FORMSPREE_URL = "https://formspree.io/f/xnjwroeq"
 
 const CONTACT_INFO = [
-  { label: "Email", value: "Strawberryprod.contact@gmail.com", icon: "✉" },
+  { label: "Email", value: "hamza@gostrawberryprod.com", icon: "✉" },
   { label: "Instagram", value: "@strawberry_prods", icon: "◈" },
   { label: "Location", value: "Paris, France", icon: "◎" },
 ]
@@ -63,7 +63,7 @@ export function ContactSection() {
       if (res.ok) {
         setStatus("sent")
       } else {
-        let msg = "Something went wrong. Please email us directly at Strawberryprod.contact@gmail.com."
+        let msg = "Something went wrong. Please email us directly at hamza@gostrawberryprod.com."
         try {
           const data = await res.json()
           if (data?.errors?.[0]?.message) msg = data.errors[0].message
@@ -73,7 +73,7 @@ export function ContactSection() {
       }
     } catch {
       setStatus("error")
-      setErrorMsg("Could not connect. Please email us directly at Strawberryprod.contact@gmail.com.")
+      setErrorMsg("Could not connect. Please email us directly at hamza@gostrawberryprod.com.")
     }
   }
 
