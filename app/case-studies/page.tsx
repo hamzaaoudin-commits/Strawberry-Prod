@@ -184,7 +184,6 @@ export default function CaseStudiesPage() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
-      {/* HERO */}
       <section style={{ minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "140px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.35, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1000, width: "100%", textAlign: "center", position: "relative" }}>
@@ -204,7 +203,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* GLOBAL STATS */}
       <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 32 }}>
           {GLOBAL_STATS.map((s, i) => (
@@ -220,7 +218,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* METHOD CASES */}
       <section style={{ padding: "120px clamp(1.5rem,4vw,4rem)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
@@ -275,7 +272,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
       <section style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
@@ -299,7 +295,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* 30 ARCHITECTURES ATLAS */}
       <section style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative", overflow: "hidden" }}>
         <div aria-hidden style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 800, height: 800, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.06, filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>
@@ -330,7 +325,7 @@ export default function CaseStudiesPage() {
                   boxShadow: `0 12px 40px ${GLOW}`,
                 }}
               >
-                Read the Atlas {'\u2192'}
+                Read the Atlas &#8594;
               </a>
               <div style={{ marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: SANS, letterSpacing: "0.04em" }}>
                 128 pages &middot; PDF &middot; Free &middot; No sign-up
@@ -390,7 +385,6 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
       <section style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
@@ -401,7 +395,7 @@ export default function CaseStudiesPage() {
             Each one becomes the next case we won&apos;t be allowed to publish.
           </p>
           <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}` }}>
-            Commission the Work {'\u2192'}
+            Commission the Work &#8594;
           </Link>
         </div>
       </section>
