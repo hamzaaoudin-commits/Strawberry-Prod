@@ -109,6 +109,15 @@ const CONSEQUENCES = [
   { letter: "W", text: "Without Weaponize — no embodiment. The doctrine never meets the world." },
 ]
 
+// The bridge from method (process) to commission (artifact)
+const BRIDGE_FLOW = [
+  { stage: "S + T", arrow: "→", deliverable: "Differentiation Diagnostic", note: "Soul & Territory mapped together" },
+  { stage: "R", arrow: "→", deliverable: "Narrative Platform", note: "The reframed conviction made operational" },
+  { stage: "A", arrow: "→", deliverable: "Language System", note: "The vocabulary the architecture demands" },
+  { stage: "W", arrow: "→", deliverable: "Deployment Kit", note: "The first 90 days, ready Monday" },
+  { stage: "All five", arrow: "→", deliverable: "Coherence Guide", note: "The doctrine, made transmissible" },
+]
+
 function useReveal() {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
@@ -136,6 +145,7 @@ export default function StrawberryMethodPage() {
   const reveal = useReveal()
   const stages = useReveal()
   const dependency = useReveal()
+  const bridge = useReveal()
   const cta = useReveal()
 
   return (
@@ -322,6 +332,67 @@ export default function StrawberryMethodPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BRIDGE — Method produces Commission */}
+      <section ref={bridge.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
+        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.18, pointerEvents: "none" }} />
+        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: bridge.visible ? 1 : 0, transform: bridge.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+
+          <div style={{ textAlign: "center", marginBottom: 72 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>From Method to Artifact</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
+              The workshop. And what comes out of it.
+            </h2>
+            <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
+              S.T.R.A.W. is the process — the five stages I move through to build a house. The <strong style={{ color: "#fff" }}>Brand Narrative Architecture</strong> is what those stages produce — five deliverables, bound into a single editorial document, handed to you at the end of week four.
+            </p>
+          </div>
+
+          {/* The flow table */}
+          <div style={{ marginBottom: 56, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
+
+            {/* Header row */}
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(110px,1fr) auto minmax(220px,1.4fr)", gap: "clamp(12px, 2vw, 24px)", padding: "20px clamp(1rem, 2.5vw, 2rem)", borderBottom: "1px solid rgba(255,255,255,0.1)", alignItems: "center" }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", fontFamily: SANS }}>
+                Method stage
+              </div>
+              <div style={{ width: 16 }} />
+              <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>
+                Commission deliverable
+              </div>
+            </div>
+
+            {/* Flow rows */}
+            {BRIDGE_FLOW.map((row, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "minmax(110px,1fr) auto minmax(220px,1.4fr)", gap: "clamp(12px, 2vw, 24px)", padding: "clamp(1.25rem,2vw,1.75rem) clamp(1rem, 2.5vw, 2rem)", borderBottom: i < BRIDGE_FLOW.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none", alignItems: "center" }}>
+                <div style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.6vw, 1.25rem)", color: "#fff", fontWeight: 600, letterSpacing: "-0.01em" }}>
+                  {row.stage}
+                </div>
+                <div style={{ color: COLOR, fontSize: "clamp(1rem, 1.4vw, 1.25rem)", fontFamily: SERIF, fontWeight: 400 }}>
+                  {row.arrow}
+                </div>
+                <div>
+                  <div style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.6vw, 1.3rem)", color: COLOR, fontWeight: 700, lineHeight: 1.2, marginBottom: 4, letterSpacing: "-0.01em" }}>
+                    {row.deliverable}
+                  </div>
+                  <div style={{ fontFamily: SANS, fontSize: "clamp(0.82rem, 1vw, 0.9rem)", color: "rgba(255,255,255,0.55)", fontStyle: "italic", lineHeight: 1.4 }}>
+                    {row.note}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto" }}>
+            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", marginBottom: 32 }}>
+              The method is the discipline by which the artifact is made. The artifact is what you take home.
+            </p>
+            <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 14, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", padding: "12px 28px", border: `1px solid ${COLOR}`, borderRadius: 100, transition: "all 0.2s" }}>
+              See the Commission →
+            </Link>
           </div>
         </div>
       </section>
