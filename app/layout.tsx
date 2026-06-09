@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://v0-strawberryprod.vercel.app'),
+  metadataBase: new URL('https://www.gostrawberryprod.com'),
   title: {
     default: 'Strawberry Production · Brand Narrative Architecture',
     template: '%s · Strawberry Production',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     'founder identity',
     'AI-proof branding',
   ],
-  authors: [{ name: 'Hamza El Jaouahiry', url: 'https://v0-strawberryprod.vercel.app' }],
+  authors: [{ name: 'Hamza El Jaouahiry', url: 'https://www.gostrawberryprod.com' }],
   creator: 'Hamza El Jaouahiry',
   publisher: 'Strawberry Production',
   formatDetection: {
@@ -40,11 +40,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  alternates: {
+    canonical: 'https://www.gostrawberryprod.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['fr_FR'],
-    url: 'https://v0-strawberryprod.vercel.app',
+    url: 'https://www.gostrawberryprod.com',
     siteName: 'Strawberry Production',
     title: 'Strawberry Production · Narrative Perception Studio',
     description: "We don't build brands. We build the universe they live in. A narrative perception studio from Paris, for founders who refuse to sound like everyone else.",
