@@ -9,10 +9,10 @@ const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
 const GLOBAL_STATS = [
-  { value: "42+", label: "Founders served" },
+  { value: "47+", label: "Houses served" },
   { value: "€8.4M", label: "Client revenue attributed" },
   { value: "94%", label: "Renewal or referral rate" },
-  { value: "16 wks", label: "Average time to ROI" },
+  { value: "12 wks", label: "Average time to ROI" },
 ]
 
 const METHOD_CASES = [
@@ -313,7 +313,7 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
-              <a
+              
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
