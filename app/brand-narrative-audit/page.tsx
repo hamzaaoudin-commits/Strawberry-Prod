@@ -504,6 +504,7 @@ export default function BrandNarrativeArchitecturePage() {
   const human = useReveal()
   const build = useReveal()
   const extraction = useReveal()
+  const method = useReveal()
   const deliver = useReveal()
   const inside = useReveal()
   const success = useReveal()
@@ -605,6 +606,21 @@ export default function BrandNarrativeArchitecturePage() {
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>
             I make you talk, at length, to reach what makes you genuinely singular — often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.
           </p>
+        </div>
+      </section>
+
+      {/* METHOD REFERENCE — bande discrète, mention S.T.R.A.W. + lien vers Method */}
+      <section ref={method.ref as any} style={{ padding: "60px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
+        <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center", opacity: method.visible ? 1 : 0, transform: method.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, marginBottom: 16, textTransform: "uppercase", fontFamily: SANS }}>
+            The Method
+          </div>
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", maxWidth: 700, margin: "0 auto 24px" }}>
+            From that extraction, the work follows a refined process — <span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span> — five stages sharpened commission after commission. Each stage produces the artifacts you receive below.
+          </p>
+          <Link href="/strawberry-method" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", padding: "10px 24px", border: `1px solid ${COLOR}`, borderRadius: 100 }}>
+            See the method →
+          </Link>
         </div>
       </section>
 
