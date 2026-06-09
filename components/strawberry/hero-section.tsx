@@ -77,7 +77,7 @@ export function HeroSection() {
           }}>
             We don&apos;t build brands.
             <br />
-            <span style={{ background: "linear-gradient(135deg,#e63946 20%,#ff1a1a 60%,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", display: "block" }}>
+            <span className="gradient-text">
               We build the universe they live in.
             </span>
           </h1>
@@ -121,22 +121,17 @@ export function HeroSection() {
               Trusted by ambitious creators, founders, and brands who refuse to be ordinary.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", marginBottom: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>47+ houses served</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>8.4M+ EUR in client revenue attributed</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>94% renewal or referral rate</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>12-week average time to ROI</span>
-              </div>
+              {[
+                { label: "47+ houses served" },
+                { label: "8.4M+ EUR in client revenue attributed" },
+                { label: "94% renewal or referral rate" },
+                { label: "12-week average time to ROI" }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
+                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>{item.label}</span>
+                </div>
+              ))}
             </div>
 
             <div style={{ overflow: "hidden", position: "relative" }}>
@@ -154,7 +149,14 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
       <style jsx>{`
+        .gradient-text {
+          background: linear-gradient(135deg, #e63946 20%, #ff1a1a 60%, #dc2626);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          display: block;
+        }
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
