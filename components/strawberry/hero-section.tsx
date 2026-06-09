@@ -26,12 +26,10 @@ export function HeroSection() {
 
   return (
     <section id="home" style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden", background: "#0a0a0a" }}>
-      {/* Orbs */}
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
       <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
       <AnimatedOrb color="radial-gradient(circle,#dc2626,transparent)" size={300} x="80%" y="80%" opacity={0.1} />
 
-      {/* Grid overlay */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
         backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)",
@@ -39,14 +37,13 @@ export function HeroSection() {
         maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)",
       }} />
 
-      {/* Floating 3D shapes */}
       {floatingShapes.map((s, i) => (
         <div key={i} style={{
           position: "absolute", left: s.x, top: s.y, width: s.size, height: s.size,
-          border: `2px solid ${s.color}`, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
+          border: "2px solid " + s.color, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
           opacity: 0.25, zIndex: 0,
-          animation: `morphFloat${s.anim} 8s ${s.delay} ease-in-out infinite`,
-          transform: `translate(${mouse.x * 0.4}px, ${mouse.y * 0.4}px)`,
+          animation: "morphFloat" + s.anim + " 8s " + s.delay + " ease-in-out infinite",
+          transform: "translate(" + (mouse.x * 0.4) + "px, " + (mouse.y * 0.4) + "px)",
           transition: "transform 1s cubic-bezier(.22,.68,0,1.2)",
         }} />
       ))}
@@ -57,7 +54,6 @@ export function HeroSection() {
           transform: mounted ? "translateY(0)" : "translateY(30px)",
           transition: "all 0.9s cubic-bezier(.22,.68,0,1.2)",
         }}>
-          {/* Label */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(230,57,70,0.12)", border: "1px solid rgba(230,57,70,0.35)",
@@ -65,7 +61,7 @@ export function HeroSection() {
             maxWidth: "100%", overflow: "hidden",
           }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946", flexShrink: 0 }} />
-            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>NARRATIVE PERCEPTION STUDIO · PARIS</span>
+            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>NARRATIVE PERCEPTION STUDIO &middot; PARIS</span>
           </div>
 
           <h1 style={{
@@ -79,7 +75,7 @@ export function HeroSection() {
             maxWidth: "100%",
             wordBreak: "break-word",
           }}>
-            {"We don't build brands."}
+            We don&apos;t build brands.
             <br />
             <span style={{ background: "linear-gradient(135deg,#e63946 20%,#ff1a1a 60%,#dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", display: "block" }}>
               We build the universe they live in.
@@ -94,7 +90,7 @@ export function HeroSection() {
             maxWidth: 640,
             marginBottom: 52,
           }}>
-            A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris.
+            A narrative perception studio building the identity, position, and language that make founders impossible to confuse and impossible to generate. From Paris.
           </p>
 
           <div className="hero-cta" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
@@ -106,11 +102,8 @@ export function HeroSection() {
               boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
               transition: "transform 0.2s, box-shadow 0.2s",
               display: "inline-block",
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px) scale(1.03)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.55)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(0) scale(1)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
-            >
-              Commission the Work →
+            }}>
+              Commission the Work &rarr;
             </Link>
             <Link href="/case-studies" style={{
               color: "rgba(255,255,255,0.55)", fontSize: 14,
@@ -118,15 +111,11 @@ export function HeroSection() {
               borderBottom: "1px solid rgba(255,255,255,0.2)",
               paddingBottom: 2, transition: "color 0.2s, border-color 0.2s",
               letterSpacing: "0.02em",
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#fff"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.5)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.55)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.2)"; }}
-            >
+            }}>
               View case studies
             </Link>
           </div>
 
-          {/* Trust bar */}
           <div style={{ marginTop: 80, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", marginBottom: 8 }}>
               Trusted by ambitious creators, founders, and brands who refuse to be ordinary.
@@ -138,7 +127,7 @@ export function HeroSection() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>€8.4M+ in client revenue attributed</span>
+                <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>8.4M+ EUR in client revenue attributed</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
@@ -149,7 +138,7 @@ export function HeroSection() {
                 <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>12-week average time to ROI</span>
               </div>
             </div>
-            {/* Brand logos marquee */}
+
             <div style={{ overflow: "hidden", position: "relative" }}>
               <div style={{ 
                 display: "flex", 
@@ -157,7 +146,7 @@ export function HeroSection() {
                 animation: "scroll 20s linear infinite",
                 width: "max-content"
               }}>
-                {[...BRANDS, ...BRANDS].map((b, i) => (
+                {BRANDS.concat(BRANDS).map((b, i) => (
                   <span key={i} style={{ color: "rgba(255,255,255,0.2)", fontSize: 16, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 600, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>{b}</span>
                 ))}
               </div>
