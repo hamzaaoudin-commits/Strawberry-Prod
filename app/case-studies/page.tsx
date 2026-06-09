@@ -183,7 +183,6 @@ export default function CaseStudiesPage() {
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
-
       <section style={{ minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "140px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.35, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1000, width: "100%", textAlign: "center", position: "relative" }}>
@@ -298,7 +297,6 @@ export default function CaseStudiesPage() {
       <section style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative", overflow: "hidden" }}>
         <div aria-hidden style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 800, height: 800, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.06, filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>
-
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 80 }} className="atlas-grid">
             <div>
               <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Free Resource</div>
@@ -313,7 +311,7 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
-              
+              <a 
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -326,7 +324,7 @@ export default function CaseStudiesPage() {
                   boxShadow: `0 12px 40px ${GLOW}`,
                 }}
               >
-                Read the Atlas &#8594;
+                Read the Atlas &rarr;
               </a>
               <div style={{ marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: SANS, letterSpacing: "0.04em" }}>
                 128 pages &middot; PDF &middot; Free &middot; No sign-up
@@ -356,9 +354,6 @@ export default function CaseStudiesPage() {
                 <div style={{ fontFamily: SERIF, fontSize: 11, fontStyle: "italic", color: "rgba(255,255,255,0.4)", textAlign: "center" }}>Strawberry Production</div>
                 <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: 4, fontFamily: SANS }}>PARIS</div>
               </div>
-              <div style={{ position: "absolute", bottom: -16, right: -16, background: COLOR, color: "#fff", padding: "8px 16px", borderRadius: 100, fontSize: 11, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em" }}>
-                128 pages
-              </div>
             </div>
           </div>
 
@@ -378,11 +373,7 @@ export default function CaseStudiesPage() {
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.25)", fontFamily: SANS, fontStyle: "italic" }}>
-              + 24 more architectures across 5 categories.
-            </div>
           </div>
-
         </div>
       </section>
 
@@ -406,7 +397,6 @@ export default function CaseStudiesPage() {
           .atlas-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
         }
       `}</style>
-
     </main>
   )
 }
