@@ -4,6 +4,7 @@ import { ProblemSection } from "@/components/strawberry/problem-section"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { AboutSection } from "@/components/strawberry/about-section"
 import { CasesSection } from "@/components/strawberry/cases-section"
+import { AtlasSection } from "@/components/strawberry/atlas-section"
 import { CTABanner } from "@/components/strawberry/cta-banner"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { ContactSection } from "@/components/strawberry/contact-section"
@@ -18,6 +19,7 @@ export default function Home() {
       <OffersSection />
       <AboutSection />
       <CasesSection />
+      <AtlasSection />
       <CTABanner />
       <FaqSection />
       <ContactSection />
