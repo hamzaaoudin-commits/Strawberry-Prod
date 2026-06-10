@@ -96,6 +96,32 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-[#0a0a0a] text-white overflow-x-hidden">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Strawberry Production",
+              "url": "https://www.gostrawberryprod.com",
+              "founder": {
+                "@type": "Person",
+                "name": "Hamza El Jaouahiry"
+              },
+              "description": "A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "priceRange": "4500€",
+              "availableLanguage": ["French", "English"],
+              "sameAs": [
+                "https://instagram.com/strawberry_prods"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   )
