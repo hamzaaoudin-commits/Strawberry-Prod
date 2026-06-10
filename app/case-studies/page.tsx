@@ -1,13 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { track } from "@vercel/analytics"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
+const FORMSPREE = "https://formspree.io/f/xnjwroeq"
 
 const GLOBAL_STATS = [
   { value: "47+", label: "Houses served" },
@@ -85,6 +86,94 @@ const ATLAS_CASES = [
   { n: "19", title: "We are building something that does not exist. Every prospect tries to put us in a box that already does." },
 ]
 
+function AtlasModal({ onClose }: { onClose: () => void }) {
+  const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus("loading")
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email, source: "atlas_download" }),
+      })
+      if (res.ok) {
+        setStatus("done")
+        track("atlas_email_captured")
+        setTimeout(() => {
+          window.open("/30-architectures-atlas.pdf", "_blank")
+          onClose()
+        }, 1200)
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  return (
+    <div
+      onClick={onClose}
+      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{ background: "#0d0d0d", border: `1px solid ${COLOR}44`, borderRadius: 12, padding: "clamp(2rem,4vw,3rem)", maxWidth: 480, width: "100%", position: "relative" }}
+      >
+        <button
+          onClick={onClose}
+          style={{ position: "absolute", top: 16, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}
+        >
+          ×
+        </button>
+
+        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>
+          Free Resource
+        </div>
+        <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }}>
+          30 Architectures.<br />An Atlas.
+        </h2>
+        <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 28 }}>
+          128 pages. Free. Enter your email and the Atlas opens immediately.
+        </p>
+
+        {status === "done" ? (
+          <p style={{ fontFamily: SERIF, fontSize: 16, fontStyle: "italic", color: COLOR, textAlign: "center", padding: "1rem 0" }}>
+            Opening the Atlas…
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <input
+              type="email"
+              required
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "14px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", width: "100%" }}
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", border: "none", borderRadius: 100, padding: "14px 28px", fontSize: 14, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em", cursor: "pointer", boxShadow: `0 8px 30px ${GLOW}` }}
+            >
+              {status === "loading" ? "Opening…" : "Read the Atlas →"}
+            </button>
+            {status === "error" && (
+              <p style={{ fontSize: 13, color: COLOR, textAlign: "center", margin: 0 }}>Something went wrong. Try again.</p>
+            )}
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", margin: 0, fontFamily: SANS }}>
+              No spam. One email to receive the Atlas.
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
+  )
+}
+
 function useCharts() {
   const initialized = useRef(false)
   useEffect(() => {
@@ -101,20 +190,11 @@ function useCharts() {
         type: "bar",
         data: {
           labels: ["Before", "After"],
-          datasets: [{
-            data: [14, 58],
-            backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"],
-            borderRadius: 4,
-            barThickness: 48,
-          }],
+          datasets: [{ data: [14, 58], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }],
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k MRR" } },
-          },
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k MRR" } } },
           scales: {
             x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
             y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0, max: 70 },
@@ -126,23 +206,11 @@ function useCharts() {
         type: "line",
         data: {
           labels: ["Month 1", "Month 2", "Month 3"],
-          datasets: [{
-            data: [120, 980, 2400],
-            borderColor: "#e63946",
-            backgroundColor: "rgba(230,57,70,0.1)",
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: "#e63946",
-            pointRadius: 5,
-          }],
+          datasets: [{ data: [120, 980, 2400], borderColor: "#e63946", backgroundColor: "rgba(230,57,70,0.1)", fill: true, tension: 0.4, pointBackgroundColor: "#e63946", pointRadius: 5 }],
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k views" } },
-          },
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k views" } } },
           scales: {
             x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
             y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0 },
@@ -154,20 +222,11 @@ function useCharts() {
         type: "bar",
         data: {
           labels: ["Before", "After"],
-          datasets: [{
-            data: [1, 4],
-            backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"],
-            borderRadius: 4,
-            barThickness: 48,
-          }],
+          datasets: [{ data: [1, 4], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }],
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "x pipeline" } },
-          },
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "x pipeline" } } },
           scales: {
             x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
             y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "x" }, min: 0, max: 5 },
@@ -181,9 +240,13 @@ function useCharts() {
 
 export default function CaseStudiesPage() {
   useCharts()
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+
+      {showModal && <AtlasModal onClose={() => setShowModal(false)} />}
+
       <section style={{ minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "140px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.35, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1000, width: "100%", textAlign: "center", position: "relative" }}>
@@ -207,12 +270,8 @@ export default function CaseStudiesPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 32 }}>
           {GLOBAL_STATS.map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,4vw,3rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.03em" }}>
-                {s.value}
-              </div>
-              <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                {s.label}
-              </div>
+              <div style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,4vw,3rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.03em" }}>{s.value}</div>
+              <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -222,9 +281,7 @@ export default function CaseStudiesPage() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Three Method Cases</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              How the method operates.
-            </h2>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>How the method operates.</h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "32px auto 0", lineHeight: 1.7 }}>
               Each case below follows the same structure: the narrative problem the founder arrived with, the specific deliverables of the Brand Narrative Architecture applied, and the transformation that followed.
             </p>
@@ -240,9 +297,7 @@ export default function CaseStudiesPage() {
                   </div>
                   <div style={{ fontFamily: SANS, fontSize: 12, color: COLOR, letterSpacing: "0.02em" }}>{c.founder}</div>
                 </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.4vw,2rem)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: 40, color: "#fff" }}>
-                  {c.headline}
-                </h3>
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.4vw,2rem)", fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: 40, color: "#fff" }}>{c.headline}</h3>
                 <div style={{ marginBottom: 32 }}>
                   <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 14, textTransform: "uppercase" }}>The Problem</div>
                   <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, fontStyle: "italic" }}>{c.problem}</p>
@@ -276,19 +331,13 @@ export default function CaseStudiesPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>In their words</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Six more founders.
-            </h2>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>Six more founders.</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
             {TESTIMONIALS.map((t, i) => (
               <div key={i} style={{ padding: "32px 28px", borderLeft: `2px solid ${COLOR}`, background: "rgba(255,255,255,0.02)" }}>
-                <p style={{ fontFamily: SERIF, fontSize: "1.02rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 24 }}>
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div style={{ fontFamily: SANS, fontSize: 12, color: COLOR, letterSpacing: "0.04em" }}>
-                  {t.descriptor}
-                </div>
+                <p style={{ fontFamily: SERIF, fontSize: "1.02rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 24 }}>&ldquo;{t.quote}&rdquo;</p>
+                <div style={{ fontFamily: SANS, fontSize: 12, color: COLOR, letterSpacing: "0.04em" }}>{t.descriptor}</div>
               </div>
             ))}
           </div>
@@ -311,36 +360,19 @@ export default function CaseStudiesPage() {
               <p style={{ fontFamily: SERIF, fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: 40 }}>
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
-              
-              <a 
-                href="/30-architectures-atlas.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => track("atlas_download", { from: "case_studies_page" })}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
-                  color: "#fff", padding: "16px 36px", borderRadius: 100,
-                  fontSize: 14, fontFamily: SANS, fontWeight: 700,
-                  textDecoration: "none", letterSpacing: "0.06em",
-                  boxShadow: `0 12px 40px ${GLOW}`,
-                }}
+              <button
+                onClick={() => { track("atlas_click"); setShowModal(true) }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontFamily: SANS, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}`, border: "none", cursor: "pointer" }}
               >
                 Read the Atlas &rarr;
-              </a>
+              </button>
               <div style={{ marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: SANS, letterSpacing: "0.04em" }}>
                 128 pages &middot; PDF &middot; Free &middot; No sign-up
               </div>
             </div>
 
             <div style={{ position: "relative" }}>
-              <div style={{
-                background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)",
-                border: `1px solid ${COLOR}33`,
-                borderRadius: 12,
-                padding: "48px 40px",
-                boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22`,
-              }}>
+              <div style={{ background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)", border: `1px solid ${COLOR}33`, borderRadius: 12, padding: "48px 40px", boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22` }}>
                 <div style={{ fontSize: 9, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, fontFamily: SANS }}>STRAWBERRY PRODUCTION</div>
                 <div style={{ width: 32, height: 1, background: `${COLOR}66`, marginBottom: 28 }} />
                 <div style={{ fontFamily: SERIF, fontSize: 11, color: "rgba(255,255,255,0.4)", fontStyle: "italic", marginBottom: 12 }}>N&deg; 001</div>
@@ -360,18 +392,12 @@ export default function CaseStudiesPage() {
           </div>
 
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 56 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: "rgba(255,255,255,0.4)", marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>
-              A sample of what&apos;s inside
-            </div>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: "rgba(255,255,255,0.4)", marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>A sample of what&apos;s inside</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
               {ATLAS_CASES.map((c) => (
                 <div key={c.n} style={{ display: "flex", gap: 16, alignItems: "flex-start", padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                  <div style={{ fontFamily: SERIF, fontSize: 18, fontStyle: "italic", color: COLOR, fontWeight: 700, lineHeight: 1, flexShrink: 0, minWidth: 28 }}>
-                    {c.n}.
-                  </div>
-                  <div style={{ fontFamily: SERIF, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5, fontStyle: "italic" }}>
-                    {c.title}
-                  </div>
+                  <div style={{ fontFamily: SERIF, fontSize: 18, fontStyle: "italic", color: COLOR, fontWeight: 700, lineHeight: 1, flexShrink: 0, minWidth: 28 }}>{c.n}.</div>
+                  <div style={{ fontFamily: SERIF, fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5, fontStyle: "italic" }}>{c.title}</div>
                 </div>
               ))}
             </div>
