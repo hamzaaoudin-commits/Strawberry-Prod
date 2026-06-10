@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useRef } from "react"
+import { track } from "@vercel/analytics"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -315,6 +316,7 @@ export default function CaseStudiesPage() {
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("atlas_download", { from: "case_studies_page" })}
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 10,
                   background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
@@ -386,7 +388,11 @@ export default function CaseStudiesPage() {
           <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
             Each one becomes the next case we won&apos;t be allowed to publish.
           </p>
-          <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}` }}>
+          <Link
+            href="/brand-narrative-audit"
+            onClick={() => track("commission_click", { from: "case_studies_final_cta" })}
+            style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}` }}
+          >
             Commission the Work &#8594;
           </Link>
         </div>
