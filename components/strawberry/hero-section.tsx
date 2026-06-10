@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { track } from "@vercel/analytics"
 import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 
@@ -94,15 +95,19 @@ export function HeroSection() {
           </p>
 
           <div className="hero-cta" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
-            <Link href="/brand-narrative-audit" style={{
-              background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-              color: "#fff", padding: "16px 36px", borderRadius: 100,
-              fontSize: 15, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 700,
-              textDecoration: "none", letterSpacing: "0.04em",
-              boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
-              transition: "transform 0.2s, box-shadow 0.2s",
-              display: "inline-block",
-            }}>
+            <Link
+              href="/brand-narrative-audit"
+              onClick={() => track("audit_click", { from: "home_hero" })}
+              style={{
+                background: "linear-gradient(135deg,#e63946,#ff1a1a)",
+                color: "#fff", padding: "16px 36px", borderRadius: 100,
+                fontSize: 15, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 700,
+                textDecoration: "none", letterSpacing: "0.04em",
+                boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                display: "inline-block",
+              }}
+            >
               Commission the Work &rarr;
             </Link>
             <Link href="/case-studies" style={{
