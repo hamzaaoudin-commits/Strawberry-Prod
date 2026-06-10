@@ -312,11 +312,19 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
+              <a 
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track("atlas_download", { from: "case_studies_page" })}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontFamily: SANS, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}` }}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 10,
+                  background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
+                  color: "#fff", padding: "16px 36px", borderRadius: 100,
+                  fontSize: 14, fontFamily: SANS, fontWeight: 700,
+                  textDecoration: "none", letterSpacing: "0.06em",
+                  boxShadow: `0 12px 40px ${GLOW}`,
+                }}
               >
                 Read the Atlas &rarr;
               </a>
@@ -326,7 +334,13 @@ export default function CaseStudiesPage() {
             </div>
 
             <div style={{ position: "relative" }}>
-              <div style={{ background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)", border: `1px solid ${COLOR}33`, borderRadius: 12, padding: "48px 40px", boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22` }}>
+              <div style={{
+                background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)",
+                border: `1px solid ${COLOR}33`,
+                borderRadius: 12,
+                padding: "48px 40px",
+                boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22`,
+              }}>
                 <div style={{ fontSize: 9, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, fontFamily: SANS }}>STRAWBERRY PRODUCTION</div>
                 <div style={{ width: 32, height: 1, background: `${COLOR}66`, marginBottom: 28 }} />
                 <div style={{ fontFamily: SERIF, fontSize: 11, color: "rgba(255,255,255,0.4)", fontStyle: "italic", marginBottom: 12 }}>N&deg; 001</div>
