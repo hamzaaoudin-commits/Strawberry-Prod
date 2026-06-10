@@ -19,7 +19,7 @@ const GLOBAL_STATS = [
 const METHOD_CASES = [
   {
     descriptor: "B2B SaaS · Paris · Post-Series A",
-    founder: "Co-founder · Female · Technical background",
+    founder: "Séléna Voss · Co-fondatrice · Maison Arkane",
     headline: "From 14k MRR to 58k MRR in 90 days.",
     problem: "Three years in market, four positioning rewrites, still describing the product the way the engineers did. Sales cycle longer than onboarding. Enterprise tier existed on paper but had never sold. The founder could not finish the sentence \"we are the company that—\" without losing the room.",
     method: "Differentiation Diagnostic isolated the territorial vacuum: not a collaborative workflow tool but the operating layer for product teams that refuse to drown in tickets. Narrative Platform articulated the conviction in a single defensible sentence. Language System retired the words every competitor was using — \"collaborate\", \"streamline\", \"empower\" — and installed a new lexicon the buyer could not unsee. The enterprise tier received its own narrative architecture, distinct from the core offer.",
@@ -29,7 +29,7 @@ const METHOD_CASES = [
   },
   {
     descriptor: "Executive coaching · Independent · Solo founder",
-    founder: "Founder · Male · Former operator",
+    founder: "Julien Lerault · Fondateur · Maison Lerault",
     headline: "2.4M organic views. 1,200 waitlist signups. Zero ad spend.",
     problem: "Posting consistently for 18 months. Stagnant audience. Followers were peers, not buyers. No recurring idea the audience could attach to. Programs launched to silence. The founder was talented but generic — indistinguishable from twenty other coaches saying the same things in slightly different tones.",
     method: "Differentiation Diagnostic isolated the single tension only this founder could own: that high-performers are coached by people who have never operated at high performance. Narrative Platform built the conviction system around that fracture. Deployment Kit gave the founder five content territories tied to each pillar, with hook patterns and reframes ready to deploy. The founder stopped guessing what to post — every piece now traced back to a narrative pillar.",
@@ -39,7 +39,7 @@ const METHOD_CASES = [
   },
   {
     descriptor: "Financial education · Lyon · Bootstrapped",
-    founder: "Founder · Female · Former trader",
+    founder: "Camille Théa · Fondatrice · Maison Théa",
     headline: "Inbound pipeline 4x. Prospects repeating her own words back.",
     problem: "Strong product, weak language. The founder knew what her programs delivered but couldn't say it in a way that pre-sold. Leads came in cold and unqualified. Every sales call started from zero — same explanations, same objections, same fatigue. The work was excellent; the framing was costing her the room.",
     method: "Differentiation Diagnostic surfaced the unclaimed ground: that financial education in France either condescended to beginners or assumed they were already insiders. Narrative Platform named the third position — the rigorous initiation, not the dumbed-down course. Language System gave her the precise lexicon she had been circling for two years: phrases that pre-qualified prospects before they ever booked a call.",
@@ -198,7 +198,7 @@ export default function CaseStudiesPage() {
             How the Strawberry Method translates founder singularity into narrative architecture. Three method cases. Six voices. One discipline.
           </p>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", maxWidth: 600, margin: "32px auto 0", lineHeight: 1.6, fontStyle: "italic", fontFamily: SERIF }}>
-            Names withheld at clients&apos; request. Sectors and outcomes disclosed.
+            Composite case studies — built from real commissions, anonymized by design.
           </p>
         </div>
       </section>
@@ -263,7 +263,7 @@ export default function CaseStudiesPage() {
                 <blockquote style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, fontFamily: SERIF, fontSize: "clamp(1.05rem,1.5vw,1.25rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, margin: 0 }}>
                   &ldquo;{c.quote}&rdquo;
                   <footer style={{ marginTop: 16, fontFamily: SANS, fontSize: 12, fontStyle: "normal", color: "rgba(255,255,255,0.5)", letterSpacing: "0.02em" }}>
-                    &mdash; {c.descriptor}
+                    &mdash; {c.founder}
                   </footer>
                 </blockquote>
               </article>
@@ -312,19 +312,11 @@ export default function CaseStudiesPage() {
                 Open, free, readable in your browser. If you recognize yourself in one of them — you have already begun the work.
               </p>
               
-              <a 
                 href="/30-architectures-atlas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track("atlas_download", { from: "case_studies_page" })}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
-                  color: "#fff", padding: "16px 36px", borderRadius: 100,
-                  fontSize: 14, fontFamily: SANS, fontWeight: 700,
-                  textDecoration: "none", letterSpacing: "0.06em",
-                  boxShadow: `0 12px 40px ${GLOW}`,
-                }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontFamily: SANS, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}` }}
               >
                 Read the Atlas &rarr;
               </a>
@@ -334,13 +326,7 @@ export default function CaseStudiesPage() {
             </div>
 
             <div style={{ position: "relative" }}>
-              <div style={{
-                background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)",
-                border: `1px solid ${COLOR}33`,
-                borderRadius: 12,
-                padding: "48px 40px",
-                boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22`,
-              }}>
+              <div style={{ background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)", border: `1px solid ${COLOR}33`, borderRadius: 12, padding: "48px 40px", boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22` }}>
                 <div style={{ fontSize: 9, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, fontFamily: SANS }}>STRAWBERRY PRODUCTION</div>
                 <div style={{ width: 32, height: 1, background: `${COLOR}66`, marginBottom: 28 }} />
                 <div style={{ fontFamily: SERIF, fontSize: 11, color: "rgba(255,255,255,0.4)", fontStyle: "italic", marginBottom: 12 }}>N&deg; 001</div>
