@@ -7,7 +7,7 @@ import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 
 const BRANDS = [
-  "Substack", "Linear", "Pitch", "Arc", "Vercel", "Notion", "Plausible", "Cal.com"
+  "Notion", "Linear", "Substack", "Pitch", "Framer", "Raycast", "Superhuman", "Beehiiv", "Cal.com", "Resend", "Pennylane", "Vercel"
 ]
 
 export function HeroSection() {
@@ -143,7 +143,7 @@ export function HeroSection() {
               <div style={{ 
                 display: "flex", 
                 gap: 48, 
-                animation: "scroll 20s linear infinite",
+                animation: "scroll 25s linear infinite",
                 width: "max-content"
               }}>
                 {BRANDS.concat(BRANDS).map((b, i) => (
