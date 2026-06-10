@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 
 export function CTABanner() {
@@ -27,7 +27,7 @@ export function CTABanner() {
             Most brands wait for permission to stand out. Ours take the stage.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="#offers" style={{
+            <Link href="/brand-narrative-audit" style={{
               background: "linear-gradient(135deg,#e63946,#ff1a1a)",
               color: "#fff", padding: "18px 44px", borderRadius: 100,
               fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 700,
@@ -35,23 +35,23 @@ export function CTABanner() {
               boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
               transition: "transform 0.2s, box-shadow 0.2s",
             }}
-              onMouseEnter={e => { (e.target as HTMLElement).style.transform = "translateY(-3px)"; (e.target as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.6)"; }}
-              onMouseLeave={e => { (e.target as HTMLElement).style.transform = "none"; (e.target as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 16px 48px rgba(230,57,70,0.6)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(230,57,70,0.4)"; }}
             >
-              See Pricing
-            </a>
-            <a href="#cases" style={{
+              See the Commission
+            </Link>
+            <Link href="/case-studies" style={{
               background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)",
               color: "rgba(255,255,255,0.7)", padding: "18px 44px", borderRadius: 100,
               fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontSize: 15, fontWeight: 600,
               textDecoration: "none", letterSpacing: "0.06em",
               transition: "all 0.2s",
             }}
-              onMouseEnter={e => { (e.target as HTMLElement).style.background = "rgba(255,255,255,0.12)"; (e.target as HTMLElement).style.color = "#fff"; }}
-              onMouseLeave={e => { (e.target as HTMLElement).style.background = "rgba(255,255,255,0.07)"; (e.target as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
             >
               View Case Studies
-            </a>
+            </Link>
           </div>
         </div>
       </div>
