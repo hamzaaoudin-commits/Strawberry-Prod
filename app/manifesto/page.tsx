@@ -12,7 +12,7 @@ const GLOW = "rgba(230,57,70,0.4)"
 const VOLUMES = [
   {
     n: "I",
-    code: "N° 001",
+    code: "N\u00b0 001",
     title: "Neuro-Cinema Manifesto",
     verb: "Remember.",
     tagline: "How elite brands build unforgettable identity when everyone else sounds like a machine. The architecture of narrative immunity.",
@@ -20,7 +20,7 @@ const VOLUMES = [
   },
   {
     n: "II",
-    code: "N° 002",
+    code: "N\u00b0 002",
     title: "The Tribe Doctrine",
     verb: "Be followed.",
     tagline: "Why rewriting your company's narrative is the only way to survive the AI wave. And how to build a tribe that won't disappear with it.",
@@ -28,7 +28,7 @@ const VOLUMES = [
   },
   {
     n: "III",
-    code: "N° 003",
+    code: "N\u00b0 003",
     title: "The Editorial Empire",
     verb: "Remain.",
     tagline: "Why every serious brand will become a media house — or be erased by the ones that did. The infrastructure of narrative power.",
@@ -36,7 +36,7 @@ const VOLUMES = [
   },
   {
     n: "IV",
-    code: "N° 004",
+    code: "N\u00b0 004",
     title: "The Founder Codex",
     verb: "Be irreplaceable.",
     tagline: "The personal doctrine of founders who refuse to be genericized. How to build a presence that survives any market shift.",
@@ -44,7 +44,7 @@ const VOLUMES = [
   },
   {
     n: "V",
-    code: "N° 005",
+    code: "N\u00b0 005",
     title: "The Refusal Manifesto",
     verb: "Refuse.",
     tagline: "A declaration of what this studio will never do, never say, and never become. The architecture of selective practice.",
@@ -52,7 +52,7 @@ const VOLUMES = [
   },
   {
     n: "VI",
-    code: "N° 006",
+    code: "N\u00b0 006",
     title: "The Aesthetic Constitution",
     verb: "Distinguish.",
     tagline: "Why aesthetic coherence is the last competitive advantage AI cannot replicate. The doctrine of visual and verbal singularity.",
@@ -60,11 +60,27 @@ const VOLUMES = [
   },
   {
     n: "VII",
-    code: "N° 007",
+    code: "N\u00b0 007",
     title: "The Rarity Engine",
     verb: "Become scarce.",
     tagline: "How deliberate scarcity becomes the most powerful positioning tool available to a founder. The mechanics of desirable refusal.",
     href: "/Vol_VII_The_Rarity_Engine.html",
+  },
+  {
+    n: "VIII",
+    code: "N\u00b0 008",
+    title: "The Patience Doctrine",
+    verb: "Outlast.",
+    tagline: "Why the founders who win are the ones who refuse to be rushed. The architecture of long-game positioning in an impatient market.",
+    href: "/Vol_VIII_The_Patience_Doctrine.html",
+  },
+  {
+    n: "IX",
+    code: "N\u00b0 009",
+    title: "The Devotion Codex",
+    verb: "Be chosen.",
+    tagline: "How the most enduring houses build not an audience but a devotion. The doctrine of depth over reach.",
+    href: "/Vol_IX_The_Devotion_Codex.html",
   },
 ]
 
@@ -78,19 +94,19 @@ export default function ManifestoPage() {
         <div aria-hidden style={{ position: "absolute", top: "-10%", left: "50%", transform: "translateX(-50%)", width: 1000, height: 1000, background: "radial-gradient(circle," + COLOR + ",transparent 70%)", opacity: 0.1, filter: "blur(100px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ display: "inline-block", background: COLOR + "1a", border: "1px solid " + COLOR + "44", color: COLOR, fontSize: 11, fontFamily: SANS, fontWeight: 700, padding: "6px 18px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 32 }}>
-            SEVEN VOLUMES &middot; ONE DOCTRINE
+            NINE VOLUMES &middot; ONE DOCTRINE
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.8rem, 7vw, 5.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 28 }}>
             The Strawberry<br />
             <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Manifestos.</span>
           </h1>
           <p style={{ fontFamily: SANS, fontSize: 19, lineHeight: 1.7, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto" }}>
-            Seven manifestos. One doctrine. A complete blueprint for brands that refuse to disappear in the AI decade. Open, free, readable in your browser.
+            Nine manifestos. One doctrine. A complete blueprint for brands that refuse to disappear in the AI decade. Open, free, readable in your browser.
           </p>
         </div>
       </section>
 
-      {/* SEVEN VOLUMES */}
+      {/* NINE VOLUMES */}
       <section style={{ padding: "20px clamp(1.5rem,4vw,4rem) 120px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: 22 }}>
