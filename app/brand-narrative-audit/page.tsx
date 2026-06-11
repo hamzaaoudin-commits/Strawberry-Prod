@@ -60,11 +60,6 @@ const HUMAN_PACT = [
 
 const ALSO_RECEIVE = [
   {
-    label: "The Walkthrough",
-    title: "A walkthrough. Thirty days later.",
-    body: "One month after delivery, we meet again. Ninety minutes, on call or in person. I ask one question: what have you changed? The document is the artifact. The walkthrough is the moment it becomes operational. AI has no memory of your house. I do.",
-  },
-  {
     label: "The Object",
     title: "The artifact, optionally bound.",
     body: "On request, the work is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object.",
@@ -92,8 +87,6 @@ function useReveal() {
   }, [])
   return { ref, visible }
 }
-
-// ============ ACT I — THE FRAME ============
 
 function MockupCover() {
   return (
@@ -169,8 +162,6 @@ function MockupIndex() {
     </svg>
   )
 }
-
-// ============ ACT II — THE IDENTITY ============
 
 function MockupSpine() {
   return (
@@ -335,8 +326,6 @@ function MockupArchetype() {
   )
 }
 
-// ============ ACT III — DEPLOYMENT ============
-
 function MockupContentIdeas() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
@@ -412,8 +401,6 @@ function MockupDistribution() {
   )
 }
 
-// ============ ACT IV — THE SIGNATURE ============
-
 function MockupSignature() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
@@ -435,8 +422,6 @@ function MockupSignature() {
     </svg>
   )
 }
-
-// ============ MOCKUP GROUPS ============
 
 const ACT_I = [
   { component: <MockupCover />, label: "The Cover", caption: "A numbered edition. Your house, given its name." },
@@ -497,8 +482,6 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
   )
 }
 
-// ============ PAGE ============
-
 export default function BrandNarrativeArchitecturePage() {
   const hero = useReveal()
   const why = useReveal()
@@ -517,25 +500,25 @@ export default function BrandNarrativeArchitecturePage() {
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
 
       <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
-            Brand Narrative Architecture · 4,500€
+          <div style={{ display: "inline-block", padding: "8px 20px", border: "1px solid " + COLOR, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
+            Brand Narrative Architecture &middot; 4,500&euro;
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.75rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 32 }}>
             The brand story that makes you<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>impossible to confuse —<br />and impossible to generate.</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>impossible to confuse &mdash;<br />and impossible to generate.</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 56px", lineHeight: 1.6 }}>
-            The identity, position, and language that make you recognizable at first glance — and impossible to confuse with your competitors, even when they arm themselves with AI.
+            The identity, position, and language that make you recognizable at first glance &mdash; and impossible to confuse with your competitors, even when they arm themselves with AI.
           </p>
           <Link
             href={STRIPE_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_hero" })}
-            style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: `0 20px 60px ${GLOW}` }}
+            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
           >
-            Commission the Work →
+            Commission the Work &rarr;
           </Link>
         </div>
       </section>
@@ -544,16 +527,16 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>Why Now</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.25rem)", fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.92)" }}>
-            AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.
+            AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart &mdash; everyone has become good.
           </p>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.5rem)", fontWeight: 400, lineHeight: 1.5, color: COLOR, marginTop: 32, fontStyle: "italic" }}>
-            What cannot be generated is an identity. Differentiation is no longer a marketing luxury — it is your condition for survival.
+            What cannot be generated is an identity. Differentiation is no longer a marketing luxury &mdash; it is your condition for survival.
           </p>
         </div>
       </section>
 
       <section ref={human.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.18, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 65%)", opacity: 0.18, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: human.visible ? 1 : 0, transform: human.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 88 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Why a Human</div>
@@ -564,7 +547,6 @@ export default function BrandNarrativeArchitecturePage() {
               What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
             </p>
           </div>
-
           <div className="pact-grid" style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
             {HUMAN_PACT.map((p, i) => (
               <div key={i} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,2.5rem)", display: "flex", flexDirection: "column", gap: 20 }}>
@@ -574,18 +556,10 @@ export default function BrandNarrativeArchitecturePage() {
               </div>
             ))}
           </div>
-
           <style jsx>{`
-            .pact-grid {
-              grid-template-columns: repeat(1, 1fr);
-            }
-            @media (min-width: 720px) {
-              .pact-grid {
-                grid-template-columns: repeat(2, 1fr);
-              }
-            }
+            .pact-grid { grid-template-columns: repeat(1, 1fr); }
+            @media (min-width: 720px) { .pact-grid { grid-template-columns: repeat(2, 1fr); } }
           `}</style>
-
           <div style={{ marginTop: 64, textAlign: "center" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontStyle: "italic", color: COLOR, letterSpacing: "-0.01em", lineHeight: 1.5, maxWidth: 700, margin: "0 auto" }}>
               When everyone has access to the same machine, the only edge left is the one a human refuses to share.
@@ -598,7 +572,7 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: build.visible ? 1 : 0, transform: build.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>What I Build</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.6vw,2rem)", fontWeight: 400, lineHeight: 1.45, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.9)" }}>
-            I build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors — even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.
+            I build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors &mdash; even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.
           </p>
         </div>
       </section>
@@ -610,26 +584,23 @@ export default function BrandNarrativeArchitecturePage() {
             It begins with an extraction no one can automate.
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>
-            I make you talk, at length, to reach what makes you genuinely singular — often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.
+            I make you talk, at length, to reach what makes you genuinely singular &mdash; often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.
           </p>
         </div>
       </section>
 
-      {/* METHOD REFERENCE — bande discrète, mention S.T.R.A.W. + lien vers Method */}
       <section ref={method.ref as any} style={{ padding: "60px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center", opacity: method.visible ? 1 : 0, transform: method.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, marginBottom: 16, textTransform: "uppercase", fontFamily: SANS }}>
-            The Method
-          </div>
+          <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, marginBottom: 16, textTransform: "uppercase", fontFamily: SANS }}>The Method</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", maxWidth: 700, margin: "0 auto 24px" }}>
-            From that extraction, the work follows a refined process — <span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span> — five stages sharpened commission after commission. Each stage produces the artifacts you receive below.
+            From that extraction, the work follows a refined process &mdash; <span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span> &mdash; five stages sharpened commission after commission. Each stage produces the artifacts you receive below.
           </p>
           <Link
             href="/strawberry-method"
             onClick={() => track("method_click", { from: "commission_page" })}
-            style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", padding: "10px 24px", border: `1px solid ${COLOR}`, borderRadius: 100 }}
+            style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", padding: "10px 24px", border: "1px solid " + COLOR, borderRadius: 100 }}
           >
-            See the method →
+            See the method &rarr;
           </Link>
         </div>
       </section>
@@ -657,7 +628,7 @@ export default function BrandNarrativeArchitecturePage() {
       </section>
 
       <section ref={inside.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, ${GLOW} 0%, transparent 60%)`, opacity: 0.2, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center top," + GLOW + " 0%,transparent 60%)", opacity: 0.2, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1300, margin: "0 auto", position: "relative", opacity: inside.visible ? 1 : 0, transform: inside.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Architecture</div>
@@ -665,28 +636,23 @@ export default function BrandNarrativeArchitecturePage() {
               A glimpse of the artifact.
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7 }}>
-              Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself — page by page.
+              Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself &mdash; page by page.
             </p>
           </div>
-
           <ActTitle roman="I" title="The Frame" />
           <MockupGrid items={ACT_I} />
-
           <div style={{ height: 100 }} />
           <ActTitle roman="II" title="The Identity" />
           <MockupGrid items={ACT_II} />
-
           <div style={{ height: 100 }} />
           <ActTitle roman="III" title="The Deployment" />
           <MockupGrid items={ACT_III} />
-
           <div style={{ height: 100 }} />
           <ActTitle roman="IV" title="The Signature" />
           <MockupGrid items={ACT_IV} />
-
           <div style={{ marginTop: 100, textAlign: "center" }}>
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Stylized previews · Final document delivered as PDF
+              Stylized previews &middot; Final document delivered as PDF
             </p>
           </div>
         </div>
@@ -701,7 +667,7 @@ export default function BrandNarrativeArchitecturePage() {
             </h2>
           </div>
           <p style={{ fontFamily: SANS, fontSize: "1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, textAlign: "center", maxWidth: 640, margin: "0 auto 48px" }}>
-            Before we start, we note together how you would describe today what sets you apart — usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.
+            Before we start, we note together how you would describe today what sets you apart &mdash; usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
             {SUCCESS_SIGNALS.map((s, i) => (
@@ -715,7 +681,7 @@ export default function BrandNarrativeArchitecturePage() {
       </section>
 
       <section ref={also.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.15, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 65%)", opacity: 0.15, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: also.visible ? 1 : 0, transform: also.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What You Also Receive</div>
@@ -739,9 +705,9 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>The Investment</div>
           <div style={{ fontFamily: SERIF, fontSize: "clamp(4rem,8vw,6rem)", fontWeight: 700, lineHeight: 1, marginBottom: 16, letterSpacing: "-0.04em" }}>
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>4,500€</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>4,500&euro;</span>
           </div>
-          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>A complete repositioning · Delivered and exploitable</div>
+          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>A complete repositioning &middot; Delivered and exploitable</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
             The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, belongs to you and works for you continuously.
           </p>
@@ -749,7 +715,7 @@ export default function BrandNarrativeArchitecturePage() {
       </section>
 
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 40 }}>
             Become impossible to confuse.
@@ -758,16 +724,16 @@ export default function BrandNarrativeArchitecturePage() {
             href={STRIPE_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_final_cta" })}
-            style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: `0 20px 60px ${GLOW}` }}
+            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
           >
-            Commission the Work →
+            Commission the Work &rarr;
           </Link>
           <div style={{ marginTop: 24, fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
             Limited to four commissions per quarter.
           </div>
           <div style={{ marginTop: 12, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.06)", maxWidth: 320, margin: "12px auto 0" }}>
             <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: 0 }}>
-              Confidential commission · NDA available
+              Confidential commission &middot; NDA available
             </p>
           </div>
         </div>
