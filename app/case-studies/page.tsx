@@ -51,30 +51,12 @@ const METHOD_CASES = [
 ]
 
 const TESTIMONIALS = [
-  {
-    quote: "I thought I was buying a brand document. I got a constitution. We now run hiring, partnerships, and product decisions through it.",
-    descriptor: "CEO · Health-tech · Series B",
-  },
-  {
-    quote: "The Narrative Platform they wrote is now the founding document of the studio. Every brief starts there. Every hire reads it day one.",
-    descriptor: "Founder · Creative studio · Paris",
-  },
-  {
-    quote: "Our Series A deck used three paragraphs lifted directly from the work. The investors said it was the clearest positioning they'd read all year.",
-    descriptor: "Co-founder · Climate tech · Pre-Series A",
-  },
-  {
-    quote: "I'd worked with two branding agencies before. This is a different category. They write like screenwriters and think like strategists.",
-    descriptor: "Founder · Atelier · Independent",
-  },
-  {
-    quote: "The Language System alone was worth the commission. I read it once and understood why three of my offers had failed.",
-    descriptor: "Independent consultant · 7-figure practice",
-  },
-  {
-    quote: "Six months after delivery, I still re-read the Coherence Guide before every launch. Nothing else I've paid for has held up that long.",
-    descriptor: "Founder · DTC brand · Post-seed",
-  },
+  { quote: "I thought I was buying a brand document. I got a constitution. We now run hiring, partnerships, and product decisions through it.", descriptor: "CEO · Health-tech · Series B" },
+  { quote: "The Narrative Platform they wrote is now the founding document of the studio. Every brief starts there. Every hire reads it day one.", descriptor: "Founder · Creative studio · Paris" },
+  { quote: "Our Series A deck used three paragraphs lifted directly from the work. The investors said it was the clearest positioning they'd read all year.", descriptor: "Co-founder · Climate tech · Pre-Series A" },
+  { quote: "I'd worked with two branding agencies before. This is a different category. They write like screenwriters and think like strategists.", descriptor: "Founder · Atelier · Independent" },
+  { quote: "The Language System alone was worth the commission. I read it once and understood why three of my offers had failed.", descriptor: "Independent consultant · 7-figure practice" },
+  { quote: "Six months after delivery, I still re-read the Coherence Guide before every launch. Nothing else I've paid for has held up that long.", descriptor: "Founder · DTC brand · Post-seed" },
 ]
 
 const ATLAS_CASES = [
@@ -86,7 +68,7 @@ const ATLAS_CASES = [
   { n: "19", title: "We are building something that does not exist. Every prospect tries to put us in a box that already does." },
 ]
 
-function useCountUp(target: number, duration = 1800, decimals = 0) {
+function useCountUp(target: number, duration = 2200, decimals = 0) {
   const [count, setCount] = useState(0)
   const [started, setStarted] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
@@ -107,7 +89,9 @@ function useCountUp(target: number, duration = 1800, decimals = 0) {
     const step = (ts: number) => {
       if (!start) start = ts
       const progress = Math.min((ts - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
+      const eased = progress < 0.7
+        ? (progress / 0.7) * 0.85
+        : 0.85 + ((progress - 0.7) / 0.3) * 0.15
       setCount(parseFloat((eased * target).toFixed(decimals)))
       if (progress < 1) requestAnimationFrame(step)
     }
@@ -119,7 +103,7 @@ function useCountUp(target: number, duration = 1800, decimals = 0) {
 
 function AnimatedStat({ stat }: { stat: typeof GLOBAL_STATS[0] }) {
   const decimals = stat.numeric % 1 !== 0 ? 1 : 0
-  const { ref, count } = useCountUp(stat.numeric, 1800, decimals)
+  const { ref, count } = useCountUp(stat.numeric, 2200, decimals)
   return (
     <div ref={ref} style={{ textAlign: "center" }}>
       <div style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,4vw,3rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.03em" }}>
@@ -161,14 +145,8 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div
-      onClick={onClose}
-      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{ background: "#0d0d0d", border: `1px solid ${COLOR}44`, borderRadius: 12, padding: "clamp(2rem,4vw,3rem)", maxWidth: 480, width: "100%", position: "relative" }}
-      >
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: "#0d0d0d", border: `1px solid ${COLOR}44`, borderRadius: 12, padding: "clamp(2rem,4vw,3rem)", maxWidth: 480, width: "100%", position: "relative" }}>
         <button onClick={onClose} style={{ position: "absolute", top: 16, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}>×</button>
         <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>Free Resource</div>
         <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }}>
