@@ -366,7 +366,7 @@ export default function AboutPage() {
                   width: "100%",
                   aspectRatio: "3/4",
                   objectFit: "cover",
-                  objectPosition: "center 70%",
+                  objectPosition: "center 85%",
                   filter: "grayscale(100%) contrast(1.05)",
                   display: "block",
                 }}
