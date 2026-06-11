@@ -38,7 +38,7 @@ const INHERITANCE = [
   { name: "Roland Barthes", note: "On the architecture of myth and the precision of signs." },
   { name: "Michel Foucault", note: "On how discourse shapes what can be said — and what becomes invisible." },
   { name: "Bernard Pivot", note: "On the dignity of reading carefully, and writing only what survives the page." },
-  { name: "Frédéric Beigbeder", note: "On the editorial voice as a weapon, and refusal as a form of authorship." },
+  { name: "Fr\u00e9d\u00e9ric Beigbeder", note: "On the editorial voice as a weapon, and refusal as a form of authorship." },
 ]
 
 const DISCIPLINE = [
@@ -107,7 +107,7 @@ export default function AboutPage() {
               marginBottom: 40,
             }}
           >
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: COLOR, boxShadow: `0 0 8px ${COLOR}` }} />
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: COLOR, boxShadow: "0 0 8px " + COLOR }} />
             <span style={{ color: COLOR, fontSize: 11, letterSpacing: "0.2em", fontWeight: 600, textTransform: "uppercase" }}>
               The Studio
             </span>
@@ -125,7 +125,7 @@ export default function AboutPage() {
             }}
           >
             A studio of one.<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               From Paris. By inheritance.
             </span>
           </h1>
@@ -219,7 +219,7 @@ export default function AboutPage() {
           style={{
             position: "absolute",
             inset: 0,
-            background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`,
+            background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 65%)",
             opacity: 0.15,
             pointerEvents: "none",
           }}
@@ -270,40 +270,13 @@ export default function AboutPage() {
                   gap: 20,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "1.6rem",
-                    color: COLOR,
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    letterSpacing: "-0.03em",
-                  }}
-                >
+                <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>
                   {r.n}.
                 </div>
-                <h3
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "clamp(1.25rem,1.8vw,1.55rem)",
-                    fontWeight: 600,
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.25,
-                    color: "#fff",
-                    margin: 0,
-                  }}
-                >
+                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,1.8vw,1.55rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
                   {r.title}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: SANS,
-                    fontSize: "0.96rem",
-                    color: "rgba(255,255,255,0.72)",
-                    lineHeight: 1.7,
-                    margin: 0,
-                  }}
-                >
+                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
                   {r.body}
                 </p>
               </div>
@@ -311,14 +284,8 @@ export default function AboutPage() {
           </div>
 
           <style jsx>{`
-            .refuse-grid {
-              grid-template-columns: repeat(1, 1fr);
-            }
-            @media (min-width: 720px) {
-              .refuse-grid {
-                grid-template-columns: repeat(2, 1fr);
-              }
-            }
+            .refuse-grid { grid-template-columns: repeat(1, 1fr); }
+            @media (min-width: 720px) { .refuse-grid { grid-template-columns: repeat(2, 1fr); } }
           `}</style>
         </div>
       </section>
@@ -339,98 +306,29 @@ export default function AboutPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               By Inheritance
             </div>
-            <h2
-              style={{
-                fontFamily: SERIF,
-                fontSize: "clamp(2rem,4vw,3rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                marginBottom: 28,
-                lineHeight: 1.15,
-              }}
-            >
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
               A French school of narrative precision.
             </h2>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "clamp(1rem,1.4vw,1.15rem)",
-                color: "rgba(255,255,255,0.7)",
-                maxWidth: 680,
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
-            >
+            <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
               This studio operates from Paris because the work belongs to a lineage — a culture where what is not said matters as much as what is, where a sentence is rewritten until nothing can be removed, where the editorial register is a form of authorship rather than a marketing tool.
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 24,
-            }}
-          >
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
             {INHERITANCE.map((p, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "32px 24px",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  background: "rgba(255,255,255,0.02)",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "1.2rem",
-                    fontWeight: 700,
-                    color: "#fff",
-                    marginBottom: 14,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
+              <div key={i} style={{ padding: "32px 24px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", textAlign: "center" }}>
+                <div style={{ fontFamily: SERIF, fontSize: "1.2rem", fontWeight: 700, color: "#fff", marginBottom: 14, letterSpacing: "-0.01em" }}>
                   {p.name}
                 </div>
-                <div
-                  style={{
-                    width: 24,
-                    height: 1,
-                    background: COLOR,
-                    margin: "0 auto 14px",
-                  }}
-                />
-                <p
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "0.92rem",
-                    fontStyle: "italic",
-                    color: "rgba(255,255,255,0.65)",
-                    lineHeight: 1.55,
-                    margin: 0,
-                  }}
-                >
+                <div style={{ width: 24, height: 1, background: COLOR, margin: "0 auto 14px" }} />
+                <p style={{ fontFamily: SERIF, fontSize: "0.92rem", fontStyle: "italic", color: "rgba(255,255,255,0.65)", lineHeight: 1.55, margin: 0 }}>
                   {p.note}
                 </p>
               </div>
             ))}
           </div>
 
-          <p
-            style={{
-              fontFamily: SERIF,
-              fontSize: "clamp(1.1rem,1.6vw,1.35rem)",
-              fontStyle: "italic",
-              color: "rgba(255,255,255,0.75)",
-              textAlign: "center",
-              maxWidth: 720,
-              margin: "60px auto 0",
-              lineHeight: 1.6,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", textAlign: "center", maxWidth: 720, margin: "60px auto 0", lineHeight: 1.6, letterSpacing: "-0.01em" }}>
             The studio does not invoke these names for decoration. It inherits a discipline — and applies that discipline to founders whose houses deserve it.
           </p>
         </div>
@@ -448,88 +346,63 @@ export default function AboutPage() {
           transition: "all 0.8s ease",
         }}
       >
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 60 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               The Founder
             </div>
-            <h2
-              style={{
-                fontFamily: SERIF,
-                fontSize: "clamp(2rem,4vw,3rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                marginBottom: 16,
-                lineHeight: 1.15,
-              }}
-            >
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 16, lineHeight: 1.15 }}>
               Hamza El Jaouahiry.
             </h2>
-            <div
-              style={{
-                width: 32,
-                height: 1,
-                background: COLOR,
-                margin: "0 auto 32px",
-              }}
-            />
+            <div style={{ width: 32, height: 1, background: COLOR, margin: "0 auto 0" }} />
           </div>
 
-          <div
-            style={{
-              fontFamily: SERIF,
-              fontSize: "clamp(1.05rem,1.4vw,1.2rem)",
-              color: "rgba(255,255,255,0.85)",
-              lineHeight: 1.8,
-              letterSpacing: "-0.005em",
-            }}
-          >
-            <p style={{ marginBottom: 24 }}>
-              I founded this studio because I could not find the work I wanted to read. The brand documents being produced by every consultancy I respected had collapsed into a shared, unreadable register — competent, polished, indistinguishable, machine-replaceable. The houses I admired most were being described in language that erased them.
-            </p>
-            <p style={{ marginBottom: 24 }}>
-              Strawberry Production is the studio I would have hired. A single founder, working at full attention on four houses per quarter, writing every word by hand, refusing the vocabulary of the field. The work is editorial in shape because it inherits a French school where editorial writing was never separate from intellectual seriousness — Barthes, Foucault, Pivot, Beigbeder are the discipline, not the decoration.
-            </p>
-            <p style={{ marginBottom: 0 }}>
-              When you commission the work, you commission me. There is no team to be passed to, no junior writer to be substituted, no scope to be negotiated downward. The document you receive will have been written entirely by the person whose name appears on the signature page.
-            </p>
-          </div>
-
-          <div
-            style={{
-              marginTop: 48,
-              padding: "32px clamp(1.5rem,3vw,2.5rem)",
-              border: "1px solid rgba(230,57,70,0.25)",
-              background: "rgba(230,57,70,0.04)",
-              textAlign: "center",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: SERIF,
-                fontStyle: "italic",
-                fontSize: "clamp(1.1rem,1.6vw,1.35rem)",
-                color: "#fff",
-                lineHeight: 1.55,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              "I do not build brands. I write the constitution by which a house declares what it is, what it refuses, and how it sounds when it speaks."
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(2rem,6vw,6rem)", alignItems: "start" }} className="founder-grid">
+            <div style={{ position: "relative" }}>
+              <img
+                src="/founder.jpg"
+                alt="Hamza El Jaouahiry — Strawberry Production"
+                style={{
+                  width: "100%",
+                  aspectRatio: "3/4",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  filter: "grayscale(100%) contrast(1.05)",
+                  display: "block",
+                }}
+              />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to top,#0d0d0d,transparent)" }} />
             </div>
-            <div
-              style={{
-                marginTop: 20,
-                fontSize: 10,
-                letterSpacing: "0.3em",
-                color: "rgba(255,255,255,0.5)",
-                textTransform: "uppercase",
-                fontFamily: SANS,
-              }}
-            >
-              Hamza El Jaouahiry · Founder
+
+            <div style={{ paddingTop: "clamp(1rem,3vw,2rem)" }}>
+              <div style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.4vw,1.2rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.8, letterSpacing: "-0.005em" }}>
+                <p style={{ marginBottom: 24 }}>
+                  I founded this studio because I could not find the work I wanted to read. The brand documents being produced by every consultancy I respected had collapsed into a shared, unreadable register — competent, polished, indistinguishable, machine-replaceable. The houses I admired most were being described in language that erased them.
+                </p>
+                <p style={{ marginBottom: 24 }}>
+                  Strawberry Production is the studio I would have hired. A single founder, working at full attention on four houses per quarter, writing every word by hand, refusing the vocabulary of the field. The work is editorial in shape because it inherits a French school where editorial writing was never separate from intellectual seriousness.
+                </p>
+                <p style={{ marginBottom: 0 }}>
+                  When you commission the work, you commission me. There is no team to be passed to, no junior writer to be substituted, no scope to be negotiated downward. The document you receive will have been written entirely by the person whose name appears on the signature page.
+                </p>
+              </div>
+
+              <div style={{ marginTop: 48, padding: "32px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(230,57,70,0.25)", background: "rgba(230,57,70,0.04)" }}>
+                <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "clamp(1.05rem,1.5vw,1.25rem)", color: "#fff", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
+                  "I do not build brands. I write the constitution by which a house declares what it is, what it refuses, and how it sounds when it speaks."
+                </div>
+                <div style={{ marginTop: 20, fontSize: 10, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", fontFamily: SANS }}>
+                  Hamza El Jaouahiry &middot; Founder
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <style jsx>{`
+          .founder-grid { grid-template-columns: 1fr 1fr; }
+          @media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr; } }
+        `}</style>
       </section>
 
       {/* HOW I WORK */}
@@ -548,86 +421,25 @@ export default function AboutPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               The Practice
             </div>
-            <h2
-              style={{
-                fontFamily: SERIF,
-                fontSize: "clamp(2rem,4vw,3rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                marginBottom: 24,
-                lineHeight: 1.15,
-              }}
-            >
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
               How the work is made.
             </h2>
-            <p
-              style={{
-                fontFamily: SANS,
-                fontSize: "clamp(0.98rem,1.4vw,1.15rem)",
-                color: "rgba(255,255,255,0.6)",
-                maxWidth: 640,
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
-            >
+            <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
               Four operating principles. They explain why a commission takes four weeks, why no two ever look alike, and why the work survives the month after delivery.
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gap: 1,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.07)",
-            }}
-          >
+          <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
             {DISCIPLINE.map((d) => (
-              <div
-                key={d.n}
-                style={{
-                  background: "#0a0a0a",
-                  padding: "44px clamp(1.5rem,3vw,3rem)",
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: "clamp(1.5rem,4vw,3.5rem)",
-                  alignItems: "start",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: SERIF,
-                    fontSize: "clamp(1.5rem,2.5vw,2rem)",
-                    color: COLOR,
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    minWidth: 60,
-                  }}
-                >
+              <div key={d.n} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,3rem)", display: "grid", gridTemplateColumns: "auto 1fr", gap: "clamp(1.5rem,4vw,3.5rem)", alignItems: "start" }}>
+                <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,2.5vw,2rem)", color: COLOR, fontWeight: 700, lineHeight: 1, minWidth: 60 }}>
                   {d.n}
                 </div>
                 <div>
-                  <h3
-                    style={{
-                      fontFamily: SERIF,
-                      fontSize: "clamp(1.2rem,1.8vw,1.55rem)",
-                      fontWeight: 600,
-                      marginBottom: 14,
-                      letterSpacing: "-0.02em",
-                      color: "#fff",
-                    }}
-                  >
+                  <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.2rem,1.8vw,1.55rem)", fontWeight: 600, marginBottom: 14, letterSpacing: "-0.02em", color: "#fff" }}>
                     {d.title}
                   </h3>
-                  <p
-                    style={{
-                      fontFamily: SANS,
-                      fontSize: "clamp(0.95rem,1.2vw,1.05rem)",
-                      color: "rgba(255,255,255,0.72)",
-                      lineHeight: 1.75,
-                      margin: 0,
-                    }}
-                  >
+                  <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: 0 }}>
                     {d.body}
                   </p>
                 </div>
@@ -649,68 +461,29 @@ export default function AboutPage() {
           transition: "all 0.8s ease",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`,
-            opacity: 0.5,
-            pointerEvents: "none",
-          }}
-        />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
-          <h2
-            style={{
-              fontFamily: SERIF,
-              fontSize: "clamp(2rem,5vw,3.5rem)",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: "-0.03em",
-              marginBottom: 32,
-            }}
-          >
+          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
             Now you know who you would be working with.
           </h2>
-          <p
-            style={{
-              fontFamily: SANS,
-              fontSize: "clamp(1rem,1.4vw,1.15rem)",
-              color: "rgba(255,255,255,0.7)",
-              lineHeight: 1.7,
-              maxWidth: 620,
-              margin: "0 auto 48px",
-            }}
-          >
+          <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, maxWidth: 620, margin: "0 auto 48px" }}>
             One commission per house. Four houses per quarter. The next slot opens to the founder whose house deserves it most.
           </p>
           <Link
             href="/brand-narrative-audit"
             style={{
               display: "inline-block",
-              background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
-              color: "#fff",
-              padding: "20px 52px",
-              borderRadius: 100,
-              fontSize: 16,
-              fontWeight: 600,
-              textDecoration: "none",
-              letterSpacing: "0.04em",
-              fontFamily: SANS,
-              boxShadow: `0 20px 60px ${GLOW}`,
+              background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)",
+              color: "#fff", padding: "20px 52px", borderRadius: 100,
+              fontSize: 16, fontWeight: 600, textDecoration: "none",
+              letterSpacing: "0.04em", fontFamily: SANS,
+              boxShadow: "0 20px 60px " + GLOW,
             }}
           >
-            See the Commission →
+            See the Commission &rarr;
           </Link>
-          <div
-            style={{
-              marginTop: 24,
-              fontSize: 13,
-              color: "rgba(255,255,255,0.45)",
-              letterSpacing: "0.05em",
-              fontFamily: SANS,
-            }}
-          >
-            Confidential commission · NDA available
+          <div style={{ marginTop: 24, fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em", fontFamily: SANS }}>
+            Confidential commission &middot; NDA available
           </div>
         </div>
       </section>
