@@ -11,10 +11,10 @@ const GLOW = "rgba(230,57,70,0.35)"
 const FORMSPREE = "https://formspree.io/f/xnjwroeq"
 
 const GLOBAL_STATS = [
-  { value: "47+", label: "Houses served" },
-  { value: "€8.4M", label: "Client revenue attributed" },
-  { value: "94%", label: "Renewal or referral rate" },
-  { value: "12 wks", label: "Average time to ROI" },
+  { value: "47+", label: "Houses served", numeric: 47, prefix: "", suffix: "+" },
+  { value: "€8.4M", label: "Client revenue attributed", numeric: 8.4, prefix: "€", suffix: "M" },
+  { value: "94%", label: "Renewal or referral rate", numeric: 94, prefix: "", suffix: "%" },
+  { value: "12 wks", label: "Average time to ROI", numeric: 12, prefix: "", suffix: " wks" },
 ]
 
 const METHOD_CASES = [
@@ -86,6 +86,52 @@ const ATLAS_CASES = [
   { n: "19", title: "We are building something that does not exist. Every prospect tries to put us in a box that already does." },
 ]
 
+function useCountUp(target: number, duration = 1800, decimals = 0) {
+  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(false)
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setStarted(true); obs.disconnect() }
+    }, { threshold: 0.3 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!started) return
+    let start: number | null = null
+    const step = (ts: number) => {
+      if (!start) start = ts
+      const progress = Math.min((ts - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(parseFloat((eased * target).toFixed(decimals)))
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }, [started, target, duration, decimals])
+
+  return { ref, count }
+}
+
+function AnimatedStat({ stat }: { stat: typeof GLOBAL_STATS[0] }) {
+  const decimals = stat.numeric % 1 !== 0 ? 1 : 0
+  const { ref, count } = useCountUp(stat.numeric, 1800, decimals)
+  return (
+    <div ref={ref} style={{ textAlign: "center" }}>
+      <div style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,4vw,3rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.03em" }}>
+        {stat.prefix}{decimals === 1 ? count.toFixed(1) : count}{stat.suffix}
+      </div>
+      <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        {stat.label}
+      </div>
+    </div>
+  )
+}
+
 function AtlasModal({ onClose }: { onClose: () => void }) {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
@@ -123,12 +169,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
         style={{ background: "#0d0d0d", border: `1px solid ${COLOR}44`, borderRadius: 12, padding: "clamp(2rem,4vw,3rem)", maxWidth: 480, width: "100%", position: "relative" }}
       >
-        <button
-          onClick={onClose}
-          style={{ position: "absolute", top: 16, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}
-        >
-          ×
-        </button>
+        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}>×</button>
         <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>Free Resource</div>
         <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }}>
           30 Architectures.<br />An Atlas.
@@ -137,32 +178,22 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
           128 pages. Free. Enter your email and the Atlas opens immediately.
         </p>
         {status === "done" ? (
-          <p style={{ fontFamily: SERIF, fontSize: 16, fontStyle: "italic", color: COLOR, textAlign: "center", padding: "1rem 0" }}>
-            Opening the Atlas…
-          </p>
+          <p style={{ fontFamily: SERIF, fontSize: 16, fontStyle: "italic", color: COLOR, textAlign: "center", padding: "1rem 0" }}>Opening the Atlas…</p>
         ) : (
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <input
-              type="email"
-              required
-              placeholder="Your email"
-              value={email}
+              type="email" required placeholder="Your email" value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "14px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", width: "100%" }}
             />
             <button
-              type="submit"
-              disabled={status === "loading"}
+              type="submit" disabled={status === "loading"}
               style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", border: "none", borderRadius: 100, padding: "14px 28px", fontSize: 14, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em", cursor: "pointer", boxShadow: `0 8px 30px ${GLOW}` }}
             >
               {status === "loading" ? "Opening…" : "Read the Atlas →"}
             </button>
-            {status === "error" && (
-              <p style={{ fontSize: 13, color: COLOR, textAlign: "center", margin: 0 }}>Something went wrong. Try again.</p>
-            )}
-            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", margin: 0, fontFamily: SANS }}>
-              No spam. One email to receive the Atlas.
-            </p>
+            {status === "error" && <p style={{ fontSize: 13, color: COLOR, textAlign: "center", margin: 0 }}>Something went wrong. Try again.</p>}
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", margin: 0, fontFamily: SANS }}>No spam. One email to receive the Atlas.</p>
           </form>
         )}
       </div>
@@ -184,50 +215,20 @@ function useCharts() {
 
       new Chart(document.getElementById("cs-chart1"), {
         type: "bar",
-        data: {
-          labels: ["Before", "After"],
-          datasets: [{ data: [14, 58], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }],
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k MRR" } } },
-          scales: {
-            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
-            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0, max: 70 },
-          },
-        },
+        data: { labels: ["Before", "After"], datasets: [{ data: [14, 58], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k MRR" } } }, scales: { x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } }, y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0, max: 70 } } },
       })
 
       new Chart(document.getElementById("cs-chart2"), {
         type: "line",
-        data: {
-          labels: ["Month 1", "Month 2", "Month 3"],
-          datasets: [{ data: [120, 980, 2400], borderColor: "#e63946", backgroundColor: "rgba(230,57,70,0.1)", fill: true, tension: 0.4, pointBackgroundColor: "#e63946", pointRadius: 5 }],
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k views" } } },
-          scales: {
-            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
-            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0 },
-          },
-        },
+        data: { labels: ["Month 1", "Month 2", "Month 3"], datasets: [{ data: [120, 980, 2400], borderColor: "#e63946", backgroundColor: "rgba(230,57,70,0.1)", fill: true, tension: 0.4, pointBackgroundColor: "#e63946", pointRadius: 5 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "k views" } } }, scales: { x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } }, y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "k" }, min: 0 } } },
       })
 
       new Chart(document.getElementById("cs-chart3"), {
         type: "bar",
-        data: {
-          labels: ["Before", "After"],
-          datasets: [{ data: [1, 4], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }],
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "x pipeline" } } },
-          scales: {
-            x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } },
-            y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "x" }, min: 0, max: 5 },
-          },
-        },
+        data: { labels: ["Before", "After"], datasets: [{ data: [1, 4], backgroundColor: ["rgba(255,255,255,0.15)", "#e63946"], borderRadius: 4, barThickness: 48 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx: any) => ctx.parsed.y + "x pipeline" } } }, scales: { x: { grid: { display: false }, ticks: { color: tickColor, font: { size: 12 } }, border: { display: false } }, y: { grid: { color: gridColor }, border: { display: false }, ticks: { color: tickColor, font: { size: 11 }, callback: (v: any) => v + "x" }, min: 0, max: 5 } } },
       })
     }
     document.head.appendChild(script)
@@ -264,12 +265,7 @@ export default function CaseStudiesPage() {
 
       <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 32 }}>
-          {GLOBAL_STATS.map((s, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,4vw,3rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.03em" }}>{s.value}</div>
-              <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.label}</div>
-            </div>
-          ))}
+          {GLOBAL_STATS.map((s, i) => <AnimatedStat key={i} stat={s} />)}
         </div>
       </section>
 
