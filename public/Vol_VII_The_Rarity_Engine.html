@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Rarity Engine · Strawberry Production · Vol. VII</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #F5F5F5; }
+  .book { max-width: 880px; margin: 0 auto; }
+  .page { position: relative; background: #050505; min-height: 1100px; padding: 80px 64px; overflow: hidden; page-break-after: always; border-bottom: 1px solid rgba(245,245,245,0.04); }
+  .page.cover { padding: 0; min-height: 1180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+  .letterbox-top, .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+  .letterbox-top { top: 0; } .letterbox-bot { bottom: 0; }
+  .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+  .cm-tl { top: 48px; left: 64px; } .cm-tr { top: 48px; right: 64px; }
+  .cm-bl { bottom: 48px; left: 64px; } .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .red { color: #E11D48; }
+  .blur-word { filter: blur(1.2px); opacity: 0.85; }
+  .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; margin-bottom: 24px; }
+  .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; }
+  .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; }
+  .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; }
+  .h-sm { font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .body { font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+  .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); }
+  .rule-red { height: 1px; background: #E11D48; width: 48px; }
+  .content { position: relative; z-index: 2; }
+  .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+  .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); }
+  .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+  .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .compare-table .row:last-child { border-bottom: none; }
+  .compare-table .cell { padding: 18px 20px; font-size: 13px; line-height: 1.5; }
+  .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; font-weight: 300; }
+  .compare-table .right { color: #F5F5F5; border-left: 1px solid #E11D48; }
+  .codex-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+  .codex-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+  .codex-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+  .codex-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; line-height: 1.15; }
+  .codex-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+  .codex-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+  .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; line-height: 1.1; }
+  .layer-desc { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+  .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side { padding: 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+  .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+  .case-side:last-child .case-label { color: #E11D48; }
+  .case-item { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+  .case-item .mark { color: #E11D48; margin-right: 8px; }
+  .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); gap: 20px; align-items: baseline; }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; }
+  .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+  .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+  .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+  .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+  .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+  .ticket-frame { border: 0.5px dashed rgba(225,29,72,0.4); padding: 24px 28px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; display: grid; grid-template-columns: 1fr 110px; gap: 24px; align-items: center; }
+  .ticket-frame::before { content: ''; position: absolute; left: -7px; top: 50%; width: 14px; height: 14px; border-radius: 50%; background: #050505; border: 0.5px dashed rgba(225,29,72,0.4); }
+  .ticket-frame::after { content: ''; position: absolute; right: -7px; top: 50%; width: 14px; height: 14px; border-radius: 50%; background: #050505; border: 0.5px dashed rgba(225,29,72,0.4); }
+  @media print { .page { page-break-after: always; border: none; min-height: 100vh; } body { background: #050505; } }
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div>
+  <div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="position: absolute; inset: 0; opacity: 0.12; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 680 1180" preserveAspectRatio="xMidYMid slice">
+      <!-- The rarity diagram: thousands of identical dots, one red -->
+      <g fill="#F5F5F5" opacity="0.22">
+        <circle cx="80" cy="240" r="3"/><circle cx="140" cy="280" r="3"/><circle cx="200" cy="240" r="3"/><circle cx="260" cy="280" r="3"/><circle cx="320" cy="240" r="3"/><circle cx="380" cy="280" r="3"/><circle cx="440" cy="240" r="3"/><circle cx="500" cy="280" r="3"/><circle cx="560" cy="240" r="3"/><circle cx="620" cy="280" r="3"/>
+        <circle cx="80" cy="340" r="3"/><circle cx="140" cy="380" r="3"/><circle cx="200" cy="340" r="3"/><circle cx="260" cy="380" r="3"/><circle cx="380" cy="380" r="3"/><circle cx="440" cy="340" r="3"/><circle cx="500" cy="380" r="3"/><circle cx="560" cy="340" r="3"/><circle cx="620" cy="380" r="3"/>
+        <circle cx="80" cy="440" r="3"/><circle cx="140" cy="480" r="3"/><circle cx="200" cy="440" r="3"/><circle cx="260" cy="480" r="3"/><circle cx="320" cy="440" r="3"/><circle cx="380" cy="480" r="3"/><circle cx="440" cy="440" r="3"/><circle cx="500" cy="480" r="3"/><circle cx="560" cy="440" r="3"/><circle cx="620" cy="480" r="3"/>
+        <circle cx="80" cy="540" r="3"/><circle cx="140" cy="580" r="3"/><circle cx="200" cy="540" r="3"/><circle cx="260" cy="580" r="3"/><circle cx="320" cy="540" r="3"/><circle cx="380" cy="580" r="3"/><circle cx="440" cy="540" r="3"/><circle cx="500" cy="580" r="3"/><circle cx="560" cy="540" r="3"/><circle cx="620" cy="580" r="3"/>
+        <circle cx="80" cy="640" r="3"/><circle cx="140" cy="680" r="3"/><circle cx="200" cy="640" r="3"/><circle cx="260" cy="680" r="3"/><circle cx="320" cy="640" r="3"/><circle cx="380" cy="680" r="3"/><circle cx="440" cy="640" r="3"/><circle cx="500" cy="680" r="3"/><circle cx="560" cy="640" r="3"/><circle cx="620" cy="680" r="3"/>
+        <circle cx="80" cy="740" r="3"/><circle cx="140" cy="780" r="3"/><circle cx="200" cy="740" r="3"/><circle cx="260" cy="780" r="3"/><circle cx="320" cy="740" r="3"/><circle cx="380" cy="780" r="3"/><circle cx="440" cy="740" r="3"/><circle cx="500" cy="780" r="3"/><circle cx="560" cy="740" r="3"/><circle cx="620" cy="780" r="3"/>
+      </g>
+      <!-- The one red dot, larger -->
+      <circle cx="320" cy="380" r="14" fill="#E11D48" opacity="0.95"/>
+      <circle cx="320" cy="380" r="28" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="320" cy="380" r="50" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.25"/>
+    </svg>
+  </div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>Strawberry Production</span><span class="red">N° 007 / Vol. VII</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 14%, rgba(245,245,245,0.1) 14%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2;">
+    <div class="scene-tag">Manifesto · Volume VII</div>
+    <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px;">The<br><span style="font-style: italic; font-weight: 400;">Rarity</span><br><span class="red">Engine.</span></div>
+    <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7);">In a world of <span class="blur-word">infinite</span> supply, the only premium left is what you <span style="color: #F5F5F5; font-style: normal;">deliberately withhold</span>.</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500;">Strawberry Production</div>
+        <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase;">Narrative Perception Engineering</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,245,245,0.4);">PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Strawberry · Manifesto VII</div><div class="corner-mark cm-tr red">i. Index</div>
+  <div class="corner-mark cm-bl">001</div><div class="corner-mark cm-br">N. Production · 2026</div>
+  <div class="content">
+    <div class="scene-tag">Table of Contents</div>
+    <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">withholding</span>.</div>
+    <div class="toc-row"><div class="toc-num">01</div><div class="toc-title">The Abundance Trap</div><div class="toc-page">P. 02</div></div>
+    <div class="toc-row"><div class="toc-num">02</div><div class="toc-title">The Rarity Doctrine</div><div class="toc-page">P. 03</div></div>
+    <div class="toc-row"><div class="toc-num">03</div><div class="toc-title">The Five Mechanics of Manufactured Scarcity</div><div class="toc-page">P. 04</div></div>
+    <div class="toc-row"><div class="toc-num">04</div><div class="toc-title">Anatomy of a Scarce Release</div><div class="toc-page">P. 05</div></div>
+    <div class="toc-row"><div class="toc-num">05</div><div class="toc-title">Case File · The Brand That Multiplied Price by Five</div><div class="toc-page">P. 06</div></div>
+    <div class="toc-row"><div class="toc-num">06</div><div class="toc-title">The Rarity Protocol</div><div class="toc-page">P. 07</div></div>
+    <div class="toc-row"><div class="toc-num">07</div><div class="toc-title">The Verdict</div><div class="toc-page">P. 08</div></div>
+    <div class="toc-row"><div class="toc-num">08</div><div class="toc-title">End Card</div><div class="toc-page">P. 09</div></div>
+  </div>
+</div>
+
+<!-- ABUNDANCE TRAP -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div><div class="corner-mark cm-tr red">The Abundance Trap</div>
+  <div class="corner-mark cm-bl">002</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 01</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The abundance <span style="font-style: italic;" class="red">trap</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">Producing more no longer raises revenue. It lowers value.</div>
+    <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+      <div style="padding-right: 40px;">
+        <div class="quote">"AI gave every operator infinite production capacity. Every founder can publish ten articles a week. Every studio can deliver double the work. Every product team can ship faster than ever.<br><br>And yet — <span class="red">prices are collapsing</span>. Margins are evaporating. The market is paying <span style="text-decoration: line-through; text-decoration-color: #E11D48;">less</span>, not more, for the things we produce <span style="text-decoration: line-through; text-decoration-color: #E11D48;">faster</span>."</div>
+      </div>
+      <div style="background: rgba(245,245,245,0.1);"></div>
+      <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="h-sm red" style="margin-bottom: 12px;">The Truth</div>
+        <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15;">Volume <span class="blur-word">no longer</span><br>signals quality.<br><span class="red" style="font-style: normal; font-weight: 500;">It signals desperation.</span></div>
+        <div class="mono" style="margin-top: 24px; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— ABUNDANCE IS THE NEW DISCOUNT.</div>
+      </div>
+    </div>
+    <div class="rule-red" style="margin-bottom: 18px;"></div>
+    <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Brand Trapped in Abundance</div>
+    <div class="three-col"><div class="col-num">01</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your offer is <span style="font-style: italic;">always available</span>.<br><span class="red" style="font-style: italic;">No waitlist. No closed window. No season.</span></div><div class="body">Perpetually open offers signal that the supply is unlimited and the demand is uncertain. Buyers wait for discounts that always eventually come.</div></div></div>
+    <div class="three-col"><div class="col-num">02</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">You publish <span style="font-style: italic;">constantly</span>.<br><span class="red" style="font-style: italic;">Daily. Multiple platforms. Every angle covered.</span></div><div class="body">Constant publishing trains the market to value individual outputs at near-zero. The premium goes to the brand whose silence is interrupted, not the one that never stops.</div></div></div>
+    <div class="three-col" style="margin-bottom: 32px;"><div class="col-num">03</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your <span style="font-style: italic;">delivery time is shrinking</span> every quarter.<br><span class="red" style="font-style: italic;">Because the market keeps demanding faster — and you keep agreeing.</span></div><div class="body">Faster is not a brand. It is a race competitors with AI will inevitably win at lower margin. The brands that command premium are the ones that get slower deliberately, not faster.</div></div></div>
+    <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 620px;">
+      <div class="quote" style="color: #F5F5F5;">"Abundance is now <span class="red" style="font-style: normal; font-weight: 500;">free</span>.<br><span style="color: rgba(245,245,245,0.4);">Scarcity is the only thing left worth paying for.</span>"</div>
+    </div>
+  </div>
+</div>
+
+<!-- RARITY DOCTRINE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 02 · Doctrine</div><div class="corner-mark cm-tr red">The Rarity</div>
+  <div class="corner-mark cm-bl">003</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 02</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Rarity as <span style="font-style: italic;" class="red">strategy</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">Withholding is the new manufacturing.</div>
+    <div class="charter-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The seventh volume of the Strawberry doctrine —</div>
+      <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">The <strong style="font-style: normal; font-weight: 600;">Rarity Engine</strong> closes the economic loop of the Strawberry canon. <span style="color: rgba(245,245,245,0.65);">Where the previous volumes built memory, movement, infrastructure, embodiment, refusal, and imprint — this volume defines how the resulting brand <em style="color: #E11D48; font-style: normal;">prices itself</em> in a market where everything else is approaching free.</span></div>
+    </div>
+    <div class="compare-table">
+      <div class="row"><div class="cell left">Always-on availability</div><div class="cell right">Defined windows, defended dates</div></div>
+      <div class="row"><div class="cell left">Daily output</div><div class="cell right">Quarterly releases</div></div>
+      <div class="row"><div class="cell left">Infinite client slots</div><div class="cell right">Capped roster, public waitlist</div></div>
+      <div class="row"><div class="cell left">Discount when sales slow</div><div class="cell right">Withdraw the offer entirely</div></div>
+      <div class="row"><div class="cell left">Compete on speed</div><div class="cell right">Compete on rarity</div></div>
+    </div>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+      <div>
+        <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3;">Scarcity + <span class="red">Quality</span> + Time = Desire.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px;">Limited supply. Proven craft. Patient release. Together they produce <em style="color: #E11D48; font-style: normal;">desire that compounds</em> — the only economic force that survives infinite supply.</div>
+      </div>
+      <div>
+        <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+        <div class="body" style="font-size: 13.5px;">When AI drops the marginal cost of production toward zero, the only goods that retain premium pricing are the ones <span class="red">deliberately constrained at the supply side</span>. Rarity becomes the last lever no algorithm can pull faster than you.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIVE MECHANICS -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 03 · The Mechanics</div><div class="corner-mark cm-tr red">Five Mechanics</div>
+  <div class="corner-mark cm-bl">004</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 03 — The Mechanics</div>
+    <div class="h-large serif" style="margin-bottom: 32px;">The five mechanics of <span style="font-style: italic;" class="red">manufactured scarcity</span>.</div>
+    <div class="codex-block"><div class="codex-num">MECHANIC I · CAPACITY CAP</div><div class="codex-title">A fixed, published number of clients <span style="font-style: italic;">per year</span>.</div><div class="codex-body">Not "limited slots" as a marketing line — an actual hard cap stated on the website. "We take twelve clients a year. Period." <em>The cap is what makes the work scarce. The cap is what justifies the price.</em></div></div>
+    <div class="codex-block"><div class="codex-num">MECHANIC II · CLOSED WINDOWS</div><div class="codex-title">Offers exist only during <span style="font-style: italic;">defined seasons</span>.</div><div class="codex-body">Two intake windows per year. Three weeks each. After that, the door closes — visibly. Closed windows are <em>broadcast</em>, not hidden. The closure itself becomes content.</div></div>
+    <div class="codex-block"><div class="codex-num">MECHANIC III · WAITLIST AUTHORITY</div><div class="codex-title">A public waitlist with <span style="font-style: italic;">visible length</span>.</div><div class="codex-body">"Currently 47 founders on the waitlist for Q3." The visible number is the asset. It signals demand, social proof, and forces the next buyer to <em>commit harder</em> to skip the queue.</div></div>
+    <div class="codex-block"><div class="codex-num">MECHANIC IV · WITHDRAWAL POWER</div><div class="codex-title">The willingness to <span style="font-style: italic;">remove the offer</span> entirely.</div><div class="codex-body">Twice a year, publish that a service is being retired. Not paused. <em>Retired.</em> The removal is the marketing event. Buyers who waited learn the lesson, the market learns the rule: this brand does not always wait for you.</div></div>
+    <div class="codex-block"><div class="codex-num">MECHANIC V · RELEASE RITUAL</div><div class="codex-title">Each new offer is a <span style="font-style: italic;">named event</span>, not a launch.</div><div class="codex-body">Drop. Edition. Cohort. Cycle. The vocabulary is borrowed from luxury, not SaaS. Each release has a name, a number, a date, a closing date — and <em>never reopens</em> in identical form.</div></div>
+  </div>
+</div>
+
+<!-- ANATOMY -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 04 · Anatomy</div><div class="corner-mark cm-tr red">The Release</div>
+  <div class="corner-mark cm-bl">005</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 04 — Anatomy</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of a <span style="font-style: italic;" class="red">scarce release</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 36px;">Five elements. Each one borrowed from couture, not commerce.</div>
+    <div class="layer-row"><div class="layer-tag">R · 01</div><div><div class="layer-title">The Edition Number</div><div class="layer-desc">"Edition 04. Twelve clients. Closes March 31." Numbers and dates do the heavy lifting. They convert <em>availability into a clock</em> — and clocks create urgency that prose cannot.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">R · 02</div><div><div class="layer-title">The Cap</div><div class="layer-desc">A clearly stated maximum — clients, units, weeks of work. Not "limited spaces." A specific integer. <em>The number is the asset.</em> The smaller and more believable, the higher the premium it sustains.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">R · 03</div><div><div class="layer-title">The Ritual Date</div><div class="layer-desc">Every edition opens and closes on a published date. <em>The dates do not move.</em> Ever. Moving the date once breaks the entire mechanic — and the market never quite believes you the next time.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">R · 04</div><div><div class="layer-title">The Filter</div><div class="layer-desc">An application or selection process — not a checkout button. The friction is the feature. <em>The work of being chosen</em> is what justifies the price and protects the standards.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">R · 05</div><div><div class="layer-title">The Aftermath</div><div class="layer-desc">When the window closes, publish the closing. "Edition 04 closed. Next opens September." Closure announcements perform <em>better than launch announcements</em> — because they teach the market the rule for next time.</div></div></div>
+
+    <div style="margin-top: 32px;" class="ticket-frame">
+      <div>
+        <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 8px; text-transform: uppercase;">— EDITION SPECIMEN —</div>
+        <div class="serif" style="font-size: 22px; font-weight: 500; line-height: 1.15; color: #F5F5F5; margin-bottom: 8px;">Edition 04 · <span style="font-style: italic;">The Founder Codex Cohort</span></div>
+        <div class="body" style="font-size: 12.5px; color: rgba(245,245,245,0.6);">Twelve founders. Six months. <span class="red">Closes 31 March 2026.</span></div>
+      </div>
+      <div style="text-align: right;">
+        <div class="serif" style="font-size: 48px; font-weight: 700; line-height: 1; color: #E11D48;">12</div>
+        <div class="mono" style="font-size: 9px; color: rgba(245,245,245,0.5); letter-spacing: 0.2em; margin-top: 4px;">SEATS · CAPPED</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE FILE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 05 · Case File</div><div class="corner-mark cm-tr red">The Withholding</div>
+  <div class="corner-mark cm-bl">006</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 05 — Case File</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Price multiplied by <span style="font-style: italic;" class="red">five</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From always-on operator to invitation-only brand in two release cycles.</div>
+    <div class="case-grid">
+      <div class="case-side">
+        <div class="case-label">Before · Always Open</div>
+        <div class="case-item"><span class="mark">×</span>Year-round availability, rolling intake</div>
+        <div class="case-item"><span class="mark">×</span>Daily content output, every platform</div>
+        <div class="case-item"><span class="mark">×</span>Average deal: <span style="color: rgba(245,245,245,0.55);">€4,800</span></div>
+        <div class="case-item"><span class="mark">×</span>50% of prospects negotiated price</div>
+        <div class="case-item"><span class="mark">×</span>Cycle: 6 weeks of selling per deal</div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— A vendor on tap.</div>
+      </div>
+      <div class="case-side">
+        <div class="case-label">After · The Rarity Engine</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Two intake windows per year · <span class="red" style="font-weight: 500;">12 clients capped</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Quarterly edition releases · published closures</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Average deal: <span class="red" style="font-weight: 500;">€24,000</span> (5.0× lift)</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Negotiation rate: <span class="red" style="font-weight: 500;">7%</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Cycle: <span class="red" style="font-weight: 500;">11 days</span> · waitlist 9 months out</div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "The waitlist became <span class="red">the product</span>."</div>
+      </div>
+    </div>
+    <div class="h-sm" style="margin: 32px 0 20px;">Three Rarity Moves</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Cap Announcement</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Public post: <span style="color: #F5F5F5;">"From now, twelve clients per year."</span> No exceptions. The post tripled inbound within 30 days.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Visible Waitlist</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">A public counter on the homepage showing the <span style="color: #F5F5F5;">number of founders on the waitlist</span>. The number became the proof.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Withdrawal</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">An entire service line <span style="color: #F5F5F5;">retired publicly</span> after one final cohort. Most-shared post of the year — and reinforced every future scarcity claim.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOL -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 06 · The Protocol</div><div class="corner-mark cm-tr red">Rarity</div>
+  <div class="corner-mark cm-bl">007</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 06 — The Rarity Protocol</div>
+    <div class="h-large serif" style="margin-bottom: 8px;">How to manufacture <span style="font-style: italic;" class="red">desire</span>.</div>
+    <div class="body" style="margin-bottom: 36px; max-width: 600px;">Restrict. Release. Reset. Three stages. One brand transformed from on-demand vendor into invitation-only institution.</div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">01</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage I · Restrict</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Publish the <span style="font-style: italic; color: rgba(245,245,245,0.6);">cap</span> — and never violate it.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Choose a number — clients, units, weeks of work — and state it publicly on the website, on every sales page, in every onboarding call. <em style="color: #E11D48; font-style: normal;">The cap is the constitution of rarity.</em> Bending it once destroys the entire mechanic for the years that follow.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Capacity audit &amp; cap selection</div>
+          <div><span class="red">— </span>Public cap announcement</div>
+          <div><span class="red">— </span>Waitlist infrastructure</div>
+          <div><span class="red">— </span>Edition vocabulary lock</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">02</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage II · Release</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Treat every opening as a <span style="font-style: italic;">named event</span>.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Edition number. Cohort name. Opening date. Closing date. Each release becomes a <em style="color: #E11D48; font-style: normal;">marketing event in itself</em>, not a generic CTA. The pre-release window builds the demand; the closing creates the proof.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Edition design &amp; naming</div>
+          <div><span class="red">— </span>Pre-release content calendar</div>
+          <div><span class="red">— </span>Application &amp; selection process</div>
+          <div><span class="red">— </span>Public closure announcement</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+      <div class="pillar-num">03</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage III · Reset</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Withdraw, retire, and <span style="font-style: italic;">re-rare</span> every twelve months.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Each year, one service is retired publicly. Each year, the cap may shrink. Each year, the brand's <em style="color: #E11D48; font-style: normal;">scarcity is renewed</em>. The reset is what prevents rarity from drifting back into perceived abundance.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Annual service retirement</div>
+          <div><span class="red">— </span>Cap review &amp; reduction</div>
+          <div><span class="red">— </span>Waitlist communication ritual</div>
+          <div><span class="red">— </span>Price escalation cadence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE VERDICT -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Final Scene · The Verdict</div><div class="corner-mark cm-tr red">The Choice</div>
+  <div class="corner-mark cm-bl">008</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Final Scene — The Verdict</div>
+    <div class="h-massive serif" style="margin-bottom: 16px;">Will you stay <span style="font-style: italic;" class="red">always-on</span>?</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+      <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · OVERPRODUCE</div>
+        <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep producing more.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">More services. More content. More platforms. More availability. <span class="blur-word">More commoditization.</span></div>
+      </div>
+      <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · WITHHOLD</div>
+        <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Restrict. Release. Reset. Become inevitable.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Build an offer the market <span class="red">cannot have on demand</span> — and watch desire compound.</div>
+      </div>
+    </div>
+    <div style="margin: 40px 0 0; max-width: 640px;">
+      <div class="quote" style="font-size: 24px;">"The market wants what it cannot have. <span style="color: rgba(245,245,245,0.5);">In an age of infinite supply,</span><br>make sure that — <span class="red" style="font-style: normal; font-weight: 500;">is you.</span>"</div>
+    </div>
+    <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Close the window.</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">STRAWBERRY · PRODUCTION<br>PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- END CARD -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>End Card</span><span class="red">Reel VII / Complete</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+    <div class="mono" style="font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+    <div class="serif" style="font-size: 60px; font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 28px;">"Abundance is now <span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">free</span>.</div>
+    <div class="serif" style="font-size: 60px; font-weight: 700; line-height: 1;">Only <span class="red" style="font-style: italic; font-weight: 400;">rarity</span><br>still costs."</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+      <div><div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div></div>
+      <div style="text-align: right;">Paris · Los Angeles<br><span class="red">© MMXXVI</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

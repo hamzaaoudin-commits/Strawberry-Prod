@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Aesthetic Constitution · Strawberry Production · Vol. VI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #F5F5F5; }
+  .book { max-width: 880px; margin: 0 auto; }
+  .page { position: relative; background: #050505; min-height: 1100px; padding: 80px 64px; overflow: hidden; page-break-after: always; border-bottom: 1px solid rgba(245,245,245,0.04); }
+  .page.cover { padding: 0; min-height: 1180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+  .letterbox-top, .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+  .letterbox-top { top: 0; } .letterbox-bot { bottom: 0; }
+  .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+  .cm-tl { top: 48px; left: 64px; } .cm-tr { top: 48px; right: 64px; }
+  .cm-bl { bottom: 48px; left: 64px; } .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .red { color: #E11D48; }
+  .blur-word { filter: blur(1.2px); opacity: 0.85; }
+  .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; margin-bottom: 24px; }
+  .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; }
+  .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; }
+  .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; }
+  .h-sm { font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .body { font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+  .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); }
+  .rule-red { height: 1px; background: #E11D48; width: 48px; }
+  .content { position: relative; z-index: 2; }
+  .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+  .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); }
+  .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+  .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .compare-table .row:last-child { border-bottom: none; }
+  .compare-table .cell { padding: 18px 20px; font-size: 13px; line-height: 1.5; }
+  .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; font-weight: 300; }
+  .compare-table .right { color: #F5F5F5; border-left: 1px solid #E11D48; }
+  .codex-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+  .codex-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+  .codex-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+  .codex-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; line-height: 1.15; }
+  .codex-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+  .codex-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+  .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; line-height: 1.1; }
+  .layer-desc { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+  .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side { padding: 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+  .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+  .case-side:last-child .case-label { color: #E11D48; }
+  .case-item { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+  .case-item .mark { color: #E11D48; margin-right: 8px; }
+  .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); gap: 20px; align-items: baseline; }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; }
+  .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+  .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+  .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+  .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+  .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+  .swatch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .swatch { aspect-ratio: 1 / 1.3; border: 0.5px solid rgba(245,245,245,0.1); padding: 16px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+  .swatch .label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase; }
+  .swatch .name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: #F5F5F5; line-height: 1; margin-top: 4px; }
+  .swatch .code { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.4); letter-spacing: 0.1em; }
+  @media print { .page { page-break-after: always; border: none; min-height: 100vh; } body { background: #050505; } }
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div>
+  <div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="position: absolute; inset: 0; opacity: 0.12; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 680 1180" preserveAspectRatio="xMidYMid slice">
+      <!-- A constitution-like grid of rectangles -->
+      <rect x="60" y="200" width="100" height="100" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.6"/>
+      <rect x="170" y="200" width="100" height="100" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.25"/>
+      <rect x="280" y="200" width="100" height="100" fill="#E11D48" opacity="0.55"/>
+      <rect x="60" y="310" width="100" height="100" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.25"/>
+      <rect x="170" y="310" width="100" height="100" fill="#F5F5F5" opacity="0.18"/>
+      <rect x="280" y="310" width="100" height="100" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.6"/>
+      <rect x="490" y="620" width="120" height="280" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.55"/>
+      <line x1="490" y1="900" x2="610" y2="900" stroke="#E11D48" stroke-width="2" opacity="0.7"/>
+    </svg>
+  </div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>Strawberry Production</span><span class="red">N° 006 / Vol. VI</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 12%, rgba(245,245,245,0.1) 12%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2;">
+    <div class="scene-tag">Manifesto · Volume VI</div>
+    <div class="serif" style="font-size: 76px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px;">The<br><span style="font-style: italic; font-weight: 400;">Aesthetic</span><br><span class="red">Constitution.</span></div>
+    <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7);">Every <span class="blur-word">brand</span> now looks like every other brand. How to build a visual system AI <span style="color: #F5F5F5; font-style: normal;">cannot dissolve</span>.</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500;">Strawberry Production</div>
+        <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase;">Narrative Perception Engineering</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,245,245,0.4);">PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Strawberry · Manifesto VI</div><div class="corner-mark cm-tr red">i. Index</div>
+  <div class="corner-mark cm-bl">001</div><div class="corner-mark cm-br">N. Production · 2026</div>
+  <div class="content">
+    <div class="scene-tag">Table of Contents</div>
+    <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">imprint</span>.</div>
+    <div class="toc-row"><div class="toc-num">01</div><div class="toc-title">The Great Visual Flattening</div><div class="toc-page">P. 02</div></div>
+    <div class="toc-row"><div class="toc-num">02</div><div class="toc-title">The Constitutional Doctrine</div><div class="toc-page">P. 03</div></div>
+    <div class="toc-row"><div class="toc-num">03</div><div class="toc-title">The Five Visual Laws</div><div class="toc-page">P. 04</div></div>
+    <div class="toc-row"><div class="toc-num">04</div><div class="toc-title">Anatomy of an Inimitable System</div><div class="toc-page">P. 05</div></div>
+    <div class="toc-row"><div class="toc-num">05</div><div class="toc-title">Case File · The Studio Recognizable in 0.2s</div><div class="toc-page">P. 06</div></div>
+    <div class="toc-row"><div class="toc-num">06</div><div class="toc-title">The Constitution Protocol</div><div class="toc-page">P. 07</div></div>
+    <div class="toc-row"><div class="toc-num">07</div><div class="toc-title">The Imprint</div><div class="toc-page">P. 08</div></div>
+    <div class="toc-row"><div class="toc-num">08</div><div class="toc-title">End Card</div><div class="toc-page">P. 09</div></div>
+  </div>
+</div>
+
+<!-- GREAT FLATTENING -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div><div class="corner-mark cm-tr red">The Flattening</div>
+  <div class="corner-mark cm-bl">002</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 01</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The great visual <span style="font-style: italic;" class="red">flattening</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">Every brand looks like every other brand. The era of visual sameness has arrived.</div>
+    <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+      <div style="padding-right: 40px;">
+        <div class="quote">"Open any startup page. Any agency homepage. Any LinkedIn feed. The same <span style="text-decoration: line-through; text-decoration-color: #E11D48;">gradient</span> blobs. The same <span style="text-decoration: line-through; text-decoration-color: #E11D48;">Inter</span> Bold headers. The same <span style="text-decoration: line-through; text-decoration-color: #E11D48;">isometric</span> illustrations.<br><br>AI accelerated this. Now everyone has access to the same <span class="red">templates, generators, and references</span>. The visual middle has swallowed entire categories whole."</div>
+      </div>
+      <div style="background: rgba(245,245,245,0.1);"></div>
+      <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="h-sm red" style="margin-bottom: 12px;">The Truth</div>
+        <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15;">Your brand<br>looks like<br><span class="red" style="font-style: normal; font-weight: 500;">your competitor's.</span></div>
+        <div class="mono" style="margin-top: 24px; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— AESTHETIC SAMENESS IS THE NEW DEATH.</div>
+      </div>
+    </div>
+    <div class="rule-red" style="margin-bottom: 18px;"></div>
+    <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Flattened Brand</div>
+    <div class="three-col"><div class="col-num">01</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your design system <span style="font-style: italic;">could be copy-pasted</span> onto a competitor's site.<br><span class="red" style="font-style: italic;">And no one would notice.</span></div><div class="body">If swapping logos is enough to switch brand identities, the design system is not a system — it's a coat of paint over a generic template.</div></div></div>
+    <div class="three-col"><div class="col-num">02</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your visuals <span style="font-style: italic;">trend with the year</span>.<br><span class="red" style="font-style: italic;">Y2K. Glassmorphism. Brutalism. Whatever the algorithm rewards this quarter.</span></div><div class="body">Brands that follow visual trends are by definition replaceable. The trend ends and the brand evaporates with it.</div></div></div>
+    <div class="three-col" style="margin-bottom: 32px;"><div class="col-num">03</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">An AI generator can produce <span style="font-style: italic;">passable versions</span> of your brand in three prompts.<br><span class="red" style="font-style: italic;">Because your aesthetic is built on common references.</span></div><div class="body">If AI can imitate you in seconds, it's not a moat. It's a coincidence. A real aesthetic system contains structural rules that resist generation.</div></div></div>
+    <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 620px;">
+      <div class="quote" style="color: #F5F5F5;">"A brand without a constitutional aesthetic is a brand with a <span class="red" style="font-style: normal; font-weight: 500;">visual mood, not a visual identity</span>.<br><span style="color: rgba(245,245,245,0.4);">Moods evaporate. Constitutions endure.</span>"</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSTITUTIONAL DOCTRINE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 02 · Doctrine</div><div class="corner-mark cm-tr red">The Constitution</div>
+  <div class="corner-mark cm-bl">003</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 02</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Aesthetic as <span style="font-style: italic;" class="red">constitution</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">Not styling. Not vibes. A system of laws.</div>
+    <div class="charter-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The sixth volume of the Strawberry doctrine —</div>
+      <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">The <strong style="font-style: normal; font-weight: 600;">Aesthetic Constitution</strong> closes the loop. <span style="color: rgba(245,245,245,0.65);">Where Vol. I built narrative memory and Vol. IV built embodied identity, this volume builds the <em style="color: #E11D48; font-style: normal;">visual operating system</em> that makes a brand recognizable before a single word is read.</span></div>
+    </div>
+    <div class="compare-table">
+      <div class="row"><div class="cell left">Moodboard of references</div><div class="cell right">Written constitutional laws</div></div>
+      <div class="row"><div class="cell left">"Modern, clean, minimal"</div><div class="cell right">Specific, structural, defended</div></div>
+      <div class="row"><div class="cell left">Updated every rebrand</div><div class="cell right">Compounded over a decade</div></div>
+      <div class="row"><div class="cell left">Designed to look current</div><div class="cell right">Designed to look like itself</div></div>
+      <div class="row"><div class="cell left">Trend-responsive</div><div class="cell right">Trend-deaf, on purpose</div></div>
+    </div>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+      <div>
+        <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3;">Constraint + <span class="red">Repetition</span> + Conviction = Imprint.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px;">Strict visual constraints. <span class="red">Repeated without exception</span>. Defended for years against fashion. Together they produce <em style="color: #E11D48; font-style: normal;">imprint</em> — recognition before content.</div>
+      </div>
+      <div>
+        <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+        <div class="body" style="font-size: 13.5px;">When AI flattens the visual middle, the only brands that remain identifiable are those operating under <span class="red">structural constraints AI cannot guess</span>. Aesthetic discipline is the new typography of credibility.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIVE VISUAL LAWS -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 03 · The Laws</div><div class="corner-mark cm-tr red">Five Laws</div>
+  <div class="corner-mark cm-bl">004</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 03 — The Laws</div>
+    <div class="h-large serif" style="margin-bottom: 32px;">The five visual <span style="font-style: italic;" class="red">laws</span>.</div>
+    <div class="codex-block"><div class="codex-num">LAW I · PALETTE</div><div class="codex-title">A brand has three colors. <span style="font-style: italic;">Not four.</span> Not five.</div><div class="codex-body">Three colors used for a decade beat ten colors rotated yearly. The discipline is the moat. Picasso had a blue period. He did not have a periwinkle-and-mauve period. <em>Restraint is what makes a palette readable from across a room.</em></div></div>
+    <div class="codex-block"><div class="codex-num">LAW II · TYPOGRAPHY</div><div class="codex-title">Two typefaces. <span style="font-style: italic;">One serif. One sans.</span> Forever.</div><div class="codex-body">Every typeface added is one less point of recognition. The world's most-recognizable brands use a typographic pair the same way classical composers used keys — as <em>signature, not novelty</em>.</div></div>
+    <div class="codex-block"><div class="codex-num">LAW III · COMPOSITION</div><div class="codex-title">Every layout obeys the same <span style="font-style: italic;">structural ratio</span>.</div><div class="codex-body">Whether it's the Cinémascope letterbox, a golden section, or a brutalist grid — pick one composition logic and obey it without exception across every output. <em>The frame becomes the brand.</em></div></div>
+    <div class="codex-block"><div class="codex-num">LAW IV · TEXTURE</div><div class="codex-title">Pick one tactile element AI cannot fake. <span style="font-style: italic;">Use it everywhere.</span></div><div class="codex-body">A specific film grain. A particular paper. A signature halftone. A defined letterpress imprint. Texture is the <em>tactile signature</em> AI generators routinely flatten out. Texture refuses to be flattened.</div></div>
+    <div class="codex-block"><div class="codex-num">LAW V · MOTION</div><div class="codex-title">A brand <span style="font-style: italic;">moves the same way</span> across every surface.</div><div class="codex-body">Same easing curves. Same transition durations. Same camera language. Motion is the most under-coded part of brand identity. It is also <em>the part AI cannot yet replicate convincingly</em> — making it the highest-leverage law to codify.</div></div>
+  </div>
+</div>
+
+<!-- ANATOMY -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 04 · Anatomy</div><div class="corner-mark cm-tr red">The System</div>
+  <div class="corner-mark cm-bl">005</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 04 — Anatomy</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of an <span style="font-style: italic;" class="red">inimitable</span> system.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 36px;">Five layers. None borrowed. None negotiable.</div>
+
+    <div class="swatch-grid">
+      <div class="swatch" style="background: #050505;">
+        <div><div class="label">Palette · I</div><div class="name">Obsidian</div></div>
+        <div class="code">#050505</div>
+      </div>
+      <div class="swatch" style="background: #E11D48;">
+        <div><div class="label" style="color: rgba(255,255,255,0.7);">Palette · II</div><div class="name" style="color: #F5F5F5;">Strawberry</div></div>
+        <div class="code" style="color: rgba(255,255,255,0.7);">#E11D48</div>
+      </div>
+      <div class="swatch" style="background: #F5F5F5; color: #050505;">
+        <div><div class="label" style="color: rgba(5,5,5,0.5);">Palette · III</div><div class="name" style="color: #050505;">Off-White</div></div>
+        <div class="code" style="color: rgba(5,5,5,0.5);">#F5F5F5</div>
+      </div>
+    </div>
+
+    <div class="layer-row"><div class="layer-tag">A · 01</div><div><div class="layer-title">The Palette</div><div class="layer-desc">Three colors. Specific hex codes. Used in fixed proportions (e.g. 70 / 20 / 10). The palette is <em>locked at the constitutional level</em> — not negotiable per campaign.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">A · 02</div><div><div class="layer-title">The Type Pair</div><div class="layer-desc">Two specific typefaces with defined weights and use cases. One for editorial display. One for body text. A monospaced supporting face is optional but, if added, <em>also locked</em>.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">A · 03</div><div><div class="layer-title">The Grid</div><div class="layer-desc">A single compositional ratio applied across all surfaces — pitch decks, ebooks, web, video, packaging. The same frame proportion. The same letterbox. The same <em>geometric signature</em>.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">A · 04</div><div><div class="layer-title">The Texture</div><div class="layer-desc">One tactile element woven into every output. Film grain. Paper grain. Halftone. Riso. The <em>imperfection AI cannot replicate</em> — which is exactly why it has to be there.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">A · 05</div><div><div class="layer-title">The Motion Language</div><div class="layer-desc">Defined easing functions. Defined durations. Defined camera moves. Codified to the millisecond. Motion is the <em>final brand signature</em> — and most companies have never written it down.</div></div></div>
+  </div>
+</div>
+
+<!-- CASE FILE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 05 · Case File</div><div class="corner-mark cm-tr red">The Imprint</div>
+  <div class="corner-mark cm-bl">006</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 05 — Case File</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Recognizable in <span style="font-style: italic;" class="red">0.2 seconds</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From generic studio to category-defining visual signature in 18 months.</div>
+    <div class="case-grid">
+      <div class="case-side">
+        <div class="case-label">Before · The Mood Brand</div>
+        <div class="case-item"><span class="mark">×</span>Moodboard refreshed every quarter</div>
+        <div class="case-item"><span class="mark">×</span>14 fonts across active projects</div>
+        <div class="case-item"><span class="mark">×</span>Palette expanded "as needed" — 23 colors</div>
+        <div class="case-item"><span class="mark">×</span>Indistinguishable from 6 named competitors</div>
+        <div class="case-item"><span class="mark">×</span>Brand recall: 11% unaided</div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— A vibe. Not an identity.</div>
+      </div>
+      <div class="case-side">
+        <div class="case-label">After · The Constitution</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Locked to <span class="red" style="font-weight: 500;">3 colors</span>, <span class="red" style="font-weight: 500;">2 typefaces</span>, 1 grid system</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Signature film grain applied across <span class="red" style="font-weight: 500;">all outputs</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Motion language codified in 14-page document</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Brand recall: <span class="red" style="font-weight: 500;">63%</span> unaided</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Inbound: <span class="red" style="font-weight: 500;">"We want what only you do"</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "The aesthetic became <span class="red">the patent</span>."</div>
+      </div>
+    </div>
+    <div class="h-sm" style="margin: 32px 0 20px;">Three Constitutional Moves</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Locking</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">All visual parameters frozen in a 28-page constitution. <span style="color: #F5F5F5;">No deviation permitted</span> without founder review.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Signature Texture</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">A custom grain layer applied to <span style="color: #F5F5F5;">every output</span>. Their texture file became the most-stolen asset in the category.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Annual Refusal</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Every January, the studio publishes the visual trends it will <span style="color: #F5F5F5;">not adopt</span> that year. The post became the brand's most-shared output.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOL -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 06 · The Protocol</div><div class="corner-mark cm-tr red">Constitution</div>
+  <div class="corner-mark cm-bl">007</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 06 — The Constitution Protocol</div>
+    <div class="h-large serif" style="margin-bottom: 8px;">How to build the <span style="font-style: italic;" class="red">imprint</span>.</div>
+    <div class="body" style="margin-bottom: 36px; max-width: 600px;">Codify. Constrain. Compound. Three stages. One brand made unmistakable.</div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">01</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage I · Codify</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Write the <span style="font-style: italic; color: rgba(245,245,245,0.6);">visual laws</span> down — explicitly, with hex codes and ratios.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">A loose moodboard is not a constitution. Every parameter — color, type, grid, texture, motion — must be <em style="color: #E11D48; font-style: normal;">named, numbered, and signed</em>. The Constitution becomes the brand's legal document.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Color tokens &amp; ratios</div>
+          <div><span class="red">— </span>Typographic pair lock</div>
+          <div><span class="red">— </span>Grid &amp; composition law</div>
+          <div><span class="red">— </span>Texture &amp; motion signatures</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">02</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage II · Constrain</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Refuse <span style="font-style: italic;">every deviation</span> — including the tempting ones.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Every quarter, designers, founders, and clients will push for "just one exception." Every quarter, refuse. <em style="color: #E11D48; font-style: normal;">The exception is what kills the imprint.</em> A constitution that bends is no constitution at all.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Output audit cadence</div>
+          <div><span class="red">— </span>Deviation review &amp; rejection</div>
+          <div><span class="red">— </span>Annual trends-to-refuse list</div>
+          <div><span class="red">— </span>Internal training on the laws</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+      <div class="pillar-num">03</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage III · Compound</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Repeat for a <span style="font-style: italic;">decade</span> — until the imprint becomes inevitability.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">The constitution does not pay back in months. It pays back in years. <em style="color: #E11D48; font-style: normal;">Year three is the breaking point</em> — when everything looks repetitive and the market begs for novelty. Survive that, and the brand becomes a category landmark.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Annual constitution reaffirmation</div>
+          <div><span class="red">— </span>Asset library compounding</div>
+          <div><span class="red">— </span>Recognition-test benchmarks</div>
+          <div><span class="red">— </span>Ten-year visual roadmap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE IMPRINT -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Final Scene · The Imprint</div><div class="corner-mark cm-tr red">The Choice</div>
+  <div class="corner-mark cm-bl">008</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Final Scene — The Imprint</div>
+    <div class="h-massive serif" style="margin-bottom: 16px;">Will your brand <span style="font-style: italic;" class="red">dissolve</span>?</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+      <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · DRIFT</div>
+        <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep chasing the trend.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Reskin every two years. Match the visual moment. Look exactly like every other company in your sector. <span class="blur-word">Dissolve into the average.</span></div>
+      </div>
+      <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · IMPRINT</div>
+        <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Codify. Constrain. Compound. Become unmistakable.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Build a visual system <span class="red">AI cannot dissolve</span> — and that the market remembers a decade later.</div>
+      </div>
+    </div>
+    <div style="margin: 40px 0 0; max-width: 640px;">
+      <div class="quote" style="font-size: 24px;">"AI flattens the visual middle. <span style="color: rgba(245,245,245,0.5);">Only brands with a constitution remain shaped.</span><br>The imprint is the only <span class="red" style="font-style: normal; font-weight: 500;">visual moat</span> left."</div>
+    </div>
+    <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Sign the constitution.</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">STRAWBERRY · PRODUCTION<br>PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- END CARD -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>End Card</span><span class="red">Reel VI / Complete</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+    <div class="mono" style="font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+    <div class="serif" style="font-size: 64px; font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 28px;">"Every brand<br>looks like <span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">AI</span>.</div>
+    <div class="serif" style="font-size: 64px; font-weight: 700; line-height: 1;">Yours<br><span class="red" style="font-style: italic; font-weight: 400;">won't</span>."</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+      <div><div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div></div>
+      <div style="text-align: right;">Paris · Los Angeles<br><span class="red">© MMXXVI</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Founder Codex · Strawberry Production · Vol. IV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #F5F5F5; }
+  .book { max-width: 880px; margin: 0 auto; }
+  .page { position: relative; background: #050505; min-height: 1100px; padding: 80px 64px; overflow: hidden; page-break-after: always; border-bottom: 1px solid rgba(245,245,245,0.04); }
+  .page.cover { padding: 0; min-height: 1180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+  .letterbox-top, .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+  .letterbox-top { top: 0; } .letterbox-bot { bottom: 0; }
+  .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; font-family: 'Inter', sans-serif; }
+  .cm-tl { top: 48px; left: 64px; } .cm-tr { top: 48px; right: 64px; }
+  .cm-bl { bottom: 48px; left: 64px; } .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .red { color: #E11D48; }
+  .blur-word { filter: blur(1.2px); opacity: 0.85; }
+  .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; margin-bottom: 24px; }
+  .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; }
+  .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; }
+  .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; }
+  .h-sm { font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .body { font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+  .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); }
+  .rule-red { height: 1px; background: #E11D48; width: 48px; }
+  .content { position: relative; z-index: 2; }
+  .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+  .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); }
+  .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+  .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .compare-table .row:last-child { border-bottom: none; }
+  .compare-table .cell { padding: 18px 20px; font-size: 13px; line-height: 1.5; }
+  .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; font-weight: 300; }
+  .compare-table .right { color: #F5F5F5; border-left: 1px solid #E11D48; }
+  .codex-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+  .codex-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+  .codex-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+  .codex-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; line-height: 1.15; }
+  .codex-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+  .codex-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+  .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; line-height: 1.1; }
+  .layer-desc { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+  .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side { padding: 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+  .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+  .case-side:last-child .case-label { color: #E11D48; }
+  .case-item { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+  .case-item .mark { color: #E11D48; margin-right: 8px; }
+  .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); gap: 20px; align-items: baseline; }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; }
+  .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+  .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+  .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+  .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+  .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+  @media print { .page { page-break-after: always; border: none; min-height: 100vh; } body { background: #050505; } }
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div>
+  <div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="position: absolute; inset: 0; opacity: 0.10; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 680 1180" preserveAspectRatio="xMidYMid slice"><circle cx="520" cy="540" r="120" fill="#F5F5F5" opacity="0.18"/><rect x="400" y="660" width="240" height="440" fill="#E11D48" opacity="0.35"/><rect x="400" y="660" width="3" height="440" fill="#E11D48" opacity="0.8"/></svg>
+  </div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>Strawberry Production</span><span class="red">N° 004 / Vol. IV</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 8%, rgba(245,245,245,0.1) 8%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2;">
+    <div class="scene-tag">Manifesto · Volume IV</div>
+    <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px;">The<br><span style="font-style: italic; font-weight: 400;">Founder</span><br><span class="red">Codex.</span></div>
+    <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7);">In the age of <span class="blur-word">infinite</span> content, the founder is the only asset AI cannot fake. How to turn yourself into the brand's most <span style="color: #F5F5F5; font-style: normal;">irreplaceable signal</span>.</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500;">Strawberry Production</div>
+        <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase;">Narrative Perception Engineering</div>
+      </div>
+      <div style="text-align: right;" class="mono">PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Strawberry · Manifesto IV</div><div class="corner-mark cm-tr red">i. Index</div>
+  <div class="corner-mark cm-bl">001</div><div class="corner-mark cm-br">N. Production · 2026</div>
+  <div class="content">
+    <div class="scene-tag">Table of Contents</div>
+    <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">embodiment</span>.</div>
+    <div class="toc-row"><div class="toc-num">01</div><div class="toc-title">The Vanishing Founder</div><div class="toc-page">P. 02</div></div>
+    <div class="toc-row"><div class="toc-num">02</div><div class="toc-title">The Codex Doctrine</div><div class="toc-page">P. 03</div></div>
+    <div class="toc-row"><div class="toc-num">03</div><div class="toc-title">The Six Codes of Embodiment</div><div class="toc-page">P. 04</div></div>
+    <div class="toc-row"><div class="toc-num">04</div><div class="toc-title">The Anatomy of a Signal</div><div class="toc-page">P. 05</div></div>
+    <div class="toc-row"><div class="toc-num">05</div><div class="toc-title">Case File · The Founder Who Stepped Forward</div><div class="toc-page">P. 06</div></div>
+    <div class="toc-row"><div class="toc-num">06</div><div class="toc-title">The Embodiment Protocol</div><div class="toc-page">P. 07</div></div>
+    <div class="toc-row"><div class="toc-num">07</div><div class="toc-title">The Inheritance</div><div class="toc-page">P. 08</div></div>
+    <div class="toc-row"><div class="toc-num">08</div><div class="toc-title">End Card</div><div class="toc-page">P. 09</div></div>
+  </div>
+</div>
+
+<!-- VANISHING FOUNDER -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div><div class="corner-mark cm-tr red">The Disappearance</div>
+  <div class="corner-mark cm-bl">002</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 01</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The <span style="font-style: italic;" class="red">vanishing</span> founder.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">When the person disappears, the brand becomes a template.</div>
+    <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+      <div style="padding-right: 40px;">
+        <div class="quote">"An entire generation of founders hides behind their company. <span style="text-decoration: line-through; text-decoration-color: #E11D48;">Polished</span> logos. <span style="text-decoration: line-through; text-decoration-color: #E11D48;">Polite</span> bios. <span style="text-decoration: line-through; text-decoration-color: #E11D48;">Plural</span> we.<br><br>They built businesses with no <span class="red">face</span>. And now AI can replicate everything they do — except the face they never put forward."</div>
+      </div>
+      <div style="background: rgba(245,245,245,0.1);"></div>
+      <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="h-sm red" style="margin-bottom: 12px;">The Truth</div>
+        <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15;">Your <span class="blur-word">company</span><br>can be cloned.<br><span class="red" style="font-style: normal; font-weight: 500;">You cannot.</span></div>
+        <div class="mono" style="margin-top: 24px; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— THE FACELESS BRAND IS THE WEAKEST.</div>
+      </div>
+    </div>
+    <div class="rule-red" style="margin-bottom: 18px;"></div>
+    <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Hidden Founder</div>
+    <div class="three-col"><div class="col-num">01</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your "About" page reads like a <span style="font-style: italic;">resume</span>.<br><span class="red" style="font-style: italic;">Polished. Impressive. Lifeless.</span></div><div class="body">A founder is not a list of past employers. The market follows convictions, not credentials.</div></div></div>
+    <div class="three-col"><div class="col-num">02</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">You speak only in the company's <span style="font-style: italic;">"we"</span>.<br><span class="red" style="font-style: italic;">Never in your own first person.</span></div><div class="body">Plural pronouns dilute conviction. The "we" is bureaucracy. The "I" is leadership.</div></div></div>
+    <div class="three-col" style="margin-bottom: 32px;"><div class="col-num">03</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">A stranger meeting you in person <span style="font-style: italic;">would not recognize</span> your brand.<br><span class="red" style="font-style: italic;">Because the brand never showed your edges.</span></div><div class="body">The disconnect between online persona and offline presence is the most expensive credibility gap a founder can have.</div></div></div>
+    <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 620px;">
+      <div class="quote" style="color: #F5F5F5;">"In the age of synthetic everything, the founder's <span class="red" style="font-style: normal; font-weight: 500;">face, voice, and conviction</span> are the last assets that cannot be generated.<br><span style="color: rgba(245,245,245,0.4);">If you hide them, you forfeit them.</span>"</div>
+    </div>
+  </div>
+</div>
+
+<!-- CODEX DOCTRINE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 02 · Doctrine</div><div class="corner-mark cm-tr red">The Codex</div>
+  <div class="corner-mark cm-bl">003</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 02</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">From <span style="font-style: italic;">CEO</span> to <span class="red">signal</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">A change of role, not a change of title.</div>
+    <div class="charter-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The fourth volume of the Strawberry doctrine —</div>
+      <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">The <strong style="font-style: normal; font-weight: 600;">Founder Codex</strong> extends the Strawberry doctrine into the body. <span style="color: rgba(245,245,245,0.65);">The first three volumes built memory, movement, and infrastructure around the brand. This volume builds them around the person — the irreducible signal at the center of it all.</span></div>
+    </div>
+    <div class="compare-table">
+      <div class="row"><div class="cell left">Founder hiding behind the brand</div><div class="cell right">Founder embodying the brand</div></div>
+      <div class="row"><div class="cell left">Speaks in corporate "we"</div><div class="cell right">Speaks in personal "I"</div></div>
+      <div class="row"><div class="cell left">Polished, optimized, generic</div><div class="cell right">Specific, opinionated, recognizable</div></div>
+      <div class="row"><div class="cell left">Replaceable by any spokesperson</div><div class="cell right">Inseparable from the company</div></div>
+      <div class="row"><div class="cell left">Sells products</div><div class="cell right">Carries a worldview</div></div>
+    </div>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+      <div>
+        <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3;">Face + <span class="red">Conviction</span> + Consistency = Signal.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px;">A visible face. A stated belief. A repeated stance. Together they produce <span class="red">recognition</span> — the rarest currency of the AI age.</div>
+      </div>
+      <div>
+        <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+        <div class="body" style="font-size: 13.5px;">When every company can produce identical content at near-zero cost, buyers <span class="red">no longer trust companies</span>. They trust people. The founder's body — voice, face, presence — becomes the brand's last remaining moat.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIX CODES -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 03 · The Codes</div><div class="corner-mark cm-tr red">Six Codes</div>
+  <div class="corner-mark cm-bl">004</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 03 — The Codes</div>
+    <div class="h-large serif" style="margin-bottom: 32px;">The six <span style="font-style: italic;" class="red">codes</span> of embodiment.</div>
+    <div class="codex-block"><div class="codex-num">CODE I</div><div class="codex-title">A founder without a <span style="font-style: italic;">face</span> is a brand without a witness.</div><div class="codex-body">Visibility is not vanity. It is the basic infrastructure of trust in a synthetic age. If buyers cannot see who runs the company, they assume there is <em>no one</em> running it.</div></div>
+    <div class="codex-block"><div class="codex-num">CODE II</div><div class="codex-title">Speak in <span style="font-style: italic;">"I"</span>, not "we" — until the company earns the right to plural.</div><div class="codex-body">The first-person singular is the founder's <em>signature instrument</em>. It carries weight no marketing copy ever will. The "we" comes later, when the team has earned the chorus.</div></div>
+    <div class="codex-block"><div class="codex-num">CODE III</div><div class="codex-title">Pick three <span style="font-style: italic;">obsessions</span>. Defend them publicly. Repeat them for years.</div><div class="codex-body">A founder is not interesting because of variety. They become interesting through <em>recurrence</em>. Three obsessions, defended without fatigue, become a worldview the market recognizes from a single sentence.</div></div>
+    <div class="codex-block"><div class="codex-num">CODE IV</div><div class="codex-title">Your <span style="font-style: italic;">aesthetic</span> is part of the signal.</div><div class="codex-body">How you dress, frame yourself on camera, choose your locations — these are not vanity choices. They are <em>typography for the body</em>. A consistent visual code makes you recognizable in 0.3 seconds.</div></div>
+    <div class="codex-block"><div class="codex-num">CODE V</div><div class="codex-title">Show the <span style="font-style: italic;">edges</span>. Hide the polish.</div><div class="codex-body">A founder who only publishes polished content reads as <em>artificial</em>. The market trusts visible imperfection. Polish is what AI produces by default. Edges are what humans recognize.</div></div>
+    <div class="codex-block"><div class="codex-num">CODE VI</div><div class="codex-title">Your <span style="font-style: italic;">presence</span> compounds.</div><div class="codex-body">Disappear for six months and the market forgets the company exists. Show up weekly for three years and you become <em>infrastructure</em>. Founder presence is a capital expenditure on long-term gravity.</div></div>
+  </div>
+</div>
+
+<!-- ANATOMY -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 04 · Anatomy</div><div class="corner-mark cm-tr red">The Signal</div>
+  <div class="corner-mark cm-bl">005</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 04 — Anatomy</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of a <span style="font-style: italic;" class="red">signal</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 42px;">Five components. None replaceable by AI.</div>
+    <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0;">
+      <div style="position: relative;">
+        <div style="position: absolute; top: 0; bottom: 0; left: 12px; width: 1px; background: linear-gradient(to bottom, #E11D48 0%, #E11D48 30%, rgba(225,29,72,0.4) 100%);"></div>
+        <div style="position: relative; height: 20%;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #E11D48; border: 3px solid #050505;"></div></div>
+        <div style="position: relative; height: 20%;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        <div style="position: relative; height: 20%;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        <div style="position: relative; height: 20%;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+        <div style="position: relative; height: 20%;"><div style="position: absolute; left: 6px; top: 22px; width: 13px; height: 13px; border-radius: 50%; background: #050505; border: 1px solid #E11D48;"></div></div>
+      </div>
+      <div>
+        <div class="layer-row"><div class="layer-tag">S · 01</div><div><div class="layer-title">The Face</div><div class="layer-desc">Consistent visual identity of the founder — recurring camera frame, recognizable styling, signature setting. The face becomes <em>typography</em>.</div></div></div>
+        <div class="layer-row"><div class="layer-tag">S · 02</div><div><div class="layer-title">The Voice</div><div class="layer-desc">A way of building sentences only this founder builds. Vocabulary preferences, rhythm, recurring metaphors. The <em>fingerprint of thought</em>, made audible.</div></div></div>
+        <div class="layer-row"><div class="layer-tag">S · 03</div><div><div class="layer-title">The Stance</div><div class="layer-desc">A stated position the founder defends in every public output. What they <em>refuse to be neutral on</em>. Stance produces gravity — neutrality produces drift.</div></div></div>
+        <div class="layer-row"><div class="layer-tag">S · 04</div><div><div class="layer-title">The Ritual</div><div class="layer-desc">A public, recurring act — a weekly post, a monthly essay, a public Q&amp;A. The cadence itself becomes <em>character</em>.</div></div></div>
+        <div class="layer-row"><div class="layer-tag">S · 05</div><div><div class="layer-title">The Refusal</div><div class="layer-desc">What the founder publicly walks away from. The <em>refusal list</em> is the only proof of conviction the market accepts.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE FILE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 05 · Case File</div><div class="corner-mark cm-tr red">The Embodiment</div>
+  <div class="corner-mark cm-bl">006</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 05 — Case File</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The founder who <span style="font-style: italic;" class="red">stepped forward</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From invisible operator to industry signal in 12 months.</div>
+    <div class="case-grid">
+      <div class="case-side">
+        <div class="case-label">Before · The Operator</div>
+        <div class="case-item"><span class="mark">×</span>No face on the website</div>
+        <div class="case-item"><span class="mark">×</span>LinkedIn: 1,200 followers · zero personal posts</div>
+        <div class="case-item"><span class="mark">×</span>Every interview declined for ten years</div>
+        <div class="case-item"><span class="mark">×</span>Company seen as "a vendor, not a player"</div>
+        <div class="case-item"><span class="mark">×</span>Sales cycle: 5–7 months, full RFP every time</div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— A company with no witness.</div>
+      </div>
+      <div class="case-side">
+        <div class="case-label">After · The Signal</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Weekly LinkedIn essay · <span class="red" style="font-weight: 500;">28K</span> followers from founder content</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Monthly video essay · signature framing, three obsessions</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Inbound: <span class="red" style="font-weight: 500;">"I want to work with you, not the company"</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Sales cycle compressed to <span class="red" style="font-weight: 500;">21 days</span>, no RFP</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Booking 9 months out · price increase of <span class="red" style="font-weight: 500;">2.4×</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "Clients don't hire the company. They hire <span class="red">him</span>."</div>
+      </div>
+    </div>
+    <div class="h-sm" style="margin: 32px 0 20px;">Three Founder Moves</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Naming the Obsessions</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Three topics chosen and defended publicly for the entire year. <span style="color: #F5F5F5;">Repetition without apology.</span></div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Publishing the Refusals</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">A public letter listing four kinds of projects he would <span style="color: #F5F5F5;">never take on again</span>. Most-shared post of the year.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">Showing the Edges</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Workshop footage. Half-formed thoughts. <span style="color: #F5F5F5;">Public revisions.</span> Polish replaced with presence.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOL -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 06 · The Protocol</div><div class="corner-mark cm-tr red">Embodiment</div>
+  <div class="corner-mark cm-bl">007</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 06 — The Embodiment Protocol</div>
+    <div class="h-large serif" style="margin-bottom: 8px;">How to become the <span style="font-style: italic;" class="red">signal</span>.</div>
+    <div class="body" style="margin-bottom: 36px; max-width: 600px;">Reveal. Codify. Ritualize. Three stages. One founder transformed into infrastructure.</div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">01</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage I · Reveal</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Find the <span style="font-style: italic; color: rgba(245,245,245,0.6);">three convictions</span> the founder hides best.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Through structured interviews, archived decisions, and what they tell only over dinner. The founder's most defensible material is what they assume is too obvious to say.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Founder depth interview series</div>
+          <div><span class="red">— </span>Conviction extraction sessions</div>
+          <div><span class="red">— </span>Stance audit &amp; mapping</div>
+          <div><span class="red">— </span>Public-voice calibration</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">02</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage II · Codify</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Translate the founder into a <span style="font-style: italic;">signal system</span>.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">We define the face (visual frame, styling, locations), the voice (sentence rhythm, signature constructions), the stance (publicly defended positions), and the refusal list. Documented in a Founder Codex — one internal source of truth.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Visual identity codex</div>
+          <div><span class="red">— </span>Editorial voice charter</div>
+          <div><span class="red">— </span>Public stance manifest</div>
+          <div><span class="red">— </span>Refusal-list publication</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+      <div class="pillar-num">03</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage III · Ritualize</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Make the founder's <span style="font-style: italic;">presence inevitable</span>.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">A weekly first-person essay. A monthly video drop. A quarterly public stance. Same hour, same format, for twelve months minimum. Consistency turns a personality into an institution.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Weekly first-person publication</div>
+          <div><span class="red">— </span>Monthly signature video</div>
+          <div><span class="red">— </span>Quarterly public stance event</div>
+          <div><span class="red">— </span>Twelve-month presence map</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INHERITANCE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Final Scene · The Inheritance</div><div class="corner-mark cm-tr red">The Choice</div>
+  <div class="corner-mark cm-bl">008</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Final Scene — The Inheritance</div>
+    <div class="h-massive serif" style="margin-bottom: 16px;">Will you remain <span style="font-style: italic;" class="red">invisible</span>?</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+      <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · HIDE</div>
+        <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep ghosting your own company.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Outsource the face. Hide behind the logo. Be one of a thousand identical operators. <span class="blur-word">Be replaceable.</span></div>
+      </div>
+      <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · EMBODY</div>
+        <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Step forward. Become the signal. Make the company an extension of you.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Build a brand that <span class="red">cannot exist without you</span> — and a market that knows it.</div>
+      </div>
+    </div>
+    <div style="margin: 40px 0 0; max-width: 640px;">
+      <div class="quote" style="font-size: 24px;">"In the AI decade, companies will be infinite. <span style="color: rgba(245,245,245,0.5);">Faces will be rare.</span><br>Those who show theirs — <span class="red" style="font-style: normal; font-weight: 500;">inherit the trust.</span>"</div>
+    </div>
+    <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Turn the page.</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">STRAWBERRY · PRODUCTION<br>PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- END CARD -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>End Card</span><span class="red">Reel IV / Complete</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+    <div class="mono" style="font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+    <div class="serif" style="font-size: 68px; font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 32px;">"The brand can be<br><span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">cloned</span>.</div>
+    <div class="serif" style="font-size: 68px; font-weight: 700; line-height: 1;">The <span class="red" style="font-style: italic; font-weight: 400;">founder</span><br>is the moat."</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+      <div><div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div></div>
+      <div style="text-align: right;">Paris · Los Angeles<br><span class="red">© MMXXVI</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
