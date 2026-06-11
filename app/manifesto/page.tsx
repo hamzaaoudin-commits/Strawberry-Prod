@@ -34,6 +34,38 @@ const VOLUMES = [
     tagline: "Why every serious brand will become a media house — or be erased by the ones that did. The infrastructure of narrative power.",
     href: "/manifesto-vol-3.html",
   },
+  {
+    n: "IV",
+    code: "N° 004",
+    title: "The Founder Codex",
+    verb: "Be irreplaceable.",
+    tagline: "The personal doctrine of founders who refuse to be genericized. How to build a presence that survives any market shift.",
+    href: "/Vol_IV_The_Founder_Codex.html",
+  },
+  {
+    n: "V",
+    code: "N° 005",
+    title: "The Refusal Manifesto",
+    verb: "Refuse.",
+    tagline: "A declaration of what this studio will never do, never say, and never become. The architecture of selective practice.",
+    href: "/Vol_V_The_Refusal_Manifesto.html",
+  },
+  {
+    n: "VI",
+    code: "N° 006",
+    title: "The Aesthetic Constitution",
+    verb: "Distinguish.",
+    tagline: "Why aesthetic coherence is the last competitive advantage AI cannot replicate. The doctrine of visual and verbal singularity.",
+    href: "/Vol_VI_The_Aesthetic_Constitution.html",
+  },
+  {
+    n: "VII",
+    code: "N° 007",
+    title: "The Rarity Engine",
+    verb: "Become scarce.",
+    tagline: "How deliberate scarcity becomes the most powerful positioning tool available to a founder. The mechanics of desirable refusal.",
+    href: "/Vol_VII_The_Rarity_Engine.html",
+  },
 ]
 
 export default function ManifestoPage() {
@@ -43,28 +75,28 @@ export default function ManifestoPage() {
 
       {/* HERO */}
       <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 60px", position: "relative", overflow: "hidden", textAlign: "center" }}>
-        <div aria-hidden style={{ position: "absolute", top: "-10%", left: "50%", transform: "translateX(-50%)", width: 1000, height: 1000, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.1, filter: "blur(100px)", pointerEvents: "none" }} />
+        <div aria-hidden style={{ position: "absolute", top: "-10%", left: "50%", transform: "translateX(-50%)", width: 1000, height: 1000, background: "radial-gradient(circle," + COLOR + ",transparent 70%)", opacity: 0.1, filter: "blur(100px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "inline-block", background: `${COLOR}1a`, border: `1px solid ${COLOR}44`, color: COLOR, fontSize: 11, fontFamily: SANS, fontWeight: 700, padding: "6px 18px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 32 }}>
-            THREE VOLUMES · ONE DOCTRINE
+          <div style={{ display: "inline-block", background: COLOR + "1a", border: "1px solid " + COLOR + "44", color: COLOR, fontSize: 11, fontFamily: SANS, fontWeight: 700, padding: "6px 18px", borderRadius: 100, letterSpacing: "0.14em", marginBottom: 32 }}>
+            SEVEN VOLUMES &middot; ONE DOCTRINE
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.8rem, 7vw, 5.6rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.05, marginBottom: 28 }}>
             The Strawberry<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Manifestos.</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Manifestos.</span>
           </h1>
           <p style={{ fontFamily: SANS, fontSize: 19, lineHeight: 1.7, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto" }}>
-            Three manifestos. One doctrine. A complete blueprint for brands that refuse to disappear in the AI decade. Open, free, readable in your browser.
+            Seven manifestos. One doctrine. A complete blueprint for brands that refuse to disappear in the AI decade. Open, free, readable in your browser.
           </p>
         </div>
       </section>
 
-      {/* THREE VOLUMES */}
+      {/* SEVEN VOLUMES */}
       <section style={{ padding: "20px clamp(1.5rem,4vw,4rem) 120px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))", gap: 22 }}>
             {VOLUMES.map((v) => (
-              <article key={v.n} style={{ position: "relative", background: "linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))", border: `1px solid ${COLOR}22`, borderRadius: 24, padding: "36px 32px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-                <div aria-hidden style={{ position: "absolute", top: "-40%", right: "-30%", width: 280, height: 280, background: `radial-gradient(circle, ${COLOR}, transparent 70%)`, opacity: 0.08, filter: "blur(60px)", pointerEvents: "none" }} />
+              <article key={v.n} style={{ position: "relative", background: "linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))", border: "1px solid " + COLOR + "22", borderRadius: 24, padding: "36px 32px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div aria-hidden style={{ position: "absolute", top: "-40%", right: "-30%", width: 280, height: 280, background: "radial-gradient(circle," + COLOR + ",transparent 70%)", opacity: 0.08, filter: "blur(60px)", pointerEvents: "none" }} />
                 <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
                     <div style={{ fontFamily: SERIF, fontSize: 56, color: COLOR, fontWeight: 700, fontStyle: "italic", letterSpacing: "0.02em", lineHeight: 0.9 }}>
@@ -83,8 +115,8 @@ export default function ManifestoPage() {
                   <p style={{ fontFamily: SANS, fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", marginBottom: 28, flex: 1 }}>
                     {v.tagline}
                   </p>
-                  <a href={v.href} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", background: "rgba(255,255,255,0.05)", border: `1px solid ${COLOR}55`, color: "#fff", padding: "14px 24px", borderRadius: 100, fontFamily: SANS, fontSize: 13, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em" }}>
-                    Read Vol. {v.n} →
+                  <a href={v.href} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", background: "rgba(255,255,255,0.05)", border: "1px solid " + COLOR + "55", color: "#fff", padding: "14px 24px", borderRadius: 100, fontFamily: SANS, fontSize: 13, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em" }}>
+                    Read Vol. {v.n} &rarr;
                   </a>
                 </div>
               </article>
@@ -100,10 +132,10 @@ export default function ManifestoPage() {
             When you&apos;re ready to build.
           </h2>
           <p style={{ fontFamily: SANS, fontSize: 16, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: 32 }}>
-            The manifestos lay out the doctrine. The systems make it real.
+            The manifestos lay out the doctrine. The commission makes it real.
           </p>
-          <Link href="/#offers" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontFamily: SANS, fontSize: 14, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 36px ${GLOW}` }}>
-            See the systems →
+          <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "16px 36px", borderRadius: 100, fontFamily: SANS, fontSize: 14, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: "0 12px 36px " + GLOW }}>
+            See the Commission &rarr;
           </Link>
         </div>
       </section>
