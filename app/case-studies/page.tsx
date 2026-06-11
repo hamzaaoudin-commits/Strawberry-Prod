@@ -103,7 +103,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         setStatus("done")
         track("atlas_email_captured")
         setTimeout(() => {
-          window.open("/30-architectures-atlas.pdf", "_blank")
+          window.location.href = "/30-architectures-atlas.pdf"
           onClose()
         }, 1200)
       } else {
@@ -129,17 +129,13 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         >
           ×
         </button>
-
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>
-          Free Resource
-        </div>
+        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>Free Resource</div>
         <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }}>
           30 Architectures.<br />An Atlas.
         </h2>
         <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 28 }}>
           128 pages. Free. Enter your email and the Atlas opens immediately.
         </p>
-
         {status === "done" ? (
           <p style={{ fontFamily: SERIF, fontSize: 16, fontStyle: "italic", color: COLOR, textAlign: "center", padding: "1rem 0" }}>
             Opening the Atlas…
@@ -286,7 +282,6 @@ export default function CaseStudiesPage() {
               Each case below follows the same structure: the narrative problem the founder arrived with, the specific deliverables of the Brand Narrative Architecture applied, and the transformation that followed.
             </p>
           </div>
-
           <div style={{ display: "flex", flexDirection: "column", gap: 80 }}>
             {METHOD_CASES.map((c, i) => (
               <article key={i} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "clamp(2rem,4vw,3.5rem)", background: "rgba(255,255,255,0.02)" }}>
@@ -362,7 +357,7 @@ export default function CaseStudiesPage() {
               </p>
               <button
                 onClick={() => { track("atlas_click"); setShowModal(true) }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontFamily: SANS, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}`, border: "none", cursor: "pointer" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em", boxShadow: `0 12px 40px ${GLOW}`, border: "none", cursor: "pointer" }}
               >
                 Read the Atlas &rarr;
               </button>
@@ -370,7 +365,6 @@ export default function CaseStudiesPage() {
                 128 pages &middot; PDF &middot; Free &middot; No sign-up
               </div>
             </div>
-
             <div style={{ position: "relative" }}>
               <div style={{ background: "linear-gradient(160deg, #1a0a0a, #0a0a0a)", border: `1px solid ${COLOR}33`, borderRadius: 12, padding: "48px 40px", boxShadow: `0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px ${COLOR}22` }}>
                 <div style={{ fontSize: 9, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, fontFamily: SANS }}>STRAWBERRY PRODUCTION</div>
@@ -390,7 +384,6 @@ export default function CaseStudiesPage() {
               </div>
             </div>
           </div>
-
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 56 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: "rgba(255,255,255,0.4)", marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>A sample of what&apos;s inside</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
