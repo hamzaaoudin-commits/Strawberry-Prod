@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Patience Doctrine · Strawberry Production · Vol. VIII</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #F5F5F5; }
+  .book { max-width: 880px; margin: 0 auto; }
+  .page { position: relative; background: #050505; min-height: 1100px; padding: 80px 64px; overflow: hidden; page-break-after: always; border-bottom: 1px solid rgba(245,245,245,0.04); }
+  .page.cover { padding: 0; min-height: 1180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+  .letterbox-top, .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+  .letterbox-top { top: 0; } .letterbox-bot { bottom: 0; }
+  .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+  .cm-tl { top: 48px; left: 64px; } .cm-tr { top: 48px; right: 64px; }
+  .cm-bl { bottom: 48px; left: 64px; } .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .red { color: #E11D48; }
+  .blur-word { filter: blur(1.2px); opacity: 0.85; }
+  .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; margin-bottom: 24px; }
+  .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; }
+  .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; }
+  .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; }
+  .h-sm { font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .body { font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+  .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); }
+  .rule-red { height: 1px; background: #E11D48; width: 48px; }
+  .content { position: relative; z-index: 2; }
+  .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+  .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); }
+  .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+  .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .compare-table .row:last-child { border-bottom: none; }
+  .compare-table .cell { padding: 18px 20px; font-size: 13px; line-height: 1.5; }
+  .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; font-weight: 300; }
+  .compare-table .right { color: #F5F5F5; border-left: 1px solid #E11D48; }
+  .codex-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+  .codex-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+  .codex-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+  .codex-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; line-height: 1.15; }
+  .codex-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+  .codex-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+  .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; line-height: 1.1; }
+  .layer-desc { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+  .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side { padding: 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+  .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+  .case-side:last-child .case-label { color: #E11D48; }
+  .case-item { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+  .case-item .mark { color: #E11D48; margin-right: 8px; }
+  .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); gap: 20px; align-items: baseline; }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; }
+  .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+  .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+  .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+  .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+  .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+  .timeline-frame { border: 0.5px solid rgba(245,245,245,0.12); padding: 32px 36px; margin: 24px 0; background: rgba(245,245,245,0.015); position: relative; }
+  .timeline-row { display: grid; grid-template-columns: 90px 1fr; gap: 20px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); align-items: start; }
+  .timeline-row:last-child { border-bottom: none; }
+  .timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: #E11D48; line-height: 1; font-style: italic; }
+  .timeline-body { font-size: 13px; line-height: 1.55; color: rgba(245,245,245,0.7); font-weight: 300; }
+  .timeline-body strong { color: #F5F5F5; font-weight: 500; font-style: italic; }
+  @media print { .page { page-break-after: always; border: none; min-height: 100vh; } body { background: #050505; } }
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div>
+  <div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="position: absolute; inset: 0; opacity: 0.14; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 680 1180" preserveAspectRatio="xMidYMid slice">
+      <!-- Horloge / cercle de patience -->
+      <circle cx="340" cy="640" r="240" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.25"/>
+      <circle cx="340" cy="640" r="180" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.55"/>
+      <circle cx="340" cy="640" r="120" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.2"/>
+      <line x1="340" y1="640" x2="340" y2="460" stroke="#E11D48" stroke-width="2" opacity="0.8"/>
+      <line x1="340" y1="640" x2="480" y2="640" stroke="#F5F5F5" stroke-width="1" opacity="0.45"/>
+      <circle cx="340" cy="640" r="6" fill="#E11D48" opacity="0.95"/>
+      <!-- Tick marks -->
+      <line x1="340" y1="400" x2="340" y2="420" stroke="#E11D48" stroke-width="1" opacity="0.7"/>
+      <line x1="580" y1="640" x2="600" y2="640" stroke="#F5F5F5" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="860" x2="340" y2="880" stroke="#F5F5F5" stroke-width="0.5" opacity="0.5"/>
+      <line x1="80" y1="640" x2="100" y2="640" stroke="#F5F5F5" stroke-width="0.5" opacity="0.5"/>
+    </svg>
+  </div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>Strawberry Production</span><span class="red">N° 008 / Vol. VIII</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 16%, rgba(245,245,245,0.1) 16%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2;">
+    <div class="scene-tag">Manifesto · Volume VIII</div>
+    <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px;">The<br><span style="font-style: italic; font-weight: 400;">Patience</span><br><span class="red">Doctrine.</span></div>
+    <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7);">In a market obsessed with <span class="blur-word">speed</span>, the only competitive edge no one can copy is the discipline to <span style="color: #F5F5F5; font-style: normal;">play for the decade</span>.</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500;">Strawberry Production</div>
+        <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase;">Narrative Perception Engineering</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,245,245,0.4);">PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Strawberry · Manifesto VIII</div><div class="corner-mark cm-tr red">i. Index</div>
+  <div class="corner-mark cm-bl">001</div><div class="corner-mark cm-br">N. Production · 2026</div>
+  <div class="content">
+    <div class="scene-tag">Table of Contents</div>
+    <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">endurance</span>.</div>
+    <div class="toc-row"><div class="toc-num">01</div><div class="toc-title">The Speed Trap</div><div class="toc-page">P. 02</div></div>
+    <div class="toc-row"><div class="toc-num">02</div><div class="toc-title">The Patience Doctrine</div><div class="toc-page">P. 03</div></div>
+    <div class="toc-row"><div class="toc-num">03</div><div class="toc-title">The Five Laws of Patient Capital</div><div class="toc-page">P. 04</div></div>
+    <div class="toc-row"><div class="toc-num">04</div><div class="toc-title">Anatomy of a Decade-Long Bet</div><div class="toc-page">P. 05</div></div>
+    <div class="toc-row"><div class="toc-num">05</div><div class="toc-title">Case File · The Brand That Refused to Sprint</div><div class="toc-page">P. 06</div></div>
+    <div class="toc-row"><div class="toc-num">06</div><div class="toc-title">The Endurance Protocol</div><div class="toc-page">P. 07</div></div>
+    <div class="toc-row"><div class="toc-num">07</div><div class="toc-title">The Long Horizon</div><div class="toc-page">P. 08</div></div>
+    <div class="toc-row"><div class="toc-num">08</div><div class="toc-title">End Card</div><div class="toc-page">P. 09</div></div>
+  </div>
+</div>
+
+<!-- SPEED TRAP -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div><div class="corner-mark cm-tr red">The Speed Trap</div>
+  <div class="corner-mark cm-bl">002</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 01</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The speed <span style="font-style: italic;" class="red">trap</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">Everyone is sprinting. No one notices the finish line moved.</div>
+    <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+      <div style="padding-right: 40px;">
+        <div class="quote">"The market begs for <span style="text-decoration: line-through; text-decoration-color: #E11D48;">faster</span>. Faster launches. Faster delivery. Faster pivots. Faster content.<br><br>And every brand that complies is <span class="red">losing margin, losing memory, losing meaning</span> — without noticing that the brands compounding wealth around them are doing the exact opposite. They are <span style="text-decoration: line-through; text-decoration-color: #E11D48;">faster</span>. They are <em style="color: #F5F5F5; font-style: italic;">older</em>."</div>
+      </div>
+      <div style="background: rgba(245,245,245,0.1);"></div>
+      <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="h-sm red" style="margin-bottom: 12px;">The Truth</div>
+        <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15;">Speed is the<br>strategy of the<br><span class="red" style="font-style: normal; font-weight: 500;">desperate.</span></div>
+        <div class="mono" style="margin-top: 24px; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— PATIENCE IS THE STRATEGY OF THE INEVITABLE.</div>
+      </div>
+    </div>
+    <div class="rule-red" style="margin-bottom: 18px;"></div>
+    <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Brand Trapped in Speed</div>
+    <div class="three-col"><div class="col-num">01</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">You measure success in <span style="font-style: italic;">weeks</span>.<br><span class="red" style="font-style: italic;">Quarterly OKRs. Monthly reviews. Weekly dashboards.</span></div><div class="body">A brand built on weekly metrics never builds anything that compounds. The only assets that matter — trust, taste, recognition — operate on a timescale your reports cannot see.</div></div></div>
+    <div class="three-col"><div class="col-num">02</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">You pivot the brand <span style="font-style: italic;">every 18 months</span>.<br><span class="red" style="font-style: italic;">New mission. New tagline. New visual system. New "phase."</span></div><div class="body">Pivots feel like progress. They read like incoherence. Every rewrite of the brand resets the compound clock to zero — and the market notices, even if you do not.</div></div></div>
+    <div class="three-col" style="margin-bottom: 32px;"><div class="col-num">03</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">You judge competitors by their <span style="font-style: italic;">recent quarter</span>.<br><span class="red" style="font-style: italic;">Not their five-year arc.</span></div><div class="body">A quarter tells you nothing about who is winning. A decade tells you everything. Brands that focus on near-term competitor moves systematically underestimate the ones playing a longer game.</div></div></div>
+    <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 620px;">
+      <div class="quote" style="color: #F5F5F5;">"The market rewards what survives. <span class="red" style="font-style: normal; font-weight: 500;">Surviving is a function of time, not speed.</span><br><span style="color: rgba(245,245,245,0.4);">A brand that lasts a decade has already won.</span>"</div>
+    </div>
+  </div>
+</div>
+
+<!-- PATIENCE DOCTRINE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 02 · Doctrine</div><div class="corner-mark cm-tr red">The Patience</div>
+  <div class="corner-mark cm-bl">003</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 02</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Patience as <span style="font-style: italic;" class="red">weapon</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">A different game, played at a different clock.</div>
+    <div class="charter-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The eighth volume of the Strawberry doctrine —</div>
+      <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">The <strong style="font-style: normal; font-weight: 600;">Patience Doctrine</strong> is the temporal arm of the Strawberry canon. <span style="color: rgba(245,245,245,0.65);">Every previous volume built an asset — voice, tribe, infrastructure, embodiment, refusal, imprint, rarity. This volume defines the <em style="color: #E11D48; font-style: normal;">timescale on which those assets compound</em>. Without the right clock, the right assets still lose.</span></div>
+    </div>
+    <div class="compare-table">
+      <div class="row"><div class="cell left">Optimizes for the quarter</div><div class="cell right">Optimizes for the decade</div></div>
+      <div class="row"><div class="cell left">Pivots when results dip</div><div class="cell right">Holds the line through the dip</div></div>
+      <div class="row"><div class="cell left">Updates the brand every cycle</div><div class="cell right">Defends the brand for ten years</div></div>
+      <div class="row"><div class="cell left">Chases trending topics</div><div class="cell right">Ignores fashion. Compounds taste.</div></div>
+      <div class="row"><div class="cell left">Plays to win this season</div><div class="cell right">Plays to outlast the season</div></div>
+    </div>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+      <div>
+        <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3;">Time + <span class="red">Conviction</span> + Repetition = Compounding.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px;">Years. Defended position. Same gesture repeated. Together they produce <em style="color: #E11D48; font-style: normal;">compounding</em> — the only economic force that scales without effort.</div>
+      </div>
+      <div>
+        <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+        <div class="body" style="font-size: 13.5px;">AI compresses production cycles toward zero. Which means the new competitive edge is not <em>moving faster</em> — it is <span class="red">refusing to be hurried</span>. The brand that holds a position for ten years wins the position. Permanently.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIVE LAWS -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 03 · The Laws</div><div class="corner-mark cm-tr red">Five Laws</div>
+  <div class="corner-mark cm-bl">004</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 03 — The Laws</div>
+    <div class="h-large serif" style="margin-bottom: 32px;">The five laws of <span style="font-style: italic;" class="red">patient capital</span>.</div>
+    <div class="codex-block"><div class="codex-num">LAW I · TEN-YEAR HORIZON</div><div class="codex-title">Every decision is judged on its <span style="font-style: italic;">decade-shape</span>, not its quarter-shape.</div><div class="codex-body">Before approving any move — campaign, hire, product, channel — ask: <em>does this still matter in ten years?</em> If the answer is no, the move is not strategic. It is noise. Noise is what consumes most companies.</div></div>
+    <div class="codex-block"><div class="codex-num">LAW II · ONE POSITION FOR A DECADE</div><div class="codex-title">The positioning statement <span style="font-style: italic;">does not change</span> for ten years.</div><div class="codex-body">Repositioning is the entrepreneur's most expensive mistake. Every rewrite of the value proposition <em>resets the recognition clock to zero</em>. Brands that hold a position for a decade become the position.</div></div>
+    <div class="codex-block"><div class="codex-num">LAW III · NO REACTIVE PIVOTS</div><div class="codex-title">A dip is not a signal to <span style="font-style: italic;">pivot</span>. A dip is a signal to <span style="font-style: italic;">hold</span>.</div><div class="codex-body">The deepest competitive moats are built during the years competitors panic-pivot. Holding the line when revenue drops 30% is what produces the next decade's compounding. <em>The dip is the entry fee.</em></div></div>
+    <div class="codex-block"><div class="codex-num">LAW IV · COMPOUND THE SAME GESTURE</div><div class="codex-title">Repeat the <span style="font-style: italic;">same act</span> — same week, same channel, same form — for years.</div><div class="codex-body">Boredom is the entrepreneur's enemy and the market's friend. The market needs five years of repetition before it remembers what you do. <em>Most founders quit after eighteen months.</em> That is the gift.</div></div>
+    <div class="codex-block"><div class="codex-num">LAW V · IGNORE EVERY ANNUAL TREND</div><div class="codex-title">Every year, the industry has a new <span style="font-style: italic;">obsession</span>. Skip them all.</div><div class="codex-body">Patient brands ignore the AI-of-the-year, the platform-of-the-year, the format-of-the-year. They look identical to themselves across a decade. <em>That identity is the asset.</em> Trends are not a strategy. They are a tax.</div></div>
+  </div>
+</div>
+
+<!-- ANATOMY DECADE-LONG BET -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 04 · Anatomy</div><div class="corner-mark cm-tr red">The Bet</div>
+  <div class="corner-mark cm-bl">005</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 04 — Anatomy</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of a <span style="font-style: italic;" class="red">decade-long bet</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 36px;">Five components. Each one designed to outlast the next ten cycles.</div>
+    <div class="layer-row"><div class="layer-tag">P · 01</div><div><div class="layer-title">The Decade Thesis</div><div class="layer-desc">A single sentence stating what the brand believes will be true in <em>ten years</em> — and why most operators are wrong about it today. The thesis is the bet. <em>Bet on uncomfortable truths the market will catch up to.</em></div></div></div>
+    <div class="layer-row"><div class="layer-tag">P · 02</div><div><div class="layer-title">The Compounding Asset</div><div class="layer-desc">The one thing that gets <em>more valuable</em> every year you keep doing it. An archive. A reputation. A repeated ritual. A documented track record. <em>Identify it. Then refuse to neglect it for a single quarter.</em></div></div></div>
+    <div class="layer-row"><div class="layer-tag">P · 03</div><div><div class="layer-title">The Defensive Cash Reserve</div><div class="layer-desc">Twelve to twenty-four months of runway, untouchable. Not for opportunities — <em>for defense</em>. Patience is impossible without the financial ability to hold the line when revenue tests you. <em>Reserve is the price of doctrine.</em></div></div></div>
+    <div class="layer-row"><div class="layer-tag">P · 04</div><div><div class="layer-title">The Annual Refusal</div><div class="layer-desc">Every January, name the year's new fashion — and publish that you are <em>not adopting it</em>. The refusal becomes the proof. Year after year, the absence of the brand from the latest hype is what builds the perception of <em>institutional weight</em>.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">P · 05</div><div><div class="layer-title">The Public Anniversary</div><div class="layer-desc">Mark the years. Year one. Year three. Year seven. Year ten. <em>Time made visible</em>. Anniversaries are how the market reads tenure — and tenure is what patient brands trade on. Treat each anniversary as a marketing event in itself.</div></div></div>
+
+    <div style="margin-top: 32px;" class="timeline-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 18px; text-transform: uppercase;">— SPECIMEN · A DECADE-LONG BET —</div>
+      <div class="timeline-row"><div class="timeline-year">Year 01</div><div class="timeline-body">Thesis published. Position declared. <strong>The market does not notice.</strong></div></div>
+      <div class="timeline-row"><div class="timeline-year">Year 03</div><div class="timeline-body">Repetition begins to recognizable. Inbound shifts in quality. <strong>The dip arrives.</strong></div></div>
+      <div class="timeline-row"><div class="timeline-year">Year 05</div><div class="timeline-body">The position is now uniquely associated with the brand. <strong>Competitors begin to imitate.</strong></div></div>
+      <div class="timeline-row"><div class="timeline-year">Year 07</div><div class="timeline-body">Imitators have moved on. The brand is now <strong>the category itself</strong>.</div></div>
+      <div class="timeline-row"><div class="timeline-year">Year 10</div><div class="timeline-body">The thesis has compounded. Pricing has multiplied. <strong>The decade-long bet has paid.</strong></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE FILE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 05 · Case File</div><div class="corner-mark cm-tr red">The Endurance</div>
+  <div class="corner-mark cm-bl">006</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 05 — Case File</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The brand that refused to <span style="font-style: italic;" class="red">sprint</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From quarterly chaos to category permanence in ten years.</div>
+    <div class="case-grid">
+      <div class="case-side">
+        <div class="case-label">Before · The Sprinter</div>
+        <div class="case-item"><span class="mark">×</span>Brand repositioned every 18 months</div>
+        <div class="case-item"><span class="mark">×</span>Adopted every new platform within 90 days</div>
+        <div class="case-item"><span class="mark">×</span>Five distinct visual systems in seven years</div>
+        <div class="case-item"><span class="mark">×</span>Revenue: high variance, near-zero compounding</div>
+        <div class="case-item"><span class="mark">×</span>Market recall after seven years: <span style="color: rgba(245,245,245,0.55);">"They keep changing."</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— Always sprinting. Never arriving.</div>
+      </div>
+      <div class="case-side">
+        <div class="case-label">After · The Patience Doctrine</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Single positioning held for <span class="red" style="font-weight: 500;">10 years</span> · zero rewrites</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Refused 4 of the last 5 industry trends · <span class="red" style="font-weight: 500;">published refusals</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Same weekly publication ritual for <span class="red" style="font-weight: 500;">520 weeks</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Revenue: <span class="red" style="font-weight: 500;">4.7×</span> over the decade · compounding</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Market recall: <span class="red" style="font-weight: 500;">"They are the category."</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "The patience became <span class="red">the patent</span>."</div>
+      </div>
+    </div>
+    <div class="h-sm" style="margin: 32px 0 20px;">Three Patient Moves</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Frozen Tagline</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">The positioning statement was <span style="color: #F5F5F5;">locked in year one</span>. Refused every internal request to "modernize" it.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Year-Three Hold</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Revenue dipped 34% in year three. <span style="color: #F5F5F5;">No pivot.</span> No layoff. No new product. Held the doctrine. Year five paid back the dip ten times over.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Decade Anniversary</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Marked ten years with a <span style="color: #F5F5F5;">public archive</span> of every weekly publication since day one. The archive itself became their largest lead source.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENDURANCE PROTOCOL -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 06 · The Protocol</div><div class="corner-mark cm-tr red">Endurance</div>
+  <div class="corner-mark cm-bl">007</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 06 — The Endurance Protocol</div>
+    <div class="h-large serif" style="margin-bottom: 8px;">How to play the <span style="font-style: italic;" class="red">decade</span>.</div>
+    <div class="body" style="margin-bottom: 36px; max-width: 600px;">Plant. Tend. Compound. Three stages. One brand engineered to outlast the noise.</div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">01</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage I · Plant</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Declare the <span style="font-style: italic; color: rgba(245,245,245,0.6);">decade thesis</span> — and publish it.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">A single statement: what the brand believes will be true in ten years, and why the market is wrong about it now. Published. Signed. Dated. <em style="color: #E11D48; font-style: normal;">The thesis is the seed of every subsequent decision.</em></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Decade thesis statement</div>
+          <div><span class="red">— </span>Compounding-asset identification</div>
+          <div><span class="red">— </span>Cash reserve structuring</div>
+          <div><span class="red">— </span>Founding archive setup</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">02</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage II · Tend</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Repeat the <span style="font-style: italic;">same gesture</span> — every week, for years.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">One publication ritual. Same day. Same form. Same channel. Repeated until the calendar itself becomes the marketing. <em style="color: #E11D48; font-style: normal;">The repetition is the work.</em> Year three is the test. Hold the line.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Weekly publication cadence</div>
+          <div><span class="red">— </span>Annual trend-refusal post</div>
+          <div><span class="red">— </span>Quarterly conviction reviews</div>
+          <div><span class="red">— </span>Dip-resistance reserves</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+      <div class="pillar-num">03</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage III · Compound</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Mark the <span style="font-style: italic;">years publicly</span> — and let time do the marketing.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Every anniversary published. Every decade-long archive opened. The compounding asset turned into a museum the market can walk through. <em style="color: #E11D48; font-style: normal;">Tenure becomes the proof.</em> No one can fake ten years.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Anniversary publication ritual</div>
+          <div><span class="red">— </span>Public archive curation</div>
+          <div><span class="red">— </span>Tenure-based pricing escalation</div>
+          <div><span class="red">— </span>Decade-shape strategic review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LONG HORIZON -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Final Scene · The Long Horizon</div><div class="corner-mark cm-tr red">The Choice</div>
+  <div class="corner-mark cm-bl">008</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Final Scene — The Long Horizon</div>
+    <div class="h-massive serif" style="margin-bottom: 16px;">Will you keep <span style="font-style: italic;" class="red">sprinting</span>?</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+      <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · SPRINT</div>
+        <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep optimizing for the quarter.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Pivot when revenue dips. Rewrite the brand every cycle. Chase every trend. <span class="blur-word">Burn out, then disappear.</span></div>
+      </div>
+      <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · ENDURE</div>
+        <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Plant. Tend. Compound. Become inevitable.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Build a brand the market <span class="red">cannot dismiss in year eight</span> — because by then you are the category itself.</div>
+      </div>
+    </div>
+    <div style="margin: 40px 0 0; max-width: 640px;">
+      <div class="quote" style="font-size: 24px;">"In a market that rewards speed, <span style="color: rgba(245,245,245,0.5);">the rarest competitive edge</span><br>is the discipline to <span class="red" style="font-style: normal; font-weight: 500;">refuse to be hurried.</span>"</div>
+    </div>
+    <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Set the clock.</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">STRAWBERRY · PRODUCTION<br>PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- END CARD -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>End Card</span><span class="red">Reel VIII / Complete</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+    <div class="mono" style="font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+    <div class="serif" style="font-size: 60px; font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 28px;">"Speed is the strategy<br>of the <span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">desperate</span>.</div>
+    <div class="serif" style="font-size: 60px; font-weight: 700; line-height: 1;">Patience is the strategy<br>of the <span class="red" style="font-style: italic; font-weight: 400;">inevitable</span>."</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+      <div><div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div></div>
+      <div style="text-align: right;">Paris · Los Angeles<br><span class="red">© MMXXVI</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Devotion Codex · Strawberry Production · Vol. IX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #F5F5F5; }
+  .book { max-width: 880px; margin: 0 auto; }
+  .page { position: relative; background: #050505; min-height: 1100px; padding: 80px 64px; overflow: hidden; page-break-after: always; border-bottom: 1px solid rgba(245,245,245,0.04); }
+  .page.cover { padding: 0; min-height: 1180px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.13; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+  .vignette { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.85); }
+  .letterbox-top, .letterbox-bot { position: absolute; left: 0; right: 0; height: 36px; background: #000; z-index: 3; }
+  .letterbox-top { top: 0; } .letterbox-bot { bottom: 0; }
+  .corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,245,245,0.35); font-weight: 300; z-index: 2; }
+  .cm-tl { top: 48px; left: 64px; } .cm-tr { top: 48px; right: 64px; }
+  .cm-bl { bottom: 48px; left: 64px; } .cm-br { bottom: 48px; right: 64px; color: #E11D48; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .red { color: #E11D48; }
+  .blur-word { filter: blur(1.2px); opacity: 0.85; }
+  .scene-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: #E11D48; margin-bottom: 24px; }
+  .h-massive { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 64px; line-height: 0.95; letter-spacing: -0.02em; }
+  .h-large { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 42px; line-height: 1.05; }
+  .h-med { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; line-height: 1.15; }
+  .h-sm { font-weight: 500; font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; }
+  .body { font-weight: 300; font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+  .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: rgba(245,245,245,0.92); }
+  .rule-red { height: 1px; background: #E11D48; width: 48px; }
+  .content { position: relative; z-index: 2; }
+  .three-col { display: grid; grid-template-columns: 60px 1fr; gap: 28px; margin-bottom: 32px; align-items: start; }
+  .col-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #E11D48; line-height: 1; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 300; line-height: 0.85; color: rgba(225,29,72,0.18); }
+  .compare-table { width: 100%; border-top: 0.5px solid rgba(245,245,245,0.15); border-bottom: 0.5px solid rgba(245,245,245,0.15); margin: 24px 0; }
+  .compare-table .row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .compare-table .row:last-child { border-bottom: none; }
+  .compare-table .cell { padding: 18px 20px; font-size: 13px; line-height: 1.5; }
+  .compare-table .left { color: rgba(245,245,245,0.4); text-decoration: line-through; font-weight: 300; }
+  .compare-table .right { color: #F5F5F5; border-left: 1px solid #E11D48; }
+  .codex-block { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 14px 0; position: relative; background: rgba(245,245,245,0.015); }
+  .codex-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #E11D48; opacity: 0.6; }
+  .codex-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 6px; }
+  .codex-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 10px; line-height: 1.15; }
+  .codex-body { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.65); font-weight: 300; }
+  .codex-body em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .layer-row { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 22px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #E11D48; padding-top: 6px; }
+  .layer-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; margin-bottom: 8px; line-height: 1.1; }
+  .layer-desc { font-size: 13px; line-height: 1.65; color: rgba(245,245,245,0.6); font-weight: 300; }
+  .layer-desc em { color: #E11D48; font-style: normal; font-weight: 400; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0; border: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side { padding: 28px; border-right: 0.5px solid rgba(245,245,245,0.12); }
+  .case-side:last-child { border-right: none; background: rgba(225,29,72,0.04); }
+  .case-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4); margin-bottom: 18px; }
+  .case-side:last-child .case-label { color: #E11D48; }
+  .case-item { font-size: 13px; line-height: 1.6; color: rgba(245,245,245,0.7); padding: 8px 0; font-weight: 300; }
+  .case-item .mark { color: #E11D48; margin-right: 8px; }
+  .toc-row { display: grid; grid-template-columns: 50px 1fr 60px; padding: 14px 0; border-bottom: 0.5px solid rgba(245,245,245,0.08); gap: 20px; align-items: baseline; }
+  .toc-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #E11D48; }
+  .toc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+  .toc-page { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,245,245,0.35); text-align: right; }
+  .charter-frame { border: 0.5px solid rgba(225,29,72,0.35); padding: 28px 32px; margin: 20px 0; background: rgba(225,29,72,0.03); position: relative; }
+  .charter-frame::before { content: ''; position: absolute; top: -1px; left: -1px; width: 22px; height: 22px; border-top: 1px solid #E11D48; border-left: 1px solid #E11D48; }
+  .charter-frame::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 22px; height: 22px; border-bottom: 1px solid #E11D48; border-right: 1px solid #E11D48; }
+  .stages-frame { border: 0.5px solid rgba(245,245,245,0.12); padding: 24px 28px; margin: 24px 0; background: rgba(245,245,245,0.015); position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .stage-card { padding: 12px 0; border-top: 1px solid #E11D48; }
+  .stage-card .num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px; }
+  .stage-card .name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; line-height: 1.1; color: #F5F5F5; margin-bottom: 8px; font-style: italic; }
+  .stage-card .desc { font-size: 11.5px; line-height: 1.55; color: rgba(245,245,245,0.55); font-weight: 300; }
+  @media print { .page { page-break-after: always; border: none; min-height: 100vh; } body { background: #050505; } }
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div>
+  <div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="position: absolute; inset: 0; opacity: 0.13; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 680 1180" preserveAspectRatio="xMidYMid slice">
+      <!-- Cercle central avec rayonnement de cercles plus petits (les disciples autour) -->
+      <circle cx="340" cy="640" r="44" fill="#E11D48" opacity="0.85"/>
+      <circle cx="340" cy="640" r="80" fill="none" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="340" cy="640" r="140" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.25"/>
+      <circle cx="340" cy="640" r="220" fill="none" stroke="#F5F5F5" stroke-width="0.5" opacity="0.15"/>
+      <!-- Cercles satellites -->
+      <circle cx="340" cy="500" r="12" fill="#F5F5F5" opacity="0.4"/>
+      <circle cx="450" cy="580" r="10" fill="#F5F5F5" opacity="0.35"/>
+      <circle cx="460" cy="700" r="11" fill="#F5F5F5" opacity="0.4"/>
+      <circle cx="340" cy="780" r="13" fill="#F5F5F5" opacity="0.45"/>
+      <circle cx="230" cy="700" r="10" fill="#F5F5F5" opacity="0.35"/>
+      <circle cx="220" cy="580" r="11" fill="#F5F5F5" opacity="0.4"/>
+      <!-- Rayons de connexion -->
+      <line x1="340" y1="640" x2="340" y2="500" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="640" x2="450" y2="580" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="640" x2="460" y2="700" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="640" x2="340" y2="780" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="640" x2="230" y2="700" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="340" y1="640" x2="220" y2="580" stroke="#E11D48" stroke-width="0.5" opacity="0.5"/>
+    </svg>
+  </div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>Strawberry Production</span><span class="red">N° 009 / Vol. IX</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, #E11D48 0%, #E11D48 18%, rgba(245,245,245,0.1) 18%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2;">
+    <div class="scene-tag">Manifesto · Volume IX</div>
+    <div class="serif" style="font-size: 84px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px;">The<br><span style="font-style: italic; font-weight: 400;">Devotion</span><br><span class="red">Codex.</span></div>
+    <div style="max-width: 520px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; line-height: 1.4; color: rgba(245,245,245,0.7);">Loyal <span class="blur-word">customers</span> buy again. Disciples <span style="color: #F5F5F5; font-style: normal;">bring others</span>. The art of building a brand the market enrolls into — not just purchases from.</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div style="font-size: 9px; letter-spacing: 0.5em; color: rgba(245,245,245,0.4); margin-bottom: 10px;">PRESENTED BY</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500;">Strawberry Production</div>
+        <div style="font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); margin-top: 4px; text-transform: uppercase;">Narrative Perception Engineering</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.1em; color: rgba(245,245,245,0.4);">PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Strawberry · Manifesto IX</div><div class="corner-mark cm-tr red">i. Index</div>
+  <div class="corner-mark cm-bl">001</div><div class="corner-mark cm-br">N. Production · 2026</div>
+  <div class="content">
+    <div class="scene-tag">Table of Contents</div>
+    <div class="h-large serif" style="margin-bottom: 56px;">The <span style="font-style: italic;">conversion</span>.</div>
+    <div class="toc-row"><div class="toc-num">01</div><div class="toc-title">The Transactional Trap</div><div class="toc-page">P. 02</div></div>
+    <div class="toc-row"><div class="toc-num">02</div><div class="toc-title">The Devotion Doctrine</div><div class="toc-page">P. 03</div></div>
+    <div class="toc-row"><div class="toc-num">03</div><div class="toc-title">The Five Rituals of Conversion</div><div class="toc-page">P. 04</div></div>
+    <div class="toc-row"><div class="toc-num">04</div><div class="toc-title">Anatomy of a Convert</div><div class="toc-page">P. 05</div></div>
+    <div class="toc-row"><div class="toc-num">05</div><div class="toc-title">Case File · The Company Whose Clients Became Disciples</div><div class="toc-page">P. 06</div></div>
+    <div class="toc-row"><div class="toc-num">06</div><div class="toc-title">The Conversion Protocol</div><div class="toc-page">P. 07</div></div>
+    <div class="toc-row"><div class="toc-num">07</div><div class="toc-title">The Communion</div><div class="toc-page">P. 08</div></div>
+    <div class="toc-row"><div class="toc-num">08</div><div class="toc-title">End Card</div><div class="toc-page">P. 09</div></div>
+  </div>
+</div>
+
+<!-- TRANSACTIONAL TRAP -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 01 · Diagnostic</div><div class="corner-mark cm-tr red">The Trap</div>
+  <div class="corner-mark cm-bl">002</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 01</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">The transactional <span style="font-style: italic;" class="red">trap</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 48px;">Loyal customers were enough in 2010. They are nowhere near enough now.</div>
+    <div style="display: grid; grid-template-columns: 1fr 0.5px 1fr; gap: 0; margin-bottom: 44px;">
+      <div style="padding-right: 40px;">
+        <div class="quote">"For a decade, the goal was the <span style="text-decoration: line-through; text-decoration-color: #E11D48;">loyal customer</span>. The one who renews. The one who refers — when asked. The one who scores you a nine on the survey.<br><br>That customer is now <span class="red">commoditized</span>. A competitor with AI-personalized outreach can lure them away in a single email. Loyalty is no longer a moat. <em style="color: #F5F5F5; font-style: italic;">Devotion is</em>."</div>
+      </div>
+      <div style="background: rgba(245,245,245,0.1);"></div>
+      <div style="padding-left: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <div class="h-sm red" style="margin-bottom: 12px;">The Truth</div>
+        <div class="serif" style="font-size: 30px; font-weight: 400; font-style: italic; line-height: 1.15;">Loyal customers<br>buy again. <span class="blur-word">Disciples</span><br><span class="red" style="font-style: normal; font-weight: 500;">bring others.</span></div>
+        <div class="mono" style="margin-top: 24px; font-size: 10px; letter-spacing: 0.2em; color: #E11D48;">— DEVOTION IS THE NEW DEFENSIBILITY.</div>
+      </div>
+    </div>
+    <div class="rule-red" style="margin-bottom: 18px;"></div>
+    <div class="h-sm" style="margin-bottom: 28px;">Three Symptoms of a Transactional Brand</div>
+    <div class="three-col"><div class="col-num">01</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Your customers <span style="font-style: italic;">cannot articulate</span> what you stand for.<br><span class="red" style="font-style: italic;">They can describe what you sell. They cannot describe what you believe.</span></div><div class="body">A transactional brand sells a product. A devotional brand carries a worldview customers can repeat from memory. If they cannot teach your beliefs to a friend, you have buyers, not believers.</div></div></div>
+    <div class="three-col"><div class="col-num">02</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Word-of-mouth happens <span style="font-style: italic;">when prompted</span>.<br><span class="red" style="font-style: italic;">Through referral programs, NPS surveys, "leave us a review" CTAs.</span></div><div class="body">Disciples do not need to be asked. They bring others unprompted because doing so confirms their own identity. If you have to incentivize the referral, the customer was never converted in the first place.</div></div></div>
+    <div class="three-col" style="margin-bottom: 32px;"><div class="col-num">03</div><div><div class="serif" style="font-size: 20px; font-weight: 500; margin-bottom: 6px;">Customers leave when a <span style="font-style: italic;">15% cheaper</span> alternative appears.<br><span class="red" style="font-style: italic;">Because the relationship was transactional all along.</span></div><div class="body">Transactional relationships are price-sensitive by definition. Devotional relationships absorb price increases because the customer's identity is now tied to the brand. The switching cost is no longer money — it is meaning.</div></div></div>
+    <div style="border-top: 0.5px solid rgba(245,245,245,0.15); padding-top: 24px; max-width: 620px;">
+      <div class="quote" style="color: #F5F5F5;">"Loyalty is a metric. Devotion is a <span class="red" style="font-style: normal; font-weight: 500;">structural identity</span>.<br><span style="color: rgba(245,245,245,0.4);">Only one of them grows the brand for free.</span>"</div>
+    </div>
+  </div>
+</div>
+
+<!-- DEVOTION DOCTRINE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 02 · Doctrine</div><div class="corner-mark cm-tr red">The Conversion</div>
+  <div class="corner-mark cm-bl">003</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 02</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">From buyer to <span style="font-style: italic;" class="red">believer</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 600px; margin-bottom: 36px;">A change of identity, not a change of behavior.</div>
+    <div class="charter-frame">
+      <div class="mono" style="font-size: 9px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 12px; text-transform: uppercase;">— The ninth volume of the Strawberry doctrine —</div>
+      <div class="serif" style="font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.5; color: #F5F5F5;">The <strong style="font-style: normal; font-weight: 600;">Devotion Codex</strong> closes the audience loop of the Strawberry canon. <span style="color: rgba(245,245,245,0.65);">The previous volumes built what the brand <em>is</em>. This volume defines what the brand <em style="color: #E11D48; font-style: normal;">does to its audience</em> — how it transforms transactions into communions, customers into carriers, buyers into believers.</span></div>
+    </div>
+    <div class="compare-table">
+      <div class="row"><div class="cell left">Sells products to customers</div><div class="cell right">Initiates members into a worldview</div></div>
+      <div class="row"><div class="cell left">Measures NPS, retention, LTV</div><div class="cell right">Measures unprompted referrals, ritual adoption</div></div>
+      <div class="row"><div class="cell left">Communicates via emails &amp; updates</div><div class="cell right">Communicates via rituals &amp; doctrine</div></div>
+      <div class="row"><div class="cell left">Customer says: "I bought it."</div><div class="cell right">Disciple says: "I am one of them."</div></div>
+      <div class="row"><div class="cell left">Growth via paid acquisition</div><div class="cell right">Growth via unprompted conversion</div></div>
+    </div>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+      <div>
+        <div class="h-sm red" style="margin-bottom: 14px;">— The Equation</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.3;">Belief + <span class="red">Ritual</span> + Proof = Devotion.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px;">A stated worldview. A repeated act customers perform. Visible signs of belonging. Together they produce <em style="color: #E11D48; font-style: normal;">devotion</em> — the only growth engine that scales without paying for distribution.</div>
+      </div>
+      <div>
+        <div class="h-sm" style="margin-bottom: 14px; color: rgba(245,245,245,0.55);">— Why now</div>
+        <div class="body" style="font-size: 13.5px;">When AI personalizes every competitor's outreach at zero cost, customer retention based on convenience is finished. The only audiences that stay are the ones whose <span class="red">identity is now tied</span> to the brand — and those audiences are not retained. They are <em>converted</em>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIVE RITUALS -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 03 · The Rituals</div><div class="corner-mark cm-tr red">Five Rituals</div>
+  <div class="corner-mark cm-bl">004</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 03 — The Rituals</div>
+    <div class="h-large serif" style="margin-bottom: 32px;">The five rituals of <span style="font-style: italic;" class="red">conversion</span>.</div>
+    <div class="codex-block"><div class="codex-num">RITUAL I · THE INITIATION</div><div class="codex-title">The first act <span style="font-style: italic;">marks</span> the new member — visibly.</div><div class="codex-body">A welcome ritual, not an onboarding email. Something the new customer <em>performs</em> to enter — a written commitment, a public statement, an unboxing video they post themselves. Initiation produces ownership. <em>The act of entering is the first act of belonging.</em></div></div>
+    <div class="codex-block"><div class="codex-num">RITUAL II · THE VOCABULARY</div><div class="codex-title">The members have <span style="font-style: italic;">words only they use</span>.</div><div class="codex-body">A shared vocabulary is the cheapest moat in the world. Members who use the brand's specific terms — for problems, products, processes — are <em>self-identifying every time they speak</em>. Vocabulary is the verbal logo of the tribe.</div></div>
+    <div class="codex-block"><div class="codex-num">RITUAL III · THE REPETITION</div><div class="codex-title">There is one act members <span style="font-style: italic;">perform every week</span>.</div><div class="codex-body">Open the weekly publication. Attend the monthly call. Post the quarterly photo. <em>The act is the ritual</em>. Rituals do not need to be performed perfectly — they need to be performed consistently. The repetition is what binds the audience to the doctrine.</div></div>
+    <div class="codex-block"><div class="codex-num">RITUAL IV · THE PROOF</div><div class="codex-title">Members have a <span style="font-style: italic;">visible sign</span> of belonging.</div><div class="codex-body">A symbol. A badge. A piece of language. A specific object only members carry. <em>Proof is what allows members to recognize each other</em> — and what allows the broader market to see the size of the tribe. Without visible proof, belonging is private. With it, belonging is contagious.</div></div>
+    <div class="codex-block"><div class="codex-num">RITUAL V · THE COMMISSION</div><div class="codex-title">Every member is <span style="font-style: italic;">tasked</span> with bringing the next one.</div><div class="codex-body">Disciples do not refer because they were asked. They refer because the doctrine includes a clause: <em>those who have been converted owe conversion to others</em>. Frame the commission as duty, not transaction. Devotion compounds when carrying it forward is part of being one.</div></div>
+  </div>
+</div>
+
+<!-- ANATOMY OF A CONVERT -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 04 · Anatomy</div><div class="corner-mark cm-tr red">The Convert</div>
+  <div class="corner-mark cm-bl">005</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 04 — Anatomy</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">Anatomy of a <span style="font-style: italic;" class="red">convert</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 580px; margin-bottom: 36px;">Four stages. Each one transforms the customer's identity further from "buyer" toward "carrier."</div>
+
+    <div class="stages-frame">
+      <div class="stage-card">
+        <div class="num">STAGE I</div>
+        <div class="name">Discovery</div>
+        <div class="desc">The future convert encounters a worldview they have been quietly missing. The brand articulates a belief they already half-held.</div>
+      </div>
+      <div class="stage-card">
+        <div class="num">STAGE II</div>
+        <div class="name">Initiation</div>
+        <div class="desc">They perform the first ritual — purchase, commitment, public declaration. The act marks them.</div>
+      </div>
+      <div class="stage-card">
+        <div class="num">STAGE III</div>
+        <div class="name">Identification</div>
+        <div class="desc">They start using the brand's vocabulary, displaying its proof, attending its rituals. Identity merges.</div>
+      </div>
+      <div class="stage-card">
+        <div class="num">STAGE IV</div>
+        <div class="name">Commission</div>
+        <div class="desc">They bring others, unprompted. The convert becomes a carrier. The carrier becomes a node of growth.</div>
+      </div>
+    </div>
+
+    <div class="layer-row"><div class="layer-tag">C · 01</div><div><div class="layer-title">The Belief</div><div class="layer-desc">A stated worldview the convert can repeat in one sentence. <em>If they cannot articulate the belief, the conversion never happened.</em> Belief is the seed of identity transfer.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">C · 02</div><div><div class="layer-title">The Mark</div><div class="layer-desc">The act of initiation — a purchase, a written commitment, a publicly visible decision. The act is irreversible in the convert's own mind, even if technically refundable. <em>The mark is the threshold.</em></div></div></div>
+    <div class="layer-row"><div class="layer-tag">C · 03</div><div><div class="layer-title">The Speech</div><div class="layer-desc">Vocabulary the convert adopts — words that did not exist in their vocabulary before. <em>When their language changes, their identity has changed.</em> Speech is the audible evidence of conversion.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">C · 04</div><div><div class="layer-title">The Sign</div><div class="layer-desc">A visible artifact — symbol, behavior, possession — that announces belonging without saying so. <em>The sign performs the recognition</em>, both for other members and for the broader market.</div></div></div>
+    <div class="layer-row"><div class="layer-tag">C · 05</div><div><div class="layer-title">The Mission</div><div class="layer-desc">A felt obligation to bring others. <em>The convert no longer recommends the brand — they recruit for it</em>, because doing so confirms their own identity as one of the converted.</div></div></div>
+  </div>
+</div>
+
+<!-- CASE FILE -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 05 · Case File</div><div class="corner-mark cm-tr red">The Conversion</div>
+  <div class="corner-mark cm-bl">006</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 05 — Case File</div>
+    <div class="h-massive serif" style="margin-bottom: 12px;">From customers to <span style="font-style: italic;" class="red">disciples</span>.</div>
+    <div class="h-med serif" style="color: rgba(245,245,245,0.5); font-weight: 300; font-style: italic; max-width: 540px; margin-bottom: 12px;">From product business to identity institution in 18 months.</div>
+    <div class="case-grid">
+      <div class="case-side">
+        <div class="case-label">Before · The Vendor</div>
+        <div class="case-item"><span class="mark">×</span>Customer base: 8,400 paid users</div>
+        <div class="case-item"><span class="mark">×</span>Referral rate: 4% (with paid program)</div>
+        <div class="case-item"><span class="mark">×</span>NPS: 41 · neutral satisfaction</div>
+        <div class="case-item"><span class="mark">×</span>Churn: 14% annually</div>
+        <div class="case-item"><span class="mark">×</span>Brand role: <span style="color: rgba(245,245,245,0.55);">"a tool we use"</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(245,245,245,0.1); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,245,245,0.4);">— A product the market consumed.</div>
+      </div>
+      <div class="case-side">
+        <div class="case-label">After · The Devotion Codex</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Members: <span class="red" style="font-weight: 500;">12,300</span> · 81% from unprompted referrals</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Weekly ritual adoption: <span class="red" style="font-weight: 500;">68%</span> of members participate</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Vocabulary in customer feedback: <span class="red" style="font-weight: 500;">"we", not "they"</span></div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Churn: <span class="red" style="font-weight: 500;">3.1%</span> annually</div>
+        <div class="case-item" style="color: #F5F5F5;"><span class="mark">→</span>Brand role: <span class="red" style="font-weight: 500;">"part of who I am"</span></div>
+        <div style="margin-top: 22px; padding-top: 14px; border-top: 0.5px solid rgba(225,29,72,0.3); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: #F5F5F5;">— "The customers became <span class="red">the marketing</span>."</div>
+      </div>
+    </div>
+    <div class="h-sm" style="margin: 32px 0 20px;">Three Devotion Moves</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE I</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Initiation Letter</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Every new member <span style="color: #F5F5F5;">writes a one-line commitment</span> at signup. Published to a private wall. The act of writing converts.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE II</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Tribe Vocabulary</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">Twelve specific terms members use. <span style="color: #F5F5F5;">Published in a small lexicon.</span> Members started using them in unrelated conversations.</div>
+      </div>
+      <div style="border-top: 1px solid #E11D48; padding-top: 16px;">
+        <div class="mono" style="font-size: 10px; color: #E11D48; letter-spacing: 0.2em; margin-bottom: 8px;">MOVE III</div>
+        <div class="serif" style="font-size: 19px; font-weight: 500; line-height: 1.15; margin-bottom: 10px;">The Visible Sign</div>
+        <div class="body" style="font-size: 12px; line-height: 1.6;">A small physical object — pin, sticker, embossed card — sent to every member. <span style="color: #F5F5F5;">Carried publicly.</span> Worth more than any logo placement bought.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONVERSION PROTOCOL -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Scene 06 · The Protocol</div><div class="corner-mark cm-tr red">Conversion</div>
+  <div class="corner-mark cm-bl">007</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Scene 06 — The Conversion Protocol</div>
+    <div class="h-large serif" style="margin-bottom: 8px;">How to manufacture <span style="font-style: italic;" class="red">belief</span>.</div>
+    <div class="body" style="margin-bottom: 36px; max-width: 600px;">Initiate. Indoctrinate. Activate. Three stages. One audience transformed from buyers into carriers.</div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">01</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage I · Initiate</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Replace onboarding with an <span style="font-style: italic; color: rgba(245,245,245,0.6);">act of entry</span>.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Design a first ritual that the new member <em>performs</em> — not a sequence of welcome emails. A signed commitment. A written statement. A first public act. <em style="color: #E11D48; font-style: normal;">The act produces ownership.</em> Without it, the customer is renting the relationship.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Initiation ritual design</div>
+          <div><span class="red">— </span>Welcome artifact &amp; sign</div>
+          <div><span class="red">— </span>Public commitment mechanic</div>
+          <div><span class="red">— </span>Threshold ceremony documentation</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(245,245,245,0.1);">
+      <div class="pillar-num">02</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage II · Indoctrinate</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Teach the <span style="font-style: italic;">vocabulary</span>, the doctrine, the weekly act.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Publish a small lexicon of brand-specific words. Repeat the doctrine in every communication. Run one weekly ritual members can participate in. <em style="color: #E11D48; font-style: normal;">The repetition is what binds.</em> Members who speak your language are members who have become you.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Tribe vocabulary publication</div>
+          <div><span class="red">— </span>Weekly ritual cadence</div>
+          <div><span class="red">— </span>Doctrine restatement rhythm</div>
+          <div><span class="red">— </span>Member-only visible signs</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 110px 1fr; gap: 24px;">
+      <div class="pillar-num">03</div>
+      <div>
+        <div class="h-sm red" style="margin-bottom: 6px;">Stage III · Activate</div>
+        <div class="serif" style="font-size: 24px; font-weight: 500; line-height: 1.15; margin-bottom: 14px;">Give every member a <span style="font-style: italic;">commission</span> — and the means to fulfill it.</div>
+        <div class="body" style="font-size: 13px; margin-bottom: 14px;">Frame conversion of others as <em>duty, not opportunity</em>. Provide the artifacts they need: shareable manifestos, named referral language, public membership signs. <em style="color: #E11D48; font-style: normal;">Disciples grow the tribe because not doing so would feel disloyal.</em> That is the engine.</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; font-size: 12.5px; color: rgba(245,245,245,0.7);">
+          <div><span class="red">— </span>Member-carried artifacts</div>
+          <div><span class="red">— </span>Commission language framework</div>
+          <div><span class="red">— </span>Bring-one-other rituals</div>
+          <div><span class="red">— </span>Public member directory</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMUNION -->
+<div class="page">
+  <div class="grain"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div class="corner-mark cm-tl">Final Scene · The Communion</div><div class="corner-mark cm-tr red">The Choice</div>
+  <div class="corner-mark cm-bl">008</div><div class="corner-mark cm-br">Strawberry Prod.</div>
+  <div class="content">
+    <div class="scene-tag">Final Scene — The Communion</div>
+    <div class="h-massive serif" style="margin-bottom: 16px;">Will you keep selling to <span style="font-style: italic;" class="red">strangers</span>?</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 36px 0 12px; border: 0.5px solid rgba(245,245,245,0.1);">
+      <div style="padding: 32px; border-right: 0.5px solid rgba(245,245,245,0.1);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: rgba(245,245,245,0.4); margin-bottom: 14px;">PATH 01 · TRANSACT</div>
+        <div class="serif" style="font-size: 26px; font-weight: 400; line-height: 1.2; color: rgba(245,245,245,0.55); font-style: italic;">Keep selling to customers.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.45);">Treat them like buyers. Pay for every new one. Watch loyalty erode the moment a cheaper alternative appears. <span class="blur-word">Rent your audience forever.</span></div>
+      </div>
+      <div style="padding: 32px; background: rgba(225,29,72,0.04);">
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.3em; color: #E11D48; margin-bottom: 14px;">PATH 02 · CONVERT</div>
+        <div class="serif" style="font-size: 26px; font-weight: 500; line-height: 1.2; color: #F5F5F5;">Initiate. Indoctrinate. Activate. Own the audience.</div>
+        <div class="body" style="font-size: 13px; margin-top: 14px; color: rgba(245,245,245,0.75);">Build an audience that <span class="red">brings the next one without being asked</span> — because doing so confirms who they have become.</div>
+      </div>
+    </div>
+    <div style="margin: 40px 0 0; max-width: 640px;">
+      <div class="quote" style="font-size: 24px;">"Loyal customers buy again. <span style="color: rgba(245,245,245,0.5);">Disciples</span><br>bring <span class="red" style="font-style: normal; font-weight: 500;">others.</span>"</div>
+    </div>
+    <div style="margin-top: 56px; padding-top: 28px; border-top: 0.5px solid rgba(245,245,245,0.12); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.35em; color: #E11D48; margin-bottom: 10px;">— END OF MANIFESTO —</div>
+        <div class="serif" style="font-size: 24px; font-style: italic; color: rgba(245,245,245,0.7); font-weight: 400;">Welcome the next one.</div>
+      </div>
+      <div class="mono" style="text-align: right; font-size: 10px; letter-spacing: 0.2em; color: rgba(245,245,245,0.35); line-height: 1.8;">STRAWBERRY · PRODUCTION<br>PARIS · LOS ANGELES</div>
+    </div>
+  </div>
+</div>
+
+<!-- END CARD -->
+<div class="page cover">
+  <div class="grain"></div><div class="vignette"></div><div class="letterbox-top"></div><div class="letterbox-bot"></div>
+  <div style="padding: 80px 64px 0; position: relative; z-index: 2;">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.4);"><span>End Card</span><span class="red">Reel IX / Complete</span></div>
+    <div style="margin-top: 14px; height: 0.5px; background: linear-gradient(to right, rgba(245,245,245,0.1) 92%, #E11D48 92%);"></div>
+  </div>
+  <div style="padding: 0 64px; position: relative; z-index: 2; text-align: center;">
+    <div class="mono" style="font-size: 11px; letter-spacing: 0.4em; color: #E11D48; margin-bottom: 36px;">— STRAWBERRY · PRODUCTION —</div>
+    <div class="serif" style="font-size: 60px; font-weight: 300; font-style: italic; line-height: 1; margin-bottom: 28px;">"<span style="font-style: normal; text-decoration: line-through; text-decoration-color: #E11D48; opacity: 0.6;">Customers</span> buy.</div>
+    <div class="serif" style="font-size: 60px; font-weight: 700; line-height: 1;">Disciples<br><span class="red" style="font-style: italic; font-weight: 400;">multiply</span>."</div>
+  </div>
+  <div style="padding: 0 64px 80px; position: relative; z-index: 2;">
+    <div style="height: 0.5px; background: rgba(245,245,245,0.1); margin-bottom: 28px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; letter-spacing: 0.2em; color: rgba(245,245,245,0.45); text-transform: uppercase;">
+      <div><div style="color: #F5F5F5; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 6px;">Narrative Perception Engineering</div></div>
+      <div style="text-align: right;">Paris · Los Angeles<br><span class="red">© MMXXVI</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
