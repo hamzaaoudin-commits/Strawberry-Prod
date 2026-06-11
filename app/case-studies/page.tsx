@@ -336,7 +336,7 @@ export default function CaseStudiesPage() {
                 Read the Atlas &rarr;
               </button>
               <div style={{ marginTop: 14, fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: SANS, letterSpacing: "0.04em" }}>
-                128 pages &middot; PDF &middot; Free &middot; No sign-up
+                128 pages &middot; PDF &middot; Free &middot; One email. No spam.
               </div>
             </div>
             <div style={{ position: "relative" }}>
