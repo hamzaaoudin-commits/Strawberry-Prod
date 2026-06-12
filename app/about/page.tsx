@@ -358,20 +358,25 @@ export default function AboutPage() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(2rem,6vw,6rem)", alignItems: "start" }} className="founder-grid">
-            <div style={{ position: "relative" }}>
-              <img
-                src="/founder.jpg"
-                alt="Hamza El Jaouahiry — Strawberry Production"
-                style={{
-                  width: "100%",
-                  aspectRatio: "3/4",
-                  objectFit: "cover",
-                  objectPosition: "center 85%",
-                  filter: "grayscale(100%) contrast(1.05)",
-                  display: "block",
-                }}
-              />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to top,#0d0d0d,transparent)" }} />
+            <div>
+              <div style={{ position: "relative" }}>
+                <img
+                  src="/founder.jpg"
+                  alt="Hamza El Jaouahiry — Strawberry Production"
+                  style={{
+                    width: "100%",
+                    aspectRatio: "3/4",
+                    objectFit: "cover",
+                    objectPosition: "center 85%",
+                    filter: "grayscale(100%) contrast(1.05)",
+                    display: "block",
+                  }}
+                />
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", background: "linear-gradient(to top,#0d0d0d,transparent)" }} />
+              </div>
+              <p style={{ fontFamily: SANS, fontSize: 11, color: COLOR, letterSpacing: "0.08em", lineHeight: 1.6, marginTop: 16, marginBottom: 0, textTransform: "uppercase" }}>
+               The Sorbonne &middot; Keynote on brand survival in the age of AI
+              </p>
             </div>
 
             <div style={{ paddingTop: "clamp(1rem,3vw,2rem)" }}>
