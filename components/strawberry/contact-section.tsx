@@ -57,7 +57,7 @@ export function ContactSection() {
           email: form.email,
           goal: form.goal,
           message: form.message,
-          _subject: `New contact from ${form.name} — ${form.goal || "no goal selected"}`,
+          _subject: "New contact from " + form.name + " - " + (form.goal || "no goal selected"),
         }),
       })
       if (res.ok) {
@@ -103,7 +103,7 @@ export function ContactSection() {
   return (
     <section id="contact" ref={ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", background: "#0a0a0a", color: "#fff", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative", overflow: "hidden" }}>
 
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.25, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 65%)", opacity: 0.25, pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
 
@@ -112,10 +112,10 @@ export function ContactSection() {
             Reach out
           </div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            Let&apos;s <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>talk.</span>
+            Let&apos;s <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>talk.</span>
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.65)", maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Tell me about your house. The conviction you can&apos;t articulate yet. The thing your competitors keep stealing — or copying badly. I read every message myself.
+            Tell me about your house. The conviction you can&apos;t articulate yet. The thing your competitors keep stealing &mdash; or copying badly. I read every message myself.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export function ContactSection() {
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 {CONTACT_INFO.map((c) => (
                   <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                    <div style={{ width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${COLOR}`, color: COLOR, fontSize: 14, flexShrink: 0 }}>
+                    <div style={{ width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid " + COLOR, color: COLOR, fontSize: 14, flexShrink: 0 }}>
                       {c.icon}
                     </div>
                     <div>
@@ -145,22 +145,22 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div style={{ padding: "24px 28px", borderLeft: `2px solid ${COLOR}`, background: "rgba(255,255,255,0.02)" }}>
+            <div style={{ padding: "24px 28px", borderLeft: "2px solid " + COLOR, background: "rgba(255,255,255,0.02)" }}>
               <p style={{ fontFamily: SERIF, fontSize: "1.05rem", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, margin: 0 }}>
-                Limited to four commissions per quarter. If we&apos;re full, you&apos;ll be the first told when the next slot opens.
+                Limited to four commissions per quarter. If we&apos;re full, you&apos;ll be the first told when the next slot opens. Every message answered within 24 hours.
               </p>
             </div>
           </div>
 
           <div>
             {status === "sent" ? (
-              <div style={{ padding: "48px 36px", border: `1px solid ${COLOR}`, background: "rgba(230,57,70,0.06)", textAlign: "center" }}>
+              <div style={{ padding: "48px 36px", border: "1px solid " + COLOR, background: "rgba(230,57,70,0.06)", textAlign: "center" }}>
                 <div style={{ fontSize: 36, marginBottom: 20 }}>🍓</div>
                 <h3 style={{ fontFamily: SERIF, fontSize: "1.6rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>
                   Message received.
                 </h3>
                 <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.6 }}>
-                  I read every one personally. Expect a reply within 48 hours — often faster.
+                  I read every one personally. Expect a reply within 24 hours.
                 </p>
               </div>
             ) : (
@@ -206,7 +206,7 @@ export function ContactSection() {
                           style={{
                             padding: "14px 20px",
                             background: selected ? "rgba(230,57,70,0.1)" : "rgba(255,255,255,0.03)",
-                            border: selected ? `1px solid ${COLOR}` : "1px solid rgba(255,255,255,0.1)",
+                            border: selected ? "1px solid " + COLOR : "1px solid rgba(255,255,255,0.1)",
                             color: selected ? "#fff" : "rgba(255,255,255,0.7)",
                             fontFamily: SANS,
                             fontSize: 14,
@@ -239,7 +239,7 @@ export function ContactSection() {
                 </div>
 
                 {status === "error" && (
-                  <div style={{ padding: "14px 18px", border: `1px solid ${COLOR}`, background: "rgba(230,57,70,0.08)", color: "rgba(255,255,255,0.9)", fontSize: 13, fontFamily: SANS, lineHeight: 1.5 }}>
+                  <div style={{ padding: "14px 18px", border: "1px solid " + COLOR, background: "rgba(230,57,70,0.08)", color: "rgba(255,255,255,0.9)", fontSize: 13, fontFamily: SANS, lineHeight: 1.5 }}>
                     {errorMsg}
                   </div>
                 )}
@@ -249,7 +249,7 @@ export function ContactSection() {
                   disabled={status === "sending"}
                   style={{
                     padding: "18px 32px",
-                    background: status === "sending" ? "rgba(230,57,70,0.4)" : `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
+                    background: status === "sending" ? "rgba(230,57,70,0.4)" : "linear-gradient(135deg," + COLOR + ",#ff1a1a)",
                     color: "#fff",
                     border: "none",
                     borderRadius: 100,
@@ -258,13 +258,17 @@ export function ContactSection() {
                     fontFamily: SANS,
                     letterSpacing: "0.05em",
                     cursor: status === "sending" ? "not-allowed" : "pointer",
-                    boxShadow: status === "sending" ? "none" : `0 15px 40px ${GLOW}`,
+                    boxShadow: status === "sending" ? "none" : "0 15px 40px " + GLOW,
                     transition: "all 0.2s",
                     marginTop: 8,
                   }}
                 >
-                  {status === "sending" ? "Sending..." : "Send Message →"}
+                  {status === "sending" ? "Sending..." : "Send Message \u2192"}
                 </button>
+
+                <p style={{ textAlign: "center", fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: SANS, letterSpacing: "0.04em", margin: 0 }}>
+                  Answered within 24 hours.
+                </p>
 
               </form>
             )}
