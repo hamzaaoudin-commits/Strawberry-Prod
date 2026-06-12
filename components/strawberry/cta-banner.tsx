@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import { useScrollReveal } from "@/hooks/use-strawberry"
-
 export function CTABanner() {
   const [ref, vis] = useScrollReveal()
   
@@ -21,10 +20,10 @@ export function CTABanner() {
         }}>
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 50%,rgba(230,57,70,0.12),transparent 70%)", pointerEvents: "none" }} />
           <h2 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(2rem,5vw,4rem)", color: "#fff", fontWeight: 700, letterSpacing: "-0.03em", marginBottom: 20, position: "relative" }}>
-            Ready to stop blending in?
+            Become impossible to confuse.
           </h2>
           <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 18, maxWidth: 500, margin: "0 auto 48px", lineHeight: 1.7 }}>
-            Most brands wait for permission to stand out. Ours take the stage.
+            Most houses wait. Yours shouldn&apos;t have to.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/brand-narrative-audit" style={{
