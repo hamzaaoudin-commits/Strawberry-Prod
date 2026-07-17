@@ -87,6 +87,9 @@ export function OffersSection() {
             <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: "rgba(255,255,255,0.85)", padding: "16px 32px", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, fontSize: 14, fontWeight: 500, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, transition: "all 0.3s" }}>
               Read the Full Brief
             </Link>
+            <Link href="/sample-audit" style={{ display: "inline-block", color: COLOR, padding: "16px 8px", fontSize: 14, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS }}>
+              See a sample before you commission →
+            </Link>
           </div>
 
           <div style={{ marginTop: 32, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em", fontFamily: SANS }}>

@@ -14,7 +14,13 @@ const EXPLORE = [
 ]
 
 const WORK = [
+  { label: "The Ladder", href: "/#ladder" },
+  { label: "RADAR", href: "/radar" },
+  { label: "NOVA", href: "/nova" },
   { label: "The Commission", href: "/brand-narrative-audit" },
+  { label: "NOCTA", href: "/nocta" },
+  { label: "MOMENTUM", href: "/momentum" },
+  { label: "Sample audit", href: "/sample-audit" },
   { label: "Case Studies", href: "/case-studies" },
 ]
 

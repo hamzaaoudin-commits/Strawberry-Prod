@@ -32,7 +32,7 @@ const ARTICLES = [
         <p style={{ marginTop: 12 }}>
           <strong>Hamza El Jaouahiry</strong>, entrepreneur individuel (micro-entreprise), immatriculé sous le SIREN 105 253 314 (SIRET 105 253 314 00014), exerçant sous le nom commercial <strong>Strawberry Production</strong>, dont le siège est situé 8 place Eugène Thomas, 93160 Noisy-le-Grand, France (ci-après « le Prestataire »).
         </p>
-        <p style={{ marginTop: 12 }}>Et toute personne physique ou morale procédant à l&apos;achat d&apos;une prestation proposée sur le site v0-strawberryprod.vercel.app (ci-après « le Client »).</p>
+        <p style={{ marginTop: 12 }}>Et toute personne physique ou morale procédant à l&apos;achat d&apos;une prestation proposée sur le site gostrawberryprod.com (ci-après « le Client »).</p>
         <p style={{ marginTop: 12 }}>Toute commande implique l&apos;acceptation pleine et entière des présentes CGV, qui prévalent sur tout autre document du Client.</p>
       </>
     ),
@@ -51,6 +51,13 @@ const ARTICLES = [
         </ul>
         <p>La prestation inclut également un walkthrough de 90 minutes 30 jours après la livraison.</p>
         <p style={{ marginTop: 12 }}>Le Prestataire se réserve le droit de limiter à quatre (4) le nombre de commissions acceptées par trimestre civil, afin de garantir la qualité artisanale de la prestation.</p>
+        <p style={{ marginTop: 16 }}>Le Prestataire propose par ailleurs, sous la même marque Strawberry Production, les offres complémentaires suivantes, chacune régie par les présentes conditions et par les précisions de prix et de rétractation ci-après :</p>
+        <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>RADAR</strong> — publication par abonnement mensuel (service à exécution successive), au prix de 15 € par mois, résiliable à tout moment.</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>Arsenal</strong> — fourniture d&apos;un contenu numérique (boîte à outils), au prix indiqué lors de la commande (147 € à 197 €).</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>NOVA</strong> — accès à une application numérique en paiement unique de 999 €.</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>MOMENTUM</strong> — direction créative par abonnement mensuel (service à exécution successive), à partir de 1 500 € par mois, résiliable dans les conditions convenues.</li>
+        </ul>
       </>
     ),
   },
@@ -107,6 +114,11 @@ const ARTICLES = [
           <p><strong>C. À la livraison, en cas d&apos;insatisfaction substantielle :</strong></p>
           <p style={{ marginTop: 8 }}>Le Client bénéficie de révisions mineures illimitées et de deux (2) tours de révisions majeures dans les trente (30) jours suivant la livraison.</p>
           <p style={{ marginTop: 8 }}>Si, après ces deux tours, le Client estime que la Prestation ne correspond pas substantiellement à ses attentes raisonnables, il peut solliciter un remboursement partiel, plafonné à <strong>trente pour cent (30%) du montant total, soit 1 350 €</strong>. Cette demande doit être motivée par écrit dans les quarante-cinq (45) jours suivant la livraison.</p>
+        </div>
+        <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
+          <p><strong>D. Dispositions propres aux autres offres :</strong></p>
+          <p style={{ marginTop: 8 }}><strong>Abonnements (RADAR, MOMENTUM) :</strong> s&apos;agissant de services à exécution successive, le Client consommateur dispose du droit de rétractation de quatorze (14) jours prévu à l&apos;article L.221-18 du Code de la consommation. S&apos;il demande expressément le commencement de l&apos;exécution avant la fin de ce délai, il reste redevable du montant correspondant au service déjà fourni. L&apos;abonnement est ensuite résiliable à tout moment, la résiliation prenant effet à la fin de la période mensuelle en cours, sans remboursement du mois entamé.</p>
+          <p style={{ marginTop: 8 }}><strong>Contenus numériques (Arsenal, NOVA) :</strong> conformément à l&apos;article L.221-28 13° du Code de la consommation, la fourniture d&apos;un contenu numérique non fourni sur support matériel dont l&apos;exécution a commencé après accord préalable exprès du Client et renoncement exprès à son droit de rétractation ne peut donner lieu à rétractation. Avant tout accès au contenu, un remboursement intégral reste possible dans les quatorze (14) jours, tant que l&apos;accès n&apos;a pas été ouvert.</p>
         </div>
         <p style={{ marginTop: 16 }}>Toute demande de remboursement doit être adressée par email à Strawberryprod.contact@gmail.com, avec mention de la facture concernée.</p>
       </>

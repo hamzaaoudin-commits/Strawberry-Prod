@@ -32,7 +32,7 @@ const ARTICLES = [
         <p style={{ marginTop: 12 }}>
           <strong>Hamza El Jaouahiry</strong>, sole proprietor (French micro-entreprise), registered under SIREN 105 253 314 (SIRET 105 253 314 00014), trading under the name <strong>Strawberry Production</strong>, with registered office at 8 place Eugène Thomas, 93160 Noisy-le-Grand, France (hereinafter &quot;the Provider&quot;).
         </p>
-        <p style={{ marginTop: 12 }}>And any natural or legal person purchasing a service offered on the website v0-strawberryprod.vercel.app (hereinafter &quot;the Client&quot;).</p>
+        <p style={{ marginTop: 12 }}>And any natural or legal person purchasing a service offered on the website gostrawberryprod.com (hereinafter &quot;the Client&quot;).</p>
         <p style={{ marginTop: 12 }}>Any order implies full and unreserved acceptance of these Terms, which prevail over any other document of the Client.</p>
       </>
     ),
