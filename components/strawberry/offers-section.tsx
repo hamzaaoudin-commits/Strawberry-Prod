@@ -44,7 +44,7 @@ export function OffersSection() {
           <div style={{ position: "absolute", bottom: -1, right: -1, width: 60, height: 60, borderBottom: `2px solid ${COLOR}`, borderRight: `2px solid ${COLOR}` }} />
 
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>
-            Brand Narrative Architecture · 4,500€
+            BRAND NARRATIVE ARCHITECTURE · 4,500€
           </div>
 
           <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3.5vw,2.75rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 24 }}>
@@ -86,9 +86,6 @@ export function OffersSection() {
             </Link>
             <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: "rgba(255,255,255,0.85)", padding: "16px 32px", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, fontSize: 14, fontWeight: 500, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, transition: "all 0.3s" }}>
               Read the Full Brief
-            </Link>
-            <Link href="/sample-audit" style={{ display: "inline-block", color: COLOR, padding: "16px 8px", fontSize: 14, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS }}>
-              See a sample before you commission →
             </Link>
           </div>
 
