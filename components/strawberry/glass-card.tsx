@@ -1,35 +1,30 @@
 "use client"
 
-import { useState, ReactNode } from "react"
+import type { ReactNode } from "react"
 
 interface GlassCardProps {
   children: ReactNode
-  style?: React.CSSProperties
   className?: string
+  /** Lift and deepen the shadow on hover. Disable for static cards. */
   hoverLift?: boolean
 }
 
-export function GlassCard({ children, style, className = "", hoverLift = true }: GlassCardProps) {
-  const [hovered, setHovered] = useState(false)
-  
+/**
+ * Frosted surface used across the site.
+ * Hover state is pure CSS — no React state, so it costs nothing per render.
+ */
+export function GlassCard({ children, className = "", hoverLift = true }: GlassCardProps) {
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={className}
-      style={{
-        background: "rgba(255,255,255,0.045)",
-        border: "1px solid rgba(255,255,255,0.12)",
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-        borderRadius: 24,
-        transition: "transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease",
-        transform: hovered && hoverLift ? "translateY(-6px) scale(1.012)" : "translateY(0) scale(1)",
-        boxShadow: hovered
-          ? "0 32px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)"
-          : "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)",
-        ...style,
-      }}
+      className={[
+        "rounded-3xl border border-white/[0.12] bg-white/[0.045] backdrop-blur-[18px]",
+        "shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.08)]",
+        "transition-[transform,box-shadow] duration-[350ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
+        hoverLift
+          ? "hover:-translate-y-1.5 hover:scale-[1.012] hover:shadow-[0_32px_64px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]"
+          : "",
+        className,
+      ].join(" ")}
     >
       {children}
     </div>

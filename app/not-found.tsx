@@ -9,31 +9,30 @@ const T = {
   es: { h1: "Esta p\u00e1gina no existe.", p: "La casa que buscas no ha sido construida \u2014 o se neg\u00f3 a ser encontrada.", cta: "Volver al estudio \u2192" },
 }
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 export default function NotFound() {
   const t = useT(T)
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, display: "flex", alignItems: "center", justifyContent: "center", padding: "clamp(1.5rem,4vw,4rem)", position: "relative" }}>
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.3, pointerEvents: "none" }} />
-      <div style={{ maxWidth: 640, width: "100%", textAlign: "center", position: "relative" }}>
-        <div style={{ fontFamily: SERIF, fontSize: "clamp(6rem,18vw,12rem)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.05em", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 8 }}>
+    <main className="relative flex min-h-screen items-center justify-center bg-ink px-gutter font-sans text-white">
+      <div className="glow-center" aria-hidden />
+
+      <div className="relative w-full max-w-[640px] text-center">
+        <div className="mb-2 font-serif text-[clamp(6rem,18vw,12rem)] font-bold leading-none tracking-[-0.05em] text-gradient">
           404
         </div>
-        <div style={{ width: 40, height: 1, background: COLOR, margin: "0 auto 32px" }} />
-        <h1 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.25rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 20 }}>
+
+        <div className="mx-auto mb-8 h-px w-10 bg-brand" aria-hidden />
+
+        <h1 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-tight tracking-[-0.02em]">
           {t.h1}
         </h1>
-        <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem,1.4vw,1.15rem)", fontStyle: "italic", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 48 }}>
+
+        <p className="mb-12 font-serif text-[clamp(1rem,1.4vw,1.15rem)] italic leading-relaxed text-white/60">
           {t.p}
         </p>
-        <Link
-          href="/"
-          style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 40px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none", letterSpacing: "0.06em", fontFamily: SANS, boxShadow: `0 12px 40px ${GLOW}` }}
-        >
+
+        <Link href="/" className="btn-primary px-10 py-4 tracking-[0.06em] shadow-[0_12px_40px_rgba(230,57,70,0.35)]">
           {t.cta}
         </Link>
       </div>

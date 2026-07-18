@@ -5,10 +5,6 @@ import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 type Para = { b?: string; text: string; muted?: boolean; accent?: boolean }
 type Block = { kicker: string; title: string; paras: Para[] }
@@ -239,39 +235,42 @@ const T = {
 }
 
 const Section = ({ n, kicker, title, children }: { n: string; kicker: string; title: string; children: React.ReactNode }) => (
-  <section style={{ padding: "clamp(2.5rem,5vw,4rem) 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-    <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 10 }}>
-      <span style={{ fontFamily: SERIF, fontSize: 28, fontWeight: 700, color: COLOR }}>{n}</span>
-      <span style={{ fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>{kicker}</span>
+  <section className="border-t border-white/[0.08] py-10 md:py-16">
+    <div className="mb-2.5 flex items-baseline gap-4">
+      <span className="font-serif text-[28px] font-bold text-brand">{n}</span>
+      <span className="eyebrow">{kicker}</span>
     </div>
-    <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.15rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 20 }}>{title}</h2>
-    <div style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.72)" }}>{children}</div>
+    <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.15rem)] font-bold leading-tight tracking-[-0.02em]">
+      {title}
+    </h2>
+    <div className="text-base leading-[1.75] text-chalk-75">{children}</div>
   </section>
 )
 
 export default function SampleAuditPage() {
   const t = useT(T)
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+    <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      {/* HERO */}
-      <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 60px", position: "relative", textAlign: "center" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${GLOW} 0%, transparent 60%)`, opacity: 0.28, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>{t.badge}</div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.1rem,5.5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 24 }}>{t.h1}</h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.15rem)", color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{t.lead}</p>
+      <section className="section-hero pb-16 pt-40">
+        <div className="glow-top" aria-hidden />
+        <div className="shell-sm relative">
+          <div className="pill mb-8">{t.badge}</div>
+          <h1 className="mb-6 font-serif text-[clamp(2.1rem,5.5vw,3.75rem)] font-bold leading-[1.1] tracking-[-0.03em]">
+            {t.h1}
+          </h1>
+          <p className="lede">{t.lead}</p>
         </div>
       </section>
 
-      {/* DOCUMENT */}
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "0 clamp(1.5rem,4vw,4rem) 40px" }}>
+      <div className="shell-sm px-gutter pb-10">
         {t.blocks.map((block, bi) => (
-          <Section key={block.kicker} n={`0${bi + 1}`} kicker={block.kicker} title={block.title}>
+          <Section key={block.kicker} n={String(bi + 1).padStart(2, "0")} kicker={block.kicker} title={block.title}>
             {block.paras.map((p, pi) => (
-              <p key={pi} style={{ marginBottom: 16, color: p.muted ? "rgba(255,255,255,0.45)" : undefined }}>
-                {p.b && <strong style={{ color: p.accent ? COLOR : "#fff" }}>{p.b}</strong>}
+              <p key={pi} className={`mb-4 ${p.muted ? "text-white/45" : ""}`}>
+                {p.b && <strong className={p.accent ? "text-brand" : "text-white"}>{p.b}</strong>}
                 {p.text}
               </p>
             ))}
@@ -279,15 +278,14 @@ export default function SampleAuditPage() {
         ))}
       </div>
 
-      {/* CTA */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem) 110px", borderTop: "1px solid rgba(255,255,255,0.08)", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem,2.5vw,1.85rem)", fontWeight: 700, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: 24 }}>
-            {t.ctaLead}<span style={{ color: COLOR }}>{t.ctaLeadAccent}</span>{t.ctaLeadEnd}
+      <section className="section pb-28 text-center">
+        <div className="mx-auto max-w-[640px]">
+          <p className="mb-6 font-serif text-[clamp(1.3rem,2.5vw,1.85rem)] font-bold leading-tight tracking-[-0.02em]">
+            {t.ctaLead}
+            <span className="text-brand">{t.ctaLeadAccent}</span>
+            {t.ctaLeadEnd}
           </p>
-          <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 36px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>
-            {t.cta}
-          </Link>
+          <Link href="/brand-narrative-audit" className="btn-primary px-9">{t.cta}</Link>
         </div>
       </section>
 

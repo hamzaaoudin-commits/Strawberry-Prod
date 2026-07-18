@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
+import { FaqSection } from "@/components/strawberry/faq-section"
+import { FAQ_AUDIT } from "@/lib/faqs"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -907,6 +909,8 @@ export default function BrandNarrativeArchitecturePage() {
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={FAQ_AUDIT} />
 
     </main>
   )

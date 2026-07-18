@@ -63,31 +63,45 @@ export function ProblemSection() {
   const needs = NEED_ICONS.map((n, i) => ({ ...n, label: t.needs[i] }))
 
   return (
-    <section style={{ background: "#0d0d0d", padding: "120px clamp(1.5rem,4vw,4rem)", overflow: "hidden" }}>
-      <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(40px)", transition: "all 0.9s cubic-bezier(.22,.68,0,1.2)" }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section className="overflow-hidden bg-ink-soft px-gutter py-28">
+      <div
+        ref={ref}
+        className={[
+          "shell transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
+          vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
+        ].join(" ")}
+      >
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <div style={{ fontSize: 11, color: "#e63946", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.14em", fontWeight: 600, marginBottom: 20 }}>{t.kicker}</div>
-            <h2 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(2rem,4vw,3.5rem)", color: "#fff", lineHeight: 1.1, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28 }}>
+            <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
+              {t.kicker}
+            </div>
+            <h2 className="mb-7 font-serif text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
               {t.h2}
             </h2>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 17, lineHeight: 1.8 }}>
-              {t.p1a}<strong style={{ color: "rgba(255,255,255,0.85)" }}>{t.p1strong}</strong>{t.p1b}
+            <p className="font-sans text-[17px] leading-[1.8] text-white/50">
+              {t.p1a}
+              <strong className="text-chalk-90">{t.p1strong}</strong>
+              {t.p1b}
             </p>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 17, lineHeight: 1.8, marginTop: 20 }}>
-              {t.p2}
-            </p>
+            <p className="mt-5 font-sans text-[17px] leading-[1.8] text-white/50">{t.p2}</p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            {needs.map((item, i) => (
-              <GlassCard key={i} style={{ padding: "24px 28px", display: "flex", alignItems: "center", gap: 20 }}>
-                <div style={{ fontSize: 28, color: item.c, flexShrink: 0 }}>{item.icon}</div>
-                <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.75)", fontSize: 16, lineHeight: 1.5, margin: 0 }}>{item.label}</p>
+
+          <div className="flex flex-col gap-5">
+            {needs.map((item) => (
+              <GlassCard key={item.label} className="flex items-center gap-5 px-7 py-6">
+                <span className="shrink-0 text-[28px]" style={{ color: item.c }} aria-hidden>
+                  {item.icon}
+                </span>
+                <p className="m-0 font-sans text-base leading-snug text-chalk-75">{item.label}</p>
               </GlassCard>
             ))}
-            <div style={{ marginTop: 8, padding: "20px 28px", borderLeft: "3px solid rgba(255,255,255,0.1)" }}>
-              <p style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "rgba(255,255,255,0.35)", fontSize: 18, fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
-                {t.quote1}<br />{t.quote2}
+
+            <div className="mt-2 border-l-[3px] border-white/10 px-7 py-5">
+              <p className="m-0 font-serif text-lg italic leading-snug text-white/35">
+                {t.quote1}
+                <br />
+                {t.quote2}
               </p>
             </div>
           </div>

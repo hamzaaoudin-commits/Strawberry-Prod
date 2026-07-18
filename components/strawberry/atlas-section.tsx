@@ -3,12 +3,9 @@
 import { useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
+import { FORMSPREE_URL } from "@/lib/config"
+import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
-const FORMSPREE = "https://formspree.io/f/xnjwroeq"
 
 const T = {
   en: {
@@ -91,13 +88,32 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
+    // Validate and clamp before anything leaves the browser.
+    const clean = sanitize(email, LIMITS.email)
+    if (!isValidEmail(clean)) {
+      setStatus("error")
+      return
+    }
+    const limit = rateLimit("atlas")
+    if (!limit.ok) {
+      setStatus("error")
+      return
+    }
+
     setStatus("loading")
     try {
-      const res = await fetch(FORMSPREE, {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 15_000)
+      const res = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, source: "atlas_download_home" }),
+        credentials: "omit",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        signal: controller.signal,
+        body: JSON.stringify({ email: clean, source: "atlas_download_home" }),
       })
+      clearTimeout(timeout)
       if (res.ok) {
         setStatus("done")
         track("atlas_email_captured", { from: "home" })
@@ -114,33 +130,65 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem" }}>
-      <div onClick={(e) => e.stopPropagation()} style={{ background: "#0d0d0d", border: "1px solid " + COLOR + "44", borderRadius: 12, padding: "clamp(2rem,4vw,3rem)", maxWidth: 480, width: "100%", position: "relative" }}>
-        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 20, background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: 22, cursor: "pointer", lineHeight: 1 }}>×</button>
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 16, fontFamily: SANS, textTransform: "uppercase" }}>{t.free}</div>
-        <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }}>
-          {t.h2a}<br />{t.h2b}
+    <div
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={t.free}
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/85 p-6"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-[480px] rounded-xl border border-brand/25 bg-ink-soft p-8 md:p-12"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-5 top-4 border-none bg-transparent text-[22px] leading-none text-chalk-40 hover:text-white"
+        >
+          ×
+        </button>
+
+        <div className="eyebrow mb-4 text-brand">{t.free}</div>
+
+        <h2 className="mb-3 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+          {t.h2a}
+          <br />
+          {t.h2b}
         </h2>
-        <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 28 }}>
-          {t.modalSub}
-        </p>
+
+        <p className="mb-7 font-sans text-sm leading-relaxed text-white/55">{t.modalSub}</p>
+
         {status === "done" ? (
-          <p style={{ fontFamily: SERIF, fontSize: 16, fontStyle: "italic", color: COLOR, textAlign: "center", padding: "1rem 0" }}>{t.opening}</p>
+          <p role="status" aria-live="polite" className="py-4 text-center font-serif text-base italic text-brand">
+            {t.opening}
+          </p>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
             <input
-              type="email" required placeholder={t.emailPlaceholder} value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "14px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", width: "100%" }}
+              type="email"
+              name="email"
+              maxLength={LIMITS.email}
+              autoComplete="email"
+              inputMode="email"
+              required
+              placeholder={t.emailPlaceholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value.slice(0, LIMITS.email))}
+              className="field rounded-lg"
             />
             <button
-              type="submit" disabled={status === "loading"}
-              style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", border: "none", borderRadius: 100, padding: "14px 28px", fontSize: 14, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.06em", cursor: "pointer", boxShadow: "0 8px 30px " + GLOW }}
+              type="submit"
+              disabled={status === "loading"}
+              className="cursor-pointer rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3.5 font-sans text-sm font-bold tracking-[0.06em] text-white shadow-[0_8px_30px_rgba(230,57,70,0.35)] disabled:opacity-60"
             >
               {status === "loading" ? t.loading : t.read}
             </button>
-            {status === "error" && <p style={{ fontSize: 13, color: COLOR, textAlign: "center", margin: 0 }}>{t.error}</p>}
-            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", margin: 0, fontFamily: SANS }}>{t.nospam}</p>
+            {status === "error" && (
+              <p role="alert" className="m-0 text-center text-[13px] text-brand">{t.error}</p>
+            )}
+            <p className="m-0 text-center font-sans text-[11px] text-white/25">{t.nospam}</p>
           </form>
         )}
       </div>
@@ -153,59 +201,60 @@ export function AtlasSection() {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <section style={{ background: "#0d0d0d", padding: "clamp(4rem,10vw,8rem) clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-
+    <section className="border-t border-white/[0.06] bg-ink-soft px-gutter py-16 md:py-32">
       {showModal && <AtlasModal onClose={() => setShowModal(false)} />}
 
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start", justifyContent: "space-between" }}>
+      <div className="shell">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(230,57,70,0.10)", border: "1px solid rgba(230,57,70,0.3)", borderRadius: 100, padding: "5px 14px", marginBottom: 24 }}>
-                <span style={{ color: "#e63946", fontSize: 11, fontFamily: SANS, letterSpacing: "0.1em", fontWeight: 600 }}>{t.freeBadge}</span>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
+                <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">
+                  {t.freeBadge}
+                </span>
               </div>
-              <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,4rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.02em", margin: 0 }}>
-                {t.h2a}<br />
-                <span style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h2b}</span>
+              <h2 className="m-0 font-serif text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
+                {t.h2a}
+                <br />
+                <span className="text-gradient">{t.h2b}</span>
               </h2>
             </div>
-            <div style={{ maxWidth: 480, paddingTop: 8 }}>
-              <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.6vw,1.1rem)", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, margin: "0 0 32px" }}>
+
+            <div className="max-w-[480px] pt-2">
+              <p className="m-0 mb-8 font-sans text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.8] text-white/50">
                 {t.lead}
               </p>
-              <p style={{ fontFamily: SERIF, fontSize: "clamp(0.95rem,1.4vw,1.05rem)", color: "rgba(255,255,255,0.35)", fontStyle: "italic", lineHeight: 1.7, margin: "0 0 32px" }}>
+              <p className="m-0 mb-8 font-serif text-[clamp(0.95rem,1.4vw,1.05rem)] italic leading-[1.7] text-white/35">
                 {t.italic}
               </p>
+
               <button
-                onClick={() => { track("atlas_click", { from: "home" }); setShowModal(true) }}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-                  color: "#fff", padding: "14px 32px", borderRadius: 100,
-                  fontSize: 14, fontFamily: SANS, fontWeight: 700,
-                  letterSpacing: "0.04em", border: "none", cursor: "pointer",
-                  boxShadow: "0 8px 32px rgba(230,57,70,0.35)",
+                type="button"
+                onClick={() => {
+                  track("atlas_click", { from: "home" })
+                  setShowModal(true)
                 }}
+                className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-8 py-3.5 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
               >
                 {t.read}
               </button>
-              <p style={{ marginTop: 12, color: "rgba(255,255,255,0.25)", fontSize: 12, fontFamily: SANS, letterSpacing: "0.05em" }}>
-                {t.meta}
-              </p>
+
+              <p className="mt-3 font-sans text-xs tracking-[0.05em] text-white/25">{t.meta}</p>
             </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 1, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 12, overflow: "hidden" }}>
-            {["01", "03", "07", "13", "19", "..."].map((n, idx) => ({ n, text: t.items[idx] })).map((item, i) => (
-              <div key={i} style={{ background: "#0a0a0a", padding: "28px 24px", display: "flex", gap: 16 }}>
-                <span style={{ color: "#e63946", fontSize: 11, fontFamily: SANS, fontWeight: 700, letterSpacing: "0.08em", flexShrink: 0, paddingTop: 3 }}>{item.n}</span>
-                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontFamily: SERIF, fontStyle: "italic", lineHeight: 1.7, margin: 0 }}>{item.text}</p>
+          <div className="grid gap-px overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.06] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+            {["01", "03", "07", "13", "19", "..."].map((n, idx) => (
+              <div key={n} className="flex gap-4 bg-ink px-6 py-7">
+                <span className="shrink-0 pt-[3px] font-sans text-[11px] font-bold tracking-[0.08em] text-brand">
+                  {n}
+                </span>
+                <p className="m-0 font-serif text-[13px] italic leading-[1.7] text-chalk-40">
+                  {t.items[idx]}
+                </p>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

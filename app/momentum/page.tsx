@@ -4,11 +4,9 @@ import Link from "next/link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
+import { FaqSection } from "@/components/strawberry/faq-section"
+import { FAQ_MOMENTUM } from "@/lib/faqs"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 const T = {
   en: {
@@ -87,38 +85,43 @@ const T = {
 
 export default function MomentumPage() {
   const t = useT(T)
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+    <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      {/* HERO */}
-      <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 90px", position: "relative", textAlign: "center" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${GLOW} 0%, transparent 60%)`, opacity: 0.3, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 36, textTransform: "uppercase" }}>{t.badge}</div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.25rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            {t.h1a}<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
+      <section className="section-hero pb-24 pt-40">
+        <div className="glow-top" aria-hidden />
+        <div className="shell-md relative">
+          <div className="pill mb-9">{t.badge}</div>
+
+          <h1 className="h-display mb-7">
+            {t.h1a}
+            <br />
+            <span className="text-gradient">{t.h1b}</span>
           </h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.2rem)", color: "rgba(255,255,255,0.68)", maxWidth: 660, margin: "0 auto 40px", lineHeight: 1.65 }}>{t.lead}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <a href="/#contact" style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.cta}</a>
-            <a href="#tiers" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>{t.seeTiers}</a>
+
+          <p className="lede mx-auto mb-10 max-w-[660px]">{t.lead}</p>
+
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <a href="/#contact" className="btn-primary">{t.cta}</a>
+            <a href="#tiers" className="btn-ghost">{t.seeTiers}</a>
           </div>
         </div>
       </section>
 
-      {/* TWO ARMS (ex-NOCTA merged) */}
-      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 18, textTransform: "uppercase" }}>{t.twoKicker}</div>
+      {/* TWO ARMS — creative direction + content execution (ex-NOCTA). */}
+      <section className="section">
+        <div className="shell-lg">
+          <div className="mb-12 text-center">
+            <div className="kicker">{t.twoKicker}</div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
+
+          <div className="grid-auto-wide">
             {t.arms.map((a) => (
-              <div key={a.t} style={{ padding: "34px 30px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.09)" }}>
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.5rem", fontWeight: 700, marginBottom: 12 }}>{a.t}</h3>
-                <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.62)" }}>{a.b}</p>
+              <div key={a.t} className="card px-8 py-9">
+                <h3 className="mb-3 font-serif text-2xl font-bold">{a.t}</h3>
+                <p className="font-sans text-[15px] leading-relaxed text-chalk-65">{a.b}</p>
               </div>
             ))}
           </div>
@@ -126,46 +129,62 @@ export default function MomentumPage() {
       </section>
 
       {/* PRICE-COLLISION RESOLVER */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto", padding: "clamp(2rem,4vw,3rem)", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.02)" }}>
-          <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.5vw,1.9rem)", fontWeight: 700, marginBottom: 16 }}>{t.collisionTitle}</h3>
-          <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "rgba(255,255,255,0.72)" }}>{t.collisionBody}</p>
+      <section className="section">
+        <div className="mx-auto max-w-[760px] border border-hair-strong bg-white/[0.02] p-8 md:p-12">
+          <h3 className="mb-4 font-serif text-[clamp(1.4rem,2.5vw,1.9rem)] font-bold">{t.collisionTitle}</h3>
+          <p className="font-sans text-[15.5px] leading-[1.7] text-chalk-75">{t.collisionBody}</p>
         </div>
       </section>
 
-      {/* TIERS */}
-      <section id="tiers" style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 18, textTransform: "uppercase" }}>{t.tiersKicker}</div>
+      <section id="tiers" className="section">
+        <div className="shell">
+          <div className="mb-12 text-center">
+            <div className="kicker">{t.tiersKicker}</div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+
+          <div className="grid-auto-wide">
             {t.tiers.map((tier) => (
-              <div key={tier.name} style={{ position: "relative", padding: "36px 30px", background: tier.featured ? "linear-gradient(180deg, rgba(230,57,70,0.08) 0%, rgba(10,10,10,0.6) 100%)" : "rgba(255,255,255,0.02)", border: tier.featured ? "1px solid rgba(230,57,70,0.4)" : "1px solid rgba(255,255,255,0.09)" }}>
-                {tier.featured && (<>
-                  <div style={{ position: "absolute", top: -1, left: -1, width: 34, height: 34, borderTop: `2px solid ${COLOR}`, borderLeft: `2px solid ${COLOR}` }} />
-                  <div style={{ position: "absolute", bottom: -1, right: -1, width: 34, height: 34, borderBottom: `2px solid ${COLOR}`, borderRight: `2px solid ${COLOR}` }} />
-                </>)}
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.6rem", fontWeight: 700, marginBottom: 14 }}>{tier.name}</h3>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 18 }}>
-                  <span style={{ fontFamily: SERIF, fontSize: "2rem", fontWeight: 700, color: tier.featured ? COLOR : "#fff" }}>{tier.price}</span>
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{tier.cadence}</span>
+              <div
+                key={tier.name}
+                className={tier.featured ? "card-featured px-8 py-9" : "card px-8 py-9"}
+              >
+                {tier.featured && (
+                  <>
+                    <span className="bracket-tl" aria-hidden />
+                    <span className="bracket-br" aria-hidden />
+                  </>
+                )}
+
+                <h3 className="mb-3.5 font-serif text-[1.6rem] font-bold">{tier.name}</h3>
+
+                <div className="mb-4 flex items-baseline gap-1.5">
+                  <span className={`font-serif text-[2rem] font-bold ${tier.featured ? "text-brand" : "text-white"}`}>
+                    {tier.price}
+                  </span>
+                  <span className="font-sans text-[13px] text-chalk-55">{tier.cadence}</span>
                 </div>
-                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "rgba(255,255,255,0.62)", marginBottom: 26 }}>{tier.line}</p>
-                <a href="/#contact" style={{ display: "inline-block", background: tier.featured ? `linear-gradient(135deg, ${COLOR}, #ff1a1a)` : "transparent", border: tier.featured ? "none" : "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "12px 26px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>{t.tierCta}</a>
+
+                <p className="mb-6 body-sm">{tier.line}</p>
+
+                <a href="/#contact" className={tier.featured ? "btn-primary px-6 py-3 text-sm" : "btn-ghost px-6 py-3 text-sm font-semibold"}>
+                  {t.tierCta}
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* BRIDGE */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem) 110px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.15rem,2vw,1.5rem)", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{t.bridge}</p>
-          <Link href="/brand-narrative-audit" style={{ display: "inline-block", marginTop: 20, color: COLOR, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>{t.bridgeCta}</Link>
+      <section className="section pb-28 text-center">
+        <div className="mx-auto max-w-[720px]">
+          <p className="font-serif text-[clamp(1.15rem,2vw,1.5rem)] italic leading-snug text-chalk-75">
+            {t.bridge}
+          </p>
+          <Link href="/brand-narrative-audit" className="btn-quiet mt-5">{t.bridgeCta}</Link>
         </div>
       </section>
+
+      <FaqSection faqs={FAQ_MOMENTUM} />
 
       <Footer />
     </main>

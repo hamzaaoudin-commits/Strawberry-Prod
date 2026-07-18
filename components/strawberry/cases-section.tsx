@@ -4,9 +4,6 @@ import Link from "next/link"
 import { useEffect, useRef } from "react"
 import { useT } from "@/lib/i18n"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
 
 const T = {
   en: {
@@ -162,65 +159,58 @@ export function CasesSection() {
   useCharts()
 
   return (
-    <section id="cases" style={{ padding: "140px clamp(1.5rem,4vw,4rem)", background: "#0d0d0d", color: "#fff", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-
-        <div style={{ textAlign: "center", marginBottom: 80 }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-            {t.kicker}
-          </div>
-          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
+    <section id="cases" className="border-t border-hair bg-ink-soft px-gutter py-32 text-white">
+      <div className="shell">
+        <div className="mb-20 text-center">
+          <div className="kicker mb-6">{t.kicker}</div>
+          <h2 className="mb-8 font-serif text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.03em]">
             {t.h2}
           </h2>
-          <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto", lineHeight: 1.7, fontStyle: "italic" }}>
+          <p className="mx-auto max-w-[600px] font-sans text-[clamp(0.95rem,1.2vw,1.05rem)] italic leading-[1.7] text-white/55">
             {t.intro}
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 100 }}>
-          {RESULTS.map((r, i) => (
-            <div key={i} style={{ padding: "40px 32px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
-              <div style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,4vw,3.5rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 8, letterSpacing: "-0.03em" }}>
+        <div className="mb-24 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+          {RESULTS.map((r) => (
+            <div key={r.chartId} className="border border-white/10 bg-white/[0.02] px-8 py-10">
+              <div className="mb-2 font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-bold leading-none tracking-[-0.03em] text-brand">
                 {r.metric}
               </div>
-              <div style={{ fontFamily: SANS, fontSize: 13, color: "rgba(255,255,255,0.9)", letterSpacing: "0.04em", marginBottom: 24, textTransform: "uppercase" }}>
+              <div className="mb-6 font-sans text-[13px] uppercase tracking-[0.04em] text-chalk-90">
                 {r.label}
               </div>
-              <div style={{ fontFamily: SANS, fontSize: 12, color: COLOR, marginBottom: 16, letterSpacing: "0.02em" }}>
-                {r.descriptor}
-              </div>
-              <div style={{ position: "relative", width: "100%", height: 160, marginBottom: 24 }}>
+              <div className="mb-4 font-sans text-xs tracking-[0.02em] text-brand">{r.descriptor}</div>
+
+              <div className="relative mb-6 h-40 w-full">
                 <canvas id={r.chartId} role="img" aria-label={r.label} />
               </div>
-              <p style={{ fontFamily: SANS, fontSize: "0.92rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>
-                {r.detail}
-              </p>
+
+              <p className="font-sans text-[0.92rem] leading-relaxed text-chalk-65">{r.detail}</p>
             </div>
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 80 }}>
-          {QUOTES.map((q, i) => (
-            <div key={i} style={{ padding: "36px 28px", borderLeft: `2px solid ${COLOR}`, background: "rgba(255,255,255,0.02)" }}>
-              <p style={{ fontFamily: SERIF, fontSize: "1.05rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 24 }}>
-                "{q.quote}"
+        <div className="mb-20 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+          {QUOTES.map((q) => (
+            <div key={q.descriptor} className="border-l-2 border-brand bg-white/[0.02] px-7 py-9">
+              <p className="mb-6 font-serif text-[1.05rem] italic leading-relaxed text-chalk-90">
+                &ldquo;{q.quote}&rdquo;
               </p>
-              <div style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.7)", marginBottom: 12, letterSpacing: "0.02em" }}>
-                {q.descriptor}
-              </div>
-              <div style={{ display: "inline-block", fontSize: 10, letterSpacing: "0.2em", color: COLOR, padding: "4px 10px", border: `1px solid ${COLOR}`, borderRadius: 100, textTransform: "uppercase", fontFamily: SANS }}>
-                {q.system}
-              </div>
+              <div className="mb-3 font-sans text-xs tracking-[0.02em] text-chalk-75">{q.descriptor}</div>
+              <div className="tag border-brand text-brand">{q.system}</div>
             </div>
           ))}
         </div>
 
-        <div style={{ textAlign: "center" }}>
-          <Link href="/case-studies" style={{ display: "inline-block", color: COLOR, fontSize: 14, fontFamily: SANS, letterSpacing: "0.05em", textDecoration: "none", borderBottom: `1px solid ${COLOR}`, paddingBottom: 4 }}>
+        <div className="text-center">
+          <Link
+            href="/case-studies"
+            className="inline-block border-b border-brand pb-1 font-sans text-sm tracking-[0.05em] text-brand no-underline"
+          >
             {t.cta}
           </Link>
         </div>
-
       </div>
     </section>
   )

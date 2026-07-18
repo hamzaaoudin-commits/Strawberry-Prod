@@ -4,11 +4,9 @@ import Link from "next/link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
+import { FaqSection } from "@/components/strawberry/faq-section"
+import { FAQ_RADAR } from "@/lib/faqs"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 // TODO: replace with the live RADAR subscription Stripe link when created.
 const RADAR_SUBSCRIBE_URL = "/#contact"
@@ -174,50 +172,61 @@ function RadarScope() {
 }
 
 const ReadBlock = ({ h, p }: { h: string; p: string }) => (
-  <div style={{ marginBottom: 24 }}>
-    <div style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: COLOR, marginBottom: 8 }}>{h}</div>
-    <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "rgba(255,255,255,0.78)" }}>{p}</p>
+  <div className="mb-6">
+    <div className="mb-2 font-sans text-xs uppercase tracking-[0.14em] text-brand">{h}</div>
+    <p className="text-[15.5px] leading-[1.7] text-chalk-75">{p}</p>
   </div>
 )
 
 export default function RadarPage() {
   const t = useT(T)
   const s = t.sezane
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+    <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      {/* HERO with radar scope */}
-      <section style={{ padding: "150px clamp(1.5rem,4vw,4rem) 60px", position: "relative", textAlign: "center" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${GLOW} 0%, transparent 60%)`, opacity: 0.3, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>{t.badge}</div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.25rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 24 }}>
-            {t.h1a}<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
+      <section className="section-hero pb-16 pt-40">
+        <div className="glow-top" aria-hidden />
+        <div className="shell-md relative">
+          <div className="pill mb-8">{t.badge}</div>
+
+          <h1 className="h-display mb-6">
+            {t.h1a}
+            <br />
+            <span className="text-gradient">{t.h1b}</span>
           </h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.2rem)", color: "rgba(255,255,255,0.68)", maxWidth: 640, margin: "0 auto 36px", lineHeight: 1.65 }}>{t.lead}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <a href={RADAR_SUBSCRIBE_URL} style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.subscribe}</a>
-            <a href="#today" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>{t.seeToday}</a>
+
+          <p className="lede mx-auto mb-9 max-w-[640px]">{t.lead}</p>
+
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <a href={RADAR_SUBSCRIBE_URL} className="btn-primary" rel="noopener">{t.subscribe}</a>
+            <a href="#today" className="btn-ghost">{t.seeToday}</a>
           </div>
+
           <RadarScope />
         </div>
       </section>
 
-      {/* READ STRUCTURE */}
-      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 20, textTransform: "uppercase" }}>{t.readKicker}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.9rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>{t.readTitle1}<br />{t.readTitle2}</h2>
+      <section className="section">
+        <div className="shell-lg">
+          <div className="mb-14 text-center">
+            <div className="kicker mb-5">{t.readKicker}</div>
+            <h2 className="h-section">
+              {t.readTitle1}
+              <br />
+              {t.readTitle2}
+            </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+
+          <div className="grid-auto">
             {t.read.map((r, i) => (
-              <div key={r.label} style={{ padding: "32px 28px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.09)" }}>
-                <div style={{ fontFamily: SERIF, fontSize: 32, fontWeight: 700, color: COLOR, marginBottom: 14 }}>0{i + 1}</div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.35rem", fontWeight: 700, marginBottom: 12 }}>{r.label}</h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(255,255,255,0.62)" }}>{r.body}</p>
+              <div key={r.label} className="card px-7 py-8">
+                <div className="mb-3.5 font-serif text-3xl font-bold text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="mb-3 font-serif text-[1.35rem] font-bold">{r.label}</h3>
+                <p className="body-sm">{r.body}</p>
               </div>
             ))}
           </div>
@@ -225,56 +234,65 @@ export default function RadarPage() {
       </section>
 
       {/* FULL FREE SÉZANE READ */}
-      <section id="today" style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto", border: `1px solid rgba(230,57,70,0.25)`, background: "linear-gradient(180deg, rgba(230,57,70,0.04) 0%, rgba(10,10,10,0.6) 100%)", padding: "clamp(2rem,5vw,3.5rem)", position: "relative" }}>
-          <div style={{ position: "absolute", top: -1, left: -1, width: 44, height: 44, borderTop: `2px solid ${COLOR}`, borderLeft: `2px solid ${COLOR}` }} />
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
-            <span style={{ fontSize: 11, letterSpacing: "0.2em", color: COLOR, textTransform: "uppercase" }}>{t.freeTag}</span>
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{t.meta}</span>
+      <section id="today" className="section">
+        <div className="relative mx-auto max-w-[820px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.04)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-14">
+          <span className="bracket-tl" aria-hidden />
+
+          <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+            <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.freeTag}</span>
+            <span className="text-xs text-chalk-40">{t.meta}</span>
           </div>
-          <h3 style={{ fontFamily: SERIF, fontSize: "2.2rem", fontWeight: 700, marginBottom: 4 }}>Sézane</h3>
-          <div style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 32 }}>{t.sector}</div>
+
+          <h3 className="mb-1 font-serif text-[2.2rem] font-bold">Sézane</h3>
+          <div className="mb-8 font-sans text-xs uppercase tracking-[0.15em] text-white/45">{t.sector}</div>
 
           <ReadBlock h={s.context.h} p={s.context.p} />
           <ReadBlock h={s.signal.h} p={s.signal.p} />
           <ReadBlock h={s.noise.h} p={s.noise.p} />
           <ReadBlock h={s.tension.h} p={s.tension.p} />
           <ReadBlock h={s.heading.h} p={s.heading.p} />
-          <div style={{ marginTop: 8, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+
+          <div className="mt-2 border-t border-white/10 pt-6">
             <ReadBlock h={s.verdict.h} p={s.verdict.p} />
           </div>
         </div>
-        <p style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.4)", marginTop: 20, maxWidth: 640, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>{t.disclaimer}</p>
+
+        <p className="mx-auto mt-5 max-w-[640px] text-center text-[13px] leading-relaxed text-chalk-40">
+          {t.disclaimer}
+        </p>
       </section>
 
-      {/* SUBSCRIPTION */}
-      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 560, margin: "0 auto", padding: "44px 34px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)" }}>
-          <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100, border: "1px solid rgba(120,180,255,0.4)", color: "rgba(150,195,255,0.9)" }}>{t.subLabel}</span>
-          <h3 style={{ fontFamily: SERIF, fontSize: "1.8rem", fontWeight: 700, margin: "22px 0 12px" }}>{t.subTitle}</h3>
-          <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", marginBottom: 28 }}>{t.subBody}</p>
-          <a href={RADAR_SUBSCRIBE_URL} style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "14px 32px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.subscribe}</a>
+      <section className="section text-center">
+        <div className="card mx-auto max-w-[560px] px-8 py-11">
+          <span className="tag border-[rgba(120,180,255,0.4)] text-[rgba(150,195,255,0.9)]">{t.subLabel}</span>
+          <h3 className="mb-3 mt-5 font-serif text-[1.8rem] font-bold">{t.subTitle}</h3>
+          <p className="mb-7 font-sans text-[15px] leading-relaxed text-chalk-65">{t.subBody}</p>
+          <a href={RADAR_SUBSCRIBE_URL} className="btn-primary" rel="noopener">{t.subscribe}</a>
         </div>
       </section>
 
-      {/* ARSENAL POINTER (own page) */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", justifyContent: "space-between", padding: "32px 34px", border: `1px solid rgba(230,57,70,0.25)`, background: "rgba(255,255,255,0.02)" }}>
-          <div style={{ flex: "1 1 320px" }}>
-            <h3 style={{ fontFamily: SERIF, fontSize: "1.5rem", fontWeight: 700, marginBottom: 10 }}>{t.arsenalTitle}</h3>
-            <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "rgba(255,255,255,0.62)" }}>{t.arsenalBody}</p>
+      <section className="section">
+        <div className="mx-auto flex max-w-[820px] flex-wrap items-center justify-between gap-6 border border-brand-hair bg-white/[0.02] px-8 py-8">
+          <div className="flex-1 basis-[320px]">
+            <h3 className="mb-2.5 font-serif text-2xl font-bold">{t.arsenalTitle}</h3>
+            <p className="body-sm">{t.arsenalBody}</p>
           </div>
-          <Link href="/arsenal" style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "14px 28px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap" }}>{t.arsenalCta}</Link>
+          <Link href="/arsenal" className="btn-primary whitespace-nowrap px-7 py-3.5 text-sm">
+            {t.arsenalCta}
+          </Link>
         </div>
       </section>
 
-      {/* BRIDGE */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem) 110px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.15rem,2vw,1.5rem)", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{t.bridge}</p>
-          <Link href="/brand-narrative-audit" style={{ display: "inline-block", marginTop: 20, color: COLOR, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>{t.bridgeCta}</Link>
+      <section className="section pb-28 text-center">
+        <div className="mx-auto max-w-[720px]">
+          <p className="font-serif text-[clamp(1.15rem,2vw,1.5rem)] italic leading-snug text-chalk-75">
+            {t.bridge}
+          </p>
+          <Link href="/brand-narrative-audit" className="btn-quiet mt-5">{t.bridgeCta}</Link>
         </div>
       </section>
+
+      <FaqSection faqs={FAQ_RADAR} />
 
       <Footer />
     </main>

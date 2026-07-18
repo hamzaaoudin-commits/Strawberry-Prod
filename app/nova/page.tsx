@@ -4,11 +4,9 @@ import Link from "next/link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
+import { FaqSection } from "@/components/strawberry/faq-section"
+import { FAQ_NOVA } from "@/lib/faqs"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 // TODO: replace with the live NOVA Stripe payment link (currently placeholder in the NOVA app).
 const NOVA_BUY_URL = "/#contact"
@@ -102,54 +100,59 @@ const T = {
 
 export default function NovaPage() {
   const t = useT(T)
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+    <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      {/* HERO */}
-      <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 90px", position: "relative", textAlign: "center" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${GLOW} 0%, transparent 60%)`, opacity: 0.3, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 36, textTransform: "uppercase" }}>{t.badge}</div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.25rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            {t.h1a}<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
+      <section className="section-hero pb-24 pt-40">
+        <div className="glow-top" aria-hidden />
+        <div className="shell-md relative">
+          <div className="pill mb-9">{t.badge}</div>
+
+          <h1 className="h-display mb-7">
+            {t.h1a}
+            <br />
+            <span className="text-gradient">{t.h1b}</span>
           </h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.2rem)", color: "rgba(255,255,255,0.68)", maxWidth: 620, margin: "0 auto 16px", lineHeight: 1.65 }}>{t.lead}</p>
-          <p style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "1.15rem", color: "rgba(255,255,255,0.55)", marginBottom: 40 }}>{t.quote}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <a href={NOVA_BUY_URL} style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.start}</a>
-            <a href="#journey" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>{t.seeSteps}</a>
+
+          <p className="lede mx-auto mb-4 max-w-[620px]">{t.lead}</p>
+          <p className="mb-10 font-serif text-[1.15rem] italic text-chalk-55">{t.quote}</p>
+
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <a href={NOVA_BUY_URL} className="btn-primary" rel="noopener">{t.start}</a>
+            <a href="#journey" className="btn-ghost">{t.seeSteps}</a>
           </div>
         </div>
       </section>
 
-      {/* WHY IT WORKS */}
-      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+      <section className="section">
+        <div className="shell-lg grid-auto">
           {t.why.map((c) => (
-            <div key={c.t} style={{ padding: "30px 26px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.09)" }}>
-              <h3 style={{ fontFamily: SERIF, fontSize: "1.3rem", fontWeight: 700, marginBottom: 12 }}>{c.t}</h3>
-              <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(255,255,255,0.62)" }}>{c.b}</p>
+            <div key={c.t} className="card px-7 py-8">
+              <h3 className="mb-3 font-serif text-[1.3rem] font-bold">{c.t}</h3>
+              <p className="body-sm">{c.b}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* JOURNEY */}
-      <section id="journey" style={{ padding: "90px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 20, textTransform: "uppercase" }}>{t.journeyKicker}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.9rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>{t.journeyTitle}</h2>
+      <section id="journey" className="section">
+        <div className="mx-auto max-w-[820px]">
+          <div className="mb-14 text-center">
+            <div className="kicker mb-5">{t.journeyKicker}</div>
+            <h2 className="h-section">{t.journeyTitle}</h2>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
+
+          <div className="flex flex-col gap-px border border-white/[0.07] bg-white/[0.07]">
             {t.steps.map((s, i) => (
-              <div key={s.t} style={{ background: "#0a0a0a", padding: "26px 28px", display: "flex", gap: 22, alignItems: "flex-start" }}>
-                <div style={{ fontFamily: SERIF, fontSize: 30, fontWeight: 700, color: COLOR, lineHeight: 1, minWidth: 44 }}>0{i + 1}</div>
+              <div key={s.t} className="flex items-start gap-6 bg-ink px-7 py-7">
+                <div className="min-w-[44px] font-serif text-3xl font-bold leading-none text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
                 <div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: "1.3rem", fontWeight: 700, marginBottom: 6 }}>{s.t}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.58)" }}>{s.r}</p>
+                  <h3 className="mb-1.5 font-serif text-[1.3rem] font-bold">{s.t}</h3>
+                  <p className="font-sans text-sm leading-relaxed text-white/60">{s.r}</p>
                 </div>
               </div>
             ))}
@@ -157,23 +160,30 @@ export default function NovaPage() {
         </div>
       </section>
 
-      {/* PRICE */}
-      <section style={{ padding: "90px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 620, margin: "0 auto", border: `1px solid rgba(230,57,70,0.3)`, background: "linear-gradient(180deg, rgba(230,57,70,0.06) 0%, rgba(10,10,10,0.6) 100%)", padding: "clamp(2.5rem,5vw,3.5rem)", position: "relative" }}>
-          <div style={{ position: "absolute", top: -1, left: -1, width: 44, height: 44, borderTop: `2px solid ${COLOR}`, borderLeft: `2px solid ${COLOR}` }} />
-          <div style={{ position: "absolute", bottom: -1, right: -1, width: 44, height: 44, borderBottom: `2px solid ${COLOR}`, borderRight: `2px solid ${COLOR}` }} />
-          <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100, border: `1px solid ${COLOR}`, color: COLOR }}>{t.priceLabel}</span>
-          <div style={{ fontFamily: SERIF, fontSize: "3.5rem", fontWeight: 700, margin: "22px 0 6px" }}>999€</div>
-          <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", margin: "0 auto 32px", maxWidth: 420 }}>{t.priceBody}</p>
-          <a href={NOVA_BUY_URL} style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 36px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.startShort}</a>
+      <section className="section text-center">
+        <div className="card-featured mx-auto max-w-[620px] p-10 md:p-14">
+          <span className="bracket-tl" aria-hidden />
+          <span className="bracket-br" aria-hidden />
+
+          <span className="tag border-brand text-brand">{t.priceLabel}</span>
+
+          <div className="mb-1.5 mt-6 font-serif text-[3.5rem] font-bold">999€</div>
+          <p className="mx-auto mb-8 max-w-[420px] font-sans text-[15px] leading-relaxed text-chalk-65">
+            {t.priceBody}
+          </p>
+
+          <a href={NOVA_BUY_URL} className="btn-primary px-9" rel="noopener">{t.startShort}</a>
         </div>
-        <div style={{ maxWidth: 640, margin: "48px auto 0" }}>
-          <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+
+        <div className="mx-auto mt-12 max-w-[640px]">
+          <p className="font-sans text-[14.5px] leading-relaxed text-white/50">
             {t.footNote1}
-            <Link href="/brand-narrative-audit" style={{ color: COLOR, textDecoration: "none" }}>{t.footLink}</Link>.
+            <Link href="/brand-narrative-audit" className="text-brand no-underline">{t.footLink}</Link>.
           </p>
         </div>
       </section>
+
+      <FaqSection faqs={FAQ_NOVA} />
 
       <Footer />
     </main>

@@ -2,36 +2,29 @@
 
 import { useLang, LANGS, type Lang } from "@/lib/i18n"
 
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-
-export function LanguageToggle({ compact = false }: { compact?: boolean }) {
+/**
+ * Minimal language switcher: plain text `fr / en / es`.
+ * Lives in the footer legal strip — deliberately quiet.
+ */
+export function LanguageToggle() {
   const { lang, setLang } = useLang()
+
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: 0 }}>
+    <div className="inline-flex items-center" role="group" aria-label="Language">
       {LANGS.map((l: Lang, i) => {
         const active = lang === l
         return (
-          <span key={l} style={{ display: "inline-flex", alignItems: "center" }}>
-            {i > 0 && <span style={{ color: "rgba(255,255,255,0.18)", fontSize: 10, margin: "0 6px", userSelect: "none" }}>/</span>}
+          <span key={l} className="inline-flex items-center">
+            {i > 0 && <span className="mx-1.5 select-none text-[10px] text-white/20">/</span>}
             <button
+              type="button"
               onClick={() => setLang(l)}
               aria-pressed={active}
-              style={{
-                fontFamily: SANS,
-                fontSize: compact ? 12 : 11,
-                fontWeight: active ? 600 : 400,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                padding: 0,
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                transition: "color 0.2s ease",
-                color: active ? COLOR : "rgba(255,255,255,0.4)",
-              }}
-              onMouseEnter={(e) => { if (!active) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)" }}
-              onMouseLeave={(e) => { if (!active) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)" }}
+              lang={l}
+              className={[
+                "font-sans text-xs uppercase tracking-[0.08em] transition-colors",
+                active ? "font-semibold text-brand" : "text-chalk-40 hover:text-chalk-75",
+              ].join(" ")}
             >
               {l}
             </button>

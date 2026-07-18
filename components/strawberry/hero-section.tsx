@@ -61,123 +61,97 @@ export function HeroSection() {
   ]
 
   return (
-    <section id="home" style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden", background: "#0a0a0a" }}>
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
       <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
       <AnimatedOrb color="radial-gradient(circle,#dc2626,transparent)" size={300} x="80%" y="80%" opacity={0.1} />
 
-      <div style={{
-        position: "absolute", inset: 0, zIndex: 0,
-        backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)",
-        backgroundSize: "60px 60px",
-        maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)",
-      }} />
+      {/* Grid mesh */}
+      <div
+        aria-hidden
+        className="absolute inset-0 z-0 bg-[length:60px_60px] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]"
+      />
 
-      {floatingShapes.map((s, i) => (
-        <div key={i} style={{
-          position: "absolute", left: s.x, top: s.y, width: s.size, height: s.size,
-          border: "2px solid " + s.color, borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
-          opacity: 0.25, zIndex: 0,
-          animation: "morphFloat" + s.anim + " 8s " + s.delay + " ease-in-out infinite",
-          transform: "translate(" + (mouse.x * 0.4) + "px, " + (mouse.y * 0.4) + "px)",
-          transition: "transform 1s cubic-bezier(.22,.68,0,1.2)",
-        }} />
+      {floatingShapes.map((shape) => (
+        <div
+          key={shape.x + shape.y}
+          aria-hidden
+          className="absolute z-0 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-2 opacity-25 transition-transform duration-1000 ease-[cubic-bezier(.22,.68,0,1.2)]"
+          style={{
+            left: shape.x,
+            top: shape.y,
+            width: shape.size,
+            height: shape.size,
+            borderColor: shape.color,
+            animation: `morphFloat${shape.anim} 8s ${shape.delay} ease-in-out infinite`,
+            transform: `translate(${mouse.x * 0.4}px, ${mouse.y * 0.4}px)`,
+          }}
+        />
       ))}
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 clamp(1.5rem,4vw,4rem)", position: "relative", zIndex: 1, paddingTop: 120, width: "100%" }}>
-        <div style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? "translateY(0)" : "translateY(30px)",
-          transition: "all 0.9s cubic-bezier(.22,.68,0,1.2)",
-        }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(230,57,70,0.12)", border: "1px solid rgba(230,57,70,0.35)",
-            borderRadius: 100, padding: "6px 16px", marginBottom: 32,
-            maxWidth: "100%", overflow: "hidden",
-          }}>
-            <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946", flexShrink: 0 }} />
-            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>{t.badge}</span>
+      <div className="relative z-[1] w-full shell px-gutter pt-32">
+        <div
+          className={[
+            "transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
+            mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+          ].join(" ")}
+        >
+          <div className="mb-8 inline-flex max-w-full items-center gap-2 overflow-hidden rounded-full border border-brand/35 bg-brand/[0.12] px-4 py-1.5">
+            <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full bg-brand shadow-[0_0_8px_#e63946]" />
+            <span className="whitespace-nowrap font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">
+              {t.badge}
+            </span>
           </div>
 
-          <h1 style={{
-            fontFamily: "var(--font-playfair), 'Playfair Display', serif",
-            fontSize: "clamp(1.7rem,6vw,6.5rem)",
-            fontWeight: 700,
-            lineHeight: 1.1,
-            color: "#fff",
-            margin: "0 0 1.5rem",
-            letterSpacing: "-0.02em",
-            maxWidth: "100%",
-            wordBreak: "break-word",
-          }}>
+          <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.7rem,6vw,6.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
             {t.h1a}
             <br />
-            <span className="gradient-text">
+            <span className="block bg-[linear-gradient(135deg,#e63946_20%,#ff1a1a_60%,#dc2626)] bg-clip-text text-transparent">
               {t.h1b}
             </span>
           </h1>
 
-          <p style={{
-            fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif",
-            fontSize: "clamp(0.9rem,1.8vw,1.25rem)",
-            color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.7,
-            maxWidth: 640,
-            marginBottom: 52,
-          }}>
+          <p className="mb-12 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
             {t.sub}
           </p>
 
-          <div className="hero-cta" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <Link
               href="/brand-narrative-audit"
               onClick={() => track("audit_click", { from: "home_hero" })}
-              style={{
-                background: "linear-gradient(135deg,#e63946,#ff1a1a)",
-                color: "#fff", padding: "16px 36px", borderRadius: 100,
-                fontSize: 15, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 700,
-                textDecoration: "none", letterSpacing: "0.04em",
-                boxShadow: "0 8px 32px rgba(230,57,70,0.4)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                display: "inline-block",
-              }}
+              className="btn-primary px-9 py-4 font-bold tracking-[0.04em] shadow-[0_8px_32px_rgba(230,57,70,0.4)]"
             >
               {t.cta1}
             </Link>
-            <Link href="/case-studies" style={{
-              color: "rgba(255,255,255,0.55)", fontSize: 14,
-              fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", textDecoration: "none",
-              borderBottom: "1px solid rgba(255,255,255,0.2)",
-              paddingBottom: 2, transition: "color 0.2s, border-color 0.2s",
-              letterSpacing: "0.02em",
-            }}>
+            <Link
+              href="/case-studies"
+              className="border-b border-white/20 pb-0.5 font-sans text-sm tracking-[0.02em] text-white/55 no-underline transition-colors hover:border-white/40 hover:text-white"
+            >
               {t.cta2}
             </Link>
           </div>
 
-          <div style={{ marginTop: 80, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", marginBottom: 8 }}>
-              {t.trusted}
-            </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", marginBottom: 24 }}>
-              {t.stats.map((label, idx) => (
-                <div key={idx} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>{label}</span>
+          <div className="mt-20 border-t border-hair pt-10">
+            <p className="mb-2 font-sans text-sm text-chalk-40">{t.trusted}</p>
+
+            <div className="mb-6 flex flex-wrap items-center gap-4">
+              {t.stats.map((label) => (
+                <div key={label} className="flex items-center gap-2">
+                  <span aria-hidden className="text-base text-brand">&#10003;</span>
+                  <span className="font-sans text-sm text-white/60">{label}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ overflow: "hidden", position: "relative" }}>
-              <div style={{ 
-                display: "flex", 
-                gap: 48, 
-                animation: "scroll 25s linear infinite",
-                width: "max-content"
-              }}>
+            <div className="relative overflow-hidden">
+              <div className="flex w-max gap-12 [animation:scroll_25s_linear_infinite]">
                 {BRANDS.concat(BRANDS).map((b, i) => (
-                  <span key={i} style={{ color: "rgba(255,255,255,0.2)", fontSize: 16, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", fontWeight: 600, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>{b}</span>
+                  <span
+                    key={`${b}-${i}`}
+                    className="whitespace-nowrap font-sans text-base font-semibold tracking-[0.08em] text-white/20"
+                  >
+                    {b}
+                  </span>
                 ))}
               </div>
             </div>
@@ -186,22 +160,9 @@ export function HeroSection() {
       </div>
 
       <style jsx>{`
-        .gradient-text {
-          background: linear-gradient(135deg, #e63946 20%, #ff1a1a 60%, #dc2626);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          display: block;
-        }
         @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
-        }
-        @media (max-width: 640px) {
-          .hero-cta {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 20px !important;
-          }
         }
       `}</style>
     </section>

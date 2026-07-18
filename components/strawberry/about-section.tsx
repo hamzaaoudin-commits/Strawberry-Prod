@@ -61,36 +61,54 @@ export function AboutSection() {
   const BELIEFS = t.beliefs.map((b, i) => ({ ...b, n: `0${i + 1}`, color: BELIEF_COLORS[i] }))
 
   return (
-    <section id="about" style={{ background: "#0a0a0a", padding: "120px clamp(1.5rem,4vw,4rem)", position: "relative", overflow: "hidden" }}>
-      <AnimatedOrb color="radial-gradient(circle,#dc2626,transparent)" size={400} x="10%" y="60%" opacity={0.08} />
-      <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1, opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(40px)", transition: "all 0.9s" }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+    <section id="about" className="relative overflow-hidden bg-ink px-gutter py-28">
+      <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="70%" y="10%" opacity={0.12} />
+
+      <div
+        ref={ref}
+        className={[
+          "shell relative transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
+          vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
+        ].join(" ")}
+      >
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <div style={{ fontSize: 11, color: "#dc2626", fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.14em", fontWeight: 600, marginBottom: 20 }}>{t.kicker}</div>
-            <h2 style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: "clamp(2rem,4vw,3.5rem)", color: "#fff", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 32 }}>
+            <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
+              {t.kicker}
+            </div>
+
+            <h2 className="mb-7 font-serif text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white">
               {t.h2a}
               <br />
               {t.h2b}
             </h2>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 17, lineHeight: 1.8, marginBottom: 24 }}>
-              {t.p1}
+
+            <p className="mb-5 font-sans text-[17px] leading-[1.8] text-white/55">{t.p1}</p>
+
+            <p className="font-sans text-[17px] leading-[1.8] text-white/55">
+              {t.p2a}
+              <strong className="text-chalk-90">{t.p2strong}</strong>
+              {t.p2b}
             </p>
-            <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.5)", fontSize: 17, lineHeight: 1.8, marginBottom: 48 }}>
-              {t.p2a}<strong style={{ color: "rgba(255,255,255,0.85)" }}>{t.p2strong}</strong>{t.p2b}
-            </p>
-            <div style={{ padding: "28px 36px", borderRadius: 20, background: "rgba(230,57,70,0.08)", border: "1px solid rgba(230,57,70,0.2)" }}>
-              <p style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", color: "rgba(255,255,255,0.9)", fontSize: 20, fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
+
+            <blockquote className="mt-10 border-l-[3px] border-brand py-2 pl-6">
+              <p className="m-0 font-serif text-[clamp(1.05rem,1.6vw,1.35rem)] italic leading-snug text-white/70">
                 {t.quote}
               </p>
-            </div>
+            </blockquote>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {BELIEFS.map((b, i) => (
-              <GlassCard key={i} style={{ padding: "28px 32px", display: "flex", gap: 24, alignItems: "flex-start" }}>
-                <div style={{ fontFamily: "var(--font-playfair), 'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: b.color + "33", lineHeight: 1, flexShrink: 0 }}>{b.n}</div>
+
+          <div className="flex flex-col gap-5">
+            {BELIEFS.map((b) => (
+              <GlassCard key={b.n} className="flex items-start gap-6 px-8 py-7">
+                <span className="shrink-0 font-serif text-2xl font-bold" style={{ color: b.color }} aria-hidden>
+                  {b.n}
+                </span>
                 <div>
-                  <h4 style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "#fff", fontSize: 17, fontWeight: 700, marginBottom: 10 }}>{b.t}</h4>
-                  <p style={{ fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.7, margin: 0 }}>{b.d}</p>
+                  <h3 className="mb-2 font-serif text-[1.2rem] font-semibold tracking-[-0.01em] text-white">
+                    {b.t}
+                  </h3>
+                  <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-65">{b.d}</p>
                 </div>
               </GlassCard>
             ))}

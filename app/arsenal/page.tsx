@@ -4,11 +4,9 @@ import Link from "next/link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
+import { FaqSection } from "@/components/strawberry/faq-section"
+import { FAQ_ARSENAL } from "@/lib/faqs"
 
-const SERIF = "var(--font-playfair), 'Playfair Display', serif"
-const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
 
 // TODO: replace with the live Arsenal Stripe link when created.
 const ARSENAL_BUY_URL = "/#contact"
@@ -84,40 +82,46 @@ const T = {
 
 export default function ArsenalPage() {
   const t = useT(T)
+
   return (
-    <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+    <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      {/* HERO */}
-      <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 90px", position: "relative", textAlign: "center" }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${GLOW} 0%, transparent 60%)`, opacity: 0.3, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative" }}>
-          <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 36, textTransform: "uppercase" }}>{t.badge}</div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.25rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            {t.h1a}<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
+      <section className="section-hero pb-24 pt-40">
+        <div className="glow-top" aria-hidden />
+        <div className="shell-md relative">
+          <div className="pill mb-9">{t.badge}</div>
+
+          <h1 className="h-display mb-7">
+            {t.h1a}
+            <br />
+            <span className="text-gradient">{t.h1b}</span>
           </h1>
-          <p style={{ fontSize: "clamp(1rem,1.5vw,1.2rem)", color: "rgba(255,255,255,0.68)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>{t.lead}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <a href={ARSENAL_BUY_URL} style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.buy}</a>
-            <a href="#tools" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "15px 32px", borderRadius: 100, fontSize: 15, fontWeight: 500, textDecoration: "none" }}>{t.seeTools}</a>
+
+          <p className="lede mx-auto mb-10 max-w-[640px]">{t.lead}</p>
+
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <a href={ARSENAL_BUY_URL} className="btn-primary" rel="noopener">{t.buy}</a>
+            <a href="#tools" className="btn-ghost">{t.seeTools}</a>
           </div>
         </div>
       </section>
 
-      {/* TOOLS */}
-      <section id="tools" style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 18, textTransform: "uppercase" }}>{t.toolsKicker}</div>
+      <section id="tools" className="section">
+        <div className="shell-md">
+          <div className="mb-12 text-center">
+            <div className="kicker">{t.toolsKicker}</div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
+
+          <div className="flex flex-col gap-px border border-white/[0.07] bg-white/[0.07]">
             {t.tools.map((tool, i) => (
-              <div key={tool.t} style={{ background: "#0a0a0a", padding: "26px 28px", display: "flex", gap: 22, alignItems: "flex-start" }}>
-                <div style={{ fontFamily: SERIF, fontSize: 30, fontWeight: 700, color: COLOR, lineHeight: 1, minWidth: 44 }}>0{i + 1}</div>
+              <div key={tool.t} className="flex items-start gap-6 bg-ink px-7 py-7">
+                <div className="min-w-[44px] font-serif text-3xl font-bold leading-none text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
                 <div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: "1.3rem", fontWeight: 700, marginBottom: 6 }}>{tool.t}</h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.58)" }}>{tool.b}</p>
+                  <h3 className="mb-1.5 font-serif text-[1.3rem] font-bold">{tool.t}</h3>
+                  <p className="font-sans text-sm leading-relaxed text-white/60">{tool.b}</p>
                 </div>
               </div>
             ))}
@@ -125,29 +129,36 @@ export default function ArsenalPage() {
         </div>
       </section>
 
-      {/* PRICE */}
-      <section style={{ padding: "80px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 560, margin: "0 auto", border: `1px solid rgba(230,57,70,0.3)`, background: "linear-gradient(180deg, rgba(230,57,70,0.06) 0%, rgba(10,10,10,0.6) 100%)", padding: "clamp(2.5rem,5vw,3.5rem)", position: "relative" }}>
-          <div style={{ position: "absolute", top: -1, left: -1, width: 44, height: 44, borderTop: `2px solid ${COLOR}`, borderLeft: `2px solid ${COLOR}` }} />
-          <div style={{ position: "absolute", bottom: -1, right: -1, width: 44, height: 44, borderBottom: `2px solid ${COLOR}`, borderRight: `2px solid ${COLOR}` }} />
-          <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", padding: "4px 10px", borderRadius: 100, border: `1px solid ${COLOR}`, color: COLOR }}>{t.priceLabel}</span>
-          <div style={{ fontFamily: SERIF, fontSize: "3.2rem", fontWeight: 700, margin: "22px 0 6px" }}>147–197€</div>
-          <h3 style={{ fontFamily: SERIF, fontSize: "1.4rem", fontWeight: 700, marginBottom: 12 }}>{t.priceTitle}</h3>
-          <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", margin: "0 auto 30px", maxWidth: 400 }}>{t.priceBody}</p>
-          <a href={ARSENAL_BUY_URL} style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "14px 34px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>{t.buy}</a>
+      <section className="section text-center">
+        <div className="card-featured mx-auto max-w-[560px] p-10 md:p-14">
+          <span className="bracket-tl" aria-hidden />
+          <span className="bracket-br" aria-hidden />
+
+          <span className="tag border-brand text-brand">{t.priceLabel}</span>
+
+          <div className="mb-1.5 mt-6 font-serif text-[3.2rem] font-bold">147–197€</div>
+          <h3 className="mb-3 font-serif text-[1.4rem] font-bold">{t.priceTitle}</h3>
+          <p className="mx-auto mb-8 max-w-[400px] font-sans text-[15px] leading-relaxed text-chalk-65">
+            {t.priceBody}
+          </p>
+
+          <a href={ARSENAL_BUY_URL} className="btn-primary" rel="noopener">{t.buy}</a>
         </div>
       </section>
 
-      {/* BRIDGE */}
-      <section style={{ padding: "70px clamp(1.5rem,4vw,4rem) 110px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.15rem,2vw,1.5rem)", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.5, marginBottom: 22 }}>{t.bridge}</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
-            <Link href="/radar" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", padding: "13px 26px", borderRadius: 100, fontSize: 14, fontWeight: 500, textDecoration: "none" }}>{t.bridgeRadar}</Link>
-            <Link href="/brand-narrative-audit" style={{ color: COLOR, padding: "13px 20px", fontSize: 14, fontWeight: 600, textDecoration: "none" }}>{t.bridgeAudit}</Link>
+      <section className="section pb-28 text-center">
+        <div className="mx-auto max-w-[720px]">
+          <p className="mb-6 font-serif text-[clamp(1.15rem,2vw,1.5rem)] italic leading-snug text-chalk-75">
+            {t.bridge}
+          </p>
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <Link href="/radar" className="btn-ghost px-7 py-3.5 text-sm">{t.bridgeRadar}</Link>
+            <Link href="/brand-narrative-audit" className="btn-quiet px-5 py-3.5">{t.bridgeAudit}</Link>
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={FAQ_ARSENAL} />
 
       <Footer />
     </main>
