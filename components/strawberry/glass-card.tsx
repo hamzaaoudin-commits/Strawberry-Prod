@@ -1,10 +1,17 @@
 "use client"
 
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 
 interface GlassCardProps {
   children: ReactNode
   className?: string
+  /**
+   * Escape hatch for one-off inline overrides.
+   * Prefer `className` with Tailwind utilities — this exists so legacy callers
+   * keep compiling, and so genuinely dynamic values (computed colours, measured
+   * positions) still have a way through.
+   */
+  style?: CSSProperties
   /** Lift and deepen the shadow on hover. Disable for static cards. */
   hoverLift?: boolean
 }
@@ -13,9 +20,10 @@ interface GlassCardProps {
  * Frosted surface used across the site.
  * Hover state is pure CSS — no React state, so it costs nothing per render.
  */
-export function GlassCard({ children, className = "", hoverLift = true }: GlassCardProps) {
+export function GlassCard({ children, className = "", style, hoverLift = true }: GlassCardProps) {
   return (
     <div
+      style={style}
       className={[
         "rounded-3xl border border-white/[0.12] bg-white/[0.045] backdrop-blur-[18px]",
         "shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.08)]",
