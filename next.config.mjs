@@ -65,6 +65,19 @@ const nextConfig = {
 
   compress: true,
 
+  /**
+   * Permanent redirects for retired offers. These take effect once the
+   * corresponding app/<slug>/page.tsx stubs are deleted, so old links, bookmarks
+   * and indexed URLs keep resolving instead of 404-ing.
+   */
+  async redirects() {
+    return [
+      { source: '/nova', destination: '/', permanent: true },
+      { source: '/arsenal', destination: '/', permanent: true },
+      { source: '/nocta', destination: '/momentum', permanent: true },
+    ]
+  },
+
   async headers() {
     return [
       {
