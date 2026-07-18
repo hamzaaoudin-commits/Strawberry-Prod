@@ -39,9 +39,6 @@ const T = {
       verdict: { h: "Verdict", p: "Sézane doesn't have a positioning problem — it has a promise it has outgrown without renaming. That's not a messaging fix; it's an architecture decision. And it's exactly the kind of decision a founder is too close to make alone." },
     },
     disclaimer: "Brand analysed from public information. Editorial opinion — never a client. RADAR is not affiliated with any brand cited.",
-    arsenalTitle: "Rather run the read yourself?",
-    arsenalBody: "Arsenal is the RADAR method as a toolkit — the exact instruments to apply the grid to your own brand, without us.",
-    arsenalCta: "Discover Arsenal →",
     subLabel: "Subscription · 15€/mo",
     subTitle: "The daily read, on tap.",
     subBody: "The full library, one new read a day, and the habit that lets you price any positioning in seconds. Cancel anytime.",
@@ -75,9 +72,6 @@ const T = {
       verdict: { h: "Verdict", p: "Sézane n'a pas un problème de positionnement — elle a une promesse qu'elle a dépassée sans la renommer. Ce n'est pas un ajustement de message ; c'est une décision d'architecture. Et c'est exactement le genre de décision qu'un fondateur est trop proche pour prendre seul." },
     },
     disclaimer: "Marque analysée à partir d'informations publiques. Opinion éditoriale — jamais un client. RADAR n'est lié à aucune marque citée.",
-    arsenalTitle: "Plutôt faire la lecture toi-même ?",
-    arsenalBody: "Arsenal, c'est la méthode RADAR en boîte à outils — les instruments exacts pour appliquer la grille à ta propre marque, sans nous.",
-    arsenalCta: "Découvrir Arsenal →",
     subLabel: "Abonnement · 15€/mois",
     subTitle: "La lecture du jour, à volonté.",
     subBody: "La bibliothèque complète, une nouvelle fiche par jour, et l'habitude qui te fait lire n'importe quel positionnement en quelques secondes. Résiliable à tout moment.",
@@ -111,9 +105,6 @@ const T = {
       verdict: { h: "Veredicto", p: "Sézane no tiene un problema de posicionamiento — tiene una promesa que ha superado sin renombrar. No es un ajuste de mensaje; es una decisión de arquitectura. Y es justo el tipo de decisión que un fundador está demasiado cerca para tomar solo." },
     },
     disclaimer: "Marca analizada a partir de información pública. Opinión editorial — nunca un cliente. RADAR no está afiliado a ninguna marca citada.",
-    arsenalTitle: "¿Prefieres hacer la lectura tú mismo?",
-    arsenalBody: "Arsenal es el método RADAR como kit — los instrumentos exactos para aplicar la grilla a tu propia marca, sin nosotros.",
-    arsenalCta: "Descubrir Arsenal →",
     subLabel: "Suscripción · 15€/mes",
     subTitle: "La lectura diaria, a demanda.",
     subBody: "La biblioteca completa, una ficha nueva al día, y el hábito que te permite tasar cualquier posicionamiento en segundos. Cancela cuando quieras.",
@@ -268,18 +259,6 @@ export default function RadarPage() {
           <h3 className="mb-3 mt-5 font-serif text-[1.8rem] font-bold">{t.subTitle}</h3>
           <p className="mb-7 font-sans text-[15px] leading-relaxed text-chalk-65">{t.subBody}</p>
           <a href={RADAR_SUBSCRIBE_URL} className="btn-primary" rel="noopener">{t.subscribe}</a>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="mx-auto flex max-w-[820px] flex-wrap items-center justify-between gap-6 border border-brand-hair bg-white/[0.02] px-8 py-8">
-          <div className="flex-1 basis-[320px]">
-            <h3 className="mb-2.5 font-serif text-2xl font-bold">{t.arsenalTitle}</h3>
-            <p className="body-sm">{t.arsenalBody}</p>
-          </div>
-          <Link href="/arsenal" className="btn-primary whitespace-nowrap px-7 py-3.5 text-sm">
-            {t.arsenalCta}
-          </Link>
         </div>
       </section>
 

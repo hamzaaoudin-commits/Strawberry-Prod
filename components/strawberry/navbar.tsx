@@ -15,8 +15,6 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR — 15€/mois", href: "/radar" },
-      { label: "ARSENAL — 147–197€", href: "/arsenal" },
-      { label: "NOVA — 999€", href: "/nova" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-audit" },
       { label: "MOMENTUM — au mois", href: "/momentum" },
     ],
@@ -31,8 +29,6 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR — 15€/mo", href: "/radar" },
-      { label: "ARSENAL — 147–197€", href: "/arsenal" },
-      { label: "NOVA — 999€", href: "/nova" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-audit" },
       { label: "MOMENTUM — retainer", href: "/momentum" },
     ],
@@ -47,8 +43,6 @@ const T = {
     menu: "Menú",
     offersMenu: [
       { label: "RADAR — 15€/mes", href: "/radar" },
-      { label: "ARSENAL — 147–197€", href: "/arsenal" },
-      { label: "NOVA — 999€", href: "/nova" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4.500€", href: "/brand-narrative-audit" },
       { label: "MOMENTUM — mensual", href: "/momentum" },
     ],

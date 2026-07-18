@@ -33,9 +33,7 @@ export const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
  */
 export const STRIPE_LINKS = {
   audit: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
-  nova: env(process.env.NEXT_PUBLIC_STRIPE_NOVA_URL, "/#contact"),
   radar: env(process.env.NEXT_PUBLIC_STRIPE_RADAR_URL, "/#contact"),
-  arsenal: env(process.env.NEXT_PUBLIC_STRIPE_ARSENAL_URL, "/#contact"),
 } as const
 
 export const SITE_URL = env(process.env.NEXT_PUBLIC_SITE_URL, "https://www.gostrawberryprod.com")

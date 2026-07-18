@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useT } from "@/lib/i18n"
 
-type SituationId = "articulate" | "prelaunch" | "confused" | "outgrown" | "execution"
+type SituationId = "articulate" | "confused" | "outgrown" | "execution"
 
 type Rung = {
   key: string
@@ -18,19 +18,18 @@ type Rung = {
   featured?: boolean
 }
 
-const SITUATION_IDS: SituationId[] = ["articulate", "prelaunch", "confused", "outgrown", "execution"]
+const SITUATION_IDS: SituationId[] = ["articulate", "confused", "outgrown", "execution"]
 
 const T = {
   en: {
     kicker: "The Ladder",
     h1a: "One studio. One method.",
-    h1b: "Five ways in.",
+    h1b: "Three ways in.",
     sub: "Not a menu — a ladder. Every rung is the same conviction about narrative truth, entered at a different altitude. Start where you are.",
     where: "Which of these is true for you right now?",
     showAll: "Show everything",
     situations: [
       "I can't explain what I do in one sentence without losing the room",
-      "The idea exists. Nothing is built or named yet",
       "We sell, but prospects keep comparing us to competitors we're nothing like",
       "The company outgrew its story — we still pitch what we were two years ago",
       "The positioning is solid. What's missing is someone shipping it every week",
@@ -41,8 +40,6 @@ const T = {
     foot: "Every rung feeds the next. RADAR trains the eye, the Audit builds the architecture, MOMENTUM keeps it alive. You never pay for the same thing twice.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ month", fmt: "sub", answers: ["articulate"], line: "One real brand read every day. Read positioning in seconds — the instrument your competitors don't have.", href: "/radar" },
-      { key: "arsenal", name: "ARSENAL", price: "147–197€", cadence: "one-time", fmt: "shot", answers: ["articulate", "confused"], line: "The RADAR method as a toolkit. The frameworks to run the read on your own brand, without us.", href: "/arsenal" },
-      { key: "nova", name: "NOVA", price: "999€", cadence: "one-time", fmt: "shot", answers: ["prelaunch"], line: "The step-by-step app that takes a blurry idea to a business ready to launch. You stay the founder.", href: "/nova" },
       { key: "audit", name: "BRAND NARRATIVE ARCHITECTURE", price: "4,500€", cadence: "one-time", fmt: "shot", answers: ["confused", "outgrown"], line: "The signature commission. A complete repositioning — identity, position and language — impossible to confuse, impossible to generate.", href: "/brand-narrative-audit", featured: true },
       { key: "momentum", name: "MOMENTUM", price: "from 1,500€", cadence: "/ month", fmt: "post", answers: ["execution"], line: "Creative direction + content execution on retainer. Once the architecture exists, the team that keeps telling your story — and carries it into the feed every day.", href: "/momentum" },
     ] as Rung[],
@@ -50,13 +47,12 @@ const T = {
   fr: {
     kicker: "L'Échelle",
     h1a: "Un studio. Une méthode.",
-    h1b: "Cinq façons d'entrer.",
+    h1b: "Trois façons d'entrer.",
     sub: "Pas un menu — une échelle. Chaque barreau, c'est la même conviction sur la vérité narrative, à une altitude différente. Commence là où tu en es.",
     where: "Laquelle de ces phrases est vraie pour toi, aujourd'hui ?",
     showAll: "Tout afficher",
     situations: [
       "Je n'arrive pas à expliquer ce que je fais en une phrase sans perdre la salle",
-      "L'idée existe. Rien n'est encore construit ni nommé",
       "On vend, mais les prospects nous comparent à des concurrents qui n'ont rien à voir",
       "L'entreprise a dépassé son récit — on pitche encore ce qu'on était il y a deux ans",
       "Le positionnement est solide. Ce qui manque, c'est quelqu'un qui l'exécute chaque semaine",
@@ -67,8 +63,6 @@ const T = {
     foot: "Chaque barreau nourrit le suivant. RADAR forme l'œil, l'Audit bâtit l'architecture, MOMENTUM la fait vivre. Tu ne paies jamais deux fois la même chose.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ mois", fmt: "sub", answers: ["articulate"], line: "Une vraie marque disséquée chaque jour. Lis un positionnement en quelques secondes — l'instrument que tes concurrents n'ont pas.", href: "/radar" },
-      { key: "arsenal", name: "ARSENAL", price: "147–197€", cadence: "one-shot", fmt: "shot", answers: ["articulate", "confused"], line: "La méthode RADAR en boîte à outils. Les cadres pour faire tourner la grille sur ta propre marque, sans nous.", href: "/arsenal" },
-      { key: "nova", name: "NOVA", price: "999€", cadence: "one-shot", fmt: "shot", answers: ["prelaunch"], line: "L'application pas-à-pas qui mène d'une idée floue à une entreprise prête à lancer. Tu restes le fondateur.", href: "/nova" },
       { key: "audit", name: "BRAND NARRATIVE ARCHITECTURE", price: "4 500€", cadence: "one-shot", fmt: "shot", answers: ["confused", "outgrown"], line: "La commande signature. Un repositionnement complet — identité, position et langage — impossible à confondre, impossible à générer.", href: "/brand-narrative-audit", featured: true },
       { key: "momentum", name: "MOMENTUM", price: "dès 1 500€", cadence: "/ mois", fmt: "post", answers: ["execution"], line: "Direction créative + exécution de contenu au mois. Une fois l'architecture posée, l'équipe qui continue de raconter ton histoire — et la fait vivre au quotidien.", href: "/momentum" },
     ] as Rung[],
@@ -76,13 +70,12 @@ const T = {
   es: {
     kicker: "La Escalera",
     h1a: "Un estudio. Un método.",
-    h1b: "Cinco formas de entrar.",
+    h1b: "Tres formas de entrar.",
     sub: "No es un menú — es una escalera. Cada peldaño es la misma convicción sobre la verdad narrativa, a otra altura. Empieza donde estás.",
     where: "¿Cuál de estas frases es verdad para ti hoy?",
     showAll: "Ver todo",
     situations: [
       "No consigo explicar lo que hago en una frase sin perder a la sala",
-      "La idea existe. Nada está construido ni nombrado todavía",
       "Vendemos, pero los prospectos nos comparan con competidores que no se nos parecen en nada",
       "La empresa superó su relato — seguimos presentando lo que éramos hace dos años",
       "El posicionamiento es sólido. Lo que falta es alguien que lo ejecute cada semana",
@@ -93,8 +86,6 @@ const T = {
     foot: "Cada peldaño alimenta el siguiente. RADAR entrena el ojo, la Auditoría construye la arquitectura, MOMENTUM la mantiene viva. Nunca pagas dos veces por lo mismo.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ mes", fmt: "sub", answers: ["articulate"], line: "Una marca real diseccionada cada día. Lee un posicionamiento en segundos — el instrumento que tus competidores no tienen.", href: "/radar" },
-      { key: "arsenal", name: "ARSENAL", price: "147–197€", cadence: "pago único", fmt: "shot", answers: ["articulate", "confused"], line: "El método RADAR como kit. Los marcos para aplicar la grilla a tu propia marca, sin nosotros.", href: "/arsenal" },
-      { key: "nova", name: "NOVA", price: "999€", cadence: "pago único", fmt: "shot", answers: ["prelaunch"], line: "La app paso a paso que lleva de una idea difusa a un negocio listo para lanzar. Tú sigues siendo el fundador.", href: "/nova" },
       { key: "audit", name: "BRAND NARRATIVE ARCHITECTURE", price: "4.500€", cadence: "pago único", fmt: "shot", answers: ["confused", "outgrown"], line: "El encargo insignia. Un reposicionamiento completo — identidad, posición y lenguaje — imposible de confundir, imposible de generar.", href: "/brand-narrative-audit", featured: true },
       { key: "momentum", name: "MOMENTUM", price: "desde 1.500€", cadence: "/ mes", fmt: "post", answers: ["execution"], line: "Dirección creativa + ejecución de contenido mensual. Una vez existe la arquitectura, el equipo que sigue contando tu historia — y la lleva al feed cada día.", href: "/momentum" },
     ] as Rung[],

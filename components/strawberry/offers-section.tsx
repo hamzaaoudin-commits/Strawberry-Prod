@@ -24,11 +24,6 @@ const T = {
     cta1: "Commission the Work →",
     cta2: "Read the Full Brief",
     limit: "Limited to four commissions per quarter.",
-    arsenalTag: "Do it yourself · 147–197€",
-    arsenalLead: "Not ready to commission? Run the read on your own brand.",
-    arsenalBody:
-      "The five instruments the studio uses daily, as a toolkit you apply yourself. Same method, your hands on the controls.",
-    arsenalCta: "Discover ARSENAL →",
   },
   fr: {
     kicker: "La Commande Signature",
@@ -49,11 +44,6 @@ const T = {
     cta1: "Commander le travail →",
     cta2: "Lire le brief complet",
     limit: "Limité à quatre commandes par trimestre.",
-    arsenalTag: "En autonomie · 147–197€",
-    arsenalLead: "Pas prêt à commander ? Fais la lecture sur ta propre marque.",
-    arsenalBody:
-      "Les cinq instruments que le studio utilise chaque jour, en boîte à outils que tu appliques toi-même. Même méthode, les commandes entre tes mains.",
-    arsenalCta: "Découvrir ARSENAL →",
   },
   es: {
     kicker: "El Encargo Insignia",
@@ -74,11 +64,6 @@ const T = {
     cta1: "Encargar el trabajo →",
     cta2: "Leer el brief completo",
     limit: "Limitado a cuatro encargos por trimestre.",
-    arsenalTag: "Hazlo tú · 147–197€",
-    arsenalLead: "¿Aún no listo para encargar? Haz la lectura sobre tu propia marca.",
-    arsenalBody:
-      "Los cinco instrumentos que el estudio usa a diario, como kit que aplicas tú mismo. Mismo método, los mandos en tus manos.",
-    arsenalCta: "Descubrir ARSENAL →",
   },
 }
 
@@ -134,23 +119,6 @@ export function OffersSection() {
           <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
         </div>
 
-        {/* ARSENAL — the self-serve entry point, given real weight. */}
-        <div className="mx-auto mt-6 max-w-[900px] border border-brand-hair bg-white/[0.02] p-8 md:p-14">
-          <div className="tag mb-7 border-brand text-brand">{t.arsenalTag}</div>
-
-          <h3 className="mb-5 font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.04em]">
-            <span className="text-gradient">ARSENAL</span>
-          </h3>
-
-          <p className="mb-4 font-serif text-[clamp(1.15rem,2vw,1.5rem)] leading-snug text-chalk-90">
-            {t.arsenalLead}
-          </p>
-          <p className="mb-8 max-w-[620px] body-sm">{t.arsenalBody}</p>
-
-          <Link href="/arsenal" className="btn-primary">
-            {t.arsenalCta}
-          </Link>
-        </div>
       </div>
     </section>
   )
