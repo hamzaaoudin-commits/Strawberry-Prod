@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import { useT } from "@/lib/i18n"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -23,33 +24,110 @@ function useReveal() {
   return { ref, visible }
 }
 
-const NEXT_STEPS = [
-  {
-    n: "01",
-    title: "Check your inbox",
-    body: "A confirmation email with your invoice is on its way. If you don't see it within a few minutes, check your spam folder.",
+const T = {
+  en: {
+    badge: "Purchase Confirmed \u00b7 Commission N\u00b0",
+    h1a: "Your house has",
+    h1b: "been commissioned.",
+    congrats: "Congratulations on securing your Brand Narrative Architecture. \ud83c\udf53",
+    lead: "We have successfully received your payment. Your confirmation email with invoice is on its way. Look out for our Onboarding Questionnaire email \u2014 it is where everything begins.",
+    stepsKicker: "What Happens Now",
+    stepsH2: "Three steps. Then the work.",
+    comingKicker: "What You Commissioned",
+    comingH2: "A reminder of what is being built.",
+    noteKicker: "A Note",
+    noteP1: "\u201CMost founders arrive with fragments. A sentence they've used a hundred times. A pitch that almost works. A story they haven't found the words for yet.",
+    noteP2: "What you commissioned is the thing they were circling. You will recognize it the moment you read it.\u201D",
+    noteSig: "Hamza \u00b7 Strawberry Production \u00b7 Paris",
+    waitH2: "While you wait \u2014",
+    waitP: "Read the method. Understand the architecture you commissioned. The more clearly you see what is being built, the more powerful the extraction session.",
+    waitCta1: "Read The Method \u2192",
+    waitCta2: "View Case Studies",
+    contact: "Questions? Contact directly",
+    steps: [
+      { title: "Check your inbox", body: "A confirmation email with your invoice is on its way. If you don't see it within a few minutes, check your spam folder." },
+      { title: "Complete the Onboarding Questionnaire", body: "You will receive a second email with your Onboarding Questionnaire. This is where the extraction begins \u2014 your answers become the raw material of your Architecture. Take your time. There are no wrong answers, only honest ones." },
+      { title: "The work begins", body: "Once your questionnaire is received, I start. You will not hear silence \u2014 you will hear nothing until the work is ready to be exceptional. Delivery within the agreed timeline." },
+    ],
+    coming: [
+      "A Differentiation Diagnostic that shows you in black and white the open ground no competitor occupies.",
+      "A Narrative Platform \u2014 your position written as one defensible sentence, your story structured, your pillars named.",
+      "A Language System \u2014 the words that belong to you, the words forbidden to you, before and after examples drawn from your own communications.",
+      "A Deployment Kit \u2014 copy you can use the Monday after. Homepage rewrite. Pitch in three formats. 10 to 15 speaking angles ready to post.",
+      "A Coherence Guide \u2014 so your identity holds, even when you are not the one writing.",
+    ],
   },
-  {
-    n: "02",
-    title: "Complete the Onboarding Questionnaire",
-    body: "You will receive a second email with your Onboarding Questionnaire. This is where the extraction begins — your answers become the raw material of your Architecture. Take your time. There are no wrong answers, only honest ones.",
+  fr: {
+    badge: "Achat confirm\u00e9 \u00b7 Commande N\u00b0",
+    h1a: "Ta maison a \u00e9t\u00e9",
+    h1b: "command\u00e9e.",
+    congrats: "F\u00e9licitations pour ta Brand Narrative Architecture. \ud83c\udf53",
+    lead: "Nous avons bien re\u00e7u ton paiement. Ton email de confirmation avec la facture est en route. Guette l'email du Questionnaire d'onboarding \u2014 c'est l\u00e0 que tout commence.",
+    stepsKicker: "Ce qui se passe maintenant",
+    stepsH2: "Trois \u00e9tapes. Puis le travail.",
+    comingKicker: "Ce que tu as command\u00e9",
+    comingH2: "Un rappel de ce qui se construit.",
+    noteKicker: "Un mot",
+    noteP1: "\u00ab La plupart des fondateurs arrivent avec des fragments. Une phrase utilis\u00e9e cent fois. Un pitch qui fonctionne presque. Une histoire dont ils n'ont pas encore trouv\u00e9 les mots.",
+    noteP2: "Ce que tu as command\u00e9, c'est la chose autour de laquelle ils tournaient. Tu la reconna\u00eetras \u00e0 l'instant o\u00f9 tu la liras. \u00bb",
+    noteSig: "Hamza \u00b7 Strawberry Production \u00b7 Paris",
+    waitH2: "En attendant \u2014",
+    waitP: "Lis la m\u00e9thode. Comprends l'architecture que tu as command\u00e9e. Plus tu vois clairement ce qui se construit, plus la session d'extraction sera puissante.",
+    waitCta1: "Lire la M\u00e9thode \u2192",
+    waitCta2: "Voir les \u00e9tudes de cas",
+    contact: "Des questions ? Contact direct",
+    steps: [
+      { title: "V\u00e9rifie ta bo\u00eete mail", body: "Un email de confirmation avec ta facture est en route. Si tu ne le vois pas d'ici quelques minutes, regarde dans tes spams." },
+      { title: "Remplis le Questionnaire d'onboarding", body: "Tu vas recevoir un deuxi\u00e8me email avec ton Questionnaire d'onboarding. C'est l\u00e0 que commence l'extraction \u2014 tes r\u00e9ponses deviennent la mati\u00e8re premi\u00e8re de ton Architecture. Prends ton temps. Il n'y a pas de mauvaises r\u00e9ponses, seulement des honn\u00eates." },
+      { title: "Le travail commence", body: "Une fois ton questionnaire re\u00e7u, je d\u00e9marre. Tu n'entendras pas du silence \u2014 tu n'entendras rien jusqu'\u00e0 ce que le travail soit pr\u00eat \u00e0 \u00eatre exceptionnel. Livraison dans le d\u00e9lai convenu." },
+    ],
+    coming: [
+      "Un Diagnostic de diff\u00e9renciation qui te montre noir sur blanc le terrain libre qu'aucun concurrent n'occupe.",
+      "Une Plateforme narrative \u2014 ta position \u00e9crite en une phrase d\u00e9fendable, ton r\u00e9cit structur\u00e9, tes piliers nomm\u00e9s.",
+      "Un Syst\u00e8me de langage \u2014 les mots qui t'appartiennent, les mots qui te sont interdits, des exemples avant/apr\u00e8s tir\u00e9s de tes propres communications.",
+      "Un Kit de d\u00e9ploiement \u2014 du copy utilisable d\u00e8s le lundi. R\u00e9\u00e9criture de la page d'accueil. Pitch en trois formats. 10 \u00e0 15 angles de prise de parole pr\u00eats \u00e0 poster.",
+      "Un Guide de coh\u00e9rence \u2014 pour que ton identit\u00e9 tienne, m\u00eame quand ce n'est pas toi qui \u00e9cris.",
+    ],
   },
-  {
-    n: "03",
-    title: "The work begins",
-    body: "Once your questionnaire is received, I start. You will not hear silence — you will hear nothing until the work is ready to be exceptional. Delivery within the agreed timeline.",
+  es: {
+    badge: "Compra confirmada \u00b7 Encargo N\u00b0",
+    h1a: "Tu casa ha sido",
+    h1b: "encargada.",
+    congrats: "Enhorabuena por tu Brand Narrative Architecture. \ud83c\udf53",
+    lead: "Hemos recibido tu pago correctamente. Tu email de confirmaci\u00f3n con la factura est\u00e1 en camino. Est\u00e1 atento al email del Cuestionario de onboarding \u2014 ah\u00ed empieza todo.",
+    stepsKicker: "Qu\u00e9 pasa ahora",
+    stepsH2: "Tres pasos. Luego, el trabajo.",
+    comingKicker: "Lo que has encargado",
+    comingH2: "Un recordatorio de lo que se est\u00e1 construyendo.",
+    noteKicker: "Una nota",
+    noteP1: "\u00abLa mayor\u00eda de los fundadores llegan con fragmentos. Una frase usada cien veces. Un pitch que casi funciona. Una historia para la que a\u00fan no han encontrado las palabras.",
+    noteP2: "Lo que has encargado es aquello alrededor de lo que giraban. Lo reconocer\u00e1s en el instante en que lo leas.\u00bb",
+    noteSig: "Hamza \u00b7 Strawberry Production \u00b7 Par\u00eds",
+    waitH2: "Mientras esperas \u2014",
+    waitP: "Lee el m\u00e9todo. Comprende la arquitectura que has encargado. Cuanto m\u00e1s claramente veas lo que se construye, m\u00e1s potente ser\u00e1 la sesi\u00f3n de extracci\u00f3n.",
+    waitCta1: "Leer el M\u00e9todo \u2192",
+    waitCta2: "Ver casos de estudio",
+    contact: "¿Preguntas? Contacto directo",
+    steps: [
+      { title: "Revisa tu bandeja de entrada", body: "Un email de confirmaci\u00f3n con tu factura est\u00e1 en camino. Si no lo ves en unos minutos, revisa tu carpeta de spam." },
+      { title: "Completa el Cuestionario de onboarding", body: "Recibir\u00e1s un segundo email con tu Cuestionario de onboarding. Ah\u00ed empieza la extracci\u00f3n \u2014 tus respuestas se convierten en la materia prima de tu Arquitectura. T\u00f3mate tu tiempo. No hay respuestas equivocadas, solo honestas." },
+      { title: "El trabajo empieza", body: "Una vez recibido tu cuestionario, empiezo. No escuchar\u00e1s silencio \u2014 no escuchar\u00e1s nada hasta que el trabajo est\u00e9 listo para ser excepcional. Entrega en el plazo acordado." },
+    ],
+    coming: [
+      "Un Diagn\u00f3stico de diferenciaci\u00f3n que te muestra negro sobre blanco el terreno libre que ning\u00fan competidor ocupa.",
+      "Una Plataforma narrativa \u2014 tu posici\u00f3n escrita en una frase defendible, tu relato estructurado, tus pilares nombrados.",
+      "Un Sistema de lenguaje \u2014 las palabras que te pertenecen, las que te est\u00e1n prohibidas, ejemplos antes/despu\u00e9s sacados de tus propias comunicaciones.",
+      "Un Kit de despliegue \u2014 copy utilizable el lunes siguiente. Reescritura de la p\u00e1gina de inicio. Pitch en tres formatos. De 10 a 15 \u00e1ngulos de discurso listos para publicar.",
+      "Una Gu\u00eda de coherencia \u2014 para que tu identidad se sostenga, incluso cuando no eres t\u00fa quien escribe.",
+    ],
   },
-]
+}
 
-const WHAT_IS_COMING = [
-  "A Differentiation Diagnostic that shows you in black and white the open ground no competitor occupies.",
-  "A Narrative Platform — your position written as one defensible sentence, your story structured, your pillars named.",
-  "A Language System — the words that belong to you, the words forbidden to you, before and after examples drawn from your own communications.",
-  "A Deployment Kit — copy you can use the Monday after. Homepage rewrite. Pitch in three formats. 10 to 15 speaking angles ready to post.",
-  "A Coherence Guide — so your identity holds, even when you are not the one writing.",
-]
 
 export default function ThankYouPage() {
+  const t = useT(T)
+  const NEXT_STEPS = t.steps.map((st, i) => ({ ...st, n: `0${i + 1}` }))
+  const WHAT_IS_COMING = t.coming
   const hero = useReveal()
   const steps = useReveal()
   const coming = useReveal()
@@ -107,7 +185,7 @@ export default function ThankYouPage() {
             textTransform: "uppercase",
             fontFamily: SANS,
           }}>
-            Purchase Confirmed · Commission N° {count}
+            {t.badge} {count}
           </div>
 
           {/* Headline */}
@@ -119,7 +197,7 @@ export default function ThankYouPage() {
             letterSpacing: "-0.03em",
             marginBottom: 16,
           }}>
-            Your house has
+            {t.h1a}
           </h1>
           <h1 style={{
             fontFamily: SERIF,
@@ -133,7 +211,7 @@ export default function ThankYouPage() {
             WebkitTextFillColor: "transparent",
             fontStyle: "italic",
           }}>
-            been commissioned.
+            {t.h1b}
           </h1>
 
           <p style={{
@@ -145,7 +223,7 @@ export default function ThankYouPage() {
             margin: "0 auto 24px",
             lineHeight: 1.6,
           }}>
-            Congratulations on securing your Brand Narrative Architecture. 🍓
+            {t.congrats}
           </p>
 
           <p style={{
@@ -156,7 +234,7 @@ export default function ThankYouPage() {
             margin: "0 auto 56px",
             lineHeight: 1.7,
           }}>
-            We have successfully received your payment. Your confirmation email with invoice is on its way. Look out for our Onboarding Questionnaire email — it is where everything begins.
+            {t.lead}
           </p>
 
           {/* Divider ornament */}
@@ -186,10 +264,10 @@ export default function ThankYouPage() {
         }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-              What Happens Now
+              {t.stepsKicker}
             </div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-              Three steps. Then the work.
+              {t.stepsH2}
             </h2>
           </div>
 
@@ -234,10 +312,10 @@ export default function ThankYouPage() {
         }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-              What You Commissioned
+              {t.comingKicker}
             </div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-              A reminder of what is being built.
+              {t.comingH2}
             </h2>
           </div>
 
@@ -289,7 +367,7 @@ export default function ThankYouPage() {
           transition: "all 0.8s ease",
         }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase", fontFamily: SANS }}>
-            A Note
+            {t.noteKicker}
           </div>
 
           <p style={{
@@ -301,7 +379,7 @@ export default function ThankYouPage() {
             letterSpacing: "-0.01em",
             marginBottom: 32,
           }}>
-            "Most founders arrive with fragments. A sentence they've used a hundred times. A pitch that almost works. A story they haven't found the words for yet.
+            {t.noteP1}
           </p>
           <p style={{
             fontFamily: SERIF,
@@ -312,13 +390,13 @@ export default function ThankYouPage() {
             letterSpacing: "-0.01em",
             marginBottom: 48,
           }}>
-            What you commissioned is the thing they were circling. You will recognize it the moment you read it."
+            {t.noteP2}
           </p>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20 }}>
             <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.2)" }} />
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.45)", letterSpacing: "0.2em", textTransform: "uppercase", margin: 0 }}>
-              Hamza · Strawberry Production · Paris
+              {t.noteSig}
             </p>
             <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.2)" }} />
           </div>
@@ -352,7 +430,7 @@ export default function ThankYouPage() {
             letterSpacing: "-0.03em",
             marginBottom: 24,
           }}>
-            While you wait —
+            {t.waitH2}
           </h2>
           <p style={{
             fontFamily: SERIF,
@@ -363,7 +441,7 @@ export default function ThankYouPage() {
             maxWidth: 560,
             margin: "0 auto 48px",
           }}>
-            Read the method. Understand the architecture you commissioned. The more clearly you see what is being built, the more powerful the extraction session.
+            {t.waitP}
           </p>
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
@@ -379,7 +457,7 @@ export default function ThankYouPage() {
               letterSpacing: "0.04em",
               boxShadow: `0 20px 60px ${GLOW}`,
             }}>
-              Read The Method →
+              {t.waitCta1}
             </Link>
 
             <Link href="/case-studies" style={{
@@ -394,13 +472,13 @@ export default function ThankYouPage() {
               letterSpacing: "0.04em",
               border: "1px solid rgba(255,255,255,0.2)",
             }}>
-              View Case Studies
+              {t.waitCta2}
             </Link>
           </div>
 
           <div style={{ marginTop: 56, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 8px" }}>
-              Questions? Contact directly
+              {t.contact}
             </p>
             <a href="mailto:Strawberryprod.contact@gmail.com" style={{ fontFamily: SERIF, fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>
               Strawberryprod.contact@gmail.com

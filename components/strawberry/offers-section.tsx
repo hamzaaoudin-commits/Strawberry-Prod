@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useT } from "@/lib/i18n"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -9,15 +10,48 @@ const GLOW = "rgba(230,57,70,0.35)"
 
 const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 
-const DELIVERABLES = [
-  { n: "01", title: "Differentiation Diagnostic" },
-  { n: "02", title: "Narrative Platform" },
-  { n: "03", title: "Language System" },
-  { n: "04", title: "Deployment Kit" },
-  { n: "05", title: "Coherence Guide" },
-]
+const T = {
+  en: {
+    kicker: "The Signature Commission",
+    h2a: "Impossible to confuse.",
+    h2b: "Impossible to generate.",
+    intro: "One offer, refined commission after commission. The identity, position, and language that make you recognizable at first glance — and impossible to confuse with competitors, even when they arm themselves with AI.",
+    h3: "The brand story that no competitor can copy — and no machine can write.",
+    body: "It begins with an extraction no AI can automate: your truth, your singularity, the thing you no longer see because you are inside it. From it, a complete repositioning — delivered and exploitable the Monday after.",
+    deliverables: ["Differentiation Diagnostic", "Narrative Platform", "Language System", "Deployment Kit", "Coherence Guide"],
+    cta1: "Commission the Work →",
+    cta2: "Read the Full Brief",
+    limit: "Limited to four commissions per quarter.",
+  },
+  fr: {
+    kicker: "La Commande Signature",
+    h2a: "Impossible à confondre.",
+    h2b: "Impossible à générer.",
+    intro: "Une seule offre, affinée commande après commande. L'identité, la position et le langage qui te rendent reconnaissable au premier regard — et impossible à confondre avec tes concurrents, même armés d'IA.",
+    h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
+    body: "Tout commence par une extraction qu'aucune IA n'automatise : ta vérité, ta singularité, ce que tu ne vois plus parce que tu es dedans. Puis un repositionnement complet — livré et exploitable dès le lundi suivant.",
+    deliverables: ["Diagnostic de différenciation", "Plateforme narrative", "Système de langage", "Kit de déploiement", "Guide de cohérence"],
+    cta1: "Commander le travail →",
+    cta2: "Lire le brief complet",
+    limit: "Limité à quatre commandes par trimestre.",
+  },
+  es: {
+    kicker: "El Encargo Insignia",
+    h2a: "Imposible de confundir.",
+    h2b: "Imposible de generar.",
+    intro: "Una sola oferta, afinada encargo tras encargo. La identidad, la posición y el lenguaje que te hacen reconocible a primera vista — e imposible de confundir con la competencia, aunque se armen con IA.",
+    h3: "El relato de marca que ningún competidor puede copiar — y que ninguna máquina puede escribir.",
+    body: "Empieza con una extracción que ninguna IA automatiza: tu verdad, tu singularidad, eso que ya no ves porque estás dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
+    deliverables: ["Diagnóstico de diferenciación", "Plataforma narrativa", "Sistema de lenguaje", "Kit de despliegue", "Guía de coherencia"],
+    cta1: "Encargar el trabajo →",
+    cta2: "Leer el brief completo",
+    limit: "Limitado a cuatro encargos por trimestre.",
+  },
+}
 
 export function OffersSection() {
+  const t = useT(T)
+  const DELIVERABLES = t.deliverables.map((title, i) => ({ n: `0${i + 1}`, title }))
   return (
     <section id="offers" style={{ padding: "140px clamp(1.5rem,4vw,4rem)", background: "#0a0a0a", color: "#fff", position: "relative", overflow: "hidden" }}>
 
@@ -27,14 +61,14 @@ export function OffersSection() {
 
         <div style={{ textAlign: "center", marginBottom: 80 }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-            The Signature Commission
+            {t.kicker}
           </div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            Impossible to confuse.<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Impossible to generate.</span>
+            {t.h2a}<br />
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h2b}</span>
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.6 }}>
-            One offer, refined commission after commission. The identity, position, and language that make you recognizable at first glance — and impossible to confuse with competitors, even when they arm themselves with AI.
+            {t.intro}
           </p>
         </div>
 
@@ -48,11 +82,11 @@ export function OffersSection() {
           </div>
 
           <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3.5vw,2.75rem)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 24 }}>
-            The brand story that no competitor can copy — and no machine can write.
+            {t.h3}
           </h3>
 
           <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: 40, maxWidth: 720 }}>
-            It begins with an extraction no AI can automate: your truth, your singularity, the thing you no longer see because you are inside it. From it, a complete repositioning — delivered and exploitable the Monday after.
+            {t.body}
           </p>
 
           <div className="deliverables-grid" style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)", marginBottom: 48 }}>
@@ -82,15 +116,15 @@ export function OffersSection() {
 
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
             <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "16px 36px", borderRadius: 100, fontSize: 14, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 15px 40px ${GLOW}` }}>
-              Commission the Work →
+              {t.cta1}
             </Link>
             <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: "rgba(255,255,255,0.85)", padding: "16px 32px", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 100, fontSize: 14, fontWeight: 500, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, transition: "all 0.3s" }}>
-              Read the Full Brief
+              {t.cta2}
             </Link>
           </div>
 
           <div style={{ marginTop: 32, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em", fontFamily: SANS }}>
-            Limited to four commissions per quarter.
+            {t.limit}
           </div>
 
         </div>

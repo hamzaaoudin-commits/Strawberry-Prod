@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { track } from "@vercel/analytics"
+import { useT } from "@/lib/i18n"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -11,67 +12,242 @@ const GLOW = "rgba(230,57,70,0.35)"
 
 const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 
-const DELIVERABLES = [
-  {
-    n: "01",
-    title: "The Differentiation Diagnostic",
-    body: "An analysis of your narrative competitive field: what your 5-6 direct competitors say, the words and promises they all share, and a map of the territories already saturated. You see in black and white why you all sound alike — and the open ground no one occupies, that you will take.",
-  },
-  {
-    n: "02",
-    title: "The Narrative Platform",
-    body: "Your unique position written as one defensible sentence. Your brand story structured — origin, fight, vision. And your 3-4 message pillars: the ideas you will hammer until people associate them with you instinctively.",
-  },
-  {
-    n: "03",
-    title: "The Language System",
-    body: "Your tone of voice described with precision. Your lexicon: the words that belong to you, and the forbidden list — your competitors' words — so you never sound like them. With before/after examples drawn from your own communications.",
-  },
-  {
-    n: "04",
-    title: "The Deployment Kit",
-    body: "The part you use the Monday after. Ready-to-use copy, not abstract recommendations: a rewrite of your homepage (headline, subhead, key sections); your presentation line in three formats (one line / one paragraph / 30-second pitch); 10 to 15 speaking angles ready to turn into posts, articles or newsletters, each tied to one of your pillars; a reusable bio and company description.",
-  },
-  {
-    n: "05",
-    title: "The Coherence Guide",
-    body: "A short document that lets anyone on your team write in your voice without consulting you: rules, examples, do/don't. Your identity holds, even when you are not the one writing.",
-  },
-]
 
-const HUMAN_PACT = [
-  {
-    title: "Anyone can prompt 45 pages in three minutes.",
-    body: "Most do. The result reads like every other brand document. This is what happens when a human spends weeks listening, refusing, and choosing — when the goal is not to be produced, but to be unforgettable. The AI can write a brand document. It cannot decide which sentence deserves to be torn out.",
-  },
-  {
-    title: "Written once. For you only.",
-    body: "Each brand is built from scratch. The narrative I write for your house will never appear — not adapted, not echoed, not inspired by — in another commission. AI recycles. I do not.",
-  },
-  {
-    title: "From Paris. By inheritance.",
-    body: "This studio operates from Paris — heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed.",
-  },
-  {
-    title: "Four commissions per quarter. No more.",
-    body: "Not a sales tactic — a structural choice. AI scales infinitely. I do not. Four houses per quarter, written by hand. If you commission this work, you receive something built only for you, by someone whose attention is rationed by design.",
-  },
-]
 
-const ALSO_RECEIVE = [
-  {
-    label: "The Object",
-    title: "The artifact, optionally bound.",
-    body: "On request, the work is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object.",
+const T = {
+  en: {
+    badge: "Brand Narrative Architecture \u00b7 4,500\u20ac",
+    h1a: "The brand story that makes you",
+    h1b: "impossible to confuse \u2014",
+    h1c: "and impossible to generate.",
+    heroLead: "The identity, position, and language that make you recognizable at first glance \u2014 and impossible to confuse with your competitors, even when they arm themselves with AI.",
+    heroCta: "Commission the Work \u2192",
+    ctxP1: "AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart \u2014 everyone has become good.",
+    ctxP2: "What cannot be generated is an identity. Differentiation is no longer a marketing luxury \u2014 it is your condition for survival.",
+    pactH2: "The AI-proof pact.",
+    pactLead: "What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.",
+    pactQuote: "When everyone has access to the same machine, the only edge left is the one a human refuses to share.",
+    offerP1: "I build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors \u2014 even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.",
+    offerH3: "It begins with an extraction no one can automate.",
+    offerP2: "I make you talk, at length, to reach what makes you genuinely singular \u2014 often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.",
+    offerP3a: "From that extraction, the work follows a refined process \u2014 ",
+    offerP3b: " \u2014 five stages sharpened commission after commission. Each stage produces the artifacts you receive below.",
+    methodCta: "See the method \u2192",
+    delivH2: "Five deliverables. Exploitable Monday.",
+    glimpseH2: "A glimpse of the artifact.",
+    glimpseLead: "Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself \u2014 page by page.",
+    glimpseNote: "Stylized previews \u00b7 Final document delivered as PDF",
+    actLabel: "Act",
+    acts: ["The Frame", "The Identity", "The Deployment", "The Signature"],
+    measureH2: "Remarkable is measurable.",
+    measureLead: "Before we start, we note together how you would describe today what sets you apart \u2014 usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.",
+    alsoH2: "Beyond the document.",
+    investLead: "The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, belongs to you and works for you continuously.",
+    ctaH2: "Become impossible to confuse.",
+    cta: "Commission the Work \u2192",
+    ctaLimit: "Limited to four commissions per quarter.",
+    ctaFoot: "Confidential commission \u00b7 NDA available",
+    price: "4,500\u20ac",
+    deliverables: [
+      { title: "The Differentiation Diagnostic", body: "An analysis of your narrative competitive field: what your 5-6 direct competitors say, the words and promises they all share, and a map of the territories already saturated. You see in black and white why you all sound alike \u2014 and the open ground no one occupies, that you will take." },
+      { title: "The Narrative Platform", body: "Your unique position written as one defensible sentence. Your brand story structured \u2014 origin, fight, vision. And your 3-4 message pillars: the ideas you will hammer until people associate them with you instinctively." },
+      { title: "The Language System", body: "Your tone of voice described with precision. Your lexicon: the words that belong to you, and the forbidden list \u2014 your competitors' words \u2014 so you never sound like them. With before/after examples drawn from your own communications." },
+      { title: "The Deployment Kit", body: "The part you use the Monday after. Ready-to-use copy, not abstract recommendations: a rewrite of your homepage (headline, subhead, key sections); your presentation line in three formats (one line / one paragraph / 30-second pitch); 10 to 15 speaking angles ready to turn into posts, articles or newsletters, each tied to one of your pillars; a reusable bio and company description." },
+      { title: "The Coherence Guide", body: "A short document that lets anyone on your team write in your voice without consulting you: rules, examples, do/don't. Your identity holds, even when you are not the one writing." },
+    ],
+    pact: [
+      { title: "Anyone can prompt 45 pages in three minutes.", body: "Most do. The result reads like every other brand document. This is what happens when a human spends weeks listening, refusing, and choosing \u2014 when the goal is not to be produced, but to be unforgettable. The AI can write a brand document. It cannot decide which sentence deserves to be torn out." },
+      { title: "Written once. For you only.", body: "Each brand is built from scratch. The narrative I write for your house will never appear \u2014 not adapted, not echoed, not inspired by \u2014 in another commission. AI recycles. I do not." },
+      { title: "From Paris. By inheritance.", body: "This studio operates from Paris \u2014 heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed." },
+      { title: "Four commissions per quarter. No more.", body: "Not a sales tactic \u2014 a structural choice. AI scales infinitely. I do not. Four houses per quarter, written by hand. If you commission this work, you receive something built only for you, by someone whose attention is rationed by design." },
+    ],
+    alsoReceive: [
+      { label: "The Object", title: "The artifact, optionally bound.", body: "On request, the work is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping. AI cannot deliver an object." },
+    ],
+    successSignals: [
+      "You are cited as a reference, not just another option",
+      "People come to you, instead of you chasing them",
+      "You hold your prices without negotiating them down",
+      "People start repeating your own words back to you",
+    ],
+    mockups: {
+      actI: [
+        { label: "The Cover", caption: "A numbered edition. Your house, given its name." },
+        { label: "The Dedication", caption: "The opening invocation. The reason this document exists." },
+        { label: "The Index", caption: "Five deliverables, one signature. The architecture, declared." },
+      ],
+      actII: [
+        { label: "The Differentiation Diagnostic", caption: "The narrative field, with the ground no one occupies located." },
+        { label: "The Narrative Platform", caption: "Your position, your story, your pillars \u2014 articulated." },
+        { label: "The Origin Story", caption: "The rupture before. The conviction after. Named with precision." },
+        { label: "The Manifesto", caption: "A single page. The doctrine, made unforgettable." },
+        { label: "The Language System", caption: "Your words. The forbidden ones. Before and after." },
+      ],
+      actIII: [
+        { label: "The Deployment Kit", caption: "Speaking angles by pillar. Ready the Monday after." },
+        { label: "The Coherence Guide", caption: "One voice, any hand. Your identity holds without you." },
+      ],
+      actIV: [
+        { label: "The Signature Page", caption: "Numbered. Dated. Signed. A document built to be kept." },
+      ],
+    },
   },
-]
+  fr: {
+    badge: "Brand Narrative Architecture \u00b7 4 500\u20ac",
+    h1a: "Le r\u00e9cit de marque qui te rend",
+    h1b: "impossible \u00e0 confondre \u2014",
+    h1c: "et impossible \u00e0 g\u00e9n\u00e9rer.",
+    heroLead: "L'identit\u00e9, la position et le langage qui te rendent reconnaissable au premier regard \u2014 et impossible \u00e0 confondre avec tes concurrents, m\u00eame arm\u00e9s d'IA.",
+    heroCta: "Commander le travail \u2192",
+    ctxP1: "L'IA sature ton march\u00e9 plus vite que tu ne le vois. Tes concurrents produisent d\u00e9sormais en un clic ce qui prenait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualit\u00e9 ne suffit plus \u00e0 te distinguer \u2014 tout le monde est devenu bon.",
+    ctxP2: "Ce qui ne peut pas \u00eatre g\u00e9n\u00e9r\u00e9, c'est une identit\u00e9. La diff\u00e9renciation n'est plus un luxe marketing \u2014 c'est ta condition de survie.",
+    pactH2: "Le pacte anti-IA.",
+    pactLead: "Ce qui rend une maison inoubliable, ce n'est plus le document. C'est celui qui a refus\u00e9 de l'\u00e9crire comme tout le monde.",
+    pactQuote: "Quand tout le monde a acc\u00e8s \u00e0 la m\u00eame machine, le seul avantage restant est celui qu'un humain refuse de partager.",
+    offerP1: "Je b\u00e2tis le r\u00e9cit qui rend ta marque reconnaissable au premier regard et impossible \u00e0 confondre avec tes concurrents \u2014 m\u00eame arm\u00e9s d'IA. Pas un slogan de surface : l'identit\u00e9, la position et le langage qui font qu'on se souvient de toi, qu'on te cite et qu'on te choisit, m\u00eame quand l'offre d'en face co\u00fbte moins cher.",
+    offerH3: "Tout commence par une extraction que personne ne peut automatiser.",
+    offerP2: "Je te fais parler, longuement, pour atteindre ce qui te rend v\u00e9ritablement singulier \u2014 souvent ce que tu ne vois plus parce que tu es dedans. Cette mati\u00e8re humaine, ta v\u00e9rit\u00e9, devient la fondation. Aucune IA ne peut la produire, parce qu'elle ne t'a pas v\u00e9cu.",
+    offerP3a: "\u00c0 partir de cette extraction, le travail suit un processus affin\u00e9 \u2014 ",
+    offerP3b: " \u2014 cinq \u00e9tapes aiguis\u00e9es commande apr\u00e8s commande. Chaque \u00e9tape produit les artefacts que tu re\u00e7ois ci-dessous.",
+    methodCta: "Voir la m\u00e9thode \u2192",
+    delivH2: "Cinq livrables. Exploitables d\u00e8s lundi.",
+    glimpseH2: "Un aper\u00e7u de l'artefact.",
+    glimpseLead: "Livr\u00e9 comme un document \u00e9ditorial unique, con\u00e7u pour \u00eatre lu comme un manifeste et consult\u00e9 comme une constitution. Ci-dessous, le travail lui-m\u00eame \u2014 page par page.",
+    glimpseNote: "Aper\u00e7us stylis\u00e9s \u00b7 Document final livr\u00e9 en PDF",
+    actLabel: "Acte",
+    acts: ["Le Cadre", "L'Identit\u00e9", "Le D\u00e9ploiement", "La Signature"],
+    measureH2: "Le remarquable se mesure.",
+    measureLead: "Avant de commencer, on note ensemble comment tu d\u00e9cris aujourd'hui ce qui te distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
+    alsoH2: "Au-del\u00e0 du document.",
+    investLead: "Le prix de quelques semaines de publicit\u00e9 qui s'\u00e9vapore d\u00e8s que tu arr\u00eates de payer. Ton r\u00e9cit, lui, t'appartient et travaille pour toi en continu.",
+    ctaH2: "Deviens impossible \u00e0 confondre.",
+    cta: "Commander le travail \u2192",
+    ctaLimit: "Limit\u00e9 \u00e0 quatre commandes par trimestre.",
+    ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
+    price: "4 500\u20ac",
+    deliverables: [
+      { title: "Le Diagnostic de diff\u00e9renciation", body: "Une analyse de ton champ concurrentiel narratif : ce que disent tes 5-6 concurrents directs, les mots et promesses qu'ils partagent tous, et une carte des territoires d\u00e9j\u00e0 satur\u00e9s. Tu vois noir sur blanc pourquoi vous sonnez tous pareil \u2014 et le terrain libre que personne n'occupe, celui que tu vas prendre." },
+      { title: "La Plateforme narrative", body: "Ta position unique \u00e9crite en une phrase d\u00e9fendable. Ton r\u00e9cit de marque structur\u00e9 \u2014 origine, combat, vision. Et tes 3-4 piliers de message : les id\u00e9es que tu vas marteler jusqu'\u00e0 ce qu'on te les associe instinctivement." },
+      { title: "Le Syst\u00e8me de langage", body: "Ton ton de voix d\u00e9crit avec pr\u00e9cision. Ton lexique : les mots qui t'appartiennent, et la liste interdite \u2014 les mots de tes concurrents \u2014 pour ne jamais sonner comme eux. Avec des exemples avant/apr\u00e8s tir\u00e9s de tes propres communications." },
+      { title: "Le Kit de d\u00e9ploiement", body: "La partie que tu utilises d\u00e8s le lundi. Du copy pr\u00eat \u00e0 l'emploi, pas des recommandations abstraites : une r\u00e9\u00e9criture de ta page d'accueil (titre, sous-titre, sections cl\u00e9s) ; ta phrase de pr\u00e9sentation en trois formats (une ligne / un paragraphe / pitch de 30 secondes) ; 10 \u00e0 15 angles de prise de parole pr\u00eats \u00e0 devenir posts, articles ou newsletters, chacun rattach\u00e9 \u00e0 un de tes piliers ; une bio et une description d'entreprise r\u00e9utilisables." },
+      { title: "Le Guide de coh\u00e9rence", body: "Un document court qui permet \u00e0 n'importe qui dans ton \u00e9quipe d'\u00e9crire dans ta voix sans te consulter : r\u00e8gles, exemples, \u00e0 faire / \u00e0 ne pas faire. Ton identit\u00e9 tient, m\u00eame quand ce n'est pas toi qui \u00e9cris." },
+    ],
+    pact: [
+      { title: "N'importe qui peut prompter 45 pages en trois minutes.", body: "La plupart le font. Le r\u00e9sultat se lit comme tous les autres documents de marque. Voici ce qui arrive quand un humain passe des semaines \u00e0 \u00e9couter, refuser et choisir \u2014 quand l'objectif n'est pas d'\u00eatre produit, mais d'\u00eatre inoubliable. L'IA peut \u00e9crire un document de marque. Elle ne peut pas d\u00e9cider quelle phrase m\u00e9rite d'\u00eatre arrach\u00e9e." },
+      { title: "\u00c9crit une fois. Pour toi seul.", body: "Chaque marque est b\u00e2tie de z\u00e9ro. Le r\u00e9cit que j'\u00e9cris pour ta maison n'appara\u00eetra jamais \u2014 ni adapt\u00e9, ni d\u00e9calqu\u00e9, ni inspir\u00e9 \u2014 dans une autre commande. L'IA recycle. Moi non." },
+      { title: "Depuis Paris. Par h\u00e9ritage.", body: "Ce studio op\u00e8re depuis Paris \u2014 h\u00e9ritier d'une \u00e9cole fran\u00e7aise de pr\u00e9cision narrative. Barthes. Foucault. Pivot. Beigbeder. Une culture o\u00f9 ce qui n'est pas dit compte autant que ce qui l'est. O\u00f9 une phrase est r\u00e9\u00e9crite jusqu'\u00e0 ce que rien ne puisse en \u00eatre retir\u00e9." },
+      { title: "Quatre commandes par trimestre. Pas plus.", body: "Pas une tactique commerciale \u2014 un choix structurel. L'IA scale \u00e0 l'infini. Moi non. Quatre maisons par trimestre, \u00e9crites \u00e0 la main. Si tu commandes ce travail, tu re\u00e7ois quelque chose b\u00e2ti pour toi seul, par quelqu'un dont l'attention est rationn\u00e9e par choix." },
+    ],
+    alsoReceive: [
+      { label: "L'Objet", title: "L'artefact, reli\u00e9 en option.", body: "Sur demande, le travail est imprim\u00e9, reli\u00e9 \u00e0 la main et sign\u00e9. Une \u00e9dition unique num\u00e9rot\u00e9e pour ta maison. Livr\u00e9e \u00e0 ton bureau ou chez toi. Le PDF est fait pour travailler. L'\u00e9dition reli\u00e9e est faite pour \u00eatre gard\u00e9e. L'IA ne peut pas livrer un objet." },
+    ],
+    successSignals: [
+      "Tu es cit\u00e9 comme r\u00e9f\u00e9rence, pas comme une option parmi d'autres",
+      "On vient \u00e0 toi, au lieu que tu coures apr\u00e8s",
+      "Tu tiens tes prix sans les n\u00e9gocier \u00e0 la baisse",
+      "On commence \u00e0 te r\u00e9p\u00e9ter tes propres mots",
+    ],
+    mockups: {
+      actI: [
+        { label: "La Couverture", caption: "Une \u00e9dition num\u00e9rot\u00e9e. Ta maison, nomm\u00e9e." },
+        { label: "La D\u00e9dicace", caption: "L'invocation d'ouverture. La raison d'\u00eatre de ce document." },
+        { label: "Le Sommaire", caption: "Cinq livrables, une signature. L'architecture, d\u00e9clar\u00e9e." },
+      ],
+      actII: [
+        { label: "Le Diagnostic de diff\u00e9renciation", caption: "Le champ narratif, avec le terrain que personne n'occupe localis\u00e9." },
+        { label: "La Plateforme narrative", caption: "Ta position, ton r\u00e9cit, tes piliers \u2014 articul\u00e9s." },
+        { label: "Le R\u00e9cit d'origine", caption: "La rupture d'avant. La conviction d'apr\u00e8s. Nomm\u00e9es avec pr\u00e9cision." },
+        { label: "Le Manifeste", caption: "Une seule page. La doctrine, rendue inoubliable." },
+        { label: "Le Syst\u00e8me de langage", caption: "Tes mots. Les interdits. Avant et apr\u00e8s." },
+      ],
+      actIII: [
+        { label: "Le Kit de d\u00e9ploiement", caption: "Angles de prise de parole par pilier. Pr\u00eats d\u00e8s lundi." },
+        { label: "Le Guide de coh\u00e9rence", caption: "Une voix, n'importe quelle main. Ton identit\u00e9 tient sans toi." },
+      ],
+      actIV: [
+        { label: "La Page de signature", caption: "Num\u00e9rot\u00e9e. Dat\u00e9e. Sign\u00e9e. Un document fait pour \u00eatre gard\u00e9." },
+      ],
+    },
+  },
+  es: {
+    badge: "Brand Narrative Architecture \u00b7 4.500\u20ac",
+    h1a: "El relato de marca que te hace",
+    h1b: "imposible de confundir \u2014",
+    h1c: "e imposible de generar.",
+    heroLead: "La identidad, la posici\u00f3n y el lenguaje que te hacen reconocible a primera vista \u2014 e imposible de confundir con tus competidores, aunque se armen con IA.",
+    heroCta: "Encargar el trabajo \u2192",
+    ctxP1: "La IA satura tu mercado m\u00e1s r\u00e1pido de lo que ves. Tus competidores producen ahora en un clic lo que llevaba semanas: art\u00edculos, visuales, p\u00e1ginas, campa\u00f1as. El contenido se vuelve gratuito, infinito y perfectamente intercambiable. En ese ruido, la calidad ya no basta para distinguirte \u2014 todos se han vuelto buenos.",
+    ctxP2: "Lo que no puede generarse es una identidad. La diferenciaci\u00f3n ya no es un lujo de marketing \u2014 es tu condici\u00f3n de supervivencia.",
+    pactH2: "El pacto a prueba de IA.",
+    pactLead: "Lo que hace inolvidable a una casa ya no es el documento. Es quien se neg\u00f3 a escribirlo como todos los dem\u00e1s.",
+    pactQuote: "Cuando todos tienen acceso a la misma m\u00e1quina, la \u00fanica ventaja que queda es la que un humano se niega a compartir.",
+    offerP1: "Construyo el relato que hace tu marca reconocible a primera vista e imposible de confundir con tus competidores \u2014 aunque se armen con IA. No un eslogan de superficie: la identidad, la posici\u00f3n y el lenguaje que hacen que te recuerden, te citen y te elijan, incluso cuando la oferta de enfrente cuesta menos.",
+    offerH3: "Empieza con una extracci\u00f3n que nadie puede automatizar.",
+    offerP2: "Te hago hablar, largo rato, para llegar a lo que te hace verdaderamente singular \u2014 a menudo lo que ya no ves porque est\u00e1s dentro. Esa materia humana, tu verdad, se convierte en el cimiento. Ninguna IA puede producirla, porque no te ha vivido.",
+    offerP3a: "A partir de esa extracci\u00f3n, el trabajo sigue un proceso afinado \u2014 ",
+    offerP3b: " \u2014 cinco etapas afiladas encargo tras encargo. Cada etapa produce los artefactos que recibes abajo.",
+    methodCta: "Ver el m\u00e9todo \u2192",
+    delivH2: "Cinco entregables. Utilizables el lunes.",
+    glimpseH2: "Un vistazo al artefacto.",
+    glimpseLead: "Entregado como un \u00fanico documento editorial, dise\u00f1ado para leerse como un manifiesto y consultarse como una constituci\u00f3n. Abajo, el trabajo mismo \u2014 p\u00e1gina a p\u00e1gina.",
+    glimpseNote: "Vistas previas estilizadas \u00b7 Documento final entregado en PDF",
+    actLabel: "Acto",
+    acts: ["El Marco", "La Identidad", "El Despliegue", "La Firma"],
+    measureH2: "Lo notable se mide.",
+    measureLead: "Antes de empezar, anotamos juntos c\u00f3mo describir\u00edas hoy lo que te distingue \u2014 normalmente es vago, y suena a lo que dir\u00edan los dem\u00e1s. Unos meses despu\u00e9s, miramos qu\u00e9 ha cambiado.",
+    alsoH2: "M\u00e1s all\u00e1 del documento.",
+    investLead: "El precio de unas pocas semanas de publicidad que se evapora en cuanto dejas de pagar. Tu relato, en cambio, te pertenece y trabaja para ti de forma continua.",
+    ctaH2: "Vu\u00e9lvete imposible de confundir.",
+    cta: "Encargar el trabajo \u2192",
+    ctaLimit: "Limitado a cuatro encargos por trimestre.",
+    ctaFoot: "Encargo confidencial \u00b7 NDA disponible",
+    price: "4.500\u20ac",
+    deliverables: [
+      { title: "El Diagn\u00f3stico de diferenciaci\u00f3n", body: "Un an\u00e1lisis de tu campo competitivo narrativo: qu\u00e9 dicen tus 5-6 competidores directos, las palabras y promesas que todos comparten, y un mapa de los territorios ya saturados. Ves negro sobre blanco por qu\u00e9 todos suenan igual \u2014 y el terreno libre que nadie ocupa, el que vas a tomar." },
+      { title: "La Plataforma narrativa", body: "Tu posici\u00f3n \u00fanica escrita en una frase defendible. Tu relato de marca estructurado \u2014 origen, lucha, visi\u00f3n. Y tus 3-4 pilares de mensaje: las ideas que vas a martillar hasta que te las asocien instintivamente." },
+      { title: "El Sistema de lenguaje", body: "Tu tono de voz descrito con precisi\u00f3n. Tu l\u00e9xico: las palabras que te pertenecen, y la lista prohibida \u2014 las palabras de tus competidores \u2014 para no sonar nunca como ellos. Con ejemplos antes/despu\u00e9s sacados de tus propias comunicaciones." },
+      { title: "El Kit de despliegue", body: "La parte que usas el lunes siguiente. Copy listo para usar, no recomendaciones abstractas: una reescritura de tu p\u00e1gina de inicio (t\u00edtulo, subt\u00edtulo, secciones clave); tu frase de presentaci\u00f3n en tres formatos (una l\u00ednea / un p\u00e1rrafo / pitch de 30 segundos); de 10 a 15 \u00e1ngulos de discurso listos para convertirse en posts, art\u00edculos o newsletters, cada uno ligado a uno de tus pilares; una bio y una descripci\u00f3n de empresa reutilizables." },
+      { title: "La Gu\u00eda de coherencia", body: "Un documento breve que permite a cualquiera de tu equipo escribir en tu voz sin consultarte: reglas, ejemplos, qu\u00e9 hacer y qu\u00e9 no. Tu identidad se sostiene, incluso cuando no eres t\u00fa quien escribe." },
+    ],
+    pact: [
+      { title: "Cualquiera puede promptear 45 p\u00e1ginas en tres minutos.", body: "La mayor\u00eda lo hace. El resultado se lee como todos los dem\u00e1s documentos de marca. Esto es lo que ocurre cuando un humano pasa semanas escuchando, rechazando y eligiendo \u2014 cuando el objetivo no es ser producido, sino ser inolvidable. La IA puede escribir un documento de marca. No puede decidir qu\u00e9 frase merece ser arrancada." },
+      { title: "Escrito una vez. Solo para ti.", body: "Cada marca se construye desde cero. El relato que escribo para tu casa nunca aparecer\u00e1 \u2014 ni adaptado, ni calcado, ni inspirado \u2014 en otro encargo. La IA recicla. Yo no." },
+      { title: "Desde Par\u00eds. Por herencia.", body: "Este estudio opera desde Par\u00eds \u2014 heredero de una escuela francesa de precisi\u00f3n narrativa. Barthes. Foucault. Pivot. Beigbeder. Una cultura donde lo que no se dice importa tanto como lo que s\u00ed. Donde una frase se reescribe hasta que nada puede quitarse." },
+      { title: "Cuatro encargos por trimestre. No m\u00e1s.", body: "No es una t\u00e1ctica de venta \u2014 es una decisi\u00f3n estructural. La IA escala infinitamente. Yo no. Cuatro casas por trimestre, escritas a mano. Si encargas este trabajo, recibes algo construido solo para ti, por alguien cuya atenci\u00f3n est\u00e1 racionada por dise\u00f1o." },
+    ],
+    alsoReceive: [
+      { label: "El Objeto", title: "El artefacto, encuadernado opcionalmente.", body: "A petici\u00f3n, el trabajo se imprime, se encuaderna a mano y se firma. Una \u00fanica edici\u00f3n numerada para tu casa. Entregada en tu oficina o en tu casa. El PDF es para trabajar. La edici\u00f3n encuadernada es para guardar. La IA no puede entregar un objeto." },
+    ],
+    successSignals: [
+      "Te citan como referencia, no como una opci\u00f3n m\u00e1s",
+      "Vienen a ti, en lugar de que t\u00fa persigas",
+      "Mantienes tus precios sin negociarlos a la baja",
+      "Empiezan a repetirte tus propias palabras",
+    ],
+    mockups: {
+      actI: [
+        { label: "La Portada", caption: "Una edici\u00f3n numerada. Tu casa, con su nombre." },
+        { label: "La Dedicatoria", caption: "La invocaci\u00f3n de apertura. La raz\u00f3n de ser de este documento." },
+        { label: "El \u00cdndice", caption: "Cinco entregables, una firma. La arquitectura, declarada." },
+      ],
+      actII: [
+        { label: "El Diagn\u00f3stico de diferenciaci\u00f3n", caption: "El campo narrativo, con el terreno que nadie ocupa localizado." },
+        { label: "La Plataforma narrativa", caption: "Tu posici\u00f3n, tu relato, tus pilares \u2014 articulados." },
+        { label: "El Relato de origen", caption: "La ruptura de antes. La convicci\u00f3n de despu\u00e9s. Nombradas con precisi\u00f3n." },
+        { label: "El Manifiesto", caption: "Una sola p\u00e1gina. La doctrina, hecha inolvidable." },
+        { label: "El Sistema de lenguaje", caption: "Tus palabras. Las prohibidas. Antes y despu\u00e9s." },
+      ],
+      actIII: [
+        { label: "El Kit de despliegue", caption: "\u00c1ngulos de discurso por pilar. Listos el lunes siguiente." },
+        { label: "La Gu\u00eda de coherencia", caption: "Una voz, cualquier mano. Tu identidad se sostiene sin ti." },
+      ],
+      actIV: [
+        { label: "La P\u00e1gina de firma", caption: "Numerada. Fechada. Firmada. Un documento hecho para guardarse." },
+      ],
+    },
+  },
+}
 
-const SUCCESS_SIGNALS = [
-  "You are cited as a reference, not just another option",
-  "People come to you, instead of you chasing them",
-  "You hold your prices without negotiating them down",
-  "People start repeating your own words back to you",
-]
 
 function useReveal() {
   const ref = useRef<HTMLElement | null>(null)
@@ -423,30 +599,14 @@ function MockupSignature() {
   )
 }
 
-const ACT_I = [
-  { component: <MockupCover />, label: "The Cover", caption: "A numbered edition. Your house, given its name." },
-  { component: <MockupDedication />, label: "The Dedication", caption: "The opening invocation. The reason this document exists." },
-  { component: <MockupIndex />, label: "The Index", caption: "Five deliverables, one signature. The architecture, declared." },
-]
+const ACT_I_C = [<MockupCover key="c" />, <MockupDedication key="d" />, <MockupIndex key="i" />]
+const ACT_II_C = [<MockupPerceptionMap key="pm" />, <MockupSpine key="sp" />, <MockupOrigin key="or" />, <MockupManifesto key="mf" />, <MockupArchetype key="ar" />]
+const ACT_III_C = [<MockupContentIdeas key="ci" />, <MockupDistribution key="di" />]
+const ACT_IV_C = [<MockupSignature key="sg" />]
 
-const ACT_II = [
-  { component: <MockupPerceptionMap />, label: "The Differentiation Diagnostic", caption: "The narrative field, with the ground no one occupies located." },
-  { component: <MockupSpine />, label: "The Narrative Platform", caption: "Your position, your story, your pillars — articulated." },
-  { component: <MockupOrigin />, label: "The Origin Story", caption: "The rupture before. The conviction after. Named with precision." },
-  { component: <MockupManifesto />, label: "The Manifesto", caption: "A single page. The doctrine, made unforgettable." },
-  { component: <MockupArchetype />, label: "The Language System", caption: "Your words. The forbidden ones. Before and after." },
-]
+type MockItem = { component: React.ReactNode; label: string; caption: string }
 
-const ACT_III = [
-  { component: <MockupContentIdeas />, label: "The Deployment Kit", caption: "Speaking angles by pillar. Ready the Monday after." },
-  { component: <MockupDistribution />, label: "The Coherence Guide", caption: "One voice, any hand. Your identity holds without you." },
-]
-
-const ACT_IV = [
-  { component: <MockupSignature />, label: "The Signature Page", caption: "Numbered. Dated. Signed. A document built to be kept." },
-]
-
-function MockupGrid({ items }: { items: typeof ACT_I }) {
+function MockupGrid({ items }: { items: MockItem[] }) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28 }}>
       {items.map((m, i) => (
@@ -472,7 +632,7 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
   return (
     <div style={{ textAlign: "center", marginBottom: 48, marginTop: 24 }}>
       <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: COLOR, fontStyle: "italic", marginBottom: 8, letterSpacing: "-0.01em" }}>
-        Act {roman}
+        {roman}
       </div>
       <div style={{ width: 40, height: 1, background: COLOR, margin: "0 auto 16px" }} />
       <div style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: "0.3em", textTransform: "uppercase" }}>
@@ -483,6 +643,15 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
 }
 
 export default function BrandNarrativeArchitecturePage() {
+  const t = useT(T)
+  const DELIVERABLES = t.deliverables.map((d, i) => ({ ...d, n: `0${i + 1}` }))
+  const HUMAN_PACT = t.pact
+  const ALSO_RECEIVE = t.alsoReceive
+  const SUCCESS_SIGNALS = t.successSignals
+  const ACT_I = t.mockups.actI.map((m, i) => ({ ...m, component: ACT_I_C[i] }))
+  const ACT_II = t.mockups.actII.map((m, i) => ({ ...m, component: ACT_II_C[i] }))
+  const ACT_III = t.mockups.actIII.map((m, i) => ({ ...m, component: ACT_III_C[i] }))
+  const ACT_IV = t.mockups.actIV.map((m, i) => ({ ...m, component: ACT_IV_C[i] }))
   const hero = useReveal()
   const why = useReveal()
   const human = useReveal()
@@ -503,14 +672,14 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: "1px solid " + COLOR, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
-            Brand Narrative Architecture &middot; 4,500&euro;
+            {t.badge}
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.75rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 32 }}>
-            The brand story that makes you<br />
-            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>impossible to confuse &mdash;<br />and impossible to generate.</span>
+            {t.h1a}<br />
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}<br />{t.h1c}</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 56px", lineHeight: 1.6 }}>
-            The identity, position, and language that make you recognizable at first glance &mdash; and impossible to confuse with your competitors, even when they arm themselves with AI.
+            {t.heroLead}
           </p>
           <Link
             href={STRIPE_URL}
@@ -527,10 +696,10 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>Why Now</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.25rem)", fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.92)" }}>
-            AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart &mdash; everyone has become good.
+            {t.ctxP1}
           </p>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.5rem)", fontWeight: 400, lineHeight: 1.5, color: COLOR, marginTop: 32, fontStyle: "italic" }}>
-            What cannot be generated is an identity. Differentiation is no longer a marketing luxury &mdash; it is your condition for survival.
+            {t.ctxP2}
           </p>
         </div>
       </section>
@@ -541,10 +710,10 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ textAlign: "center", marginBottom: 88 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Why a Human</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4.5vw,3.25rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.1 }}>
-              The AI-proof pact.
+              {t.pactH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
-              What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.
+              {t.pactLead}
             </p>
           </div>
           <div className="pact-grid" style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
@@ -562,7 +731,7 @@ export default function BrandNarrativeArchitecturePage() {
           `}</style>
           <div style={{ marginTop: 64, textAlign: "center" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.4rem)", fontStyle: "italic", color: COLOR, letterSpacing: "-0.01em", lineHeight: 1.5, maxWidth: 700, margin: "0 auto" }}>
-              When everyone has access to the same machine, the only edge left is the one a human refuses to share.
+              {t.pactQuote}
             </p>
           </div>
         </div>
@@ -572,7 +741,7 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: build.visible ? 1 : 0, transform: build.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>What I Build</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.6vw,2rem)", fontWeight: 400, lineHeight: 1.45, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.9)" }}>
-            I build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors &mdash; even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.
+            {t.offerP1}
           </p>
         </div>
       </section>
@@ -581,10 +750,10 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: extraction.visible ? 1 : 0, transform: extraction.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>How It Happens</div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 32, lineHeight: 1.2 }}>
-            It begins with an extraction no one can automate.
+            {t.offerH3}
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>
-            I make you talk, at length, to reach what makes you genuinely singular &mdash; often what you no longer see because you are inside it. This human material, your truth, becomes the foundation. No AI can produce it, because it has not lived you.
+            {t.offerP2}
           </p>
         </div>
       </section>
@@ -593,14 +762,14 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center", opacity: method.visible ? 1 : 0, transform: method.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, marginBottom: 16, textTransform: "uppercase", fontFamily: SANS }}>The Method</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", maxWidth: 700, margin: "0 auto 24px" }}>
-            From that extraction, the work follows a refined process &mdash; <span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span> &mdash; five stages sharpened commission after commission. Each stage produces the artifacts you receive below.
+            {t.offerP3a}<span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span>{t.offerP3b}
           </p>
           <Link
             href="/strawberry-method"
             onClick={() => track("method_click", { from: "commission_page" })}
             style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", padding: "10px 24px", border: "1px solid " + COLOR, borderRadius: 100 }}
           >
-            See the method &rarr;
+            {t.methodCta}
           </Link>
         </div>
       </section>
@@ -610,7 +779,7 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What You Receive</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Five deliverables. Exploitable Monday.
+              {t.delivH2}
             </h2>
           </div>
           <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
@@ -633,26 +802,26 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Inside the Architecture</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              A glimpse of the artifact.
+              {t.glimpseH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7 }}>
-              Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself &mdash; page by page.
+              {t.glimpseLead}
             </p>
           </div>
-          <ActTitle roman="I" title="The Frame" />
+          <ActTitle roman={`${t.actLabel} I`} title={t.acts[0]} />
           <MockupGrid items={ACT_I} />
           <div style={{ height: 100 }} />
-          <ActTitle roman="II" title="The Identity" />
+          <ActTitle roman={`${t.actLabel} II`} title={t.acts[1]} />
           <MockupGrid items={ACT_II} />
           <div style={{ height: 100 }} />
-          <ActTitle roman="III" title="The Deployment" />
+          <ActTitle roman={`${t.actLabel} III`} title={t.acts[2]} />
           <MockupGrid items={ACT_III} />
           <div style={{ height: 100 }} />
-          <ActTitle roman="IV" title="The Signature" />
+          <ActTitle roman={`${t.actLabel} IV`} title={t.acts[3]} />
           <MockupGrid items={ACT_IV} />
           <div style={{ marginTop: 100, textAlign: "center" }}>
             <p style={{ fontFamily: SANS, fontSize: 12, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Stylized previews &middot; Final document delivered as PDF
+              {t.glimpseNote}
             </p>
           </div>
         </div>
@@ -663,11 +832,11 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>How We Will Know It Worked</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-              Remarkable is measurable.
+              {t.measureH2}
             </h2>
           </div>
           <p style={{ fontFamily: SANS, fontSize: "1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, textAlign: "center", maxWidth: 640, margin: "0 auto 48px" }}>
-            Before we start, we note together how you would describe today what sets you apart &mdash; usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.
+            {t.measureLead}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
             {SUCCESS_SIGNALS.map((s, i) => (
@@ -686,7 +855,7 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>What You Also Receive</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-              Beyond the document.
+              {t.alsoH2}
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 28 }}>
@@ -705,11 +874,11 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>The Investment</div>
           <div style={{ fontFamily: SERIF, fontSize: "clamp(4rem,8vw,6rem)", fontWeight: 700, lineHeight: 1, marginBottom: 16, letterSpacing: "-0.04em" }}>
-            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>4,500&euro;</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.price}</span>
           </div>
           <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>A complete repositioning &middot; Delivered and exploitable</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
-            The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, belongs to you and works for you continuously.
+            {t.investLead}
           </p>
         </div>
       </section>
@@ -718,7 +887,7 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 40 }}>
-            Become impossible to confuse.
+            {t.ctaH2}
           </h2>
           <Link
             href={STRIPE_URL}
@@ -729,11 +898,11 @@ export default function BrandNarrativeArchitecturePage() {
             Commission the Work &rarr;
           </Link>
           <div style={{ marginTop: 24, fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
-            Limited to four commissions per quarter.
+            {t.ctaLimit}
           </div>
           <div style={{ marginTop: 12, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.06)", maxWidth: 320, margin: "12px auto 0" }}>
             <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: 0 }}>
-              Confidential commission &middot; NDA available
+              {t.ctaFoot}
             </p>
           </div>
         </div>

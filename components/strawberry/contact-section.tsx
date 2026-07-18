@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useT } from "@/lib/i18n"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -9,17 +10,68 @@ const GLOW = "rgba(230,57,70,0.35)"
 
 const FORMSPREE_URL = "https://formspree.io/f/xnjwroeq"
 
-const CONTACT_INFO = [
-  { label: "Email", value: "hamza@gostrawberryprod.com", icon: "✉" },
-  { label: "Instagram", value: "@strawberry_prods", icon: "◈" },
-  { label: "Location", value: "Paris, France", icon: "◎" },
-]
+const CONTACT_VALUES = ["hamza@gostrawberryprod.com", "@strawberry_prods", "Paris, France"]
+const CONTACT_ICONS = ["✉", "◈", "◎"]
 
-const GOALS = [
-  "Commission the Brand Narrative Architecture",
-  "Just exploring",
-  "Other",
-]
+const T = {
+  en: {
+    kicker: "Reach out",
+    h2a: "Let's ",
+    h2b: "talk.",
+    intro: "Tell me about your house. The conviction you can't articulate yet. The thing your competitors keep stealing — or copying badly. I read every message myself.",
+    lines: "Direct lines",
+    labels: ["Email", "Instagram", "Location"],
+    note: "Limited to four commissions per quarter. If we're full, you'll be the first told when the next slot opens. Every message answered within 24 hours.",
+    sentTitle: "Message received.",
+    sentBody: "I read every one personally. Expect a reply within 24 hours.",
+    nameLabel: "Your name",
+    goalLabel: "What brings you here",
+    goals: ["Commission the Brand Narrative Architecture", "Just exploring", "Other"],
+    messageLabel: "Your message",
+    messagePlaceholder: "Tell me about your house, your stage, what you want to be unforgettable for.",
+    sending: "Sending...",
+    send: "Send Message \u2192",
+    answered: "Answered within 24 hours.",
+  },
+  fr: {
+    kicker: "Nous écrire",
+    h2a: "Parlons-",
+    h2b: "en.",
+    intro: "Parle-moi de ta maison. La conviction que tu n'arrives pas encore à articuler. Ce que tes concurrents te piquent sans cesse — ou copient mal. Je lis chaque message moi-même.",
+    lines: "Lignes directes",
+    labels: ["Email", "Instagram", "Localisation"],
+    note: "Limité à quatre commandes par trimestre. Si c'est complet, tu seras le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",
+    sentTitle: "Message reçu.",
+    sentBody: "Je lis chaque message personnellement. Réponse sous 24 heures.",
+    nameLabel: "Ton nom",
+    goalLabel: "Ce qui t'amène",
+    goals: ["Commander la Brand Narrative Architecture", "J'explore simplement", "Autre"],
+    messageLabel: "Ton message",
+    messagePlaceholder: "Parle-moi de ta maison, de ton stade, de ce pour quoi tu veux être inoubliable.",
+    sending: "Envoi...",
+    send: "Envoyer le message \u2192",
+    answered: "Réponse sous 24 heures.",
+  },
+  es: {
+    kicker: "Escríbenos",
+    h2a: "Habl",
+    h2b: "emos.",
+    intro: "Háblame de tu casa. La convicción que aún no logras articular. Eso que tus competidores te roban sin parar — o copian mal. Leo cada mensaje personalmente.",
+    lines: "Líneas directas",
+    labels: ["Email", "Instagram", "Ubicación"],
+    note: "Limitado a cuatro encargos por trimestre. Si estamos completos, serás el primero en saberlo cuando abra la próxima plaza. Cada mensaje recibe respuesta en 24 horas.",
+    sentTitle: "Mensaje recibido.",
+    sentBody: "Leo cada uno personalmente. Espera respuesta en 24 horas.",
+    nameLabel: "Tu nombre",
+    goalLabel: "Qué te trae por aquí",
+    goals: ["Encargar la Brand Narrative Architecture", "Solo estoy explorando", "Otro"],
+    messageLabel: "Tu mensaje",
+    messagePlaceholder: "Háblame de tu casa, de tu etapa, de aquello por lo que quieres ser inolvidable.",
+    sending: "Enviando...",
+    send: "Enviar mensaje \u2192",
+    answered: "Respuesta en 24 horas.",
+  },
+}
 
 type Status = "idle" | "sending" | "sent" | "error"
 
@@ -39,6 +91,9 @@ function useReveal() {
 }
 
 export function ContactSection() {
+  const t = useT(T)
+  const CONTACT_INFO = t.labels.map((label, i) => ({ label, value: CONTACT_VALUES[i], icon: CONTACT_ICONS[i] }))
+  const GOALS = t.goals
   const { ref, visible } = useReveal()
   const [form, setForm] = useState({ name: "", email: "", goal: "", message: "" })
   const [status, setStatus] = useState<Status>("idle")
@@ -109,13 +164,13 @@ export function ContactSection() {
 
         <div style={{ textAlign: "center", marginBottom: 72 }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-            Reach out
+            {t.kicker}
           </div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 28 }}>
-            Let&apos;s <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>talk.</span>
+            {t.h2a}<span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h2b}</span>
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.65)", maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Tell me about your house. The conviction you can&apos;t articulate yet. The thing your competitors keep stealing &mdash; or copying badly. I read every message myself.
+            {t.intro}
           </p>
         </div>
 
@@ -124,7 +179,7 @@ export function ContactSection() {
           <div>
             <div style={{ marginBottom: 40 }}>
               <div style={{ fontSize: 11, letterSpacing: "0.25em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
-                Direct lines
+                {t.lines}
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 {CONTACT_INFO.map((c) => (
@@ -147,7 +202,7 @@ export function ContactSection() {
 
             <div style={{ padding: "24px 28px", borderLeft: "2px solid " + COLOR, background: "rgba(255,255,255,0.02)" }}>
               <p style={{ fontFamily: SERIF, fontSize: "1.05rem", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, margin: 0 }}>
-                Limited to four commissions per quarter. If we&apos;re full, you&apos;ll be the first told when the next slot opens. Every message answered within 24 hours.
+                {t.note}
               </p>
             </div>
           </div>
@@ -157,17 +212,17 @@ export function ContactSection() {
               <div style={{ padding: "48px 36px", border: "1px solid " + COLOR, background: "rgba(230,57,70,0.06)", textAlign: "center" }}>
                 <div style={{ fontSize: 36, marginBottom: 20 }}>🍓</div>
                 <h3 style={{ fontFamily: SERIF, fontSize: "1.6rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>
-                  Message received.
+                  {t.sentTitle}
                 </h3>
                 <p style={{ fontFamily: SANS, fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.6 }}>
-                  I read every one personally. Expect a reply within 24 hours.
+                  {t.sentBody}
                 </p>
               </div>
             ) : (
               <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
 
                 <div>
-                  <label style={labelStyle} htmlFor="name">Your name</label>
+                  <label style={labelStyle} htmlFor="name">{t.nameLabel}</label>
                   <input
                     id="name"
                     type="text"
@@ -193,7 +248,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>What brings you here</label>
+                  <label style={labelStyle}>{t.goalLabel}</label>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {GOALS.map((g) => {
                       const selected = form.goal === g
@@ -225,7 +280,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label style={labelStyle} htmlFor="message">Your message</label>
+                  <label style={labelStyle} htmlFor="message">{t.messageLabel}</label>
                   <textarea
                     id="message"
                     required
@@ -234,7 +289,7 @@ export function ContactSection() {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     style={{ ...inputStyle, resize: "vertical", minHeight: 120, lineHeight: 1.6 }}
                     disabled={status === "sending"}
-                    placeholder="Tell me about your house, your stage, what you want to be unforgettable for."
+                    placeholder={t.messagePlaceholder}
                   />
                 </div>
 
@@ -263,11 +318,11 @@ export function ContactSection() {
                     marginTop: 8,
                   }}
                 >
-                  {status === "sending" ? "Sending..." : "Send Message \u2192"}
+                  {status === "sending" ? t.sending : t.send}
                 </button>
 
                 <p style={{ textAlign: "center", fontSize: 11, color: "rgba(255,255,255,0.35)", fontFamily: SANS, letterSpacing: "0.04em", margin: 0 }}>
-                  Answered within 24 hours.
+                  {t.answered}
                 </p>
 
               </form>

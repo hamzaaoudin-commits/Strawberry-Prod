@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import { useT } from "@/lib/i18n"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -10,113 +11,201 @@ const GLOW = "rgba(230,57,70,0.35)"
 
 const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 
-const LETTERS = [
-  { letter: "S", name: "Soul", verb: "Find the soul." },
-  { letter: "T", name: "Territory", verb: "Map the territory." },
-  { letter: "R", name: "Reframe", verb: "Reframe the field." },
-  { letter: "A", name: "Architecture", verb: "Build the architecture." },
-  { letter: "W", name: "Weaponize", verb: "Embody the universe." },
-]
+const T = {
+  en: {
+    badge: "The Proprietary Framework",
+    h1a: "The Strawberry",
+    h1b: "Method.",
+    lead: "Five stages. One doctrine. The repeatable architecture behind every house we make unforgettable.",
+    whyH2a: "Most studios improvise.",
+    whyH2b: "We do not.",
+    whyLead: "A framework is not a constraint — it is the discipline that frees creative depth. The Strawberry Method is what we have refined across every commission so that no part of building a remembered house is left to chance.",
+    principles: [
+      { title: "Speed without shortcuts", body: "A method is repeatable. We do not invent the process for each house — we apply a refined one, freeing the time for what is irreducibly creative." },
+      { title: "Precision over instinct", body: "Improvisation is for poets. Building a remembered house demands a structure that holds — five stages, each one earning the next." },
+      { title: "Refined commission after commission", body: "Each engagement sharpens the method. What worked stays, what didn't is rewritten. The S.T.R.A.W. of next year will be sharper than this one." },
+    ],
+    fiveH2: "Five stages. In order. Always.",
+    fiveItalic: "Not a checklist. A category-creation engine.",
+    stagesH2: "How a house is made unforgettable.",
+    craft: "What we craft",
+    outputLabel: "Output",
+    letters: [
+      { letter: "S", name: "Soul", verb: "Find the soul." },
+      { letter: "T", name: "Territory", verb: "Map the territory." },
+      { letter: "R", name: "Reframe", verb: "Reframe the field." },
+      { letter: "A", name: "Architecture", verb: "Build the architecture." },
+      { letter: "W", name: "Weaponize", verb: "Embody the universe." },
+    ],
+    stages: [
+      { description: "Before architecture, before language, before strategy — what is the irreducible reason this house exists? Not the elevator pitch. The conviction. The unreasonable belief the founder holds about the world.", delivers: ["Origin story rewritten as mythology", "Founder conviction articulated in one sentence", "The enemy named — what this house refuses to accept", "The promise — what this house owes the world"], output: "A soul document. The constitutional preamble every other decision flows from." },
+      { description: "A category is a battlefield of perception. Where does the audience currently stand, what stories already occupy their mind, and where are the cultural vacuums — the unclaimed ground that this house can occupy without permission?", delivers: ["Cultural mapping of the category", "Top competitors analyzed for narrative posture", "Identification of three territorial vacuums", "The chosen ground — the perception territory to own"], output: "A perception map. The terrain on which the rest of the work is fought." },
+      { description: "Most brands compete inside the frame the category has set. The remembered ones rewrite the frame itself. We do not position the house against competitors — we redefine the conversation so the house becomes its own category.", delivers: ["Category redefinition — the new frame proposed", "Foundational reframes (3 to 5 conceptual moves)", "Language pivot — old words retired, new ones installed", "The point of view the audience cannot ignore"], output: "A reframe doctrine. The intellectual stance that makes comparison irrelevant." },
+      { description: "Once the soul is found and the field reframed, the narrative architecture is constructed. Five pillars, each a recurring obsession of the house. A founder archetype. Four audience profiles written like film characters. The skeleton on which every piece of communication will hang.", delivers: ["Five narrative pillars defined and named", "Founder archetype articulated — posture, voice, references", "Four audience profiles written as characters", "The narrative spine — how the pillars connect into one story"], output: "A narrative architecture. The structural blueprint of the universe." },
+      { description: "Architecture without execution is theory. The final stage maps the first ninety days — exactly what the house says, in what order, on which surface, and why each piece compounds the next. The universe becomes operational.", delivers: ["90-day narrative doctrine", "Content territories — the five obsessions to dramatize", "Sequencing — which essay sets up which campaign", "Distribution logic — surfaces, cadence, tone calibration"], output: "A 90-day doctrine. The first three months of the universe made real." },
+    ],
+    consH2: "Each stage earns the next.",
+    consLead: "The order is not aesthetic. Skip a stage and the rest collapses.",
+    consequences: [
+      "Without Soul — no anchor. Every decision becomes negotiable.",
+      "Without Territory — no battlefield. You compete where you cannot win.",
+      "Without Reframe — no ownership. You sound like the others, only louder.",
+      "Without Architecture — no compounding. Every piece starts from scratch.",
+      "Without Weaponize — no embodiment. The doctrine never meets the world.",
+    ],
+    bridgeH2: "The workshop. And what comes out of it.",
+    bridgeLeadA: "S.T.R.A.W. is the process — the five stages I move through to build a house. The ",
+    bridgeLeadStrong: "Brand Narrative Architecture",
+    bridgeLeadB: " is what those stages produce — five deliverables, bound into a single editorial document, handed to you at the end of week four.",
+    colMethod: "Method stage",
+    colDeliverable: "Commission deliverable",
+    bridgeFlow: [
+      { stage: "S + T", deliverable: "Differentiation Diagnostic", note: "Soul & Territory mapped together" },
+      { stage: "R", deliverable: "Narrative Platform", note: "The reframed conviction made operational" },
+      { stage: "A", deliverable: "Language System", note: "The vocabulary the architecture demands" },
+      { stage: "W", deliverable: "Deployment Kit", note: "The first 90 days, ready Monday" },
+      { stage: "All five", deliverable: "Coherence Guide", note: "The doctrine, made transmissible" },
+    ],
+    bridgeItalic: "The method is the discipline by which the artifact is made. The artifact is what you take home.",
+    bridgeCta: "See the Commission →",
+    ctaH2a: "Run S.T.R.A.W.",
+    ctaH2b: "on your house.",
+    ctaLead: "The Brand Narrative Architecture is the method, made operational for your house. Four weeks. Five stages. One constitution.",
+    ctaProduct: "Brand Narrative Architecture",
+    ctaPrice: "4,500€",
+    cta: "Apply the Method →",
+    ctaFoot: "Proprietary Framework · Strawberry Production",
+  },
+  fr: {
+    badge: "Le Framework Propri\u00e9taire",
+    h1a: "La M\u00e9thode",
+    h1b: "Strawberry.",
+    lead: "Cinq \u00e9tapes. Une doctrine. L'architecture reproductible derri\u00e8re chaque maison qu'on rend inoubliable.",
+    whyH2a: "La plupart des studios improvisent.",
+    whyH2b: "Pas nous.",
+    whyLead: "Un cadre n'est pas une contrainte — c'est la discipline qui lib\u00e8re la profondeur cr\u00e9ative. La M\u00e9thode Strawberry, c'est ce qu'on a affin\u00e9 au fil de chaque commande pour qu'aucune partie de la construction d'une maison m\u00e9morable ne soit laiss\u00e9e au hasard.",
+    principles: [
+      { title: "La vitesse sans raccourcis", body: "Une m\u00e9thode est reproductible. On n'invente pas le processus pour chaque maison — on en applique un affin\u00e9, ce qui lib\u00e8re le temps pour ce qui est irr\u00e9ductiblement cr\u00e9atif." },
+      { title: "La pr\u00e9cision avant l'instinct", body: "L'improvisation, c'est pour les po\u00e8tes. B\u00e2tir une maison m\u00e9morable exige une structure qui tient — cinq \u00e9tapes, chacune m\u00e9ritant la suivante." },
+      { title: "Affin\u00e9e commande apr\u00e8s commande", body: "Chaque mission aiguise la m\u00e9thode. Ce qui a march\u00e9 reste, ce qui n'a pas march\u00e9 est r\u00e9\u00e9crit. Le S.T.R.A.W. de l'an prochain sera plus tranchant que celui-ci." },
+    ],
+    fiveH2: "Cinq \u00e9tapes. Dans l'ordre. Toujours.",
+    fiveItalic: "Pas une checklist. Un moteur de cr\u00e9ation de cat\u00e9gorie.",
+    stagesH2: "Comment on rend une maison inoubliable.",
+    craft: "Ce qu'on fa\u00e7onne",
+    outputLabel: "Livrable",
+    letters: [
+      { letter: "S", name: "\u00c2me", verb: "Trouver l'\u00e2me." },
+      { letter: "T", name: "Territoire", verb: "Cartographier le territoire." },
+      { letter: "R", name: "Recadrage", verb: "Recadrer le champ." },
+      { letter: "A", name: "Architecture", verb: "B\u00e2tir l'architecture." },
+      { letter: "W", name: "Weaponize", verb: "Incarner l'univers." },
+    ],
+    stages: [
+      { description: "Avant l'architecture, avant le langage, avant la strat\u00e9gie — quelle est la raison irr\u00e9ductible d'exister de cette maison ? Pas le pitch. La conviction. La croyance d\u00e9raisonnable que le fondateur a sur le monde.", delivers: ["R\u00e9cit d'origine r\u00e9\u00e9crit en mythologie", "Conviction du fondateur articul\u00e9e en une phrase", "L'ennemi nomm\u00e9 — ce que cette maison refuse d'accepter", "La promesse — ce que cette maison doit au monde"], output: "Un document d'\u00e2me. Le pr\u00e9ambule constitutionnel dont d\u00e9coule toute autre d\u00e9cision." },
+      { description: "Une cat\u00e9gorie est un champ de bataille de la perception. O\u00f9 se tient l'audience aujourd'hui, quelles histoires occupent d\u00e9j\u00e0 son esprit, et o\u00f9 sont les vides culturels — le terrain vacant que cette maison peut occuper sans permission ?", delivers: ["Cartographie culturelle de la cat\u00e9gorie", "Principaux concurrents analys\u00e9s selon leur posture narrative", "Identification de trois vides territoriaux", "Le terrain choisi — le territoire de perception \u00e0 occuper"], output: "Une carte de perception. Le terrain sur lequel se joue le reste du travail." },
+      { description: "La plupart des marques se battent dans le cadre pos\u00e9 par la cat\u00e9gorie. Celles dont on se souvient r\u00e9\u00e9crivent le cadre lui-m\u00eame. On ne positionne pas la maison contre ses concurrents — on red\u00e9finit la conversation pour que la maison devienne sa propre cat\u00e9gorie.", delivers: ["Red\u00e9finition de cat\u00e9gorie — le nouveau cadre propos\u00e9", "Recadrages fondateurs (3 \u00e0 5 mouvements conceptuels)", "Pivot de langage — anciens mots retir\u00e9s, nouveaux install\u00e9s", "Le point de vue que l'audience ne peut pas ignorer"], output: "Une doctrine de recadrage. La position intellectuelle qui rend la comparaison sans objet." },
+      { description: "Une fois l'\u00e2me trouv\u00e9e et le champ recadr\u00e9, l'architecture narrative se construit. Cinq piliers, chacun une obsession r\u00e9currente de la maison. Un arch\u00e9type de fondateur. Quatre profils d'audience \u00e9crits comme des personnages de film. Le squelette auquel s'accrochera chaque prise de parole.", delivers: ["Cinq piliers narratifs d\u00e9finis et nomm\u00e9s", "Arch\u00e9type du fondateur articul\u00e9 — posture, voix, r\u00e9f\u00e9rences", "Quatre profils d'audience \u00e9crits comme des personnages", "La colonne narrative — comment les piliers se relient en une seule histoire"], output: "Une architecture narrative. Le plan structurel de l'univers." },
+      { description: "Une architecture sans ex\u00e9cution est une th\u00e9orie. La derni\u00e8re \u00e9tape cartographie les quatre-vingt-dix premiers jours — exactement ce que la maison dit, dans quel ordre, sur quelle surface, et pourquoi chaque pi\u00e8ce renforce la suivante. L'univers devient op\u00e9rationnel.", delivers: ["Doctrine narrative \u00e0 90 jours", "Territoires de contenu — les cinq obsessions \u00e0 dramatiser", "S\u00e9quen\u00e7age — quel essai pr\u00e9pare quelle campagne", "Logique de diffusion — surfaces, cadence, calibrage du ton"], output: "Une doctrine \u00e0 90 jours. Les trois premiers mois de l'univers rendus r\u00e9els." },
+    ],
+    consH2: "Chaque \u00e9tape m\u00e9rite la suivante.",
+    consLead: "L'ordre n'est pas esth\u00e9tique. Saute une \u00e9tape et le reste s'effondre.",
+    consequences: [
+      "Sans \u00c2me — pas d'ancrage. Chaque d\u00e9cision devient n\u00e9gociable.",
+      "Sans Territoire — pas de champ de bataille. Tu te bats l\u00e0 o\u00f9 tu ne peux pas gagner.",
+      "Sans Recadrage — pas d'appropriation. Tu sonnes comme les autres, en plus fort.",
+      "Sans Architecture — pas d'effet cumul\u00e9. Chaque pi\u00e8ce repart de z\u00e9ro.",
+      "Sans Weaponize — pas d'incarnation. La doctrine ne rencontre jamais le monde.",
+    ],
+    bridgeH2: "L'atelier. Et ce qui en sort.",
+    bridgeLeadA: "S.T.R.A.W. est le processus — les cinq \u00e9tapes que je traverse pour b\u00e2tir une maison. La ",
+    bridgeLeadStrong: "Brand Narrative Architecture",
+    bridgeLeadB: " est ce que ces \u00e9tapes produisent — cinq livrables, reli\u00e9s en un seul document \u00e9ditorial, remis \u00e0 la fin de la quatri\u00e8me semaine.",
+    colMethod: "\u00c9tape de m\u00e9thode",
+    colDeliverable: "Livrable de la commande",
+    bridgeFlow: [
+      { stage: "S + T", deliverable: "Diagnostic de diff\u00e9renciation", note: "\u00c2me & Territoire cartographi\u00e9s ensemble" },
+      { stage: "R", deliverable: "Plateforme narrative", note: "La conviction recadr\u00e9e rendue op\u00e9rationnelle" },
+      { stage: "A", deliverable: "Syst\u00e8me de langage", note: "Le vocabulaire qu'exige l'architecture" },
+      { stage: "W", deliverable: "Kit de d\u00e9ploiement", note: "Les 90 premiers jours, pr\u00eats lundi" },
+      { stage: "Les cinq", deliverable: "Guide de coh\u00e9rence", note: "La doctrine, rendue transmissible" },
+    ],
+    bridgeItalic: "La m\u00e9thode est la discipline par laquelle l'artefact est fait. L'artefact est ce que tu emportes.",
+    bridgeCta: "Voir la commande →",
+    ctaH2a: "Applique S.T.R.A.W.",
+    ctaH2b: "\u00e0 ta maison.",
+    ctaLead: "La Brand Narrative Architecture, c'est la m\u00e9thode rendue op\u00e9rationnelle pour ta maison. Quatre semaines. Cinq \u00e9tapes. Une constitution.",
+    ctaProduct: "Brand Narrative Architecture",
+    ctaPrice: "4 500€",
+    cta: "Appliquer la m\u00e9thode →",
+    ctaFoot: "Framework propri\u00e9taire · Strawberry Production",
+  },
+  es: {
+    badge: "El Framework Propietario",
+    h1a: "El M\u00e9todo",
+    h1b: "Strawberry.",
+    lead: "Cinco etapas. Una doctrina. La arquitectura repetible detr\u00e1s de cada casa que hacemos inolvidable.",
+    whyH2a: "La mayor\u00eda de los estudios improvisan.",
+    whyH2b: "Nosotros no.",
+    whyLead: "Un marco no es una restricci\u00f3n — es la disciplina que libera la profundidad creativa. El M\u00e9todo Strawberry es lo que hemos afinado encargo tras encargo para que ninguna parte de construir una casa memorable quede al azar.",
+    principles: [
+      { title: "Velocidad sin atajos", body: "Un m\u00e9todo es repetible. No inventamos el proceso para cada casa — aplicamos uno afinado, lo que libera tiempo para lo irreductiblemente creativo." },
+      { title: "Precisi\u00f3n antes que instinto", body: "La improvisaci\u00f3n es para los poetas. Construir una casa memorable exige una estructura que aguante — cinco etapas, cada una mereciendo la siguiente." },
+      { title: "Afinado encargo tras encargo", body: "Cada proyecto afila el m\u00e9todo. Lo que funcion\u00f3 se queda, lo que no se reescribe. El S.T.R.A.W. del a\u00f1o que viene ser\u00e1 m\u00e1s afilado que este." },
+    ],
+    fiveH2: "Cinco etapas. En orden. Siempre.",
+    fiveItalic: "No es una checklist. Es un motor de creaci\u00f3n de categor\u00eda.",
+    stagesH2: "C\u00f3mo se hace inolvidable una casa.",
+    craft: "Lo que elaboramos",
+    outputLabel: "Entregable",
+    letters: [
+      { letter: "S", name: "Alma", verb: "Encontrar el alma." },
+      { letter: "T", name: "Territorio", verb: "Cartografiar el territorio." },
+      { letter: "R", name: "Reencuadre", verb: "Reencuadrar el campo." },
+      { letter: "A", name: "Arquitectura", verb: "Construir la arquitectura." },
+      { letter: "W", name: "Weaponize", verb: "Encarnar el universo." },
+    ],
+    stages: [
+      { description: "Antes de la arquitectura, antes del lenguaje, antes de la estrategia — ¿cu\u00e1l es la raz\u00f3n irreductible por la que existe esta casa? No el pitch. La convicci\u00f3n. La creencia irrazonable que el fundador tiene sobre el mundo.", delivers: ["Relato de origen reescrito como mitolog\u00eda", "Convicci\u00f3n del fundador articulada en una frase", "El enemigo nombrado — lo que esta casa se niega a aceptar", "La promesa — lo que esta casa le debe al mundo"], output: "Un documento de alma. El pre\u00e1mbulo constitucional del que fluye toda otra decisi\u00f3n." },
+      { description: "Una categor\u00eda es un campo de batalla de la percepci\u00f3n. ¿D\u00f3nde est\u00e1 hoy la audiencia, qu\u00e9 historias ocupan ya su mente, y d\u00f3nde est\u00e1n los vac\u00edos culturales — el terreno sin reclamar que esta casa puede ocupar sin permiso?", delivers: ["Cartograf\u00eda cultural de la categor\u00eda", "Principales competidores analizados por su postura narrativa", "Identificaci\u00f3n de tres vac\u00edos territoriales", "El terreno elegido — el territorio de percepci\u00f3n a ocupar"], output: "Un mapa de percepci\u00f3n. El terreno sobre el que se libra el resto del trabajo." },
+      { description: "La mayor\u00eda de las marcas compiten dentro del marco que fij\u00f3 la categor\u00eda. Las memorables reescriben el marco mismo. No posicionamos la casa contra sus competidores — redefinimos la conversaci\u00f3n para que la casa se convierta en su propia categor\u00eda.", delivers: ["Redefinici\u00f3n de categor\u00eda — el nuevo marco propuesto", "Reencuadres fundacionales (3 a 5 movimientos conceptuales)", "Pivote de lenguaje — palabras viejas retiradas, nuevas instaladas", "El punto de vista que la audiencia no puede ignorar"], output: "Una doctrina de reencuadre. La postura intelectual que vuelve irrelevante la comparaci\u00f3n." },
+      { description: "Una vez hallada el alma y reencuadrado el campo, se construye la arquitectura narrativa. Cinco pilares, cada uno una obsesi\u00f3n recurrente de la casa. Un arquetipo de fundador. Cuatro perfiles de audiencia escritos como personajes de cine. El esqueleto del que colgar\u00e1 cada pieza de comunicaci\u00f3n.", delivers: ["Cinco pilares narrativos definidos y nombrados", "Arquetipo del fundador articulado — postura, voz, referencias", "Cuatro perfiles de audiencia escritos como personajes", "La columna narrativa — c\u00f3mo los pilares se conectan en una sola historia"], output: "Una arquitectura narrativa. El plano estructural del universo." },
+      { description: "La arquitectura sin ejecuci\u00f3n es teor\u00eda. La \u00faltima etapa cartograf\u00eda los primeros noventa d\u00edas — exactamente qu\u00e9 dice la casa, en qu\u00e9 orden, en qu\u00e9 superficie, y por qu\u00e9 cada pieza potencia la siguiente. El universo se vuelve operativo.", delivers: ["Doctrina narrativa a 90 d\u00edas", "Territorios de contenido — las cinco obsesiones a dramatizar", "Secuenciaci\u00f3n — qu\u00e9 ensayo prepara qu\u00e9 campa\u00f1a", "L\u00f3gica de distribuci\u00f3n — superficies, cadencia, calibraci\u00f3n del tono"], output: "Una doctrina a 90 d\u00edas. Los primeros tres meses del universo hechos reales." },
+    ],
+    consH2: "Cada etapa merece la siguiente.",
+    consLead: "El orden no es est\u00e9tico. S\u00e1ltate una etapa y el resto se derrumba.",
+    consequences: [
+      "Sin Alma — sin ancla. Cada decisi\u00f3n se vuelve negociable.",
+      "Sin Territorio — sin campo de batalla. Compites donde no puedes ganar.",
+      "Sin Reencuadre — sin apropiaci\u00f3n. Suenas como los dem\u00e1s, solo que m\u00e1s fuerte.",
+      "Sin Arquitectura — sin acumulaci\u00f3n. Cada pieza empieza de cero.",
+      "Sin Weaponize — sin encarnaci\u00f3n. La doctrina nunca se encuentra con el mundo.",
+    ],
+    bridgeH2: "El taller. Y lo que sale de \u00e9l.",
+    bridgeLeadA: "S.T.R.A.W. es el proceso — las cinco etapas que recorro para construir una casa. La ",
+    bridgeLeadStrong: "Brand Narrative Architecture",
+    bridgeLeadB: " es lo que esas etapas producen — cinco entregables, encuadernados en un \u00fanico documento editorial, entregado al final de la cuarta semana.",
+    colMethod: "Etapa del m\u00e9todo",
+    colDeliverable: "Entregable del encargo",
+    bridgeFlow: [
+      { stage: "S + T", deliverable: "Diagn\u00f3stico de diferenciaci\u00f3n", note: "Alma y Territorio cartografiados juntos" },
+      { stage: "R", deliverable: "Plataforma narrativa", note: "La convicci\u00f3n reencuadrada hecha operativa" },
+      { stage: "A", deliverable: "Sistema de lenguaje", note: "El vocabulario que exige la arquitectura" },
+      { stage: "W", deliverable: "Kit de despliegue", note: "Los primeros 90 d\u00edas, listos el lunes" },
+      { stage: "Las cinco", deliverable: "Gu\u00eda de coherencia", note: "La doctrina, hecha transmisible" },
+    ],
+    bridgeItalic: "El m\u00e9todo es la disciplina por la cual se hace el artefacto. El artefacto es lo que te llevas.",
+    bridgeCta: "Ver el encargo →",
+    ctaH2a: "Aplica S.T.R.A.W.",
+    ctaH2b: "a tu casa.",
+    ctaLead: "La Brand Narrative Architecture es el m\u00e9todo, hecho operativo para tu casa. Cuatro semanas. Cinco etapas. Una constituci\u00f3n.",
+    ctaProduct: "Brand Narrative Architecture",
+    ctaPrice: "4.500€",
+    cta: "Aplicar el m\u00e9todo →",
+    ctaFoot: "Framework propietario · Strawberry Production",
+  },
+}
 
-const PRINCIPLES = [
-  {
-    title: "Speed without shortcuts",
-    body: "A method is repeatable. We do not invent the process for each house — we apply a refined one, freeing the time for what is irreducibly creative.",
-  },
-  {
-    title: "Precision over instinct",
-    body: "Improvisation is for poets. Building a remembered house demands a structure that holds — five stages, each one earning the next.",
-  },
-  {
-    title: "Refined commission after commission",
-    body: "Each engagement sharpens the method. What worked stays, what didn't is rewritten. The S.T.R.A.W. of next year will be sharper than this one.",
-  },
-]
-
-const STAGES = [
-  {
-    letter: "S",
-    name: "Soul",
-    verb: "Find the soul.",
-    description: "Before architecture, before language, before strategy — what is the irreducible reason this house exists? Not the elevator pitch. The conviction. The unreasonable belief the founder holds about the world.",
-    delivers: [
-      "Origin story rewritten as mythology",
-      "Founder conviction articulated in one sentence",
-      "The enemy named — what this house refuses to accept",
-      "The promise — what this house owes the world",
-    ],
-    output: "A soul document. The constitutional preamble every other decision flows from.",
-  },
-  {
-    letter: "T",
-    name: "Territory",
-    verb: "Map the territory.",
-    description: "A category is a battlefield of perception. Where does the audience currently stand, what stories already occupy their mind, and where are the cultural vacuums — the unclaimed ground that this house can occupy without permission?",
-    delivers: [
-      "Cultural mapping of the category",
-      "Top competitors analyzed for narrative posture",
-      "Identification of three territorial vacuums",
-      "The chosen ground — the perception territory to own",
-    ],
-    output: "A perception map. The terrain on which the rest of the work is fought.",
-  },
-  {
-    letter: "R",
-    name: "Reframe",
-    verb: "Reframe the field.",
-    description: "Most brands compete inside the frame the category has set. The remembered ones rewrite the frame itself. We do not position the house against competitors — we redefine the conversation so the house becomes its own category.",
-    delivers: [
-      "Category redefinition — the new frame proposed",
-      "Foundational reframes (3 to 5 conceptual moves)",
-      "Language pivot — old words retired, new ones installed",
-      "The point of view the audience cannot ignore",
-    ],
-    output: "A reframe doctrine. The intellectual stance that makes comparison irrelevant.",
-  },
-  {
-    letter: "A",
-    name: "Architecture",
-    verb: "Build the architecture.",
-    description: "Once the soul is found and the field reframed, the narrative architecture is constructed. Five pillars, each a recurring obsession of the house. A founder archetype. Four audience profiles written like film characters. The skeleton on which every piece of communication will hang.",
-    delivers: [
-      "Five narrative pillars defined and named",
-      "Founder archetype articulated — posture, voice, references",
-      "Four audience profiles written as characters",
-      "The narrative spine — how the pillars connect into one story",
-    ],
-    output: "A narrative architecture. The structural blueprint of the universe.",
-  },
-  {
-    letter: "W",
-    name: "Weaponize",
-    verb: "Embody the universe.",
-    description: "Architecture without execution is theory. The final stage maps the first ninety days — exactly what the house says, in what order, on which surface, and why each piece compounds the next. The universe becomes operational.",
-    delivers: [
-      "90-day narrative doctrine",
-      "Content territories — the five obsessions to dramatize",
-      "Sequencing — which essay sets up which campaign",
-      "Distribution logic — surfaces, cadence, tone calibration",
-    ],
-    output: "A 90-day doctrine. The first three months of the universe made real.",
-  },
-]
-
-const CONSEQUENCES = [
-  { letter: "S", text: "Without Soul — no anchor. Every decision becomes negotiable." },
-  { letter: "T", text: "Without Territory — no battlefield. You compete where you cannot win." },
-  { letter: "R", text: "Without Reframe — no ownership. You sound like the others, only louder." },
-  { letter: "A", text: "Without Architecture — no compounding. Every piece starts from scratch." },
-  { letter: "W", text: "Without Weaponize — no embodiment. The doctrine never meets the world." },
-]
-
-// The bridge from method (process) to commission (artifact)
-const BRIDGE_FLOW = [
-  { stage: "S + T", arrow: "→", deliverable: "Differentiation Diagnostic", note: "Soul & Territory mapped together" },
-  { stage: "R", arrow: "→", deliverable: "Narrative Platform", note: "The reframed conviction made operational" },
-  { stage: "A", arrow: "→", deliverable: "Language System", note: "The vocabulary the architecture demands" },
-  { stage: "W", arrow: "→", deliverable: "Deployment Kit", note: "The first 90 days, ready Monday" },
-  { stage: "All five", arrow: "→", deliverable: "Coherence Guide", note: "The doctrine, made transmissible" },
-]
 
 function useReveal() {
   const ref = useRef<HTMLElement | null>(null)
@@ -140,6 +229,12 @@ function useReveal() {
 }
 
 export default function StrawberryMethodPage() {
+  const t = useT(T)
+  const LETTERS = t.letters
+  const PRINCIPLES = t.principles
+  const STAGES = t.stages.map((st, i) => ({ ...st, ...t.letters[i] }))
+  const CONSEQUENCES = t.consequences.map((text, i) => ({ text, letter: t.letters[i].letter }))
+  const BRIDGE_FLOW = t.bridgeFlow.map((b) => ({ ...b, arrow: "\u2192" }))
   const hero = useReveal()
   const why = useReveal()
   const reveal = useReveal()
@@ -156,14 +251,14 @@ export default function StrawberryMethodPage() {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.4, pointerEvents: "none" }} />
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
-            The Proprietary Framework
+            {t.badge}
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
-            The Strawberry<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Method.</span>
+            {t.h1a}<br />
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
-            Five stages. One doctrine. The repeatable architecture behind every house we make unforgettable.
+            {t.lead}
           </p>
         </div>
       </section>
@@ -174,10 +269,10 @@ export default function StrawberryMethodPage() {
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Why a Framework</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              Most studios improvise.<br />We do not.
+              {t.whyH2a}<br />{t.whyH2b}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(1rem, 1.3vw, 1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
-              A framework is not a constraint — it is the discipline that frees creative depth. The Strawberry Method is what we have refined across every commission so that no part of building a remembered house is left to chance.
+              {t.whyLead}
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
@@ -201,7 +296,7 @@ export default function StrawberryMethodPage() {
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>The Acronym</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Five stages. In order. Always.
+              {t.fiveH2}
             </h2>
           </div>
 
@@ -236,7 +331,7 @@ export default function StrawberryMethodPage() {
 
           <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem, 1.7vw, 1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
-              Not a checklist. A category-creation engine.
+              {t.fiveItalic}
             </p>
           </div>
         </div>
@@ -249,7 +344,7 @@ export default function StrawberryMethodPage() {
           <div style={{ textAlign: "center", marginBottom: 96 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>The Five Stages</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              How a house is made unforgettable.
+              {t.stagesH2}
             </h2>
           </div>
 
@@ -281,7 +376,7 @@ export default function StrawberryMethodPage() {
 
                   <div style={{ marginBottom: 32 }}>
                     <div style={{ fontSize: 10, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 20, textTransform: "uppercase", fontFamily: SANS }}>
-                      What we craft
+                      {t.craft}
                     </div>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
                       {s.delivers.map((d, j) => (
@@ -295,7 +390,7 @@ export default function StrawberryMethodPage() {
 
                   <div style={{ borderLeft: `2px solid ${COLOR}`, padding: "20px 24px", background: "rgba(230,57,70,0.04)", maxWidth: 720 }}>
                     <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 10, textTransform: "uppercase", fontFamily: SANS }}>
-                      Output
+                      {t.outputLabel}
                     </div>
                     <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.4vw, 1.15rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
                       {s.output}
@@ -314,10 +409,10 @@ export default function StrawberryMethodPage() {
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>Why It Works</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              Each stage earns the next.
+              {t.consH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "1rem", color: "rgba(255,255,255,0.6)", maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
-              The order is not aesthetic. Skip a stage and the rest collapses.
+              {t.consLead}
             </p>
           </div>
 
@@ -344,10 +439,10 @@ export default function StrawberryMethodPage() {
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>From Method to Artifact</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
-              The workshop. And what comes out of it.
+              {t.bridgeH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
-              S.T.R.A.W. is the process — the five stages I move through to build a house. The <strong style={{ color: "#fff" }}>Brand Narrative Architecture</strong> is what those stages produce — five deliverables, bound into a single editorial document, handed to you at the end of week four.
+              {t.bridgeLeadA}<strong style={{ color: "#fff" }}>{t.bridgeLeadStrong}</strong>{t.bridgeLeadB}
             </p>
           </div>
 
@@ -357,11 +452,11 @@ export default function StrawberryMethodPage() {
             {/* Header row */}
             <div style={{ display: "grid", gridTemplateColumns: "minmax(110px,1fr) auto minmax(220px,1.4fr)", gap: "clamp(12px, 2vw, 24px)", padding: "20px clamp(1rem, 2.5vw, 2rem)", borderBottom: "1px solid rgba(255,255,255,0.1)", alignItems: "center" }}>
               <div style={{ fontSize: 10, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", fontFamily: SANS }}>
-                Method stage
+                {t.colMethod}
               </div>
               <div style={{ width: 16 }} />
               <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>
-                Commission deliverable
+                {t.colDeliverable}
               </div>
             </div>
 
@@ -388,10 +483,10 @@ export default function StrawberryMethodPage() {
 
           <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto" }}>
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", marginBottom: 32 }}>
-              The method is the discipline by which the artifact is made. The artifact is what you take home.
+              {t.bridgeItalic}
             </p>
             <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 14, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", padding: "12px 28px", border: `1px solid ${COLOR}`, borderRadius: 100, transition: "all 0.2s" }}>
-              See the Commission →
+              {t.bridgeCta}
             </Link>
           </div>
         </div>
@@ -403,28 +498,28 @@ export default function StrawberryMethodPage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>The Method, Applied</div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
-            Run S.T.R.A.W.<br />on your house.
+            {t.ctaH2a}<br />{t.ctaH2b}
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
-            The Brand Narrative Architecture is the method, made operational for your house. Four weeks. Five stages. One constitution.
+            {t.ctaLead}
           </p>
 
           <div style={{ marginBottom: 32, padding: "24px 32px", border: `1px solid rgba(230,57,70,0.3)`, background: "rgba(230,57,70,0.04)", maxWidth: 520, margin: "0 auto 48px" }}>
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 12, textTransform: "uppercase" }}>The Signature Commission</div>
             <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 700, marginBottom: 8, letterSpacing: "-0.02em" }}>
-              Brand Narrative Architecture
+              {t.ctaProduct}
             </div>
             <div style={{ fontFamily: SERIF, fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 700, color: COLOR, letterSpacing: "-0.03em" }}>
-              4,500€
+              {t.ctaPrice}
             </div>
           </div>
 
           <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}`, marginBottom: 24 }}>
-            Apply the Method →
+            {t.cta}
           </Link>
 
           <div style={{ marginTop: 32, fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: SANS }}>
-            Proprietary Framework · Strawberry Production
+            {t.ctaFoot}
           </div>
         </div>
       </section>

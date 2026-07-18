@@ -5,12 +5,47 @@ import Link from "next/link"
 import { track } from "@vercel/analytics"
 import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
+import { useT } from "@/lib/i18n"
 
 const BRANDS = [
   "Notion", "Linear", "Substack", "Pitch", "Framer", "Raycast", "Superhuman", "Beehiiv", "Cal.com", "Resend", "Pennylane", "Vercel"
 ]
 
+const T = {
+  en: {
+    badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
+    h1a: "We don't build brands.",
+    h1b: "We build the universe they live in.",
+    sub: "A narrative perception studio building the identity, position, and language that make founders impossible to confuse and impossible to generate. From Paris.",
+    cta1: "Commission the Work \u2192",
+    cta2: "View case studies",
+    trusted: "Trusted by ambitious creators, founders, and brands who refuse to be ordinary.",
+    stats: ["47+ houses served", "8.4M+ EUR in client revenue attributed", "94% renewal or referral rate", "12-week average time to ROI"],
+  },
+  fr: {
+    badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
+    h1a: "On ne construit pas des marques.",
+    h1b: "On construit l'univers dans lequel elles vivent.",
+    sub: "Un studio de perception narrative qui bâtit l'identité, la position et le langage qui rendent les fondateurs impossibles à confondre — et impossibles à générer. Depuis Paris.",
+    cta1: "Commander le travail \u2192",
+    cta2: "Voir les études de cas",
+    trusted: "La confiance de créateurs, fondateurs et marques ambitieux qui refusent d'être ordinaires.",
+    stats: ["47+ maisons accompagnées", "8,4M€+ de revenus clients attribués", "94% de reconduction ou recommandation", "12 semaines de délai moyen jusqu'au ROI"],
+  },
+  es: {
+    badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
+    h1a: "No construimos marcas.",
+    h1b: "Construimos el universo en el que viven.",
+    sub: "Un estudio de percepción narrativa que construye la identidad, la posición y el lenguaje que hacen a los fundadores imposibles de confundir — e imposibles de generar. Desde París.",
+    cta1: "Encargar el trabajo \u2192",
+    cta2: "Ver casos de estudio",
+    trusted: "La confianza de creadores, fundadores y marcas ambiciosos que se niegan a ser ordinarios.",
+    stats: ["47+ casas atendidas", "8,4M€+ en ingresos de clientes atribuidos", "94% de renovación o recomendación", "12 semanas de tiempo medio hasta el ROI"],
+  },
+}
+
 export function HeroSection() {
+  const t = useT(T)
   const mouse = useMouseParallax(18)
   const [mounted, setMounted] = useState(false)
   
@@ -62,7 +97,7 @@ export function HeroSection() {
             maxWidth: "100%", overflow: "hidden",
           }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#e63946", boxShadow: "0 0 8px #e63946", flexShrink: 0 }} />
-            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>NARRATIVE PERCEPTION STUDIO &middot; PARIS</span>
+            <span style={{ color: "#e63946", fontSize: 11, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: "0.1em", fontWeight: 600, whiteSpace: "nowrap" }}>{t.badge}</span>
           </div>
 
           <h1 style={{
@@ -76,10 +111,10 @@ export function HeroSection() {
             maxWidth: "100%",
             wordBreak: "break-word",
           }}>
-            We don&apos;t build brands.
+            {t.h1a}
             <br />
             <span className="gradient-text">
-              We build the universe they live in.
+              {t.h1b}
             </span>
           </h1>
 
@@ -91,7 +126,7 @@ export function HeroSection() {
             maxWidth: 640,
             marginBottom: 52,
           }}>
-            A narrative perception studio building the identity, position, and language that make founders impossible to confuse and impossible to generate. From Paris.
+            {t.sub}
           </p>
 
           <div className="hero-cta" style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
@@ -108,7 +143,7 @@ export function HeroSection() {
                 display: "inline-block",
               }}
             >
-              Commission the Work &rarr;
+              {t.cta1}
             </Link>
             <Link href="/case-studies" style={{
               color: "rgba(255,255,255,0.55)", fontSize: 14,
@@ -117,24 +152,19 @@ export function HeroSection() {
               paddingBottom: 2, transition: "color 0.2s, border-color 0.2s",
               letterSpacing: "0.02em",
             }}>
-              View case studies
+              {t.cta2}
             </Link>
           </div>
 
           <div style={{ marginTop: 80, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", marginBottom: 8 }}>
-              Trusted by ambitious creators, founders, and brands who refuse to be ordinary.
+              {t.trusted}
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", marginBottom: 24 }}>
-              {[
-                { label: "47+ houses served" },
-                { label: "8.4M+ EUR in client revenue attributed" },
-                { label: "94% renewal or referral rate" },
-                { label: "12-week average time to ROI" }
-              ].map((item, idx) => (
+              {t.stats.map((label, idx) => (
                 <div key={idx} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ color: "#e63946", fontSize: 16 }}>&#10003;</span>
-                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>{item.label}</span>
+                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>{label}</span>
                 </div>
               ))}
             </div>
