@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useT } from "@/lib/i18n"
-import { FORMSPREE_URL } from "@/lib/config"
+import { CONTACT_ENDPOINT } from "@/lib/config"
 import { LIMITS, isValidEmail, sanitize, isBot, rateLimit, honeypotProps } from "@/lib/form-security"
 
 
@@ -147,19 +147,17 @@ export function ContactSection() {
     try {
       const controller = new AbortController()
       const timeout = setTimeout(() => controller.abort(), 15_000)
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        // Don't send cookies/credentials to a third-party endpoint.
-        credentials: "omit",
-        referrerPolicy: "strict-origin-when-cross-origin",
+        credentials: "same-origin",
         signal: controller.signal,
         body: JSON.stringify({
           name,
           email,
           goal,
           message,
-          _subject: `New contact from ${name} - ${goal || "no goal selected"}`,
+          company_website: honeypot,
         }),
       })
       clearTimeout(timeout)

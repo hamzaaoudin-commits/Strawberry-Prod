@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /fr/thank-you
+Disallow: /en/thank-you
+Disallow: /es/thank-you
 
 Sitemap: https://www.gostrawberryprod.com/sitemap.xml

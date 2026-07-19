@@ -22,10 +22,14 @@ function env(value: string | undefined, fallback: string): string {
   return v && v.length > 0 ? v : fallback
 }
 
-/** Public Formspree form ID. Override with NEXT_PUBLIC_FORMSPREE_ID. */
-const FORMSPREE_ID = env(process.env.NEXT_PUBLIC_FORMSPREE_ID, "xnjwroeq")
-
-export const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
+/**
+ * Submissions go to our own API route, never straight to the form provider.
+ *
+ * The provider's ID now lives in a server-only variable (FORMSPREE_ID) read by
+ * app/api/contact/route.ts. Nothing in the browser bundle reveals where the
+ * data ultimately goes, so the endpoint cannot be scraped and flooded.
+ */
+export const CONTACT_ENDPOINT = "/api/contact"
 
 /**
  * Stripe payment links. Anything not yet created falls back to the contact

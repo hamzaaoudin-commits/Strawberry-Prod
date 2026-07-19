@@ -4,18 +4,32 @@
 // Blocks injected scripts, clickjacking, and unauthorised data exfiltration.
 const ContentSecurityPolicy = [
   "default-src 'self'",
-  // Next.js requires inline/eval for its runtime; styled-jsx + inline styles need 'unsafe-inline'.
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://va.vercel-scripts.com",
+
+  // 'unsafe-eval' has been removed: it was only ever needed by the dev server,
+  // and leaving it in production lets any injected string become executable code.
+  // cdnjs was dropped with the Chart.js case-study graphs — no external script
+  // host remains except Vercel's own analytics.
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+
+  // Inline styles are still required by the remaining style={{…}} blocks.
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob: https:",
-  // Only our own origin, Formspree (contact form) and Vercel analytics may receive data.
-  "connect-src 'self' https://formspree.io https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+
+  // Narrowed from "https:" — an open image host is a classic exfiltration
+  // channel, since a beacon URL can carry stolen data in its query string.
+  "img-src 'self' data: blob:",
+
+  // The browser may now only send data to our own origin. Form submissions go
+  // through /api/contact, so no third-party endpoint is reachable from the page.
+  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+
   "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
-  "form-action 'self' https://formspree.io https://buy.stripe.com",
+  "form-action 'self' https://buy.stripe.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "object-src 'none'",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
   "upgrade-insecure-requests",
 ].join('; ')
 
@@ -35,6 +49,10 @@ const securityHeaders = [
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
   { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  // Gives the origin its own agent cluster, limiting cross-origin memory sharing.
+  { key: 'Origin-Agent-Cluster', value: '?1' },
+  // Legacy auditors still look for this; harmless on modern browsers.
+  { key: 'X-XSS-Protection', value: '0' },
   { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
 ]
 

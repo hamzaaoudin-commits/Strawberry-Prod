@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
-import { FORMSPREE_URL } from "@/lib/config"
+import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
 
@@ -105,11 +105,10 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
     try {
       const controller = new AbortController()
       const timeout = setTimeout(() => controller.abort(), 15_000)
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        credentials: "omit",
-        referrerPolicy: "strict-origin-when-cross-origin",
+        credentials: "same-origin",
         signal: controller.signal,
         body: JSON.stringify({ email: clean, source: "atlas_download_home" }),
       })
