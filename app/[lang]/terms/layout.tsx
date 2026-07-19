@@ -1,0 +1,35 @@
+import type { Metadata } from 'next'
+import { alternatesFor, SITE } from '@/lib/routing'
+import { isLang, type Lang } from '@/lib/lang'
+
+const COPY: Record<Lang, { title: string; description: string }> = {
+  fr: { title: "Conditions générales (EN)", description: "Terms and conditions of Strawberry Production." },
+  en: { title: "Terms and conditions", description: "Terms and conditions of Strawberry Production." },
+  es: { title: "Términos y condiciones (EN)", description: "Términos y condiciones de Strawberry Production." },
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang: raw } = await params
+  const lang: Lang = isLang(raw) ? raw : 'fr'
+  const c = COPY[lang]
+
+  return {
+    title: c.title,
+    description: c.description,
+    alternates: alternatesFor('/terms'),
+    openGraph: {
+      title: c.title,
+      description: c.description,
+      url: `${SITE}/${lang}/terms`,
+      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    },
+  }
+}
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>
+}
