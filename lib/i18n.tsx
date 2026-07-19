@@ -1,40 +1,29 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
+import { createContext, useContext, type ReactNode } from "react"
+import { DEFAULT_LANG, type Lang } from "@/lib/lang"
 
-export type Lang = "fr" | "en" | "es"
-export const LANGS: Lang[] = ["fr", "en", "es"]
+export { LANGS, DEFAULT_LANG, isLang } from "@/lib/lang"
+export type { Lang } from "@/lib/lang"
 
-const LangCtx = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
-  lang: "en",
-  setLang: () => {},
-})
+/**
+ * Language comes from the URL segment (/fr, /en, /es), not from localStorage.
+ *
+ * That single change is what makes the site indexable in three languages: each
+ * locale gets its own prerendered URLs, its own <html lang> and its own hreflang
+ * alternates. The provider carries the value the route already decided, so
+ * components keep using useT() unchanged.
+ */
+const LangCtx = createContext<Lang>(DEFAULT_LANG)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en")
-
-  useEffect(() => {
-    try {
-      const s = localStorage.getItem("sp_lang") as Lang | null
-      if (s && LANGS.includes(s)) setLangState(s)
-    } catch {}
-  }, [])
-
-  const setLang = (l: Lang) => {
-    setLangState(l)
-    try {
-      localStorage.setItem("sp_lang", l)
-      document.documentElement.lang = l
-    } catch {}
-  }
-
-  return <LangCtx.Provider value={{ lang, setLang }}>{children}</LangCtx.Provider>
+export function LanguageProvider({ lang, children }: { lang: Lang; children: ReactNode }) {
+  return <LangCtx.Provider value={lang}>{children}</LangCtx.Provider>
 }
 
-export const useLang = () => useContext(LangCtx)
+export const useLang = () => ({ lang: useContext(LangCtx) })
 
-/** Pass a dict keyed by language; returns the entry for the active language (falls back to EN). */
-export function useT<T extends Partial<Record<Lang, unknown>>>(dict: T): NonNullable<T["en"]> {
-  const { lang } = useLang()
-  return (dict[lang] ?? dict.en) as NonNullable<T["en"]>
+/** Pass a dict keyed by language; returns the entry for the active language (falls back to FR). */
+export function useT<T extends Partial<Record<Lang, unknown>>>(dict: T): NonNullable<T["fr"]> {
+  const lang = useContext(LangCtx)
+  return (dict[lang] ?? dict.fr ?? dict.en) as NonNullable<T["fr"]>
 }

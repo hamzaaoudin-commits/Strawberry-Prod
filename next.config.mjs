@@ -70,11 +70,26 @@ const nextConfig = {
    * corresponding app/<slug>/page.tsx stubs are deleted, so old links, bookmarks
    * and indexed URLs keep resolving instead of 404-ing.
    */
+  /**
+   * Old flat URLs now live under a language segment. These 308s preserve every
+   * indexed link and bookmark; the proxy handles anything not listed here.
+   */
   async redirects() {
+    const moved = [
+      'about','audit','brand-narrative-audit','manifesto','momentum','radar',
+      'sample-audit','strawberry-method','thank-you','cgv','mentions-legales',
+      'politique-confidentialite',
+    ]
     return [
-      { source: '/nova', destination: '/', permanent: true },
-      { source: '/arsenal', destination: '/', permanent: true },
-      { source: '/nocta', destination: '/momentum', permanent: true },
+      { source: '/nova', destination: '/fr', permanent: true },
+      { source: '/arsenal', destination: '/fr', permanent: true },
+      { source: '/nocta', destination: '/fr/momentum', permanent: true },
+      { source: '/case-studies', destination: '/fr/sample-audit', permanent: true },
+      ...moved.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/fr/${slug}`,
+        permanent: true,
+      })),
     ]
   },
 
