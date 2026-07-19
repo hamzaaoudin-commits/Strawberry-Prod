@@ -22,8 +22,8 @@ const T = {
   },
   fr: {
     kicker: "LE PROBLÈME",
-    h2: "On ne t'ignore pas parce que ton travail n'est pas assez bon.",
-    p1a: "On t'ignore parce que tu es ",
+    h2: "On ne t'ignore pas parce que votre travail n'est pas assez bon.",
+    p1a: "On t'ignore parce que vous êtes ",
     p1strong: "indifférenciable",
     p1b: ". Dans un monde où tout le monde poste, produit du contenu et se dit expert — les gagnants ne sont pas les plus talentueux.",
     p2: "Ce sont ceux qui maîtrisent la perception.",
@@ -37,8 +37,8 @@ const T = {
   },
   es: {
     kicker: "EL PROBLEMA",
-    h2: "No te ignoran porque tu trabajo no sea lo bastante bueno.",
-    p1a: "Te ignoran porque eres ",
+    h2: "No le ignoran porque su trabajo no sea lo bastante bueno.",
+    p1a: "Te ignoran porque es ",
     p1strong: "indistinguible",
     p1b: ". En un mundo donde todos publican, todos crean contenido y todos se dicen expertos — los que ganan no son los más talentosos.",
     p2: "Son los que controlan la percepción.",

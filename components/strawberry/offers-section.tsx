@@ -35,10 +35,10 @@ const T = {
     h2a: "Impossible à confondre.",
     h2b: "Impossible à générer.",
     intro:
-      "Une seule offre, affinée commande après commande. L'identité, la position et le langage qui te rendent reconnaissable au premier regard — et impossible à confondre avec tes concurrents, même armés d'IA.",
+      "Une seule offre, affinée commande après commande. L'identité, la position et le langage qui vous rendent reconnaissable au premier regard — et impossible à confondre avec vos concurrents, même armés d'IA.",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
-      "Tout commence par une extraction qu'aucune IA n'automatise : ta vérité, ta singularité, ce que tu ne vois plus parce que tu es dedans. Puis un repositionnement complet — livré et exploitable dès le lundi suivant.",
+      "Tout commencez par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans. Puis un repositionnement complet — livré et exploitable dès le lundi suivant.",
     deliverables: [
       "Diagnostic de différenciation",
       "Plateforme narrative",
@@ -51,8 +51,8 @@ const T = {
     limit: "Limité à quatre commandes par trimestre.",
     auditTag: "Diagnostic seul · 490€",
     auditName: "BRAND NARRATIVE AUDIT",
-    auditLead: "Pas prêt pour l'architecture complète ? Commence par le diagnostic.",
-    auditBody: "Une lecture écrite de ton récit actuel — ce qui porte, ce qui te rend indifférenciable, et les mouvements précis à faire. Sept jours, sans appel. Déduit de la commande si tu vas plus loin dans les 60 jours.",
+    auditLead: "Pas prêt pour l'architecture complète ? Commencez par le diagnostic.",
+    auditBody: "Une lecture écrite de votre récit actuel — ce qui porte, ce qui vous rend indifférenciable, et les mouvements précis à faire. Sept jours, sans appel. Déduit de la commande si vous allez plus loin dans les 60 jours.",
     auditCta: "Voir l'audit — 490€ →",
   },
   es: {
@@ -60,10 +60,10 @@ const T = {
     h2a: "Imposible de confundir.",
     h2b: "Imposible de generar.",
     intro:
-      "Una sola oferta, afinada encargo tras encargo. La identidad, la posición y el lenguaje que te hacen reconocible a primera vista — e imposible de confundir con la competencia, aunque se armen con IA.",
+      "Una sola oferta, afinada encargo tras encargo. La identidad, la posición y el lenguaje que le hacen reconocible a primera vista — e imposible de confundir con la competencia, aunque se armen con IA.",
     h3: "El relato de marca que ningún competidor puede copiar — y que ninguna máquina puede escribir.",
     body:
-      "Empieza con una extracción que ninguna IA automatiza: tu verdad, tu singularidad, eso que ya no ves porque estás dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
+      "Empiece con una extracción que ninguna IA automatiza: su verdad, su singularidad, eso que ya no ve porque está dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
     deliverables: [
       "Diagnóstico de diferenciación",
       "Plataforma narrativa",
@@ -76,8 +76,8 @@ const T = {
     limit: "Limitado a cuatro encargos por trimestre.",
     auditTag: "Solo diagnóstico · 490€",
     auditName: "BRAND NARRATIVE AUDIT",
-    auditLead: "¿Aún no listo para la arquitectura completa? Empieza por el diagnóstico.",
-    auditBody: "Una lectura escrita de tu relato actual — lo que aterriza, lo que te vuelve indistinguible y los movimientos precisos a realizar. Siete días, sin llamada. Se descuenta del encargo si vas más lejos en 60 días.",
+    auditLead: "¿Aún no listo para la arquitectura complete? Empiece por el diagnóstico.",
+    auditBody: "Una lectura escrita de su relato actual — lo que aterriza, lo que le vuelve indistinguible y los movimientos precisos a realizar. Siete días, sin llamada. Se descuenta del encargo si va más lejos en 60 días.",
     auditCta: "Ver la auditoría — 490€ →",
   },
 }

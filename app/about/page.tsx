@@ -28,7 +28,7 @@ const T = {
     refusals: [
       { title: "I refuse to scale.", body: "No team, no associates, no plans for either. Every word delivered to a commission has been written by me. AI scales infinitely. I do not. Four houses per quarter is not a sales tactic — it is the structural limit of one mind paying full attention." },
       { title: "I refuse to work with everyone.", body: "Most inquiries do not become commissions. Some founders are not ready. Some are ready but for a different studio. The work I do depends on selecting houses whose convictions I find worth defending. Politeness is not enough — alignment is." },
-      { title: "I refuse the agency model.", body: "No retainers, no scope creep, no hourly billing, no account managers. Each engagement is a commission — a defined four-week architecture for a single house, delivered as a single editorial document. The agency economy optimizes for volume. This studio optimizes for what survives a decade." },
+      { title: "I refuse the agency model.", body: "No open-ended monthly arrangements, no scope creep, no hourly billing, no account managers. Each engagement is a commission — a defined four-week architecture for a single house, delivered as a single editorial document. The agency economy optimizes for volume. This studio optimizes for what survives a decade." },
       { title: "I refuse the vocabulary of the field.", body: "Solutions, synergy, leverage, disrupt, game-changer, ROI — these are the words by which mediocre studios announce themselves. They appear nowhere in the work this studio produces. The first thing I retire from your brand is the language that makes you sound like the field." },
     ],
     inheritKicker: "By Inheritance",
@@ -41,6 +41,15 @@ const T = {
       { name: "Fr\u00e9d\u00e9ric Beigbeder", note: "On the editorial voice as a weapon, and refusal as a form of authorship." },
     ],
     inheritFoot: "The studio does not invoke these names for decoration. It inherits a discipline — and applies that discipline to founders whose houses deserve it.",
+    bookKicker: "The Book",
+    bookTitle: "The Clearest Doctrine",
+    bookSub: "Narrative Architecture in the Age of the Machine",
+    bookAuthor: "Hamza El Jaouahiry \u00b7 158 pages \u00b7 Strawberry Production, Paris",
+    bookEpigraph: "In a market where everyone has access to the same machine, the best product no longer wins. The clearest doctrine does.",
+    bookP1: "The doctrine this studio works from is not improvised commission by commission. It is written down, argued at length, and published \u2014 in French and in English.",
+    bookP2: "The book sets out why the machine made everyone identical, what the French school of narrative precision inherits, and the five-stage method by which a house is excavated rather than invented. Its final section demonstrates the method on three houses, end to end.",
+    bookQuote: "The machine made everyone identical. Start underground.",
+    bookNote: "Available in French \u2014 La Doctrine la plus claire \u2014 and in English.",
     founderKicker: "The Founder",
     founderName: "Hamza El Jaouahiry.",
     founderCaption: "The Sorbonne \u00b7 Keynote on brand survival in the age of AI",
@@ -79,7 +88,7 @@ const T = {
       { title: "Je refuse de scaler.", body: "Pas d'\u00e9quipe, pas d'associ\u00e9s, aucun projet d'en avoir. Chaque mot livr\u00e9 dans une commande a \u00e9t\u00e9 \u00e9crit par moi. L'IA scale \u00e0 l'infini. Moi non. Quatre maisons par trimestre n'est pas une tactique commerciale — c'est la limite structurelle d'un seul esprit \u00e0 pleine attention." },
       { title: "Je refuse de travailler avec tout le monde.", body: "La plupart des demandes ne deviennent pas des commandes. Certains fondateurs ne sont pas pr\u00eats. D'autres le sont, mais pour un autre studio. Le travail que je fais d\u00e9pend du choix de maisons dont les convictions me semblent dignes d'\u00eatre d\u00e9fendues. La politesse ne suffit pas — l'alignement, si." },
       { title: "Je refuse le mod\u00e8le agence.", body: "Pas de r\u00e9tainers, pas de d\u00e9rive de p\u00e9rim\u00e8tre, pas de facturation horaire, pas de chefs de projet. Chaque engagement est une commande — une architecture d\u00e9finie sur quatre semaines pour une seule maison, livr\u00e9e comme un document \u00e9ditorial unique. L'\u00e9conomie des agences optimise le volume. Ce studio optimise ce qui survit une d\u00e9cennie." },
-      { title: "Je refuse le vocabulaire du champ.", body: "Solutions, synergie, levier, disrupter, game-changer, ROI — ce sont les mots par lesquels les studios m\u00e9diocres s'annoncent. Ils n'apparaissent nulle part dans le travail que produit ce studio. La premi\u00e8re chose que je retire de ta marque, c'est le langage qui te fait sonner comme le champ." },
+      { title: "Je refuse le vocabulaire du champ.", body: "Solutions, synergie, levier, disrupter, game-changer, ROI — ce sont les mots par lesquels les studios m\u00e9diocres s'annoncent. Ils n'apparaissent nulle part dans le travail que produit ce studio. La premi\u00e8re chose que je retire de votre marque, c'est le langage qui vous fait sonner comme le champ." },
     ],
     inheritKicker: "Par H\u00e9ritage",
     inheritH2: "Une \u00e9cole fran\u00e7aise de pr\u00e9cision narrative.",
@@ -91,24 +100,33 @@ const T = {
       { name: "Fr\u00e9d\u00e9ric Beigbeder", note: "Sur la voix \u00e9ditoriale comme arme, et le refus comme forme d'auctorialit\u00e9." },
     ],
     inheritFoot: "Le studio n'invoque pas ces noms pour d\u00e9corer. Il h\u00e9rite d'une discipline — et applique cette discipline aux fondateurs dont les maisons la m\u00e9ritent.",
+    bookKicker: "Le Livre",
+    bookTitle: "La Doctrine la plus claire",
+    bookSub: "L'architecture narrative \u00e0 l'\u00e2ge de la machine",
+    bookAuthor: "Hamza El Jaouahiry \u00b7 158 pages \u00b7 Strawberry Production, Paris",
+    bookEpigraph: "Sur un march\u00e9 o\u00f9 tout le monde a acc\u00e8s \u00e0 la m\u00eame machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
+    bookP1: "La doctrine dont ce studio travaille n'est pas improvis\u00e9e commande apr\u00e8s commande. Elle est \u00e9crite, argument\u00e9e sur la longueur, et publi\u00e9e \u2014 en fran\u00e7ais et en anglais.",
+    bookP2: "Le livre expose pourquoi la machine a rendu tout le monde identique, ce dont h\u00e9rite l'\u00e9cole fran\u00e7aise de pr\u00e9cision narrative, et la m\u00e9thode en cinq \u00e9tapes par laquelle une maison s'excave au lieu de s'inventer. Sa derni\u00e8re partie d\u00e9montre la m\u00e9thode sur trois maisons, de bout en bout.",
+    bookQuote: "La machine a rendu tout le monde identique. Commencez sous terre.",
+    bookNote: "Disponible en fran\u00e7ais et en anglais \u2014 The Clearest Doctrine.",
     founderKicker: "Le Fondateur",
     founderName: "Hamza El Jaouahiry.",
     founderCaption: "La Sorbonne \u00b7 Keynote sur la survie des marques \u00e0 l'\u00e8re de l'IA",
     founderP1: "J'ai fond\u00e9 ce studio parce que je ne trouvais pas le travail que je voulais lire. Les documents de marque produits par tous les cabinets que je respectais s'\u00e9taient effondr\u00e9s dans un registre commun, illisible — comp\u00e9tent, poli, indiff\u00e9renciable, rempla\u00e7able par une machine. Les maisons que j'admirais le plus \u00e9taient d\u00e9crites dans un langage qui les effa\u00e7ait.",
     founderP2: "Strawberry Production est le studio que j'aurais engag\u00e9. Un seul fondateur, \u00e0 pleine attention sur quatre maisons par trimestre, \u00e9crivant chaque mot \u00e0 la main, refusant le vocabulaire du champ. Le travail est \u00e9ditorial dans sa forme parce qu'il h\u00e9rite d'une \u00e9cole fran\u00e7aise o\u00f9 l'\u00e9criture \u00e9ditoriale n'a jamais \u00e9t\u00e9 s\u00e9par\u00e9e du s\u00e9rieux intellectuel.",
-    founderP3: "Quand tu commandes le travail, c'est moi que tu commandes. Pas d'\u00e9quipe \u00e0 qui te repasser, pas de r\u00e9dacteur junior \u00e0 substituer, pas de p\u00e9rim\u00e8tre \u00e0 n\u00e9gocier \u00e0 la baisse. Le document que tu re\u00e7ois aura \u00e9t\u00e9 enti\u00e8rement \u00e9crit par la personne dont le nom figure sur la page de signature.",
+    founderP3: "Quand vous commandez le travail, c'est moi que vous commandez. Pas d'\u00e9quipe \u00e0 qui vous repasser, pas de r\u00e9dacteur junior \u00e0 substituer, pas de p\u00e9rim\u00e8tre \u00e0 n\u00e9gocier \u00e0 la baisse. Le document que vous re\u00e7ois aura \u00e9t\u00e9 enti\u00e8rement \u00e9crit par la personne dont le nom figure sur la page de signature.",
     founderQuote: "\u00ab Je ne construis pas des marques. J'\u00e9cris la constitution par laquelle une maison d\u00e9clare ce qu'elle est, ce qu'elle refuse, et comment elle sonne quand elle parle. \u00bb",
     founderSig: "Hamza El Jaouahiry \u00b7 Fondateur",
     practiceKicker: "La Pratique",
     practiceH2: "Comment le travail se fait.",
     practiceLead: "Quatre principes op\u00e9ratoires. Ils expliquent pourquoi une commande prend quatre semaines, pourquoi deux ne se ressemblent jamais, et pourquoi le travail survit au mois qui suit la livraison.",
     discipline: [
-      { title: "L'extraction avant l'architecture.", body: "Chaque commande commence par une conversation, pas une strat\u00e9gie. Je fais parler les fondateurs, longuement, jusqu'\u00e0 ce qu'appara\u00eesse quelque chose qu'aucune machine n'aurait pu \u00e9crire — la conviction sous le pitch, le refus sous le r\u00e9cit fondateur. De cette mati\u00e8re humaine, l'architecture est b\u00e2tie." },
+      { title: "L'extraction avant l'architecture.", body: "Chaque commande commencez par une conversation, pas une strat\u00e9gie. Je fais parler les fondateurs, longuement, jusqu'\u00e0 ce qu'appara\u00eesse quelque chose qu'aucune machine n'aurait pu \u00e9crire — la conviction sous le pitch, le refus sous le r\u00e9cit fondateur. De cette mati\u00e8re humaine, l'architecture est b\u00e2tie." },
       { title: "Auctorialit\u00e9 unique, pas de comit\u00e9s.", body: "Une personne extrait la v\u00e9rit\u00e9 du fondateur. La m\u00eame personne \u00e9crit l'architecture. La m\u00eame personne la livre. Pas de passages de relais, pas de t\u00e9l\u00e9phone arabe, pas de comit\u00e9s de lissage. La voix du document est celle d'un seul esprit qui a pr\u00eat\u00e9 attention \u00e0 un seul fondateur pendant quatre semaines." },
       { title: "\u00c9ditorial, pas consultatif.", body: "Je ne produis pas de decks. Je produis des documents — con\u00e7us pour \u00eatre lus comme des manifestes et consult\u00e9s comme des constitutions. L'artefact est fait pour survivre \u00e0 la mission. L'\u00e9dition reli\u00e9e, en option, est livr\u00e9e pour \u00eatre gard\u00e9e sur une \u00e9tag\u00e8re, pas ouverte sur un \u00e9cran." },
-      { title: "La revue \u00e0 trente jours.", body: "Un mois apr\u00e8s la livraison, on se revoit. Quatre-vingt-dix minutes, en visio ou en personne. La question que je pose : qu'est-ce qui a chang\u00e9. Le document est l'artefact. La revue est le moment o\u00f9 il devient op\u00e9rationnel. L'IA n'a aucune m\u00e9moire de ta maison. Moi si." },
+      { title: "La revue \u00e0 trente jours.", body: "Un mois apr\u00e8s la livraison, on se revoit. Quatre-vingt-dix minutes, en visio ou en personne. La question que je pose : qu'est-ce qui a chang\u00e9. Le document est l'artefact. La revue est le moment o\u00f9 il devient op\u00e9rationnel. L'IA n'a aucune m\u00e9moire de votre maison. Moi si." },
     ],
-    ctaH2: "Maintenant tu sais avec qui tu travaillerais.",
+    ctaH2: "Maintenant vous savez avec qui vous travailleriez.",
     ctaP: "Une commande par maison. Quatre maisons par trimestre. Le prochain cr\u00e9neau s'ouvre au fondateur dont la maison le m\u00e9rite le plus.",
     cta: "Voir la commande \u2192",
     ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
@@ -128,8 +146,8 @@ const T = {
     refusals: [
       { title: "Me niego a escalar.", body: "Sin equipo, sin socios, sin planes de tenerlos. Cada palabra entregada en un encargo la he escrito yo. La IA escala infinitamente. Yo no. Cuatro casas por trimestre no es una t\u00e1ctica de venta — es el l\u00edmite estructural de una sola mente a plena atenci\u00f3n." },
       { title: "Me niego a trabajar con todo el mundo.", body: "La mayor\u00eda de las consultas no se convierten en encargos. Algunos fundadores no est\u00e1n listos. Otros lo est\u00e1n, pero para otro estudio. El trabajo que hago depende de elegir casas cuyas convicciones me parecen dignas de defender. La cortes\u00eda no basta — la alineaci\u00f3n, s\u00ed." },
-      { title: "Me niego al modelo de agencia.", body: "Sin retainers, sin desv\u00edos de alcance, sin facturaci\u00f3n por horas, sin gestores de cuenta. Cada compromiso es un encargo — una arquitectura definida de cuatro semanas para una sola casa, entregada como un \u00fanico documento editorial. La econom\u00eda de las agencias optimiza el volumen. Este estudio optimiza lo que sobrevive una d\u00e9cada." },
-      { title: "Me niego al vocabulario del campo.", body: "Soluciones, sinergia, palanca, disrumpir, game-changer, ROI — son las palabras con las que los estudios mediocres se anuncian. No aparecen en ninguna parte del trabajo que produce este estudio. Lo primero que retiro de tu marca es el lenguaje que te hace sonar como el campo." },
+      { title: "Me niego al modelo de agencia.", body: "Sin acuerdos mensuales indefinidos, sin desv\u00edos de alcance, sin facturaci\u00f3n por horas, sin gestores de cuenta. Cada compromiso es un encargo — una arquitectura definida de cuatro semanas para una sola casa, entregada como un \u00fanico documento editorial. La econom\u00eda de las agencias optimiza el volumen. Este estudio optimiza lo que sobrevive una d\u00e9cada." },
+      { title: "Me niego al vocabulario del campo.", body: "Soluciones, sinergia, palanca, disrumpir, game-changer, ROI — son las palabras con las que los estudios mediocres se anuncian. No aparecen en ninguna parte del trabajo que produce este estudio. Lo primero que retiro de su marca es el lenguaje que le hace sonar como el campo." },
     ],
     inheritKicker: "Por Herencia",
     inheritH2: "Una escuela francesa de precisi\u00f3n narrativa.",
@@ -141,12 +159,21 @@ const T = {
       { name: "Fr\u00e9d\u00e9ric Beigbeder", note: "Sobre la voz editorial como arma, y el rechazo como forma de autor\u00eda." },
     ],
     inheritFoot: "El estudio no invoca estos nombres como decoraci\u00f3n. Hereda una disciplina — y aplica esa disciplina a fundadores cuyas casas la merecen.",
+    bookKicker: "El Libro",
+    bookTitle: "La Doctrina m\u00e1s clara",
+    bookSub: "La arquitectura narrativa en la era de la m\u00e1quina",
+    bookAuthor: "Hamza El Jaouahiry \u00b7 158 p\u00e1ginas \u00b7 Strawberry Production, Par\u00eds",
+    bookEpigraph: "En un mercado donde todos tienen acceso a la misma m\u00e1quina, el mejor producto ya no gana. Gana la doctrina m\u00e1s clara.",
+    bookP1: "La doctrina desde la que trabaja este estudio no se improvisa encargo tras encargo. Est\u00e1 escrita, argumentada con extensi\u00f3n y publicada \u2014 en franc\u00e9s y en ingl\u00e9s.",
+    bookP2: "El libro expone por qu\u00e9 la m\u00e1quina volvi\u00f3 id\u00e9nticos a todos, qu\u00e9 hereda la escuela francesa de precisi\u00f3n narrativa, y el m\u00e9todo en cinco etapas por el cual una casa se excava en lugar de inventarse. Su \u00faltima parte demuestra el m\u00e9todo sobre tres casas, de principio a fin.",
+    bookQuote: "La m\u00e1quina volvi\u00f3 id\u00e9nticos a todos. Empiece bajo tierra.",
+    bookNote: "Disponible en franc\u00e9s \u2014 La Doctrine la plus claire \u2014 y en ingl\u00e9s.",
     founderKicker: "El Fundador",
     founderName: "Hamza El Jaouahiry.",
     founderCaption: "La Sorbona \u00b7 Keynote sobre la supervivencia de las marcas en la era de la IA",
     founderP1: "Fund\u00e9 este estudio porque no encontraba el trabajo que quer\u00eda leer. Los documentos de marca producidos por todas las consultoras que respetaba se hab\u00edan derrumbado en un registro com\u00fan, ilegible — competente, pulido, indistinguible, reemplazable por una m\u00e1quina. Las casas que m\u00e1s admiraba estaban descritas en un lenguaje que las borraba.",
     founderP2: "Strawberry Production es el estudio que yo habr\u00eda contratado. Un solo fundador, a plena atenci\u00f3n sobre cuatro casas por trimestre, escribiendo cada palabra a mano, rechazando el vocabulario del campo. El trabajo es editorial en su forma porque hereda una escuela francesa donde la escritura editorial nunca estuvo separada de la seriedad intelectual.",
-    founderP3: "Cuando encargas el trabajo, me encargas a m\u00ed. No hay equipo al que pasarte, ni redactor junior que sustituir, ni alcance que negociar a la baja. El documento que recibes habr\u00e1 sido escrito \u00edntegramente por la persona cuyo nombre aparece en la p\u00e1gina de firma.",
+    founderP3: "Cuando encarga el trabajo, me encarga a m\u00ed. No hay equipo al que pasarte, ni redactor junior que sustituir, ni alcance que negociar a la baja. El documento que recibe habr\u00e1 sido escrito \u00edntegramente por la persona cuyo nombre aparece en la p\u00e1gina de firma.",
     founderQuote: "\u00abNo construyo marcas. Escribo la constituci\u00f3n por la cual una casa declara lo que es, lo que rechaza y c\u00f3mo suena cuando habla.\u00bb",
     founderSig: "Hamza El Jaouahiry \u00b7 Fundador",
     practiceKicker: "La Pr\u00e1ctica",
@@ -156,9 +183,9 @@ const T = {
       { title: "Extracci\u00f3n antes que arquitectura.", body: "Cada encargo empieza con una conversaci\u00f3n, no con una estrategia. Hago hablar a los fundadores, largo rato, hasta que aparece algo que ninguna m\u00e1quina podr\u00eda haber escrito — la convicci\u00f3n bajo el pitch, el rechazo bajo el relato fundacional. Con ese material humano se construye la arquitectura." },
       { title: "Autor\u00eda \u00fanica, sin comit\u00e9s.", body: "Una persona extrae la verdad del fundador. La misma persona escribe la arquitectura. La misma persona la entrega. Sin relevos, sin tel\u00e9fono roto, sin comit\u00e9s que suavizan. La voz del documento es la de una sola mente que prest\u00f3 atenci\u00f3n a un solo fundador durante cuatro semanas." },
       { title: "Editorial, no consultivo.", body: "No produzco decks. Produzco documentos — dise\u00f1ados para leerse como manifiestos y consultarse como constituciones. El artefacto est\u00e1 hecho para sobrevivir al encargo. La edici\u00f3n encuadernada, opcional, se entrega para guardarse en una estanter\u00eda, no para abrirse en una pantalla." },
-      { title: "La revisi\u00f3n a los treinta d\u00edas.", body: "Un mes despu\u00e9s de la entrega, nos volvemos a ver. Noventa minutos, por videollamada o en persona. La pregunta que hago es qu\u00e9 ha cambiado. El documento es el artefacto. La revisi\u00f3n es el momento en que se vuelve operativo. La IA no tiene memoria de tu casa. Yo s\u00ed." },
+      { title: "La revisi\u00f3n a los treinta d\u00edas.", body: "Un mes despu\u00e9s de la entrega, nos volvemos a ver. Noventa minutos, por videollamada o en persona. La pregunta que hago es qu\u00e9 ha cambiado. El documento es el artefacto. La revisi\u00f3n es el momento en que se vuelve operativo. La IA no tiene memoria de su casa. Yo s\u00ed." },
     ],
-    ctaH2: "Ahora sabes con qui\u00e9n trabajar\u00edas.",
+    ctaH2: "Ahora sabe con qui\u00e9n trabajar\u00edas.",
     ctaP: "Un encargo por casa. Cuatro casas por trimestre. La pr\u00f3xima plaza se abre al fundador cuya casa m\u00e1s lo merece.",
     cta: "Ver el encargo \u2192",
     ctaFoot: "Encargo confidencial \u00b7 NDA disponible",
@@ -440,6 +467,60 @@ export default function AboutPage() {
       </section>
 
       {/* THE FOUNDER */}
+      {/* THE BOOK — the doctrine, written down and published. */}
+      <section className="section">
+        <div className="shell-lg">
+          <div className="mb-12 text-center">
+            <div className="kicker">{t.bookKicker}</div>
+          </div>
+
+          <div className="grid items-start gap-10 md:gap-14 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+            {/* Cover */}
+            <div className="relative mx-auto w-full max-w-[340px]">
+              <div className="relative flex aspect-[2/3] flex-col justify-between border border-hair-strong bg-[linear-gradient(160deg,#101010_0%,#0a0a0a_60%)] px-8 py-10 shadow-[0_40px_90px_rgba(0,0,0,0.6)]">
+                <span className="bracket-tl" aria-hidden />
+                <span className="bracket-br" aria-hidden />
+
+                <div className="text-center font-sans text-[9px] uppercase tracking-[0.3em] text-chalk-40">
+                  Strawberry Production · Paris
+                </div>
+
+                <div className="text-center">
+                  <div className="mb-5 text-brand" aria-hidden>❖</div>
+                  <h3 className="mb-4 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold uppercase leading-[1.1] tracking-[0.02em]">
+                    {t.bookTitle}
+                  </h3>
+                  <p className="m-0 font-serif text-[13px] italic leading-snug text-chalk-55">{t.bookSub}</p>
+                </div>
+
+                <div className="text-center font-sans text-[9px] uppercase tracking-[0.25em] text-chalk-55">
+                  Hamza El Jaouahiry
+                </div>
+              </div>
+            </div>
+
+            {/* Text */}
+            <div>
+              <blockquote className="mb-8 border-l-2 border-brand py-1 pl-6">
+                <p className="m-0 font-serif text-[clamp(1.05rem,1.8vw,1.3rem)] italic leading-snug text-chalk-90">
+                  {t.bookEpigraph}
+                </p>
+              </blockquote>
+
+              <p className="mb-5 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.bookP1}</p>
+              <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.bookP2}</p>
+
+              <p className="mb-6 font-serif text-[1.05rem] italic text-chalk-75">{t.bookQuote}</p>
+
+              <div className="border-t border-white/10 pt-6">
+                <div className="mb-1.5 font-sans text-[13px] text-chalk-75">{t.bookAuthor}</div>
+                <div className="font-sans text-[13px] text-chalk-40">{t.bookNote}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         ref={founder[0] as any}
         style={{

@@ -38,6 +38,8 @@ const T = {
     sampleH2: "Read a complete document before you commission.",
     sampleP: "The full method, applied to a demonstration house and published in the open. Fourteen parts \u2014 you can read exactly what this work produces.",
     sampleCta: "Read the SILLAGE document \u2192",
+    sampleBadge: "Read before you commission",
+    sampleMeta: "Fourteen parts \u00b7 Free \u00b7 No email required",
     delivH2: "Five deliverables. Exploitable Monday.",
     glimpseH2: "A glimpse of the artifact.",
     glimpseLead: "Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself \u2014 page by page.",
@@ -99,25 +101,27 @@ const T = {
   },
   fr: {
     badge: "Brand Narrative Architecture \u00b7 4 500\u20ac",
-    h1a: "Le r\u00e9cit de marque qui te rend",
+    h1a: "Le r\u00e9cit de marque qui vous rend",
     h1b: "impossible \u00e0 confondre \u2014",
     h1c: "et impossible \u00e0 g\u00e9n\u00e9rer.",
-    heroLead: "L'identit\u00e9, la position et le langage qui te rendent reconnaissable au premier regard \u2014 et impossible \u00e0 confondre avec tes concurrents, m\u00eame arm\u00e9s d'IA.",
+    heroLead: "L'identit\u00e9, la position et le langage qui vous rendent reconnaissable au premier regard \u2014 et impossible \u00e0 confondre avec vos concurrents, m\u00eame arm\u00e9s d'IA.",
     heroCta: "Commander le travail \u2192",
-    ctxP1: "L'IA sature ton march\u00e9 plus vite que tu ne le vois. Tes concurrents produisent d\u00e9sormais en un clic ce qui prenait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualit\u00e9 ne suffit plus \u00e0 te distinguer \u2014 tout le monde est devenu bon.",
-    ctxP2: "Ce qui ne peut pas \u00eatre g\u00e9n\u00e9r\u00e9, c'est une identit\u00e9. La diff\u00e9renciation n'est plus un luxe marketing \u2014 c'est ta condition de survie.",
+    ctxP1: "L'IA sature votre march\u00e9 plus vite que vous ne le vois. Vos concurrents produisent d\u00e9sormais en un clic ce qui prenait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualit\u00e9 ne suffit plus \u00e0 te distinguer \u2014 tout le monde est devenu bon.",
+    ctxP2: "Ce qui ne peut pas \u00eatre g\u00e9n\u00e9r\u00e9, c'est une identit\u00e9. La diff\u00e9renciation n'est plus un luxe marketing \u2014 c'est votre condition de survie.",
     pactH2: "Le pacte anti-IA.",
     pactLead: "Ce qui rend une maison inoubliable, ce n'est plus le document. C'est celui qui a refus\u00e9 de l'\u00e9crire comme tout le monde.",
     pactQuote: "Quand tout le monde a acc\u00e8s \u00e0 la m\u00eame machine, le seul avantage restant est celui qu'un humain refuse de partager.",
-    offerP1: "Je b\u00e2tis le r\u00e9cit qui rend ta marque reconnaissable au premier regard et impossible \u00e0 confondre avec tes concurrents \u2014 m\u00eame arm\u00e9s d'IA. Pas un slogan de surface : l'identit\u00e9, la position et le langage qui font qu'on se souvient de toi, qu'on te cite et qu'on te choisit, m\u00eame quand l'offre d'en face co\u00fbte moins cher.",
-    offerH3: "Tout commence par une extraction que personne ne peut automatiser.",
-    offerP2: "Je te fais parler, longuement, pour atteindre ce qui te rend v\u00e9ritablement singulier \u2014 souvent ce que tu ne vois plus parce que tu es dedans. Cette mati\u00e8re humaine, ta v\u00e9rit\u00e9, devient la fondation. Aucune IA ne peut la produire, parce qu'elle ne t'a pas v\u00e9cu.",
+    offerP1: "Je b\u00e2tis le r\u00e9cit qui rend votre marque reconnaissable au premier regard et impossible \u00e0 confondre avec vos concurrents \u2014 m\u00eame arm\u00e9s d'IA. Pas un slogan de surface : l'identit\u00e9, la position et le langage qui font qu'on se souvient de vous, qu'on te cite et qu'on te choisit, m\u00eame quand l'offre d'en face co\u00fbte moins cher.",
+    offerH3: "Tout commencez par une extraction que personne ne peut automatiser.",
+    offerP2: "Je te fais parler, longuement, pour atteindre ce qui vous rend v\u00e9ritablement singulier \u2014 souvent ce que vous ne voyez plus parce que vous êtes dedans. Cette mati\u00e8re humaine, votre v\u00e9rit\u00e9, devient la fondation. Aucune IA ne peut la produire, parce qu'elle ne t'a pas v\u00e9cu.",
     offerP3a: "\u00c0 partir de cette extraction, le travail suit un processus affin\u00e9 \u2014 ",
-    offerP3b: " \u2014 cinq \u00e9tapes aiguis\u00e9es commande apr\u00e8s commande. Chaque \u00e9tape produit les artefacts que tu re\u00e7ois ci-dessous.",
+    offerP3b: " \u2014 cinq \u00e9tapes aiguis\u00e9es commande apr\u00e8s commande. Chaque \u00e9tape produit les artefacts que vous re\u00e7ois ci-dessous.",
     methodCta: "Voir la m\u00e9thode \u2192",
-    sampleH2: "Lis un document complet avant de commander.",
-    sampleP: "La m\u00e9thode enti\u00e8re, appliqu\u00e9e \u00e0 une maison de d\u00e9monstration et publi\u00e9e en clair. Quatorze pi\u00e8ces \u2014 tu peux lire exactement ce que produit ce travail.",
+    sampleH2: "Lisez un document complet avant de commander.",
+    sampleP: "La m\u00e9thode enti\u00e8re, appliqu\u00e9e \u00e0 une maison de d\u00e9monstration et publi\u00e9e en clair. Quatorze pi\u00e8ces \u2014 vous pouvez lire exactement ce que produit ce travail.",
     sampleCta: "Lire le document SILLAGE \u2192",
+    sampleBadge: "\u00c0 lire avant de commander",
+    sampleMeta: "Quatorze pi\u00e8ces \u00b7 Acc\u00e8s libre \u00b7 Sans email",
     delivH2: "Cinq livrables. Exploitables d\u00e8s lundi.",
     glimpseH2: "Un aper\u00e7u de l'artefact.",
     glimpseLead: "Livr\u00e9 comme un document \u00e9ditorial unique, con\u00e7u pour \u00eatre lu comme un manifeste et consult\u00e9 comme une constitution. Ci-dessous, le travail lui-m\u00eame \u2014 page par page.",
@@ -125,52 +129,52 @@ const T = {
     actLabel: "Acte",
     acts: ["Le Cadre", "L'Identit\u00e9", "Le D\u00e9ploiement", "La Signature"],
     measureH2: "Le remarquable se mesure.",
-    measureLead: "Avant de commencer, on note ensemble comment tu d\u00e9cris aujourd'hui ce qui te distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
+    measureLead: "Avant de commencer, on note ensemble comment vous d\u00e9cris aujourd'hui ce qui te distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
     alsoH2: "Au-del\u00e0 du document.",
-    investLead: "Le prix de quelques semaines de publicit\u00e9 qui s'\u00e9vapore d\u00e8s que tu arr\u00eates de payer. Ton r\u00e9cit, lui, t'appartient et travaille pour toi en continu.",
-    ctaH2: "Deviens impossible \u00e0 confondre.",
+    investLead: "Le prix de quelques semaines de publicit\u00e9 qui s'\u00e9vapore d\u00e8s que vous arr\u00eates de payer. Votre r\u00e9cit, lui, vous appartient et travaille pour vous en continu.",
+    ctaH2: "Devenez impossible \u00e0 confondre.",
     cta: "Commander le travail \u2192",
     ctaLimit: "Limit\u00e9 \u00e0 quatre commandes par trimestre.",
     ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
     price: "4 500\u20ac",
     deliverables: [
-      { title: "Le Diagnostic de diff\u00e9renciation", body: "Une analyse de ton champ concurrentiel narratif : ce que disent tes 5-6 concurrents directs, les mots et promesses qu'ils partagent tous, et une carte des territoires d\u00e9j\u00e0 satur\u00e9s. Tu vois noir sur blanc pourquoi vous sonnez tous pareil \u2014 et le terrain libre que personne n'occupe, celui que tu vas prendre." },
-      { title: "La Plateforme narrative", body: "Ta position unique \u00e9crite en une phrase d\u00e9fendable. Ton r\u00e9cit de marque structur\u00e9 \u2014 origine, combat, vision. Et tes 3-4 piliers de message : les id\u00e9es que tu vas marteler jusqu'\u00e0 ce qu'on te les associe instinctivement." },
-      { title: "Le Syst\u00e8me de langage", body: "Ton ton de voix d\u00e9crit avec pr\u00e9cision. Ton lexique : les mots qui t'appartiennent, et la liste interdite \u2014 les mots de tes concurrents \u2014 pour ne jamais sonner comme eux. Avec des exemples avant/apr\u00e8s tir\u00e9s de tes propres communications." },
-      { title: "Le Kit de d\u00e9ploiement", body: "La partie que tu utilises d\u00e8s le lundi. Du copy pr\u00eat \u00e0 l'emploi, pas des recommandations abstraites : une r\u00e9\u00e9criture de ta page d'accueil (titre, sous-titre, sections cl\u00e9s) ; ta phrase de pr\u00e9sentation en trois formats (une ligne / un paragraphe / pitch de 30 secondes) ; 10 \u00e0 15 angles de prise de parole pr\u00eats \u00e0 devenir posts, articles ou newsletters, chacun rattach\u00e9 \u00e0 un de tes piliers ; une bio et une description d'entreprise r\u00e9utilisables." },
-      { title: "Le Guide de coh\u00e9rence", body: "Un document court qui permet \u00e0 n'importe qui dans ton \u00e9quipe d'\u00e9crire dans ta voix sans te consulter : r\u00e8gles, exemples, \u00e0 faire / \u00e0 ne pas faire. Ton identit\u00e9 tient, m\u00eame quand ce n'est pas toi qui \u00e9cris." },
+      { title: "Le Diagnostic de diff\u00e9renciation", body: "Une analyse de votre champ concurrentiel narratif : ce que disent vos 5-6 concurrents directs, les mots et promesses qu'ils partagent tous, et une carte des territoires d\u00e9j\u00e0 satur\u00e9s. Vous voyez noir sur blanc pourquoi vous sonnez tous pareil \u2014 et le terrain libre que personne n'occupe, celui que vous allez prendre." },
+      { title: "La Plateforme narrative", body: "Votre position unique \u00e9crite en une phrase d\u00e9fendable. Votre r\u00e9cit de marque structur\u00e9 \u2014 origine, combat, vision. Et vos 3-4 piliers de message : les id\u00e9es que vous allez marteler jusqu'\u00e0 ce qu'on vous les associe instinctivement." },
+      { title: "Le Syst\u00e8me de langage", body: "Votre votre de voix d\u00e9crit avec pr\u00e9cision. Votre lexique : les mots qui vous appartiennent, et la liste interdite \u2014 les mots de vos concurrents \u2014 pour ne jamais sonner comme eux. Avec des exemples avant/apr\u00e8s tir\u00e9s de vos propres communications." },
+      { title: "Le Kit de d\u00e9ploiement", body: "La partie que vous utilises d\u00e8s le lundi. Du copy pr\u00eat \u00e0 l'emploi, pas des recommandations abstraites : une r\u00e9\u00e9criture de votre page d'accueil (titre, sous-titre, sections cl\u00e9s) ; votre phrase de pr\u00e9sentation en trois formats (une ligne / un paragraphe / pitch de 30 secondes) ; 10 \u00e0 15 angles de prise de parole pr\u00eats \u00e0 devenir posts, articles ou newsletters, chacun rattach\u00e9 \u00e0 un de vos piliers ; une bio et une description d'entreprise r\u00e9utilisables." },
+      { title: "Le Guide de coh\u00e9rence", body: "Un document court qui permet \u00e0 n'importe qui dans votre \u00e9quipe d'\u00e9crire dans votre voix sans te consulter : r\u00e8gles, exemples, \u00e0 faire / \u00e0 ne pas faire. Votre identit\u00e9 tient, m\u00eame quand ce n'est pas vous qui \u00e9cris." },
     ],
     pact: [
       { title: "N'importe qui peut prompter 45 pages en trois minutes.", body: "La plupart le font. Le r\u00e9sultat se lit comme tous les autres documents de marque. Voici ce qui arrive quand un humain passe des semaines \u00e0 \u00e9couter, refuser et choisir \u2014 quand l'objectif n'est pas d'\u00eatre produit, mais d'\u00eatre inoubliable. L'IA peut \u00e9crire un document de marque. Elle ne peut pas d\u00e9cider quelle phrase m\u00e9rite d'\u00eatre arrach\u00e9e." },
-      { title: "\u00c9crit une fois. Pour toi seul.", body: "Chaque marque est b\u00e2tie de z\u00e9ro. Le r\u00e9cit que j'\u00e9cris pour ta maison n'appara\u00eetra jamais \u2014 ni adapt\u00e9, ni d\u00e9calqu\u00e9, ni inspir\u00e9 \u2014 dans une autre commande. L'IA recycle. Moi non." },
+      { title: "\u00c9crit une fois. Pour vous seul.", body: "Chaque marque est b\u00e2tie de z\u00e9ro. Le r\u00e9cit que j'\u00e9cris pour votre maison n'appara\u00eetra jamais \u2014 ni adapt\u00e9, ni d\u00e9calqu\u00e9, ni inspir\u00e9 \u2014 dans une autre commande. L'IA recycle. Moi non." },
       { title: "Depuis Paris. Par h\u00e9ritage.", body: "Ce studio op\u00e8re depuis Paris \u2014 h\u00e9ritier d'une \u00e9cole fran\u00e7aise de pr\u00e9cision narrative. Barthes. Foucault. Pivot. Beigbeder. Une culture o\u00f9 ce qui n'est pas dit compte autant que ce qui l'est. O\u00f9 une phrase est r\u00e9\u00e9crite jusqu'\u00e0 ce que rien ne puisse en \u00eatre retir\u00e9." },
-      { title: "Quatre commandes par trimestre. Pas plus.", body: "Pas une tactique commerciale \u2014 un choix structurel. L'IA scale \u00e0 l'infini. Moi non. Quatre maisons par trimestre, \u00e9crites \u00e0 la main. Si tu commandes ce travail, tu re\u00e7ois quelque chose b\u00e2ti pour toi seul, par quelqu'un dont l'attention est rationn\u00e9e par choix." },
+      { title: "Quatre commandes par trimestre. Pas plus.", body: "Pas une tactique commerciale \u2014 un choix structurel. L'IA scale \u00e0 l'infini. Moi non. Quatre maisons par trimestre, \u00e9crites \u00e0 la main. Si vous commandez ce travail, vous re\u00e7ois quelque chose b\u00e2ti pour vous seul, par quelqu'un dont l'attention est rationn\u00e9e par choix." },
     ],
     alsoReceive: [
-      { label: "L'Objet", title: "L'artefact, reli\u00e9 en option.", body: "Sur demande, le travail est imprim\u00e9, reli\u00e9 \u00e0 la main et sign\u00e9. Une \u00e9dition unique num\u00e9rot\u00e9e pour ta maison. Livr\u00e9e \u00e0 ton bureau ou chez toi. Le PDF est fait pour travailler. L'\u00e9dition reli\u00e9e est faite pour \u00eatre gard\u00e9e. L'IA ne peut pas livrer un objet." },
+      { label: "L'Objet", title: "L'artefact, reli\u00e9 en option.", body: "Sur demande, le travail est imprim\u00e9, reli\u00e9 \u00e0 la main et sign\u00e9. Une \u00e9dition unique num\u00e9rot\u00e9e pour votre maison. Livr\u00e9e \u00e0 votre bureau ou chez vous. Le PDF est fait pour travailler. L'\u00e9dition reli\u00e9e est faite pour \u00eatre gard\u00e9e. L'IA ne peut pas livrer un objet." },
     ],
     successSignals: [
-      "Tu es cit\u00e9 comme r\u00e9f\u00e9rence, pas comme une option parmi d'autres",
-      "On vient \u00e0 toi, au lieu que tu coures apr\u00e8s",
-      "Tu tiens tes prix sans les n\u00e9gocier \u00e0 la baisse",
-      "On commence \u00e0 te r\u00e9p\u00e9ter tes propres mots",
+      "Vous êtes cit\u00e9 comme r\u00e9f\u00e9rence, pas comme une option parmi d'autres",
+      "On vient \u00e0 vous, au lieu que vous coures apr\u00e8s",
+      "Vous tenez vos prix sans les n\u00e9gocier \u00e0 la baisse",
+      "On commence \u00e0 te r\u00e9p\u00e9ter vos propres mots",
     ],
     mockups: {
       actI: [
-        { label: "La Couverture", caption: "Une \u00e9dition num\u00e9rot\u00e9e. Ta maison, nomm\u00e9e." },
+        { label: "La Couverture", caption: "Une \u00e9dition num\u00e9rot\u00e9e. Votre maison, nomm\u00e9e." },
         { label: "La D\u00e9dicace", caption: "L'invocation d'ouverture. La raison d'\u00eatre de ce document." },
         { label: "Le Sommaire", caption: "Cinq livrables, une signature. L'architecture, d\u00e9clar\u00e9e." },
       ],
       actII: [
         { label: "Le Diagnostic de diff\u00e9renciation", caption: "Le champ narratif, avec le terrain que personne n'occupe localis\u00e9." },
-        { label: "La Plateforme narrative", caption: "Ta position, ton r\u00e9cit, tes piliers \u2014 articul\u00e9s." },
+        { label: "La Plateforme narrative", caption: "Votre position, votre r\u00e9cit, vos piliers \u2014 articul\u00e9s." },
         { label: "Le R\u00e9cit d'origine", caption: "La rupture d'avant. La conviction d'apr\u00e8s. Nomm\u00e9es avec pr\u00e9cision." },
         { label: "Le Manifeste", caption: "Une seule page. La doctrine, rendue inoubliable." },
-        { label: "Le Syst\u00e8me de langage", caption: "Tes mots. Les interdits. Avant et apr\u00e8s." },
+        { label: "Le Syst\u00e8me de langage", caption: "Vos mots. Les interdits. Avant et apr\u00e8s." },
       ],
       actIII: [
         { label: "Le Kit de d\u00e9ploiement", caption: "Angles de prise de parole par pilier. Pr\u00eats d\u00e8s lundi." },
-        { label: "Le Guide de coh\u00e9rence", caption: "Une voix, n'importe quelle main. Ton identit\u00e9 tient sans toi." },
+        { label: "Le Guide de coh\u00e9rence", caption: "Une voix, n'importe quelle main. Votre identit\u00e9 tient sans vous." },
       ],
       actIV: [
         { label: "La Page de signature", caption: "Num\u00e9rot\u00e9e. Dat\u00e9e. Sign\u00e9e. Un document fait pour \u00eatre gard\u00e9." },
@@ -179,25 +183,27 @@ const T = {
   },
   es: {
     badge: "Brand Narrative Architecture \u00b7 4.500\u20ac",
-    h1a: "El relato de marca que te hace",
+    h1a: "El relato de marca que le hace",
     h1b: "imposible de confundir \u2014",
     h1c: "e imposible de generar.",
-    heroLead: "La identidad, la posici\u00f3n y el lenguaje que te hacen reconocible a primera vista \u2014 e imposible de confundir con tus competidores, aunque se armen con IA.",
+    heroLead: "La identidad, la posici\u00f3n y el lenguaje que le hacen reconocible a primera vista \u2014 e imposible de confundir con sus competidores, aunque se armen con IA.",
     heroCta: "Encargar el trabajo \u2192",
-    ctxP1: "La IA satura tu mercado m\u00e1s r\u00e1pido de lo que ves. Tus competidores producen ahora en un clic lo que llevaba semanas: art\u00edculos, visuales, p\u00e1ginas, campa\u00f1as. El contenido se vuelve gratuito, infinito y perfectamente intercambiable. En ese ruido, la calidad ya no basta para distinguirte \u2014 todos se han vuelto buenos.",
-    ctxP2: "Lo que no puede generarse es una identidad. La diferenciaci\u00f3n ya no es un lujo de marketing \u2014 es tu condici\u00f3n de supervivencia.",
+    ctxP1: "La IA satura su mercado m\u00e1s r\u00e1pido de lo que ve. Sus competidores producen ahora en un clic lo que llevaba semanas: art\u00edculos, visuales, p\u00e1ginas, campa\u00f1as. El contenido se vuelve gratuito, infinito y perfectamente intercambiable. En ese ruido, la calidad ya no basta para distinguirte \u2014 todos se han vuelto buenos.",
+    ctxP2: "Lo que no puede generarse es una identidad. La diferenciaci\u00f3n ya no es un lujo de marketing \u2014 es su condici\u00f3n de supervivencia.",
     pactH2: "El pacto a prueba de IA.",
     pactLead: "Lo que hace inolvidable a una casa ya no es el documento. Es quien se neg\u00f3 a escribirlo como todos los dem\u00e1s.",
     pactQuote: "Cuando todos tienen acceso a la misma m\u00e1quina, la \u00fanica ventaja que queda es la que un humano se niega a compartir.",
-    offerP1: "Construyo el relato que hace tu marca reconocible a primera vista e imposible de confundir con tus competidores \u2014 aunque se armen con IA. No un eslogan de superficie: la identidad, la posici\u00f3n y el lenguaje que hacen que te recuerden, te citen y te elijan, incluso cuando la oferta de enfrente cuesta menos.",
-    offerH3: "Empieza con una extracci\u00f3n que nadie puede automatizar.",
-    offerP2: "Te hago hablar, largo rato, para llegar a lo que te hace verdaderamente singular \u2014 a menudo lo que ya no ves porque est\u00e1s dentro. Esa materia humana, tu verdad, se convierte en el cimiento. Ninguna IA puede producirla, porque no te ha vivido.",
+    offerP1: "Construyo el relato que hace su marca reconocible a primera vista e imposible de confundir con sus competidores \u2014 aunque se armen con IA. No un eslogan de superficie: la identidad, la posici\u00f3n y el lenguaje que hacen que le recuerden, le citen y le elijan, incluso cuando la oferta de enfrente cuesta menos.",
+    offerH3: "Empiece con una extracci\u00f3n que nadie puede automatizar.",
+    offerP2: "Te hago hablar, largo rato, para llegar a lo que le hace verdaderamente singular \u2014 a menudo lo que ya no ve porque est\u00e1s dentro. Esa materia humana, su verdad, se convierte en el cimiento. Ninguna IA puede producirla, porque no le ha vivido.",
     offerP3a: "A partir de esa extracci\u00f3n, el trabajo sigue un proceso afinado \u2014 ",
-    offerP3b: " \u2014 cinco etapas afiladas encargo tras encargo. Cada etapa produce los artefactos que recibes abajo.",
+    offerP3b: " \u2014 cinco etapas afiladas encargo tras encargo. Cada etapa produce los artefactos que recibe abajo.",
     methodCta: "Ver el m\u00e9todo \u2192",
-    sampleH2: "Lee un documento completo antes de encargar.",
-    sampleP: "El m\u00e9todo entero, aplicado a una casa de demostraci\u00f3n y publicado abiertamente. Catorce piezas \u2014 puedes leer exactamente lo que produce este trabajo.",
+    sampleH2: "Lea un documento completo antes de encargar.",
+    sampleP: "El m\u00e9todo entero, aplicado a una casa de demostraci\u00f3n y publicado abiertamente. Catorce piezas \u2014 puede leer exactamente lo que produce este trabajo.",
     sampleCta: "Leer el documento SILLAGE \u2192",
+    sampleBadge: "Léalo antes de encargar",
+    sampleMeta: "Catorce piezas \u00b7 Acceso libre \u00b7 Sin email",
     delivH2: "Cinco entregables. Utilizables el lunes.",
     glimpseH2: "Un vistazo al artefacto.",
     glimpseLead: "Entregado como un \u00fanico documento editorial, dise\u00f1ado para leerse como un manifiesto y consultarse como una constituci\u00f3n. Abajo, el trabajo mismo \u2014 p\u00e1gina a p\u00e1gina.",
@@ -205,52 +211,52 @@ const T = {
     actLabel: "Acto",
     acts: ["El Marco", "La Identidad", "El Despliegue", "La Firma"],
     measureH2: "Lo notable se mide.",
-    measureLead: "Antes de empezar, anotamos juntos c\u00f3mo describir\u00edas hoy lo que te distingue \u2014 normalmente es vago, y suena a lo que dir\u00edan los dem\u00e1s. Unos meses despu\u00e9s, miramos qu\u00e9 ha cambiado.",
+    measureLead: "Antes de empezar, anotamos juntos c\u00f3mo describir\u00edas hoy lo que le distingue \u2014 normalmente es vago, y suena a lo que dir\u00edan los dem\u00e1s. Unos meses despu\u00e9s, miramos qu\u00e9 ha cambiado.",
     alsoH2: "M\u00e1s all\u00e1 del documento.",
-    investLead: "El precio de unas pocas semanas de publicidad que se evapora en cuanto dejas de pagar. Tu relato, en cambio, te pertenece y trabaja para ti de forma continua.",
+    investLead: "El precio de unas pocas semanas de publicidad que se evapora en cuanto deja de pagar. Su relato, en cambio, le pertenece y trabaja para usted de forma continua.",
     ctaH2: "Vu\u00e9lvete imposible de confundir.",
     cta: "Encargar el trabajo \u2192",
     ctaLimit: "Limitado a cuatro encargos por trimestre.",
     ctaFoot: "Encargo confidencial \u00b7 NDA disponible",
     price: "4.500\u20ac",
     deliverables: [
-      { title: "El Diagn\u00f3stico de diferenciaci\u00f3n", body: "Un an\u00e1lisis de tu campo competitivo narrativo: qu\u00e9 dicen tus 5-6 competidores directos, las palabras y promesas que todos comparten, y un mapa de los territorios ya saturados. Ves negro sobre blanco por qu\u00e9 todos suenan igual \u2014 y el terreno libre que nadie ocupa, el que vas a tomar." },
-      { title: "La Plataforma narrativa", body: "Tu posici\u00f3n \u00fanica escrita en una frase defendible. Tu relato de marca estructurado \u2014 origen, lucha, visi\u00f3n. Y tus 3-4 pilares de mensaje: las ideas que vas a martillar hasta que te las asocien instintivamente." },
-      { title: "El Sistema de lenguaje", body: "Tu tono de voz descrito con precisi\u00f3n. Tu l\u00e9xico: las palabras que te pertenecen, y la lista prohibida \u2014 las palabras de tus competidores \u2014 para no sonar nunca como ellos. Con ejemplos antes/despu\u00e9s sacados de tus propias comunicaciones." },
-      { title: "El Kit de despliegue", body: "La parte que usas el lunes siguiente. Copy listo para usar, no recomendaciones abstractas: una reescritura de tu p\u00e1gina de inicio (t\u00edtulo, subt\u00edtulo, secciones clave); tu frase de presentaci\u00f3n en tres formatos (una l\u00ednea / un p\u00e1rrafo / pitch de 30 segundos); de 10 a 15 \u00e1ngulos de discurso listos para convertirse en posts, art\u00edculos o newsletters, cada uno ligado a uno de tus pilares; una bio y una descripci\u00f3n de empresa reutilizables." },
-      { title: "La Gu\u00eda de coherencia", body: "Un documento breve que permite a cualquiera de tu equipo escribir en tu voz sin consultarte: reglas, ejemplos, qu\u00e9 hacer y qu\u00e9 no. Tu identidad se sostiene, incluso cuando no eres t\u00fa quien escribe." },
+      { title: "El Diagn\u00f3stico de diferenciaci\u00f3n", body: "Un an\u00e1lisis de su campo competitivo narrativo: qu\u00e9 dicen sus 5-6 competidores directos, las palabras y promesas que todos comparten, y un mapa de los territorios ya saturados. Ves negro sobre blanco por qu\u00e9 todos suenan igual \u2014 y el terreno libre que nadie ocupa, el que va a tomar." },
+      { title: "La Plataforma narrativa", body: "Su posici\u00f3n \u00fanica escrita en una frase defendible. Su relato de marca estructurado \u2014 origen, lucha, visi\u00f3n. Y sus 3-4 pilares de mensaje: las ideas que va a martillar hasta que le las asocien instintivamente." },
+      { title: "El Sistema de lenguaje", body: "Su tono de voz descrito con precisi\u00f3n. Su l\u00e9xico: las palabras que le pertenecen, y la lista prohibida \u2014 las palabras de sus competidores \u2014 para no sonar nunca como ellos. Con ejemplos antes/despu\u00e9s sacados de sus propias comunicaciones." },
+      { title: "El Kit de despliegue", body: "La parte que usas el lunes siguiente. Copy listo para usar, no recomendaciones abstractas: una reescritura de su p\u00e1gina de inicio (t\u00edtulo, subt\u00edtulo, secciones clave); su frase de presentaci\u00f3n en tres formatos (una l\u00ednea / un p\u00e1rrafo / pitch de 30 segundos); de 10 a 15 \u00e1ngulos de discurso listos para convertirse en posts, art\u00edculos o newsletters, cada uno ligado a uno de sus pilares; una bio y una descripci\u00f3n de empresa reutilizables." },
+      { title: "La Gu\u00eda de coherencia", body: "Un documento breve que permite a cualquiera de su equipo escribir en su voz sin consultarte: reglas, ejemplos, qu\u00e9 hacer y qu\u00e9 no. Su identidad se sostiene, incluso cuando no es t\u00fa quien escribe." },
     ],
     pact: [
       { title: "Cualquiera puede promptear 45 p\u00e1ginas en tres minutos.", body: "La mayor\u00eda lo hace. El resultado se lee como todos los dem\u00e1s documentos de marca. Esto es lo que ocurre cuando un humano pasa semanas escuchando, rechazando y eligiendo \u2014 cuando el objetivo no es ser producido, sino ser inolvidable. La IA puede escribir un documento de marca. No puede decidir qu\u00e9 frase merece ser arrancada." },
-      { title: "Escrito una vez. Solo para ti.", body: "Cada marca se construye desde cero. El relato que escribo para tu casa nunca aparecer\u00e1 \u2014 ni adaptado, ni calcado, ni inspirado \u2014 en otro encargo. La IA recicla. Yo no." },
+      { title: "Escrito una vez. Solo para usted.", body: "Cada marca se construye desde cero. El relato que escribo para su casa nunca aparecer\u00e1 \u2014 ni adaptado, ni calcado, ni inspirado \u2014 en otro encargo. La IA recicla. Yo no." },
       { title: "Desde Par\u00eds. Por herencia.", body: "Este estudio opera desde Par\u00eds \u2014 heredero de una escuela francesa de precisi\u00f3n narrativa. Barthes. Foucault. Pivot. Beigbeder. Una cultura donde lo que no se dice importa tanto como lo que s\u00ed. Donde una frase se reescribe hasta que nada puede quitarse." },
-      { title: "Cuatro encargos por trimestre. No m\u00e1s.", body: "No es una t\u00e1ctica de venta \u2014 es una decisi\u00f3n estructural. La IA escala infinitamente. Yo no. Cuatro casas por trimestre, escritas a mano. Si encargas este trabajo, recibes algo construido solo para ti, por alguien cuya atenci\u00f3n est\u00e1 racionada por dise\u00f1o." },
+      { title: "Cuatro encargos por trimestre. No m\u00e1s.", body: "No es una t\u00e1ctica de venta \u2014 es una decisi\u00f3n estructural. La IA escala infinitamente. Yo no. Cuatro casas por trimestre, escritas a mano. Si encarga este trabajo, recibe algo construido solo para usted, por alguien cuya atenci\u00f3n est\u00e1 racionada por dise\u00f1o." },
     ],
     alsoReceive: [
-      { label: "El Objeto", title: "El artefacto, encuadernado opcionalmente.", body: "A petici\u00f3n, el trabajo se imprime, se encuaderna a mano y se firma. Una \u00fanica edici\u00f3n numerada para tu casa. Entregada en tu oficina o en tu casa. El PDF es para trabajar. La edici\u00f3n encuadernada es para guardar. La IA no puede entregar un objeto." },
+      { label: "El Objeto", title: "El artefacto, encuadernado opcionalmente.", body: "A petici\u00f3n, el trabajo se imprime, se encuaderna a mano y se firma. Una \u00fanica edici\u00f3n numerada para su casa. Entregada en su oficina o en su casa. El PDF es para trabajar. La edici\u00f3n encuadernada es para guardar. La IA no puede entregar un objeto." },
     ],
     successSignals: [
       "Te citan como referencia, no como una opci\u00f3n m\u00e1s",
-      "Vienen a ti, en lugar de que t\u00fa persigas",
-      "Mantienes tus precios sin negociarlos a la baja",
-      "Empiezan a repetirte tus propias palabras",
+      "Vienen a usted, en lugar de que t\u00fa persigas",
+      "Mantienes sus precios sin negociarlos a la baja",
+      "Empiezan a repetirte sus propias palabras",
     ],
     mockups: {
       actI: [
-        { label: "La Portada", caption: "Una edici\u00f3n numerada. Tu casa, con su nombre." },
+        { label: "La Portada", caption: "Una edici\u00f3n numerada. Su casa, con su nombre." },
         { label: "La Dedicatoria", caption: "La invocaci\u00f3n de apertura. La raz\u00f3n de ser de este documento." },
         { label: "El \u00cdndice", caption: "Cinco entregables, una firma. La arquitectura, declarada." },
       ],
       actII: [
         { label: "El Diagn\u00f3stico de diferenciaci\u00f3n", caption: "El campo narrativo, con el terreno que nadie ocupa localizado." },
-        { label: "La Plataforma narrativa", caption: "Tu posici\u00f3n, tu relato, tus pilares \u2014 articulados." },
+        { label: "La Plataforma narrativa", caption: "Su posici\u00f3n, su relato, sus pilares \u2014 articulados." },
         { label: "El Relato de origen", caption: "La ruptura de antes. La convicci\u00f3n de despu\u00e9s. Nombradas con precisi\u00f3n." },
         { label: "El Manifiesto", caption: "Una sola p\u00e1gina. La doctrina, hecha inolvidable." },
-        { label: "El Sistema de lenguaje", caption: "Tus palabras. Las prohibidas. Antes y despu\u00e9s." },
+        { label: "El Sistema de lenguaje", caption: "Sus palabras. Las prohibidas. Antes y despu\u00e9s." },
       ],
       actIII: [
         { label: "El Kit de despliegue", caption: "\u00c1ngulos de discurso por pilar. Listos el lunes siguiente." },
-        { label: "La Gu\u00eda de coherencia", caption: "Una voz, cualquier mano. Tu identidad se sostiene sin ti." },
+        { label: "La Gu\u00eda de coherencia", caption: "Una voz, cualquier mano. Su identidad se sostiene sin usted." },
       ],
       actIV: [
         { label: "La P\u00e1gina de firma", caption: "Numerada. Fechada. Firmada. Un documento hecho para guardarse." },
@@ -703,6 +709,32 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
+      {/* THE PUBLISHED SAMPLE — placed immediately after the hero, on purpose:
+          a document you can read in full is the strongest proof this page has. */}
+      <section className="section">
+        <div className="relative mx-auto max-w-[900px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.07)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-14">
+          <span className="bracket-tl" aria-hidden />
+          <span className="bracket-br" aria-hidden />
+
+          <div className="tag mb-7 border-brand text-brand">{t.sampleBadge}</div>
+
+          <h2 className="mb-5 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em]">
+            {t.sampleH2}
+          </h2>
+
+          <p className="mb-8 max-w-[640px] font-sans text-[16px] leading-relaxed text-chalk-75">
+            {t.sampleP}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-5">
+            <Link href="/sample-audit" className="btn-primary">
+              {t.sampleCta}
+            </Link>
+            <span className="font-sans text-[13px] text-chalk-40">{t.sampleMeta}</span>
+          </div>
+        </div>
+      </section>
+
       <section ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>Why Now</div>
@@ -785,18 +817,6 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* THE PUBLISHED SAMPLE DOCUMENT */}
-      <section className="section">
-        <div className="mx-auto flex max-w-[820px] flex-wrap items-center justify-between gap-6 border border-brand-hair bg-white/[0.02] px-8 py-9">
-          <div className="flex-1 basis-[340px]">
-            <h3 className="mb-2.5 font-serif text-[1.5rem] font-bold">{t.sampleH2}</h3>
-            <p className="body-sm">{t.sampleP}</p>
-          </div>
-          <Link href="/sample-audit" className="btn-primary whitespace-nowrap px-7 py-3.5 text-sm">
-            {t.sampleCta}
-          </Link>
-        </div>
-      </section>
 
       <section ref={deliver.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", opacity: deliver.visible ? 1 : 0, transform: deliver.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>

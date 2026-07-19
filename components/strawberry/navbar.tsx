@@ -32,7 +32,7 @@ const T = {
       { label: "RADAR — 15€/mo", href: "/radar" },
       { label: "BRAND NARRATIVE AUDIT — 490€", href: "/audit" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-audit" },
-      { label: "MOMENTUM — retainer", href: "/momentum" },
+      { label: "MOMENTUM — monthly", href: "/momentum" },
     ],
   },
   es: {

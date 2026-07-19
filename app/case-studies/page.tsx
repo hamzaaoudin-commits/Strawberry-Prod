@@ -4,12 +4,13 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
+import { FORMSPREE_URL } from "@/lib/config"
+import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
-const FORMSPREE = "https://formspree.io/f/xnjwroeq"
 
 const STAT_NUMS = [
   { numeric: 47, prefix: "", suffix: "+" },
@@ -87,11 +88,11 @@ const T = {
     atlasH2b: "Un Atlas.",
     atlasSub: "Un Atlas des motifs narratifs",
     atlasP1: "Trente portraits composites des situations narratives dans lesquelles se trouvent les fondateurs — et les mouvements d'architecture qui les ont r\u00e9solues. Pas un portfolio. Pas des t\u00e9moignages. Une carte.",
-    atlasP2: "Ouvert, gratuit, lisible dans ton navigateur. Si tu te reconnais dans l'un d'eux — tu as d\u00e9j\u00e0 commenc\u00e9 le travail.",
+    atlasP2: "Ouvert, gratuit, lisible dans votre navigateur. Si vous vous reconnaissez dans l'un d'eux — vous avez d\u00e9j\u00e0 commenc\u00e9 le travail.",
     atlasCta: "Lire l'Atlas \u2192",
     atlasMeta: "128 pages \u00b7 PDF \u00b7 Gratuit \u00b7 Un email. Pas de spam.",
     modalFree: "Ressource gratuite",
-    modalSub: "128 pages. Gratuit. Entre ton email et l'Atlas s'ouvre imm\u00e9diatement.",
+    modalSub: "128 pages. Gratuit. Entre votre email et l'Atlas s'ouvre imm\u00e9diatement.",
     ctaH2a: "Une commande par maison.",
     ctaH2b: "Quatre maisons par trimestre.",
     ctaP: "Chacune devient le prochain cas qu'on n'aura pas le droit de publier.",
@@ -136,11 +137,11 @@ const T = {
     atlasH2b: "Un Atlas.",
     atlasSub: "Un Atlas de patrones narrativos",
     atlasP1: "Treinta retratos compuestos de las situaciones narrativas en las que se encuentran los fundadores — y los movimientos arquitect\u00f3nicos que las resolvieron. No es un portfolio. No son testimonios. Es un mapa.",
-    atlasP2: "Abierto, gratuito, legible en tu navegador. Si te reconoces en alguno de ellos — ya has empezado el trabajo.",
+    atlasP2: "Abierto, gratuito, legible en su navegador. Si le reconoce en alguno de ellos — ya ha empezado el trabajo.",
     atlasCta: "Leer el Atlas \u2192",
     atlasMeta: "128 p\u00e1ginas \u00b7 PDF \u00b7 Gratis \u00b7 Un email. Sin spam.",
     modalFree: "Recurso gratuito",
-    modalSub: "128 p\u00e1ginas. Gratis. Introduce tu email y el Atlas se abre al instante.",
+    modalSub: "128 p\u00e1ginas. Gratis. Introduzca su email y el Atlas se abre al instante.",
     ctaH2a: "Un encargo por casa.",
     ctaH2b: "Cuatro casas por trimestre.",
     ctaP: "Cada uno se convierte en el pr\u00f3ximo caso que no nos dejar\u00e1n publicar.",
@@ -226,13 +227,32 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
+    // Validate and clamp before anything leaves the browser.
+    const clean = sanitize(email, LIMITS.email)
+    if (!isValidEmail(clean)) {
+      setStatus("error")
+      return
+    }
+    const limit = rateLimit("atlas")
+    if (!limit.ok) {
+      setStatus("error")
+      return
+    }
+
     setStatus("loading")
     try {
-      const res = await fetch(FORMSPREE, {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 15_000)
+      const res = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, source: "atlas_download" }),
+        credentials: "omit",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        signal: controller.signal,
+        body: JSON.stringify({ email: clean, source: "atlas_download" }),
       })
+      clearTimeout(timeout)
       if (res.ok) {
         setStatus("done")
         track("atlas_email_captured")
@@ -264,8 +284,10 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         ) : (
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <input
-              type="email" required placeholder="Your email" value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              maxLength={LIMITS.email}
+              autoComplete="email" required placeholder="Your email" value={email}
+              onChange={(e) => setEmail(e.target.value.slice(0, LIMITS.email))}
               style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: "14px 16px", color: "#fff", fontSize: 15, fontFamily: SANS, outline: "none", width: "100%" }}
             />
             <button
