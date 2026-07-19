@@ -1,29 +1,10 @@
-import { NavBar } from "@/components/strawberry/navbar"
-import { HeroSection } from "@/components/strawberry/hero-section"
-import { ProblemSection } from "@/components/strawberry/problem-section"
-import { LadderSection } from "@/components/strawberry/ladder-section"
-import { OffersSection } from "@/components/strawberry/offers-section"
-import { AboutSection } from "@/components/strawberry/about-section"
-import { CasesSection } from "@/components/strawberry/cases-section"
-import { AtlasSection } from "@/components/strawberry/atlas-section"
-import { CTABanner } from "@/components/strawberry/cta-banner"
-import { ContactSection } from "@/components/strawberry/contact-section"
-import { Footer } from "@/components/strawberry/footer"
+import { redirect } from "next/navigation"
 
-export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <NavBar />
-      <HeroSection />
-      <ProblemSection />
-      <LadderSection />
-      <OffersSection />
-      <AboutSection />
-      <CasesSection />
-      <AtlasSection />
-      <CTABanner />
-      <ContactSection />
-      <Footer />
-    </main>
-  )
+/**
+ * Legacy flat URL, superseded by language routing.
+ * Overwritten rather than deleted: a zip cannot remove files, and this keeps
+ * indexed links and bookmarks working instead of 404-ing.
+ */
+export default function LegacyRoute() {
+  redirect("/fr")
 }
