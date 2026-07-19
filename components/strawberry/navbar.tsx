@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 
 const T = {
@@ -9,7 +9,6 @@ const T = {
     offers: "Offres",
     about: "À propos",
     method: "La Méthode",
-    cases: "Études de cas",
     manifesto: "Manifeste",
     cta: "Parlons-en",
     menu: "Menu",
@@ -24,7 +23,6 @@ const T = {
     offers: "Offers",
     about: "About",
     method: "The Method",
-    cases: "Case Studies",
     manifesto: "Manifesto",
     cta: "Let's Talk",
     menu: "Menu",
@@ -39,7 +37,6 @@ const T = {
     offers: "Ofertas",
     about: "Nosotros",
     method: "El Método",
-    cases: "Casos",
     manifesto: "Manifiesto",
     cta: "Hablemos",
     menu: "Menú",
@@ -81,7 +78,6 @@ export function NavBar() {
   const NAV_LINKS = [
     { label: t.about, href: "/about" },
     { label: t.method, href: "/strawberry-method" },
-    { label: t.cases, href: "/case-studies" },
     { label: t.manifesto, href: "/manifesto" },
   ]
 

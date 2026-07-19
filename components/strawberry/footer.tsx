@@ -1,22 +1,34 @@
 "use client"
 
-import Link from "next/link"
-import { useT } from "@/lib/i18n"
+import { LocaleLink as Link } from "@/components/locale-link"
+import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
 const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/manifesto"]
-const WORK_HREFS = ["/radar", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit", "/case-studies"]
+const WORK_HREFS = ["/radar", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit"]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
   { href: "https://instagram.com/strawberry_prods", external: true },
   { href: "mailto:Strawberryprod.contact@gmail.com" },
 ]
 
-const LEGAL_FR = [
-  { label: "Mentions légales", href: "/mentions-legales" },
-  { label: "CGV", href: "/cgv" },
-  { label: "Politique de confidentialité", href: "/politique-confidentialite" },
-]
+const LEGAL: Record<string, { label: string; href: string }[]> = {
+  fr: [
+    { label: "Mentions légales", href: "/mentions-legales" },
+    { label: "CGV", href: "/cgv" },
+    { label: "Politique de confidentialité", href: "/politique-confidentialite" },
+  ],
+  en: [
+    { label: "Legal notice", href: "/legal-notice" },
+    { label: "Terms", href: "/terms" },
+    { label: "Privacy", href: "/privacy" },
+  ],
+  es: [
+    { label: "Aviso legal", href: "/legal-notice" },
+    { label: "Condiciones", href: "/terms" },
+    { label: "Privacidad", href: "/privacy" },
+  ],
+}
 
 const T = {
   en: {
@@ -26,7 +38,7 @@ const T = {
     hWork: "The Work",
     hReach: "Reach",
     explore: ["Home", "About", "The Method", "Manifesto"],
-    work: ["RADAR", "The Audit", "The Commission", "MOMENTUM", "Sample document", "Case Studies"],
+    work: ["RADAR", "The Audit", "The Commission", "MOMENTUM", "The SILLAGE document"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -61,6 +73,7 @@ const headClass = "mb-6 font-sans text-[11px] font-semibold uppercase tracking-[
 
 export function Footer() {
   const t = useT(T)
+  const { lang } = useLang()
   const EXPLORE = t.explore.map((label, i) => ({ label, href: EXPLORE_HREFS[i] }))
   const WORK = t.work.map((label, i) => ({ label, href: WORK_HREFS[i] }))
   const REACH = t.reach.map((label, i) => ({ label, ...REACH_HREFS[i] }))
@@ -122,7 +135,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-5">
-            {LEGAL_FR.map((l) => (
+            {(LEGAL[lang] ?? LEGAL.fr).map((l) => (
               <Link key={l.href} href={l.href} className="text-xs text-chalk-55 no-underline transition-colors hover:text-white">
                 {l.label}
               </Link>

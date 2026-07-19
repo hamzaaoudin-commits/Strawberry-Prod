@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { LocaleLink as Link } from "@/components/locale-link"
 
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"

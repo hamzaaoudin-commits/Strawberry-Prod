@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { track } from "@vercel/analytics"
 import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
@@ -18,9 +18,9 @@ const T = {
     h1b: "We build the universe they live in.",
     sub: "A narrative perception studio building the identity, position, and language that make founders impossible to confuse and impossible to generate. From Paris.",
     cta1: "Commission the Work \u2192",
-    cta2: "View case studies",
-    trusted: "Trusted by ambitious creators, founders, and brands who refuse to be ordinary.",
-    stats: ["47+ houses served", "8.4M+ EUR in client revenue attributed", "94% renewal or referral rate", "12-week average time to ROI"],
+    cta2: "Read the SILLAGE document",
+    trusted: "How this studio works, stated plainly.",
+    stats: ["Four commissions per quarter", "Single authorship, no committees", "Delivered as one editorial document", "Thirty-day walkthrough included"],
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
@@ -29,8 +29,8 @@ const T = {
     sub: "Un studio de perception narrative qui bâtit l'identité, la position et le langage qui rendent les fondateurs impossibles à confondre — et impossibles à générer. Depuis Paris.",
     cta1: "Commander le travail \u2192",
     cta2: "Voir les études de cas",
-    trusted: "La confiance de créateurs, fondateurs et marques ambitieux qui refusent d'être ordinaires.",
-    stats: ["47+ maisons accompagnées", "8,4M€+ de revenus clients attribués", "94% de reconduction ou recommandation", "12 semaines de délai moyen jusqu'au ROI"],
+    trusted: "Comment ce studio travaille, dit simplement.",
+    stats: ["Quatre commandes par trimestre", "Une seule plume, aucun comité", "Livré comme un document éditorial unique", "Revue à trente jours incluse"],
   },
   es: {
     badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
@@ -38,9 +38,9 @@ const T = {
     h1b: "Construimos el universo en el que viven.",
     sub: "Un estudio de percepción narrativa que construye la identidad, la posición y el lenguaje que hacen a los fundadores imposibles de confundir — e imposibles de generar. Desde París.",
     cta1: "Encargar el trabajo \u2192",
-    cta2: "Ver casos de estudio",
-    trusted: "La confianza de creadores, fundadores y marcas ambiciosos que se niegan a ser ordinarios.",
-    stats: ["47+ casas atendidas", "8,4M€+ en ingresos de clientes atribuidos", "94% de renovación o recomendación", "12 semanas de tiempo medio hasta el ROI"],
+    cta2: "Leer el documento SILLAGE",
+    trusted: "C\u00f3mo trabaja este estudio, dicho sin rodeos.",
+    stats: ["Cuatro encargos por trimestre", "Una sola pluma, sin comités", "Entregado como un único documento editorial", "Revisión a los treinta días incluida"],
   },
 }
 
@@ -124,7 +124,7 @@ export function HeroSection() {
               {t.cta1}
             </Link>
             <Link
-              href="/case-studies"
+              href="/sample-audit"
               className="border-b border-white/20 pb-0.5 font-sans text-sm tracking-[0.02em] text-white/55 no-underline transition-colors hover:border-white/40 hover:text-white"
             >
               {t.cta2}

@@ -1,13 +1,13 @@
 "use client"
 
-import Link from "next/link"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "See the Commission", cta2: "View Case Studies" },
+  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "See the Commission", cta2: "Read the SILLAGE document" },
   fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La tienne n'a pas à le faire.", cta1: "Voir la commande", cta2: "Voir les études de cas" },
-  es: { h2: "Vuélvase imposible de confundir.", sub: "La mayoría de las casas esperan. La suya no tiene por qué.", cta1: "Ver el encargo", cta2: "Ver casos de estudio" },
+  es: { h2: "Vuélvase imposible de confundir.", sub: "La mayoría de las casas esperan. La suya no tiene por qué.", cta1: "Ver el encargo", cta2: "Leer el documento SILLAGE" },
 }
 
 export function CTABanner() {
@@ -43,7 +43,7 @@ export function CTABanner() {
             <Link href="/brand-narrative-audit" className="btn-primary px-11 py-[18px]">
               {t.cta1}
             </Link>
-            <Link href="/case-studies" className="btn-ghost px-11 py-[18px]">
+            <Link href="/sample-audit" className="btn-ghost px-11 py-[18px]">
               {t.cta2}
             </Link>
           </div>
