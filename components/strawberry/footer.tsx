@@ -5,7 +5,7 @@ import { useT } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
 const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/manifesto"]
-const WORK_HREFS = ["/radar", "/brand-narrative-audit", "/momentum", "/case-studies"]
+const WORK_HREFS = ["/radar", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit", "/case-studies"]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
   { href: "https://instagram.com/strawberry_prods", external: true },
@@ -26,7 +26,7 @@ const T = {
     hWork: "The Work",
     hReach: "Reach",
     explore: ["Home", "About", "The Method", "Manifesto"],
-    work: ["RADAR", "The Commission", "MOMENTUM", "Case Studies"],
+    work: ["RADAR", "The Audit", "The Commission", "MOMENTUM", "Sample document", "Case Studies"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -37,7 +37,7 @@ const T = {
     hWork: "Le Travail",
     hReach: "Contact",
     explore: ["Accueil", "À propos", "La Méthode", "Manifeste"],
-    work: ["RADAR", "La Commande", "MOMENTUM", "Études de cas"],
+    work: ["RADAR", "L'Audit", "La Commande", "MOMENTUM", "Document exemple", "Études de cas"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },
@@ -48,7 +48,7 @@ const T = {
     hWork: "El Trabajo",
     hReach: "Contacto",
     explore: ["Inicio", "Nosotros", "El Método", "Manifiesto"],
-    work: ["RADAR", "El Encargo", "MOMENTUM", "Casos de estudio"],
+    work: ["RADAR", "La Auditoría", "El Encargo", "MOMENTUM", "Documento de muestra", "Casos de estudio"],
     reach: ["Hablemos", "Instagram", "Email"],
     rights: "Todos los derechos reservados.",
   },

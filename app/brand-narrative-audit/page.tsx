@@ -35,6 +35,9 @@ const T = {
     offerP3a: "From that extraction, the work follows a refined process \u2014 ",
     offerP3b: " \u2014 five stages sharpened commission after commission. Each stage produces the artifacts you receive below.",
     methodCta: "See the method \u2192",
+    sampleH2: "Read a complete document before you commission.",
+    sampleP: "The full method, applied to a demonstration house and published in the open. Fourteen parts \u2014 you can read exactly what this work produces.",
+    sampleCta: "Read the SILLAGE document \u2192",
     delivH2: "Five deliverables. Exploitable Monday.",
     glimpseH2: "A glimpse of the artifact.",
     glimpseLead: "Delivered as a single editorial document, designed to be read like a manifesto and consulted like a constitution. Below, the work itself \u2014 page by page.",
@@ -112,6 +115,9 @@ const T = {
     offerP3a: "\u00c0 partir de cette extraction, le travail suit un processus affin\u00e9 \u2014 ",
     offerP3b: " \u2014 cinq \u00e9tapes aiguis\u00e9es commande apr\u00e8s commande. Chaque \u00e9tape produit les artefacts que tu re\u00e7ois ci-dessous.",
     methodCta: "Voir la m\u00e9thode \u2192",
+    sampleH2: "Lis un document complet avant de commander.",
+    sampleP: "La m\u00e9thode enti\u00e8re, appliqu\u00e9e \u00e0 une maison de d\u00e9monstration et publi\u00e9e en clair. Quatorze pi\u00e8ces \u2014 tu peux lire exactement ce que produit ce travail.",
+    sampleCta: "Lire le document SILLAGE \u2192",
     delivH2: "Cinq livrables. Exploitables d\u00e8s lundi.",
     glimpseH2: "Un aper\u00e7u de l'artefact.",
     glimpseLead: "Livr\u00e9 comme un document \u00e9ditorial unique, con\u00e7u pour \u00eatre lu comme un manifeste et consult\u00e9 comme une constitution. Ci-dessous, le travail lui-m\u00eame \u2014 page par page.",
@@ -189,6 +195,9 @@ const T = {
     offerP3a: "A partir de esa extracci\u00f3n, el trabajo sigue un proceso afinado \u2014 ",
     offerP3b: " \u2014 cinco etapas afiladas encargo tras encargo. Cada etapa produce los artefactos que recibes abajo.",
     methodCta: "Ver el m\u00e9todo \u2192",
+    sampleH2: "Lee un documento completo antes de encargar.",
+    sampleP: "El m\u00e9todo entero, aplicado a una casa de demostraci\u00f3n y publicado abiertamente. Catorce piezas \u2014 puedes leer exactamente lo que produce este trabajo.",
+    sampleCta: "Leer el documento SILLAGE \u2192",
     delivH2: "Cinco entregables. Utilizables el lunes.",
     glimpseH2: "Un vistazo al artefacto.",
     glimpseLead: "Entregado como un \u00fanico documento editorial, dise\u00f1ado para leerse como un manifiesto y consultarse como una constituci\u00f3n. Abajo, el trabajo mismo \u2014 p\u00e1gina a p\u00e1gina.",
@@ -772,6 +781,19 @@ export default function BrandNarrativeArchitecturePage() {
             style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", padding: "10px 24px", border: "1px solid " + COLOR, borderRadius: 100 }}
           >
             {t.methodCta}
+          </Link>
+        </div>
+      </section>
+
+      {/* THE PUBLISHED SAMPLE DOCUMENT */}
+      <section className="section">
+        <div className="mx-auto flex max-w-[820px] flex-wrap items-center justify-between gap-6 border border-brand-hair bg-white/[0.02] px-8 py-9">
+          <div className="flex-1 basis-[340px]">
+            <h3 className="mb-2.5 font-serif text-[1.5rem] font-bold">{t.sampleH2}</h3>
+            <p className="body-sm">{t.sampleP}</p>
+          </div>
+          <Link href="/sample-audit" className="btn-primary whitespace-nowrap px-7 py-3.5 text-sm">
+            {t.sampleCta}
           </Link>
         </div>
       </section>

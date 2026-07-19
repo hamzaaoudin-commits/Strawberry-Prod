@@ -98,3 +98,36 @@ export const FAQ_MOMENTUM: FaqSet = {
     { q: "¿Puedo pausar?", a: "Sí, una vez cada doce meses. El momentum es el objetivo, pero la vida pasa." },
   ],
 }
+
+export const FAQ_AUDIT490: FaqSet = {
+  fr: [
+    { q: "Quelle est la différence exacte avec la commande à 4 500€ ?", a: "L'audit à 490€ diagnostique : il te dit où tu te tiens, ce qui te confond avec les autres et vers où aller. La commande à 4 500€ construit : elle écrit ta plateforme narrative, tes piliers, ton système de langage et le copy prêt à déployer. L'un est une lecture, l'autre est une architecture." },
+    { q: "Est-ce que je peux commander l'architecture après ?", a: "Oui, et les 490€ sont déduits si tu le fais dans les 60 jours. L'audit sert de premier tour de repérage — rien n'est perdu." },
+    { q: "Combien de temps ça prend ?", a: "Sept jours à compter de la réception de ton questionnaire. Pas de rendez-vous, pas d'allers-retours." },
+    { q: "Vous avez besoin de quoi de ma part ?", a: "Un questionnaire de vingt minutes, les liens vers ton site et tes réseaux, et les noms de trois à cinq concurrents directs. Rien d'autre." },
+    { q: "Est-ce qu'il y a un appel ?", a: "Non. C'est un document, pas une prestation de conseil. Si tu veux qu'on travaille ensemble en profondeur, c'est la commande complète." },
+    { q: "Et si le diagnostic me dit que tout va bien ?", a: "Ça n'arrive pas, et ce n'est pas de l'arrogance : aucune marque n'occupe une position parfaitement propre. Mais si l'audit conclut que ton positionnement tient et que le problème est ailleurs — dans ton offre, ton prix, ta distribution — je te le dirai, et je te dirai de ne pas commander la suite." },
+    { q: "Puis-je le faire faire pour une marque que je conseille ?", a: "Oui. Beaucoup d'audits sont commandés par des consultants ou des directeurs marketing pour objectiver une discussion interne." },
+    { q: "Est-ce remboursable ?", a: "Le document est produit sur mesure, il n'est donc pas remboursable une fois livré. Avant production, tant que le travail n'a pas commencé, le remboursement est intégral." },
+  ],
+  en: [
+    { q: "What exactly separates this from the 4,500€ commission?", a: "The 490€ audit diagnoses: it tells you where you stand, what makes you indistinguishable, and where to go. The 4,500€ commission builds: it writes your narrative platform, your pillars, your language system and the deployable copy. One is a read, the other is an architecture." },
+    { q: "Can I commission the architecture afterwards?", a: "Yes, and the 490€ is deducted if you do so within 60 days. The audit works as a first pass — nothing is wasted." },
+    { q: "How long does it take?", a: "Seven days from receipt of your questionnaire. No meetings, no back and forth." },
+    { q: "What do you need from me?", a: "A twenty-minute questionnaire, links to your site and channels, and the names of three to five direct competitors. Nothing else." },
+    { q: "Is there a call?", a: "No. This is a document, not a consulting engagement. If you want deep work together, that is the full commission." },
+    { q: "What if the diagnosis says everything is fine?", a: "It won't, and that isn't arrogance: no brand occupies a perfectly clean position. But if the audit concludes your positioning holds and the problem sits elsewhere — in your offer, your price, your distribution — I will say so, and I will tell you not to commission the next step." },
+    { q: "Can I order one for a brand I advise?", a: "Yes. Many audits are commissioned by consultants or marketing directors to ground an internal debate in something external." },
+    { q: "Is it refundable?", a: "The document is produced to order, so it is not refundable once delivered. Before production begins, a full refund is available." },
+  ],
+  es: [
+    { q: "¿Cuál es la diferencia exacta con el encargo de 4.500€?", a: "La auditoría de 490€ diagnostica: te dice dónde estás, qué te confunde con los demás y hacia dónde ir. El encargo de 4.500€ construye: escribe tu plataforma narrativa, tus pilares, tu sistema de lenguaje y el copy listo para desplegar. Uno es una lectura, el otro una arquitectura." },
+    { q: "¿Puedo encargar la arquitectura después?", a: "Sí, y los 490€ se descuentan si lo haces en un plazo de 60 días. La auditoría funciona como un primer reconocimiento — nada se pierde." },
+    { q: "¿Cuánto tarda?", a: "Siete días desde la recepción de tu cuestionario. Sin reuniones, sin idas y venidas." },
+    { q: "¿Qué necesitas de mi parte?", a: "Un cuestionario de veinte minutos, los enlaces a tu sitio y tus redes, y los nombres de tres a cinco competidores directos. Nada más." },
+    { q: "¿Hay alguna llamada?", a: "No. Es un documento, no una consultoría. Si quieres que trabajemos juntos en profundidad, ese es el encargo completo." },
+    { q: "¿Y si el diagnóstico dice que todo está bien?", a: "No ocurrirá, y no es arrogancia: ninguna marca ocupa una posición perfectamente limpia. Pero si la auditoría concluye que tu posicionamiento se sostiene y que el problema está en otra parte — en tu oferta, tu precio, tu distribución — te lo diré, y te diré que no encargues el siguiente paso." },
+    { q: "¿Puedo pedirla para una marca que asesoro?", a: "Sí. Muchas auditorías las encargan consultores o directores de marketing para objetivar una discusión interna." },
+    { q: "¿Es reembolsable?", a: "El documento se produce a medida, por lo que no es reembolsable una vez entregado. Antes de iniciar la producción, el reembolso es íntegro." },
+  ],
+}

@@ -32,7 +32,8 @@ export const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`
  * anchor, so a missing link sends the visitor somewhere useful instead of 404.
  */
 export const STRIPE_LINKS = {
-  audit: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
+  architecture: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
+  audit490: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT490_URL, "/#contact"),
   radar: env(process.env.NEXT_PUBLIC_STRIPE_RADAR_URL, "/#contact"),
 } as const
 
