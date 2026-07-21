@@ -55,12 +55,12 @@ export type SampleDoc = {
 
 export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
   fr: {
-    eyebrow: "Document de démonstration · extrait",
+    eyebrow: "Un exemple de ce que vous recevrez",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "SILLAGE",
-    edition: "Commande n° 000 — édition de démonstration",
+    edition: "Commande n° 000 — quatorze pièces",
     disclaimer:
-      "SILLAGE est une maison fictive. Claire Vasseur n'existe pas, et les concurrents nommés ici sont inventés. Ce document reproduit la structure et la méthode d'une commande réelle. Aucun commanditaire réel n'est cité, aucun chiffre réel n'est utilisé.",
+      "Exemple publié à titre d'illustration. SILLAGE, sa fondatrice et les maisons citées ne correspondent à aucune entreprise existante.",
     partialTitle: "Ceci n'est qu'une partie de ce que vous recevras.",
     partialBody:
       "La commande complète compte quatorze pièces et représente environ quatre-vingt-dix pages. La page que vous lis en présente la structure intégrale — les quatorze pièces sont là — mais chacune est resserrée pour l'écran. Ce qui est retiré de cette édition web :",
@@ -402,7 +402,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ],
   },
 ],
-    ctaTitle: "Ce document a été produit pour une maison fictive.",
+    ctaTitle: "Voilà ce que vous recevez.",
     ctaBody:
       "Le même travail, appliqué à la vôtre, commencez par une extraction qu'aucune machine ne peut automatiser : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
     ctaPrimary: "Commander l'architecture — 4 500€",
@@ -410,12 +410,12 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ctaFoot: "Limité à quatre commandes par trimestre.",
   },
   en: {
-    eyebrow: "Demonstration document · extract",
+    eyebrow: "An example of what you receive",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "SILLAGE",
-    edition: "Commission n° 000 — demonstration edition",
+    edition: "Commission n° 000 — fourteen parts",
     disclaimer:
-      "SILLAGE is a fictional house. Claire Vasseur does not exist, and the competitors named here are invented. This document reproduces the structure and method of a real commission. No real commissioner is cited, no real figures are used.",
+      "Published as an illustration. SILLAGE, its founder and the houses named here correspond to no existing company.",
     partialTitle: "This is only a portion of what you would receive.",
     partialBody:
       "The full commission runs to fourteen parts and roughly ninety pages. The page you are reading presents the complete structure — all fourteen parts are here — but each is tightened for the screen. What this web edition leaves out:",
@@ -757,7 +757,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ],
   },
 ],
-    ctaTitle: "This document was produced for a fictional house.",
+    ctaTitle: "This is what you receive.",
     ctaBody:
       "The same work, applied to yours, begins with an extraction no machine can automate: your truth, your singularity, the thing you no longer see because you are inside it.",
     ctaPrimary: "Commission the architecture — 4,500€",
@@ -765,12 +765,12 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ctaFoot: "Limited to four commissions per quarter.",
   },
   es: {
-    eyebrow: "Documento de demostración · extracto",
+    eyebrow: "Un ejemplo de lo que recibirá",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "SILLAGE",
-    edition: "Encargo n° 000 — edición de demostración",
+    edition: "Encargo n° 000 — catorce piezas",
     disclaimer:
-      "SILLAGE es una casa ficticia. Claire Vasseur no existe, y los competidores nombrados aquí son inventados. Este documento reproduce la estructura y el método de un encargo real. No se cita a ningún comitente real, no se usan cifras reales.",
+      "Publicado a título ilustrativo. SILLAGE, su fundadora y las casas citadas no corresponden a ninguna empresa existente.",
     partialTitle: "Esto es solo una parte de lo que recibirías.",
     partialBody:
       "El encargo completo consta de catorce piezas y unas noventa páginas. La página que está leyendo presenta la estructura íntegra — las catorce piezas están aquí — pero cada una está condensada para la pantalla. Lo que esta edición web deja fuera:",
@@ -1112,7 +1112,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ],
   },
 ],
-    ctaTitle: "Este documento se produjo para una casa ficticia.",
+    ctaTitle: "Esto es lo que recibirá.",
     ctaBody:
       "El mismo trabajo, aplicado a la suya, empieza con una extracción que ninguna máquina puede automatizar: su verdad, su singularidad, eso que ya no ve porque está dentro.",
     ctaPrimary: "Encargar la arquitectura — 4.500€",

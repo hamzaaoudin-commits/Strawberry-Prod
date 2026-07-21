@@ -40,12 +40,12 @@ export type AuditDoc = {
 
 export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   fr: {
-    eyebrow: "Document de démonstration · audit",
+    eyebrow: "Un exemple de ce que vous recevrez",
     title: "BRAND NARRATIVE AUDIT",
     house: "VERSO",
-    edition: "Audit n° 000 — édition de démonstration",
+    edition: "Audit n° 000 — cinq blocs",
     disclaimer:
-      "VERSO est une maison fictive. Ses concurrents le sont aussi. Ce document reproduit la structure exacte d'un audit réel : cinq blocs, une vingtaine de pages, livré sous sept jours. Aucun commanditaire réel n'est cité.",
+      "Exemple publié à titre d'illustration. VERSO et les maisons citées ne correspondent à aucune entreprise existante.",
     dossierTitle: "Le dossier",
     dossierRows: [
       ["La maison", "VERSO — Bordeaux, six ans. Reliure et édition d'art à façon."],
@@ -185,12 +185,12 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   },
 
   en: {
-    eyebrow: "Demonstration document · audit",
+    eyebrow: "An example of what you receive",
     title: "BRAND NARRATIVE AUDIT",
     house: "VERSO",
-    edition: "Audit n° 000 — demonstration edition",
+    edition: "Audit n° 000 — five blocks",
     disclaimer:
-      "VERSO is a fictional house. So are its competitors. This document reproduces the exact structure of a real audit: five blocks, around twenty pages, delivered within seven days. No real commissioner is cited.",
+      "Published as an illustration. VERSO and the houses named here correspond to no existing company.",
     dossierTitle: "The dossier",
     dossierRows: [
       ["The house", "VERSO — Bordeaux, six years old. Bespoke art binding and editions."],
@@ -327,12 +327,12 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   },
 
   es: {
-    eyebrow: "Documento de demostración · auditoría",
+    eyebrow: "Un ejemplo de lo que recibirá",
     title: "BRAND NARRATIVE AUDIT",
     house: "VERSO",
-    edition: "Auditoría n° 000 — edición de demostración",
+    edition: "Auditoría n° 000 — cinco bloques",
     disclaimer:
-      "VERSO es una casa ficticia. Sus competidores también. Este documento reproduce la estructura exacta de una auditoría real: cinco bloques, unas veinte páginas, entregada en siete días. No se cita a ningún comitente real.",
+      "Publicado a título ilustrativo. VERSO y las casas citadas no corresponden a ninguna empresa existente.",
     dossierTitle: "El expediente",
     dossierRows: [
       ["La casa", "VERSO — Burdeos, seis años. Encuadernación y ediciones de arte a medida."],
