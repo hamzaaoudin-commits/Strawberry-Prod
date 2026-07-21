@@ -14,9 +14,9 @@ const BRANDS = [
 const T = {
   en: {
     badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
-    h1a: "We don't build brands.",
-    h1b: "We build the universe they live in.",
-    sub: "A narrative perception studio building the identity, position, and language that make founders impossible to confuse and impossible to generate. From Paris.",
+    h1a: "Impossible to confuse.",
+    h1b: "Impossible to generate.",
+    sub: "A narrative perception studio in Paris. We build the identity, position and language a founder cannot be mistaken for anyone else in — and that no machine can write, because it has not lived you.",
     cta1: "Commission the Work \u2192",
     cta2: "Read the SILLAGE document",
     trusted: "How this studio works, stated plainly.",
@@ -24,9 +24,9 @@ const T = {
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
-    h1a: "On ne construit pas des marques.",
-    h1b: "On construit l'univers dans lequel elles vivent.",
-    sub: "Un studio de perception narrative qui bâtit l'identité, la position et le langage qui rendent les fondateurs impossibles à confondre — et impossibles à générer. Depuis Paris.",
+    h1a: "Impossible à confondre.",
+    h1b: "Impossible à générer.",
+    sub: "Un studio de perception narrative, à Paris. Nous bâtissons l'identité, la position et le langage dans lesquels un fondateur ne peut être confondu avec personne — et qu'aucune machine ne peut écrire, parce qu'elle ne vous a pas vécu.",
     cta1: "Commander le travail \u2192",
     cta2: "Voir les études de cas",
     trusted: "Comment ce studio travaille, dit simplement.",
@@ -34,9 +34,9 @@ const T = {
   },
   es: {
     badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
-    h1a: "No construimos marcas.",
-    h1b: "Construimos el universo en el que viven.",
-    sub: "Un estudio de percepción narrativa que construye la identidad, la posición y el lenguaje que hacen a los fundadores imposibles de confundir — e imposibles de generar. Desde París.",
+    h1a: "Imposible de confundir.",
+    h1b: "Imposible de generar.",
+    sub: "Un estudio de percepción narrativa, en París. Construimos la identidad, la posición y el lenguaje en los que un fundador no puede confundirse con nadie — y que ninguna máquina puede escribir, porque no le ha vivido.",
     cta1: "Encargar el trabajo \u2192",
     cta2: "Leer el documento SILLAGE",
     trusted: "C\u00f3mo trabaja este estudio, dicho sin rodeos.",

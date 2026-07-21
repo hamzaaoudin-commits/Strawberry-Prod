@@ -7,10 +7,10 @@ import { STRIPE_LINKS } from "@/lib/config"
 const T = {
   en: {
     kicker: "The Signature Commission",
-    h2a: "Impossible to confuse.",
-    h2b: "Impossible to generate.",
+    h2a: "We don't build brands.",
+    h2b: "We build the universe they live in.",
     intro:
-      "One offer, refined commission after commission. The identity, position, and language that make you recognizable at first glance — and impossible to confuse with competitors, even when they arm themselves with AI.",
+      "One offer, refined commission after commission. Not a logo and not a campaign: the identity, the position and the language a house lives inside — the structure everything else has to answer to.",
     h3: "The brand story that no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI can automate: your truth, your singularity, the thing you no longer see because you are inside it. From it, a complete repositioning — delivered and exploitable the Monday after.",
@@ -32,13 +32,13 @@ const T = {
   },
   fr: {
     kicker: "La Commande Signature",
-    h2a: "Impossible à confondre.",
-    h2b: "Impossible à générer.",
+    h2a: "On ne construit pas des marques.",
+    h2b: "On construit l'univers dans lequel elles vivent.",
     intro:
-      "Une seule offre, affinée commande après commande. L'identité, la position et le langage qui vous rendent reconnaissable au premier regard — et impossible à confondre avec vos concurrents, même armés d'IA.",
+      "Une seule offre, affinée commande après commande. Ni un logo ni une campagne : l'identité, la position et le langage dans lesquels une maison vit — la structure à laquelle tout le reste doit répondre.",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
-      "Tout commencez par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans. Puis un repositionnement complet — livré et exploitable dès le lundi suivant.",
+      "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans. Puis un repositionnement complet — livré et exploitable dès le lundi suivant.",
     deliverables: [
       "Diagnostic de différenciation",
       "Plateforme narrative",
@@ -57,13 +57,13 @@ const T = {
   },
   es: {
     kicker: "El Encargo Insignia",
-    h2a: "Imposible de confundir.",
-    h2b: "Imposible de generar.",
+    h2a: "No construimos marcas.",
+    h2b: "Construimos el universo en el que viven.",
     intro:
-      "Una sola oferta, afinada encargo tras encargo. La identidad, la posición y el lenguaje que le hacen reconocible a primera vista — e imposible de confundir con la competencia, aunque se armen con IA.",
+      "Una sola oferta, afinada encargo tras encargo. Ni un logo ni una campaña: la identidad, la posición y el lenguaje en los que vive una casa — la estructura a la que todo lo demás debe responder.",
     h3: "El relato de marca que ningún competidor puede copiar — y que ninguna máquina puede escribir.",
     body:
-      "Empiece con una extracción que ninguna IA automatiza: su verdad, su singularidad, eso que ya no ve porque está dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
+      "Empieza con una extracción que ninguna IA automatiza: su verdad, su singularidad, eso que ya no ve porque está dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
     deliverables: [
       "Diagnóstico de diferenciación",
       "Plataforma narrativa",
