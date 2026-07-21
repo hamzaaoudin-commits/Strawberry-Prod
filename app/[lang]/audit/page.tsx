@@ -6,6 +6,7 @@ import { FAQ_AUDIT490 } from "@/lib/faqs"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
+import { AUDIT_DOC } from "@/lib/sample-verso"
 
 const T = {
   fr: {
@@ -15,6 +16,13 @@ const T = {
     lead: "Un diagnostic écrit de votre récit actuel : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements précis à faire. Pas une refonte — une lecture.",
     cta: "Commander l'audit — 490€",
     ctaSecondary: "Voir un exemple de livrable",
+    previewKicker: "Un exemplaire, publié en entier",
+    previewH2: "Voici exactement ce que vous recevrez.",
+    previewLead: "Nous avons mené cet audit sur VERSO, une maison de reliure d'art inventée pour la démonstration. Voici trois extraits du document réel. Les cinq blocs sont lisibles en entier, gratuitement.",
+    previewHouse: "VERSO",
+    previewHouseSub: "Reliure et édition d'art · Bordeaux · maison fictive",
+    previewCta: "Lire les cinq blocs \u2192",
+    previewLabels: ["Bloc 01 — La lecture du champ", "Bloc 02 — L'autopsie de votre phrase", "Bloc 05 — Le verdict"],
     // — What it is
     whatKicker: "Ce que vous recevez",
     whatH2: "Un document. Sept jours. Aucun appel.",
@@ -72,6 +80,13 @@ const T = {
     lead: "A written diagnosis of your current narrative: what lands, what makes you indistinguishable from competitors, and the precise moves to make. Not a rebuild — a read.",
     cta: "Commission the audit — 490€",
     ctaSecondary: "See a sample deliverable",
+    previewKicker: "One copy, published in full",
+    previewH2: "This is exactly what you would receive.",
+    previewLead: "We ran this audit on VERSO, an art bindery invented for the demonstration. Here are three excerpts from the real document. All five blocks are readable in full, free.",
+    previewHouse: "VERSO",
+    previewHouseSub: "Art binding and editions · Bordeaux · fictional house",
+    previewCta: "Read all five blocks \u2192",
+    previewLabels: ["Block 01 — The field, read", "Block 02 — Your sentence, autopsied", "Block 05 — The verdict"],
     whatKicker: "What you receive",
     whatH2: "One document. Seven days. No call.",
     whatLead: "You fill in a twenty-minute questionnaire and send your links. Seven days later you receive a twenty to thirty page PDF stating what your brand says today, and what it should be saying.",
@@ -124,6 +139,13 @@ const T = {
     lead: "Un diagnóstico escrito de su relato actual: lo que aterriza, lo que le confunde con sus competidores, y los movimientos precisos a realizar. No una refundación — una lectura.",
     cta: "Encargar la auditoría — 490€",
     ctaSecondary: "Ver un entregable de muestra",
+    previewKicker: "Un ejemplar, publicado entero",
+    previewH2: "Esto es exactamente lo que recibirá.",
+    previewLead: "Realizamos esta auditoría sobre VERSO, una encuadernación de arte inventada para la demostración. Aquí tiene tres extractos del documento real. Los cinco bloques son legibles enteros, gratis.",
+    previewHouse: "VERSO",
+    previewHouseSub: "Encuadernación y ediciones de arte · Burdeos · casa ficticia",
+    previewCta: "Leer los cinco bloques \u2192",
+    previewLabels: ["Bloque 01 — La lectura del campo", "Bloque 02 — La autopsia de su frase", "Bloque 05 — El veredicto"],
     whatKicker: "Lo que recibe",
     whatH2: "Un documento. Siete días. Sin llamada.",
     whatLead: "Rellena un cuestionario de veinte minutos y envía sus enlaces. Siete días después recibe un PDF de veinte a treinta páginas que dice lo que su marca cuenta hoy, y lo que debería contar.",
@@ -180,6 +202,16 @@ export default async function BrandNarrativeAuditPage({
   const lang: Lang = isLang(raw) ? raw : "fr"
   const t = pick(T, lang)
 
+  // Real excerpts, taken from the published VERSO document rather than rewritten
+  // for the sales page — a preview that differs from the document is a promise
+  // the document then breaks.
+  const doc = AUDIT_DOC[lang] ?? AUDIT_DOC.fr
+  const excerpts = [
+    doc.parts[0].blocks.find((b) => b.kind === "quote"),
+    doc.parts[1].blocks.find((b) => b.kind === "quote"),
+    doc.parts[4].blocks.find((b) => b.kind === "p"),
+  ] as ({ kind: string; text: string } | undefined)[]
+
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
@@ -202,6 +234,58 @@ export default async function BrandNarrativeAuditPage({
             <a href={STRIPE_LINKS.audit490} className="btn-primary" rel="noopener">{t.cta}</a>
             <Link href="/exemple-audit" className="btn-ghost">{t.ctaSecondary}</Link>
           </div>
+        </div>
+      </section>
+
+      {/* THE PUBLISHED SAMPLE — real excerpts, placed high on purpose.
+          A prospect deciding on 490€ should see the artefact before the argument. */}
+      <section className="section">
+        <div className="relative mx-auto max-w-[900px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.06)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-12">
+          <span className="bracket-tl" aria-hidden />
+          <span className="bracket-br" aria-hidden />
+
+          <div className="tag mb-6 border-brand text-brand">{t.previewKicker}</div>
+
+          <h2 className="mb-4 font-serif text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-tight tracking-[-0.02em]">
+            {t.previewH2}
+          </h2>
+          <p className="mb-9 max-w-[640px] font-sans text-[15.5px] leading-relaxed text-chalk-65">
+            {t.previewLead}
+          </p>
+
+          {/* document header, echoing the real one */}
+          <div className="mb-7 flex flex-wrap items-baseline justify-between gap-3 border-b border-white/10 pb-5">
+            <span className="font-serif text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-none tracking-[-0.03em] text-gradient">
+              {t.previewHouse}
+            </span>
+            <span className="font-sans text-[12px] uppercase tracking-[0.15em] text-chalk-40">
+              {t.previewHouseSub}
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {excerpts.map((ex, i) =>
+              ex ? (
+                <div key={i}>
+                  <div className="mb-2.5 font-sans text-[10px] uppercase tracking-[0.2em] text-brand">
+                    {t.previewLabels[i]}
+                  </div>
+                  <p className="m-0 border-l-2 border-white/12 pl-5 font-serif text-[clamp(0.98rem,1.5vw,1.12rem)] italic leading-[1.65] text-chalk-90">
+                    {ex.text}
+                  </p>
+                </div>
+              ) : null
+            )}
+          </div>
+
+          {/* fade-out, so the excerpt reads as a fragment of something longer */}
+          <div className="relative mt-7 h-16">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(10,10,10,0.9))]" aria-hidden />
+          </div>
+
+          <Link href="/exemple-audit" className="btn-primary">
+            {t.previewCta}
+          </Link>
         </div>
       </section>
 
