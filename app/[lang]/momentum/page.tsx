@@ -4,6 +4,9 @@ import { Footer } from "@/components/strawberry/footer"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 import { FaqSection } from "@/components/strawberry/faq-section"
+import { BokehField } from "@/components/strawberry/bokeh-field"
+import { RackFocus } from "@/components/strawberry/rack-focus"
+import { SpotlightCard } from "@/components/strawberry/spotlight-card"
 import { FAQ_MOMENTUM } from "@/lib/faqs"
 
 
@@ -15,7 +18,7 @@ const T = {
     lead: "The commission gives you the architecture — position, identity, language. MOMENTUM is the team that carries it forward: creative direction that guards the narrative, and content execution that puts it into the feed, every week.",
     cta: "Start MOMENTUM",
     seeTiers: "See the tiers",
-    collisionTitle: "Wait — isn't the audit already 4,500€?",
+    collisionTitle: "Isn't the audit already 4,500€?",
     collisionBody: "Yes. The audit is one-shot: you pay 4,500€ once, you own the architecture forever. MOMENTUM is different — it starts after the audit, monthly, only if you want the studio to keep executing. One is the blueprint. The other is the crew that keeps building. You never pay twice for the same thing.",
     twoKicker: "Two arms, one engagement",
     arms: [
@@ -39,7 +42,7 @@ const T = {
     lead: "La commande vous donne l'architecture — position, identité, langage. MOMENTUM, c'est l'équipe qui la porte dans le temps : une direction créative qui garde le récit, et une exécution de contenu qui le met dans le feed, chaque semaine.",
     cta: "Démarrer MOMENTUM",
     seeTiers: "Voir les paliers",
-    collisionTitle: "Attends — l'audit n'est-il pas déjà à 4 500€ ?",
+    collisionTitle: "L'audit n'est-il pas déjà à 4 500€ ?",
     collisionBody: "Si. L'audit est one-shot : vous payez 4 500€ une fois, l'architecture est à vous pour toujours. MOMENTUM, c'est autre chose — ça commence après l'audit, au mois, seulement si vous voulez que le studio continue d'exécuter. L'un est le plan. L'autre, l'équipe qui continue de construire. Vous ne payez jamais deux fois la même chose.",
     twoKicker: "Deux bras, un seul engagement",
     arms: [
@@ -63,7 +66,7 @@ const T = {
     lead: "El encargo le da la arquitectura — posición, identidad, lenguaje. MOMENTUM es el equipo que la lleva adelante: dirección creativa que cuida el relato, y ejecución de contenido que lo pone en el feed, cada semana.",
     cta: "Empezar MOMENTUM",
     seeTiers: "Ver los niveles",
-    collisionTitle: "Espera — ¿la auditoría no cuesta ya 4.500€?",
+    collisionTitle: "¿La auditoría no cuesta ya 4.500€?",
     collisionBody: "Sí. La auditoría es de pago único: paga 4.500€ una vez y la arquitectura es suya para siempre. MOMENTUM es distinto — empieza después de la auditoría, mensual, solo si quiere que el estudio siga ejecutando. Uno es el plano. El otro, el equipo que sigue construyendo. Nunca paga dos veces por lo mismo.",
     twoKicker: "Dos brazos, un solo compromiso",
     arms: [
@@ -95,7 +98,8 @@ export default async function MomentumPage({
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
 
-      <section className="section-hero pb-24 pt-40">
+      <section className="section-hero relative min-h-[88vh] items-center overflow-hidden pb-24 pt-40">
+        <BokehField />
         <div className="glow-top" aria-hidden />
         <div className="shell-md relative">
           <div className="pill mb-9">{t.badge}</div>
@@ -122,14 +126,16 @@ export default async function MomentumPage({
             <div className="kicker">{t.twoKicker}</div>
           </div>
 
-          <div className="grid-auto-wide">
-            {t.arms.map((a) => (
-              <div key={a.t} className="card px-8 py-9">
-                <h3 className="mb-3 font-serif text-2xl font-bold">{a.t}</h3>
-                <p className="font-sans text-[15px] leading-relaxed text-chalk-65">{a.b}</p>
-              </div>
-            ))}
-          </div>
+          <RackFocus>
+            <div className="grid-auto-wide">
+              {t.arms.map((a) => (
+                <SpotlightCard key={a.t} className="px-8 py-9">
+                  <h3 className="mb-3 font-serif text-2xl font-bold">{a.t}</h3>
+                  <p className="font-sans text-[15px] leading-relaxed text-chalk-65">{a.b}</p>
+                </SpotlightCard>
+              ))}
+            </div>
+          </RackFocus>
         </div>
       </section>
 
@@ -147,19 +153,10 @@ export default async function MomentumPage({
             <div className="kicker">{t.tiersKicker}</div>
           </div>
 
+          <RackFocus>
           <div className="grid-auto-wide">
             {t.tiers.map((tier) => (
-              <div
-                key={tier.name}
-                className={tier.featured ? "card-featured px-8 py-9" : "card px-8 py-9"}
-              >
-                {tier.featured && (
-                  <>
-                    <span className="bracket-tl" aria-hidden />
-                    <span className="bracket-br" aria-hidden />
-                  </>
-                )}
-
+              <SpotlightCard key={tier.name} featured={tier.featured} className="px-8 py-9">
                 <h3 className="mb-3.5 font-serif text-[1.6rem] font-bold">{tier.name}</h3>
 
                 <div className="mb-4 flex items-baseline gap-1.5">
@@ -174,9 +171,10 @@ export default async function MomentumPage({
                 <a href="/#contact" className={tier.featured ? "btn-primary px-6 py-3 text-sm" : "btn-ghost px-6 py-3 text-sm font-semibold"}>
                   {t.tierCta}
                 </a>
-              </div>
+              </SpotlightCard>
             ))}
-          </div>
+            </div>
+          </RackFocus>
         </div>
       </section>
 

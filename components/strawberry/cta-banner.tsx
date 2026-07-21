@@ -6,7 +6,7 @@ import { useT } from "@/lib/i18n"
 
 const T = {
   en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "See the Commission", cta2: "Read the SILLAGE document" },
-  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La tienne n'a pas à le faire.", cta1: "Voir la commande", cta2: "Voir les études de cas" },
+  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Voir la commande", cta2: "Voir les études de cas" },
   es: { h2: "Vuélvase imposible de confundir.", sub: "La mayoría de las casas esperan. La suya no tiene por qué.", cta1: "Ver el encargo", cta2: "Leer el documento SILLAGE" },
 }
 

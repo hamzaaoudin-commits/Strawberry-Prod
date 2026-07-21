@@ -15,9 +15,9 @@ import { useT } from "@/lib/i18n"
 const T = {
   en: {
     kicker: "The work, in full",
-    h2a: "We can't show you our commissioners.",
-    h2b: "So we published the work itself.",
-    lead: "The houses this studio builds are confidential — their narrative architecture is the one thing they cannot afford to share. So instead of testimonials you cannot verify, here is a complete commission, applied to a house that does not exist and says so.",
+    h2a: "The work itself,",
+    h2b: "published in full.",
+    lead: "A narrative architecture is the one document a house cannot share — it is the position itself. So the studio wrote a complete commission for a house that does not exist, and published every part of it.",
     docTitle: "SILLAGE",
     docSub: "A fourteen-part Brand Narrative Architecture",
     docMeta: "Fictional house · Free · No email required",
@@ -32,9 +32,9 @@ const T = {
   },
   fr: {
     kicker: "Le travail, en entier",
-    h2a: "Nous ne pouvons pas vous montrer nos commanditaires.",
-    h2b: "Alors nous avons publié le travail.",
-    lead: "Les maisons que ce studio bâtit sont confidentielles — leur architecture narrative est la seule chose qu'elles ne peuvent pas se permettre de partager. Plutôt que des témoignages invérifiables, voici une commande complète, appliquée à une maison qui n'existe pas et qui le dit.",
+    h2a: "Le travail lui-même,",
+    h2b: "publié en entier.",
+    lead: "Une architecture narrative est le seul document qu'une maison ne peut pas partager — c'est la position elle-même. Le studio a donc écrit une commande complète pour une maison qui n'existe pas, et en a publié chaque pièce.",
     docTitle: "SILLAGE",
     docSub: "Une Brand Narrative Architecture en quatorze pièces",
     docMeta: "Maison fictive · Accès libre · Sans email",
@@ -49,9 +49,9 @@ const T = {
   },
   es: {
     kicker: "El trabajo, entero",
-    h2a: "No podemos mostrarle a nuestros comitentes.",
-    h2b: "Así que publicamos el trabajo.",
-    lead: "Las casas que este estudio construye son confidenciales — su arquitectura narrativa es lo único que no pueden permitirse compartir. En lugar de testimonios que usted no puede verificar, aquí hay un encargo completo, aplicado a una casa que no existe y que lo dice.",
+    h2a: "El trabajo mismo,",
+    h2b: "publicado entero.",
+    lead: "Una arquitectura narrativa es el único documento que una casa no puede compartir — es la posición misma. El estudio escribió por tanto un encargo completo para una casa que no existe, y publicó cada una de sus piezas.",
     docTitle: "SILLAGE",
     docSub: "Una Brand Narrative Architecture en catorce piezas",
     docMeta: "Casa ficticia · Acceso libre · Sin email",

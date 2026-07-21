@@ -14,6 +14,8 @@ const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 const T = {
   en: {
     badge: "The Proprietary Framework",
+    kickerArtifact: "From method to artifact",
+    kickerApplied: "The method, applied",
     h1a: "The Strawberry",
     h1b: "Method.",
     lead: "Five stages. One doctrine. The repeatable architecture behind every house we make unforgettable.",
@@ -78,6 +80,8 @@ const T = {
   },
   fr: {
     badge: "Le Framework Propri\u00e9taire",
+    kickerArtifact: "De la m\u00e9thode \u00e0 l'artefact",
+    kickerApplied: "La m\u00e9thode, appliqu\u00e9e",
     h1a: "La M\u00e9thode",
     h1b: "Strawberry.",
     lead: "Cinq \u00e9tapes. Une doctrine. L'architecture reproductible derri\u00e8re chaque maison qu'on rend inoubliable.",
@@ -142,6 +146,8 @@ const T = {
   },
   es: {
     badge: "El Framework Propietario",
+    kickerArtifact: "Del m\u00e9todo al artefacto",
+    kickerApplied: "El m\u00e9todo, aplicado",
     h1a: "El M\u00e9todo",
     h1b: "Strawberry.",
     lead: "Cinco etapas. Una doctrina. La arquitectura repetible detr\u00e1s de cada casa que hacemos inolvidable.",
@@ -437,7 +443,7 @@ export default function StrawberryMethodPage() {
         <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: bridge.visible ? 1 : 0, transform: bridge.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
 
           <div style={{ textAlign: "center", marginBottom: 72 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>From Method to Artifact</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.kickerArtifact}</div>
             <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
               {t.bridgeH2}
             </h2>
@@ -496,7 +502,7 @@ export default function StrawberryMethodPage() {
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>The Method, Applied</div>
+          <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>{t.kickerApplied}</div>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
             {t.ctaH2a}<br />{t.ctaH2b}
           </h2>

@@ -27,7 +27,7 @@ const T = {
     auditTag: "Diagnosis only · 490€",
     auditName: "BRAND NARRATIVE AUDIT",
     auditLead: "Not ready for the full architecture? Start with the diagnosis.",
-    auditBody: "A written read of your current narrative — what lands, what makes you indistinguishable, and the precise moves to make. Seven days, no call. Deducted from the commission if you go further within 60 days.",
+    auditBody: "A written read of your current narrative — what lands, what makes you indistinguishable, and the precise moves to make. Deducted from the commission if you go further within 60 days.",
     auditCta: "See the audit — 490€ →",
   },
   fr: {
@@ -52,7 +52,7 @@ const T = {
     auditTag: "Diagnostic seul · 490€",
     auditName: "BRAND NARRATIVE AUDIT",
     auditLead: "Pas prêt pour l'architecture complète ? Commencez par le diagnostic.",
-    auditBody: "Une lecture écrite de votre récit actuel — ce qui porte, ce qui vous rend indifférenciable, et les mouvements précis à faire. Sept jours, sans appel. Déduit de la commande si vous allez plus loin dans les 60 jours.",
+    auditBody: "Une lecture écrite de votre récit actuel — ce qui porte, ce qui vous rend indifférenciable, et les mouvements précis à faire. Déduit de la commande si vous allez plus loin dans les 60 jours.",
     auditCta: "Voir l'audit — 490€ →",
   },
   es: {
@@ -77,7 +77,7 @@ const T = {
     auditTag: "Solo diagnóstico · 490€",
     auditName: "BRAND NARRATIVE AUDIT",
     auditLead: "¿Aún no listo para la arquitectura complete? Empiece por el diagnóstico.",
-    auditBody: "Una lectura escrita de su relato actual — lo que aterriza, lo que le vuelve indistinguible y los movimientos precisos a realizar. Siete días, sin llamada. Se descuenta del encargo si va más lejos en 60 días.",
+    auditBody: "Una lectura escrita de su relato actual — lo que aterriza, lo que le vuelve indistinguible y los movimientos precisos a realizar. Se descuenta del encargo si va más lejos en 60 días.",
     auditCta: "Ver la auditoría — 490€ →",
   },
 }

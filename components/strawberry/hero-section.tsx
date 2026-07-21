@@ -20,7 +20,7 @@ const T = {
     cta1: "Commission the Work \u2192",
     cta2: "Read the SILLAGE document",
     trusted: "How this studio works, stated plainly.",
-    stats: ["Four commissions per quarter", "Single authorship, no committees", "Delivered as one editorial document", "Thirty-day walkthrough included"],
+    stats: ["Four commissions per quarter", "Delivered as one editorial document", "Thirty-day walkthrough included"],
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
@@ -30,7 +30,7 @@ const T = {
     cta1: "Commander le travail \u2192",
     cta2: "Voir les études de cas",
     trusted: "Comment ce studio travaille, dit simplement.",
-    stats: ["Quatre commandes par trimestre", "Une seule plume, aucun comité", "Livré comme un document éditorial unique", "Revue à trente jours incluse"],
+    stats: ["Quatre commandes par trimestre", "Livré comme un document éditorial unique", "Revue à trente jours incluse"],
   },
   es: {
     badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
@@ -40,7 +40,7 @@ const T = {
     cta1: "Encargar el trabajo \u2192",
     cta2: "Leer el documento SILLAGE",
     trusted: "C\u00f3mo trabaja este estudio, dicho sin rodeos.",
-    stats: ["Cuatro encargos por trimestre", "Una sola pluma, sin comités", "Entregado como un único documento editorial", "Revisión a los treinta días incluida"],
+    stats: ["Cuatro encargos por trimestre", "Entregado como un único documento editorial", "Revisión a los treinta días incluida"],
   },
 }
 

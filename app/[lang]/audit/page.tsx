@@ -23,7 +23,7 @@ const T = {
       { n: "01", t: "La lecture du champ", d: "Vos trois à cinq concurrents directs, leurs phrases, ce qu'ils promettent réellement. La carte de ce qui est déjà occupé — et le terrain qui ne l'est pas." },
       { n: "02", t: "L'autopsie de votre phrase", d: "Votre phrase de positionnement actuelle, disséquée mot par mot. Ce qu'elle emprunte au champ, ce qu'elle dilue, ce qui est mort à l'arrivée parce que tout le monde l'emploie déjà." },
       { n: "03", t: "Les mots à retirer", d: "La liste précise des termes que vous devez abandonner, extraits des phrases réelles de vos concurrents. Et ceux qui peuvent devenir les vôtres." },
-      { n: "04", t: "Le cap", d: "Les trois à cinq mouvements de repositionnement que je te recommande, par ordre de priorité, avec ce que chacun coûte et ce qu'il débloque." },
+      { n: "04", t: "Le cap", d: "Les trois à cinq mouvements de repositionnement que nous recommandons, par ordre de priorité, avec ce que chacun coûte et ce qu'il débloque." },
       { n: "05", t: "Le verdict", d: "Un paragraphe. Le diagnostic le plus net possible sur l'endroit où votre marque se tient aujourd'hui dans la perception de son marché." },
     ],
     // — Boundary
@@ -114,7 +114,7 @@ const T = {
     priceBody: "No call, no quote, no back and forth. You pay, you fill in the questionnaire, you receive.",
     priceNote: "If you commission the full architecture within 60 days, the 490€ is deducted.",
     bridgeH2: "An example beats a promise.",
-    bridgeP: "I applied the complete method to a demonstration brand and published the document. You can read exactly what this work produces before commissioning anything.",
+    bridgeP: "We ran this exact audit on a demonstration house and published every page of it. You can read precisely what the document does before commissioning one.",
     bridgeCta: "Read the full example →",
   },
   es: {
@@ -166,7 +166,7 @@ const T = {
     priceBody: "Sin llamada, sin presupuesto, sin idas y venidas. Paga, rellena el cuestionario, recibe.",
     priceNote: "Si encarga la arquitectura complete en un plazo de 60 días, los 490€ se descuentan.",
     bridgeH2: "Un ejemplo vale más que una promesa.",
-    bridgeP: "Apliqué el método completo a una marca de demostración y publiqué el documento. Puede leer exactamente lo que produce este trabajo antes de encargar nada.",
+    bridgeP: "Realizamos esta misma auditoría sobre una casa de demostración y publicamos cada una de sus páginas. Puede leer con precisión lo que hace el documento antes de encargar uno.",
     bridgeCta: "Leer el ejemplo completo →",
   },
 }
@@ -200,7 +200,7 @@ export default async function BrandNarrativeAuditPage({
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.audit490} className="btn-primary" rel="noopener">{t.cta}</a>
-            <Link href="/sample-audit" className="btn-ghost">{t.ctaSecondary}</Link>
+            <Link href="/exemple-audit" className="btn-ghost">{t.ctaSecondary}</Link>
           </div>
         </div>
       </section>
@@ -315,7 +315,7 @@ export default async function BrandNarrativeAuditPage({
             {t.bridgeH2}
           </h2>
           <p className="lede mx-auto mb-7 max-w-[620px]">{t.bridgeP}</p>
-          <Link href="/sample-audit" className="btn-primary">{t.bridgeCta}</Link>
+          <Link href="/exemple-audit" className="btn-primary">{t.bridgeCta}</Link>
         </div>
       </section>
 

@@ -28,6 +28,7 @@ const T = {
     sub: "Not a menu — a ladder. Every rung is the same conviction about narrative truth, entered at a different altitude. Start where you are.",
     where: "Which of these is true for you right now?",
     showAll: "Show everything",
+    recommended: "Recommended for you",
     situations: [
       "I can't explain what I do in one sentence without losing the room",
       "We sell, but prospects keep comparing us to competitors we're nothing like",
@@ -37,7 +38,7 @@ const T = {
     fmt: { sub: "Subscription", shot: "One-shot", post: "After the audit" },
     featuredCta: "See the commission →",
     cta: "Learn more →",
-    foot: "Every rung feeds the next. RADAR trains the eye, the Audit builds the architecture, MOMENTUM keeps it alive. You never pay for the same thing twice.",
+    foot: "These are four entry points into the same work, not four products. Whichever you choose, nothing is ever paid for twice — an audit commissioned first is deducted from the architecture.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ month", fmt: "sub", answers: ["articulate"], line: "One real brand read every day. Read positioning in seconds — the instrument your competitors don't have.", href: "/radar" },
       { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "one-time", fmt: "shot", answers: ["articulate", "confused"], line: "A written diagnosis of your current narrative — what lands, what blurs you, and the moves to make. Seven days, no call.", href: "/audit" },
@@ -52,6 +53,7 @@ const T = {
     sub: "Pas un menu — une échelle. Chaque barreau, c'est la même conviction sur la vérité narrative, à une altitude différente. Commencez là où vous en êtes.",
     where: "Laquelle de ces phrases est vraie pour vous, aujourd'hui ?",
     showAll: "Tout afficher",
+    recommended: "Recommandé pour vous",
     situations: [
       "Je n'arrive pas à expliquer ce que je fais en une phrase sans perdre la salle",
       "On vend, mais les prospects nous comparent à des concurrents qui n'ont rien à voir",
@@ -61,7 +63,7 @@ const T = {
     fmt: { sub: "Abonnement", shot: "One-shot", post: "Après l'audit" },
     featuredCta: "Voir la commande →",
     cta: "En savoir plus →",
-    foot: "Chaque barreau nourrit le suivant. RADAR forme l'œil, l'Audit bâtit l'architecture, MOMENTUM la fait vivre. Vous ne payez jamais deux fois la même chose.",
+    foot: "Ce sont quatre portes d'entrée vers le même travail, pas quatre produits. Quel que soit votre point de départ, rien n'est jamais payé deux fois : un audit commandé en premier est déduit de l'architecture.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ mois", fmt: "sub", answers: ["articulate"], line: "Une vraie marque disséquée chaque jour. Lisez un positionnement en quelques secondes — l'instrument que vos concurrents n'ont pas.", href: "/radar" },
       { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "one-shot", fmt: "shot", answers: ["articulate", "confused"], line: "Un diagnostic écrit de votre récit actuel — ce qui porte, ce qui vous brouille, et les mouvements à faire. Sept jours, sans appel.", href: "/audit" },
@@ -76,6 +78,7 @@ const T = {
     sub: "No es un menú — es una escalera. Cada peldaño es la misma convicción sobre la verdad narrativa, a otra altura. Empiece donde está.",
     where: "¿Cuál de estas frases es verdad para usted hoy?",
     showAll: "Ver todo",
+    recommended: "Recomendado para usted",
     situations: [
       "No consigo explicar lo que hago en una frase sin perder a la sala",
       "Vendemos, pero los prospectos nos comparan con competidores que no se nos parecen en nada",
@@ -85,7 +88,7 @@ const T = {
     fmt: { sub: "Suscripción", shot: "Pago único", post: "Tras la auditoría" },
     featuredCta: "Ver el encargo →",
     cta: "Saber más →",
-    foot: "Cada peldaño alimenta el siguiente. RADAR entrena el ojo, la Auditoría construye la arquitectura, MOMENTUM la mantiene viva. Nunca paga dos veces por lo mismo.",
+    foot: "Son cuatro puertas de entrada al mismo trabajo, no cuatro productos. Sea cual sea su punto de partida, nada se paga dos veces: una auditoría encargada primero se descuenta de la arquitectura.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ mes", fmt: "sub", answers: ["articulate"], line: "Una marca real diseccionada cada día. Lea un posicionamiento en segundos — el instrumento que sus competidores no tienen.", href: "/radar" },
       { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "pago único", fmt: "shot", answers: ["articulate", "confused"], line: "Un diagnóstico escrito de su relato actual — lo que aterriza, lo que le difumina y los movimientos a realizar. Siete días, sin llamada.", href: "/audit" },
@@ -170,16 +173,30 @@ export function LadderSection() {
         <div className="grid-auto">
           {t.rungs.map((r) => {
             const dimmed = isDimmed(r)
+            const matched = selected !== null && r.answers.includes(selected)
             return (
               <Link
                 key={r.key}
                 href={r.href}
                 className={[
-                  "relative block p-7 pt-9 no-underline transition-all duration-300",
+                  "relative block p-7 pt-9 no-underline transition-all duration-500",
                   r.featured ? "card-featured" : "border border-white/10 bg-white/[0.02]",
-                  dimmed ? "opacity-30 saturate-50" : "opacity-100 hover:border-brand",
+                  dimmed
+                    ? "scale-[0.985] opacity-25 saturate-[0.35]"
+                    : "opacity-100 hover:border-brand",
+                  // When a situation is selected, the rungs that answer it are lit:
+                  // a red halo and a brand border make the recommendation unmistakable.
+                  matched
+                    ? "z-[1] border-brand shadow-[0_0_0_1px_rgba(230,57,70,0.6),0_0_46px_rgba(230,57,70,0.35),0_0_120px_rgba(230,57,70,0.18)]"
+                    : "",
                 ].join(" ")}
               >
+                {matched && (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-px animate-pulse bg-[radial-gradient(120%_120%_at_50%_0%,rgba(230,57,70,0.14),transparent_60%)]"
+                  />
+                )}
                 {r.featured && (
                   <>
                     <span className="bracket-tl" aria-hidden />
@@ -187,8 +204,13 @@ export function LadderSection() {
                   </>
                 )}
 
-                <div className="mb-5 flex flex-wrap gap-2">
+                <div className="relative mb-5 flex flex-wrap items-center gap-2">
                   <span className={`tag ${FMT_STYLE[r.fmt]}`}>{t.fmt[r.fmt]}</span>
+                  {matched && (
+                    <span className="tag border-brand bg-brand/15 font-semibold text-brand">
+                      {t.recommended}
+                    </span>
+                  )}
                 </div>
 
                 <h3 className="mb-3 font-serif text-2xl font-bold leading-tight tracking-[-0.02em] text-white">

@@ -12,6 +12,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/brand-narrative-audit", priority: 0.95, changeFrequency: "monthly" },
   { path: "/sample-audit", priority: 0.9, changeFrequency: "monthly" },
   { path: "/audit", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/exemple-audit", priority: 0.85, changeFrequency: "monthly" },
   { path: "/radar", priority: 0.85, changeFrequency: "daily" },
   { path: "/momentum", priority: 0.8, changeFrequency: "monthly" },
   { path: "/strawberry-method", priority: 0.8, changeFrequency: "monthly" },
