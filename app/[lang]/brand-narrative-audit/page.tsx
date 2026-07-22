@@ -6,6 +6,7 @@ import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -684,6 +685,7 @@ export default function BrandNarrativeArchitecturePage() {
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+      <BackHomeButton />
 
       <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.4, pointerEvents: "none" }} />

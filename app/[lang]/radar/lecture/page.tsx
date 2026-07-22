@@ -5,6 +5,7 @@ import { RadarSignOut } from "@/components/strawberry/radar-signout"
 import { publishedReads, readsByTheme, pickLocale, THEME_LABELS, type BrandRead, type Theme } from "@/lib/radar-reads"
 import { CoverMotif, MANIFESTOS, LESSONS, APPLICATIONS } from "@/lib/radar-library"
 import { isLang, type Lang } from "@/lib/lang"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 /**
  * La bibliothèque.
@@ -85,6 +86,7 @@ export default async function RadarLibraryPage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       {hero && (
         <section className="relative overflow-hidden border-b border-hair px-gutter pb-10 pt-36">

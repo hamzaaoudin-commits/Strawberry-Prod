@@ -3,6 +3,7 @@ import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -103,6 +104,7 @@ export default async function ManifestoPage({
   return (
     <main className="min-h-screen" style={{ background: "#0a0a0a", color: "#fff" }}>
       <NavBar />
+      <BackHomeButton />
 
       {/* HERO */}
       <section style={{ padding: "160px clamp(1.5rem,4vw,4rem) 60px", position: "relative", overflow: "hidden", textAlign: "center" }}>

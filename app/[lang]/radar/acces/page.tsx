@@ -7,6 +7,7 @@ import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT, useLang } from "@/lib/i18n"
 import { STRIPE_LINKS } from "@/lib/config"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const T = {
   fr: {
@@ -104,6 +105,7 @@ function AccessForm() {
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       <section className="relative px-gutter pb-28 pt-40 text-center">
         <div className="glow-top" aria-hidden />

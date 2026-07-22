@@ -29,6 +29,22 @@ export default async function proxy(request: NextRequest) {
     // read never reaches the network without a valid signature.
     const segments = pathname.split("/").filter(Boolean)
     const lang = segments[0]
+    // Espace client MOMENTUM : /[langue]/momentum/atelier/<maison>
+    if (segments[1] === "momentum" && segments[2] === "atelier" && segments[3]) {
+      const slug = segments[3]
+      const granted = await verifyAccess(
+        request.cookies.get(`sp_momentum_${slug}`)?.value,
+        process.env.RADAR_ACCESS_SECRET ?? ""
+      )
+      if (!granted) {
+        const url = request.nextUrl.clone()
+        url.pathname = `/${lang}/momentum/atelier`
+        url.searchParams.set("m", slug)
+        return NextResponse.redirect(url)
+      }
+      return NextResponse.next()
+    }
+
     if (segments[1] === "radar" && segments[2] === "lecture") {
       const granted = await verifyAccess(
         request.cookies.get(ACCESS_COOKIE)?.value,

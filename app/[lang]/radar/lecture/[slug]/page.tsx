@@ -5,6 +5,7 @@ import { Footer } from "@/components/strawberry/footer"
 import { getRead, publishedReads, pickLocale, SECTION_LABELS } from "@/lib/radar-reads"
 import { CoverMotif } from "@/lib/radar-library"
 import { isLang, type Lang } from "@/lib/lang"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 export const dynamic = "force-dynamic"
 
@@ -37,6 +38,7 @@ export default async function RadarReadPage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       <article className="relative px-gutter pb-12 pt-36">
         <div className="glow-top" aria-hidden />

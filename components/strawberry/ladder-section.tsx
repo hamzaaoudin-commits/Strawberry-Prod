@@ -3,6 +3,9 @@
 import { useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
+import { OfferCover, type OfferKey } from "@/components/strawberry/offer-covers"
+
+type CoverKey = OfferKey
 
 type SituationId = "articulate" | "confused" | "outgrown" | "execution"
 
@@ -16,6 +19,14 @@ type Rung = {
   href: string
   answers: SituationId[]
   featured?: boolean
+}
+
+/** Quelle couverture pour quel barreau. */
+const COVER: Record<string, OfferKey> = {
+  radar: "radar",
+  audit: "audit",
+  architecture: "architecture",
+  momentum: "momentum",
 }
 
 const SITUATION_IDS: SituationId[] = ["articulate", "confused", "outgrown", "execution"]
@@ -203,6 +214,14 @@ export function LadderSection() {
                     <span className="bracket-br" aria-hidden />
                   </>
                 )}
+
+                <OfferCover
+                  k={COVER[r.key] ?? "radar"}
+                  name={r.name}
+                  price={`${r.price} ${r.cadence}`}
+                  featured={r.featured}
+                  className="mb-6"
+                />
 
                 <div className="relative mb-5 flex flex-wrap items-center gap-2">
                   <span className={`tag ${FMT_STYLE[r.fmt]}`}>{t.fmt[r.fmt]}</span>

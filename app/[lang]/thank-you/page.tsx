@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -147,6 +148,7 @@ export default function ThankYouPage() {
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+      <BackHomeButton />
 
       {/* HERO */}
       <section

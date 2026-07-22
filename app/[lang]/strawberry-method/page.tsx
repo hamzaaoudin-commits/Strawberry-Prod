@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -14,6 +15,7 @@ const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
 const T = {
   en: {
     badge: "The Proprietary Framework",
+    acronymNote: "Five stages. Each one earns the next.",
     kickerArtifact: "From method to artifact",
     kickerApplied: "The method, applied",
     h1a: "The Strawberry",
@@ -80,6 +82,7 @@ const T = {
   },
   fr: {
     badge: "Le Framework Propri\u00e9taire",
+    acronymNote: "Cinq \u00e9tapes. Chacune m\u00e9rite la suivante.",
     kickerArtifact: "De la m\u00e9thode \u00e0 l'artefact",
     kickerApplied: "La m\u00e9thode, appliqu\u00e9e",
     h1a: "La M\u00e9thode",
@@ -146,6 +149,7 @@ const T = {
   },
   es: {
     badge: "El Framework Propietario",
+    acronymNote: "Cinco etapas. Cada una merece la siguiente.",
     kickerArtifact: "Del m\u00e9todo al artefacto",
     kickerApplied: "El m\u00e9todo, aplicado",
     h1a: "El M\u00e9todo",
@@ -251,6 +255,7 @@ export default function StrawberryMethodPage() {
 
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
+      <BackHomeButton />
 
       {/* HERO — bloc letter cards retiré */}
       <section ref={hero.ref as any} style={{ minHeight: "90vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
@@ -265,6 +270,25 @@ export default function StrawberryMethodPage() {
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
             {t.lead}
+          </p>
+
+          {/* L'acronyme, posé dès le hero : le lecteur voit la méthode entière
+              avant de lire une seule étape. */}
+          <div className="mt-14 flex flex-wrap items-start justify-center gap-x-6 gap-y-7 sm:gap-x-10">
+            {t.letters.map((st) => (
+              <div key={st.letter} className="min-w-[76px] text-center">
+                <div className="font-serif text-[clamp(2.75rem,7vw,4.5rem)] font-bold leading-none tracking-[-0.02em] text-brand">
+                  {st.letter}
+                </div>
+                <div className="mt-2 font-sans text-[10px] uppercase tracking-[0.2em] text-chalk-55">
+                  {st.name}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mx-auto mt-6 max-w-[520px] font-serif text-[clamp(0.95rem,1.4vw,1.1rem)] italic text-chalk-40">
+            {t.acronymNote}
           </p>
         </div>
       </section>

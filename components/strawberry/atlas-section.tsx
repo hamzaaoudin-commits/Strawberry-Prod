@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
+import { AtlasCover } from "@/components/strawberry/offer-covers"
 import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
@@ -205,7 +206,8 @@ export function AtlasSection() {
 
       <div className="shell">
         <div className="flex flex-col gap-12">
-          <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex flex-wrap items-start justify-between gap-8">
+            <AtlasCover className="order-2 w-[180px] shrink-0 md:order-none" />
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
                 <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">

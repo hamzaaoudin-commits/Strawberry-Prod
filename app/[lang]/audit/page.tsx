@@ -7,6 +7,7 @@ import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { AUDIT_DOC } from "@/lib/sample-verso"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const T = {
   fr: {
@@ -215,6 +216,7 @@ export default async function BrandNarrativeAuditPage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       {/* HERO */}
       <section className="section-hero pb-24 pt-40">

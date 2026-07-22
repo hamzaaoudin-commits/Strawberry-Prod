@@ -4,6 +4,7 @@ import { Footer } from "@/components/strawberry/footer"
 import { SAMPLE_DOC, type Block } from "@/lib/sample-sillage"
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 /**
  * The SILLAGE demonstration document.
@@ -115,6 +116,7 @@ export default async function SampleAuditPage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       {/* MASTHEAD */}
       <section className="section-hero pb-14 pt-40">

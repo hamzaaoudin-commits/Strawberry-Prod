@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n"
 import { AnimatedOrb } from "@/components/strawberry/animated-orb"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -209,6 +210,7 @@ export default function AboutPage() {
   return (
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
       <NavBar />
+      <BackHomeButton />
 
       {/* HERO */}
       <section

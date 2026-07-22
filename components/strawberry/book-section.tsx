@@ -22,6 +22,12 @@ const T = {
     body: "This studio does not improvise its doctrine commission by commission. It is written down, argued across 158 pages, and published in French and in English — including the five-stage method, demonstrated end to end on three houses.",
     close: "The machine made everyone identical. Start underground.",
     cta: "Read about the book →",
+    parts: [
+      { t: "The Doctrine", d: "Why perception precedes the product" },
+      { t: "The Method", d: "The five stages, in full" },
+      { t: "The Instruments", d: "What to refuse, and how" },
+      { t: "The Demonstration", d: "Three houses, end to end" },
+    ],
   },
   fr: {
     kicker: "Le Livre",
@@ -33,6 +39,12 @@ const T = {
     body: "Ce studio n'improvise pas sa doctrine commande après commande. Elle est écrite, argumentée sur 158 pages, et publiée en français et en anglais — méthode en cinq étapes comprise, démontrée de bout en bout sur trois maisons.",
     close: "La machine a rendu tout le monde identique. Commencez sous terre.",
     cta: "En savoir plus sur le livre →",
+    parts: [
+      { t: "La Doctrine", d: "Pourquoi la perception précède le produit" },
+      { t: "La Méthode", d: "Les cinq étapes, en entier" },
+      { t: "Les Instruments", d: "Ce qu'il faut refuser, et comment" },
+      { t: "La Démonstration", d: "Trois maisons, de bout en bout" },
+    ],
   },
   es: {
     kicker: "El Libro",
@@ -44,6 +56,12 @@ const T = {
     body: "Este estudio no improvisa su doctrina encargo tras encargo. Está escrita, argumentada a lo largo de 158 páginas, y publicada en francés y en inglés — método de cinco etapas incluido, demostrado de principio a fin sobre tres casas.",
     close: "La máquina volvió idénticos a todos. Empiece bajo tierra.",
     cta: "Saber más sobre el libro →",
+    parts: [
+      { t: "La Doctrina", d: "Por qué la percepción precede al producto" },
+      { t: "El Método", d: "Las cinco etapas, enteras" },
+      { t: "Los Instrumentos", d: "Qué rechazar, y cómo" },
+      { t: "La Demostración", d: "Tres casas, de principio a fin" },
+    ],
   },
 }
 
@@ -89,7 +107,20 @@ export function BookSection() {
 
             <p className="mb-6 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.body}</p>
 
-            <p className="mb-8 font-serif text-[1.05rem] italic text-chalk-75">{t.close}</p>
+            <p className="mb-7 font-serif text-[1.05rem] italic text-chalk-75">{t.close}</p>
+
+            {/* Le sommaire : ce qui distingue un livre d'une plaquette. */}
+            <div className="mb-7 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]">
+              {t.parts.map((p, i) => (
+                <div key={p.t} className="bg-ink px-4 py-4">
+                  <div className="mb-1.5 font-serif text-[15px] font-bold text-brand">
+                    {["I", "II", "III", "IV"][i]}
+                  </div>
+                  <div className="mb-1 font-serif text-[13.5px] leading-tight text-white">{p.t}</div>
+                  <div className="font-sans text-[10.5px] leading-snug text-chalk-40">{p.d}</div>
+                </div>
+              ))}
+            </div>
 
             <div className="mb-6 border-t border-white/10 pt-5 font-sans text-[13px] text-chalk-40">
               {t.author}

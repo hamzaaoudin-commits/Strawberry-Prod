@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n"
 import { STRIPE_LINKS } from "@/lib/config"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_RADAR } from "@/lib/faqs"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 
 // TODO: replace with the live RADAR subscription Stripe link when created.
@@ -180,6 +181,7 @@ export default function RadarPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       <section className="section-hero pb-16 pt-40">
         <div className="glow-top" aria-hidden />

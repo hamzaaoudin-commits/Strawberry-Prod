@@ -4,6 +4,7 @@ import { Footer } from "@/components/strawberry/footer"
 import { AUDIT_DOC, type AuditBlock } from "@/lib/sample-verso"
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 /**
  * VERSO — the demonstration document for the 490€ audit.
@@ -99,6 +100,7 @@ export default async function AuditSamplePage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       <section className="section-hero pb-14 pt-40">
         <div className="glow-top" aria-hidden />

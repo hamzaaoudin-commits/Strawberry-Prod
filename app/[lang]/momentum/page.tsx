@@ -8,6 +8,7 @@ import { BokehField } from "@/components/strawberry/bokeh-field"
 import { RackFocus } from "@/components/strawberry/rack-focus"
 import { SpotlightCard } from "@/components/strawberry/spotlight-card"
 import { FAQ_MOMENTUM } from "@/lib/faqs"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 
 const T = {
@@ -97,6 +98,7 @@ export default async function MomentumPage({
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
       <NavBar />
+      <BackHomeButton />
 
       <section className="section-hero relative min-h-[88vh] items-center overflow-hidden pb-24 pt-40">
         <BokehField />

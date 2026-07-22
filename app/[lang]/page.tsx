@@ -5,6 +5,7 @@ import { LadderSection } from "@/components/strawberry/ladder-section"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { AboutSection } from "@/components/strawberry/about-section"
 import { SillageSection } from "@/components/strawberry/sillage-section"
+import { BeforeAfterSection } from "@/components/strawberry/before-after-section"
 import { BookSection } from "@/components/strawberry/book-section"
 import { AtlasSection } from "@/components/strawberry/atlas-section"
 import { CTABanner } from "@/components/strawberry/cta-banner"
@@ -20,6 +21,7 @@ export default function Home() {
       <LadderSection />
       <OffersSection />
       <AboutSection />
+      <BeforeAfterSection />
       <SillageSection />
       <BookSection />
       <AtlasSection />
