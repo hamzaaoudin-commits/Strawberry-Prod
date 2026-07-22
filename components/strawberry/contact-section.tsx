@@ -37,7 +37,7 @@ const T = {
     kicker: "Nous écrire",
     h2a: "Parlons-",
     h2b: "en.",
-    intro: "Parlez-moi de votre maison. La conviction que vous n'arrivez pas encore à articuler. Ce que vos concurrents te piquent sans cesse — ou copient mal. Je lis chaque message moi-même.",
+    intro: "Parlez-moi de votre maison. La conviction que vous n'arrivez pas encore à articuler. Ce que vos concurrents vous prennent sans cesse — ou copient mal. Je lis chaque message moi-même.",
     lines: "Lignes directes",
     labels: ["Email", "Instagram", "Localisation"],
     note: "Limité à quatre commandes par trimestre. Si c'est complet, vous seras le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",

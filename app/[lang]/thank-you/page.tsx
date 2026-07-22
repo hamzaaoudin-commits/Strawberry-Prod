@@ -82,7 +82,7 @@ const T = {
       { title: "Le travail commence", body: "Une fois votre questionnaire re\u00e7u, je d\u00e9marre. Vous n'entendras pas du silence \u2014 vous n'entendras rien jusqu'\u00e0 ce que le travail soit pr\u00eat \u00e0 \u00eatre exceptionnel. Livraison dans le d\u00e9lai convenu." },
     ],
     coming: [
-      "Un Diagnostic de diff\u00e9renciation qui te montre noir sur blanc le terrain libre qu'aucun concurrent n'occupe.",
+      "Un Diagnostic de diff\u00e9renciation qui vous montre noir sur blanc le terrain libre qu'aucun concurrent n'occupe.",
       "Une Plateforme narrative \u2014 votre position \u00e9crite en une phrase d\u00e9fendable, votre r\u00e9cit structur\u00e9, vos piliers nomm\u00e9s.",
       "Un Syst\u00e8me de langage \u2014 les mots qui vous appartiennent, les mots qui te sont interdits, des exemples avant/apr\u00e8s tir\u00e9s de vos propres communications.",
       "Un Kit de d\u00e9ploiement \u2014 du copy utilisable d\u00e8s le lundi. R\u00e9\u00e9criture de la page d'accueil. Pitch en trois formats. 10 \u00e0 15 angles de prise de parole pr\u00eats \u00e0 poster.",
