@@ -5,7 +5,7 @@ import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
 const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/manifesto"]
-const WORK_HREFS = ["/radar", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit"]
+const WORK_HREFS = ["/radar", "/radar/acces", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit"]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
   { href: "https://instagram.com/strawberry_prods", external: true },
@@ -38,7 +38,7 @@ const T = {
     hWork: "The Work",
     hReach: "Reach",
     explore: ["Home", "About", "The Method", "Manifesto"],
-    work: ["RADAR", "The Audit", "The Commission", "MOMENTUM", "The SILLAGE document"],
+    work: ["RADAR", "Subscriber access", "The Audit", "The Commission", "MOMENTUM", "The SILLAGE document"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },

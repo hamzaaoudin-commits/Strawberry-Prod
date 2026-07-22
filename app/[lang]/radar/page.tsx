@@ -4,12 +4,13 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
+import { STRIPE_LINKS } from "@/lib/config"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_RADAR } from "@/lib/faqs"
 
 
 // TODO: replace with the live RADAR subscription Stripe link when created.
-const RADAR_SUBSCRIBE_URL = "/#contact"
+
 
 const T = {
   en: {
@@ -18,6 +19,7 @@ const T = {
     h1b: "before the market does.",
     lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading I'd give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
     subscribe: "Subscribe — 15€/month",
+    access: "I'm already a subscriber",
     seeToday: "See today's read",
     readKicker: "The read",
     readTitle1: "Same structure, every day.",
@@ -51,6 +53,7 @@ const T = {
     h1b: "avant le marché.",
     lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que je lui donnerais. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
     subscribe: "S'abonner — 15€/mois",
+    access: "Je suis déjà abonné",
     seeToday: "Voir la fiche du jour",
     readKicker: "La lecture",
     readTitle1: "Même structure, chaque jour.",
@@ -84,6 +87,7 @@ const T = {
     h1b: "antes que el mercado.",
     lead: "Cada día, una marca real pasa por el radar: lo que emite (la señal), lo que interfiere (el ruido) y el rumbo que le daría. No un curso — un instrumento. La ventaja que sus competidores no tienen, día tras día.",
     subscribe: "Suscribirse — 15€/mes",
+    access: "Ya estoy suscrito",
     seeToday: "Ver la ficha de hoy",
     readKicker: "La lectura",
     readTitle1: "Misma estructura, cada día.",
@@ -191,8 +195,9 @@ export default function RadarPage() {
           <p className="lede mx-auto mb-9 max-w-[640px]">{t.lead}</p>
 
           <div className="flex flex-wrap justify-center gap-3.5">
-            <a href={RADAR_SUBSCRIBE_URL} className="btn-primary" rel="noopener">{t.subscribe}</a>
+            <a href={STRIPE_LINKS.radar} className="btn-primary" rel="noopener">{t.subscribe}</a>
             <a href="#today" className="btn-ghost">{t.seeToday}</a>
+            <Link href="/radar/acces" className="btn-ghost">{t.access}</Link>
           </div>
 
           <RadarScope />
@@ -258,7 +263,7 @@ export default function RadarPage() {
           <span className="tag border-[rgba(120,180,255,0.4)] text-[rgba(150,195,255,0.9)]">{t.subLabel}</span>
           <h3 className="mb-3 mt-5 font-serif text-[1.8rem] font-bold">{t.subTitle}</h3>
           <p className="mb-7 font-sans text-[15px] leading-relaxed text-chalk-65">{t.subBody}</p>
-          <a href={RADAR_SUBSCRIBE_URL} className="btn-primary" rel="noopener">{t.subscribe}</a>
+          <a href={STRIPE_LINKS.radar} className="btn-primary" rel="noopener">{t.subscribe}</a>
         </div>
       </section>
 
