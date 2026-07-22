@@ -135,6 +135,9 @@
 /* --- Layout scaffolding --- */
 
 /* Standard horizontal page gutter used by every section. */
+@utility pl-gutter { padding-left: clamp(1.5rem, 4vw, 4rem); }
+@utility pr-gutter { padding-right: clamp(1.5rem, 4vw, 4rem); }
+
 @utility px-gutter {
   padding-left: clamp(1.5rem, 4vw, 4rem);
   padding-right: clamp(1.5rem, 4vw, 4rem);
