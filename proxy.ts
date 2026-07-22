@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { LANGS, DEFAULT_LANG } from "@/lib/lang"
+import { verifyAccess, ACCESS_COOKIE } from "@/lib/radar-access"
 
 const PUBLIC_FILE = /\.(.*)$/
 
@@ -10,7 +11,7 @@ const PUBLIC_FILE = /\.(.*)$/
  * what turns the old flat URLs into locale URLs without losing anyone, and what
  * lets "/" exist at all now that every page lives under /fr, /en or /es.
  */
-export default function proxy(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (
@@ -22,7 +23,26 @@ export default function proxy(request: NextRequest) {
   }
 
   const hasLocale = LANGS.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`))
-  if (hasLocale) return NextResponse.next()
+
+  if (hasLocale) {
+    // RADAR library gate. Checked here, before any page renders, so a protected
+    // read never reaches the network without a valid signature.
+    const segments = pathname.split("/").filter(Boolean)
+    const lang = segments[0]
+    if (segments[1] === "radar" && segments[2] === "lecture") {
+      const granted = await verifyAccess(
+        request.cookies.get(ACCESS_COOKIE)?.value,
+        process.env.RADAR_ACCESS_SECRET ?? ""
+      )
+      if (!granted) {
+        const url = request.nextUrl.clone()
+        url.pathname = `/${lang}/radar/acces`
+        url.searchParams.set("from", pathname)
+        return NextResponse.redirect(url)
+      }
+    }
+    return NextResponse.next()
+  }
 
   const header = request.headers.get("accept-language") ?? ""
   const preferred =
