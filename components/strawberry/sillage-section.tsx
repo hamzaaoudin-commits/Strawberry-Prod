@@ -81,7 +81,11 @@ export function SillageSection() {
             <br />
             <span className="text-gradient">{t.h2b}</span>
           </h2>
-          <p className="lede">{t.lead}</p>
+          <p className="lede mb-9">{t.lead}</p>
+
+          <p className="mx-auto max-w-[760px] font-serif text-[clamp(1.25rem,2.6vw,1.85rem)] leading-snug text-chalk-90">
+            {t.note}
+          </p>
         </div>
 
         <div className="card-featured mx-auto max-w-[900px] p-8 md:p-14">
@@ -98,7 +102,7 @@ export function SillageSection() {
             <div className="tag border-brand text-brand">{t.docMeta}</div>
           </div>
 
-          <div className="mb-10 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+          <div className="mb-9 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
             {t.points.map((p) => (
               <div key={p.n} className="bg-ink px-6 py-7">
                 <div className="mb-2.5 font-serif text-xl font-bold text-brand">{p.n}</div>
@@ -111,8 +115,6 @@ export function SillageSection() {
           <Link href="/sample-audit" className="btn-primary">
             {t.cta}
           </Link>
-
-          <p className="mt-6 max-w-[620px] font-sans text-[13px] leading-relaxed text-chalk-40">{t.note}</p>
         </div>
       </div>
     </section>

@@ -75,26 +75,26 @@ export const FAQ_RADAR: FaqSet = {
 export const FAQ_MOMENTUM: FaqSet = {
   en: [
     { q: "Do I need the audit first?", a: "Yes. MOMENTUM executes an architecture — without one, there's nothing to keep coherent. If you haven't commissioned the audit, start there." },
-    { q: "The audit is 4,500€ and so is your top tier. Am I paying twice?", a: "No. The audit is one-shot: you pay once and own the architecture forever. MOMENTUM is monthly and entirely optional — it's the crew that keeps building, not a second copy of the blueprint." },
+    { q: "The architecture is 4,500€ and MOMENTUM is 2,500€ a month. Am I paying twice?", a: "No. The audit is one-shot: you pay once and own the architecture forever. MOMENTUM is monthly and entirely optional — it's the crew that keeps building, not a second copy of the blueprint." },
     { q: "What's the commitment?", a: "Month to month after an initial three-month run. Three months is the minimum honest window to judge whether the work is compounding." },
     { q: "Who actually does the work?", a: "The studio, under single creative direction. Content execution is produced in-house to the same standard as the architecture." },
-    { q: "What's the difference between the three tiers?", a: "Volume and priority, not quality. Établi is direction plus a steady cadence; Maison adds full multi-channel campaigns; Souverain adds priority direction and a partner in the room for every major move." },
+    { q: "Is there a cheaper tier?", a: "No. One rate, 2,500€ a month, same scope for everyone. Tiers exist to let a studio quote what a client can pay rather than what the work costs — we'd rather have one honest price." },
     { q: "Can I pause?", a: "Yes, once per twelve months. Momentum is the point, but life happens." },
   ],
   fr: [
     { q: "Faut-il l'audit d'abord ?", a: "Oui. MOMENTUM exécute une architecture — sans elle, il n'y a rien à garder cohérent. Si vous n'avez pas commandé l'audit, commencez par là." },
-    { q: "L'audit est à 4 500€ et votre palier haut aussi. Je paie deux fois ?", a: "Non. L'audit est one-shot : vous payez une fois et l'architecture est à vous pour toujours. MOMENTUM est mensuel et entièrement optionnel — c'est l'équipe qui continue de construire, pas une deuxième copie du plan." },
+    { q: "L'architecture est à 4 500€ et MOMENTUM à 2 500€ par mois. Je paie deux fois ?", a: "Non. L'audit est one-shot : vous payez une fois et l'architecture est à vous pour toujours. MOMENTUM est mensuel et entièrement optionnel — c'est l'équipe qui continue de construire, pas une deuxième copie du plan." },
     { q: "Quel est l'engagement ?", a: "Au mois après une première période de trois mois. Trois mois, c'est la fenêtre minimale honnête pour juger si le travail produit un effet cumulé." },
     { q: "Qui fait le travail concrètement ?", a: "Le studio, sous une direction créative unique. L'exécution de contenu est produite en interne, au même standard que l'architecture." },
-    { q: "Quelle différence entre les trois paliers ?", a: "Le volume et la priorité, pas la qualité. Établi, c'est la direction plus une cadence régulière ; Maison ajoute les campagnes multicanal complètes ; Souverain ajoute la direction prioritaire et un partenaire dans la pièce à chaque grand mouvement." },
+    { q: "Existe-t-il un palier moins cher ?", a: "Non. Un seul tarif, 2 500€ par mois, le même périmètre pour tout le monde. Les paliers servent à facturer ce qu'un client peut payer plutôt que ce que le travail coûte — nous préférons un seul prix honnête." },
     { q: "Puis-je mettre en pause ?", a: "Oui, une fois tous les douze mois. Le momentum est tout l'enjeu, mais la vie arrive." },
   ],
   es: [
     { q: "¿Necesito la auditoría primero?", a: "Sí. MOMENTUM ejecuta una arquitectura — sin ella no hay nada que mantener coherente. Si no ha encargado la auditoría, empiece por ahí." },
-    { q: "La auditoría cuesta 4.500€ y su nivel más alto también. ¿Pago dos veces?", a: "No. La auditoría es de pago único: paga una vez y la arquitectura es suya para siempre. MOMENTUM es mensual y totalmente opcional — es el equipo que sigue construyendo, no una segunda copia del plano." },
+    { q: "La arquitectura cuesta 4.500€ y MOMENTUM 2.500€ al mes. ¿Pago dos veces?", a: "No. La auditoría es de pago único: paga una vez y la arquitectura es suya para siempre. MOMENTUM es mensual y totalmente opcional — es el equipo que sigue construyendo, no una segunda copia del plano." },
     { q: "¿Cuál es el compromiso?", a: "Mes a mes tras un periodo inicial de tres meses. Tres meses es la ventana mínima honesta para juzgar si el trabajo se acumula." },
     { q: "¿Quién hace el trabajo realmente?", a: "El estudio, bajo una única dirección creativa. La ejecución de contenido se produce en casa, con el mismo estándar que la arquitectura." },
-    { q: "¿Qué diferencia hay entre los tres niveles?", a: "Volumen y prioridad, no calidad. Établi es dirección más una cadencia constante; Maison añade campañas multicanal completas; Souverain añade dirección prioritaria y un socio en la sala en cada gran movimiento." },
+    { q: "¿Hay un nivel más barato?", a: "No. Una sola tarifa, 2.500€ al mes, el mismo alcance para todos. Los niveles sirven para cobrar lo que un cliente puede pagar en vez de lo que cuesta el trabajo — preferimos un único precio honesto." },
     { q: "¿Puedo pausar?", a: "Sí, una vez cada doce meses. El momentum es el objetivo, pero la vida pasa." },
   ],
 }

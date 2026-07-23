@@ -28,12 +28,12 @@ const T = {
     badge: "NINE VOLUMES · ONE DOCTRINE",
     h1a: "The Strawberry",
     h1b: "Manifestos.",
-    lead: "Nine manifestos. One doctrine. A complete blueprint for brands that refuse to disappear in the AI decade. Open, free, readable in your browser.",
+    lead: "Nine manifestos. One doctrine. A complete blueprint for houses that refuse to disappear in the AI decade. The volumes are read inside RADAR, the studio's subscription.",
     verbLabel: "The verb:",
-    readVol: "Read Vol.",
-    ctaH2: "When you're ready to build.",
-    ctaP: "The manifestos lay out the doctrine. The commission makes it real.",
-    cta: "See the Commission →",
+    readVol: "Vol.",
+    ctaH2: "All nine volumes are in RADAR.",
+    ctaP: "The subscription opens the nine manifestos, thirty brand reads, the method broken into lessons, and the applications. 15€ a month, cancel in one click.",
+    cta: "Subscribe to RADAR — 15€/month →",
     volumes: [
       { title: "Neuro-Cinema Manifesto", verb: "Remember.", tagline: "How elite brands build unforgettable identity when everyone else sounds like a machine. The architecture of narrative immunity." },
       { title: "The Tribe Doctrine", verb: "Be followed.", tagline: "Why rewriting your company's narrative is the only way to survive the AI wave. And how to build a tribe that won't disappear with it." },
@@ -50,12 +50,12 @@ const T = {
     badge: "NEUF VOLUMES · UNE DOCTRINE",
     h1a: "Les Manifestes",
     h1b: "Strawberry.",
-    lead: "Neuf manifestes. Une doctrine. Un plan complet pour les marques qui refusent de disparaître dans la décennie de l'IA. Ouverts, gratuits, lisibles dans votre navigateur.",
+    lead: "Neuf manifestes. Une doctrine. Un plan complet pour les maisons qui refusent de disparaître dans la décennie de l'IA. Les volumes se lisent dans RADAR, l'abonnement du studio.",
     verbLabel: "Le verbe :",
-    readVol: "Lire le Vol.",
-    ctaH2: "Quand vous êtes prêt à bâtir.",
-    ctaP: "Les manifestes posent la doctrine. La commande la rend réelle.",
-    cta: "Voir la commande →",
+    readVol: "Vol.",
+    ctaH2: "Les neuf volumes sont dans RADAR.",
+    ctaP: "L'abonnement donne accès aux neuf manifestes, aux trente fiches de marque, à la méthode découpée en leçons et aux applications. 15€ par mois, résiliable en un clic.",
+    cta: "S'abonner à RADAR — 15€/mois →",
     volumes: [
       { title: "Manifeste Neuro-Cinéma", verb: "Se souvenir.", tagline: "Comment les marques d'élite bâtissent une identité inoubliable quand tout le monde sonne comme une machine. L'architecture de l'immunité narrative." },
       { title: "La Doctrine de la Tribu", verb: "Être suivi.", tagline: "Pourquoi réécrire le récit de votre entreprise est le seul moyen de survivre à la vague IA. Et comment bâtir une tribu qui ne disparaîtra pas avec elle." },
@@ -72,12 +72,12 @@ const T = {
     badge: "NUEVE VOLÚMENES · UNA DOCTRINA",
     h1a: "Los Manifiestos",
     h1b: "Strawberry.",
-    lead: "Nueve manifiestos. Una doctrina. Un plano completo para las marcas que se niegan a desaparecer en la década de la IA. Abiertos, gratuitos, legibles en su navegador.",
+    lead: "Nueve manifiestos. Una doctrina. Un plano completo para las casas que se niegan a desaparecer en la década de la IA. Los volúmenes se leen dentro de RADAR, la suscripción del estudio.",
     verbLabel: "El verbo:",
-    readVol: "Leer el Vol.",
-    ctaH2: "Cuando esté listo para construir.",
-    ctaP: "Los manifiestos exponen la doctrina. El encargo la hace real.",
-    cta: "Ver el encargo →",
+    readVol: "Vol.",
+    ctaH2: "Los nueve volúmenes están en RADAR.",
+    ctaP: "La suscripción abre los nueve manifiestos, treinta fichas de marca, el método desglosado en lecciones y las aplicaciones. 15€ al mes, cancelable en un clic.",
+    cta: "Suscribirse a RADAR — 15€/mes →",
     volumes: [
       { title: "Manifiesto Neuro-Cine", verb: "Recordar.", tagline: "Cómo las marcas de élite construyen una identidad inolvidable cuando todos los demás suenan como una máquina. La arquitectura de la inmunidad narrativa." },
       { title: "La Doctrina de la Tribu", verb: "Ser seguido.", tagline: "Por qué reescribir el relato de su empresa es la única forma de sobrevivir a la ola de la IA. Y cómo construir una tribu que no desaparezca con ella." },
@@ -167,7 +167,7 @@ export default async function ManifestoPage({
           <p style={{ fontFamily: SANS, fontSize: 16, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: 32 }}>
             {t.ctaP}
           </p>
-          <Link href="/brand-narrative-audit" style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "16px 36px", borderRadius: 100, fontFamily: SANS, fontSize: 14, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: "0 12px 36px " + GLOW }}>
+          <Link href="/radar" style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "16px 36px", borderRadius: 100, fontFamily: SANS, fontSize: 14, fontWeight: 700, textDecoration: "none", letterSpacing: "0.06em", boxShadow: "0 12px 36px " + GLOW }}>
             {t.cta}
           </Link>
         </div>

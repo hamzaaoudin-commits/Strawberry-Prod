@@ -9,6 +9,7 @@ import { RackFocus } from "@/components/strawberry/rack-focus"
 import { SpotlightCard } from "@/components/strawberry/spotlight-card"
 import { FAQ_MOMENTUM } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { STRIPE_LINKS } from "@/lib/config"
 
 
 const T = {
@@ -26,13 +27,11 @@ const T = {
       { t: "Creative direction", b: "The guardrail. Every campaign, page, film and post checked against the architecture — so the narrative never drifts as you scale." },
       { t: "Content execution", b: "The output. Story, design, web and sound produced in-house to the same standard — the arm that turns the position into a feed, not a folder." },
     ],
-    tiersKicker: "The tiers",
+    tiersKicker: "The rate",
     tiers: [
-      { name: "Établi", price: "1,500€", cadence: "/ month", line: "Creative direction + a steady content cadence. The narrative stays coherent while you run.", featured: false },
-      { name: "Maison", price: "2,500€", cadence: "/ month", line: "Direction, execution and monthly campaigns across channels. The full studio, on tap.", featured: true },
-      { name: "Souverain", price: "4,500€", cadence: "/ month", line: "Priority direction, high-volume execution and a partner in the room for every major move.", featured: false },
+      { name: "MOMENTUM", price: "2,500€", cadence: "/ month", line: "Creative direction and content execution, run by the studio against the architecture it wrote. One rate, no tiers, no scope to negotiate.", featured: true },
     ],
-    tierCta: "Talk to the studio",
+    tierCta: "Start MOMENTUM — 2,500€/month",
     bridge: "No architecture yet? MOMENTUM comes after. Start with the commission.",
     bridgeCta: "See BRAND NARRATIVE ARCHITECTURE →",
   },
@@ -50,13 +49,11 @@ const T = {
       { t: "Direction créative", b: "Le garde-fou. Chaque campagne, page, film et post confronté à l'architecture — pour que le récit ne dérive pas quand vous passes à l'échelle." },
       { t: "Exécution de contenu", b: "La production. Récit, design, web et son produits en interne au même standard — le bras qui transforme la position en feed, pas en dossier." },
     ],
-    tiersKicker: "Les paliers",
+    tiersKicker: "Le tarif",
     tiers: [
-      { name: "Établi", price: "1 500€", cadence: "/ mois", line: "Direction créative + une cadence de contenu régulière. Le récit reste cohérent pendant que vous avances.", featured: false },
-      { name: "Maison", price: "2 500€", cadence: "/ mois", line: "Direction, exécution et campagnes mensuelles multicanal. Le studio complet, à volonté.", featured: true },
-      { name: "Souverain", price: "4 500€", cadence: "/ mois", line: "Direction prioritaire, exécution à haut volume et un partenaire dans la pièce à chaque grand mouvement.", featured: false },
+      { name: "MOMENTUM", price: "2 500€", cadence: "/ mois", line: "Direction créative et exécution de contenu, menées par le studio à partir de l'architecture qu'il a écrite. Un seul tarif, aucun palier, aucun périmètre à négocier.", featured: true },
     ],
-    tierCta: "Parler au studio",
+    tierCta: "Démarrer MOMENTUM — 2 500€/mois",
     bridge: "Pas encore d'architecture ? MOMENTUM vient après. Commencez par la commande.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
   },
@@ -74,13 +71,11 @@ const T = {
       { t: "Dirección creativa", b: "La barandilla. Cada campaña, página, film y post contrastado con la arquitectura — para que el relato no se desvíe al escalar." },
       { t: "Ejecución de contenido", b: "La producción. Relato, diseño, web y sonido producidos en casa al mismo estándar — el brazo que convierte la posición en feed, no en carpeta." },
     ],
-    tiersKicker: "Los niveles",
+    tiersKicker: "La tarifa",
     tiers: [
-      { name: "Établi", price: "1.500€", cadence: "/ mes", line: "Dirección creativa + una cadencia de contenido constante. El relato se mantiene coherente mientras avanza.", featured: false },
-      { name: "Maison", price: "2.500€", cadence: "/ mes", line: "Dirección, ejecución y campañas mensuales multicanal. El estudio completo, a demanda.", featured: true },
-      { name: "Souverain", price: "4.500€", cadence: "/ mes", line: "Dirección prioritaria, ejecución de alto volumen y un socio en la sala en cada gran movimiento.", featured: false },
+      { name: "MOMENTUM", price: "2.500€", cadence: "/ mes", line: "Dirección creativa y ejecución de contenido, a cargo del estudio a partir de la arquitectura que escribió. Una sola tarifa, sin niveles, sin alcance que negociar.", featured: true },
     ],
-    tierCta: "Hablar con el estudio",
+    tierCta: "Empezar MOMENTUM — 2.500€/mes",
     bridge: "¿Aún sin arquitectura? MOMENTUM viene después. Empiece por el encargo.",
     bridgeCta: "Ver BRAND NARRATIVE ARCHITECTURE →",
   },
@@ -115,7 +110,7 @@ export default async function MomentumPage({
           <p className="lede mx-auto mb-10 max-w-[660px]">{t.lead}</p>
 
           <div className="flex flex-wrap justify-center gap-3.5">
-            <a href="/#contact" className="btn-primary">{t.cta}</a>
+            <a href={STRIPE_LINKS.momentum} className="btn-primary" rel="noopener">{t.cta}</a>
             <a href="#tiers" className="btn-ghost">{t.seeTiers}</a>
           </div>
         </div>
@@ -170,7 +165,7 @@ export default async function MomentumPage({
 
                 <p className="mb-6 body-sm">{tier.line}</p>
 
-                <a href="/#contact" className={tier.featured ? "btn-primary px-6 py-3 text-sm" : "btn-ghost px-6 py-3 text-sm font-semibold"}>
+                <a href={STRIPE_LINKS.momentum} rel="noopener" className="btn-primary px-7 py-3.5 text-sm">
                   {t.tierCta}
                 </a>
               </SpotlightCard>

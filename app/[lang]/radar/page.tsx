@@ -21,31 +21,27 @@ const T = {
     lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading I'd give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
     subscribe: "Subscribe — 15€/month",
     access: "I'm already a subscriber",
-    seeToday: "See today's read",
-    readKicker: "The read",
-    readTitle1: "Same structure, every day.",
-    readTitle2: "Only the brand changes.",
     read: [
       { label: "The signal", body: "What the brand genuinely emits — the position that actually lands, isolated from everything around it." },
       { label: "The noise", body: "What blurs it: the borrowed words, the me-too claims, the promise that fights itself." },
       { label: "The heading", body: "The single repositioning move I'd give it — the decision that would make it unmistakable." },
     ],
-    freeTag: "Free read · today",
-    meta: "Read n°014 · 11 min",
-    sector: "Sector · Fashion / DNVB",
-    sezane: {
-      context: { h: "Context", p: "Sézane is the French DNVB that made \"accessible premium made-in-France\" a category of its own — sold direct, without wholesale, through a community (\"Les Beaux Jours\") and boutiques that behave like apartments rather than stores. The story is genuinely strong. The question is whether the current pace protects it or erodes it." },
-      signal: { h: "The signal — what works", p: "A promise held without drifting: quality, French savoir-faire, a warm and personal tone, and a direct relationship with its audience. Where most fashion brands borrow luxury codes or discount codes, Sézane owns a third position — intimate, tasteful, reachable — and has never let it slip into either extreme. That consistency is the moat." },
-      noise: { h: "The noise — what's blurry", p: "Rarity and cadence pull against each other. The brand's emotional charge rests on scarcity — the sold-out drop, the waitlist, the object you almost missed. But the release rhythm has grown fast enough that scarcity starts to read as marketing rather than truth. When \"limited\" arrives every week, the word quietly loses its weight, and the premium promise leans on volume it was built to refuse." },
-      tension: { h: "The tension", p: "The founding truth (rare, considered, made-to-last) is now in friction with the operating reality (a high-frequency drop machine). Left unresolved, the brand keeps two promises that slowly cancel each other: buy now because it won't come back — and don't worry, more is coming Thursday." },
-      heading: { h: "The repositioning heading", p: "Decide, out loud, which promise is load-bearing. Two honest roads: (1) Honour rarity — slow the cadence, make each release an event again, and let scarcity be real rather than staged. (2) Own the pace — drop the rarity language entirely and reposition around a living, evolving wardrobe: not \"rare\", but \"always exactly right, always new\". Both are strong. The only losing move is keeping both." },
-      verdict: { h: "Verdict", p: "Sézane doesn't have a positioning problem — it has a promise it has outgrown without renaming. That's not a messaging fix; it's an architecture decision. And it's exactly the kind of decision a founder is too close to make alone." },
-    },
-    disclaimer: "Brand analysed from public information. Editorial opinion — never a client. RADAR is not affiliated with any brand cited.",
+    inKicker: "What the subscription contains",
+    inTitle: "Everything below, for 15€ a month.",
+    contents: [
+      { n: "30+", t: "Brand reads", d: "Thirty real brands already dissected, a new one every day. Same six-block grid each time." },
+      { n: "IX", t: "The manifestos", d: "The nine Strawberry manifestos, in full — the doctrine the studio works from." },
+      { n: "05", t: "The lessons", d: "The method broken into pieces: the sentence test, the reference class, the forbidden words, extraction, refusal." },
+      { n: "03", t: "The applications", d: "Daily exercise, the sentence library, and the watch list on your own competitors." },
+    ],
+    gridKicker: "The grid",
+    gridTitle: "Six blocks. Never changes.",
+    grid: ["Context", "The signal", "The noise", "The tension", "The heading", "Verdict"],
+    manifestoNote: "Previously published free. Now part of the subscription.",
+    bridge: "Reading positions well is one thing. Having yours written is another — and that is what the commission does.",
     subLabel: "Subscription · 15€/mo",
     subTitle: "The daily read, on tap.",
     subBody: "The full library, one new read a day, and the habit that lets you price any positioning in seconds. Cancel anytime.",
-    bridge: "RADAR trains the eye. When you're ready to build the architecture — not just read it — the commission is waiting.",
     bridgeCta: "See BRAND NARRATIVE ARCHITECTURE →",
   },
   fr: {
@@ -55,31 +51,27 @@ const T = {
     lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que je lui donnerais. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
     subscribe: "S'abonner — 15€/mois",
     access: "Je suis déjà abonné",
-    seeToday: "Voir la fiche du jour",
-    readKicker: "La lecture",
-    readTitle1: "Même structure, chaque jour.",
-    readTitle2: "Seule la marque change.",
     read: [
       { label: "Le signal", body: "Ce que la marque émet vraiment — la position qui porte, isolée de tout le reste." },
       { label: "Le bruit", body: "Ce qui la brouille : les mots empruntés, les promesses me-too, la promesse qui se contredit." },
       { label: "Le cap", body: "Le seul mouvement de repositionnement que je lui donnerais — la décision qui la rendrait indiscutable." },
     ],
-    freeTag: "Accès libre · aujourd'hui",
-    meta: "Fiche n°014 · 11 min",
-    sector: "Secteur · Mode / DNVB",
-    sezane: {
-      context: { h: "Contexte", p: "Sézane est la DNVB française qui a fait du « premium accessible made-in-France » une catégorie à part entière — vendue en direct, sans wholesale, portée par une communauté (« Les Beaux Jours ») et des boutiques qui tiennent de l'appartement plus que du magasin. Le récit est réellement fort. La question : la cadence actuelle le protège-t-elle ou l'érode-t-elle ?" },
-      signal: { h: "Le signal — ce qui marche", p: "Une promesse tenue sans dévier : qualité, savoir-faire français, votre chaleureux et personnel, relation directe à son public. Là où la plupart empruntent les codes du luxe ou ceux de la promo, Sézane occupe une troisième position — intime, juste, atteignable — sans jamais glisser vers l'un des deux extrêmes. Cette constance est la douve." },
-      noise: { h: "Le bruit — ce qui est flou", p: "Rareté et cadence se tirent dessus. La charge émotionnelle repose sur la rareté — le drop épuisé, la liste d'attente, l'objet qu'on a failli manquer. Mais le rythme de sorties s'est accéléré au point que la rareté commence à se lire comme du marketing, plus comme une vérité. Quand « édition limitée » revient chaque semaine, le mot perd son poids, et la promesse premium s'appuie sur un volume qu'elle était censée refuser." },
-      tension: { h: "La tension", p: "La vérité fondatrice (rare, pensé, fait pour durer) frotte désormais avec la réalité opérationnelle (une machine à drops haute fréquence). Non tranchée, la marque tient deux promesses qui s'annulent lentement : achète maintenant, ça ne reviendra pas — et rassure-vous, il y en aura d'autres jeudi." },
-      heading: { h: "Le cap de repositionnement", p: "Trancher, à voix haute, quelle promesse porte la structure. Deux routes honnêtes : (1) Honorer la rareté — ralentir la cadence, refaire de chaque sortie un événement, et rendre la rareté réelle plutôt que mise en scène. (2) Assumer le rythme — abandonner tout le langage de rareté et se repositionner sur le vestiaire vivant : non plus « rare », mais « toujours juste, toujours nouveau ». Les deux sont forts. Le seul coup perdant, c'est de garder les deux." },
-      verdict: { h: "Verdict", p: "Sézane n'a pas un problème de positionnement — elle a une promesse qu'elle a dépassée sans la renommer. Ce n'est pas un ajustement de message ; c'est une décision d'architecture. Et c'est exactement le genre de décision qu'un fondateur est trop proche pour prendre seul." },
-    },
-    disclaimer: "Marque analysée à partir d'informations publiques. Opinion éditoriale — jamais un client. RADAR n'est lié à aucune marque citée.",
+    inKicker: "Ce que contient l'abonnement",
+    inTitle: "Tout ce qui suit, pour 15€ par mois.",
+    contents: [
+      { n: "30+", t: "Les fiches", d: "Trente marques réelles déjà disséquées, une nouvelle chaque jour. La même grille en six blocs à chaque fois." },
+      { n: "IX", t: "Les manifestes", d: "Les neuf manifestes Strawberry, en entier — la doctrine dont le studio travaille." },
+      { n: "05", t: "Les leçons", d: "La méthode découpée en pièces : le test de la phrase, la classe de référence, les mots interdits, l'extraction, le refus." },
+      { n: "03", t: "Les applications", d: "L'entraînement du jour, la bibliothèque des phrases, et le carnet de veille sur vos propres concurrents." },
+    ],
+    gridKicker: "La grille",
+    gridTitle: "Six blocs. Elle ne change jamais.",
+    grid: ["Contexte", "Le signal", "Le bruit", "La tension", "Le cap", "Verdict"],
+    manifestoNote: "Auparavant publiés en accès libre. Désormais dans l'abonnement.",
+    bridge: "Bien lire les positions est une chose. Faire écrire la vôtre en est une autre — et c'est le travail de la commande.",
     subLabel: "Abonnement · 15€/mois",
     subTitle: "La lecture du jour, à volonté.",
     subBody: "La bibliothèque complète, une nouvelle fiche par jour, et l'habitude qui vous fait lire n'importe quel positionnement en quelques secondes. Résiliable à tout moment.",
-    bridge: "RADAR forme l'œil. Quand vous êtes prêt à bâtir l'architecture — pas seulement à la lire — la commande vous attend.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
   },
   es: {
@@ -89,31 +81,27 @@ const T = {
     lead: "Cada día, una marca real pasa por el radar: lo que emite (la señal), lo que interfiere (el ruido) y el rumbo que le daría. No un curso — un instrumento. La ventaja que sus competidores no tienen, día tras día.",
     subscribe: "Suscribirse — 15€/mes",
     access: "Ya estoy suscrito",
-    seeToday: "Ver la ficha de hoy",
-    readKicker: "La lectura",
-    readTitle1: "Misma estructura, cada día.",
-    readTitle2: "Solo cambia la marca.",
     read: [
       { label: "La señal", body: "Lo que la marca emite de verdad — la posición que aterriza, aislada de todo lo demás." },
       { label: "El ruido", body: "Lo que la enturbia: las palabras prestadas, los reclamos me-too, la promesa que se contradice." },
       { label: "El rumbo", body: "El único movimiento de reposicionamiento que le daría — la decisión que la haría inconfundible." },
     ],
-    freeTag: "Acceso libre · hoy",
-    meta: "Ficha n°014 · 11 min",
-    sector: "Sector · Moda / DNVB",
-    sezane: {
-      context: { h: "Contexto", p: "Sézane es la DNVB francesa que convirtió el «premium accesible made-in-France» en una categoría propia — venta directa, sin wholesale, con una comunidad («Les Beaux Jours») y boutiques que parecen apartamentos más que tiendas. El relato es realmente fuerte. La pregunta: ¿la cadencia actual lo protege o lo erosiona?" },
-      signal: { h: "La señal — lo que funciona", p: "Una promesa sostenida sin desviarse: calidad, savoir-faire francés, un tono cálido y personal, y una relación directa con su público. Donde la mayoría toma prestados los códigos del lujo o del descuento, Sézane ocupa una tercera posición — íntima, con gusto, alcanzable — sin caer en ninguno de los dos extremos. Esa constancia es el foso." },
-      noise: { h: "El ruido — lo difuso", p: "Rareza y cadencia tiran en direcciones opuestas. La carga emocional se apoya en la escasez — el drop agotado, la lista de espera, el objeto que casi le pierde. Pero el ritmo de lanzamientos se ha acelerado tanto que la escasez empieza a leerse como marketing, no como verdad. Cuando «edición limitada» llega cada semana, la palabra pierde peso, y la promesa premium se apoya en un volumen que estaba hecha para rechazar." },
-      tension: { h: "La tensión", p: "La verdad fundacional (raro, pensado, hecho para durar) roza ahora con la realidad operativa (una máquina de drops de alta frecuencia). Sin resolver, la marca sostiene dos promesas que se anulan poco a poco: compra ya, no volverá — y tranquilo, habrá más el jueves." },
-      heading: { h: "El rumbo de reposicionamiento", p: "Decidir, en voz alta, qué promesa sostiene la estructura. Dos caminos honestos: (1) Honrar la rareza — frenar la cadencia, volver a hacer de cada lanzamiento un evento y que la escasez sea real, no escenificada. (2) Asumir el ritmo — soltar todo el lenguaje de rareza y reposicionarse en el vestuario vivo: ya no «raro», sino «siempre exacto, siempre nuevo». Ambos son fuertes. La única jugada perdedora es quedarse con los dos." },
-      verdict: { h: "Veredicto", p: "Sézane no tiene un problema de posicionamiento — tiene una promesa que ha superado sin renombrar. No es un ajuste de mensaje; es una decisión de arquitectura. Y es justo el tipo de decisión que un fundador está demasiado cerca para tomar solo." },
-    },
-    disclaimer: "Marca analizada a partir de información pública. Opinión editorial — nunca un cliente. RADAR no está afiliado a ninguna marca citada.",
+    inKicker: "Lo que contiene la suscripción",
+    inTitle: "Todo lo que sigue, por 15€ al mes.",
+    contents: [
+      { n: "30+", t: "Las fichas", d: "Treinta marcas reales ya diseccionadas, una nueva cada día. La misma grilla de seis bloques cada vez." },
+      { n: "IX", t: "Los manifiestos", d: "Los nueve manifiestos Strawberry, enteros — la doctrina desde la que trabaja el estudio." },
+      { n: "05", t: "Las lecciones", d: "El método desglosado: la prueba de la frase, la clase de referencia, las palabras prohibidas, la extracción, el rechazo." },
+      { n: "03", t: "Las aplicaciones", d: "El entrenamiento del día, la biblioteca de frases y el cuaderno de vigilancia sobre sus competidores." },
+    ],
+    gridKicker: "La grilla",
+    gridTitle: "Seis bloques. Nunca cambia.",
+    grid: ["Contexto", "La señal", "El ruido", "La tensión", "El rumbo", "Veredicto"],
+    manifestoNote: "Antes publicados en acceso libre. Ahora dentro de la suscripción.",
+    bridge: "Leer bien las posiciones es una cosa. Que escriban la suya es otra — y ese es el trabajo del encargo.",
     subLabel: "Suscripción · 15€/mes",
     subTitle: "La lectura diaria, a demanda.",
     subBody: "La biblioteca complete, una ficha nueva al día, y el hábito que le permite tasar cualquier posicionamiento en segundos. Cancele cuando quiera.",
-    bridge: "RADAR entrena el ojo. Cuando esté listo para construir la arquitectura — no solo leerla — el encargo le espera.",
     bridgeCta: "Ver BRAND NARRATIVE ARCHITECTURE →",
   },
 }
@@ -167,16 +155,8 @@ function RadarScope() {
   )
 }
 
-const ReadBlock = ({ h, p }: { h: string; p: string }) => (
-  <div className="mb-6">
-    <div className="mb-2 font-sans text-xs uppercase tracking-[0.14em] text-brand">{h}</div>
-    <p className="text-[15.5px] leading-[1.7] text-chalk-75">{p}</p>
-  </div>
-)
-
 export default function RadarPage() {
   const t = useT(T)
-  const s = t.sezane
 
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
@@ -198,7 +178,6 @@ export default function RadarPage() {
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.radar} className="btn-primary" rel="noopener">{t.subscribe}</a>
-            <a href="#today" className="btn-ghost">{t.seeToday}</a>
             <Link href="/radar/acces" className="btn-ghost">{t.access}</Link>
           </div>
 
@@ -206,25 +185,41 @@ export default function RadarPage() {
         </div>
       </section>
 
+      {/* CE QUE CONTIENT L'ABONNEMENT — la question à 15€ se règle ici */}
       <section className="section">
         <div className="shell-lg">
-          <div className="mb-14 text-center">
-            <div className="kicker mb-5">{t.readKicker}</div>
-            <h2 className="h-section">
-              {t.readTitle1}
-              <br />
-              {t.readTitle2}
-            </h2>
+          <div className="mb-12 text-center">
+            <div className="kicker mb-5">{t.inKicker}</div>
+            <h2 className="h-section">{t.inTitle}</h2>
           </div>
 
           <div className="grid-auto">
-            {t.read.map((r, i) => (
-              <div key={r.label} className="card px-7 py-8">
-                <div className="mb-3.5 font-serif text-3xl font-bold text-brand">
+            {t.contents.map((c) => (
+              <div key={c.t} className="card px-7 py-8">
+                <div className="mb-3.5 font-serif text-[2.25rem] font-bold leading-none text-brand">{c.n}</div>
+                <h3 className="mb-2.5 font-serif text-[1.3rem] font-bold">{c.t}</h3>
+                <p className="body-sm">{c.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center font-sans text-[12.5px] text-chalk-40">{t.manifestoNote}</p>
+        </div>
+      </section>
+
+      {/* LA GRILLE — ce qui rend les fiches comparables entre elles */}
+      <section className="section">
+        <div className="mx-auto max-w-[820px] text-center">
+          <div className="kicker mb-5">{t.gridKicker}</div>
+          <h2 className="h-section mb-10">{t.gridTitle}</h2>
+
+          <div className="grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(120px,1fr))]">
+            {t.grid.map((g, i) => (
+              <div key={g} className="bg-ink px-4 py-6">
+                <div className="mb-2 font-serif text-[15px] font-bold text-brand">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="mb-3 font-serif text-[1.35rem] font-bold">{r.label}</h3>
-                <p className="body-sm">{r.body}</p>
+                <div className="font-sans text-[12.5px] leading-snug text-chalk-75">{g}</div>
               </div>
             ))}
           </div>
@@ -232,34 +227,6 @@ export default function RadarPage() {
       </section>
 
       {/* FULL FREE SÉZANE READ */}
-      <section id="today" className="section">
-        <div className="relative mx-auto max-w-[820px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.04)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-14">
-          <span className="bracket-tl" aria-hidden />
-
-          <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-            <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.freeTag}</span>
-            <span className="text-xs text-chalk-40">{t.meta}</span>
-          </div>
-
-          <h3 className="mb-1 font-serif text-[2.2rem] font-bold">Sézane</h3>
-          <div className="mb-8 font-sans text-xs uppercase tracking-[0.15em] text-white/45">{t.sector}</div>
-
-          <ReadBlock h={s.context.h} p={s.context.p} />
-          <ReadBlock h={s.signal.h} p={s.signal.p} />
-          <ReadBlock h={s.noise.h} p={s.noise.p} />
-          <ReadBlock h={s.tension.h} p={s.tension.p} />
-          <ReadBlock h={s.heading.h} p={s.heading.p} />
-
-          <div className="mt-2 border-t border-white/10 pt-6">
-            <ReadBlock h={s.verdict.h} p={s.verdict.p} />
-          </div>
-        </div>
-
-        <p className="mx-auto mt-5 max-w-[640px] text-center text-[13px] leading-relaxed text-chalk-40">
-          {t.disclaimer}
-        </p>
-      </section>
-
       <section className="section text-center">
         <div className="card mx-auto max-w-[560px] px-8 py-11">
           <span className="tag border-[rgba(120,180,255,0.4)] text-[rgba(150,195,255,0.9)]">{t.subLabel}</span>

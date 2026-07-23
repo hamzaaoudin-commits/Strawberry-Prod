@@ -26,7 +26,7 @@ const T = {
     previewLabels: ["Bloc 01 — La lecture du champ", "Bloc 02 — L'autopsie de votre phrase", "Bloc 05 — Le verdict"],
     // — What it is
     whatKicker: "Ce que vous recevez",
-    whatH2: "Un document. Sept jours. Aucun appel.",
+    whatH2: "Un document écrit, rien d'autre.",
     whatLead: "Vous remplissez un questionnaire de vingt minutes et vous envoyez vos liens. Sept jours plus tard, vous recevez un PDF de vingt à trente pages qui dit ce que votre marque raconte aujourd'hui, et ce qu'elle devrait raconter.",
     blocks: [
       { n: "01", t: "La lecture du champ", d: "Vos trois à cinq concurrents directs, leurs phrases, ce qu'ils promettent réellement. La carte de ce qui est déjà occupé — et le terrain qui ne l'est pas." },
@@ -66,7 +66,7 @@ const T = {
     ],
     // — Price
     priceLabel: "Paiement unique",
-    priceTitle: "490€. Sept jours. Un document.",
+    priceTitle: "490€. Un document, écrit pour votre maison.",
     priceBody: "Sans appel, sans devis, sans allers-retours. Vous payez, vous remplissez le questionnaire, vous recevez.",
     priceNote: "Si vous commandez l'architecture complète dans les 60 jours, les 490€ sont déduits.",
     // — Bridge
@@ -89,7 +89,7 @@ const T = {
     previewCta: "Read all five blocks \u2192",
     previewLabels: ["Block 01 — The field, read", "Block 02 — Your sentence, autopsied", "Block 05 — The verdict"],
     whatKicker: "What you receive",
-    whatH2: "One document. Seven days. No call.",
+    whatH2: "One written document, nothing else.",
     whatLead: "You fill in a twenty-minute questionnaire and send your links. Seven days later you receive a twenty to thirty page PDF stating what your brand says today, and what it should be saying.",
     blocks: [
       { n: "01", t: "The field, read", d: "Your three to five direct competitors, their sentences, what they actually promise. A map of what is already occupied — and the ground that isn't." },
@@ -126,7 +126,7 @@ const T = {
       "You want a consulting call: this offer is a document, with no call",
     ],
     priceLabel: "One-time payment",
-    priceTitle: "490€. Seven days. One document.",
+    priceTitle: "490€. One document, written for your house.",
     priceBody: "No call, no quote, no back and forth. You pay, you fill in the questionnaire, you receive.",
     priceNote: "If you commission the full architecture within 60 days, the 490€ is deducted.",
     bridgeH2: "An example beats a promise.",
@@ -148,7 +148,7 @@ const T = {
     previewCta: "Leer los cinco bloques \u2192",
     previewLabels: ["Bloque 01 — La lectura del campo", "Bloque 02 — La autopsia de su frase", "Bloque 05 — El veredicto"],
     whatKicker: "Lo que recibe",
-    whatH2: "Un documento. Siete días. Sin llamada.",
+    whatH2: "Un documento escrito, nada más.",
     whatLead: "Rellena un cuestionario de veinte minutos y envía sus enlaces. Siete días después recibe un PDF de veinte a treinta páginas que dice lo que su marca cuenta hoy, y lo que debería contar.",
     blocks: [
       { n: "01", t: "La lectura del campo", d: "Sus tres a cinco competidores directos, sus frases, lo que prometen realmente. El mapa de lo que ya está ocupado — y del terreno que no lo está." },
@@ -185,7 +185,7 @@ const T = {
       "Quiere una llamada de consultoría: esta oferta es un documento, sin llamada",
     ],
     priceLabel: "Pago único",
-    priceTitle: "490€. Siete días. Un documento.",
+    priceTitle: "490€. Un documento, escrito para su casa.",
     priceBody: "Sin llamada, sin presupuesto, sin idas y venidas. Paga, rellena el cuestionario, recibe.",
     priceNote: "Si encarga la arquitectura complete en un plazo de 60 días, los 490€ se descuentan.",
     bridgeH2: "Un ejemplo vale más que una promesa.",

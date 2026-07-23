@@ -37,8 +37,9 @@ export const CONTACT_ENDPOINT = "/api/contact"
  */
 export const STRIPE_LINKS = {
   architecture: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
-  audit490: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT490_URL, "/#contact"),
-  radar: env(process.env.NEXT_PUBLIC_STRIPE_RADAR_URL, "/#contact"),
+  audit490: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT490_URL, "https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"),
+  radar: env(process.env.NEXT_PUBLIC_STRIPE_RADAR_URL, "https://buy.stripe.com/3cI9AM1s0bmY7widvOf7i0c"),
+  momentum: env(process.env.NEXT_PUBLIC_STRIPE_MOMENTUM_URL, "https://buy.stripe.com/7sYdR26Mk0IkeYKcrKf7i0d"),
 } as const
 
 export const SITE_URL = env(process.env.NEXT_PUBLIC_SITE_URL, "https://www.gostrawberryprod.com")

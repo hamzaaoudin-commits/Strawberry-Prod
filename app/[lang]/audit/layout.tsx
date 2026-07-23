@@ -3,9 +3,9 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnostic écrit de votre récit actuel. Sept jours, sans appel." },
-  en: { title: "BRAND NARRATIVE AUDIT — 490€", description: "A written diagnosis of your current narrative. Seven days, no call." },
-  es: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnóstico escrito de su relato actual. Siete días, sin llamada." },
+  fr: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnostic écrit de votre récit actuel : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements à faire." },
+  en: { title: "BRAND NARRATIVE AUDIT — 490€", description: "A written diagnosis of your current narrative: what lands, what blurs you, and the moves to make." },
+  es: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnóstico escrito de su relato actual: lo que aterriza, lo que le difumina y los movimientos a realizar." },
 }
 
 export async function generateMetadata({

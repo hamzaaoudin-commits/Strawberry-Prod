@@ -20,7 +20,7 @@ const T = {
     beliefs: [
       { t: "Not a brand agency. A studio of doctrine.", d: "We do not deliver marketing assets. We write the document that declares what a house is, what it refuses, and how it sounds when it speaks. The artifact is a constitution, not a deck." },
       { t: "Architecture before content.", d: "Content is what a house produces. Architecture is what makes it cohere across years, surfaces and hands. We build the architecture first — and once it exists, we can carry the content too." },
-      { t: "Not for everyone. By selection.", d: "Four commissions per quarter. Most inquiries do not become engagements. The work depends on selecting houses whose convictions deserve the discipline. We say so plainly when a house is not one we can serve well." },
+      { t: "Four commissions per quarter.", d: "Each house is built from scratch, and the work only holds at that pace. When a house would be better served elsewhere, we say so rather than take the commission." },
     ],
   },
   fr: {
@@ -35,7 +35,7 @@ const T = {
     beliefs: [
       { t: "Pas une agence de marque. Un studio de doctrine.", d: "On ne livre pas des assets marketing. On écrit le document qui déclare ce qu'est une maison, ce qu'elle refuse, et comment elle sonne quand elle parle. L'artefact est une constitution, pas un deck." },
       { t: "L'architecture avant le contenu.", d: "Le contenu, c'est ce qu'une maison produit. L'architecture, c'est ce qui le fait tenir à travers les années, les surfaces et les mains. Nous bâtissons l'architecture d'abord — et une fois qu'elle existe, nous pouvons aussi porter le contenu." },
-      { t: "Pas pour tout le monde. Sur sélection.", d: "Quatre commandes par trimestre. La plupart des demandes ne deviennent pas des engagements. Le travail dépend du choix de maisons dont les convictions méritent la discipline. Nous le disons franchement quand une maison n'est pas de celles que nous servirons bien." },
+      { t: "Quatre commandes par trimestre.", d: "Chaque maison est bâtie de zéro, et le travail ne tient qu'à ce rythme. Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre la commande." },
     ],
   },
   es: {
@@ -50,7 +50,7 @@ const T = {
     beliefs: [
       { t: "No una agencia de marca. Un estudio de doctrina.", d: "No entregamos assets de marketing. Escribimos el documento que declara lo que es una casa, lo que rechaza y cómo suena cuando habla. El artefacto es una constitución, no un deck." },
       { t: "La arquitectura antes que el contenido.", d: "El contenido es lo que una casa produce. La arquitectura es lo que lo hace coherente a lo largo de los años, las superficies y las manos. Construimos la arquitectura primero — y una vez que existe, también podemos llevar el contenido." },
-      { t: "No para todos. Por selección.", d: "Cuatro encargos por trimestre. La mayoría de las consultas no se convierten en proyectos. El trabajo depende de elegir casas cuyas convicciones merecen la disciplina. Lo decimos con franqueza cuando una casa no es de las que serviremos bien." },
+      { t: "Cuatro encargos por trimestre.", d: "Cada casa se construye desde cero, y el trabajo solo se sostiene a ese ritmo. Cuando una casa estaría mejor servida en otro sitio, lo decimos en vez de aceptar el encargo." },
     ],
   },
 }

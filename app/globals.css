@@ -226,6 +226,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* background-clip: text rogne au ras de la boîte de ligne : sans cette marge,
+     les jambages (g, y, p) sont tranchés sur les titres à interlignage serré. */
+  padding-bottom: 0.14em;
 }
 
 /* --- Surfaces --- */

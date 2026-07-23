@@ -79,6 +79,18 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
             kind: "quote",
             text: "Le champ entier vend un savoir-faire. Personne ne vend ce que le savoir-faire produit : un objet qui survivra à celui qui l'a commandé.",
           },
+          {
+            kind: "p",
+            text: "Ce déplacement a une conséquence immédiate sur la comparaison. Une maison qui parle depuis l'atelier se fait comparer à d'autres ateliers — sur le nombre d'années, le nombre de mains, la finesse du cousu. Une maison qui parle depuis l'objet fini se fait comparer à ce qui protège des objets : la conservation, l'encadrement, l'archivage. Ce ne sont pas les mêmes concurrents, et surtout pas les mêmes ordres de prix.",
+          },
+          {
+            kind: "list",
+            items: [
+              "Le mot que personne n'emploie : conservation. Aucun des quatre ne le prononce, alors que c'est précisément ce que quatre d'entre eux fabriquent.",
+              "L'angle mort commun : tous décrivent un processus, aucun ne décrit une durée. Le savoir-faire est présenté comme une fin, jamais comme le moyen d'obtenir un objet qui tient un siècle.",
+              "Ce que l'ancienneté ne peut pas faire : Maison Livre occupe 1897, une position que personne ne peut lui prendre — mais qui ne dit rien de ce qu'elle produit aujourd'hui. Une date protège du présent, elle ne conquiert rien.",
+            ],
+          },
         ],
       },
       {
@@ -153,6 +165,21 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
           {
             kind: "quote",
             text: "Le mouvement 3 est celui qui paie le plus vite. Une promesse de durée sans document est une affirmation ; avec un certificat de conservation, elle devient une caractéristique du produit.",
+          },
+          {
+            kind: "p",
+            text: "Sur l'ordre d'exécution : les mouvements 1 et 3 peuvent être menés en parallèle, ils ne se gênent pas. Le mouvement 2 suppose que le 1 soit fait, sans quoi la réécriture du site se ferait avec l'ancien vocabulaire. Le mouvement 4 est le seul qui coûte du chiffre à court terme, et c'est celui qu'il faut prendre en dernier — non parce qu'il est optionnel, mais parce qu'il n'est tenable qu'une fois les trois autres en place.",
+          },
+          {
+            kind: "pair",
+            beforeLabel: "Le devis, aujourd'hui",
+            afterLabel: "Le devis, après",
+            before: "Reliure pleine peau, dos à nerfs, titrage or. Délai six semaines. 2 400 €.",
+            after: "Reliure de conservation, pièce numérotée 014/∞, fiche de conservation remise avec l'ouvrage. Restaurable à l'identique. Délai six semaines. 2 400 €.",
+          },
+          {
+            kind: "p",
+            text: "Le prix n'a pas bougé. Ce qui a bougé, c'est ce à quoi le lecteur compare ce prix. Le premier devis se compare à un autre relieur ; le second se compare à ce que coûte de perdre l'objet.",
           },
         ],
       },

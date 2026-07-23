@@ -27,31 +27,47 @@ function Motif({ k }: { k: OfferKey }) {
         </>
       )
     case "audit":
+      // Une phrase dont les mots empruntés sont biffés, et la ligne juste
+      // isolée dessous : c'est exactement ce que le diagnostic rend.
       return (
         <>
-          <line x1="34" y1="46" x2="86" y2="46" stroke={s} strokeWidth="1.2" />
-          <line x1="34" y1="60" x2="72" y2="60" stroke={s} strokeWidth="1.2" opacity="0.65" />
-          <line x1="34" y1="74" x2="60" y2="74" stroke={s} strokeWidth="1.2" opacity="0.4" />
-          <line x1="30" y1="40" x2="90" y2="82" stroke={s} strokeWidth="1" />
+          <g opacity="0.4">
+            <line x1="30" y1="40" x2="66" y2="40" stroke={s} strokeWidth="1.1" />
+            <line x1="72" y1="40" x2="90" y2="40" stroke={s} strokeWidth="1.1" />
+            <line x1="30" y1="52" x2="52" y2="52" stroke={s} strokeWidth="1.1" />
+            <line x1="58" y1="52" x2="90" y2="52" stroke={s} strokeWidth="1.1" />
+          </g>
+          <line x1="26" y1="40" x2="94" y2="40" stroke={s} strokeWidth="0.7" opacity="0.9" />
+          <line x1="26" y1="52" x2="94" y2="52" stroke={s} strokeWidth="0.7" opacity="0.9" />
+          <line x1="30" y1="76" x2="78" y2="76" stroke={s} strokeWidth="2" />
+          <circle cx="88" cy="76" r="2.6" fill={s} />
         </>
       )
     case "architecture":
+      // Une élévation : la fondation porte les niveaux, et l'axe traverse tout.
+      // La position en bas, la plateforme, le langage, le déploiement au-dessus.
       return (
         <>
-          <rect x="34" y="34" width="52" height="52" fill="none" stroke={s} strokeWidth="1.1" />
-          <rect x="42" y="42" width="36" height="36" fill="none" stroke={s} strokeWidth="0.9" opacity="0.6" />
-          <rect x="50" y="50" width="20" height="20" fill="none" stroke={s} strokeWidth="0.8" opacity="0.35" />
-          <line x1="34" y1="34" x2="86" y2="86" stroke={s} strokeWidth="0.6" opacity="0.3" />
-          <line x1="86" y1="34" x2="34" y2="86" stroke={s} strokeWidth="0.6" opacity="0.3" />
+          <line x1="24" y1="92" x2="96" y2="92" stroke={s} strokeWidth="2" />
+          <rect x="34" y="72" width="52" height="18" fill="none" stroke={s} strokeWidth="1.1" />
+          <rect x="40" y="54" width="40" height="16" fill="none" stroke={s} strokeWidth="1" opacity="0.75" />
+          <rect x="46" y="38" width="28" height="14" fill="none" stroke={s} strokeWidth="0.9" opacity="0.5" />
+          <line x1="60" y1="26" x2="60" y2="92" stroke={s} strokeWidth="0.7" opacity="0.55" />
+          <circle cx="60" cy="26" r="2.6" fill={s} />
         </>
       )
     case "momentum":
+      // Une cadence : des barres régulières qui montent, reliées entre elles.
+      // Ce n'est pas une courbe de croissance, c'est de l'accumulation tenue.
       return (
         <>
-          <path d="M28 84 Q45 34 60 60 Q75 86 92 40" fill="none" stroke={s} strokeWidth="1.3" />
-          <circle cx="28" cy="84" r="2.4" fill={s} />
-          <circle cx="60" cy="60" r="2.4" fill={s} opacity="0.7" />
-          <circle cx="92" cy="40" r="2.4" fill={s} />
+          <line x1="24" y1="92" x2="96" y2="92" stroke={s} strokeWidth="0.8" opacity="0.4" />
+          <line x1="32" y1="92" x2="32" y2="76" stroke={s} strokeWidth="2.4" opacity="0.45" />
+          <line x1="46" y1="92" x2="46" y2="66" stroke={s} strokeWidth="2.4" opacity="0.6" />
+          <line x1="60" y1="92" x2="60" y2="56" stroke={s} strokeWidth="2.4" opacity="0.75" />
+          <line x1="74" y1="92" x2="74" y2="46" stroke={s} strokeWidth="2.4" opacity="0.9" />
+          <line x1="88" y1="92" x2="88" y2="34" stroke={s} strokeWidth="2.4" />
+          <path d="M32 76 L46 66 L60 56 L74 46 L88 34" fill="none" stroke={s} strokeWidth="0.8" opacity="0.55" />
         </>
       )
     case "atlas":

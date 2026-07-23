@@ -20,7 +20,7 @@ const T = {
     cta1: "Commission the Work \u2192",
     cta2: "Read the SILLAGE document",
     trusted: "How this studio works, stated plainly.",
-    stats: ["Four commissions per quarter", "Delivered as one editorial document", "Thirty-day walkthrough included"],
+    stats: ["Four commissions per quarter", "Delivered as one editorial document", "A written position, not a slide deck"],
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
@@ -30,7 +30,7 @@ const T = {
     cta1: "Commander le travail \u2192",
     cta2: "Voir les études de cas",
     trusted: "Comment ce studio travaille, dit simplement.",
-    stats: ["Quatre commandes par trimestre", "Livré comme un document éditorial unique", "Revue à trente jours incluse"],
+    stats: ["Quatre commandes par trimestre", "Livré comme un document éditorial unique", "Une position écrite, pas un diaporama"],
   },
   es: {
     badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
@@ -40,7 +40,7 @@ const T = {
     cta1: "Encargar el trabajo \u2192",
     cta2: "Leer el documento SILLAGE",
     trusted: "C\u00f3mo trabaja este estudio, dicho sin rodeos.",
-    stats: ["Cuatro encargos por trimestre", "Entregado como un único documento editorial", "Revisión a los treinta días incluida"],
+    stats: ["Cuatro encargos por trimestre", "Entregado como un único documento editorial", "Una posición escrita, no un pase de diapositivas"],
   },
 }
 
@@ -106,7 +106,7 @@ export function HeroSection() {
           <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.7rem,6vw,6.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
             {t.h1a}
             <br />
-            <span className="block bg-[linear-gradient(135deg,#e63946_20%,#ff1a1a_60%,#dc2626)] bg-clip-text text-transparent">
+            <span className="block bg-[linear-gradient(135deg,#e63946_20%,#ff1a1a_60%,#dc2626)] bg-clip-text pb-[0.14em] text-transparent">
               {t.h1b}
             </span>
           </h1>
