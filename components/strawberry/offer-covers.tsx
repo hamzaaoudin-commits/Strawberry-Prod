@@ -17,69 +17,67 @@ function Motif({ k }: { k: OfferKey }) {
   const s = "#e63946"
   switch (k) {
     case "radar":
+      // Le balayage : cercles concentriques et aiguille.
       return (
         <>
-          <circle cx="60" cy="66" r="44" fill="none" stroke={s} strokeWidth="0.8" opacity="0.35" />
-          <circle cx="60" cy="66" r="30" fill="none" stroke={s} strokeWidth="0.8" opacity="0.55" />
-          <circle cx="60" cy="66" r="16" fill="none" stroke={s} strokeWidth="0.8" opacity="0.8" />
-          <line x1="60" y1="66" x2="60" y2="22" stroke={s} strokeWidth="1.4" />
-          <circle cx="60" cy="66" r="2.6" fill={s} />
+          <circle cx="24" cy="24" r="20" fill="none" stroke={s} strokeWidth="1" opacity="0.3" />
+          <circle cx="24" cy="24" r="13" fill="none" stroke={s} strokeWidth="1" opacity="0.55" />
+          <circle cx="24" cy="24" r="6" fill="none" stroke={s} strokeWidth="1" opacity="0.8" />
+          <line x1="24" y1="24" x2="24" y2="4" stroke={s} strokeWidth="1.6" />
+          <circle cx="24" cy="24" r="1.8" fill={s} />
         </>
       )
     case "audit":
-      // Un paragraphe réduit à ses lignes. Toutes sont ternes sauf une, qui
-      // traverse toute la largeur : le diagnostic ne réécrit pas, il désigne.
+      // Une ligne juste, isolée parmi celles qui ne le sont pas.
       return (
         <>
-          <g stroke={s} strokeWidth="1.6" opacity="0.22" strokeLinecap="square">
-            <line x1="30" y1="40" x2="78" y2="40" />
-            <line x1="30" y1="54" x2="90" y2="54" />
-            <line x1="30" y1="82" x2="84" y2="82" />
-            <line x1="30" y1="96" x2="66" y2="96" />
+          <g stroke={s} strokeWidth="1.6" opacity="0.28" strokeLinecap="square">
+            <line x1="12" y1="10" x2="32" y2="10" />
+            <line x1="12" y1="17" x2="36" y2="17" />
+            <line x1="12" y1="31" x2="34" y2="31" />
+            <line x1="12" y1="38" x2="26" y2="38" />
           </g>
-          <line x1="20" y1="68" x2="100" y2="68" stroke={s} strokeWidth="2.6" strokeLinecap="square" />
+          <line x1="6" y1="24" x2="42" y2="24" stroke={s} strokeWidth="2.4" strokeLinecap="square" />
         </>
       )
     case "architecture":
-      // Un arc : la structure ne tient que par la pierre du milieu. C'est
-      // exactement ce que la commande installe — la clé dont tout dépend.
+      // Un arc et sa clé de voûte : la structure ne tient que par le milieu.
       return (
         <>
-          <path d="M30 96 L30 62 A30 30 0 0 1 90 62 L90 96" fill="none" stroke={s} strokeWidth="1.4" />
-          <path d="M52 40 L68 40 L71 56 L49 56 Z" fill={s} />
-          <line x1="18" y1="96" x2="102" y2="96" stroke={s} strokeWidth="2.4" strokeLinecap="square" />
+          <path d="M11 40 L11 25 A13 13 0 0 1 37 25 L37 40" fill="none" stroke={s} strokeWidth="1.4" />
+          <path d="M20 11 L28 11 L29.5 19 L18.5 19 Z" fill={s} />
+          <line x1="6" y1="40" x2="42" y2="40" stroke={s} strokeWidth="2.2" strokeLinecap="square" />
         </>
       )
     case "momentum":
-      // Une cadence : des barres régulières qui montent, reliées entre elles.
-      // Ce n'est pas une courbe de croissance, c'est de l'accumulation tenue.
+      // Une cadence qui accumule.
       return (
         <>
-          <line x1="24" y1="92" x2="96" y2="92" stroke={s} strokeWidth="0.8" opacity="0.4" />
-          <line x1="32" y1="92" x2="32" y2="76" stroke={s} strokeWidth="2.4" opacity="0.45" />
-          <line x1="46" y1="92" x2="46" y2="66" stroke={s} strokeWidth="2.4" opacity="0.6" />
-          <line x1="60" y1="92" x2="60" y2="56" stroke={s} strokeWidth="2.4" opacity="0.75" />
-          <line x1="74" y1="92" x2="74" y2="46" stroke={s} strokeWidth="2.4" opacity="0.9" />
-          <line x1="88" y1="92" x2="88" y2="34" stroke={s} strokeWidth="2.4" />
-          <path d="M32 76 L46 66 L60 56 L74 46 L88 34" fill="none" stroke={s} strokeWidth="0.8" opacity="0.55" />
+          <line x1="7" y1="40" x2="41" y2="40" stroke={s} strokeWidth="1" opacity="0.4" />
+          <g stroke={s} strokeWidth="3" strokeLinecap="square">
+            <line x1="12" y1="40" x2="12" y2="32" opacity="0.4" />
+            <line x1="20" y1="40" x2="20" y2="26" opacity="0.6" />
+            <line x1="28" y1="40" x2="28" y2="19" opacity="0.8" />
+            <line x1="36" y1="40" x2="36" y2="11" />
+          </g>
         </>
       )
     case "atlas":
+      // Le relevé : des positions cartographiées autour d'un centre.
       return (
         <>
-          <g fill="none" stroke={s} strokeWidth="0.7">
-            <circle cx="60" cy="60" r="14" opacity="0.9" />
-            <circle cx="60" cy="60" r="27" opacity="0.6" />
-            <circle cx="60" cy="60" r="40" opacity="0.35" />
-            <circle cx="60" cy="60" r="52" opacity="0.18" />
+          <g fill="none" stroke={s} strokeWidth="0.9">
+            <circle cx="24" cy="24" r="7" opacity="0.85" />
+            <circle cx="24" cy="24" r="14" opacity="0.5" />
+            <circle cx="24" cy="24" r="21" opacity="0.25" />
           </g>
           <g fill={s}>
-            <circle cx="60" cy="33" r="1.9" />
-            <circle cx="85" cy="51" r="1.9" />
-            <circle cx="76" cy="85" r="1.9" />
-            <circle cx="40" cy="80" r="1.9" />
-            <circle cx="33" cy="48" r="1.9" />
-            <circle cx="60" cy="60" r="2.6" />
+            <circle cx="24" cy="10" r="1.5" />
+            <circle cx="37" cy="19" r="1.5" />
+            <circle cx="32" cy="36" r="1.5" />
+            <circle cx="15" cy="34" r="1.5" />
+            <circle cx="12" cy="18" r="1.5" />
+            <circle cx="24" cy="24" r="2" />
           </g>
         </>
       )
@@ -106,10 +104,8 @@ export function OfferCover({
   return (
     <div
       className={[
-        "relative overflow-hidden [aspect-ratio:3/4]",
-        featured
-          ? "border border-brand/45 bg-[linear-gradient(180deg,rgba(230,57,70,0.09),#0a0a0a_62%)]"
-          : "border border-hair-strong bg-ink",
+        "relative flex flex-col items-center justify-center overflow-hidden bg-ink px-5 py-8 text-center [aspect-ratio:3/4]",
+        featured ? "border border-brand/45" : "border border-hair-strong",
         className,
       ].join(" ")}
     >
@@ -120,16 +116,19 @@ export function OfferCover({
         </>
       )}
 
-      <svg viewBox="0 0 120 160" aria-hidden className="absolute inset-0 h-full w-full">
+      <div className="font-serif text-[clamp(1.05rem,2.4vw,1.5rem)] font-bold uppercase leading-[1.12] tracking-[0.01em] text-brand">
+        {name}
+      </div>
+
+      <svg viewBox="0 0 48 48" aria-hidden className="mt-6 h-[46px] w-[46px] shrink-0">
         <Motif k={k} />
       </svg>
 
-      <div className="absolute inset-x-0 bottom-0 p-3">
-        <div className="font-serif text-[clamp(0.95rem,1.6vw,1.2rem)] font-bold leading-tight text-white">{name}</div>
-        {price && (
-          <div className="mt-1.5 font-sans text-[8px] uppercase tracking-[0.18em] text-brand">{price}</div>
-        )}
-      </div>
+      {price && (
+        <div className="absolute inset-x-0 bottom-4 font-sans text-[9px] uppercase tracking-[0.2em] text-white/40">
+          {price}
+        </div>
+      )}
     </div>
   )
 }
@@ -139,25 +138,27 @@ export function AtlasCover({ className = "" }: { className?: string }) {
   return (
     <div
       className={[
-        "relative border border-white/[0.14] bg-[linear-gradient(160deg,#101010,#0a0a0a_62%)] shadow-[0_24px_60px_rgba(0,0,0,0.55)] [aspect-ratio:2/3]",
+        "relative flex flex-col items-center justify-center border border-white/[0.14] bg-ink px-5 py-9 text-center shadow-[0_24px_60px_rgba(0,0,0,0.55)] [aspect-ratio:2/3]",
         className,
       ].join(" ")}
     >
       <span className="bracket-tl" aria-hidden />
       <span className="bracket-br" aria-hidden />
 
-      <div className="absolute inset-x-0 top-5 text-center font-sans text-[7px] uppercase tracking-[0.28em] text-white/35">
+      <div className="absolute inset-x-0 top-5 font-sans text-[7px] uppercase tracking-[0.28em] text-white/30">
         Strawberry Production
       </div>
 
-      <svg viewBox="0 0 120 120" aria-hidden className="absolute left-1/2 top-[28%] h-[46%] w-[46%] -translate-x-1/2">
+      <div className="font-serif text-[clamp(1.6rem,4vw,2.1rem)] font-bold uppercase leading-[1.05] text-brand">
+        30 Architectures
+      </div>
+
+      <svg viewBox="0 0 48 48" aria-hidden className="mt-7 h-[58px] w-[58px]">
         <Motif k="atlas" />
       </svg>
 
-      <div className="absolute inset-x-0 bottom-0 p-4 text-center">
-        <div className="font-serif text-[clamp(2rem,5vw,2.6rem)] font-bold leading-none text-brand">30</div>
-        <div className="mt-1 font-serif text-[clamp(0.85rem,2vw,1.05rem)] leading-tight text-white">Architectures</div>
-        <div className="mt-2 font-sans text-[7px] uppercase tracking-[0.2em] text-white/40">Un Atlas</div>
+      <div className="absolute inset-x-0 bottom-5 font-sans text-[8px] uppercase tracking-[0.2em] text-white/40">
+        Un Atlas
       </div>
     </div>
   )
