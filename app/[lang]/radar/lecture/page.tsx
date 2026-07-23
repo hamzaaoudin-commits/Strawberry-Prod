@@ -150,14 +150,14 @@ export default async function RadarLibraryPage({
         {MANIFESTOS.map((m) => (
           <Link
             key={m.n}
-            href={m.href}
+            href={`/radar/lecture/manifeste/${m.slug}`}
             className="group relative block w-[132px] shrink-0 border border-brand-hair bg-ink-soft no-underline transition-colors hover:border-brand [aspect-ratio:2/3]"
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="font-serif text-[44px] font-bold leading-none text-brand opacity-90">{m.n}</span>
             </div>
             <div className="absolute inset-x-0 bottom-0 p-2.5">
-              <div className="font-serif text-[13px] leading-tight text-white">{m.title}</div>
+              <div className="font-serif text-[13px] leading-tight text-white">{m.title[lang]}</div>
               <div className="mt-1 font-sans text-[7px] uppercase tracking-[0.14em] text-chalk-40">{m.verb[lang]}</div>
             </div>
           </Link>

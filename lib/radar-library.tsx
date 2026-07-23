@@ -97,20 +97,90 @@ export function CoverMotif({ motif }: { motif: Motif }) {
 
 /* ------------------------------------------------------------------------ */
 
-export type Manifesto = { n: string; title: string; verb: Record<Lang, string>; href: string }
+export type Manifesto = {
+  n: string
+  slug: string
+  title: Record<Lang, string>
+  verb: Record<Lang, string>
+  tagline: Record<Lang, string>
+}
 
-/** Les neuf manifestes. Chiffre romain et verbe — pas de diagramme. */
+/**
+ * Les neuf manifestes.
+ *
+ * Ils vivaient sur une page publique gratuite ; ils sont désormais dans
+ * l'abonnement. C'est ce qui donne son épaisseur à RADAR — un abonné n'achète
+ * pas seulement une fiche par jour, il achète la doctrine du studio.
+ */
 export const MANIFESTOS: Manifesto[] = [
-  { n: "I", title: "Neuro-Cinéma", verb: { fr: "Se souvenir", en: "To be remembered", es: "Ser recordado" }, href: "/manifesto" },
-  { n: "II", title: "La Doctrine de la Tribu", verb: { fr: "Être suivi", en: "To be followed", es: "Ser seguido" }, href: "/manifesto" },
-  { n: "III", title: "L'Empire éditorial", verb: { fr: "Demeurer", en: "To remain", es: "Permanecer" }, href: "/manifesto" },
-  { n: "IV", title: "Le Codex du fondateur", verb: { fr: "Être irremplaçable", en: "To be irreplaceable", es: "Ser irreemplazable" }, href: "/manifesto" },
-  { n: "V", title: "Le Manifeste du Refus", verb: { fr: "Refuser", en: "To refuse", es: "Rechazar" }, href: "/manifesto" },
-  { n: "VI", title: "La Constitution esthétique", verb: { fr: "Distinguer", en: "To distinguish", es: "Distinguir" }, href: "/manifesto" },
-  { n: "VII", title: "Le Moteur de rareté", verb: { fr: "Devenir rare", en: "To become rare", es: "Volverse raro" }, href: "/manifesto" },
-  { n: "VIII", title: "La Doctrine de la patience", verb: { fr: "Durer", en: "To outlast", es: "Perdurar" }, href: "/manifesto" },
-  { n: "IX", title: "Le Codex de la dévotion", verb: { fr: "Être choisi", en: "To be chosen", es: "Ser elegido" }, href: "/manifesto" },
+  {
+    n: "I",
+    slug: "neuro-cinema",
+    title: { fr: "Manifeste Neuro-Cinéma", en: "Neuro-Cinema Manifesto", es: "Manifiesto Neuro-Cine" },
+    verb: { fr: "Se souvenir.", en: "Remember.", es: "Recordar." },
+    tagline: { fr: "Comment les marques d'élite bâtissent une identité inoubliable quand tout le monde sonne comme une machine. L'architecture de l'immunité narrative.", en: "How elite brands build unforgettable identity when everyone else sounds like a machine. The architecture of narrative immunity.", es: "Cómo las marcas de élite construyen una identidad inolvidable cuando todos los demás suenan como una máquina. La arquitectura de la inmunidad narrativa." },
+  },
+  {
+    n: "II",
+    slug: "tribu",
+    title: { fr: "La Doctrine de la Tribu", en: "The Tribe Doctrine", es: "La Doctrina de la Tribu" },
+    verb: { fr: "Être suivi.", en: "Be followed.", es: "Ser seguido." },
+    tagline: { fr: "Pourquoi réécrire le récit de votre entreprise est le seul moyen de survivre à la vague IA. Et comment bâtir une tribu qui ne disparaîtra pas avec elle.", en: "Why rewriting your company's narrative is the only way to survive the AI wave. And how to build a tribe that won't disappear with it.", es: "Por qué reescribir el relato de su empresa es la única forma de sobrevivir a la ola de la IA. Y cómo construir una tribu que no desaparezca con ella." },
+  },
+  {
+    n: "III",
+    slug: "empire-editorial",
+    title: { fr: "L'Empire Éditorial", en: "The Editorial Empire", es: "El Imperio Editorial" },
+    verb: { fr: "Demeurer.", en: "Remain.", es: "Permanecer." },
+    tagline: { fr: "Pourquoi toute marque sérieuse deviendra une maison de média — ou sera effacée par celles qui l'ont fait. L'infrastructure du pouvoir narratif.", en: "Why every serious brand will become a media house — or be erased by the ones that did. The infrastructure of narrative power.", es: "Por qué toda marca seria se convertirá en una casa de medios — o será borrada por las que lo hicieron. La infraestructura del poder narrativo." },
+  },
+  {
+    n: "IV",
+    slug: "codex-fondateur",
+    title: { fr: "Le Codex du Fondateur", en: "The Founder Codex", es: "El Códice del Fundador" },
+    verb: { fr: "Être irremplaçable.", en: "Be irreplaceable.", es: "Ser irremplazable." },
+    tagline: { fr: "La doctrine personnelle des fondateurs qui refusent d'être génériques. Comment bâtir une présence qui survit à tout retournement de marché.", en: "The personal doctrine of founders who refuse to be genericized. How to build a presence that survives any market shift.", es: "La doctrina personal de los fundadores que se niegan a ser genéricos. Cómo construir una presencia que sobrevive a cualquier giro del mercado." },
+  },
+  {
+    n: "V",
+    slug: "refus",
+    title: { fr: "Le Manifeste du Refus", en: "The Refusal Manifesto", es: "El Manifiesto del Rechazo" },
+    verb: { fr: "Refuser.", en: "Refuse.", es: "Rechazar." },
+    tagline: { fr: "Une déclaration de ce que ce studio ne fera jamais, ne dira jamais, et ne deviendra jamais. L'architecture d'une pratique sélective.", en: "A declaration of what this studio will never do, never say, and never become. The architecture of selective practice.", es: "Una declaración de lo que este estudio nunca hará, nunca dirá y nunca será. La arquitectura de una práctica selectiva." },
+  },
+  {
+    n: "VI",
+    slug: "constitution-esthetique",
+    title: { fr: "La Constitution Esthétique", en: "The Aesthetic Constitution", es: "La Constitución Estética" },
+    verb: { fr: "Distinguer.", en: "Distinguish.", es: "Distinguir." },
+    tagline: { fr: "Pourquoi la cohérence esthétique est le dernier avantage compétitif que l'IA ne peut répliquer. La doctrine de la singularité visuelle et verbale.", en: "Why aesthetic coherence is the last competitive advantage AI cannot replicate. The doctrine of visual and verbal singularity.", es: "Por qué la coherencia estética es la última ventaja competitiva que la IA no puede replicar. La doctrina de la singularidad visual y verbal." },
+  },
+  {
+    n: "VII",
+    slug: "rarete",
+    title: { fr: "Le Moteur de Rareté", en: "The Rarity Engine", es: "El Motor de la Rareza" },
+    verb: { fr: "Devenir rare.", en: "Become scarce.", es: "Volverse escaso." },
+    tagline: { fr: "Comment la rareté délibérée devient l'outil de positionnement le plus puissant à disposition d'un fondateur. La mécanique du refus désirable.", en: "How deliberate scarcity becomes the most powerful positioning tool available to a founder. The mechanics of desirable refusal.", es: "Cómo la escasez deliberada se convierte en la herramienta de posicionamiento más potente al alcance de un fundador. La mecánica del rechazo deseable." },
+  },
+  {
+    n: "VIII",
+    slug: "patience",
+    title: { fr: "La Doctrine de la Patience", en: "The Patience Doctrine", es: "La Doctrina de la Paciencia" },
+    verb: { fr: "Durer plus longtemps.", en: "Outlast.", es: "Perdurar." },
+    tagline: { fr: "Pourquoi les fondateurs qui gagnent sont ceux qui refusent d'être pressés. L'architecture du positionnement long terme dans un marché impatient.", en: "Why the founders who win are the ones who refuse to be rushed. The architecture of long-game positioning in an impatient market.", es: "Por qué los fundadores que ganan son los que se niegan a ser apurados. La arquitectura del posicionamiento a largo plazo en un mercado impaciente." },
+  },
+  {
+    n: "IX",
+    slug: "devotion",
+    title: { fr: "Le Codex de la Dévotion", en: "The Devotion Codex", es: "El Códice de la Devoción" },
+    verb: { fr: "Être choisi.", en: "Be chosen.", es: "Ser elegido." },
+    tagline: { fr: "Comment les maisons les plus durables bâtissent non pas une audience mais une dévotion. La doctrine de la profondeur avant la portée.", en: "How the most enduring houses build not an audience but a devotion. The doctrine of depth over reach.", es: "Cómo las casas más duraderas construyen no una audiencia sino una devoción. La doctrina de la profundidad por encima del alcance." },
+  },
 ]
+
+export function getManifesto(slug: string): Manifesto | undefined {
+  return MANIFESTOS.find((m) => m.slug === slug)
+}
 
 export type Lesson = { n: string; title: Record<Lang, string>; minutes: number; motif: Motif; href: string }
 

@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
-const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/manifesto"]
+const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/radar"]
 const WORK_HREFS = ["/radar", "/radar/acces", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit"]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
@@ -37,7 +37,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "About", "The Method", "Manifesto"],
+    explore: ["Home", "About", "The Method", "RADAR"],
     work: ["RADAR", "Subscriber access", "The Audit", "The Commission", "MOMENTUM", "The SILLAGE document"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
@@ -48,7 +48,7 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "À propos", "La Méthode", "Manifeste"],
+    explore: ["Accueil", "À propos", "La Méthode", "RADAR"],
     work: ["RADAR", "L'Audit", "La Commande", "MOMENTUM", "Document exemple", "Études de cas"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
@@ -59,7 +59,7 @@ const T = {
     hExplore: "Explorar",
     hWork: "El Trabajo",
     hReach: "Contacto",
-    explore: ["Inicio", "Nosotros", "El Método", "Manifiesto"],
+    explore: ["Inicio", "Nosotros", "El Método", "RADAR"],
     work: ["RADAR", "La Auditoría", "El Encargo", "MOMENTUM", "Documento de muestra", "Casos de estudio"],
     reach: ["Hablemos", "Instagram", "Email"],
     rights: "Todos los derechos reservados.",

@@ -94,7 +94,7 @@ const nextConfig = {
    */
   async redirects() {
     const moved = [
-      'about','audit','brand-narrative-audit','manifesto','momentum','radar',
+      'about','audit','brand-narrative-audit','momentum','radar',
       'sample-audit','strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]
@@ -103,6 +103,7 @@ const nextConfig = {
       { source: '/arsenal', destination: '/fr', permanent: true },
       { source: '/nocta', destination: '/fr/momentum', permanent: true },
       { source: '/case-studies', destination: '/fr/sample-audit', permanent: true },
+      { source: '/manifesto', destination: '/fr/radar', permanent: true },
       ...moved.map((slug) => ({
         source: `/${slug}`,
         destination: `/fr/${slug}`,

@@ -27,33 +27,27 @@ function Motif({ k }: { k: OfferKey }) {
         </>
       )
     case "audit":
-      // Une phrase dont les mots empruntés sont biffés, et la ligne juste
-      // isolée dessous : c'est exactement ce que le diagnostic rend.
+      // Un paragraphe réduit à ses lignes. Toutes sont ternes sauf une, qui
+      // traverse toute la largeur : le diagnostic ne réécrit pas, il désigne.
       return (
         <>
-          <g opacity="0.4">
-            <line x1="30" y1="40" x2="66" y2="40" stroke={s} strokeWidth="1.1" />
-            <line x1="72" y1="40" x2="90" y2="40" stroke={s} strokeWidth="1.1" />
-            <line x1="30" y1="52" x2="52" y2="52" stroke={s} strokeWidth="1.1" />
-            <line x1="58" y1="52" x2="90" y2="52" stroke={s} strokeWidth="1.1" />
+          <g stroke={s} strokeWidth="1.6" opacity="0.22" strokeLinecap="square">
+            <line x1="30" y1="40" x2="78" y2="40" />
+            <line x1="30" y1="54" x2="90" y2="54" />
+            <line x1="30" y1="82" x2="84" y2="82" />
+            <line x1="30" y1="96" x2="66" y2="96" />
           </g>
-          <line x1="26" y1="40" x2="94" y2="40" stroke={s} strokeWidth="0.7" opacity="0.9" />
-          <line x1="26" y1="52" x2="94" y2="52" stroke={s} strokeWidth="0.7" opacity="0.9" />
-          <line x1="30" y1="76" x2="78" y2="76" stroke={s} strokeWidth="2" />
-          <circle cx="88" cy="76" r="2.6" fill={s} />
+          <line x1="20" y1="68" x2="100" y2="68" stroke={s} strokeWidth="2.6" strokeLinecap="square" />
         </>
       )
     case "architecture":
-      // Une élévation : la fondation porte les niveaux, et l'axe traverse tout.
-      // La position en bas, la plateforme, le langage, le déploiement au-dessus.
+      // Un arc : la structure ne tient que par la pierre du milieu. C'est
+      // exactement ce que la commande installe — la clé dont tout dépend.
       return (
         <>
-          <line x1="24" y1="92" x2="96" y2="92" stroke={s} strokeWidth="2" />
-          <rect x="34" y="72" width="52" height="18" fill="none" stroke={s} strokeWidth="1.1" />
-          <rect x="40" y="54" width="40" height="16" fill="none" stroke={s} strokeWidth="1" opacity="0.75" />
-          <rect x="46" y="38" width="28" height="14" fill="none" stroke={s} strokeWidth="0.9" opacity="0.5" />
-          <line x1="60" y1="26" x2="60" y2="92" stroke={s} strokeWidth="0.7" opacity="0.55" />
-          <circle cx="60" cy="26" r="2.6" fill={s} />
+          <path d="M30 96 L30 62 A30 30 0 0 1 90 62 L90 96" fill="none" stroke={s} strokeWidth="1.4" />
+          <path d="M52 40 L68 40 L71 56 L49 56 Z" fill={s} />
+          <line x1="18" y1="96" x2="102" y2="96" stroke={s} strokeWidth="2.4" strokeLinecap="square" />
         </>
       )
     case "momentum":

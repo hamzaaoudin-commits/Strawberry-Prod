@@ -9,7 +9,6 @@ const T = {
     offers: "Offres",
     about: "À propos",
     method: "La Méthode",
-    manifesto: "Manifeste",
     cta: "Parlons-en",
     menu: "Menu",
     offersMenu: [
@@ -23,7 +22,6 @@ const T = {
     offers: "Offers",
     about: "About",
     method: "The Method",
-    manifesto: "Manifesto",
     cta: "Let's Talk",
     menu: "Menu",
     offersMenu: [
@@ -37,7 +35,6 @@ const T = {
     offers: "Ofertas",
     about: "Nosotros",
     method: "El Método",
-    manifesto: "Manifiesto",
     cta: "Hablemos",
     menu: "Menú",
     offersMenu: [
@@ -78,7 +75,6 @@ export function NavBar() {
   const NAV_LINKS = [
     { label: t.about, href: "/about" },
     { label: t.method, href: "/strawberry-method" },
-    { label: t.manifesto, href: "/manifesto" },
   ]
 
   return (
