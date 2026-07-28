@@ -9,7 +9,7 @@ const PUBLIC_FILE = /\.(.*)$/
  *
  * Preference order: the visitor's Accept-Language header, then French. This is
  * what turns the old flat URLs into locale URLs without losing anyone, and what
- * lets "/" exist at all now that every page lives under /fr, /en or /es.
+ * lets "/" exist at all now that every page lives under /fr or /en.
  */
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -83,11 +83,21 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
+  /**
+   * Les robots d'indexation annoncent presque toujours l'anglais. Sans ce
+   * traitement, Googlebot entre systématiquement par /en et le français ne se
+   * découvre que par le sitemap. On les envoie sur la langue par défaut, qui est
+   * aussi le x-default déclaré dans les hreflang.
+   */
+  const ua = (request.headers.get("user-agent") ?? "").toLowerCase()
+  const isBot = /bot|crawl|spider|slurp|bingpreview|googleother/.test(ua)
+
   const header = request.headers.get("accept-language") ?? ""
-  const preferred =
-    LANGS.find((l) => header.toLowerCase().startsWith(l)) ??
-    LANGS.find((l) => header.toLowerCase().includes(`${l}-`)) ??
-    DEFAULT_LANG
+  const preferred = isBot
+    ? DEFAULT_LANG
+    : LANGS.find((l) => header.toLowerCase().startsWith(l)) ??
+      LANGS.find((l) => header.toLowerCase().includes(`${l}-`)) ??
+      DEFAULT_LANG
 
   const url = request.nextUrl.clone()
   url.pathname = `/${preferred}${pathname === "/" ? "" : pathname}`
