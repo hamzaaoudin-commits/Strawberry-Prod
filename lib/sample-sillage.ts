@@ -63,7 +63,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       "Exemple publié à titre d'illustration. SILLAGE, sa fondatrice et les maisons citées ne correspondent à aucune entreprise existante.",
     partialTitle: "Ceci n'est qu'une partie de ce que vous recevras.",
     partialBody:
-      "La commande complète compte quatorze pièces et représente environ quatre-vingt-dix pages. La page que vous lis en présente la structure intégrale — les quatorze pièces sont là — mais chacune est resserrée pour l'écran. Ce qui est retiré de cette édition web :",
+      "BRAND NARRATIVE ARCHITECTURE compte quatorze pièces et représente environ quatre-vingt-dix pages. La page que vous lisez en présente la structure intégrale — les quatorze pièces sont là — mais chacune est resserrée pour l'écran. Ce qui est retiré de cette édition web :",
     partialPoints: [
       "Les développements longs de chaque analyse, réduits ici à leur conclusion",
       "Les fiches concurrent complètes, une par acteur du champ, dissection phrase par phrase",
@@ -158,7 +158,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
   {
     n: "03",
     title: "Système de langage",
-    subtitle: "Le vocabulaire, le votre, les tests quotidiens.",
+    subtitle: "Le vocabulaire, le ton, les tests quotidiens.",
     blocks: [
       { kind: "h", text: "Le lexique signature" },
       { kind: "p", text: "Vingt-deux mots qui, employés ensemble et répétés dans le temps, construisent une empreinte verbale reconnaissable. Extrait :" },
@@ -172,7 +172,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       ]},
       { kind: "h", text: "La liste interdite" },
       { kind: "p", text: "Trois niveaux. Niveau A — disqualification immédiate : simple, visuel, gain de temps, plateforme, digitaliser, zéro litige, nouvelle génération. Un seul emploi effondre la position. Niveau B — à manier avec précaution : photo (jamais comme sujet), litige (jamais comme peur), preuve (jamais comme menace). Niveau C — bruit de catégorie : innovant, intuitif, clé en main, écosystème, fluidifier, optimiser, centraliser." },
-      { kind: "h", text: "Calibrage du votre" },
+      { kind: "h", text: "Calibrage du ton" },
       { kind: "pair", beforeLabel: "Faux", afterLabel: "Juste", before: "Dans un contexte où la traçabilité devient un enjeu majeur pour les acteurs du BTP, il apparaît essentiel de pouvoir démontrer la conformité des travaux exécutés.", after: "Vous savez que vous avez raison. Vous ne pouvez pas le montrer. Vous payez." },
       { kind: "pair", beforeLabel: "Faux", afterLabel: "Juste", before: "Beaucoup d'entreprises négligent encore la documentation de leurs chantiers.", after: "Le classeur de chantier n'échoue pas par manque de rigueur. Il échoue parce qu'on le remplit après." },
       { kind: "h", text: "Le test de la phrase" },
@@ -405,7 +405,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ctaTitle: "Voilà ce que vous recevez.",
     ctaBody:
       "Le même travail, appliqué à la vôtre, commencez par une extraction qu'aucune machine ne peut automatiser : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
-    ctaPrimary: "Commander l'architecture — 4 500€",
+    ctaPrimary: "Commander l'architecture",
     ctaSecondary: "Commencer par le diagnostic — 490€",
     ctaFoot: "Limité à quatre commandes par trimestre.",
   },
@@ -760,7 +760,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ctaTitle: "This is what you receive.",
     ctaBody:
       "The same work, applied to yours, begins with an extraction no machine can automate: your truth, your singularity, the thing you no longer see because you are inside it.",
-    ctaPrimary: "Commission the architecture — 4,500€",
+    ctaPrimary: "Commission the architecture",
     ctaSecondary: "Start with the diagnosis — 490€",
     ctaFoot: "Limited to four commissions per quarter.",
   },

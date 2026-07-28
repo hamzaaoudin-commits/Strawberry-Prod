@@ -164,12 +164,6 @@ export default async function AuditSamplePage({
         </div>
       </section>
 
-      <section className="px-gutter py-10">
-        <p className="mx-auto max-w-[720px] border-t border-white/[0.08] pt-8 text-center font-sans text-[13px] leading-relaxed text-chalk-40">
-          {d.disclaimer}
-        </p>
-      </section>
-
       <section className="section pb-28 text-center">
         <div className="mx-auto max-w-[720px]">
           <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">{d.ctaTitle}</h2>

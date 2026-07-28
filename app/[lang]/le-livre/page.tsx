@@ -55,7 +55,7 @@ const T = {
     buyH: "Se procurer le livre",
     buyP: "Écrivez-nous et nous vous indiquons comment l'obtenir, en français ou en anglais.",
     buyCta: "Nous écrire →",
-    bridgeH: "Le livre pose la doctrine. La commande la rend vôtre.",
+    bridgeH: "Le livre pose la doctrine. BRAND NARRATIVE ARCHITECTURE la rend vôtre.",
     bridgeP:
       "Lire la méthode et se l'appliquer sont deux choses différentes : la seule maison qu'un fondateur ne peut structurellement pas lire, c'est la sienne.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
@@ -91,7 +91,7 @@ const T = {
     buyH: "Getting the book",
     buyP: "Write to us and we will tell you how to obtain it, in French or in English.",
     buyCta: "Write to us →",
-    bridgeH: "The book states the doctrine. The commission makes it yours.",
+    bridgeH: "The book states the doctrine. BRAND NARRATIVE ARCHITECTURE makes it yours.",
     bridgeP:
       "Reading a method and applying it to yourself are two different things: the one house a founder structurally cannot read is their own.",
     bridgeCta: "See BRAND NARRATIVE ARCHITECTURE →",

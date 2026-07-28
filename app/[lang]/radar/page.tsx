@@ -15,60 +15,106 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const T = {
   en: {
-    badge: "A Strawberry Production publication · daily",
+    badge: "One brand dissected. Every day, without exception.",
     h1a: "Catch a brand's signal",
     h1b: "before the market does.",
     lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading we would give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
-    subscribe: "Subscribe — 15€/month",
-    access: "I'm already a subscriber",
+    subscribe: "Subscribe",
+    access: "Subscriber access",
     read: [
       { label: "The signal", body: "What the brand genuinely emits — the position that actually lands, isolated from everything around it." },
       { label: "The noise", body: "What blurs it: the borrowed words, the me-too claims, the promise that fights itself." },
       { label: "The heading", body: "The single repositioning move we would give it — the decision that would make it unmistakable." },
     ],
     inKicker: "What the subscription contains",
-    inTitle: "Everything below, for 15€ a month.",
+    inTitle: "Everything below, every day.",
     contents: [
       { n: "30+", t: "Brand reads", d: "Thirty real brands already dissected, a new one every day. Same six-block grid each time." },
-      { n: "IX", t: "The manifestos", d: "The nine Strawberry manifestos, in full — the doctrine the studio works from." },
-      { n: "05", t: "The lessons", d: "The method broken into pieces: the sentence test, the reference class, the forbidden words, extraction, refusal." },
+      { n: "IX", t: "The manifestos", d: "The nine Strawberry manifestos, in full. What the studio holds to be true about perception, scarcity and refusal — and what every working decision rests on." },
+      { n: "05", t: "The lessons", d: "Five lessons, one per instrument. How to check that a positioning sentence holds, who your market actually compares you to, which words to abandon, how to make a founder say what they no longer see, and when to refuse." },
       { n: "03", t: "The applications", d: "Daily exercise, the sentence library, and the watch list on your own competitors." },
+    ],
+    appsKicker: "The applications",
+    appsTitle: "Three instruments, not three more articles.",
+    appsLead: "This is what separates RADAR from a newsletter. A newsletter is read and forgotten. These are used — on your market, on your competitors, on your own sentences.",
+    appsSoon: "In preparation",
+    apps: [
+      {
+        n: "01",
+        t: "Today's exercise",
+        d: "A real positioning sentence, stripped of its brand name. Three questions: who does it exclude, what class does it place the house in, which word could a competitor not steal. The answer follows, with the reasoning.",
+        why: "Judgement is not acquired by reading. It is acquired by deciding, then discovering whether you were right.",
+      },
+      {
+        n: "02",
+        t: "The sentence library",
+        d: "Every positioning sentence dissected in RADAR, searchable by sector and by claimed word. Type \u201ctailor-made\u201d and see the forty houses already occupying it.",
+        why: "Before claiming a word, you should know how crowded it already is. Nothing else shows you that.",
+      },
+      {
+        n: "03",
+        t: "The watch list",
+        d: "Your own competitors under watch. When one of them rewrites their homepage sentence, you receive the before, the after, and a read of what the move is trying to do.",
+        why: "A repositioning is announced by nobody. It is noticed months later, once the ground has been taken.",
+      },
     ],
     gridKicker: "The grid",
     gridTitle: "Six blocks. Never changes.",
     grid: ["Context", "The signal", "The noise", "The tension", "The heading", "Verdict"],
-    manifestoNote: "Previously published free. Now part of the subscription.",
-    bridge: "Reading positions well is one thing. Having yours written is another — and that is what the commission does.",
+    bridge: "RADAR trains your eye on other people's brands. The one you can never read from the outside is your own: that is where BRAND NARRATIVE ARCHITECTURE comes in.",
     subLabel: "Subscription · 15€/mo",
     subTitle: "The daily read, on tap.",
     subBody: "The full library, one new read a day, and the habit that lets you price any positioning in seconds. Cancel anytime.",
     bridgeCta: "See BRAND NARRATIVE ARCHITECTURE →",
   },
   fr: {
-    badge: "Une publication de Strawberry Production · quotidien",
+    badge: "Une marque disséquée. Chaque jour, sans exception.",
     h1a: "Captez le signal d'une marque",
     h1b: "avant le marché.",
     lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que nous lui donnerions. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
-    subscribe: "S'abonner — 15€/mois",
-    access: "Je suis déjà abonné",
+    subscribe: "S'abonner",
+    access: "Accès abonné",
     read: [
       { label: "Le signal", body: "Ce que la marque émet vraiment — la position qui porte, isolée de tout le reste." },
       { label: "Le bruit", body: "Ce qui la brouille : les mots empruntés, les promesses me-too, la promesse qui se contredit." },
       { label: "Le cap", body: "Le seul mouvement de repositionnement que nous lui donnerions — la décision qui la rendrait indiscutable." },
     ],
     inKicker: "Ce que contient l'abonnement",
-    inTitle: "Tout ce qui suit, pour 15€ par mois.",
+    inTitle: "Tout ce qui suit, chaque jour.",
     contents: [
       { n: "30+", t: "Les fiches", d: "Trente marques réelles déjà disséquées, une nouvelle chaque jour. La même grille en six blocs à chaque fois." },
-      { n: "IX", t: "Les manifestes", d: "Les neuf manifestes Strawberry, en entier — la doctrine dont le studio travaille." },
-      { n: "05", t: "Les leçons", d: "La méthode découpée en pièces : le test de la phrase, la classe de référence, les mots interdits, l'extraction, le refus." },
+      { n: "IX", t: "Les manifestes", d: "Les neuf manifestes Strawberry, en entier. Ce que le studio tient pour vrai sur la perception, la rareté et le refus — et sur quoi chaque décision de travail s'appuie." },
+      { n: "05", t: "Les leçons", d: "Cinq leçons, une par outil. Comment vérifier qu'une phrase de positionnement tient, contre qui votre marché vous compare vraiment, quels mots abandonner, comment faire dire à un fondateur ce qu'il ne sait plus voir, et quand refuser." },
       { n: "03", t: "Les applications", d: "L'entraînement du jour, la bibliothèque des phrases, et le carnet de veille sur vos propres concurrents." },
+    ],
+    appsKicker: "Les applications",
+    appsTitle: "Trois instruments, pas trois articles de plus.",
+    appsLead: "C'est ce qui sépare RADAR d'une newsletter. Une newsletter se lit puis s'oublie. Ceci s'utilise — sur votre marché, sur vos concurrents, sur vos propres phrases.",
+    appsSoon: "En préparation",
+    apps: [
+      {
+        n: "01",
+        t: "L'entraînement du jour",
+        d: "Une phrase de positionnement réelle, privée du nom de sa marque. Trois questions : qui exclut-elle, dans quelle classe place-t-elle la maison, quel mot un concurrent ne pourrait-il pas lui voler. La réponse suit, avec le raisonnement.",
+        why: "Le jugement ne s'acquiert pas en lisant. Il s'acquiert en tranchant, puis en découvrant si on avait raison.",
+      },
+      {
+        n: "02",
+        t: "La bibliothèque des phrases",
+        d: "Toutes les phrases de positionnement disséquées dans RADAR, cherchables par secteur et par mot revendiqu\u00e9. Tapez \u00ab sur-mesure \u00bb et voyez les quarante maisons qui l'occupent d\u00e9j\u00e0.",
+        why: "Avant de revendiquer un mot, il faut savoir combien de monde s'y trouve. Rien d'autre ne vous le montre.",
+      },
+      {
+        n: "03",
+        t: "Le carnet de veille",
+        d: "Vos propres concurrents sous surveillance. Quand l'un d'eux réécrit sa phrase d'accueil, vous recevez l'avant, l'après, et une lecture de ce que le mouvement cherche à faire.",
+        why: "Un repositionnement n'est annoncé par personne. Il se remarque des mois plus tard, une fois le terrain pris.",
+      },
     ],
     gridKicker: "La grille",
     gridTitle: "Six blocs. Elle ne change jamais.",
     grid: ["Contexte", "Le signal", "Le bruit", "La tension", "Le cap", "Verdict"],
-    manifestoNote: "Auparavant publiés en accès libre. Désormais dans l'abonnement.",
-    bridge: "Bien lire les positions est une chose. Faire écrire la vôtre en est une autre — et c'est le travail de la commande.",
+    bridge: "RADAR forme votre œil sur les marques des autres. La seule que vous ne pourrez jamais lire de l'extérieur, c'est la vôtre : c'est là que BRAND NARRATIVE ARCHITECTURE intervient.",
     subLabel: "Abonnement · 15€/mois",
     subTitle: "La lecture du jour, à volonté.",
     subBody: "La bibliothèque complète, une nouvelle fiche par jour, et l'habitude qui vous fait lire n'importe quel positionnement en quelques secondes. Résiliable à tout moment.",
@@ -173,7 +219,33 @@ export default function RadarPage() {
             ))}
           </div>
 
-          <p className="mt-6 text-center font-sans text-[12.5px] text-chalk-40">{t.manifestoNote}</p>
+        </div>
+      </section>
+
+      {/* LES APPLICATIONS — ce qui distingue un abonnement d'une newsletter */}
+      <section className="section bg-ink-soft">
+        <div className="shell-lg">
+          <div className="mb-12 text-center">
+            <div className="kicker mb-5">{t.appsKicker}</div>
+            <h2 className="h-section mb-6">{t.appsTitle}</h2>
+            <p className="lede mx-auto max-w-[640px]">{t.appsLead}</p>
+          </div>
+
+          <div className="grid gap-px border border-white/[0.09] bg-white/[0.09] md:grid-cols-3">
+            {t.apps.map((a) => (
+              <div key={a.n} className="flex flex-col bg-ink px-7 py-8">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="font-serif text-[1.6rem] font-bold leading-none text-brand">{a.n}</span>
+                  <span className="tag border-white/20 text-chalk-40">{t.appsSoon}</span>
+                </div>
+                <h3 className="mb-3 font-serif text-[1.25rem] font-bold leading-tight">{a.t}</h3>
+                <p className="mb-6 body-sm">{a.d}</p>
+                <p className="mt-auto border-t border-hair pt-4 font-serif text-[14px] italic leading-snug text-chalk-55">
+                  {a.why}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

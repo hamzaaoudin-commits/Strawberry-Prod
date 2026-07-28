@@ -18,7 +18,7 @@ const T = {
     beliefs: [
       { t: "Not a brand agency. A studio of doctrine.", d: "We do not deliver marketing assets. We write the document that declares what a house is, what it refuses, and how it sounds when it speaks. The artifact is a constitution, not a deck." },
       { t: "Architecture before content.", d: "Content is what a house produces. Architecture is what makes it cohere across years, surfaces and hands. We build the architecture first — and once it exists, we can carry the content too." },
-      { t: "Four commissions per quarter.", d: "Each house is built from scratch, and the work only holds at that pace. When a house would be better served elsewhere, we say so rather than take the commission." },
+      { t: "Four commissions per quarter.", d: "Each house is built from scratch, and the work only holds at that pace. When a house would be better served elsewhere, we say so rather than take the work." },
     ],
   },
   fr: {
@@ -33,7 +33,7 @@ const T = {
     beliefs: [
       { t: "Pas une agence de marque. Un studio de doctrine.", d: "On ne livre pas des assets marketing. On écrit le document qui déclare ce qu'est une maison, ce qu'elle refuse, et comment elle sonne quand elle parle. L'artefact est une constitution, pas un deck." },
       { t: "L'architecture avant le contenu.", d: "Le contenu, c'est ce qu'une maison produit. L'architecture, c'est ce qui le fait tenir à travers les années, les surfaces et les mains. Nous bâtissons l'architecture d'abord — et une fois qu'elle existe, nous pouvons aussi porter le contenu." },
-      { t: "Quatre commandes par trimestre.", d: "Chaque maison est bâtie de zéro, et le travail ne tient qu'à ce rythme. Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre la commande." },
+      { t: "Quatre commandes par trimestre.", d: "Chaque maison est bâtie de zéro, et le travail ne tient qu'à ce rythme. Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre le travail." },
     ],
   },
 }

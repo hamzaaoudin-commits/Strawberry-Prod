@@ -207,7 +207,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
     ctaTitle: "Voilà ce que vous recevez pour 490€.",
     ctaBody:
       "Sept jours après votre questionnaire, un document de cette forme sur votre propre maison. Si vous commandez ensuite l'architecture complète, les 490€ en sont déduits.",
-    ctaPrimary: "Commander l'audit — 490€",
+    ctaPrimary: "Commander l'audit",
     ctaSecondary: "Voir l'architecture complète →",
   },
 
@@ -349,7 +349,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
     ctaTitle: "This is what 490€ buys.",
     ctaBody:
       "Seven days after your questionnaire, a document of this shape about your own house. If you then commission the full architecture, the 490€ is deducted.",
-    ctaPrimary: "Commission the audit — 490€",
+    ctaPrimary: "Commission the audit",
     ctaSecondary: "See the full architecture →",
   },
 
