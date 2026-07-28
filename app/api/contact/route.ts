@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { LIMITS, isValidEmail, sanitize } from "@/lib/form-security"
+import { signAccess, ATLAS_COOKIE } from "@/lib/radar-access"
 
 /**
  * Server-side submission endpoint.
@@ -113,7 +114,24 @@ export async function POST(req: NextRequest) {
     if (!upstream.ok) {
       return NextResponse.json({ ok: false, error: "upstream" }, { status: 502 })
     }
-    return NextResponse.json({ ok: true })
+
+    /**
+     * L'Atlas est remis ici, et seulement ici. Le PDF vit sous /atlas, derrière
+     * le proxy ; ce cookie signé est la seule chose qui l'ouvre. Sept jours
+     * suffisent : c'est un téléchargement, pas un abonnement.
+     */
+    const res = NextResponse.json({ ok: true })
+    const secret = process.env.RADAR_ACCESS_SECRET ?? ""
+    if (isCapture && source.startsWith("atlas") && secret) {
+      res.cookies.set(ATLAS_COOKIE, await signAccess(secret, 7), {
+        httpOnly: true,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 7 * 86400,
+      })
+    }
+    return res
   } catch {
     return NextResponse.json({ ok: false, error: "network" }, { status: 502 })
   }

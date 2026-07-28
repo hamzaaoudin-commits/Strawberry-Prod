@@ -93,17 +93,50 @@ const nextConfig = {
    * indexed link and bookmark; the proxy handles anything not listed here.
    */
   async redirects() {
+    // Anciennes URL plates : tout ce qui vivait à la racine vit désormais sous
+    // une langue. 308 pour ne perdre aucun lien indexé ni aucun signet.
     const moved = [
-      'about','audit','brand-narrative-audit','momentum','radar',
-      'sample-audit','strawberry-method','thank-you','cgv','mentions-legales',
+      'about','brand-narrative-audit','brand-narrative-architecture','momentum','radar',
+      'sample-audit','exemple-audit','strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]
+
+    /**
+     * Les manifestes ne sont plus des fichiers libres.
+     *
+     * Ces copies statiques vivaient dans /public : servies par le CDN, elles ne
+     * passaient jamais par le proxy et donnaient la doctrine complète sans
+     * abonnement. Les fichiers sont vidés ET redirigés — une redirection est
+     * évaluée avant le système de fichiers, donc elle gagne dans tous les cas.
+     */
+    const manifestoFiles = [
+      'manifesto-reader.html','manifesto-box-set.html','manifesto-vol-2.html','manifesto-vol-3.html',
+      'Vol_IV_The_Founder_Codex.html','Vol_V_The_Refusal_Manifesto.html',
+      'Vol_VI_The_Aesthetic_Constitution.html','Vol_VII_The_Rarity_Engine.html',
+      'Vol_VIII_The_Patience_Doctrine.html','Vol_IX_The_Devotion_Codex.html',
+    ]
+
     return [
+      // Offres retirées.
       { source: '/nova', destination: '/fr', permanent: true },
       { source: '/arsenal', destination: '/fr', permanent: true },
       { source: '/nocta', destination: '/fr/momentum', permanent: true },
       { source: '/case-studies', destination: '/fr/sample-audit', permanent: true },
       { source: '/manifesto', destination: '/fr/radar', permanent: true },
+
+      // L'audit à 490€ porte maintenant son nom dans l'URL.
+      { source: '/audit', destination: '/fr/brand-narrative-audit', permanent: true },
+      { source: '/:lang(fr|en|es)/audit', destination: '/:lang/brand-narrative-audit', permanent: true },
+
+      // L'Atlas n'est plus servi depuis la racine de /public.
+      { source: '/30-architectures-atlas.pdf', destination: '/fr#atlas', permanent: false },
+
+      ...manifestoFiles.map((f) => ({
+        source: `/${f}`,
+        destination: '/fr/radar',
+        permanent: true,
+      })),
+
       ...moved.map((slug) => ({
         source: `/${slug}`,
         destination: `/fr/${slug}`,

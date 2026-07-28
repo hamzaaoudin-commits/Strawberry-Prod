@@ -5,7 +5,22 @@ import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
 const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/radar"]
-const WORK_HREFS = ["/radar", "/radar/acces", "/audit", "/brand-narrative-audit", "/momentum", "/sample-audit"]
+/**
+ * Le bloc « Le Travail ».
+ *
+ * Chaque entrée porte son href ET ses libellés. L'ancienne version mappait deux
+ * tableaux par index : dès que la liste anglaise et la liste française n'ont pas
+ * eu la même longueur, tous les liens français ont glissé d'un cran.
+ */
+const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
+  { href: "/radar", label: { fr: "RADAR — 15€/mois", en: "RADAR — 15€/mo", es: "RADAR — 15€/mes" } },
+  { href: "/radar/acces", label: { fr: "Accès abonné", en: "Subscriber access", es: "Acceso suscriptor" } },
+  { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€", es: "BRAND NARRATIVE AUDIT — 490€" } },
+  { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€", es: "BRAND NARRATIVE ARCHITECTURE — 4.500€" } },
+  { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly", es: "MOMENTUM — mensual" } },
+  { href: "/sample-audit", label: { fr: "Le document SILLAGE", en: "The SILLAGE document", es: "El documento SILLAGE" } },
+  { href: "/exemple-audit", label: { fr: "Le document VERSO", en: "The VERSO document", es: "El documento VERSO" } },
+]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
   { href: "https://instagram.com/strawberry_prods", external: true },
@@ -38,7 +53,6 @@ const T = {
     hWork: "The Work",
     hReach: "Reach",
     explore: ["Home", "About", "The Method", "RADAR"],
-    work: ["RADAR", "Subscriber access", "The Audit", "The Commission", "MOMENTUM", "The SILLAGE document"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -49,7 +63,6 @@ const T = {
     hWork: "Le Travail",
     hReach: "Contact",
     explore: ["Accueil", "À propos", "La Méthode", "RADAR"],
-    work: ["RADAR", "L'Audit", "La Commande", "MOMENTUM", "Document exemple", "Études de cas"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },
@@ -60,7 +73,6 @@ const T = {
     hWork: "El Trabajo",
     hReach: "Contacto",
     explore: ["Inicio", "Nosotros", "El Método", "RADAR"],
-    work: ["RADAR", "La Auditoría", "El Encargo", "MOMENTUM", "Documento de muestra", "Casos de estudio"],
     reach: ["Hablemos", "Instagram", "Email"],
     rights: "Todos los derechos reservados.",
   },
@@ -75,7 +87,7 @@ export function Footer() {
   const t = useT(T)
   const { lang } = useLang()
   const EXPLORE = t.explore.map((label, i) => ({ label, href: EXPLORE_HREFS[i] }))
-  const WORK = t.work.map((label, i) => ({ label, href: WORK_HREFS[i] }))
+  const WORK = WORK_LINKS.map((l) => ({ href: l.href, label: l.label[lang] ?? l.label.fr }))
   const REACH = t.reach.map((label, i) => ({ label, ...REACH_HREFS[i] }))
 
   return (

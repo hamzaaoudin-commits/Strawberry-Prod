@@ -18,13 +18,13 @@ const T = {
     badge: "A Strawberry Production publication · daily",
     h1a: "Catch a brand's signal",
     h1b: "before the market does.",
-    lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading I'd give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
+    lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading we would give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
     subscribe: "Subscribe — 15€/month",
     access: "I'm already a subscriber",
     read: [
       { label: "The signal", body: "What the brand genuinely emits — the position that actually lands, isolated from everything around it." },
       { label: "The noise", body: "What blurs it: the borrowed words, the me-too claims, the promise that fights itself." },
-      { label: "The heading", body: "The single repositioning move I'd give it — the decision that would make it unmistakable." },
+      { label: "The heading", body: "The single repositioning move we would give it — the decision that would make it unmistakable." },
     ],
     inKicker: "What the subscription contains",
     inTitle: "Everything below, for 15€ a month.",
@@ -48,13 +48,13 @@ const T = {
     badge: "Une publication de Strawberry Production · quotidien",
     h1a: "Captez le signal d'une marque",
     h1b: "avant le marché.",
-    lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que je lui donnerais. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
+    lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que nous lui donnerions. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
     subscribe: "S'abonner — 15€/mois",
     access: "Je suis déjà abonné",
     read: [
       { label: "Le signal", body: "Ce que la marque émet vraiment — la position qui porte, isolée de tout le reste." },
       { label: "Le bruit", body: "Ce qui la brouille : les mots empruntés, les promesses me-too, la promesse qui se contredit." },
-      { label: "Le cap", body: "Le seul mouvement de repositionnement que je lui donnerais — la décision qui la rendrait indiscutable." },
+      { label: "Le cap", body: "Le seul mouvement de repositionnement que nous lui donnerions — la décision qui la rendrait indiscutable." },
     ],
     inKicker: "Ce que contient l'abonnement",
     inTitle: "Tout ce qui suit, pour 15€ par mois.",
@@ -78,13 +78,13 @@ const T = {
     badge: "Una publicación de Strawberry Production · diario",
     h1a: "Capta la señal de una marca",
     h1b: "antes que el mercado.",
-    lead: "Cada día, una marca real pasa por el radar: lo que emite (la señal), lo que interfiere (el ruido) y el rumbo que le daría. No un curso — un instrumento. La ventaja que sus competidores no tienen, día tras día.",
+    lead: "Cada día, una marca real pasa por el radar: lo que emite (la señal), lo que interfiere (el ruido) y el rumbo que le daríamos. No un curso — un instrumento. La ventaja que sus competidores no tienen, día tras día.",
     subscribe: "Suscribirse — 15€/mes",
     access: "Ya estoy suscrito",
     read: [
       { label: "La señal", body: "Lo que la marca emite de verdad — la posición que aterriza, aislada de todo lo demás." },
       { label: "El ruido", body: "Lo que la enturbia: las palabras prestadas, los reclamos me-too, la promesa que se contradice." },
-      { label: "El rumbo", body: "El único movimiento de reposicionamiento que le daría — la decisión que la haría inconfundible." },
+      { label: "El rumbo", body: "El único movimiento de reposicionamiento que le daríamos — la decisión que la haría inconfundible." },
     ],
     inKicker: "Lo que contiene la suscripción",
     inTitle: "Todo lo que sigue, por 15€ al mes.",
@@ -241,7 +241,7 @@ export default function RadarPage() {
           <p className="font-serif text-[clamp(1.15rem,2vw,1.5rem)] italic leading-snug text-chalk-75">
             {t.bridge}
           </p>
-          <Link href="/brand-narrative-audit" className="btn-quiet mt-5">{t.bridgeCta}</Link>
+          <Link href="/brand-narrative-architecture" className="btn-quiet mt-5">{t.bridgeCta}</Link>
         </div>
       </section>
 

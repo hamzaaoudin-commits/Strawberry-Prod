@@ -150,7 +150,7 @@ export default async function LocaleLayout({
               founder: { '@type': 'Person', name: 'Hamza El Jaouahiry' },
               description: COPY[lang].description,
               address: { '@type': 'PostalAddress', addressLocality: 'Paris', addressCountry: 'FR' },
-              priceRange: '490€ – 4500€',
+              priceRange: '15€ – 4500€',
               availableLanguage: ['French', 'English', 'Spanish'],
               sameAs: ['https://instagram.com/strawberry_prods'],
             }),

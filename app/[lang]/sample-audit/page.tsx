@@ -233,7 +233,7 @@ export default async function SampleAuditPage({
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>
-            <Link href="/audit" className="btn-ghost">{d.ctaSecondary}</Link>
+            <Link href="/brand-narrative-audit" className="btn-ghost">{d.ctaSecondary}</Link>
           </div>
 
           <p className="mt-6 font-sans text-[13px] text-chalk-40">{d.ctaFoot}</p>

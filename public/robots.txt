@@ -1,9 +1,22 @@
 User-agent: *
 Allow: /
+
 Disallow: /api/
+Disallow: /atlas/
 Disallow: /thank-you
 Disallow: /fr/thank-you
 Disallow: /en/thank-you
 Disallow: /es/thank-you
+
+# Espaces payants ou privés : rien à indexer derrière la barrière.
+Disallow: /fr/radar/lecture
+Disallow: /en/radar/lecture
+Disallow: /es/radar/lecture
+Disallow: /fr/radar/acces
+Disallow: /en/radar/acces
+Disallow: /es/radar/acces
+Disallow: /fr/momentum/atelier
+Disallow: /en/momentum/atelier
+Disallow: /es/momentum/atelier
 
 Sitemap: https://www.gostrawberryprod.com/sitemap.xml

@@ -7,9 +7,14 @@ import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
 
-const BRANDS = [
-  "Notion", "Linear", "Substack", "Pitch", "Framer", "Raycast", "Superhuman", "Beehiiv", "Cal.com", "Resend", "Pennylane", "Vercel"
-]
+/**
+ * Le bandeau de logos a été retiré.
+ *
+ * Douze noms de sociétés défilant sous trois affirmations cochées se lisent
+ * comme une liste de clients. Aucune de ces maisons n'a commandé le studio :
+ * c'est exactement l'exposition L.121-2 pour laquelle les faux cas ont déjà été
+ * retirés. Ce qui reste dit la même chose et est vrai.
+ */
 
 const T = {
   en: {
@@ -28,7 +33,7 @@ const T = {
     h1b: "Impossible à générer.",
     sub: "Un studio de perception narrative, à Paris. Nous bâtissons l'identité, la position et le langage dans lesquels un fondateur ne peut être confondu avec personne — et qu'aucune machine ne peut écrire, parce qu'elle ne vous a pas vécu.",
     cta1: "Commander le travail \u2192",
-    cta2: "Voir les études de cas",
+    cta2: "Lire le document SILLAGE",
     trusted: "Comment ce studio travaille, dit simplement.",
     stats: ["Quatre commandes par trimestre", "Livré comme un document éditorial unique", "Une position écrite, pas un diaporama"],
   },
@@ -117,7 +122,7 @@ export function HeroSection() {
 
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <Link
-              href="/brand-narrative-audit"
+              href="/brand-narrative-architecture"
               onClick={() => track("audit_click", { from: "home_hero" })}
               className="btn-primary px-9 py-4 font-bold tracking-[0.04em] shadow-[0_8px_32px_rgba(230,57,70,0.4)]"
             >
@@ -134,7 +139,7 @@ export function HeroSection() {
           <div className="mt-20 border-t border-hair pt-10">
             <p className="mb-2 font-sans text-sm text-chalk-40">{t.trusted}</p>
 
-            <div className="mb-6 flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               {t.stats.map((label) => (
                 <div key={label} className="flex items-center gap-2">
                   <span aria-hidden className="text-base text-brand">&#10003;</span>
@@ -143,28 +148,9 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="relative overflow-hidden">
-              <div className="flex w-max gap-12 [animation:scroll_25s_linear_infinite]">
-                {BRANDS.concat(BRANDS).map((b, i) => (
-                  <span
-                    key={`${b}-${i}`}
-                    className="whitespace-nowrap font-sans text-base font-semibold tracking-[0.08em] text-white/20"
-                  >
-                    {b}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   )
 }

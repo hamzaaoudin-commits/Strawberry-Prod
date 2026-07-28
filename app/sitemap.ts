@@ -9,9 +9,9 @@ import { SITE, localePath } from "@/lib/routing"
  */
 const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
-  { path: "/brand-narrative-audit", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/brand-narrative-architecture", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/brand-narrative-audit", priority: 0.9, changeFrequency: "monthly" },
   { path: "/sample-audit", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/audit", priority: 0.9, changeFrequency: "monthly" },
   { path: "/exemple-audit", priority: 0.85, changeFrequency: "monthly" },
   { path: "/radar", priority: 0.85, changeFrequency: "daily" },
   { path: "/momentum", priority: 0.8, changeFrequency: "monthly" },

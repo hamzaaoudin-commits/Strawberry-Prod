@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { STRIPE_LINKS } from "@/lib/config"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
-const STRIPE_URL = "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"
+const STRIPE_URL = STRIPE_LINKS.architecture
 
 const T = {
   en: {
@@ -515,7 +516,7 @@ export default function StrawberryMethodPage() {
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", marginBottom: 32 }}>
               {t.bridgeItalic}
             </p>
-            <Link href="/brand-narrative-audit" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 14, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", padding: "12px 28px", border: `1px solid ${COLOR}`, borderRadius: 100, transition: "all 0.2s" }}>
+            <Link href="/brand-narrative-architecture" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 14, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", padding: "12px 28px", border: `1px solid ${COLOR}`, borderRadius: 100, transition: "all 0.2s" }}>
               {t.bridgeCta}
             </Link>
           </div>

@@ -126,7 +126,7 @@ export function OffersSection() {
             <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">
               {t.cta1}
             </a>
-            <Link href="/brand-narrative-audit" className="btn-ghost">
+            <Link href="/brand-narrative-architecture" className="btn-ghost">
               {t.cta2}
             </Link>
           </div>
@@ -147,7 +147,7 @@ export function OffersSection() {
           </p>
           <p className="mb-8 max-w-[620px] body-sm">{t.auditBody}</p>
 
-          <Link href="/audit" className="btn-primary">
+          <Link href="/brand-narrative-audit" className="btn-primary">
             {t.auditCta}
           </Link>
         </div>

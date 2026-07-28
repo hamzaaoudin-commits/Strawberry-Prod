@@ -83,6 +83,9 @@ export async function verifyAccess(token: string | undefined, secret: string): P
 
 export const ACCESS_COOKIE = "sp_radar"
 
+/** L'Atlas : même signature, même secret, un cookie distinct. */
+export const ATLAS_COOKIE = "sp_atlas"
+
 export const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: true,

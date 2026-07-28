@@ -661,7 +661,7 @@ export default function AboutPage() {
             {t.ctaP}
           </p>
           <Link
-            href="/brand-narrative-audit"
+            href="/brand-narrative-architecture"
             style={{
               display: "inline-block",
               background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)",

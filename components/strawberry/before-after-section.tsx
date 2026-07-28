@@ -17,7 +17,7 @@ const T = {
     kicker: "Avant / après",
     h2a: "Ce qui change,",
     h2b: "concrètement.",
-    lead: "Une architecture ne se juge pas sur une intention mais sur une phrase. Voici trois déplacements réels, tirés des deux documents publiés — vous pouvez ouvrir chacun et retrouver le raisonnement complet.",
+    lead: "Une architecture ne se juge pas sur une intention mais sur une phrase. Voici trois déplacements, tirés mot pour mot des deux documents publiés — vous pouvez ouvrir chacun et retrouver le raisonnement complet.",
     beforeLabel: "Avant",
     afterLabel: "Après",
     pairs: [

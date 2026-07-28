@@ -1,83 +1,412 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- Généré depuis app/sitemap.ts. Un fichier statique dans /public masque -->
+<!-- toujours la route générée : les deux disent désormais la même chose.   -->
+<!-- Supprimer ce fichier rend la main à app/sitemap.ts, qui se met à jour  -->
+<!-- tout seul à chaque changement de route.                                -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.gostrawberryprod.com/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.gostrawberryprod.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr"/>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.gostrawberryprod.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/brand-narrative-audit</loc>
+    <loc>https://www.gostrawberryprod.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/brand-narrative-architecture</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/brand-narrative-architecture</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/brand-narrative-architecture</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-architecture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-architecture"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/brand-narrative-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/audit</loc>
+    <loc>https://www.gostrawberryprod.com/en/brand-narrative-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/radar</loc>
+    <loc>https://www.gostrawberryprod.com/es/brand-narrative-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/brand-narrative-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/brand-narrative-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/sample-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/sample-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/sample-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/sample-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/sample-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/exemple-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/exemple-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/exemple-audit</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/exemple-audit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/exemple-audit"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/radar</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/radar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/radar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/radar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/radar"/>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/momentum</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.gostrawberryprod.com/en/radar</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/radar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/radar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/radar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/radar"/>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/sample-audit</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.gostrawberryprod.com/es/radar</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/radar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/radar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/radar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/radar"/>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/strawberry-method</loc>
+    <loc>https://www.gostrawberryprod.com/fr/momentum</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/momentum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/momentum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/momentum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/momentum"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/case-studies</loc>
+    <loc>https://www.gostrawberryprod.com/en/momentum</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/momentum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/momentum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/momentum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/momentum"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/manifesto</loc>
+    <loc>https://www.gostrawberryprod.com/es/momentum</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/momentum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/momentum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/momentum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/momentum"/>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/cgv</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://www.gostrawberryprod.com/fr/strawberry-method</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/mentions-legales</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://www.gostrawberryprod.com/en/strawberry-method</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/politique-confidentialite</loc>
+    <loc>https://www.gostrawberryprod.com/es/strawberry-method</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/strawberry-method"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/strawberry-method"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/cgv</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/cgv"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/cgv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/cgv"/>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/cgv</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/cgv"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/cgv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/cgv"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/cgv</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/cgv"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/cgv"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/cgv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/cgv"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/mentions-legales"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/politique-confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/politique-confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/politique-confidentialite</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/politique-confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/politique-confidentialite"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/terms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/terms"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.gostrawberryprod.com/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/terms"/>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.gostrawberryprod.com/en/legal-notice</loc>
+    <loc>https://www.gostrawberryprod.com/es/terms</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/terms"/>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.gostrawberryprod.com/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/privacy"/>
     <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/fr/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/en/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.gostrawberryprod.com/es/legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gostrawberryprod.com/en/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gostrawberryprod.com/es/legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gostrawberryprod.com/fr/legal-notice"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

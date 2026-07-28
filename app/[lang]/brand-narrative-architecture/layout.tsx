@@ -3,9 +3,9 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnostic écrit de votre récit actuel : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements à faire." },
-  en: { title: "BRAND NARRATIVE AUDIT — 490€", description: "A written diagnosis of your current narrative: what lands, what blurs you, and the moves to make." },
-  es: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnóstico escrito de su relato actual: lo que aterriza, lo que le difumina y los movimientos a realizar." },
+  fr: { title: "BRAND NARRATIVE ARCHITECTURE — 4 500€", description: "Le récit de marque qui vous rend impossible à confondre — et impossible à générer." },
+  en: { title: "BRAND NARRATIVE ARCHITECTURE — 4,500€", description: "The brand story that makes you impossible to confuse — and impossible to generate." },
+  es: { title: "BRAND NARRATIVE ARCHITECTURE — 4.500€", description: "El relato de marca que le hace imposible de confundir — e imposible de generar." },
 }
 
 export async function generateMetadata({
@@ -20,11 +20,11 @@ export async function generateMetadata({
   return {
     title: c.title,
     description: c.description,
-    alternates: alternatesFor('/brand-narrative-audit'),
+    alternates: alternatesFor('/brand-narrative-architecture'),
     openGraph: {
       title: c.title,
       description: c.description,
-      url: `${SITE}/${lang}/brand-narrative-audit`,
+      url: `${SITE}/${lang}/brand-narrative-architecture`,
       images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     },
   }

@@ -13,8 +13,8 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR — 15€/mois", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-architecture" },
       { label: "MOMENTUM — au mois", href: "/momentum" },
     ],
   },
@@ -26,8 +26,8 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR — 15€/mo", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-architecture" },
       { label: "MOMENTUM — monthly", href: "/momentum" },
     ],
   },
@@ -39,8 +39,8 @@ const T = {
     menu: "Menú",
     offersMenu: [
       { label: "RADAR — 15€/mes", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4.500€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE — 4.500€", href: "/brand-narrative-architecture" },
       { label: "MOMENTUM — mensual", href: "/momentum" },
     ],
   },

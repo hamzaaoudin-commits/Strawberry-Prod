@@ -38,7 +38,7 @@ const T = {
     freeBadge: "RESSOURCE GRATUITE",
     h2a: "30 Architectures.",
     h2b: "Un Atlas.",
-    modalSub: "128 pages. Gratuit. Entre votre email et l'Atlas s'ouvre imm\u00e9diatement.",
+    modalSub: "128 pages. Gratuit. Entrez votre email et l'Atlas s'ouvre imm\u00e9diatement.",
     opening: "Ouverture de l'Atlas\u2026",
     emailPlaceholder: "Votre email",
     loading: "Ouverture\u2026",
@@ -118,7 +118,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         setStatus("done")
         track("atlas_email_captured", { from: "home" })
         setTimeout(() => {
-          window.location.href = "/30-architectures-atlas.pdf"
+          window.location.href = "/atlas/30-architectures-atlas.pdf"
           onClose()
         }, 1200)
       } else {
