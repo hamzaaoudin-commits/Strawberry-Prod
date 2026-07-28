@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "VERSO — un exemple d'audit complet", description: "Un audit de diagnostic complet, publié en entier. Cinq blocs — exactement le document que vous recevrez." },
   en: { title: "VERSO — a complete sample audit", description: "A complete diagnostic audit, published in full. Five blocks — exactly the document you would receive." },
-  es: { title: "VERSO — un ejemplo de auditoría completa", description: "Una auditoría de diagnóstico completa, publicada entera. Cinco bloques — exactamente el documento que recibirá." },
 }
 
 export async function generateMetadata({

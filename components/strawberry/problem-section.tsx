@@ -1,8 +1,6 @@
-"use client"
-
-import { useScrollReveal } from "@/hooks/use-strawberry"
 import { GlassCard } from "./glass-card"
-import { useT } from "@/lib/i18n"
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
 
 const T = {
   en: {
@@ -35,26 +33,10 @@ const T = {
     quote1: "« La plupart des marques ont des fragments. ",
     quote2: "Nous, on bâtit des empires. »",
   },
-  es: {
-    kicker: "EL PROBLEMA",
-    h2: "No le ignoran porque su trabajo no sea lo bastante bueno.",
-    p1a: "Te ignoran porque es ",
-    p1strong: "indistinguible",
-    p1b: ". En un mundo donde todos publican, todos crean contenido y todos se dicen expertos — los que ganan no son los más talentosos.",
-    p2: "Son los que controlan la percepción.",
-    needs: [
-      "Una identidad clara que se reconoce al instante",
-      "Un universo narrativo del que la gente quiere formar parte",
-      "Un sistema de ingresos que convierte la atención en facturación",
-    ],
-    quote1: "«La mayoría de las marcas tienen fragmentos. ",
-    quote2: "Nosotros construimos imperios.»",
-  },
 }
 
-export function ProblemSection() {
-  const t = useT(T)
-  const [ref, vis] = useScrollReveal()
+export function ProblemSection({ lang }: { lang: Lang }) {
+  const t = pick(T, lang)
   const NEED_ICONS = [
     { icon: "◎", c: "#e63946" },
     { icon: "◉", c: "#ff1a1a" },
@@ -65,10 +47,8 @@ export function ProblemSection() {
   return (
     <section className="overflow-hidden bg-ink-soft px-gutter py-28">
       <div
-        ref={ref}
         className={[
           "shell transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
-          vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
         ].join(" ")}
       >
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">

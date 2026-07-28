@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "Commande confirmée", description: "Votre commande est confirmée. Voici ce qui se passe maintenant." },
   en: { title: "Commission confirmed", description: "Your commission is confirmed. Here is what happens now." },
-  es: { title: "Encargo confirmado", description: "Su encargo está confirmado. Esto es lo que pasa ahora." },
 }
 
 export async function generateMetadata({

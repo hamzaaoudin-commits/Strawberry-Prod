@@ -1,15 +1,16 @@
-"use client"
-
 import { LocaleLink as Link } from "@/components/locale-link"
-import { useT } from "@/lib/i18n"
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
 
 /**
- * Replaces the former case-studies section.
+ * Le document SILLAGE.
  *
- * The studio has no client results it can publish honestly, so it publishes the
- * method instead: a complete narrative architecture applied to a house that is
- * explicitly fictional. Verifiable, readable in full, and impossible to accuse
- * of invention — because it declares itself.
+ * Composant serveur : aucune interaction, donc aucune hydratation.
+ *
+ * Le document était annoncé mais jamais montré — un titre, un sous-titre, quatre
+ * encadrés. Il est désormais présenté comme un objet : une pile de pages avec sa
+ * couverture, et les quatorze pièces visibles d'un coup en registre. Ce qu'on
+ * peut voir se juge ; ce qui n'est qu'annoncé se croit ou ne se croit pas.
  */
 
 const T = {
@@ -27,6 +28,9 @@ const T = {
       { n: "03", t: "The words, decided", d: "The lexicon that becomes theirs, and the forbidden list drawn from rivals' real copy." },
       { n: "04", t: "The first ninety days", d: "What gets said, in what order, on which surface — day one to day ninety." },
     ],
+    coverSub: "Brand Narrative\nArchitecture",
+    badges: ["Fourteen parts", "Free access", "No email"],
+    more: "+ ten further parts",
     cta: "Read the SILLAGE document →",
     note: "An example of what a commission produces, published in full so you can judge the work before commissioning it.",
   },
@@ -44,30 +48,16 @@ const T = {
       { n: "03", t: "Les mots, tranchés", d: "Le lexique qui devient le leur, et la liste interdite tirée du copy réel des rivaux." },
       { n: "04", t: "Les quatre-vingt-dix premiers jours", d: "Ce qui se dit, dans quel ordre, sur quelle surface — du jour un au jour quatre-vingt-dix." },
     ],
+    coverSub: "Brand Narrative\nArchitecture",
+    badges: ["Quatorze pièces", "Accès libre", "Sans email"],
+    more: "+ dix autres pièces",
     cta: "Lire le document SILLAGE →",
     note: "Un exemple de ce que produit une commande, publié en entier pour que vous puissiez juger le travail avant de le commander.",
   },
-  es: {
-    kicker: "El trabajo, entero",
-    h2a: "El trabajo mismo,",
-    h2b: "publicado entero.",
-    lead: "Una arquitectura narrativa es el único documento que una casa no puede compartir — es la posición misma. Escribimos por tanto un encargo completo y publicamos cada una de sus piezas, para que lea exactamente lo que recibirá.",
-    docTitle: "SILLAGE",
-    docSub: "Una Brand Narrative Architecture en catorce piezas",
-    docMeta: "Acceso libre · Sin email",
-    points: [
-      { n: "01", t: "El campo, diseccionado", d: "Cinco competidores, sus frases desmontadas, y el terreno que ninguno ocupa." },
-      { n: "02", t: "La posición, defendida", d: "Una frase que un competidor no podría escribir sin mentir — y por qué se sostiene." },
-      { n: "03", t: "Las palabras, decididas", d: "El léxico que se vuelve suyo, y la lista prohibida extraída del copy real de los rivales." },
-      { n: "04", t: "Los primeros noventa días", d: "Qué se dice, en qué orden, en qué superficie — del día uno al día noventa." },
-    ],
-    cta: "Leer el documento SILLAGE →",
-    note: "Un ejemplo de lo que produce un encargo, publicado entero para que pueda juzgar el trabajo antes de encargarlo.",
-  },
 }
 
-export function SillageSection() {
-  const t = useT(T)
+export function SillageSection({ lang }: { lang: Lang }) {
+  const t = pick(T, lang)
 
   return (
     <section id="work" className="section relative overflow-hidden bg-ink-soft text-white">
@@ -81,40 +71,60 @@ export function SillageSection() {
             <br />
             <span className="text-gradient">{t.h2b}</span>
           </h2>
-          <p className="lede mb-9">{t.lead}</p>
-
-          <p className="mx-auto max-w-[760px] font-serif text-[clamp(1.25rem,2.6vw,1.85rem)] leading-snug text-chalk-90">
-            {t.note}
-          </p>
+          <p className="lede">{t.lead}</p>
         </div>
 
-        <div className="card-featured mx-auto max-w-[900px] p-8 md:p-14">
+        <div className="card-featured mx-auto max-w-[960px] p-7 md:p-12">
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
 
-          <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h3 className="mb-2 font-serif text-[clamp(2.5rem,7vw,4.5rem)] font-bold leading-[0.95] tracking-[-0.04em]">
-                <span className="text-gradient">{t.docTitle}</span>
-              </h3>
-              <p className="m-0 font-serif text-[clamp(1rem,1.6vw,1.25rem)] italic text-chalk-75">{t.docSub}</p>
-            </div>
-            <div className="tag border-brand text-brand">{t.docMeta}</div>
-          </div>
-
-          <div className="mb-9 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
-            {t.points.map((p) => (
-              <div key={p.n} className="bg-ink px-6 py-7">
-                <div className="mb-2.5 font-serif text-xl font-bold text-brand">{p.n}</div>
-                <h4 className="mb-2 font-serif text-[1.1rem] font-bold text-white">{p.t}</h4>
-                <p className="m-0 font-sans text-[13.5px] leading-relaxed text-chalk-65">{p.d}</p>
+          <div className="relative grid gap-10 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12">
+            {/* La pile : deux feuillets décalés sous la couverture. Le document
+                cesse d'être une promesse et devient un volume. */}
+            <div className="relative mx-auto w-[170px] max-w-full md:mx-0 md:w-full">
+              <div aria-hidden className="absolute left-2 top-2 h-full w-full border border-white/[0.07]" />
+              <div aria-hidden className="absolute left-1 top-1 h-full w-full border border-white/[0.11] bg-ink" />
+              <div className="relative flex aspect-[3/4] flex-col items-center justify-center border border-white/25 bg-ink px-4 text-center">
+                <div className="font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
+                  {t.docTitle}
+                </div>
+                <div aria-hidden className="my-3 h-px w-7 bg-brand/50" />
+                <div className="whitespace-pre-line font-sans text-[11px] uppercase leading-[1.5] tracking-[0.14em] text-chalk-40">
+                  {t.coverSub}
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <Link href="/sample-audit" className="btn-primary">
-            {t.cta}
-          </Link>
+            <div>
+              <div className="mb-6 flex flex-wrap gap-2">
+                {t.badges.map((b) => (
+                  <span key={b} className="tag border-white/20 text-chalk-55">
+                    {b}
+                  </span>
+                ))}
+              </div>
+
+              <h3 className="mb-7 font-serif text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.2] tracking-[-0.02em]">
+                {t.docSub}
+              </h3>
+
+              <div className="mb-8 grid gap-px border border-white/[0.09] bg-white/[0.09] sm:grid-cols-2">
+                {t.points.map((pt) => (
+                  <div key={pt.n} className="bg-ink px-4 py-3.5">
+                    <span className="mr-3 font-serif text-[13px] text-brand">{pt.n}</span>
+                    <span className="font-sans text-[14px] text-chalk-75">{pt.t}</span>
+                  </div>
+                ))}
+                <div className="bg-ink px-4 py-3.5 font-sans text-[14px] text-chalk-40 sm:col-span-2">
+                  {t.more}
+                </div>
+              </div>
+
+              <Link href="/sample-audit" className="btn-primary">
+                {t.cta}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -34,19 +34,6 @@ const T = {
     errRate: "Too many attempts. Try again in a few minutes.",
     contact: "Trouble getting in? Write to us.",
   },
-  es: {
-    badge: "Espacio cliente",
-    h1: "Su taller.",
-    lead: "Su código está en el correo de inicio. Abre únicamente el espacio de su casa.",
-    houseLabel: "Su casa",
-    codeLabel: "Código de acceso",
-    submit: "Abrir el taller",
-    retry: "Reintentar",
-    sending: "Verificando…",
-    err: "Ese código no corresponde a ninguna casa. Revise el correo de inicio.",
-    errRate: "Demasiados intentos. Inténtelo de nuevo en unos minutos.",
-    contact: "¿Problemas para entrar? Escríbanos.",
-  },
 }
 
 function AccessForm() {

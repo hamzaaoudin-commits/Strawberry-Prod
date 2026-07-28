@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "La Méthode Strawberry", description: "Cinq étapes. Une doctrine. L'architecture reproductible du studio." },
   en: { title: "The Strawberry Method", description: "Five stages. One doctrine. The repeatable architecture behind every house." },
-  es: { title: "El Método Strawberry", description: "Cinco etapas. Una doctrina. La arquitectura repetible del estudio." },
 }
 
 export async function generateMetadata({

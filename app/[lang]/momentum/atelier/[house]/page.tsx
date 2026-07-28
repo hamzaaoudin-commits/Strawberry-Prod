@@ -30,12 +30,6 @@ const T = {
         full: "The complete document stays available.",
         st: { todo: "To review", delivered: "✓ Delivered", wip: "In progress" } as Record<Status, string>,
         open: "Open" },
-  es: { month: "Entrega del mes", of: "de", pieces: "piezas", delivered: "entregadas",
-        doctrine: "Su arquitectura", permanent: "permanente", deliveredOn: "Entregada el",
-        position: "La posición", pillars: "Los cuatro pilares", forbidden: "Palabras prohibidas",
-        full: "El documento completo sigue disponible.",
-        st: { todo: "Por validar", delivered: "✓ Entregado", wip: "En curso" } as Record<Status, string>,
-        open: "Abrir" },
 }
 
 export default async function MomentumWorkshopPage({

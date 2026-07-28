@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "Politique de confidentialité (EN)", description: "How Strawberry Production handles personal data." },
   en: { title: "Privacy policy", description: "How Strawberry Production handles personal data." },
-  es: { title: "Política de privacidad (EN)", description: "How Strawberry Production handles personal data." },
 }
 
 export async function generateMetadata({

@@ -14,8 +14,6 @@ const T = {
         note: "Marque analysée à partir d'informations publiques. Opinion éditoriale — jamais un client. RADAR n'est lié à aucune marque citée." },
   en: { back: "← All reads", min: "min",
         note: "Brand analysed from public information. Editorial opinion — never a client. RADAR is not affiliated with any brand cited." },
-  es: { back: "← Todas las fichas", min: "min",
-        note: "Marca analizada a partir de información pública. Opinión editorial — nunca un cliente. RADAR no está afiliado a ninguna marca citada." },
 }
 
 export default async function RadarReadPage({

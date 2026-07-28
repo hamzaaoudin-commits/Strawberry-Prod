@@ -1,7 +1,6 @@
-"use client"
-
 import { LocaleLink as Link } from "@/components/locale-link"
-import { useT } from "@/lib/i18n"
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
 
 /**
  * The book, on the home page.
@@ -46,27 +45,10 @@ const T = {
       { t: "La Démonstration", d: "Trois maisons, de bout en bout" },
     ],
   },
-  es: {
-    kicker: "El Libro",
-    title: "La Doctrina más clara",
-    sub: "La arquitectura narrativa en la era de la máquina",
-    author: "Hamza El Jaouahiry · 158 páginas · Strawberry Production, París",
-    epigraph:
-      "En un mercado donde todos tienen acceso a la misma máquina, el mejor producto ya no gana. Gana la doctrina más clara.",
-    body: "Este estudio no improvisa su doctrina encargo tras encargo. Está escrita, argumentada a lo largo de 158 páginas, y publicada en francés y en inglés — método de cinco etapas incluido, demostrado de principio a fin sobre tres casas.",
-    close: "La máquina volvió idénticos a todos. Empiece bajo tierra.",
-    cta: "Saber más sobre el libro →",
-    parts: [
-      { t: "La Doctrina", d: "Por qué la percepción precede al producto" },
-      { t: "El Método", d: "Las cinco etapas, enteras" },
-      { t: "Los Instrumentos", d: "Qué rechazar, y cómo" },
-      { t: "La Demostración", d: "Tres casas, de principio a fin" },
-    ],
-  },
 }
 
-export function BookSection() {
-  const t = useT(T)
+export function BookSection({ lang }: { lang: Lang }) {
+  const t = pick(T, lang)
 
   return (
     <section className="section bg-ink text-white">
@@ -126,7 +108,7 @@ export function BookSection() {
               {t.author}
             </div>
 
-            <Link href="/about" className="btn-quiet">
+            <Link href="/le-livre" className="btn-quiet">
               {t.cta}
             </Link>
           </div>

@@ -6,7 +6,6 @@ import type { Lang } from "@/lib/lang"
 const LABEL: Record<Lang, string> = {
   fr: "Fermer l'accès sur cet appareil",
   en: "Close access on this device",
-  es: "Cerrar el acceso en este dispositivo",
 }
 
 export function RadarSignOut({ lang }: { lang: Lang }) {

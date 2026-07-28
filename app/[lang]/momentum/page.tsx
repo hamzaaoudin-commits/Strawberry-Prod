@@ -57,28 +57,6 @@ const T = {
     bridge: "Pas encore d'architecture ? MOMENTUM vient après. Commencez par la commande.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
   },
-  es: {
-    badge: "Tras el encargo · mensual",
-    h1a: "La arquitectura está construida.",
-    h1b: "MOMENTUM la mantiene viva.",
-    lead: "El encargo le da la arquitectura — posición, identidad, lenguaje. MOMENTUM es el equipo que la lleva adelante: dirección creativa que cuida el relato, y ejecución de contenido que lo pone en el feed, cada semana.",
-    cta: "Empezar MOMENTUM",
-    seeTiers: "Ver los niveles",
-    collisionTitle: "¿El encargo no cuesta ya 4.500€?",
-    collisionBody: "Sí. BRAND NARRATIVE ARCHITECTURE es de pago único: paga 4.500€ una vez y la arquitectura es suya para siempre. MOMENTUM es distinto — empieza después del encargo, mensual, solo si quiere que el estudio siga ejecutando. Uno es el plano. El otro, el equipo que sigue construyendo. Nunca paga dos veces por lo mismo.",
-    twoKicker: "Dos brazos, un solo compromiso",
-    arms: [
-      { t: "Dirección creativa", b: "La barandilla. Cada campaña, página, film y post contrastado con la arquitectura — para que el relato no se desvíe al escalar." },
-      { t: "Ejecución de contenido", b: "La producción. Relato, diseño, web y sonido producidos en casa al mismo estándar — el brazo que convierte la posición en feed, no en carpeta." },
-    ],
-    tiersKicker: "La tarifa",
-    tiers: [
-      { name: "MOMENTUM", price: "2.500€", cadence: "/ mes", line: "Dirección creativa y ejecución de contenido, a cargo del estudio a partir de la arquitectura que escribió. Una sola tarifa, sin niveles, sin alcance que negociar.", featured: true },
-    ],
-    tierCta: "Empezar MOMENTUM — 2.500€/mes",
-    bridge: "¿Aún sin arquitectura? MOMENTUM viene después. Empiece por el encargo.",
-    bridgeCta: "Ver BRAND NARRATIVE ARCHITECTURE →",
-  },
 }
 
 export default async function MomentumPage({

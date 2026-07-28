@@ -74,36 +74,6 @@ const T = {
     subBody: "La bibliothèque complète, une nouvelle fiche par jour, et l'habitude qui vous fait lire n'importe quel positionnement en quelques secondes. Résiliable à tout moment.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
   },
-  es: {
-    badge: "Una publicación de Strawberry Production · diario",
-    h1a: "Capta la señal de una marca",
-    h1b: "antes que el mercado.",
-    lead: "Cada día, una marca real pasa por el radar: lo que emite (la señal), lo que interfiere (el ruido) y el rumbo que le daríamos. No un curso — un instrumento. La ventaja que sus competidores no tienen, día tras día.",
-    subscribe: "Suscribirse — 15€/mes",
-    access: "Ya estoy suscrito",
-    read: [
-      { label: "La señal", body: "Lo que la marca emite de verdad — la posición que aterriza, aislada de todo lo demás." },
-      { label: "El ruido", body: "Lo que la enturbia: las palabras prestadas, los reclamos me-too, la promesa que se contradice." },
-      { label: "El rumbo", body: "El único movimiento de reposicionamiento que le daríamos — la decisión que la haría inconfundible." },
-    ],
-    inKicker: "Lo que contiene la suscripción",
-    inTitle: "Todo lo que sigue, por 15€ al mes.",
-    contents: [
-      { n: "30+", t: "Las fichas", d: "Treinta marcas reales ya diseccionadas, una nueva cada día. La misma grilla de seis bloques cada vez." },
-      { n: "IX", t: "Los manifiestos", d: "Los nueve manifiestos Strawberry, enteros — la doctrina desde la que trabaja el estudio." },
-      { n: "05", t: "Las lecciones", d: "El método desglosado: la prueba de la frase, la clase de referencia, las palabras prohibidas, la extracción, el rechazo." },
-      { n: "03", t: "Las aplicaciones", d: "El entrenamiento del día, la biblioteca de frases y el cuaderno de vigilancia sobre sus competidores." },
-    ],
-    gridKicker: "La grilla",
-    gridTitle: "Seis bloques. Nunca cambia.",
-    grid: ["Contexto", "La señal", "El ruido", "La tensión", "El rumbo", "Veredicto"],
-    manifestoNote: "Antes publicados en acceso libre. Ahora dentro de la suscripción.",
-    bridge: "Leer bien las posiciones es una cosa. Que escriban la suya es otra — y ese es el trabajo del encargo.",
-    subLabel: "Suscripción · 15€/mes",
-    subTitle: "La lectura diaria, a demanda.",
-    subBody: "La biblioteca complete, una ficha nueva al día, y el hábito que le permite tasar cualquier posicionamiento en segundos. Cancele cuando quiera.",
-    bridgeCta: "Ver BRAND NARRATIVE ARCHITECTURE →",
-  },
 }
 
 function RadarScope() {

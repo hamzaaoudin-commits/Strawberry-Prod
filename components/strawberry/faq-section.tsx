@@ -9,7 +9,6 @@ export type FaqSet = Record<Lang, FaqEntry[]>
 const HEAD: Record<Lang, { kicker: string; h2a: string; h2b: string }> = {
   en: { kicker: "FAQ", h2a: "Everything you need", h2b: "to decide." },
   fr: { kicker: "FAQ", h2a: "Tout ce qu'il faut", h2b: "pour décider." },
-  es: { kicker: "FAQ", h2a: "Todo lo que necesita", h2b: "para decidir." },
 }
 
 /**

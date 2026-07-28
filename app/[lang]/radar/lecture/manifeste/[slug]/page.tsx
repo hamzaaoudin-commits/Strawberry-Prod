@@ -18,7 +18,6 @@ export const dynamic = "force-dynamic"
 const T = {
   fr: { back: "← Tous les manifestes", volume: "Volume", verb: "Le verbe" },
   en: { back: "← All manifestos", volume: "Volume", verb: "The verb" },
-  es: { back: "← Todos los manifiestos", volume: "Volumen", verb: "El verbo" },
 }
 
 export default async function ManifestoPage({

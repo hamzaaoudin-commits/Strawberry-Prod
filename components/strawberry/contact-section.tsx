@@ -55,28 +55,6 @@ const T = {
     errEmail: "Merci de saisir une adresse email valide.",
     errThrottle: "Vous viens d'envoyer un message. Patiente {s}s avant d'en envoyer un autre.",
   },
-  es: {
-    kicker: "Escríbenos",
-    h2a: "Habl",
-    h2b: "emos.",
-    intro: "Hábleme de su casa. La convicción que aún no logra articular. Eso que sus competidores le roban sin parar — o copian mal. Leo cada mensaje personalmente.",
-    lines: "Líneas directas",
-    labels: ["Email", "Instagram", "Ubicación"],
-    note: "Limitado a cuatro encargos por trimestre. Si estamos completos, será el primero en saberlo cuando abra la próxima plaza. Cada mensaje recibe respuesta en 24 horas.",
-    sentTitle: "Mensaje recibido.",
-    sentBody: "Leo cada uno personalmente. Espera respuesta en 24 horas.",
-    nameLabel: "Su nombre",
-    goalLabel: "Qué le trae por aquí",
-    goals: ["Encargar la Brand Narrative Architecture", "Encargar el Brand Narrative Audit", "Empezar MOMENTUM", "Suscribirme a RADAR", "Solo estoy explorando", "Otro"],
-    messageLabel: "Su mensaje",
-    messagePlaceholder: "Hábleme de su casa, de su etapa, de aquello por lo que quiere ser inolvidable.",
-    sending: "Enviando...",
-    send: "Enviar mensaje \u2192",
-    answered: "Respuesta en 24 horas.",
-    errRequired: "Introduzca su nombre y su mensaje.",
-    errEmail: "Introduzca una dirección de email válida.",
-    errThrottle: "Acabas de enviar un mensaje. Espera {s}s antes de enviar otro.",
-  },
 }
 
 type Status = "idle" | "sending" | "sent" | "error"

@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "RADAR — 15€/mois", description: "Une marque réelle disséquée chaque jour. Lisez un positionnement en quelques secondes." },
   en: { title: "RADAR — 15€/month", description: "One real brand read every day. Read positioning in seconds." },
-  es: { title: "RADAR — 15€/mes", description: "Una marca real diseccionada cada día. Lea un posicionamiento en segundos." },
 }
 
 export async function generateMetadata({

@@ -7,7 +7,7 @@ export { LANGS, DEFAULT_LANG, isLang } from "@/lib/lang"
 export type { Lang } from "@/lib/lang"
 
 /**
- * Language comes from the URL segment (/fr, /en, /es), not from localStorage.
+ * Language comes from the URL segment (/fr, /en), not from localStorage.
  *
  * That single change is what makes the site indexable in three languages: each
  * locale gets its own prerendered URLs, its own <html lang> and its own hreflang

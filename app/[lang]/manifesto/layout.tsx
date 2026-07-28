@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "Les Manifestes Strawberry", description: "Neuf manifestes. Une doctrine. Ouverts et lisibles dans votre navigateur." },
   en: { title: "The Strawberry Manifestos", description: "Nine manifestos. One doctrine. Open, free, readable in your browser." },
-  es: { title: "Los Manifiestos Strawberry", description: "Nueve manifiestos. Una doctrina. Abiertos y legibles en su navegador." },
 }
 
 export async function generateMetadata({

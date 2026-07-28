@@ -27,11 +27,6 @@ const T = {
         lessons: "The Strawberry lessons", method: "The method, piece by piece",
         apps: "The applications", included: "Included in the subscription", soon: "Soon",
         count: (n: number) => `${n} read${n > 1 ? "s" : ""}`, min: "min" },
-  es: { today: "La ficha del día", read: "Leerla", week: "Las más recientes", all: "Ver todo",
-        manifestos: "Los manifiestos Strawberry", volumes: "9 volúmenes",
-        lessons: "Las lecciones Strawberry", method: "El método, pieza por pieza",
-        apps: "Las aplicaciones", included: "Incluidas en la suscripción", soon: "Pronto",
-        count: (n: number) => `${n} ficha${n > 1 ? "s" : ""}`, min: "min" },
 }
 
 function Poster({ r, lang }: { r: BrandRead; lang: Lang }) {

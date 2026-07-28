@@ -1,9 +1,7 @@
-"use client"
-
-import { useScrollReveal } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 import { GlassCard } from "./glass-card"
-import { useT } from "@/lib/i18n"
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
 
 const BELIEF_COLORS = ["#e63946", "#ff1a1a", "#dc2626"]
 
@@ -38,26 +36,10 @@ const T = {
       { t: "Quatre commandes par trimestre.", d: "Chaque maison est bâtie de zéro, et le travail ne tient qu'à ce rythme. Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre la commande." },
     ],
   },
-  es: {
-    kicker: "EL ESTUDIO",
-    h2a: "Lo que es este estudio.",
-    h2b: "Y lo que no es.",
-    p1: "Strawberry Production es un estudio de percepción narrativa que opera desde París. Un fundador. Cuatro encargos por trimestre. Una sola oferta, afinada encargo tras encargo. Un trabajo editorial en su forma, disciplinado por la herencia.",
-    p2a: "Diseñamos la ",
-    p2strong: "identidad, la posición y el lenguaje",
-    p2b: " que hacen a un fundador imposible de confundir con el resto — e imposible de generar por una máquina.",
-    quote: "En un mercado donde todos acceden a la misma máquina, el mejor producto ya no gana. Lo hace la doctrina más clara.",
-    beliefs: [
-      { t: "No una agencia de marca. Un estudio de doctrina.", d: "No entregamos assets de marketing. Escribimos el documento que declara lo que es una casa, lo que rechaza y cómo suena cuando habla. El artefacto es una constitución, no un deck." },
-      { t: "La arquitectura antes que el contenido.", d: "El contenido es lo que una casa produce. La arquitectura es lo que lo hace coherente a lo largo de los años, las superficies y las manos. Construimos la arquitectura primero — y una vez que existe, también podemos llevar el contenido." },
-      { t: "Cuatro encargos por trimestre.", d: "Cada casa se construye desde cero, y el trabajo solo se sostiene a ese ritmo. Cuando una casa estaría mejor servida en otro sitio, lo decimos en vez de aceptar el encargo." },
-    ],
-  },
 }
 
-export function AboutSection() {
-  const t = useT(T)
-  const [ref, vis] = useScrollReveal()
+export function AboutSection({ lang }: { lang: Lang }) {
+  const t = pick(T, lang)
   const BELIEFS = t.beliefs.map((b, i) => ({ ...b, n: `0${i + 1}`, color: BELIEF_COLORS[i] }))
 
   return (
@@ -65,10 +47,8 @@ export function AboutSection() {
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="70%" y="10%" opacity={0.12} />
 
       <div
-        ref={ref}
         className={[
           "shell relative transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
-          vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
         ].join(" ")}
       >
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20">

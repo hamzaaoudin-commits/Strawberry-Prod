@@ -31,18 +31,6 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "Dans quelle langue le document est-il livré ?", a: "Dans la langue dans laquelle vous construisez votre marque — français ou anglais." },
     { q: "Que se passe-t-il après la livraison ?", a: "Un mois plus tard, on se revoit pour une revue de quatre-vingt-dix minutes. Si vous voulez que le studio continue d'exécuter ensuite, MOMENTUM existe — mais c'est optionnel, jamais inclus d'office." },
   ],
-  es: [
-    { q: "¿Es para mí?", a: "Si es fundador, creador o consultor y no logra articular con claridad qué le hace diferente — sí. Si busca a alguien para «hacer contenido» — no." },
-    { q: "¿Por qué 4.500€?", a: "Es el precio de unas pocas semanas de publicidad que se evapora en cuanto deja de pagar. Su relato le pertenece y trabaja para usted indefinidamente." },
-    { q: "¿Cuánto tarda?", a: "De 3 a 4 semanas desde el onboarding hasta la entrega. El documento es utilizable el lunes siguiente." },
-    { q: "¿Por qué solo 4 encargos por trimestre?", a: "No es un argumento de venta — es una restricción real. Cada casa se construye desde cero. Más allá de cuatro, la calidad cae. Prefiero rechazar antes que entregar trabajo ordinario." },
-    { q: "¿No puedo hacerlo yo mismo?", a: "Puede hacer los ejercicios. Lo que no puede es ver su propio punto ciego — lleva tanto tiempo dentro de su relato que le parece obvio y resulta invisible para los demás. El valor aquí no es el método, es alguien fuera de su cabeza aplicándolo." },
-    { q: "¿Cómo funciona el proceso?", a: "Una vez confirmado su encargo, recibe un cuestionario de onboarding. Lleva de 20 a 30 minutos y contiene todo lo que necesitamos para construir su arquitectura narrativa desde cero." },
-    { q: "¿Y si no quedo satisfecho?", a: "Si el entregable no da en el clavo, escribimos una V2. Sin preguntas." },
-    { q: "¿Firma un NDA?", a: "Sí, a petición. Y por defecto, su trabajo nunca será mencionado, adaptado ni reutilizado para otra casa." },
-    { q: "¿En qué idioma se entrega el documento?", a: "En el idioma en el que construye su marca — francés o inglés." },
-    { q: "¿Qué pasa tras la entrega?", a: "Un mes después nos vemos para una revisión de noventa minutos. Si quiere que el estudio siga ejecutando después, existe MOMENTUM — pero es opcional, nunca incluido por defecto." },
-  ],
 }
 
 export const FAQ_RADAR: FaqSet = {
@@ -62,14 +50,6 @@ export const FAQ_RADAR: FaqSet = {
     { q: "15€, ce n'est pas suspicieusement peu ?", a: "C'est une habitude quotidienne, pas un livrable. RADAR forme votre œil pour que, le jour où vous commandez du vrai travail, vous puisses le juger. C'est fait pour être un oui facile." },
     { q: "Est-ce que lire RADAR va régler mon propre positionnement ?", a: "Non — et nous préférons le dire. RADAR forme votre jugement pour que vous distinguiez une vraie position d'un slogan. Régler le vôtre, c'est la commande : la seule marque que vous ne peux structurellement pas lire, c'est la vôtre." },
   ],
-  es: [
-    { q: "¿Qué llega exactamente cada día?", a: "Una marca real, leída con la misma grilla: qué emite, qué la interfiere y el único movimiento de reposicionamiento que le daríamos. Unos diez minutos de lectura." },
-    { q: "¿Esas marcas son sus clientes?", a: "Nunca. Cada lectura es una opinión editorial construida solo con información pública. El trabajo de un cliente es confidencial y nunca aparece aquí." },
-    { q: "¿Puedo cancelar?", a: "Cuando quiera, en un clic. Sin preaviso, sin llamada, sin oferta de retención." },
-    { q: "¿Tengo acceso al archivo?", a: "Sí. Suscribirse abre toda la biblioteca de lecturas anteriores, no solo las publicadas desde hoy." },
-    { q: "¿15€ no es sospechosamente poco?", a: "Es un hábito diario, no un entregable. RADAR entrena su ojo para que, cuando encargue trabajo real, sepa juzgarlo. Está pensado para ser un sí fácil." },
-    { q: "¿Leer RADAR arreglará mi propio posicionamiento?", a: "No — y preferimos decirlo. RADAR entrena su criterio para distinguir una posición real de un eslogan. Arreglar el suyo es el encargo: la única marca que estructuralmente no puede leer es la suya." },
-  ],
 }
 
 export const FAQ_MOMENTUM: FaqSet = {
@@ -88,14 +68,6 @@ export const FAQ_MOMENTUM: FaqSet = {
     { q: "Qui fait le travail concrètement ?", a: "Le studio, sous une direction créative unique. L'exécution de contenu est produite en interne, au même standard que l'architecture." },
     { q: "Existe-t-il un palier moins cher ?", a: "Non. Un seul tarif, 2 500€ par mois, le même périmètre pour tout le monde. Les paliers servent à facturer ce qu'un client peut payer plutôt que ce que le travail coûte — nous préférons un seul prix honnête." },
     { q: "Puis-je mettre en pause ?", a: "Oui, une fois tous les douze mois. Le momentum est tout l'enjeu, mais la vie arrive." },
-  ],
-  es: [
-    { q: "¿Necesito la arquitectura primero?", a: "Sí. MOMENTUM ejecuta una arquitectura — sin ella no hay nada que mantener coherente. Si no ha encargado BRAND NARRATIVE ARCHITECTURE, empiece por ahí." },
-    { q: "La arquitectura cuesta 4.500€ y MOMENTUM 2.500€ al mes. ¿Pago dos veces?", a: "No. BRAND NARRATIVE ARCHITECTURE es de pago único: paga 4.500€ una vez y la arquitectura es suya para siempre. MOMENTUM es mensual y totalmente opcional — es el equipo que sigue construyendo, no una segunda copia del plano." },
-    { q: "¿Cuál es el compromiso?", a: "Mes a mes tras un periodo inicial de tres meses. Tres meses es la ventana mínima honesta para juzgar si el trabajo se acumula." },
-    { q: "¿Quién hace el trabajo realmente?", a: "El estudio, bajo una única dirección creativa. La ejecución de contenido se produce en casa, con el mismo estándar que la arquitectura." },
-    { q: "¿Hay un nivel más barato?", a: "No. Una sola tarifa, 2.500€ al mes, el mismo alcance para todos. Los niveles sirven para cobrar lo que un cliente puede pagar en vez de lo que cuesta el trabajo — preferimos un único precio honesto." },
-    { q: "¿Puedo pausar?", a: "Sí, una vez cada doce meses. El momentum es el objetivo, pero la vida pasa." },
   ],
 }
 
@@ -119,15 +91,5 @@ export const FAQ_AUDIT490: FaqSet = {
     { q: "What if the diagnosis says everything is fine?", a: "It won't, and that isn't arrogance: no brand occupies a perfectly clean position. But if the audit concludes your positioning holds and the problem sits elsewhere — in your offer, your price, your distribution — I will say so, and I will tell you not to commission the next step." },
     { q: "Can I order one for a brand I advise?", a: "Yes. Many audits are commissioned by consultants or marketing directors to ground an internal debate in something external." },
     { q: "Is it refundable?", a: "The document is produced to order, so it is not refundable once delivered. Before production begins, a full refund is available." },
-  ],
-  es: [
-    { q: "¿Cuál es la diferencia exacta con el encargo de 4.500€?", a: "La auditoría de 490€ diagnostica: le dice dónde está, qué le confunde con los demás y hacia dónde ir. El encargo de 4.500€ construye: escribe su plataforma narrativa, sus pilares, su sistema de lenguaje y el copy listo para desplegar. Uno es una lectura, el otro una arquitectura." },
-    { q: "¿Puedo encargar la arquitectura después?", a: "Sí, y los 490€ se descuentan si lo hace en un plazo de 60 días. La auditoría funciona como un primer reconocimiento — nada se pierde." },
-    { q: "¿Cuánto tarda?", a: "Siete días desde la recepción de su cuestionario. Sin reuniones, sin idas y venidas." },
-    { q: "¿Qué necesita de mi parte?", a: "Un cuestionario de veinte minutos, los enlaces a su sitio y sus redes, y los nombres de tres a cinco competidores directos. Nada más." },
-    { q: "¿Hay alguna llamada?", a: "No. Es un documento, no una consultoría. Si quiere que trabajemos juntos en profundidad, ese es el encargo completo." },
-    { q: "¿Y si el diagnóstico dice que todo está bien?", a: "No ocurrirá, y no es arrogancia: ninguna marca ocupa una posición perfectamente limpia. Pero si la auditoría concluye que su posicionamiento se sostiene y que el problema está en otra parte — en su oferta, su precio, su distribución — se lo diré, y le diré que no encargue el siguiente paso." },
-    { q: "¿Puedo pedirla para una marca que asesoro?", a: "Sí. Muchas auditorías las encargan consultores o directores de marketing para objetivar una discusión interna." },
-    { q: "¿Es reembolsable?", a: "El documento se produce a medida, por lo que no es reembolsable una vez entregado. Antes de iniciar la producción, el reembolso es íntegro." },
   ],
 }

@@ -36,7 +36,7 @@ const T = {
     kicker: "The Ladder",
     h1a: "One studio. One method.",
     h1b: "Four ways in.",
-    sub: "Four ways to work with the studio, from 15€ a month to the 4,500€ commission. Same method each time — only the depth changes. Pick the one that matches where you are today.",
+    sub: "Four ways to work with the studio, from 15€ a month to the 4,500€ commission. Pick the one that matches where you are today.",
     where: "Which of these is true for you right now?",
     showAll: "Show everything",
     recommended: "Recommended for you",
@@ -49,7 +49,7 @@ const T = {
     fmt: { sub: "Subscription", shot: "One-shot", post: "After the commission" },
     featuredCta: "See the commission →",
     cta: "Learn more →",
-    foot: "Start at any rung. Order the audit first and its 490€ comes off the architecture, provided you commission within 60 days — you never pay twice for the same work.",
+    foot: "You can enter at any one of them. Order the audit first and its 490€ comes off the architecture, provided you commission within 60 days — you never pay twice for the same work.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ month", fmt: "sub", answers: ["articulate"], line: "A new brand dissected every day, plus the full archive, the nine manifestos and the method broken into lessons. Ten minutes a day to read any positioning on sight.", href: "/radar" },
       { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "one-time", fmt: "shot", answers: ["articulate", "confused"], line: "A written diagnosis of your current narrative — what lands, what blurs you, and the moves to make.", href: "/brand-narrative-audit" },
@@ -61,7 +61,7 @@ const T = {
     kicker: "L'Échelle",
     h1a: "Un studio. Une méthode.",
     h1b: "Quatre façons d'entrer.",
-    sub: "Quatre façons de travailler avec le studio, de 15€ par mois à la commande à 4 500€. La même méthode à chaque fois — seule la profondeur change. Prenez celle qui correspond à où vous en êtes.",
+    sub: "Quatre façons de travailler avec le studio, de 15€ par mois à la commande à 4 500€. Prenez celle qui correspond à où vous en êtes.",
     where: "Laquelle de ces phrases est vraie pour vous, aujourd'hui ?",
     showAll: "Tout afficher",
     recommended: "Recommandé pour vous",
@@ -74,37 +74,12 @@ const T = {
     fmt: { sub: "Abonnement", shot: "One-shot", post: "Après la commande" },
     featuredCta: "Voir la commande →",
     cta: "En savoir plus →",
-    foot: "Commencez par le barreau que vous voulez. Si vous prenez l'audit d'abord, ses 490€ sont déduits de l'architecture, à condition de commander dans les 60 jours — vous ne payez jamais deux fois le même travail.",
+    foot: "Vous pouvez entrer par n'importe laquelle. Si vous prenez l'audit d'abord, ses 490€ sont déduits de l'architecture, à condition de commander dans les 60 jours — vous ne payez jamais deux fois le même travail.",
     rungs: [
       { key: "radar", name: "RADAR", price: "15€", cadence: "/ mois", fmt: "sub", answers: ["articulate"], line: "Une marque disséquée chaque jour, plus toute l'archive, les neuf manifestes et la méthode découpée en leçons. Dix minutes par jour pour lire n'importe quel positionnement à l'œil.", href: "/radar" },
       { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "one-shot", fmt: "shot", answers: ["articulate", "confused"], line: "Un diagnostic écrit de votre récit actuel — ce qui porte, ce qui vous brouille, et les mouvements à faire.", href: "/brand-narrative-audit" },
       { key: "architecture", name: "BRAND NARRATIVE ARCHITECTURE", price: "4 500€", cadence: "one-shot", fmt: "shot", answers: ["confused", "outgrown"], line: "La commande signature. Un repositionnement complet — identité, position et langage — impossible à confondre, impossible à générer.", href: "/brand-narrative-architecture", featured: true },
       { key: "momentum", name: "MOMENTUM", price: "2 500€", cadence: "/ mois", fmt: "post", answers: ["execution"], line: "Direction créative + exécution de contenu au mois. Une fois l'architecture posée, l'équipe qui continue de raconter votre histoire — et la fait vivre au quotidien.", href: "/momentum" },
-    ] as Rung[],
-  },
-  es: {
-    kicker: "La Escalera",
-    h1a: "Un estudio. Un método.",
-    h1b: "Cuatro formas de entrar.",
-    sub: "Cuatro formas de trabajar con el estudio, de 15€ al mes al encargo de 4.500€. El mismo método cada vez — solo cambia la profundidad. Elija la que corresponde a donde está hoy.",
-    where: "¿Cuál de estas frases es verdad para usted hoy?",
-    showAll: "Ver todo",
-    recommended: "Recomendado para usted",
-    situations: [
-      "No consigo explicar lo que hago en una frase sin perder a la sala",
-      "Vendemos, pero los prospectos nos comparan con competidores que no se nos parecen en nada",
-      "La empresa superó su relato — seguimos presentando lo que éramos hace dos años",
-      "El posicionamiento es sólido. Lo que falta es alguien que lo ejecute cada semana",
-    ],
-    fmt: { sub: "Suscripción", shot: "Pago único", post: "Tras el encargo" },
-    featuredCta: "Ver el encargo →",
-    cta: "Saber más →",
-    foot: "Empiece por el peldaño que quiera. Si toma la auditoría primero, sus 490€ se descuentan de la arquitectura, siempre que encargue en 60 días — nunca paga dos veces el mismo trabajo.",
-    rungs: [
-      { key: "radar", name: "RADAR", price: "15€", cadence: "/ mes", fmt: "sub", answers: ["articulate"], line: "Una marca diseccionada cada día, más todo el archivo, los nueve manifiestos y el método desglosado en lecciones. Diez minutos al día para leer cualquier posicionamiento a simple vista.", href: "/radar" },
-      { key: "audit", name: "BRAND NARRATIVE AUDIT", price: "490€", cadence: "pago único", fmt: "shot", answers: ["articulate", "confused"], line: "Un diagnóstico escrito de su relato actual — lo que aterriza, lo que le difumina y los movimientos a realizar.", href: "/brand-narrative-audit" },
-      { key: "architecture", name: "BRAND NARRATIVE ARCHITECTURE", price: "4.500€", cadence: "pago único", fmt: "shot", answers: ["confused", "outgrown"], line: "El encargo insignia. Un reposicionamiento completo — identidad, posición y lenguaje — imposible de confundir, imposible de generar.", href: "/brand-narrative-architecture", featured: true },
-      { key: "momentum", name: "MOMENTUM", price: "2.500€", cadence: "/ mes", fmt: "post", answers: ["execution"], line: "Dirección creativa + ejecución de contenido mensual. Una vez existe la arquitectura, el equipo que sigue contando su historia — y la lleva al feed cada día.", href: "/momentum" },
     ] as Rung[],
   },
 }
@@ -218,7 +193,6 @@ export function LadderSection() {
                 <OfferCover
                   k={COVER[r.key] ?? "radar"}
                   name={r.name}
-                  price={`${r.price} ${r.cadence}`}
                   featured={r.featured}
                   className="mb-6"
                 />

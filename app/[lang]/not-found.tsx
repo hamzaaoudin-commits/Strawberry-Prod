@@ -6,7 +6,6 @@ import { useT } from "@/lib/i18n"
 const T = {
   en: { h1: "This page doesn't exist.", p: "The house you're looking for hasn't been built \u2014 or refused to be found.", cta: "Back to the studio \u2192" },
   fr: { h1: "Cette page n'existe pas.", p: "La maison que vous cherchez n'a pas \u00e9t\u00e9 b\u00e2tie \u2014 ou a refus\u00e9 d'\u00eatre trouv\u00e9e.", cta: "Retour au studio \u2192" },
-  es: { h1: "Esta p\u00e1gina no existe.", p: "La casa que busca no ha sido construida \u2014 o se neg\u00f3 a ser encontrada.", cta: "Volver al estudio \u2192" },
 }
 
 

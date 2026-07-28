@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
-const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/radar"]
+const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/radar"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -13,13 +13,12 @@ const EXPLORE_HREFS = ["/", "/about", "/strawberry-method", "/radar"]
  * eu la même longueur, tous les liens français ont glissé d'un cran.
  */
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
-  { href: "/radar", label: { fr: "RADAR — 15€/mois", en: "RADAR — 15€/mo", es: "RADAR — 15€/mes" } },
-  { href: "/radar/acces", label: { fr: "Accès abonné", en: "Subscriber access", es: "Acceso suscriptor" } },
-  { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€", es: "BRAND NARRATIVE AUDIT — 490€" } },
-  { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€", es: "BRAND NARRATIVE ARCHITECTURE — 4.500€" } },
-  { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly", es: "MOMENTUM — mensual" } },
-  { href: "/sample-audit", label: { fr: "Le document SILLAGE", en: "The SILLAGE document", es: "El documento SILLAGE" } },
-  { href: "/exemple-audit", label: { fr: "Le document VERSO", en: "The VERSO document", es: "El documento VERSO" } },
+  { href: "/radar", label: { fr: "RADAR — 15€/mois", en: "RADAR — 15€/mo" } },
+  { href: "/radar/acces", label: { fr: "Accès abonné", en: "Subscriber access" } },
+  { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
+  { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
+  { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly" } },
+  { href: "/sample-audit", label: { fr: "Les documents publiés", en: "The published documents" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
@@ -38,11 +37,6 @@ const LEGAL: Record<string, { label: string; href: string }[]> = {
     { label: "Terms", href: "/terms" },
     { label: "Privacy", href: "/privacy" },
   ],
-  es: [
-    { label: "Aviso legal", href: "/legal-notice" },
-    { label: "Condiciones", href: "/terms" },
-    { label: "Privacidad", href: "/privacy" },
-  ],
 }
 
 const T = {
@@ -52,7 +46,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "About", "The Method", "RADAR"],
+    explore: ["Home", "About", "The Book", "The Method", "RADAR"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -62,19 +56,9 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "À propos", "La Méthode", "RADAR"],
+    explore: ["Accueil", "À propos", "Le Livre", "La Méthode", "RADAR"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
-  },
-  es: {
-    tagline: "Un estudio de percepción narrativa. Desde París, para fundadores que se niegan a sonar como todos los demás.",
-    location: "París · Francia",
-    hExplore: "Explorar",
-    hWork: "El Trabajo",
-    hReach: "Contacto",
-    explore: ["Inicio", "Nosotros", "El Método", "RADAR"],
-    reach: ["Hablemos", "Instagram", "Email"],
-    rights: "Todos los derechos reservados.",
   },
 }
 

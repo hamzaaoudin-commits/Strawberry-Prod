@@ -24,7 +24,7 @@ export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }))
 }
 
-const OG_LOCALE: Record<Lang, string> = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' }
+const OG_LOCALE: Record<Lang, string> = { fr: 'fr_FR', en: 'en_US' }
 
 const COPY: Record<Lang, { title: string; description: string; ogTitle: string; ogDesc: string }> = {
   fr: {
@@ -42,14 +42,6 @@ const COPY: Record<Lang, { title: string; description: string; ogTitle: string; 
     ogTitle: 'Strawberry Production · Narrative Perception Studio',
     ogDesc:
       "We don't build brands. We build the universe they live in. A narrative perception studio from Paris.",
-  },
-  es: {
-    title: 'Strawberry Production · Arquitectura narrativa de marca',
-    description:
-      'Un estudio de percepción narrativa que construye la identidad, la posición y el lenguaje que hacen a un fundador imposible de confundir — e imposible de generar. Desde París. Un encargo por casa, cuatro por trimestre.',
-    ogTitle: 'Strawberry Production · Estudio de percepción narrativa',
-    ogDesc:
-      'No construimos marcas. Construimos el universo en el que viven. Un estudio de percepción narrativa, desde París.',
   },
 }
 

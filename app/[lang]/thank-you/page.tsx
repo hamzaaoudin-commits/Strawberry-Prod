@@ -90,38 +90,6 @@ const T = {
       "Un Guide de coh\u00e9rence \u2014 pour que votre identit\u00e9 tienne, m\u00eame quand ce n'est pas vous qui \u00e9cris.",
     ],
   },
-  es: {
-    badge: "Compra confirmada \u00b7 Encargo N\u00b0",
-    h1a: "Su casa ha sido",
-    h1b: "encargada.",
-    congrats: "Enhorabuena por su Brand Narrative Architecture. \ud83c\udf53",
-    lead: "Hemos recibido su pago correctamente. Su email de confirmaci\u00f3n con la factura est\u00e1 en camino. Est\u00e1 atento al email del Cuestionario de onboarding \u2014 ah\u00ed empieza todo.",
-    stepsKicker: "Qu\u00e9 pasa ahora",
-    stepsH2: "Tres pasos. Luego, el trabajo.",
-    comingKicker: "Lo que ha encargado",
-    comingH2: "Un recordatorio de lo que se est\u00e1 construyendo.",
-    noteKicker: "Una nota",
-    noteP1: "\u00abLa mayor\u00eda de los fundadores llegan con fragmentos. Una frase usada cien veces. Un pitch que casi funciona. Una historia para la que a\u00fan no han encontrado las palabras.",
-    noteP2: "Lo que ha encargado es aquello alrededor de lo que giraban. Lo reconocer\u00e1s en el instante en que lo leas.\u00bb",
-    noteSig: "Hamza \u00b7 Strawberry Production \u00b7 Par\u00eds",
-    waitH2: "Mientras esperas \u2014",
-    waitP: "Lea el m\u00e9todo. Comprende la arquitectura que ha encargado. Cuanto m\u00e1s claramente vea lo que se construye, m\u00e1s potente ser\u00e1 la sesi\u00f3n de extracci\u00f3n.",
-    waitCta1: "Leer el M\u00e9todo \u2192",
-    waitCta2: "Leer el documento SILLAGE",
-    contact: "¿Preguntas? Contacto directo",
-    steps: [
-      { title: "Revise su bandeja de entrada", body: "Un email de confirmaci\u00f3n con su factura est\u00e1 en camino. Si no lo ve en unos minutos, revise su carpeta de spam." },
-      { title: "Complete el Cuestionario de onboarding", body: "Recibir\u00e1s un segundo email con su Cuestionario de onboarding. Ah\u00ed empieza la extracci\u00f3n \u2014 sus respuestas se convierten en la materia prima de su Arquitectura. T\u00f3mate su tiempo. No hay respuestas equivocadas, solo honestas." },
-      { title: "El trabajo empieza", body: "Una vez recibido su cuestionario, empiezo. No escuchar\u00e1s silencio \u2014 no escuchar\u00e1s nada hasta que el trabajo est\u00e9 listo para ser excepcional. Entrega en el plazo acordado." },
-    ],
-    coming: [
-      "Un Diagn\u00f3stico de diferenciaci\u00f3n que le muestra negro sobre blanco el terreno libre que ning\u00fan competidor ocupa.",
-      "Una Plataforma narrativa \u2014 su posici\u00f3n escrita en una frase defendible, su relato estructurado, sus pilares nombrados.",
-      "Un Sistema de lenguaje \u2014 las palabras que le pertenecen, las que le est\u00e1n prohibidas, ejemplos antes/despu\u00e9s sacados de sus propias comunicaciones.",
-      "Un Kit de despliegue \u2014 copy utilizable el lunes siguiente. Reescritura de la p\u00e1gina de inicio. Pitch en tres formatos. De 10 a 15 \u00e1ngulos de discurso listos para publicar.",
-      "Una Gu\u00eda de coherencia \u2014 para que su identidad se sostenga, incluso cuando no es t\u00fa quien escribe.",
-    ],
-  },
 }
 
 

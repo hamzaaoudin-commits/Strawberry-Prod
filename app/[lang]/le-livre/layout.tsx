@@ -3,8 +3,16 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "MOMENTUM — direction créative au mois", description: "Direction créative et exécution de contenu, après l'architecture." },
-  en: { title: "MOMENTUM — creative direction, monthly", description: "Creative direction and content execution, after the architecture." },
+  fr: {
+    title: 'La Doctrine la plus claire — le livre',
+    description:
+      "L'architecture narrative à l'âge de la machine. 158 pages, en français et en anglais : la doctrine, la méthode en cinq étapes, et sa démonstration de bout en bout sur trois maisons.",
+  },
+  en: {
+    title: 'The Clearest Doctrine — the book',
+    description:
+      'Narrative architecture in the age of the machine. 158 pages, in French and English: the doctrine, the five-stage method, and its end-to-end demonstration on three houses.',
+  },
 }
 
 export async function generateMetadata({
@@ -19,11 +27,12 @@ export async function generateMetadata({
   return {
     title: c.title,
     description: c.description,
-    alternates: alternatesFor('/momentum'),
+    alternates: alternatesFor('/le-livre'),
     openGraph: {
+      type: 'book',
       title: c.title,
       description: c.description,
-      url: `${SITE}/${lang}/momentum`,
+      url: `${SITE}/${lang}/le-livre`,
       images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     },
   }

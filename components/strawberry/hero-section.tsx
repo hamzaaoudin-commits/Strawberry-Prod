@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { track } from "@vercel/analytics"
-import { useMouseParallax } from "@/hooks/use-strawberry"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
 
@@ -21,37 +20,26 @@ const T = {
     badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
     h1a: "Impossible to confuse.",
     h1b: "Impossible to generate.",
-    sub: "A narrative perception studio in Paris. We build the identity, position and language a founder cannot be mistaken for anyone else in — and that no machine can write, because it has not lived you.",
+    sub: "A narrative perception studio in Paris. We write the identity, position and language that make you recognisable in a single sentence — and that no machine can produce, because it has not lived you.",
     cta1: "Commission the Work \u2192",
-    cta2: "Read the SILLAGE document",
-    trusted: "How this studio works, stated plainly.",
+    cta2: "See the offers",
+    trusted: "Three facts, before any conversation.",
     stats: ["Four commissions per quarter", "Delivered as one editorial document", "A written position, not a slide deck"],
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
     h1a: "Impossible à confondre.",
     h1b: "Impossible à générer.",
-    sub: "Un studio de perception narrative, à Paris. Nous bâtissons l'identité, la position et le langage dans lesquels un fondateur ne peut être confondu avec personne — et qu'aucune machine ne peut écrire, parce qu'elle ne vous a pas vécu.",
+    sub: "Un studio de perception narrative, à Paris. Nous écrivons l'identité, la position et le langage qui vous rendent reconnaissable en une phrase — et qu'aucune machine ne peut produire, parce qu'elle ne vous a pas vécu.",
     cta1: "Commander le travail \u2192",
-    cta2: "Lire le document SILLAGE",
-    trusted: "Comment ce studio travaille, dit simplement.",
+    cta2: "Voir les offres",
+    trusted: "Trois faits, avant toute conversation.",
     stats: ["Quatre commandes par trimestre", "Livré comme un document éditorial unique", "Une position écrite, pas un diaporama"],
-  },
-  es: {
-    badge: "ESTUDIO DE PERCEPCIÓN NARRATIVA · PARÍS",
-    h1a: "Imposible de confundir.",
-    h1b: "Imposible de generar.",
-    sub: "Un estudio de percepción narrativa, en París. Construimos la identidad, la posición y el lenguaje en los que un fundador no puede confundirse con nadie — y que ninguna máquina puede escribir, porque no le ha vivido.",
-    cta1: "Encargar el trabajo \u2192",
-    cta2: "Leer el documento SILLAGE",
-    trusted: "C\u00f3mo trabaja este estudio, dicho sin rodeos.",
-    stats: ["Cuatro encargos por trimestre", "Entregado como un único documento editorial", "Una posición escrita, no un pase de diapositivas"],
   },
 }
 
 export function HeroSection() {
   const t = useT(T)
-  const mouse = useMouseParallax(18)
   const [mounted, setMounted] = useState(false)
   
   useEffect(() => { 
@@ -77,11 +65,14 @@ export function HeroSection() {
         className="absolute inset-0 z-0 bg-[length:60px_60px] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]"
       />
 
+      {/* Les formes flottantes suivaient la souris et se déformaient sans fin.
+          Elles restent, immobiles et masquées sur petit écran : sur téléphone
+          elles ne servaient qu'à faire travailler le compositeur. */}
       {floatingShapes.map((shape) => (
         <div
           key={shape.x + shape.y}
           aria-hidden
-          className="absolute z-0 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-2 opacity-25 transition-transform duration-1000 ease-[cubic-bezier(.22,.68,0,1.2)]"
+          className="absolute z-0 hidden rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-2 opacity-25 md:block motion-reduce:hidden"
           style={{
             left: shape.x,
             top: shape.y,
@@ -89,7 +80,6 @@ export function HeroSection() {
             height: shape.size,
             borderColor: shape.color,
             animation: `morphFloat${shape.anim} 8s ${shape.delay} ease-in-out infinite`,
-            transform: `translate(${mouse.x * 0.4}px, ${mouse.y * 0.4}px)`,
           }}
         />
       ))}
@@ -129,7 +119,7 @@ export function HeroSection() {
               {t.cta1}
             </Link>
             <Link
-              href="/sample-audit"
+              href="/#ladder"
               className="border-b border-white/20 pb-0.5 font-sans text-sm tracking-[0.02em] text-white/55 no-underline transition-colors hover:border-white/40 hover:text-white"
             >
               {t.cta2}

@@ -36,27 +36,22 @@ export const THEME_LABELS: Record<Theme, Locale<string>> = {
   outgrown: {
     fr: "Promesses dépassées par la croissance",
     en: "Promises outgrown by growth",
-    es: "Promesas superadas por el crecimiento",
   },
   "price-cap": {
     fr: "Marques qui plafonnent leur prix",
     en: "Brands capping their own price",
-    es: "Marcas que limitan su propio precio",
   },
   "two-clients": {
     fr: "Deux clients sous une seule marque",
     en: "Two customers, one brand",
-    es: "Dos clientes, una sola marca",
   },
   unwritten: {
     fr: "Une autorité jamais écrite",
     en: "Authority never written down",
-    es: "Una autoridad nunca escrita",
   },
   "word-trap": {
     fr: "Le mot qui piège",
     en: "The word that traps",
-    es: "La palabra que atrapa",
   },
 }
 
@@ -78,12 +73,12 @@ export type BrandRead = {
 }
 
 export const SECTION_LABELS: Record<BlockKey, Locale<string>> = {
-  context: { fr: "Contexte", en: "Context", es: "Contexto" },
-  signal: { fr: "Le signal — ce qui marche", en: "The signal — what works", es: "La señal — lo que funciona" },
-  noise: { fr: "Le bruit — ce qui est flou", en: "The noise — what's blurry", es: "El ruido — lo difuso" },
-  tension: { fr: "La tension", en: "The tension", es: "La tensión" },
-  heading: { fr: "Le cap de repositionnement", en: "The repositioning heading", es: "El rumbo de reposicionamiento" },
-  verdict: { fr: "Verdict", en: "Verdict", es: "Veredicto" },
+  context: { fr: "Contexte", en: "Context" },
+  signal: { fr: "Le signal — ce qui marche", en: "The signal — what works" },
+  noise: { fr: "Le bruit — ce qui est flou", en: "The noise — what's blurry" },
+  tension: { fr: "La tension", en: "The tension" },
+  heading: { fr: "Le cap de repositionnement", en: "The repositioning heading" },
+  verdict: { fr: "Verdict", en: "Verdict" },
 }
 
 export function pickLocale<T>(v: Locale<T>, lang: Lang): T {

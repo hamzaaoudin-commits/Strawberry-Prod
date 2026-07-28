@@ -128,6 +128,11 @@ const nextConfig = {
       { source: '/audit', destination: '/fr/brand-narrative-audit', permanent: true },
       { source: '/:lang(fr|en|es)/audit', destination: '/:lang/brand-narrative-audit', permanent: true },
 
+      // L'espagnol a été retiré du site. Les URL déjà indexées basculent en
+      // français plutôt que de disparaître en 404.
+      { source: '/es', destination: '/fr', permanent: true },
+      { source: '/es/:path*', destination: '/fr/:path*', permanent: true },
+
       // L'Atlas n'est plus servi depuis la racine de /public.
       { source: '/30-architectures-atlas.pdf', destination: '/fr#atlas', permanent: false },
 

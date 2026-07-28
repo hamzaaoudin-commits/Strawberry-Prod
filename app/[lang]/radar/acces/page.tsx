@@ -42,22 +42,6 @@ const T = {
     subscribe: "Subscribe — 15€/month",
     stock: "31 reads available immediately · a new one every day",
   },
-  es: {
-    badge: "Acceso de suscriptores",
-    h1: "La biblioteca.",
-    lead: "Su código de acceso figura en su recibo de Stripe y en el email de confirmación.",
-    label: "Código de acceso",
-    placeholder: "XXXXXX-00",
-    submit: "Abrir la biblioteca",
-    retry: "Reintentar",
-    sending: "Verificando…",
-    errInvalid: "Ese código ya no es válido. El vigente figura en su último recibo de Stripe.",
-    errRate: "Demasiados intentos. Inténtelo de nuevo en unos minutos.",
-    errServer: "La verificación ha fallado. Inténtelo en un momento.",
-    noSub: "¿Aún no está suscrito?",
-    subscribe: "Suscribirse — 15€/mes",
-    stock: "31 fichas disponibles de inmediato · una nueva cada día",
-  },
 }
 
 function AccessForm() {

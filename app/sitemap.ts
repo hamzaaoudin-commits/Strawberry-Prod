@@ -16,6 +16,7 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/radar", priority: 0.85, changeFrequency: "daily" },
   { path: "/momentum", priority: 0.8, changeFrequency: "monthly" },
   { path: "/strawberry-method", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/le-livre", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.75, changeFrequency: "monthly" },
   { path: "/cgv", priority: 0.3, changeFrequency: "yearly" },
   { path: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" },

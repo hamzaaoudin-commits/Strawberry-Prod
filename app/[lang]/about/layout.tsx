@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "À propos — le studio", description: "Un studio d'un seul, depuis Paris, par héritage. Ce qu'il est et ce qu'il n'est pas." },
   en: { title: "About — the studio", description: "A studio of one. From Paris. By inheritance. What it is and what it is not." },
-  es: { title: "Nosotros — el estudio", description: "Un estudio de uno solo. Desde París. Por herencia." },
 }
 
 export async function generateMetadata({

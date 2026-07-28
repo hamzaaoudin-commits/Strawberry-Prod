@@ -7,7 +7,6 @@ import type { Lang } from "@/lib/lang"
 const LABEL: Record<Lang, string> = {
   fr: "Accueil",
   en: "Home",
-  es: "Inicio",
 }
 
 /**

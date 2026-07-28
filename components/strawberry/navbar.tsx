@@ -31,19 +31,6 @@ const T = {
       { label: "MOMENTUM — monthly", href: "/momentum" },
     ],
   },
-  es: {
-    offers: "Ofertas",
-    about: "Nosotros",
-    method: "El Método",
-    cta: "Hablemos",
-    menu: "Menú",
-    offersMenu: [
-      { label: "RADAR — 15€/mes", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4.500€", href: "/brand-narrative-architecture" },
-      { label: "MOMENTUM — mensual", href: "/momentum" },
-    ],
-  },
 }
 
 export function NavBar() {

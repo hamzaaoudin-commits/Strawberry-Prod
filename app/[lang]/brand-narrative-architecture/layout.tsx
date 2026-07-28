@@ -5,7 +5,6 @@ import { isLang, type Lang } from '@/lib/lang'
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: { title: "BRAND NARRATIVE ARCHITECTURE — 4 500€", description: "Le récit de marque qui vous rend impossible à confondre — et impossible à générer." },
   en: { title: "BRAND NARRATIVE ARCHITECTURE — 4,500€", description: "The brand story that makes you impossible to confuse — and impossible to generate." },
-  es: { title: "BRAND NARRATIVE ARCHITECTURE — 4.500€", description: "El relato de marca que le hace imposible de confundir — e imposible de generar." },
 }
 
 export async function generateMetadata({

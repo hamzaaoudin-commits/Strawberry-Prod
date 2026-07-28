@@ -41,12 +41,22 @@ function Motif({ k }: { k: OfferKey }) {
         </>
       )
     case "architecture":
-      // Un arc et sa clé de voûte : la structure ne tient que par le milieu.
+      // La colonnade : cinq montants inégaux qui n'existent que par celui du
+      // milieu, sur un double socle. L'arche précédente lisait comme un
+      // pictogramme ; celle-ci lit comme une gravure.
       return (
         <>
-          <path d="M11 40 L11 25 A13 13 0 0 1 37 25 L37 40" fill="none" stroke={s} strokeWidth="1.4" />
-          <path d="M20 11 L28 11 L29.5 19 L18.5 19 Z" fill={s} />
-          <line x1="6" y1="40" x2="42" y2="40" stroke={s} strokeWidth="2.2" strokeLinecap="square" />
+          <g stroke={s} strokeLinecap="square">
+            <line x1="8" y1="41" x2="40" y2="41" strokeWidth="2.2" />
+            <line x1="8" y1="37.5" x2="40" y2="37.5" strokeWidth="0.6" opacity="0.4" />
+            <line x1="11" y1="37" x2="11" y2="20" strokeWidth="1" opacity="0.25" />
+            <line x1="17.5" y1="37" x2="17.5" y2="15" strokeWidth="1" opacity="0.45" />
+            <line x1="24" y1="37" x2="24" y2="7" strokeWidth="2.6" />
+            <line x1="30.5" y1="37" x2="30.5" y2="15" strokeWidth="1" opacity="0.45" />
+            <line x1="37" y1="37" x2="37" y2="20" strokeWidth="1" opacity="0.25" />
+            <line x1="15" y1="10.5" x2="33" y2="10.5" strokeWidth="0.8" opacity="0.55" />
+          </g>
+          <rect x="21" y="4" width="6" height="6" fill={s} />
         </>
       )
     case "momentum":
@@ -91,13 +101,11 @@ function Motif({ k }: { k: OfferKey }) {
 export function OfferCover({
   k,
   name,
-  price,
   featured = false,
   className = "",
 }: {
   k: OfferKey
   name: ReactNode
-  price?: string
   featured?: boolean
   className?: string
 }) {
@@ -113,22 +121,18 @@ export function OfferCover({
         <>
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
+          <span aria-hidden className="pointer-events-none absolute inset-2.5 border border-brand/20" />
         </>
       )}
 
-      <div className="font-serif text-[clamp(1.05rem,2.4vw,1.5rem)] font-bold uppercase leading-[1.12] tracking-[0.01em] text-brand">
+      <div className="relative font-serif text-[clamp(1.05rem,2.4vw,1.5rem)] font-bold uppercase leading-[1.12] tracking-[0.01em] text-brand">
         {name}
       </div>
 
-      <svg viewBox="0 0 48 48" aria-hidden className="mt-6 h-[46px] w-[46px] shrink-0">
+      <svg viewBox="0 0 48 48" aria-hidden className="relative mt-6 h-[46px] w-[46px] shrink-0">
         <Motif k={k} />
       </svg>
 
-      {price && (
-        <div className="absolute inset-x-0 bottom-4 font-sans text-[9px] uppercase tracking-[0.2em] text-white/40">
-          {price}
-        </div>
-      )}
     </div>
   )
 }
@@ -149,8 +153,15 @@ export function AtlasCover({ className = "" }: { className?: string }) {
         Strawberry Production
       </div>
 
-      <div className="font-serif text-[clamp(1.6rem,4vw,2.1rem)] font-bold uppercase leading-[1.05] text-brand">
-        30 Architectures
+      {/* « 30 Architectures » sur une seule ligne dimensionnée en vw débordait du
+          cadre dès que la couverture était étroite. Le chiffre porte désormais la
+          composition seul, et le mot passe dessous à taille fixe, coupure autorisée. */}
+      <div className="font-serif text-[clamp(2.4rem,6vw,3.2rem)] font-bold leading-[0.95] text-brand">
+        30
+      </div>
+
+      <div className="mt-2 max-w-full px-1 font-serif text-[11px] font-bold uppercase leading-[1.25] tracking-[0.14em] text-brand [hyphens:auto] [overflow-wrap:anywhere]">
+        Architectures
       </div>
 
       <svg viewBox="0 0 48 48" aria-hidden className="mt-7 h-[58px] w-[58px]">

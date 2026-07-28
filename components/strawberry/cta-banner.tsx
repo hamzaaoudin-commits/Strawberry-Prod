@@ -5,9 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "See the Commission", cta2: "Read the SILLAGE document" },
-  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Voir la commande", cta2: "Lire le document SILLAGE" },
-  es: { h2: "Vuélvase imposible de confundir.", sub: "La mayoría de las casas esperan. La suya no tiene por qué.", cta1: "Ver el encargo", cta2: "Leer el documento SILLAGE" },
+  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Commission the Brand Narrative Architecture", cta2: "See the other offers" },
+  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Commander la Brand Narrative Architecture", cta2: "Voir les autres offres" },
 }
 
 export function CTABanner() {
@@ -39,11 +38,19 @@ export function CTABanner() {
             {t.sub}
           </p>
 
-          <div className="relative flex flex-wrap justify-center gap-4">
-            <Link href="/brand-narrative-architecture" className="btn-primary px-11 py-[18px]">
+          {/* Un seul geste principal, nommé. Le second lien existe pour ceux
+              que le prix arrête, sans jamais concurrencer le premier. */}
+          <div className="relative flex flex-col items-center gap-5">
+            <Link
+              href="/brand-narrative-architecture"
+              className="btn-primary max-w-full px-11 py-[18px] text-center leading-snug"
+            >
               {t.cta1}
             </Link>
-            <Link href="/sample-audit" className="btn-ghost px-11 py-[18px]">
+            <Link
+              href="/#ladder"
+              className="border-b border-white/20 pb-0.5 font-sans text-[13px] tracking-[0.02em] text-white/50 no-underline transition-colors hover:border-white/45 hover:text-white"
+            >
               {t.cta2}
             </Link>
           </div>

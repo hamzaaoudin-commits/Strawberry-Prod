@@ -1,8 +1,22 @@
-"use client"
-
 import { LocaleLink as Link } from "@/components/locale-link"
-import { useT } from "@/lib/i18n"
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
+import { OfferCover } from "@/components/strawberry/offer-covers"
+
+/**
+ * La commande signature.
+ *
+ * Composant serveur : cette section n'a aucune interaction, donc rien n'a à être
+ * hydraté côté navigateur. C'est l'un des blocs qui allongeaient le plus le
+ * chargement sur téléphone.
+ *
+ * La présentation montre l'artefact avant de le décrire : la couverture à
+ * gauche, la position à droite, les livrables en registre numéroté plutôt qu'en
+ * liste à puces, et une bande de spécifications qui répond aux trois objections
+ * qu'un prospect ne pose jamais à voix haute — combien de temps, sous quelle
+ * forme, et pourquoi ce n'est pas disponible en permanence.
+ */
 
 const T = {
   en: {
@@ -21,6 +35,12 @@ const T = {
       "Deployment Kit",
       "Coherence Guide",
     ],
+    specs: [
+      { k: "Lead time", v: "3 to 4 weeks" },
+      { k: "Format", v: "One editorial document" },
+      { k: "Scarcity", v: "4 commissions per quarter" },
+    ],
+    coverFoot: "Fourteen parts",
     cta1: "Commission the Work →",
     cta2: "Read the Full Brief",
     limit: "Limited to four commissions per quarter.",
@@ -46,6 +66,12 @@ const T = {
       "Kit de déploiement",
       "Guide de cohérence",
     ],
+    specs: [
+      { k: "Délai", v: "3 à 4 semaines" },
+      { k: "Format", v: "Un document éditorial" },
+      { k: "Rareté", v: "4 commandes par trimestre" },
+    ],
+    coverFoot: "Quatorze pièces",
     cta1: "Commander le travail →",
     cta2: "Lire le brief complet",
     limit: "Limité à quatre commandes par trimestre.",
@@ -55,35 +81,10 @@ const T = {
     auditBody: "Une lecture écrite de votre récit actuel — ce qui porte, ce qui vous rend indifférenciable, et les mouvements précis à faire. Déduit de la commande si vous allez plus loin dans les 60 jours.",
     auditCta: "Voir l'audit — 490€ →",
   },
-  es: {
-    kicker: "El Encargo Insignia",
-    h2a: "No construimos marcas.",
-    h2b: "Construimos el universo en el que viven.",
-    intro:
-      "Una sola oferta, afinada encargo tras encargo. Ni un logo ni una campaña: la identidad, la posición y el lenguaje en los que vive una casa — la estructura a la que todo lo demás debe responder.",
-    h3: "El relato de marca que ningún competidor puede copiar — y que ninguna máquina puede escribir.",
-    body:
-      "Empieza con una extracción que ninguna IA automatiza: su verdad, su singularidad, eso que ya no ve porque está dentro. De ahí, un reposicionamiento completo — entregado y utilizable el lunes siguiente.",
-    deliverables: [
-      "Diagnóstico de diferenciación",
-      "Plataforma narrativa",
-      "Sistema de lenguaje",
-      "Kit de despliegue",
-      "Guía de coherencia",
-    ],
-    cta1: "Encargar el trabajo →",
-    cta2: "Leer el brief completo",
-    limit: "Limitado a cuatro encargos por trimestre.",
-    auditTag: "Solo diagnóstico · 490€",
-    auditName: "BRAND NARRATIVE AUDIT",
-    auditLead: "¿Aún no listo para la arquitectura complete? Empiece por el diagnóstico.",
-    auditBody: "Una lectura escrita de su relato actual — lo que aterriza, lo que le vuelve indistinguible y los movimientos precisos a realizar. Se descuenta del encargo si va más lejos en 60 días.",
-    auditCta: "Ver la auditoría — 490€ →",
-  },
 }
 
-export function OffersSection() {
-  const t = useT(T)
+export function OffersSection({ lang }: { lang: Lang }) {
+  const t = pick(T, lang)
 
   return (
     <section id="offers" className="section relative overflow-hidden bg-ink text-white">
@@ -100,56 +101,116 @@ export function OffersSection() {
           <p className="lede">{t.intro}</p>
         </div>
 
-        {/* THE COMMISSION */}
-        <div className="card-featured mx-auto max-w-[900px] p-8 md:p-14">
+        {/* LA COMMANDE */}
+        <div className="card-featured mx-auto max-w-[980px] p-7 md:p-12">
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
 
-          <div className="pill mb-8">BRAND NARRATIVE ARCHITECTURE · 4,500€</div>
+          <div className="relative grid gap-10 md:grid-cols-[190px_minmax(0,1fr)] md:gap-12">
+            {/* L'objet, avant l'argument. */}
+            <div className="mx-auto w-[180px] max-w-full md:mx-0 md:w-full">
+              <OfferCover
+                k="architecture"
+                name={
+                  <>
+                    Brand
+                    <br />
+                    Narrative
+                    <br />
+                    Architecture
+                  </>
+                }
+                featured
+              />
+              <div className="mt-3 text-center font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
+                {t.coverFoot}
+              </div>
+            </div>
 
-          <h3 className="mb-6 font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold leading-[1.15] tracking-[-0.02em]">
-            {t.h3}
-          </h3>
+            <div>
+              <div className="pill mb-7">BRAND NARRATIVE ARCHITECTURE · 4 500€</div>
 
-          <p className="mb-9 max-w-[680px] font-sans text-base leading-relaxed text-chalk-65">{t.body}</p>
+              <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
+                {t.h3}
+              </h3>
 
-          <ul className="mb-10 grid list-none gap-3 p-0 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
-            {t.deliverables.map((d, i) => (
-              <li key={d} className="flex items-baseline gap-3 font-sans text-[14.5px] text-chalk-75">
-                <span className="font-serif text-brand">{String(i + 1).padStart(2, "0")}</span>
-                {d}
-              </li>
-            ))}
-          </ul>
+              <p className="mb-9 max-w-[620px] font-sans text-base leading-relaxed text-chalk-65">{t.body}</p>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">
-              {t.cta1}
-            </a>
-            <Link href="/brand-narrative-architecture" className="btn-ghost">
-              {t.cta2}
-            </Link>
+              {/* Registre : chaque livrable sur sa ligne, séparé par un filet.
+                  Une liste à puces sur deux colonnes se lisait comme un
+                  bordereau de fonctionnalités. */}
+              <ol className="mb-9 list-none border-t border-hair p-0">
+                {t.deliverables.map((d, i) => (
+                  <li
+                    key={d}
+                    className="flex items-baseline gap-4 border-b border-white/[0.06] py-3 font-sans text-[15px] text-chalk-75"
+                  >
+                    <span className="font-serif text-[13px] text-brand">{String(i + 1).padStart(2, "0")}</span>
+                    {d}
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mb-9 grid gap-px bg-white/10 sm:grid-cols-3">
+                {t.specs.map((sp) => (
+                  <div key={sp.k} className="bg-ink px-4 py-3.5">
+                    <div className="mb-1.5 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
+                      {sp.k}
+                    </div>
+                    <div className="font-serif text-[15px] text-white">{sp.v}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">
+                  {t.cta1}
+                </a>
+                <Link href="/brand-narrative-architecture" className="btn-ghost">
+                  {t.cta2}
+                </Link>
+              </div>
+
+              <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
+            </div>
           </div>
-
-          <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
         </div>
 
-        {/* THE 490 AUDIT — the step below the commission. */}
-        <div className="mx-auto mt-6 max-w-[900px] border border-brand-hair bg-white/[0.02] p-8 md:p-14">
-          <div className="tag mb-7 border-brand text-brand">{t.auditTag}</div>
+        {/* L'AUDIT À 490€ — le barreau en dessous. */}
+        <div className="mx-auto mt-6 max-w-[980px] border border-brand-hair bg-white/[0.02] p-7 md:p-12">
+          <div className="grid gap-8 md:grid-cols-[190px_minmax(0,1fr)] md:gap-12">
+            <div className="mx-auto w-[140px] max-w-full md:mx-0 md:w-full">
+              <OfferCover
+                k="audit"
+                name={
+                  <>
+                    Brand
+                    <br />
+                    Narrative
+                    <br />
+                    Audit
+                  </>
+                }
+              />
+            </div>
 
-          <h3 className="mb-5 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-            <span className="text-gradient">{t.auditName}</span>
-          </h3>
+            <div>
+              <div className="tag mb-6 border-brand text-brand">{t.auditTag}</div>
 
-          <p className="mb-4 font-serif text-[clamp(1.1rem,2vw,1.4rem)] leading-snug text-chalk-90">
-            {t.auditLead}
-          </p>
-          <p className="mb-8 max-w-[620px] body-sm">{t.auditBody}</p>
+              <h3 className="mb-5 font-serif text-[clamp(1.5rem,3.4vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+                <span className="text-gradient">{t.auditName}</span>
+              </h3>
 
-          <Link href="/brand-narrative-audit" className="btn-primary">
-            {t.auditCta}
-          </Link>
+              <p className="mb-4 font-serif text-[clamp(1.05rem,1.9vw,1.35rem)] leading-snug text-chalk-90">
+                {t.auditLead}
+              </p>
+              <p className="mb-8 max-w-[620px] body-sm">{t.auditBody}</p>
+
+              <Link href="/brand-narrative-audit" className="btn-primary">
+                {t.auditCta}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
