@@ -48,7 +48,7 @@ const T = {
     auditName: "BRAND NARRATIVE AUDIT",
     auditLead: "Not ready for the full architecture? Start with the diagnosis.",
     auditBody: "A written read of your current narrative — what lands, what makes you indistinguishable, and the precise moves to make. Deducted from BRAND NARRATIVE ARCHITECTURE if you go further within 60 days.",
-    auditCta: "See the audit — 490€ →",
+    auditCta: "See the audit →",
   },
   fr: {
     kicker: "La Commande Signature",
@@ -79,7 +79,7 @@ const T = {
     auditName: "BRAND NARRATIVE AUDIT",
     auditLead: "Pas prêt pour l'architecture complète ? Commencez par le diagnostic.",
     auditBody: "Une lecture écrite de votre récit actuel — ce qui porte, ce qui vous rend indifférenciable, et les mouvements précis à faire. Déduit de BRAND NARRATIVE ARCHITECTURE si vous allez plus loin dans les 60 jours.",
-    auditCta: "Voir l'audit — 490€ →",
+    auditCta: "Voir l'audit →",
   },
 }
 

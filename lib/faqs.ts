@@ -88,7 +88,7 @@ export const FAQ_AUDIT490: FaqSet = {
     { q: "How long does it take?", a: "Seven days from receipt of your questionnaire. No meetings, no back and forth." },
     { q: "What do you need from me?", a: "A twenty-minute questionnaire, links to your site and channels, and the names of three to five direct competitors. Nothing else." },
     { q: "Is there a call?", a: "No. This is a document, not a consulting engagement. If you want deep work together, that is the full commission." },
-    { q: "What if the diagnosis says everything is fine?", a: "It won't, and that isn't arrogance: no brand occupies a perfectly clean position. But if the audit concludes your positioning holds and the problem sits elsewhere — in your offer, your price, your distribution — I will say so, and I will tell you not to commission the next step." },
+    { q: "What if the diagnosis says everything is fine?", a: "It won't, and that isn't arrogance: no brand occupies a perfectly clean position. But if the audit concludes your positioning holds and the problem sits elsewhere — in your offer, your price, your distribution — we will say so, and we will tell you not to commission the next step." },
     { q: "Can I order one for a brand I advise?", a: "Yes. Many audits are commissioned by consultants or marketing directors to ground an internal debate in something external." },
     { q: "Is it refundable?", a: "The document is produced to order, so it is not refundable once delivered. Before production begins, a full refund is available." },
   ],
