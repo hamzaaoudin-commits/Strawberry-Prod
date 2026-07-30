@@ -162,7 +162,7 @@ export function BeforeAfterSection() {
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
             <span className="font-sans text-[13px] text-chalk-40">{t.house}</span>
-            <Link href="/sample-audit" className="btn-quiet">
+            <Link href="/documents/sillage" className="btn-quiet">
               {t.cta}
             </Link>
           </div>

@@ -9,6 +9,7 @@ const T = {
     offers: "Offres",
     about: "À propos",
     method: "La Méthode",
+    lectures: "Les lectures",
     cta: "Commander le travail",
     menu: "Menu",
     offersMenu: [
@@ -23,6 +24,7 @@ const T = {
     offers: "Offers",
     about: "About",
     method: "The Method",
+    lectures: "The readings",
     cta: "Commission the Work",
     menu: "Menu",
     offersMenu: [

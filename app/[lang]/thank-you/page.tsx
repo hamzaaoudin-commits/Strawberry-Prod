@@ -430,7 +430,7 @@ export default function ThankYouPage() {
               {t.waitCta1}
             </Link>
 
-            <Link href="/sample-audit" style={{
+            <Link href="/documents/sillage" style={{
               display: "inline-block",
               background: "transparent",
               color: "rgba(255,255,255,0.75)",
@@ -450,8 +450,8 @@ export default function ThankYouPage() {
             <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 8px" }}>
               {t.contact}
             </p>
-            <a href="mailto:Strawberryprod.contact@gmail.com" style={{ fontFamily: SERIF, fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>
-              Strawberryprod.contact@gmail.com
+            <a href="mailto:hamza@gostrawberryprod.com" style={{ fontFamily: SERIF, fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>
+              hamza@gostrawberryprod.com
             </a>
           </div>
         </div>

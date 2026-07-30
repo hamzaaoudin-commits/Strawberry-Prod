@@ -45,7 +45,7 @@ const T = {
     emailPlaceholder: "Votre email",
     loading: "Ouverture\u2026",
     read: "Lire l'Atlas \u2192",
-    error: "Une erreur est survenue. R\u00e9essaie.",
+    error: "Une erreur est survenue. Merci de r\u00e9essayer.",
     nospam: "Pas de spam. Un seul email pour recevoir l'Atlas.",
     lead: "Trente portraits composites des situations narratives dans lesquelles se trouvent les fondateurs \u2014 et les mouvements d'architecture qui les ont r\u00e9solues. Pas un portfolio. Une carte.",
     italic: "Si vous vous reconnaissez dans l'un d'eux \u2014 vous avez d\u00e9j\u00e0 commenc\u00e9 le travail.",

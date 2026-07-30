@@ -1,7 +1,7 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
-import { STRIPE_LINKS, LIVE, BOUND_OBJECT } from "@/lib/config"
+import { LIVE, BOUND_OBJECT } from "@/lib/config"
 import { OfferCover } from "@/components/strawberry/offer-covers"
 
 /**
@@ -75,7 +75,7 @@ const T = {
       "Your architecture, printed and bound by hand, numbered and signed. One copy exists, and it is yours. A document that sits on a desk is read differently from a file in a drive.",
     addonCta: "Add the bound object",
     cta1: "Commission the Work →",
-    cta2: "Read the full brief",
+    cta2: "See the other offers",
     limit: "Four commissions per quarter. Not a sales tactic — the structural limit of full attention.",
     ladderCta: "See the other ways to work with the studio",
   },
@@ -134,7 +134,7 @@ const T = {
       "Votre architecture, imprimée et reliée à la main, numérotée et signée. Un seul exemplaire existe, et il est à vous. Un document posé sur un bureau ne se lit pas comme un fichier dans un drive.",
     addonCta: "Ajouter l'Objet relié",
     cta1: "Commander le travail →",
-    cta2: "Lire le brief complet",
+    cta2: "Voir les autres offres",
     limit: "Quatre commandes par trimestre. Ce n'est pas une tactique de vente — c'est la limite structurelle d'une attention pleine.",
     ladderCta: "Voir les autres façons de travailler avec le studio",
   },
@@ -271,10 +271,13 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">
+              {/* Le paiement ne s'ouvre plus depuis la page d'accueil.
+                  Envoyer une carte bancaire à quelqu'un qui n'a pas lu la page
+                  de vente, c'est parler de l'étape cinq pendant l'étape une. */}
+              <Link href="/brand-narrative-architecture" className="btn-primary">
                 {t.cta1}
-              </a>
-              <Link href="/brand-narrative-architecture" className="btn-quiet">
+              </Link>
+              <Link href="/offres" className="btn-quiet">
                 {t.cta2}
               </Link>
             </div>

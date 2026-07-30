@@ -23,13 +23,13 @@ const T = {
     sentBody: "I read every one personally. Expect a reply within 24 hours.",
     nameLabel: "Your name",
     goalLabel: "What brings you here",
-    goals: ["Commission the Brand Narrative Architecture", "Commission the Brand Narrative Audit", "Start MOMENTUM", "Subscribe to RADAR", "Just exploring", "Other"],
-    messageLabel: "Your message",
-    messagePlaceholder: "Tell us about your house, your stage, what you want to be unforgettable for.",
+    goals: ["Commission the Brand Narrative Architecture", "Commission the Brand Narrative Audit", "Start MOMENTUM", "Subscribe to RADAR", "Find out if this is for me", "Other"],
+    messageLabel: "Your message (optional)",
+    messagePlaceholder: "One line is enough. What you want to be unforgettable for, if you already know.",
     sending: "Sending...",
     send: "Send Message \u2192",
     answered: "Answered within 24 hours.",
-    errRequired: "Please fill in your name and message.",
+    errRequired: "Please fill in your name.",
     errEmail: "Please enter a valid email address.",
     errThrottle: "You just sent a message. Please wait {s}s before sending another.",
   },
@@ -40,20 +40,20 @@ const T = {
     intro: "Parlez-nous de votre maison. La conviction que vous n'arrivez pas encore à articuler. Ce que vos concurrents vous prennent sans cesse — ou copient mal. Nous lisons chaque message nous-mêmes.",
     lines: "Lignes directes",
     labels: ["Email", "Instagram", "Localisation"],
-    note: "Limité à quatre commandes par trimestre. Si c'est complet, vous seras le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",
+    note: "Limité à quatre commandes par trimestre. Si c'est complet, vous serez le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",
     sentTitle: "Message reçu.",
     sentBody: "Nous lisons chaque message nous-mêmes. Réponse sous 24 heures.",
     nameLabel: "Votre nom",
     goalLabel: "Ce qui vous amène",
-    goals: ["Commander la Brand Narrative Architecture", "Commander le Brand Narrative Audit", "Démarrer MOMENTUM", "M'abonner à RADAR", "J'explore simplement", "Autre"],
-    messageLabel: "Votre message",
-    messagePlaceholder: "Parlez-nous de votre maison, de votre stade, de ce pour quoi vous voulez être inoubliable.",
+    goals: ["Commander la Brand Narrative Architecture", "Commander le Brand Narrative Audit", "Démarrer MOMENTUM", "M'abonner à RADAR", "Savoir si c'est pour moi", "Autre"],
+    messageLabel: "Votre message (facultatif)",
+    messagePlaceholder: "Une ligne suffit. Ce pour quoi vous voulez être inoubliable, si vous le savez déjà.",
     sending: "Envoi...",
     send: "Envoyer le message \u2192",
     answered: "Réponse sous 24 heures.",
-    errRequired: "Merci de renseigner votre nom et votre message.",
+    errRequired: "Merci de renseigner votre nom.",
     errEmail: "Merci de saisir une adresse email valide.",
-    errThrottle: "Vous viens d'envoyer un message. Patiente {s}s avant d'en envoyer un autre.",
+    errThrottle: "Vous venez d'envoyer un message. Patientez {s}s avant d'en envoyer un autre.",
   },
 }
 
@@ -103,7 +103,7 @@ export function ContactSection() {
     const goal = sanitize(form.goal, LIMITS.goal)
     const message = sanitize(form.message, LIMITS.message)
 
-    if (!name || !message) {
+    if (!name) {
       setStatus("error")
       setErrorMsg(t.errRequired)
       return
@@ -287,7 +287,6 @@ export function ContactSection() {
                   <textarea
                     id="message"
                     name="message"
-                    required
                     rows={6}
                     maxLength={LIMITS.message}
                     className="field min-h-[120px] resize-y leading-relaxed"

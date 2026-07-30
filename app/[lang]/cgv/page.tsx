@@ -102,7 +102,7 @@ const ARTICLES = [
           <p style={{ marginTop: 8 }}><strong>Abonnements (RADAR, MOMENTUM) :</strong> s&apos;agissant de services à exécution successive, le Client consommateur dispose du droit de rétractation de quatorze (14) jours prévu à l&apos;article L.221-18 du Code de la consommation. S&apos;il demande expressément le commencement de l&apos;exécution avant la fin de ce délai, il reste redevable du montant correspondant au service déjà fourni. L&apos;abonnement est ensuite résiliable à tout moment, la résiliation prenant effet à la fin de la période mensuelle en cours, sans remboursement du mois entamé.</p>
           <p style={{ marginTop: 8 }}><strong>Contenu numérique par abonnement (RADAR) :</strong> conformément à l&apos;article L.221-28 13° du Code de la consommation, la fourniture d&apos;un contenu numérique non fourni sur support matériel dont l&apos;exécution a commencé après accord préalable exprès du Client et renoncement exprès à son droit de rétractation ne peut donner lieu à rétractation pour la période déjà entamée. L&apos;abonnement reste résiliable à tout moment, la résiliation prenant effet à la fin de la période mensuelle en cours.</p>
         </div>
-        <p style={{ marginTop: 16 }}>Toute demande de remboursement doit être adressée par email à Strawberryprod.contact@gmail.com, avec mention de la facture concernée.</p>
+        <p style={{ marginTop: 16 }}>Toute demande de remboursement doit être adressée par email à hamza@gostrawberryprod.com, avec mention de la facture concernée.</p>
       </>
     ),
   },
@@ -187,7 +187,7 @@ const ARTICLES = [
     title: "Réclamation et médiation",
     body: (
       <>
-        <p>Toute réclamation doit être adressée par email à <strong>Strawberryprod.contact@gmail.com</strong>. Le Prestataire s&apos;engage à y répondre sous quinze (15) jours ouvrés.</p>
+        <p>Toute réclamation doit être adressée par email à <strong>hamza@gostrawberryprod.com</strong>. Le Prestataire s&apos;engage à y répondre sous quinze (15) jours ouvrés.</p>
         <p style={{ marginTop: 12 }}>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, le Client peut, en cas de litige non résolu amiablement, recourir gratuitement au service de médiation de la consommation auprès du médiateur compétent.</p>
         <p style={{ marginTop: 12 }}>Le Client peut également utiliser la plateforme européenne de règlement en ligne des litiges (ODR) : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: COLOR }}>ec.europa.eu/consumers/odr</a></p>
       </>

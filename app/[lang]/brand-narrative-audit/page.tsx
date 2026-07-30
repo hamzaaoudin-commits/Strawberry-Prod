@@ -175,7 +175,7 @@ export default async function BrandNarrativeAuditPage({
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.audit490} className="btn-primary" rel="noopener">{t.cta}</a>
-            <Link href="/exemple-audit" className="btn-ghost">{t.ctaSecondary}</Link>
+            <Link href="/documents/verso" className="btn-ghost">{t.ctaSecondary}</Link>
           </div>
         </div>
       </section>
@@ -226,7 +226,7 @@ export default async function BrandNarrativeAuditPage({
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(10,10,10,0.9))]" aria-hidden />
           </div>
 
-          <Link href="/exemple-audit" className="btn-primary">
+          <Link href="/documents/verso" className="btn-primary">
             {t.previewCta}
           </Link>
         </div>
@@ -342,7 +342,7 @@ export default async function BrandNarrativeAuditPage({
             {t.bridgeH2}
           </h2>
           <p className="lede mx-auto mb-7 max-w-[620px]">{t.bridgeP}</p>
-          <Link href="/exemple-audit" className="btn-primary">{t.bridgeCta}</Link>
+          <Link href="/documents/verso" className="btn-primary">{t.bridgeCta}</Link>
         </div>
       </section>
 

@@ -2,21 +2,26 @@ User-agent: *
 Allow: /
 
 Disallow: /api/
+
+# Aimants et documents payants : la page qui les vend doit être indexée,
+# pas le fichier. Le PDF de l'Atlas était joignable à la racine, ce qui
+# court-circuitait la capture d'email et faisait indexer le fichier au lieu
+# de la page.
 Disallow: /atlas/
+Disallow: /30-architectures-atlas.pdf
+Disallow: /*.pdf$
+
 Disallow: /thank-you
 Disallow: /fr/thank-you
 Disallow: /en/thank-you
-Disallow: /es/thank-you
 
-# Espaces payants ou privés : rien à indexer derrière la barrière.
+# Espaces payants ou privés. /lectures, en revanche, est volontairement
+# ouvert : c'est la vitrine publique du travail quotidien.
 Disallow: /fr/radar/lecture
 Disallow: /en/radar/lecture
-Disallow: /es/radar/lecture
 Disallow: /fr/radar/acces
 Disallow: /en/radar/acces
-Disallow: /es/radar/acces
 Disallow: /fr/momentum/atelier
 Disallow: /en/momentum/atelier
-Disallow: /es/momentum/atelier
 
 Sitemap: https://www.gostrawberryprod.com/sitemap.xml

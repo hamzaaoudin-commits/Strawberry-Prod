@@ -26,7 +26,7 @@ const SECTIONS = [
           <strong>VAT</strong>: not applicable, article 293 B of the French General Tax Code
         </p>
         <p style={{ marginTop: 12 }}>
-          <strong>Email</strong>: Strawberryprod.contact@gmail.com
+          <strong>Email</strong>: hamza@gostrawberryprod.com
         </p>
       </>
     ),

@@ -17,7 +17,7 @@ const SECTIONS = [
           Entrepreneur individuel (micro-entreprise) — Strawberry Production<br />
           8 place Eugène Thomas, 93160 Noisy-le-Grand, France<br />
           SIRET : 105 253 314 00014<br />
-          Email : <strong>Strawberryprod.contact@gmail.com</strong>
+          Email : <strong>hamza@gostrawberryprod.com</strong>
         </p>
         <p style={{ marginTop: 12 }}>Pour toute question relative au traitement de vos données personnelles, vous pouvez contacter le responsable de traitement par email à l&apos;adresse ci-dessus.</p>
       </>
@@ -127,7 +127,7 @@ const SECTIONS = [
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> <strong>Droit de retirer votre consentement</strong> à tout moment, lorsque le traitement est fondé sur celui-ci</li>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> <strong>Droit de définir des directives</strong> relatives à la conservation, à l&apos;effacement et à la communication de vos données après votre décès</li>
         </ul>
-        <p>Pour exercer l&apos;un de ces droits, écrivez à <strong>Strawberryprod.contact@gmail.com</strong>, en précisant l&apos;objet de votre demande. Une réponse vous sera apportée sous un délai maximum d&apos;un (1) mois, conformément à l&apos;article 12.3 du RGPD.</p>
+        <p>Pour exercer l&apos;un de ces droits, écrivez à <strong>hamza@gostrawberryprod.com</strong>, en précisant l&apos;objet de votre demande. Une réponse vous sera apportée sous un délai maximum d&apos;un (1) mois, conformément à l&apos;article 12.3 du RGPD.</p>
       </>
     ),
   },

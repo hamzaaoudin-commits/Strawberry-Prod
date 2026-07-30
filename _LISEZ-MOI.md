@@ -1,33 +1,34 @@
-# Correctif — fichiers parasites à la racine
+# Strawberry — tour 5
 
-Le code livré était bon : il compile. Ce qui a cassé le build, c'est le dépôt.
+44 fichiers, un seul glisser-déposer. Déposez le contenu à la racine du dépôt.
 
-Lors du dernier dépôt sur GitHub, onze fichiers sont arrivés **à la racine**
-au lieu d'aller dans `components/strawberry/`, `lib/` et `app/`. Les bons
-fichiers sont bien à leur place — mais ces copies parasites subsistent, et
-TypeScript vérifie TOUS les fichiers du dépôt, même ceux que personne
-n'importe. `about-section.tsx` à la racine cherchait `./animated-orb` à côté
-de lui, ne le trouvait pas, et le build s'arrêtait là.
+Rappel important : dans la fenêtre d'upload GitHub, glissez les **dossiers**
+(`app`, `components`, `lib`, `public`), jamais leur contenu. C'est ce qui avait
+éparpillé onze fichiers à la racine la dernière fois.
 
-Un dossier `mnt/` s'est également créé, avec un arbre dupliqué à l'intérieur.
+## Une suppression manuelle, cette fois nécessaire
 
-## Ce que fait ce zip
+**Supprimez `public/sitemap.xml` depuis GitHub.** Tant qu'il existe, il masque
+`app/sitemap.ts` et les lectures publiées chaque jour n'entrent pas toutes
+seules dans le sitemap. Le fichier est à jour en attendant, mais il ne se
+mettra pas à jour tout seul.
 
-Il vide ces quatorze fichiers. Ils deviennent des coquilles de quinze lignes
-qui n'importent plus rien et ne peuvent plus casser quoi que ce soit.
+## Quatre valeurs à renseigner
 
-**Déposez le contenu à la racine du dépôt, comme d'habitude.**
+Dans `lib/config.ts` ou en variables d'environnement Vercel :
 
-Vérifié : le build passe sur l'état réel de votre dépôt, et la nouvelle page
-d'accueil s'affiche correctement.
+- `NEXT_PUBLIC_STRIPE_ARCH_3X_URL` — le lien de paiement en trois fois. Tant
+  qu'il est vide, la page de commande propose d'en parler par email plutôt que
+  d'annoncer un fractionnement qui n'existe pas.
+- `NEXT_PUBLIC_RADAR_TRIAL_DAYS` — mettre `7` UNIQUEMENT après avoir activé la
+  période d'essai côté Stripe. Sinon le site promet un essai qui n'arrive pas.
+- `NEXT_PUBLIC_BOOK_URL` et `NEXT_PUBLIC_STRIPE_BOUND_OBJECT_URL` — toujours
+  en attente depuis le tour précédent.
+- `HOUSES.nextNumber` est à 12 et `LIVE.radar.count` à 340 : ce sont des
+  valeurs affichées publiquement comme vérifiables. Corrigez-les.
 
-## Recommandé, mais optionnel
+## Le registre des Maisons
 
-Une fois le build vert, vous pouvez supprimer ces quatorze fichiers depuis
-GitHub, ainsi que le dossier `mnt/` en entier. Ils ne servent à rien.
-
-## Pour que ça ne recommence pas
-
-Ce genre d'aplatissement arrive avec le glisser-déposer de GitHub. Dans la
-fenêtre d'upload, glissez le **dossier** (`components`, `lib`, `app`) et non
-son contenu : c'est le dossier qui porte le chemin.
+`HOUSES.register` dans `lib/config.ts` ne contient que SILLAGE et VERSO,
+déclarées maisons de démonstration. Ajoutez vos vraies maisons uniquement avec
+leur accord écrit — la page le dit explicitement aux visiteurs.

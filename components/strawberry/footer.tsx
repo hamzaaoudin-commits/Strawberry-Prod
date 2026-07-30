@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
-const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/radar"]
+const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/lectures", "/maisons"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -19,12 +19,13 @@ const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
   { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly" } },
-  { href: "/sample-audit", label: { fr: "Les documents publiés", en: "The published documents" } },
+  { href: "/documents", label: { fr: "Les documents publiés", en: "The published documents" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
+  { href: "https://www.linkedin.com/in/strawberry-prod-84607340a/", external: true },
   { href: "https://instagram.com/strawberry_prods", external: true },
-  { href: "mailto:Strawberryprod.contact@gmail.com" },
+  { href: "mailto:hamza@gostrawberryprod.com" },
 ]
 
 const LEGAL: Record<string, { label: string; href: string }[]> = {
@@ -47,8 +48,8 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "About", "The Book", "The Method", "RADAR"],
-    reach: ["Let's Talk", "Instagram", "Email"],
+    explore: ["Home", "About", "The Book", "The Method", "The readings", "The Houses"],
+    reach: ["Let's Talk", "LinkedIn", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
   fr: {
@@ -57,8 +58,8 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "À propos", "Le Livre", "La Méthode", "RADAR"],
-    reach: ["Parlons-en", "Instagram", "Email"],
+    explore: ["Accueil", "À propos", "Le Livre", "La Méthode", "Les lectures", "Les Maisons"],
+    reach: ["Parlons-en", "LinkedIn", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },
 }

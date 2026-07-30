@@ -7,14 +7,20 @@ import { useT } from "@/lib/i18n"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
-import { STRIPE_LINKS } from "@/lib/config"
+
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
-const STRIPE_URL = STRIPE_LINKS.architecture
+/**
+ * Le paiement passe désormais par la page de commande : récapitulatif, suite
+ * annoncée sous 24 heures, garantie rappelée, choix une fois ou trois fois.
+ * Un lien Stripe nu au moment où la carte sort est l'endroit du parcours où le
+ * site se taisait.
+ */
+const ORDER_URL = "/commander"
 
 
 
@@ -674,7 +680,7 @@ export default function BrandNarrativeArchitecturePage() {
             {t.heroLead}
           </p>
           <Link
-            href={STRIPE_URL}
+            href={ORDER_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_hero" })}
             style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
@@ -863,7 +869,7 @@ export default function BrandNarrativeArchitecturePage() {
           </p>
 
           <div className="flex flex-wrap items-center gap-5">
-            <Link href="/sample-audit" className="btn-primary">
+            <Link href="/documents/sillage" className="btn-primary">
               {t.sampleCta}
             </Link>
             <span className="font-sans text-[13px] text-chalk-40">{t.sampleMeta}</span>
@@ -934,7 +940,7 @@ export default function BrandNarrativeArchitecturePage() {
             {t.ctaH2}
           </h2>
           <Link
-            href={STRIPE_URL}
+            href={ORDER_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_final_cta" })}
             style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}

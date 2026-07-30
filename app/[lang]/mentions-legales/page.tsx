@@ -26,7 +26,7 @@ const SECTIONS = [
           <strong>TVA</strong> : non applicable, article 293 B du Code général des impôts
         </p>
         <p style={{ marginTop: 12 }}>
-          <strong>Email</strong> : Strawberryprod.contact@gmail.com
+          <strong>Email</strong> : hamza@gostrawberryprod.com
         </p>
       </>
     ),

@@ -97,7 +97,7 @@ const nextConfig = {
     // une langue. 308 pour ne perdre aucun lien indexé ni aucun signet.
     const moved = [
       'about','brand-narrative-audit','brand-narrative-architecture','momentum','radar',
-      'sample-audit','exemple-audit','strawberry-method','thank-you','cgv','mentions-legales',
+      'strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]
 
@@ -121,12 +121,19 @@ const nextConfig = {
       { source: '/nova', destination: '/fr', permanent: true },
       { source: '/arsenal', destination: '/fr', permanent: true },
       { source: '/nocta', destination: '/fr/momentum', permanent: true },
-      { source: '/case-studies', destination: '/fr/sample-audit', permanent: true },
+      { source: '/case-studies', destination: '/fr/documents', permanent: true },
       { source: '/manifesto', destination: '/fr/radar', permanent: true },
 
       // L'audit à 490€ porte maintenant son nom dans l'URL.
       { source: '/audit', destination: '/fr/brand-narrative-audit', permanent: true },
       { source: '/:lang(fr|en|es)/audit', destination: '/:lang/brand-narrative-audit', permanent: true },
+
+      // Cinq URL disaient presque la même chose. Les deux documents publiés
+      // vivent maintenant sous /documents, et /audit sous son vrai nom.
+      { source: '/sample-audit', destination: '/fr/documents/sillage', permanent: true },
+      { source: '/exemple-audit', destination: '/fr/documents/verso', permanent: true },
+      { source: '/:lang(fr|en)/sample-audit', destination: '/:lang/documents/sillage', permanent: true },
+      { source: '/:lang(fr|en)/exemple-audit', destination: '/:lang/documents/verso', permanent: true },
 
       // L'espagnol a été retiré du site. Les URL déjà indexées basculent en
       // français plutôt que de disparaître en 404.

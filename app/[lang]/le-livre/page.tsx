@@ -230,7 +230,7 @@ export default async function BookPage({
               <Link href="/brand-narrative-architecture" className="btn-primary">
                 {t.bridgeCta}
               </Link>
-              <Link href="/sample-audit" className="btn-ghost">
+              <Link href="/documents/sillage" className="btn-ghost">
                 {t.demoCta}
               </Link>
             </div>

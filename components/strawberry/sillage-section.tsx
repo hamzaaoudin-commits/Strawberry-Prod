@@ -120,7 +120,7 @@ export function SillageSection({ lang }: { lang: Lang }) {
                 </div>
               </div>
 
-              <Link href="/sample-audit" className="btn-primary">
+              <Link href="/documents/sillage" className="btn-primary">
                 {t.cta}
               </Link>
             </div>

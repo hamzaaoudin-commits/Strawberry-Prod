@@ -71,7 +71,7 @@ export const CLIENT_SPACES: ClientSpace[] = [
         "IV · L'asymétrie du chantier",
       ],
       forbidden: ["simple", "visuel", "gain de temps", "plateforme", "digitaliser", "zéro litige", "nouvelle génération"],
-      href: "/sample-audit",
+      href: "/documents/sillage",
     },
     months: [
       {

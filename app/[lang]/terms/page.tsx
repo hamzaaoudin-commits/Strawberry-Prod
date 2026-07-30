@@ -91,7 +91,7 @@ const ARTICLES = [
           <p style={{ marginTop: 8 }}>The Client benefits from unlimited minor revisions and two (2) rounds of major revisions within thirty (30) days following delivery.</p>
           <p style={{ marginTop: 8 }}>If, after these two rounds, the Client considers that the Service does not substantially match their reasonable expectations, they may request a partial refund, capped at <strong>thirty percent (30%) of the total amount, i.e. €1,350</strong>. This request must be motivated in writing within forty-five (45) days following delivery.</p>
         </div>
-        <p style={{ marginTop: 16 }}>Any refund request must be sent by email to Strawberryprod.contact@gmail.com, with reference to the invoice concerned.</p>
+        <p style={{ marginTop: 16 }}>Any refund request must be sent by email to hamza@gostrawberryprod.com, with reference to the invoice concerned.</p>
       </>
     ),
   },
@@ -176,7 +176,7 @@ const ARTICLES = [
     title: "Claims and Mediation",
     body: (
       <>
-        <p>Any claim must be sent by email to <strong>Strawberryprod.contact@gmail.com</strong>. The Provider undertakes to respond within fifteen (15) business days.</p>
+        <p>Any claim must be sent by email to <strong>hamza@gostrawberryprod.com</strong>. The Provider undertakes to respond within fifteen (15) business days.</p>
         <p style={{ marginTop: 12 }}>In accordance with articles L.616-1 and R.616-1 of the French Consumer Code, the Client may, in case of unresolved dispute, refer free of charge to the consumer mediation service of the competent mediator.</p>
         <p style={{ marginTop: 12 }}>The Client may also use the European online dispute resolution platform (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: COLOR }}>ec.europa.eu/consumers/odr</a></p>
       </>

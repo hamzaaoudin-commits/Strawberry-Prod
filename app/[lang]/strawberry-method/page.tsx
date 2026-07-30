@@ -4,14 +4,20 @@ import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
-import { STRIPE_LINKS } from "@/lib/config"
+
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const COLOR = "#e63946"
 const GLOW = "rgba(230,57,70,0.35)"
 
-const STRIPE_URL = STRIPE_LINKS.architecture
+/**
+ * Le paiement passe désormais par la page de commande : récapitulatif, suite
+ * annoncée sous 24 heures, garantie rappelée, choix une fois ou trois fois.
+ * Un lien Stripe nu au moment où la carte sort est l'endroit du parcours où le
+ * site se taisait.
+ */
+const ORDER_URL = "/commander"
 
 const T = {
   en: {
@@ -491,7 +497,7 @@ export default function StrawberryMethodPage() {
             </div>
           </div>
 
-          <Link href={STRIPE_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}`, marginBottom: 24 }}>
+          <Link href={ORDER_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}`, marginBottom: 24 }}>
             {t.cta}
           </Link>
 

@@ -12,5 +12,5 @@ import { redirect } from "next/navigation"
  * file removal, and so indexed links resolve instead of 404-ing.
  */
 export default function WithdrawnCaseStudiesPage() {
-  redirect("/sample-audit")
+  redirect("/documents/sillage")
 }

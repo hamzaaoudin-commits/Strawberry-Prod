@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT } from "@/lib/i18n"
-import { STRIPE_LINKS } from "@/lib/config"
+import { STRIPE_LINKS, RADAR_TRIAL_DAYS } from "@/lib/config"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_RADAR } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
@@ -20,6 +20,7 @@ const T = {
     h1b: "before the market does.",
     lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading we would give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
     subscribe: "Subscribe",
+    trial: (d: number) => `${d} days free. Cancel in one click.`,
     access: "Subscriber access",
     read: [
       { label: "The signal", body: "What the brand genuinely emits — the position that actually lands, isolated from everything around it." },
@@ -85,6 +86,7 @@ const T = {
     h1b: "avant le marché.",
     lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que nous lui donnerions. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
     subscribe: "S'abonner",
+    trial: (d: number) => `${d} jours offerts. Résiliable en un clic.`,
     access: "Accès abonné",
     read: [
       { label: "Le signal", body: "Ce que la marque émet vraiment — la position qui porte, isolée de tout le reste." },
@@ -218,6 +220,9 @@ export default function RadarPage() {
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.radar} className="btn-primary" rel="noopener">{t.subscribe}</a>
+          {RADAR_TRIAL_DAYS > 0 && (
+            <p className="mt-3 font-sans text-[13px] text-chalk-40">{t.trial(RADAR_TRIAL_DAYS)}</p>
+          )}
             <Link href="/radar/acces" className="btn-ghost">{t.access}</Link>
           </div>
 
@@ -299,6 +304,9 @@ export default function RadarPage() {
           <h3 className="mb-3 mt-5 font-serif text-[1.8rem] font-bold">{t.subTitle}</h3>
           <p className="mb-7 font-sans text-[15px] leading-relaxed text-chalk-65">{t.subBody}</p>
           <a href={STRIPE_LINKS.radar} className="btn-primary" rel="noopener">{t.subscribe}</a>
+          {RADAR_TRIAL_DAYS > 0 && (
+            <p className="mt-3 font-sans text-[13px] text-chalk-40">{t.trial(RADAR_TRIAL_DAYS)}</p>
+          )}
         </div>
       </section>
 

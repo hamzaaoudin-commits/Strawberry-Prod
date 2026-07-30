@@ -17,7 +17,7 @@ const SECTIONS = [
           Sole proprietor (French micro-entreprise) — Strawberry Production<br />
           8 place Eugène Thomas, 93160 Noisy-le-Grand, France<br />
           SIRET: 105 253 314 00014<br />
-          Email: <strong>Strawberryprod.contact@gmail.com</strong>
+          Email: <strong>hamza@gostrawberryprod.com</strong>
         </p>
         <p style={{ marginTop: 12 }}>For any question regarding the processing of your personal data, you may contact the data controller by email at the address above.</p>
       </>
@@ -127,7 +127,7 @@ const SECTIONS = [
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> <strong>Right to withdraw your consent</strong> at any time, when processing is based on it</li>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> <strong>Right to define directives</strong> relating to the retention, deletion and communication of your data after your death</li>
         </ul>
-        <p>To exercise any of these rights, write to <strong>Strawberryprod.contact@gmail.com</strong>, specifying the purpose of your request. A response will be provided within a maximum of one (1) month, in accordance with article 12.3 of the GDPR.</p>
+        <p>To exercise any of these rights, write to <strong>hamza@gostrawberryprod.com</strong>, specifying the purpose of your request. A response will be provided within a maximum of one (1) month, in accordance with article 12.3 of the GDPR.</p>
       </>
     ),
   },
