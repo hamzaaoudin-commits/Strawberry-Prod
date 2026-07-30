@@ -1,28 +1,15 @@
-import { NavBar } from "@/components/strawberry/navbar"
-import { LadderSection } from "@/components/strawberry/ladder-section"
-import { FaqSection } from "@/components/strawberry/faq-section"
-import { FAQ_AUDIT } from "@/lib/faqs"
-import { CTABanner } from "@/components/strawberry/cta-banner"
-import { Footer } from "@/components/strawberry/footer"
-
 /**
- * Les quatre façons d'entrer.
+ * Copie parasite, neutralisée.
  *
- * Cette page existe parce que l'échelle ne peut pas vivre sur la home : quatre
- * prix affichés ensemble transforment une décision en arbitrage, et le plus
- * petit d'entre eux devient l'ancre. Ici, en revanche, le visiteur est venu
- * comparer — c'est exactement ce qu'il cherche, et le sélecteur de situation
- * fait son travail.
+ * Ce fichier est arrivé à la RACINE du dépôt lors d'un dépôt GitHub où les
+ * chemins ont été aplatis : l'original vit dans app/[lang]/offres/, et c'est
+ * lui qui est utilisé par le site.
+ *
+ * Laissée telle quelle, cette copie faisait échouer le build : TypeScript
+ * vérifie tous les fichiers du dépôt, y compris ceux qui ne sont importés par
+ * personne, et ses imports relatifs ne résolvaient plus depuis la racine.
+ *
+ * Vidée plutôt que supprimée, un zip ne sachant pas retirer un fichier.
+ * Suppression sans risque — et recommandée.
  */
-export default function OffersPage() {
-  return (
-    <main className="min-h-screen">
-      <NavBar />
-      <div className="pt-[72px]" />
-      <LadderSection />
-      <FaqSection faqs={FAQ_AUDIT} />
-      <CTABanner />
-      <Footer />
-    </main>
-  )
-}
+export {}
