@@ -4,6 +4,7 @@ import { Footer } from "@/components/strawberry/footer"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
+import { BOOK_URL } from "@/lib/config"
 
 /**
  * La page du livre.
@@ -22,7 +23,9 @@ import { isLang, type Lang } from "@/lib/lang"
  */
 
 /** Remplacer par le lien de vente ou de téléchargement lorsqu'il existera. */
-const BUY_URL = "/#contact"
+
+
+const BUY_URL = BOOK_URL
 
 const T = {
   fr: {

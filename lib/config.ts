@@ -43,3 +43,47 @@ export const STRIPE_LINKS = {
 } as const
 
 export const SITE_URL = env(process.env.NEXT_PUBLIC_SITE_URL, "https://www.gostrawberryprod.com")
+
+/* ---------------------------------------------------------------------------
+ * VALEURS À TENIR À JOUR À LA MAIN
+ *
+ * Tout ce qui suit s'affiche sur la home. Une rareté qui ne bouge jamais et un
+ * compteur faux se retournent contre celui qui les publie : ces constantes
+ * n'ont de valeur persuasive que si elles sont vraies. Les changer prend dix
+ * secondes, et c'est le seul entretien que la page demande.
+ * ------------------------------------------------------------------------- */
+
+/**
+ * La rareté, datée et décomptée. « Quatre commandes par trimestre » est une
+ * affirmation ; « deux places, fermeture le 1er octobre » est une horloge.
+ */
+export const SCARCITY = {
+  /** Le trimestre en cours, tel qu'affiché. */
+  quarter: { fr: "T3 2026", en: "Q3 2026" },
+  /** Places restantes sur les quatre du trimestre. Mettre 0 quand c'est complet. */
+  remaining: 2,
+  /** Ouverture du trimestre suivant. */
+  nextOpening: { fr: "1er octobre", en: "October 1" },
+} as const
+
+/**
+ * Nombre de marques disséquées dans RADAR depuis le lancement.
+ * Un chiffre est une preuve — à condition d'être exact. À réajuster chaque mois.
+ */
+export const RADAR_COUNT = 340
+
+/**
+ * Lien d'achat ou de téléchargement du livre.
+ * Tant qu'il pointe sur le formulaire de contact, la meilleure preuve
+ * d'autorité du site est un cul-de-sac. Une seule ligne à changer.
+ */
+export const BOOK_URL = env(process.env.NEXT_PUBLIC_BOOK_URL, "/#contact")
+
+/**
+ * L'édition reliée, en supplément de la commande.
+ * Elle était offerte sur demande : de l'exclusivité donnée gratuitement.
+ * Fixer le prix ici — il s'affiche dans le bloc d'investissement.
+ */
+export const BOUND_EDITION = {
+  price: { fr: "+ 500 €", en: "+ €500" },
+} as const

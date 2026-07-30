@@ -3,8 +3,9 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
+import { RADAR_COUNT } from "@/lib/config"
 
-const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/radar"]
+const EXPLORE_HREFS = ["/", "/offres", "/about", "/le-livre", "/strawberry-method"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -13,7 +14,15 @@ const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/radar
  * eu la même longueur, tous les liens français ont glissé d'un cran.
  */
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
-  { href: "/radar", label: { fr: "RADAR — 15€/mois", en: "RADAR — 15€/mo" } },
+  // RADAR porte son compteur : un chiffre exact est une preuve, et c'est la
+  // seule que ce lien discret puisse transporter.
+  {
+    href: "/radar",
+    label: {
+      fr: `RADAR — ${RADAR_COUNT} marques lues`,
+      en: `RADAR — ${RADAR_COUNT} brands read`,
+    },
+  },
   { href: "/radar/acces", label: { fr: "Accès abonné", en: "Subscriber access" } },
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
@@ -46,7 +55,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "About", "The Book", "The Method", "RADAR"],
+    explore: ["Home", "The offers", "About", "The Book", "The Method"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -56,7 +65,7 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "À propos", "Le Livre", "La Méthode", "RADAR"],
+    explore: ["Accueil", "Les offres", "À propos", "Le Livre", "La Méthode"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },
