@@ -4,7 +4,6 @@ import { Footer } from "@/components/strawberry/footer"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
-import { BOOK_URL } from "@/lib/config"
 
 /**
  * La page du livre.
@@ -22,9 +21,12 @@ import { BOOK_URL } from "@/lib/config"
  * changer, plus bas.
  */
 
-/** Remplacer par le lien de vente ou de téléchargement lorsqu'il existera. */
+import { BOOK_URL } from "@/lib/config"
 
-
+/**
+ * Le lien d'achat vit dans lib/config.ts, réglable par variable d'environnement
+ * NEXT_PUBLIC_BOOK_URL sans toucher au code.
+ */
 const BUY_URL = BOOK_URL
 
 const T = {

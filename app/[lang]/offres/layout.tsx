@@ -4,14 +4,14 @@ import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
   fr: {
-    title: "Les offres — quatre façons de travailler avec le studio",
+    title: 'Les offres — Strawberry Production',
     description:
-      "De RADAR à 15€ par mois à la BRAND NARRATIVE ARCHITECTURE à 4 500€ : les quatre façons d'entrer, et celle qui correspond à où vous en êtes.",
+      "Quatre façons de travailler avec le studio : RADAR, BRAND NARRATIVE AUDIT, BRAND NARRATIVE ARCHITECTURE et MOMENTUM. Vous pouvez entrer par n'importe laquelle.",
   },
   en: {
-    title: "The offers — four ways to work with the studio",
+    title: 'The offers — Strawberry Production',
     description:
-      "From RADAR at 15€ a month to the 4,500€ BRAND NARRATIVE ARCHITECTURE: four ways in, and the one that matches where you are.",
+      'Four ways to work with the studio: RADAR, BRAND NARRATIVE AUDIT, BRAND NARRATIVE ARCHITECTURE and MOMENTUM. You can enter at any one of them.',
   },
 }
 
@@ -23,7 +23,6 @@ export async function generateMetadata({
   const { lang: raw } = await params
   const lang: Lang = isLang(raw) ? raw : 'fr'
   const c = COPY[lang]
-
   return {
     title: c.title,
     description: c.description,

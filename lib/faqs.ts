@@ -8,7 +8,7 @@ import type { FaqSet } from "@/components/strawberry/faq-section"
 
 export const FAQ_AUDIT: FaqSet = {
   en: [
-    { q: "Is this for me?", a: "If you're a founder, creator, or consultant who can't clearly articulate what makes you different — yes. If you're looking for someone to \"do content\" — no." },
+    { q: "Is this for me?", a: "This is written for one person: the founder of a house of one to twenty people, three to ten years in, whose work is genuinely better than the market's and who is nevertheless read as interchangeable with it. You are shortlisted next to names that do a rougher version of what you do, for less, and nothing in how you are perceived tells anyone why that comparison is wrong. If instead you are looking for someone to produce content, run your channels, or redo a logo — no." },
     { q: "Why 4,500€?", a: "It's the price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative belongs to you and works for you indefinitely." },
     { q: "How long does it take?", a: "3 to 4 weeks from onboarding to delivery. The document is ready to use the Monday after it lands." },
     { q: "Why only 4 commissions per quarter?", a: "Not a sales argument — a real constraint. Every house is built from scratch. Beyond four, quality drops. We would rather decline than deliver ordinary work." },
@@ -20,7 +20,7 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "What happens after delivery?", a: "One month later we meet for a ninety-minute walkthrough. If you want the studio to keep executing after that, MOMENTUM exists — but it's optional, never bundled." },
   ],
   fr: [
-    { q: "Est-ce que c'est pour moi ?", a: "Si vous êtes fondateur, créateur ou consultant et que vous n'arrivez pas à articuler clairement ce qui vous rend différent — oui. Si vous cherchez quelqu'un pour « faire du contenu » — non." },
+    { q: "Est-ce que c'est pour moi ?", a: "Ceci est écrit pour une personne : le fondateur d'une maison de une à vingt personnes, trois à dix ans d'existence, dont le travail est réellement meilleur que celui du marché et qui est pourtant lu comme interchangeable avec lui. On vous met en concurrence avec des noms qui font une version plus grossière de ce que vous faites, pour moins cher, et rien dans la façon dont vous êtes perçu ne dit pourquoi cette comparaison est fausse. Si en revanche vous cherchez quelqu'un pour produire du contenu, tenir vos réseaux ou refaire un logo — non." },
     { q: "Pourquoi 4 500€ ?", a: "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment." },
     { q: "Combien de temps ça prend ?", a: "3 à 4 semaines de l'onboarding à la livraison. Le document est exploitable dès le lundi qui suit." },
     { q: "Pourquoi seulement 4 commandes par trimestre ?", a: "Pas un argument commercial — une vraie contrainte. Chaque maison est bâtie de zéro. Au-delà de quatre, la qualité chute. Nous préférons refuser que livrer du travail ordinaire." },

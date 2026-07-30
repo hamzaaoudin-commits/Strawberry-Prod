@@ -5,8 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Commission the Work \u2192", cta2: "See the other ways in" },
-  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Commander le travail \u2192", cta2: "Voir les autres façons d'entrer" },
+  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Commission the Work", cta2: "See the other offers" },
+  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Commander le travail", cta2: "Voir les autres offres" },
 }
 
 export function CTABanner() {

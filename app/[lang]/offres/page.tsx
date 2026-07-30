@@ -1,27 +1,23 @@
 import { NavBar } from "@/components/strawberry/navbar"
-import { LadderSection } from "@/components/strawberry/ladder-section"
-import { FaqSection } from "@/components/strawberry/faq-section"
-import { FAQ_AUDIT } from "@/lib/faqs"
-import { CTABanner } from "@/components/strawberry/cta-banner"
 import { Footer } from "@/components/strawberry/footer"
+import { LadderSection } from "@/components/strawberry/ladder-section"
+import { ContactSection } from "@/components/strawberry/contact-section"
 
 /**
- * Les quatre façons d'entrer.
+ * La page des offres.
  *
- * Cette page existe parce que l'échelle ne peut pas vivre sur la home : quatre
- * prix affichés ensemble transforment une décision en arbitrage, et le plus
- * petit d'entre eux devient l'ancre. Ici, en revanche, le visiteur est venu
- * comparer — c'est exactement ce qu'il cherche, et le sélecteur de situation
- * fait son travail.
+ * L'échelle vivait sur la page d'accueil, où elle mettait RADAR à 15€ et la
+ * commande à 4 500€ sur le même plan visuel : le visiteur arbitrait entre
+ * quatre barreaux au lieu de comprendre un seul travail. Elle vit désormais
+ * ici, pour ceux qui viennent précisément comparer.
  */
-export default function OffersPage() {
+export default function OffresPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-ink">
       <NavBar />
-      <div className="pt-[72px]" />
+      <div className="pt-24" />
       <LadderSection />
-      <FaqSection faqs={FAQ_AUDIT} />
-      <CTABanner />
+      <ContactSection />
       <Footer />
     </main>
   )

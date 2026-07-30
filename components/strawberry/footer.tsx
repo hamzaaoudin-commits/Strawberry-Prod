@@ -3,9 +3,8 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
-import { RADAR_COUNT } from "@/lib/config"
 
-const EXPLORE_HREFS = ["/", "/offres", "/about", "/le-livre", "/strawberry-method"]
+const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/radar"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -14,16 +13,9 @@ const EXPLORE_HREFS = ["/", "/offres", "/about", "/le-livre", "/strawberry-metho
  * eu la même longueur, tous les liens français ont glissé d'un cran.
  */
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
-  // RADAR porte son compteur : un chiffre exact est une preuve, et c'est la
-  // seule que ce lien discret puisse transporter.
-  {
-    href: "/radar",
-    label: {
-      fr: `RADAR — ${RADAR_COUNT} marques lues`,
-      en: `RADAR — ${RADAR_COUNT} brands read`,
-    },
-  },
-  { href: "/radar/acces", label: { fr: "Accès abonné", en: "Subscriber access" } },
+  { href: "/offres", label: { fr: "Toutes les offres", en: "All the offers" } },
+  { href: "/radar", label: { fr: "RADAR", en: "RADAR" } },
+  { href: "/radar/acces", label: { fr: "Accès abonné RADAR", en: "RADAR subscriber access" } },
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
   { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly" } },
@@ -55,7 +47,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "The offers", "About", "The Book", "The Method"],
+    explore: ["Home", "About", "The Book", "The Method", "RADAR"],
     reach: ["Let's Talk", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -65,7 +57,7 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "Les offres", "À propos", "Le Livre", "La Méthode"],
+    explore: ["Accueil", "À propos", "Le Livre", "La Méthode", "RADAR"],
     reach: ["Parlons-en", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },

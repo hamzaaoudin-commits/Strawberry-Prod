@@ -1,5 +1,6 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { pick } from "@/lib/t"
+import { BOOK_URL } from "@/lib/config"
 import type { Lang } from "@/lib/lang"
 
 /**
@@ -20,6 +21,7 @@ const T = {
       "In a market where everyone has access to the same machine, the best product no longer wins. The clearest doctrine does.",
     body: "This studio does not improvise its doctrine commission by commission. It is written down, argued across 158 pages, and published in French and in English — including the five-stage method, demonstrated end to end on three houses.",
     close: "The machine made everyone identical. Start underground.",
+    buy: "Get the book →",
     cta: "Read about the book →",
     parts: [
       { t: "The Doctrine", d: "Why perception precedes the product" },
@@ -37,6 +39,7 @@ const T = {
       "Sur un marché où tout le monde a accès à la même machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
     body: "Ce studio n'improvise pas sa doctrine commande après commande. Elle est écrite, argumentée sur 158 pages, et publiée en français et en anglais — méthode en cinq étapes comprise, démontrée de bout en bout sur trois maisons.",
     close: "La machine a rendu tout le monde identique. Commencez sous terre.",
+    buy: "Se procurer le livre →",
     cta: "En savoir plus sur le livre →",
     parts: [
       { t: "La Doctrine", d: "Pourquoi la perception précède le produit" },
@@ -108,9 +111,14 @@ export function BookSection({ lang }: { lang: Lang }) {
               {t.author}
             </div>
 
-            <Link href="/le-livre" className="btn-quiet">
-              {t.cta}
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <a href={BOOK_URL} className="btn-primary" rel="noopener">
+                {t.buy}
+              </a>
+              <Link href="/le-livre" className="btn-quiet">
+                {t.cta}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

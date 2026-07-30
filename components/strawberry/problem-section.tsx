@@ -1,111 +1,100 @@
-import { GlassCard } from "./glass-card"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
+
+/**
+ * Le problème.
+ *
+ * L'ancienne version disait « on ne vous ignore pas » — un problème d'attention,
+ * flou et confortable. Le problème dur est un problème de perception : le
+ * marché voit votre travail et n'y perçoit aucune différence. Le prix n'est
+ * qu'un symptôme, il n'est pas le sujet.
+ *
+ * L'agitation manquait : rien ne chiffrait ce que l'indifférenciation coûte
+ * réellement sur une année.
+ */
 
 const T = {
   en: {
     kicker: "THE PROBLEM",
-    h2: "You're not being ignored because your work isn't good enough.",
-    p1a: "You're being ignored because you're ",
-    p1strong: "indistinguishable",
-    p1b: ". In a world where everyone posts, everyone creates content, and everyone claims expertise — the winners aren't the most talented.",
-    p2: "They're the ones who control perception.",
-    p3: "This is not a communication problem. It is a perception problem: the place you occupy in people's minds is not yours yet — someone else is holding it, or no one is holding it at all.",
-    agitLabel: "What it costs, per year",
-    agit: "Count it yourself. Of the serious conversations you had this year, how many ended with \u00ab we're going to compare \u00bb? How many discounts did you concede to avoid losing a deal you deserved? How long has it been since you raised your rates, for lack of any argument beyond your own conviction? Add twelve months of that together. What being indistinguishable costs is almost always more than what fixing it costs — and the meter resets in January.",
-    needs: [
-      "A clear identity people recognize instantly",
-      "A narrative universe people want to be part of",
-      "A revenue system that converts attention into income",
+    h2: "Your market can see your work. It just cannot see the difference.",
+    p1a: "You are not losing to better work. You are losing to work that is ",
+    p1strong: "indistinguishable from yours",
+    p1b: " in the four seconds a prospect spends deciding whether you are worth a call. They are not judging your craft. They are judging the sentence that arrives before your craft — and that sentence sounds like everyone else's.",
+    p2: "Nothing about your delivery is broken. The perception of it is.",
+    agitationKicker: "What it costs, over a year",
+    agitationLead: "Indifferentiation never sends an invoice. It bills you in three places at once, and none of them appear in your accounts.",
+    agitation: [
+      { t: "The deals that never became conversations", b: "Prospects who saw you, understood nothing that separated you, and went to the name they already knew. You never learn about these. They do not show up as a loss because they never showed up at all." },
+      { t: "The discount you grant without being asked", b: "When nothing distinguishes two offers, price becomes the only readable criterion. You start pre-discounting to stay in the running — five, ten, fifteen percent — on every single deal of the year." },
+      { t: "The rate you have not raised in three years", b: "Raising a price requires a reason the market can perceive. Without a position, you have no argument to give. So you hold the same rate while your costs rise, and you call it commercial prudence." },
     ],
-    quote1: "\"Most brands have fragments. ",
-    quote2: "We build empires.\"",
+    close: "None of the three is a sales problem. All three are the same perception problem, paid three times.",
   },
   fr: {
     kicker: "LE PROBLÈME",
-    h2: "On ne vous ignore pas parce que votre travail n'est pas assez bon.",
-    p1a: "On vous ignore parce que vous êtes ",
-    p1strong: "indifférenciable",
-    p1b: ". Dans un monde où tout le monde poste, produit du contenu et se dit expert — les gagnants ne sont pas les plus talentueux.",
-    p2: "Ce sont ceux qui maîtrisent la perception.",
-    p3: "Ce n'est pas un problème de communication. C'est un problème de perception : la place que vous occupez dans la tête des gens ne vous appartient pas encore — un autre la tient, ou personne ne la tient.",
-    agitLabel: "Ce que ça coûte, par an",
-    agit: "Comptez vous-même. Sur les conversations sérieuses que vous avez eues cette année, combien se sont terminées par « on va comparer » ? Combien de remises consenties pour ne pas perdre un dossier que vous méritiez ? Depuis combien de temps n'avez-vous pas augmenté vos tarifs, faute d'un argument autre que votre propre conviction ? Additionnez douze mois de ça. Ce que l'indifférenciation vous coûte dépasse presque toujours ce que coûte de la régler — et le compteur repart à zéro en janvier.",
-    needs: [
-      "Une identité claire qu'on reconnaît instantanément",
-      "Un univers narratif dont on veut faire partie",
-      "Un système de revenus qui convertit l'attention en chiffre d'affaires",
+    h2: "Votre marché voit votre travail. Il ne voit simplement pas la différence.",
+    p1a: "Vous ne perdez pas face à un meilleur travail. Vous perdez face à un travail ",
+    p1strong: "indiscernable du vôtre",
+    p1b: " dans les quatre secondes qu'un prospect consacre à décider si vous valez un rendez-vous. Ce n'est pas votre métier qu'il juge. C'est la phrase qui arrive avant votre métier — et cette phrase sonne comme celle de tous les autres.",
+    p2: "Rien n'est cassé dans ce que vous livrez. C'est la perception qui l'est.",
+    agitationKicker: "Ce que ça coûte, sur une année",
+    agitationLead: "L'indifférenciation n'envoie jamais de facture. Elle se prélève à trois endroits à la fois, et aucun n'apparaît dans votre comptabilité.",
+    agitation: [
+      { t: "Les affaires qui ne sont jamais devenues des conversations", b: "Des prospects vous ont vu, n'ont rien compris de ce qui vous séparait des autres, et sont allés vers le nom qu'ils connaissaient déjà. Vous ne les connaîtrez jamais. Ils n'apparaissent pas comme une perte, puisqu'ils ne se sont jamais présentés." },
+      { t: "La remise que vous accordez sans qu'on vous la demande", b: "Quand rien ne distingue deux offres, le prix devient le seul critère lisible. Vous vous mettez à décoter par avance pour rester dans la course — cinq, dix, quinze pour cent — sur chaque affaire de l'année." },
+      { t: "Le tarif que vous n'avez pas augmenté depuis trois ans", b: "Augmenter un prix demande une raison que le marché puisse percevoir. Sans position, vous n'avez aucun argument à donner. Alors vous tenez le même tarif pendant que vos coûts montent, et vous appelez ça de la prudence commerciale." },
     ],
-    quote1: "« La plupart des marques ont des fragments. ",
-    quote2: "Nous, on bâtit des empires. »",
+    close: "Aucun des trois n'est un problème commercial. Les trois sont le même problème de perception, payé trois fois.",
   },
 }
 
 export function ProblemSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
-  const NEED_ICONS = [
-    { icon: "◎", c: "#e63946" },
-    { icon: "◉", c: "#ff1a1a" },
-    { icon: "◈", c: "#dc2626" },
-  ]
-  const needs = NEED_ICONS.map((n, i) => ({ ...n, label: t.needs[i] }))
 
   return (
-    <section className="overflow-hidden bg-ink-soft px-gutter py-28">
-      <div
-        className={[
-          "shell transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
-        ].join(" ")}
-      >
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div>
-            <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
-              {t.kicker}
-            </div>
-            <h2 className="mb-7 font-serif text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
-              {t.h2}
-            </h2>
-            <p className="font-sans text-[17px] leading-[1.8] text-white/50">
-              {t.p1a}
-              <strong className="text-chalk-90">{t.p1strong}</strong>
-              {t.p1b}
-            </p>
-            <p className="mt-5 font-sans text-[17px] leading-[1.8] text-white/50">{t.p2}</p>
-
-            {/* Le problème, nommé pour ce qu'il est : ni la qualité du travail,
-                ni la régularité des publications. La perception. */}
-            <p className="mt-5 font-sans text-[17px] leading-[1.8] text-chalk-90">{t.p3}</p>
-
-            {/* L'agitation. Le constat seul ne fait pas agir : il faut que le
-                lecteur pose lui-même l'addition. Aucun chiffre n'est avancé à sa
-                place — ce sont ses chiffres, et ils sont plus convaincants que
-                n'importe quelle statistique de marché. */}
-            <div className="mt-10 border border-brand-hair bg-brand/[0.06] px-6 py-6">
-              <div className="mb-3 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-brand">
-                {t.agitLabel}
-              </div>
-              <p className="m-0 font-sans text-[15.5px] leading-[1.75] text-chalk-75">{t.agit}</p>
-            </div>
+    <section className="section overflow-hidden bg-ink-soft">
+      <div className="shell">
+        <div className="mx-auto max-w-[820px]">
+          <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
+            {t.kicker}
           </div>
+          <h2 className="mb-8 font-serif text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
+            {t.h2}
+          </h2>
+          <p className="font-sans text-[17px] leading-[1.8] text-white/55">
+            {t.p1a}
+            <strong className="text-chalk-90">{t.p1strong}</strong>
+            {t.p1b}
+          </p>
+          <p className="mt-6 font-serif text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug text-white/90">
+            {t.p2}
+          </p>
+        </div>
 
-          <div className="flex flex-col gap-5">
-            {needs.map((item) => (
-              <GlassCard key={item.label} className="flex items-center gap-5 px-7 py-6">
-                <span className="shrink-0 text-[28px]" style={{ color: item.c }} aria-hidden>
-                  {item.icon}
-                </span>
-                <p className="m-0 font-sans text-base leading-snug text-chalk-75">{item.label}</p>
-              </GlassCard>
+        {/* L'agitation : trois prélèvements, nommés et datés. */}
+        <div className="mx-auto mt-20 max-w-[900px] border border-hair-strong bg-white/[0.02] p-7 md:p-11">
+          <div className="mb-4 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
+            {t.agitationKicker}
+          </div>
+          <p className="mb-9 max-w-[640px] font-sans text-[15.5px] leading-relaxed text-chalk-65">
+            {t.agitationLead}
+          </p>
+
+          <ol className="list-none border-t border-hair p-0">
+            {t.agitation.map((a, i) => (
+              <li key={a.t} className="border-b border-white/[0.06] py-6">
+                <div className="mb-2 flex items-baseline gap-4">
+                  <span className="font-serif text-[13px] text-brand">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="m-0 font-serif text-[1.15rem] font-bold leading-snug text-white">{a.t}</h3>
+                </div>
+                <p className="m-0 pl-[34px] font-sans text-[15px] leading-relaxed text-chalk-55">{a.b}</p>
+              </li>
             ))}
+          </ol>
 
-            <div className="mt-2 border-l-[3px] border-white/10 px-7 py-5">
-              <p className="m-0 font-serif text-lg italic leading-snug text-white/35">
-                {t.quote1}
-                <br />
-                {t.quote2}
-              </p>
-            </div>
-          </div>
+          <p className="mt-8 font-serif text-[clamp(1.05rem,2vw,1.35rem)] italic leading-snug text-chalk-90">
+            {t.close}
+          </p>
         </div>
       </div>
     </section>

@@ -4,20 +4,6 @@ import { useState, useEffect } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 
-/**
- * La navigation.
- *
- * Le menu déroulant des offres a disparu : il posait quatre prix côte à côte
- * dès la première seconde, avant même que le lecteur sache ce que le studio
- * fait. Il est remplacé par un lien unique vers /offres, au même poids visuel
- * que les autres.
- *
- * Le bouton de droite ne dit plus « Parlons-en » — un geste tiède, qui menait à
- * un formulaire. Il porte le même geste que le reste de la page : commander le
- * travail. Un site à une seule action nomme cette action partout de la même
- * façon.
- */
-
 const T = {
   fr: {
     offers: "Offres",
@@ -25,6 +11,13 @@ const T = {
     method: "La Méthode",
     cta: "Commander le travail",
     menu: "Menu",
+    offersMenu: [
+      { label: "Toutes les offres", href: "/offres" },
+      { label: "RADAR — 15€/mois", href: "/radar" },
+      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-architecture" },
+      { label: "MOMENTUM — au mois", href: "/momentum" },
+    ],
   },
   en: {
     offers: "Offers",
@@ -32,6 +25,13 @@ const T = {
     method: "The Method",
     cta: "Commission the Work",
     menu: "Menu",
+    offersMenu: [
+      { label: "All the offers", href: "/offres" },
+      { label: "RADAR — 15€/mo", href: "/radar" },
+      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-architecture" },
+      { label: "MOMENTUM — monthly", href: "/momentum" },
+    ],
   },
 }
 
@@ -39,6 +39,7 @@ export function NavBar() {
   const t = useT(T)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [offersOpen, setOffersOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -49,18 +50,20 @@ export function NavBar() {
 
   // Close the mobile drawer on Escape — keyboard users shouldn't get trapped.
   useEffect(() => {
-    if (!mobileOpen) return
+    if (!mobileOpen && !offersOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false)
+      if (e.key === "Escape") {
+        setMobileOpen(false)
+        setOffersOpen(false)
+      }
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
-  }, [mobileOpen])
+  }, [mobileOpen, offersOpen])
 
   const NAV_LINKS = [
-    { label: t.offers, href: "/offres" },
-    { label: t.method, href: "/strawberry-method" },
     { label: t.about, href: "/about" },
+    { label: t.method, href: "/strawberry-method" },
   ]
 
   return (
@@ -86,11 +89,47 @@ export function NavBar() {
         </button>
 
         <div className="hidden items-center gap-7 md:flex">
+          <div
+            className="relative"
+            onMouseEnter={() => setOffersOpen(true)}
+            onMouseLeave={() => setOffersOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setOffersOpen((v) => !v)}
+              aria-expanded={offersOpen}
+              className={[
+                "flex items-center gap-1.5 font-sans text-sm tracking-[0.04em] transition-colors",
+                offersOpen ? "text-white" : "text-chalk-65 hover:text-white",
+              ].join(" ")}
+            >
+              {t.offers}
+              <span className={`text-[9px] transition-transform ${offersOpen ? "rotate-180" : ""}`}>▼</span>
+            </button>
+
+            {offersOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4">
+                <div className="min-w-[330px] rounded-xl border border-white/10 bg-[#0e0e0e]/95 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                  {t.offersMenu.map((o) => (
+                    <Link
+                      key={o.href}
+                      href={o.href}
+                      onClick={() => setOffersOpen(false)}
+                      className="block rounded-lg px-3.5 py-2.5 font-sans text-[13px] text-chalk-75 no-underline transition-colors hover:bg-brand/10 hover:text-white"
+                    >
+                      {o.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="font-sans text-sm tracking-[0.04em] text-chalk-55 no-underline transition-colors hover:text-white"
+              className="font-sans text-sm tracking-[0.04em] text-chalk-65 no-underline transition-colors hover:text-white"
             >
               {l.label}
             </Link>
@@ -109,6 +148,18 @@ export function NavBar() {
       {mobileOpen && (
         <div className="absolute inset-x-0 top-[72px] max-h-[80vh] overflow-y-auto border-b border-hair bg-ink/95 px-6 py-6 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4">
+            <div className="kicker">{t.offers}</div>
+            {t.offersMenu.map((o) => (
+              <Link
+                key={o.href}
+                href={o.href}
+                onClick={() => setMobileOpen(false)}
+                className="pl-3 font-sans text-[14.5px] text-chalk-75 no-underline"
+              >
+                {o.label}
+              </Link>
+            ))}
+            <div className="my-1.5 h-px bg-white/10" />
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.href}
@@ -122,7 +173,7 @@ export function NavBar() {
             <Link
               href="/brand-narrative-architecture"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full px-6 py-3 text-center font-sans text-sm font-semibold text-white no-underline"
+              className="rounded-full px-6 py-3 text-center font-sans text-sm font-semibold text-white no-underline"
               style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
             >
               {t.cta}

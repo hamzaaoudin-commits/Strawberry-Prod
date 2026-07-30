@@ -44,46 +44,47 @@ export const STRIPE_LINKS = {
 
 export const SITE_URL = env(process.env.NEXT_PUBLIC_SITE_URL, "https://www.gostrawberryprod.com")
 
-/* ---------------------------------------------------------------------------
- * VALEURS À TENIR À JOUR À LA MAIN
- *
- * Tout ce qui suit s'affiche sur la home. Une rareté qui ne bouge jamais et un
- * compteur faux se retournent contre celui qui les publie : ces constantes
- * n'ont de valeur persuasive que si elles sont vraies. Les changer prend dix
- * secondes, et c'est le seul entretien que la page demande.
- * ------------------------------------------------------------------------- */
-
 /**
- * La rareté, datée et décomptée. « Quatre commandes par trimestre » est une
- * affirmation ; « deux places, fermeture le 1er octobre » est une horloge.
+ * Valeurs vivantes de la page d'accueil.
+ *
+ * Elles sont ici, et nulle part ailleurs, pour être modifiables à la main sans
+ * toucher au moindre composant. Aucune n'est calculée : une rareté ou un
+ * compteur inventés par le code seraient de la preuve fabriquée.
  */
-export const SCARCITY = {
-  /** Le trimestre en cours, tel qu'affiché. */
-  quarter: { fr: "T3 2026", en: "Q3 2026" },
-  /** Places restantes sur les quatre du trimestre. Mettre 0 quand c'est complet. */
-  remaining: 2,
-  /** Ouverture du trimestre suivant. */
-  nextOpening: { fr: "1er octobre", en: "October 1" },
+export const LIVE = {
+  /** Rareté. À mettre à jour à chaque place vendue et à chaque trimestre. */
+  scarcity: {
+    period: "T3 2026",
+    remaining: 2,
+    total: 4,
+    nextOpening: { fr: "1er octobre", en: "1 October" },
+  },
+
+  /**
+   * Compteur RADAR. À REMPLACER par le nombre réel de marques publiées.
+   * `since` est le mois de départ affiché à côté du chiffre.
+   */
+  radar: {
+    count: 340,
+    since: { fr: "janvier", en: "January" },
+  },
 } as const
 
 /**
- * Nombre de marques disséquées dans RADAR depuis le lancement.
- * Un chiffre est une preuve — à condition d'être exact. À réajuster chaque mois.
- */
-export const RADAR_COUNT = 340
-
-/**
- * Lien d'achat ou de téléchargement du livre.
- * Tant qu'il pointe sur le formulaire de contact, la meilleure preuve
- * d'autorité du site est un cul-de-sac. Une seule ligne à changer.
+ * Le livre.
+ *
+ * `BOOK_URL` doit pointer vers la page de vente ou de téléchargement réelle.
+ * Tant qu'elle vaut la valeur par défaut, la page du livre affiche le
+ * formulaire de contact — ce qui fait de la meilleure preuve d'autorité du
+ * studio un cul-de-sac. À changer en priorité.
  */
 export const BOOK_URL = env(process.env.NEXT_PUBLIC_BOOK_URL, "/#contact")
 
 /**
- * L'édition reliée, en supplément de la commande.
- * Elle était offerte sur demande : de l'exclusivité donnée gratuitement.
- * Fixer le prix ici — il s'affiche dans le bloc d'investissement.
+ * L'Objet relié : édition numérotée, reliée à la main, signée.
+ * Vendu en supplément de l'architecture au lieu d'être offert sur demande.
  */
-export const BOUND_EDITION = {
-  price: { fr: "+ 500 €", en: "+ €500" },
+export const BOUND_OBJECT = {
+  price: env(process.env.NEXT_PUBLIC_BOUND_OBJECT_PRICE, "490€"),
+  url: env(process.env.NEXT_PUBLIC_STRIPE_BOUND_OBJECT_URL, "/#contact"),
 } as const

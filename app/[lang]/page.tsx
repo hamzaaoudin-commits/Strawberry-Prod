@@ -1,12 +1,13 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
 import { ProblemSection } from "@/components/strawberry/problem-section"
-import { MechanismSection } from "@/components/strawberry/mechanism-section"
+import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { SillageSection } from "@/components/strawberry/sillage-section"
-import { BeforeAfterSection } from "@/components/strawberry/before-after-section"
-import { AboutSection } from "@/components/strawberry/about-section"
 import { BookSection } from "@/components/strawberry/book-section"
+import { ProofSection } from "@/components/strawberry/proof-section"
+import { AboutSection } from "@/components/strawberry/about-section"
+import { BeforeAfterSection } from "@/components/strawberry/before-after-section"
 import { AtlasSection } from "@/components/strawberry/atlas-section"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
@@ -19,27 +20,17 @@ import { isLang, type Lang } from "@/lib/lang"
  * La page d'accueil.
  *
  * Elle ne vend plus qu'une chose : BRAND NARRATIVE ARCHITECTURE. L'échelle des
- * quatre offres a quitté la home pour /offres — poser 15€ à côté de 4 500€
- * obligeait le lecteur à arbitrer entre des objets sans rapport, et écrasait la
- * valeur perçue de la commande par ancrage sur le petit nombre.
+ * quatre offres est partie sur /offres, où elle ne met plus RADAR à 15€ sur le
+ * même plan visuel que la commande à 4 500€.
  *
- * L'ordre des sections suit une démonstration, pas un catalogue :
+ * L'ordre suit la décision d'achat plutôt que le catalogue : le problème, le
+ * diagnostic qui montre pourquoi les remèdes habituels aggravent, l'offre,
+ * puis les preuves — dans l'ordre de leur force. SILLAGE arrive juste après
+ * l'offre parce que c'est la plus grosse : un document complet, publié, que
+ * n'importe qui peut lire avant de payer.
  *
- *   hero        — la promesse, et un seul geste.
- *   problème    — ce qu'il vit, et ce que ça lui coûte par an.
- *   mécanisme   — pourquoi ce qu'il a déjà payé a aggravé les choses.
- *   offre       — la commande, son prix, sa garantie, sa rareté.
- *   SILLAGE     — la preuve, immédiatement après l'offre : une commande
- *                 complète publiée en entier, lisible avant d'acheter.
- *   avant/après — le déplacement, en une phrase.
- *   studio      — le fondateur, son visage, son récit d'origine.
- *   livre       — l'autorité.
- *   Atlas       — la ressource gratuite.
- *   FAQ         — les objections désamorcées avant qu'elles soient posées.
- *   CTA         — le même geste, une dernière fois.
- *
- * Les sections sans interaction se rendent côté serveur : elles n'entrent pas
- * dans le bundle du navigateur et n'ont rien à hydrater.
+ * Les sections sans interaction se rendent côté serveur et n'entrent pas dans
+ * le bundle du navigateur.
  */
 export default async function Home({
   params,
@@ -54,12 +45,13 @@ export default async function Home({
       <NavBar />
       <HeroSection />
       <ProblemSection lang={lang} />
-      <MechanismSection lang={lang} />
+      <DiagnosisSection lang={lang} />
       <OffersSection lang={lang} />
       <SillageSection lang={lang} />
+      <BookSection lang={lang} />
+      <ProofSection lang={lang} />
       <BeforeAfterSection />
       <AboutSection lang={lang} />
-      <BookSection lang={lang} />
       <AtlasSection />
       <FaqSection faqs={FAQ_AUDIT} />
       <CTABanner />
