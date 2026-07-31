@@ -16,8 +16,8 @@ import type { Lang } from "@/lib/lang"
 const T = {
   en: {
     kicker: "The work, in full",
-    h2a: "The work itself,",
-    h2b: "published in full.",
+    h2a: "Judge the work",
+    h2b: "before you pay for it.",
     lead: "A narrative architecture is the one document a house cannot share — it is the position itself. So we wrote a complete commission and published every part of it, so you can read exactly what you would receive.",
     docTitle: "SILLAGE",
     docSub: "A fourteen-part Brand Narrative Architecture",
@@ -36,8 +36,8 @@ const T = {
   },
   fr: {
     kicker: "Le travail, en entier",
-    h2a: "Le travail lui-même,",
-    h2b: "publié en entier.",
+    h2a: "Jugez le travail",
+    h2b: "avant de le payer.",
     lead: "Une architecture narrative est le seul document qu'une maison ne peut pas partager — c'est la position elle-même. Nous avons donc écrit une commande complète et publié chacune de ses pièces, pour que vous lisiez exactement ce que vous recevrez.",
     docTitle: "SILLAGE",
     docSub: "Une Brand Narrative Architecture en quatorze pièces",

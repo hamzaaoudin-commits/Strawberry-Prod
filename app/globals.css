@@ -420,3 +420,10 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Bandeau des marques disséquées. La bande contient la liste deux fois :
+   translater de -50% ramène exactement au point de départ, sans saut. */
+@keyframes sp-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

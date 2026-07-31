@@ -22,8 +22,8 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
 const T = {
   en: {
     kicker: "The commission",
-    h2a: "One document.",
-    h2b: "A position nobody can copy.",
+    h2a: "What you will never be again:",
+    h2b: "compared on price.",
     intro:
       "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
     coverFoot: "Fourteen parts",
@@ -55,6 +55,7 @@ const T = {
     scarcityLabel: "Availability",
     scarcityLine: (p: string, r: number) => `${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     scarcityNext: (d: string) => `Next opening ${d}.`,
+    scarcityCloses: (d: string) => `Applications close ${d}.`,
     investKicker: "The investment",
     price: "4,500€",
     priceCadence: "one commission, paid once",
@@ -81,8 +82,8 @@ const T = {
   },
   fr: {
     kicker: "La commande signature",
-    h2a: "Un document.",
-    h2b: "Une position que personne ne peut copier.",
+    h2a: "Ce que vous ne serez plus jamais :",
+    h2b: "comparé au moins cher.",
     intro:
       "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
     coverFoot: "Quatorze pièces",
@@ -114,6 +115,7 @@ const T = {
     scarcityLabel: "Disponibilité",
     scarcityLine: (p: string, r: number) => `${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     scarcityNext: (d: string) => `Prochaine ouverture le ${d}.`,
+    scarcityCloses: (d: string) => `Clôture des candidatures le ${d}.`,
     investKicker: "L'investissement",
     price: "4 500€",
     priceCadence: "une commande, payée une fois",
@@ -268,6 +270,9 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 {t.scarcityLine(sc.period, sc.remaining)}
               </span>
               <span className="font-sans text-[13.5px] text-chalk-55">{t.scarcityNext(sc.nextOpening[lang])}</span>
+              {sc.closesOn[lang] && (
+                <span className="font-sans text-[13.5px] text-brand">{t.scarcityCloses(sc.closesOn[lang])}</span>
+              )}
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">

@@ -19,13 +19,13 @@ const T = {
   en: {
     badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
     hook: "Your market is not judging your work. It is judging the sentence that arrives before it.",
-    h1a: "Impossible to confuse.",
-    h1b: "Impossible to generate.",
-    h1sub: "In three weeks, a position your competitors cannot copy — because it is extracted from you, not generated.",
+    slogan: "Impossible to confuse. Impossible to generate.",
+    h1a: "In three weeks, a position",
+    h1b: "your competitors cannot copy.",
+    h1sub: "Because it is extracted from you, not generated.",
     sub: "You will be recognisable instantly — and nobody will be able to write it in your place.",
     cta1: "Commission the Work \u2192",
-    cta2: "See the offers",
-    trusted: "Three facts, before any conversation.",
+    trusted: "What you get, in three lines.",
     stats: [
       "You stop being compared on price",
       "You hold your rates without negotiating",
@@ -35,13 +35,13 @@ const T = {
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
     hook: "Votre marché ne juge pas votre travail. Il juge la phrase qui arrive avant lui.",
-    h1a: "Impossible à confondre.",
-    h1b: "Impossible à générer.",
-    h1sub: "En trois semaines, une position que vos concurrents ne peuvent pas copier — parce qu'elle est extraite de vous, pas générée.",
+    slogan: "Impossible à confondre. Impossible à générer.",
+    h1a: "En trois semaines, une position",
+    h1b: "que vos concurrents ne peuvent pas copier.",
+    h1sub: "Parce qu'elle est extraite de vous, pas générée.",
     sub: "Vous serez reconnaissable instantanément — et personne ne pourra l'écrire à votre place.",
     cta1: "Commander le travail \u2192",
-    cta2: "Voir les offres",
-    trusted: "Trois faits, avant toute conversation.",
+    trusted: "Ce que vous y gagnez, en trois lignes.",
     stats: [
       "Vous cessez d'être comparé au prix",
       "Vous tenez vos tarifs sans négocier",
@@ -110,6 +110,13 @@ export function HeroSection() {
             </span>
           </div>
 
+          {/* Le slogan ne vend rien seul : il ne dit ni quoi, ni en combien de
+              temps, ni pourquoi vous. Il devient surtitre, et le H1 porte la
+              proposition de valeur — bénéfice, durée, différenciation. */}
+          <p className="mb-4 font-sans text-[12px] uppercase tracking-[0.22em] text-chalk-40">
+            {t.slogan}
+          </p>
+
           <p className="mb-8 max-w-[560px] font-serif text-[clamp(0.95rem,1.7vw,1.15rem)] italic leading-snug text-chalk-55">
             {t.hook}
           </p>
@@ -138,12 +145,9 @@ export function HeroSection() {
             >
               {t.cta1}
             </Link>
-            <Link
-              href="/offres"
-              className="border-b border-white/20 pb-0.5 font-sans text-sm tracking-[0.02em] text-white/55 no-underline transition-colors hover:border-white/40 hover:text-white"
-            >
-              {t.cta2}
-            </Link>
+            {/* Le second bouton est retiré : il invitait à quitter une page qui
+                ne vend qu'une chose pour la page qui en propose quatre, dans les
+                premières secondes. Une page, une action. */}
           </div>
 
           <div className="mt-20 border-t border-hair pt-10">

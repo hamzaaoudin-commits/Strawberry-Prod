@@ -1,34 +1,26 @@
-# Strawberry — tour 5
+# Strawberry — tour 6
 
-44 fichiers, un seul glisser-déposer. Déposez le contenu à la racine du dépôt.
+10 fichiers. À déposer PAR-DESSUS le tour 5, pas à la place : ce zip ne contient
+que les différences.
 
-Rappel important : dans la fenêtre d'upload GitHub, glissez les **dossiers**
-(`app`, `components`, `lib`, `public`), jamais leur contenu. C'est ce qui avait
-éparpillé onze fichiers à la racine la dernière fois.
+Glissez les **dossiers** (`app`, `components`, `lib`), jamais leur contenu.
 
-## Une suppression manuelle, cette fois nécessaire
+## Rappel du tour 5, toujours en attente
 
-**Supprimez `public/sitemap.xml` depuis GitHub.** Tant qu'il existe, il masque
-`app/sitemap.ts` et les lectures publiées chaque jour n'entrent pas toutes
-seules dans le sitemap. Le fichier est à jour en attendant, mais il ne se
-mettra pas à jour tout seul.
+- Supprimer `public/sitemap.xml` depuis GitHub.
+- `LIVE.radar.count` (340) et `HOUSES.nextNumber` (12) sont affichés
+  publiquement comme vérifiables. Corrigez-les.
+- `NEXT_PUBLIC_BOOK_URL` : le livre reste inachetable tant qu'il n'est pas posé.
 
-## Quatre valeurs à renseigner
+## Nouveau dans lib/config.ts
 
-Dans `lib/config.ts` ou en variables d'environnement Vercel :
+`LIVE.scarcity.closesOn` est vide. Si vous ouvrez réellement quatre créneaux par
+trimestre, la date de clôture des candidatures est une vraie échéance : mettez-la
+et elle s'affiche à côté du prix. Laissée vide, rien ne s'affiche — une échéance
+inventée est ce qu'un fondateur repère en premier.
 
-- `NEXT_PUBLIC_STRIPE_ARCH_3X_URL` — le lien de paiement en trois fois. Tant
-  qu'il est vide, la page de commande propose d'en parler par email plutôt que
-  d'annoncer un fractionnement qui n'existe pas.
-- `NEXT_PUBLIC_RADAR_TRIAL_DAYS` — mettre `7` UNIQUEMENT après avoir activé la
-  période d'essai côté Stripe. Sinon le site promet un essai qui n'arrive pas.
-- `NEXT_PUBLIC_BOOK_URL` et `NEXT_PUBLIC_STRIPE_BOUND_OBJECT_URL` — toujours
-  en attente depuis le tour précédent.
-- `HOUSES.nextNumber` est à 12 et `LIVE.radar.count` à 340 : ce sont des
-  valeurs affichées publiquement comme vérifiables. Corrigez-les.
+## Le bandeau des marques
 
-## Le registre des Maisons
-
-`HOUSES.register` dans `lib/config.ts` ne contient que SILLAGE et VERSO,
-déclarées maisons de démonstration. Ajoutez vos vraies maisons uniquement avec
-leur accord écrit — la page le dit explicitement aux visiteurs.
+Il défile de nouveau, mais sur les marques réellement disséquées dans RADAR,
+avec le libellé qui le dit et un lien vers /lectures. Il se remplit tout seul :
+chaque fiche publiée dans `lib/radar-reads.ts` y entre le jour de sa parution.

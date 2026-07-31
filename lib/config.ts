@@ -80,6 +80,12 @@ export const LIVE = {
     remaining: 2,
     total: 4,
     nextOpening: { fr: "1er octobre", en: "1 October" },
+    /**
+     * Date de clôture des candidatures pour le trimestre en cours.
+     * Laisser vide tant qu'elle n'est pas réelle : une échéance inventée est
+     * exactement ce qu'un fondateur repère, et le studio vend de la crédibilité.
+     */
+    closesOn: { fr: "", en: "" },
   },
 
   /**
