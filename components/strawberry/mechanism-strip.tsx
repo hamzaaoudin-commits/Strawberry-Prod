@@ -50,12 +50,12 @@ export function MechanismStrip({ lang }: { lang: Lang }) {
       <ViewTracker name="mechanism" />
       <div className="shell relative">
         <div className="mx-auto max-w-[760px] text-center">
-          <div className="kicker mb-6">{t.kicker}</div>
-          <h2 className="mb-8 font-serif text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.02em]">{t.h2}</h2>
+          <div className="kicker mb-10">{t.kicker}</div>
         </div>
 
         {/* Les grandes lettres encadrées en rouge, reprises telles quelles de
-            la page méthode. */}
+            la page méthode. Le "S.T.R.A.W." en texte simple au-dessus est
+            retiré : il doublait ce que les lettres montrent déjà. */}
         <div className="mx-auto grid max-w-[900px] grid-cols-5 gap-2 sm:gap-4">
           {t.letters.map((l) => (
             <div key={l.letter} className="text-center">

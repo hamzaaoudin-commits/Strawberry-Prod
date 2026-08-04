@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { STRIPE_LINKS } from "@/lib/config"
 
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -17,7 +18,7 @@ const GLOW = "rgba(230,57,70,0.35)"
  * Un lien Stripe nu au moment où la carte sort est l'endroit du parcours où le
  * site se taisait.
  */
-const ORDER_URL = "/commander"
+const ORDER_URL = STRIPE_LINKS.architecture
 
 const T = {
   en: {

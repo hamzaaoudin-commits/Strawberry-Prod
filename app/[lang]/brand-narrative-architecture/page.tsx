@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { STRIPE_LINKS } from "@/lib/config"
 
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -20,7 +21,12 @@ const GLOW = "rgba(230,57,70,0.35)"
  * Un lien Stripe nu au moment où la carte sort est l'endroit du parcours où le
  * site se taisait.
  */
-const ORDER_URL = "/commander"
+/**
+ * Le paiement s'ouvre directement au clic, sans page intermédiaire — c'est le
+ * choix explicite du studio : pas de récapitulatif entre l'intention d'achat
+ * et Stripe.
+ */
+const ORDER_URL = STRIPE_LINKS.architecture
 
 
 
