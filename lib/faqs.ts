@@ -17,6 +17,7 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "What if I'm not satisfied?", a: "If the deliverable doesn't hit the mark, we write a V2. No questions asked." },
     { q: "Do you sign an NDA?", a: "Yes, on request. And by default, your work will never be mentioned, adapted, or reused for another house." },
     { q: "In what language is the document delivered?", a: "In the language you build your brand in — French or English." },
+    { q: "Do the playbooks work with our internal AI tools?", a: "Yes. Every written piece, including the six department playbooks, is written to be pasted directly into whatever AI tool your teams already use. We don't build or maintain anything on your side — the writing does the work." },
     { q: "What happens after delivery?", a: "One month later we meet for a ninety-minute walkthrough. If you want the studio to keep executing after that, MOMENTUM exists — but it's optional, never bundled." },
   ],
   fr: [
@@ -29,6 +30,7 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "Et si je ne suis pas satisfait ?", a: "Si le livrable ne tape pas juste, j'écris une V2. Sans discuter." },
     { q: "Signes-vous un NDA ?", a: "Oui, sur demande. Et par défaut, votre travail ne sera jamais mentionné, adapté ni réutilisé pour une autre maison." },
     { q: "Dans quelle langue le document est-il livré ?", a: "Dans la langue dans laquelle vous construisez votre marque — français ou anglais." },
+    { q: "Les playbooks fonctionnent-ils avec nos outils IA internes ?", a: "Oui. Chaque pièce écrite, y compris les six playbooks par département, est rédigée pour être collée directement dans l'outil IA que vos équipes utilisent déjà. Nous ne construisons ni ne maintenons rien de votre côté — l'écriture fait le travail." },
     { q: "Que se passe-t-il après la livraison ?", a: "Un mois plus tard, on se revoit pour une revue de quatre-vingt-dix minutes. Si vous voulez que le studio continue d'exécuter ensuite, MOMENTUM existe — mais c'est optionnel, jamais inclus d'office." },
   ],
 }

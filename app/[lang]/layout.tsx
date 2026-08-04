@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-// STUB
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { notFound } from 'next/navigation'
 import { LanguageProvider } from '@/lib/i18n'
@@ -7,8 +7,17 @@ import { LANGS, isLang, type Lang } from '@/lib/lang'
 import { alternatesFor, SITE } from '@/lib/routing'
 import '../globals.css'
 
-const playfair={variable:'a'}
-const dmSans={variable:'b'}
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
 
 /** Prerender one full set of pages per language. */
 export function generateStaticParams() {
@@ -21,18 +30,18 @@ const COPY: Record<Lang, { title: string; description: string; ogTitle: string; 
   fr: {
     title: 'Strawberry Production · Architecture narrative de marque',
     description:
-      "Un studio de perception narrative qui bâtit l'identité, la position et le langage qui rendent un fondateur impossible à confondre — et impossible à générer. Depuis Paris. Une commande par maison, quatre par trimestre.",
-    ogTitle: 'Strawberry Production · Studio de perception narrative',
+      "Un studio d'architecture narrative qui bâtit l'identité, la position et le langage qui rendent un fondateur impossible à confondre — et impossible à générer. Depuis Paris. Une commande par maison, quatre par trimestre.",
+    ogTitle: 'Strawberry Production · Studio d\'architecture narrative',
     ogDesc:
-      "Nous ne construisons pas des marques. Nous construisons l'univers dans lequel elles vivent. Un studio de perception narrative, depuis Paris.",
+      "Nous ne construisons pas des marques. Nous construisons l'architecture qui les gouverne. Un studio d'architecture narrative, depuis Paris.",
   },
   en: {
     title: 'Strawberry Production · Brand Narrative Architecture',
     description:
-      'A narrative perception studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris. One commission per house, four per quarter.',
-    ogTitle: 'Strawberry Production · Narrative Perception Studio',
+      'A narrative architecture studio building the identity, position, and language that make founders impossible to confuse — and impossible to generate. From Paris. One commission per house, four per quarter.',
+    ogTitle: 'Strawberry Production · Narrative Architecture Studio',
     ogDesc:
-      "We don't build brands. We build the universe they live in. A narrative perception studio from Paris.",
+      "We don't build brands. We build the architecture that governs them. A narrative architecture studio from Paris.",
   },
 }
 
@@ -55,8 +64,8 @@ export async function generateMetadata({
       'architecture narrative',
       'positionnement de marque',
       'founder positioning',
-      'narrative perception studio',
-      'studio de perception narrative',
+      'narrative architecture studio',
+      'studio d\'architecture narrative',
       'Paris brand consultancy',
       'AI-proof branding',
     ],
@@ -78,7 +87,7 @@ export async function generateMetadata({
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Strawberry Production — Narrative Perception Studio · Paris',
+          alt: 'Strawberry Production — Narrative Architecture Studio · Paris',
           type: 'image/png',
         },
       ],

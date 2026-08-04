@@ -18,7 +18,7 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   en: {
-    badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
+    badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
     h1a: "The identity that makes people",
     h1b: "belong to your brand, not just buy it.",
@@ -33,7 +33,7 @@ const T = {
     ],
   },
   fr: {
-    badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
+    badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
     h1a: "L'identité qui fait qu'on adhère",
     h1b: "à votre marque, pas qu'on l'achète.",

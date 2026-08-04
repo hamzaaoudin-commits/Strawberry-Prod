@@ -24,7 +24,7 @@ const T = {
     lead: "Avant de payer, voici exactement ce que vous achetez, ce qui se passe ensuite, et ce qui vous protège si ça ne va pas.",
     recapKicker: "Récapitulatif",
     recap: [
-      ["Ce que vous recevez", "Un document éditorial de quatorze pièces, écrit pour votre maison seule."],
+      ["Ce que vous recevez", "Un document éditorial de vingt pièces, dont six playbooks par département, écrit pour votre maison seule."],
       ["Délai", "Trois à quatre semaines à compter de l'entretien d'extraction."],
       ["Format", "PDF."],
       ["Propriété", "Le document est à vous, définitivement. Aucun abonnement, aucune reconduction."],
@@ -64,7 +64,7 @@ const T = {
     lead: "Before you pay, here is exactly what you are buying, what happens next, and what protects you if it goes wrong.",
     recapKicker: "Summary",
     recap: [
-      ["What you receive", "An editorial document of fourteen parts, written for your house alone."],
+      ["What you receive", "An editorial document of twenty parts, including six department playbooks, written for your house alone."],
       ["Lead time", "Three to four weeks from the extraction interview."],
       ["Format", "PDF."],
       ["Ownership", "The document is yours, permanently. No subscription, no renewal."],

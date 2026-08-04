@@ -40,7 +40,7 @@ const LEGAL: Record<string, { label: string; href: string }[]> = {
 
 const T = {
   en: {
-    tagline: "A narrative perception studio. From Paris, for founders who refuse to sound like everyone else.",
+    tagline: "A narrative architecture studio. From Paris, for founders who refuse to sound like everyone else.",
     location: "Paris · France",
     hExplore: "Explore",
     hWork: "The Work",
@@ -50,7 +50,7 @@ const T = {
     rights: "All rights reserved.",
   },
   fr: {
-    tagline: "Un studio de perception narrative. Depuis Paris, pour les fondateurs qui refusent de sonner comme tout le monde.",
+    tagline: "Un studio d'architecture narrative. Depuis Paris, pour les fondateurs qui refusent de sonner comme tout le monde.",
     location: "Paris · France",
     hExplore: "Explorer",
     hWork: "Le Travail",

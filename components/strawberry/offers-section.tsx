@@ -12,9 +12,12 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
  * La page d'accueil ne vend plus que BRAND NARRATIVE ARCHITECTURE. Chaque
  * autre offre a sa propre page, accessible depuis le pied de page.
  *
- * Les quatorze pièces portent chacune une ligne de bénéfice en tête et la
- * caractéristique en dessous : quatorze caractéristiques se lisent comme une
- * facture, quatorze bénéfices se lisent comme une transformation.
+ * Les vingt pièces portent chacune une ligne de bénéfice en tête et la
+ * caractéristique en dessous : vingt caractéristiques se lisent comme une
+ * facture, vingt bénéfices se lisent comme une transformation. Les six
+ * dernières sont les playbooks par département — marketing, contenu, réseaux
+ * sociaux, vente, support, RH — ajoutés au corps de l'offre plutôt qu'en
+ * supplément : ils servent autant à un collaborateur qu'à l'IA du client.
  *
  * Trois choses qui étaient enterrées dans la FAQ remontent ici, collées au
  * prix, parce que c'est là qu'un acheteur décide : la garantie, la fenêtre de
@@ -28,10 +31,11 @@ const T = {
     h2b: "understood, not compared.",
     intro:
       "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
-    coverFoot: "Fourteen parts",
+    coverFoot: "Twenty parts",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
+    bibleName: "Also called the Brand Narrative Bible.",
     deliverablesKicker: "What changes, part by part",
     deliverables: [
       ["You will never again be compared to the competitor next door.", "Differentiation diagnostic — five competitors dissected, the words they share, and the empty ground you take."],
@@ -48,12 +52,19 @@ const T = {
       ["Your designer stops guessing.", "Visual identity brief — written for a designer who thinks."],
       ["You see the empty ground nobody occupies.", "Positioning map — two axes that reveal what category axes hide."],
       ["You speak each segment's language without changing position.", "Audience intelligence report — four segments, one language each."],
+      ["Your marketing team stops guessing which ideas the house would refuse.", "Marketing playbook — the angles you can explore, the ones you can't, and how to catch an idea that betrays the house."],
+      ["Anyone who writes for you sounds like you.", "Content playbook — the voice turned into concrete rules, with corrected examples."],
+      ["Your editorial calendar stops drifting after month three.", "Social media playbook — tone by platform, posting rhythm, how to answer comments without contradicting yourself."],
+      ["Your sales team answers objections with your own words, not theirs.", "Sales playbook — how to present the house, defuse common objections, adapt the pitch without betraying it."],
+      ["An angry customer reads the same house as a happy one.", "Support playbook — how to handle sensitive situations without losing the tone that sets you apart."],
+      ["A new hire understands who you are in their first week.", "HR & management playbook — the culture handed down at onboarding, retranslated to guide internal decisions."],
     ],
     specs: [
       { k: "Lead time", v: "3 to 4 weeks" },
       { k: "Format", v: "One editorial document" },
       { k: "Scarcity", v: "4 commissions per quarter" },
     ],
+    aiCompat: "Every written piece, including the six playbooks, is written to be understood and pasted directly into whatever AI tool your teams already use \u2014 nothing to configure, nothing we maintain on your behalf.",
     scarcityLabel: "Availability",
     scarcityLine: (p: string, r: number) => `${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     scarcityNext: (d: string) => `Next opening ${d}.`,
@@ -82,10 +93,11 @@ const T = {
     h2b: "vous comprendre, pas vous comparer.",
     intro:
       "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
-    coverFoot: "Quatorze pièces",
+    coverFoot: "Vingt pièces",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
       "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
+    bibleName: "Aussi appelée la Brand Narrative Bible.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     deliverables: [
       ["Vous ne serez plus jamais comparé au concurrent d'à côté.", "Diagnostic de différenciation — cinq concurrents disséqués, leurs mots communs, et le terrain vide que vous prenez."],
@@ -102,12 +114,19 @@ const T = {
       ["Votre designer arrête de deviner.", "Brief d'identité visuelle — écrit pour un designer qui pense."],
       ["Vous voyez le terrain vide que personne n'occupe.", "Carte de positionnement — deux axes qui révèlent ce que les axes de catégorie masquent."],
       ["Vous parlez la langue de chaque segment sans changer de position.", "Rapport d'intelligence d'audience — quatre segments, un langage par segment."],
+      ["Votre équipe marketing arrête de deviner ce que la maison refuserait.", "Playbook marketing — les axes que vous pouvez explorer, ceux que vous devez refuser, et comment reconnaître une idée qui trahit la maison."],
+      ["Toute personne qui écrit pour vous sonne comme vous.", "Playbook contenu — la voix mise en règles concrètes, avec des exemples corrigés."],
+      ["Votre calendrier éditorial ne dérive plus au bout de trois mois.", "Playbook réseaux sociaux — le ton par plateforme, le rythme de publication, comment répondre aux commentaires sans se contredire."],
+      ["Votre équipe commerciale répond aux objections avec vos mots, pas les leurs.", "Playbook vente — comment présenter la maison, désamorcer les objections courantes, adapter le discours sans le trahir."],
+      ["Un client en colère lit la même maison qu'un client satisfait.", "Playbook support — comment répondre dans les situations sensibles sans perdre le ton qui vous distingue."],
+      ["Un nouvel employé comprend qui vous êtes dès sa première semaine.", "Playbook RH & management — la culture transmise à l'arrivée, retraduite pour guider les décisions internes."],
     ],
     specs: [
       { k: "Délai", v: "3 à 4 semaines" },
       { k: "Format", v: "Un document éditorial" },
       { k: "Rareté", v: "4 commandes par trimestre" },
     ],
+    aiCompat: "Chaque pièce écrite, y compris les six playbooks, est rédigée pour être comprise et collée directement dans l’outil IA que vos équipes utilisent déjà \u2014 rien à configurer, rien que nous maintenions à votre place.",
     scarcityLabel: "Disponibilité",
     scarcityLine: (p: string, r: number) => `${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     scarcityNext: (d: string) => `Prochaine ouverture le ${d}.`,
@@ -177,7 +196,8 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
 
             <div>
-              <div className="pill mb-7">BRAND NARRATIVE ARCHITECTURE</div>
+              <div className="pill mb-3">BRAND NARRATIVE ARCHITECTURE</div>
+              <div className="mb-7 font-serif text-[13px] italic text-chalk-40">{t.bibleName}</div>
 
               <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
                 {t.h3}
@@ -198,7 +218,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          {/* LES QUATORZE PIÈCES — bénéfice en tête, caractéristique dessous. */}
+          {/* LES VINGT PIÈCES — bénéfice en tête, caractéristique dessous. */}
           <div className="relative mt-14">
             <div className="mb-7 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
               {t.deliverablesKicker}
@@ -214,6 +234,10 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 </li>
               ))}
             </ol>
+
+            <p className="mt-7 max-w-[620px] font-sans text-[13.5px] leading-relaxed text-chalk-40">
+              {t.aiCompat}
+            </p>
           </div>
 
           {/* L'INVESTISSEMENT — prix, justification, retour, garanties, rareté. */}

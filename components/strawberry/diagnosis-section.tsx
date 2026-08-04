@@ -25,7 +25,10 @@ const T = {
     aiP1: "AI is saturating your market faster than you can see it. Your competitors now produce in one click what used to take weeks: articles, visuals, pages, campaigns. Content is becoming free, infinite and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.",
     aiP2a: "What cannot be generated is an identity. ",
     aiP2strong: "Differentiation is no longer a marketing luxury — it is your condition for survival.",
-    enemy: "An agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
+    aiP3a: "The value has moved. It used to sit in the making. Now the making is nearly free, and what stays scarce is the strategy, the coherence, the vision, the decisions \u2014 ",
+    aiP3strong: "that is what we sell.",
+    principle: "Every new AI you adopt should make you more recognisable, never more diluted. That is the only rule that matters.",
+    enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
   },
   fr: {
     kicker: "Ce que vous avez sans doute déjà essayé",
@@ -36,7 +39,10 @@ const T = {
     aiP1: "L'IA sature votre marché plus vite que vous ne le voyez. Vos concurrents produisent désormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualité ne suffit plus à vous distinguer : tout le monde est devenu bon.",
     aiP2a: "Ce qui ne peut pas être généré, c'est une identité. ",
     aiP2strong: "La différenciation n'est plus un luxe marketing — c'est votre condition de survie.",
-    enemy: "Une agence vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
+    aiP3a: "La valeur a changé de camp. Elle vivait dans la fabrication. Aujourd'hui, fabriquer coûte presque rien, et ce qui reste rare, c'est la stratégie, la cohérence, la vision, les décisions \u2014 ",
+    aiP3strong: "c'est ce que nous vendons.",
+    principle: "Chaque nouvelle IA que vous adoptez doit vous rendre plus reconnaissable, jamais plus dilué. C'est la seule règle qui compte.",
+    enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
   },
 }
 
@@ -60,13 +66,18 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
         <div className="border-l-2 border-brand pl-6 md:pl-8">
           <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{t.aiKicker}</div>
           <p className="mb-5 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
-          <p className="font-serif text-[clamp(1.1rem,2.1vw,1.4rem)] leading-[1.5] text-white">
+          <p className="mb-5 font-serif text-[clamp(1.1rem,2.1vw,1.4rem)] leading-[1.5] text-white">
             {t.aiP2a}
             <strong>{t.aiP2strong}</strong>
           </p>
+          <p className="font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">
+            {t.aiP3a}
+            <strong className="text-white">{t.aiP3strong}</strong>
+          </p>
         </div>
 
-        <p className="mt-12 font-sans text-[15px] leading-relaxed text-chalk-55">{t.enemy}</p>
+        <p className="mt-10 font-sans text-[15px] italic leading-relaxed text-chalk-55">{t.principle}</p>
+        <p className="mt-6 font-sans text-[15px] leading-relaxed text-chalk-55">{t.enemy}</p>
       </div>
     </section>
   )
