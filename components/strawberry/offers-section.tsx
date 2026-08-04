@@ -29,27 +29,27 @@ const T = {
     h2a: "What you become:",
     h2b: "a brand people follow, not compare.",
     intro:
-      "Three weeks. One house at a time. What comes out is not a style guide — it is the story that makes people see you differently, hold on to it, and stay. Being compared on price is what stops happening once they do.",
+      "Three weeks. One house at a time. Not a style guide — the story that makes people see you differently and stay.",
     coverFoot: "Fourteen parts",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
     deliverablesKicker: "What changes, part by part",
     deliverables: [
-      ["You will never again be compared to the competitor next door.", "Differentiation diagnostic — five competitors dissected, the words they share, and the empty ground you take."],
-      ["You know what to answer when someone asks what you do.", "Narrative platform — the constitution of the house, in writing."],
-      ["Your words stop being everyone else's.", "Language system — the vocabulary, the tone, the daily tests."],
-      ["You know what to do the Monday after.", "Deployment kit — the first ninety days, in order."],
-      ["You settle questions alone, without calling us back.", "Coherence guide — written for the founder, not for the team."],
-      ["You raise your prices with a reason you can give.", "Pricing narrative — price as doctrine, not as a number."],
-      ["You are introduced correctly when you are not in the room.", "Biography system — four formats, one single break."],
-      ["You know exactly where each rival is weak.", "Competitor autopsy — one sheet per player in the market."],
-      ["You have something to publish that resembles nobody.", "The signature piece — an essay publishable as it stands."],
-      ["People understand why you exist in two hundred and fifty words.", "Origin manifesto — exactly that length, no more."],
-      ["You hold the same story in front of whoever is pricing a bet.", "Investor and partner translation."],
-      ["Your designer stops guessing.", "Visual identity brief — written for a designer who thinks."],
-      ["You see the empty ground nobody occupies.", "Positioning map — two axes that reveal what category axes hide."],
-      ["You speak each segment's language without changing position.", "Audience intelligence report — four segments, one language each."],
+      "You are never compared to the competitor next door again.",
+      "You know what to answer when someone asks what you do.",
+      "Your words stop being everyone else's.",
+      "You know what to do the Monday after.",
+      "You settle questions alone, without calling us back.",
+      "You raise your prices with a reason you can give.",
+      "You are introduced correctly when you're not in the room.",
+      "You know exactly where each rival is weak.",
+      "You have something to publish that resembles nobody.",
+      "People understand why you exist, in one paragraph.",
+      "You hold the same story in front of any investor.",
+      "Your designer stops guessing.",
+      "You see the empty ground nobody occupies.",
+      "You speak each segment's language without changing position.",
     ],
     specs: [
       { k: "Lead time", v: "3 to 4 weeks" },
@@ -84,27 +84,27 @@ const T = {
     h2a: "Ce que vous devenez :",
     h2b: "une marque qu'on suit, pas qu'on compare.",
     intro:
-      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est le récit qui fait qu'on vous voit différemment, qu'on s'y attache, et qu'on reste. Être comparé au prix, c'est ce qui s'arrête une fois qu'on y est.",
+      "Trois semaines. Une maison à la fois. Pas une charte — le récit qui fait qu'on vous voit différemment, et qu'on reste.",
     coverFoot: "Quatorze pièces",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
       "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     deliverables: [
-      ["Vous ne serez plus jamais comparé au concurrent d'à côté.", "Diagnostic de différenciation — cinq concurrents disséqués, leurs mots communs, et le terrain vide que vous prenez."],
-      ["Vous savez quoi répondre quand on vous demande ce que vous faites.", "Plateforme narrative — la constitution de la maison, par écrit."],
-      ["Vos mots cessent d'être ceux de tout le monde.", "Système de langage — le vocabulaire, le ton, les tests quotidiens."],
-      ["Vous savez quoi faire dès le lundi qui suit.", "Kit de déploiement — les quatre-vingt-dix premiers jours, dans l'ordre."],
-      ["Vous tranchez seul, sans avoir à nous rappeler.", "Guide de cohérence — écrit pour le fondateur, pas pour l'équipe."],
-      ["Vous augmentez vos prix avec une raison à donner.", "Récit tarifaire — le prix comme doctrine, pas comme un chiffre."],
-      ["On vous présente correctement quand vous n'êtes pas dans la pièce.", "Système biographique — quatre formats, une seule rupture."],
-      ["Vous savez exactement où chaque rival est faible.", "Autopsie des concurrents — une fiche par acteur du marché."],
-      ["Vous avez quelque chose à publier qui ne ressemble à personne.", "La pièce signature — un essai publiable en l'état."],
-      ["On comprend pourquoi vous existez en deux cent cinquante mots.", "Manifeste d'origine — exactement cette longueur, pas une de plus."],
-      ["Vous tenez le même récit devant qui évalue un pari.", "Traduction investisseurs et partenaires."],
-      ["Votre designer arrête de deviner.", "Brief d'identité visuelle — écrit pour un designer qui pense."],
-      ["Vous voyez le terrain vide que personne n'occupe.", "Carte de positionnement — deux axes qui révèlent ce que les axes de catégorie masquent."],
-      ["Vous parlez la langue de chaque segment sans changer de position.", "Rapport d'intelligence d'audience — quatre segments, un langage par segment."],
+      "Vous n'êtes plus jamais comparé au concurrent d'à côté.",
+      "Vous savez quoi répondre quand on demande ce que vous faites.",
+      "Vos mots cessent d'être ceux de tout le monde.",
+      "Vous savez quoi faire dès le lundi qui suit.",
+      "Vous tranchez seul, sans avoir à nous rappeler.",
+      "Vous augmentez vos prix avec une raison à donner.",
+      "On vous présente correctement en votre absence.",
+      "Vous savez exactement où chaque rival est faible.",
+      "Vous avez quelque chose à publier qui ne ressemble à personne.",
+      "On comprend pourquoi vous existez, en un paragraphe.",
+      "Vous tenez le même récit devant n'importe quel investisseur.",
+      "Votre designer arrête de deviner.",
+      "Vous voyez le terrain vide que personne n'occupe.",
+      "Vous parlez la langue de chaque segment sans changer de position.",
     ],
     specs: [
       { k: "Délai", v: "3 à 4 semaines" },
@@ -201,19 +201,16 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          {/* LES QUATORZE PIÈCES — bénéfice en tête, caractéristique dessous. */}
+          {/* LES QUATORZE PIÈCES — une ligne par bénéfice, sur deux colonnes. */}
           <div className="relative mt-14">
             <div className="mb-7 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
               {t.deliverablesKicker}
             </div>
-            <ol className="list-none border-t border-hair p-0">
-              {t.deliverables.map(([benefit, feature], i) => (
-                <li key={benefit} className="flex items-baseline gap-4 border-b border-white/[0.06] py-4">
-                  <span className="font-serif text-[13px] text-brand">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <p className="m-0 font-sans text-[15.5px] font-semibold leading-snug text-white">{benefit}</p>
-                    <p className="m-0 mt-1 font-sans text-[13.5px] leading-snug text-chalk-40">{feature}</p>
-                  </div>
+            <ol className="grid list-none gap-x-8 border-t border-hair p-0 sm:grid-cols-2">
+              {t.deliverables.map((benefit, i) => (
+                <li key={benefit} className="flex items-baseline gap-3 border-b border-white/[0.06] py-3">
+                  <span className="font-serif text-[12px] text-brand">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="m-0 font-sans text-[14.5px] leading-snug text-white/85">{benefit}</p>
                 </li>
               ))}
             </ol>

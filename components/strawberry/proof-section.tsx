@@ -20,16 +20,14 @@ const T = {
     kicker: "Proof",
     radarLabel: "Brands read since",
     radarTitle: "The eye is trained daily, in public.",
-    radarBody:
-      "One brand followed every day: what it emits, what interferes, and the heading we would give it. The judgement applied to your house is the same one exercised here, where anyone can check it.",
+    radarBody: "One brand judged every day, in public — the same eye we'd apply to yours.",
     radarCta: "See RADAR",
   },
   fr: {
     kicker: "Les preuves",
     radarLabel: "Marques lues depuis",
     radarTitle: "L'œil s'entraîne tous les jours, en public.",
-    radarBody:
-      "Une marque suivie chaque jour : ce qui émet, ce qui parasite, et le cap que nous lui donnerions. Le jugement appliqué à votre maison est celui qui s'exerce ici, où n'importe qui peut le vérifier.",
+    radarBody: "Une marque jugée chaque jour, en public — le même œil qu'on appliquerait à la vôtre.",
     radarCta: "Voir RADAR",
   },
 }
