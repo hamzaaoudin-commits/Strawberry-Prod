@@ -12,7 +12,8 @@ import { useEffect, useState } from "react"
  * - Ne bloque rien. La page en dessous se charge et devient interactive
  *   normalement ; ceci n'est qu'un calque par-dessus qui s'efface. Le temps
  *   de chargement réel ne change pas — seul le temps avant que l'écran soit
- *   dégagé change, et seulement à la première visite de la session.
+ *   dégagé change (environ 4,5 secondes), et seulement à la première visite
+ *   de la session.
  * - Une seule fois par onglet. sessionStorage retient qu'elle a déjà joué :
  *   elle ne rejoue pas à chaque navigation interne.
  * - Respecte prefers-reduced-motion : rien ne s'affiche si l'utilisateur a
@@ -39,8 +40,8 @@ export function LoadingIntro() {
     window.sessionStorage.setItem(SESSION_KEY, "1")
     setPhase("in")
     const t1 = setTimeout(() => setPhase("hold"), 150)
-    const t2 = setTimeout(() => setPhase("out"), 700)
-    const t3 = setTimeout(() => setPhase("done"), 1100)
+    const t2 = setTimeout(() => setPhase("out"), 3700)
+    const t3 = setTimeout(() => setPhase("done"), 4100)
 
     const skip = () => setPhase("done")
     window.addEventListener("keydown", skip, { once: true })
