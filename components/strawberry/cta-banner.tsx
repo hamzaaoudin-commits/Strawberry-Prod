@@ -1,12 +1,12 @@
 "use client"
 
-import { TrackLink } from "@/components/strawberry/track-link"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Commission the Work", cta2: "See the other offers" },
-  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Commander le travail", cta2: "Voir les autres offres" },
+  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Commission the Work" },
+  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Commander le travail" },
 }
 
 export function CTABanner() {
@@ -38,25 +38,16 @@ export function CTABanner() {
             {t.sub}
           </p>
 
-          {/* Un seul geste principal, nommé. Le second lien existe pour ceux
-              que le prix arrête, sans jamais concurrencer le premier. */}
+          {/* Un seul geste, sans second lien : la page « toutes les offres »
+              qu'il visait a été retirée, et rien ne la remplace — chaque
+              offre a déjà sa propre page depuis le pied de page. */}
           <div className="relative flex flex-col items-center gap-5">
-            <TrackLink
+            <Link
               href="/brand-narrative-architecture"
-              event="commission_click"
-              data={{ from: "home_cta_banner" }}
               className="btn-primary max-w-full px-11 py-[18px] text-center leading-snug"
             >
               {t.cta1}
-            </TrackLink>
-            <TrackLink
-              href="/offres"
-              event="offers_click"
-              data={{ from: "home_cta_banner" }}
-              className="border-b border-white/20 pb-0.5 font-sans text-[13px] tracking-[0.02em] text-white/50 no-underline transition-colors hover:border-white/45 hover:text-white"
-            >
-              {t.cta2}
-            </TrackLink>
+            </Link>
           </div>
         </div>
       </div>

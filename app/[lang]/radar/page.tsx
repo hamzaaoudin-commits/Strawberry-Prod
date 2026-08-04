@@ -3,8 +3,9 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { useT } from "@/lib/i18n"
+import { useT, useLang } from "@/lib/i18n"
 import { STRIPE_LINKS, RADAR_TRIAL_DAYS } from "@/lib/config"
+import { RadarLeadCapture } from "@/components/strawberry/radar-lead-capture"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_RADAR } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
@@ -15,10 +16,10 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const T = {
   en: {
-    badge: "One brand dissected. Every day, without exception.",
+    badge: "350+ brands already dissected. Browse the archive.",
     h1a: "Catch a brand's signal",
     h1b: "before the market does.",
-    lead: "Every day, one real brand goes under the radar: what it emits, what jams it, and the heading we would give it. Not a course — an instrument. The edge your competitors don't have, day after day.",
+    lead: "Over 350 real brands, already under the radar: what each one emits, what jams it, and the heading we would give it. Not a course \u2014 a searchable instrument. The edge your competitors don't have.",
     subscribe: "Subscribe",
     trial: (d: number) => `${d} days free. Cancel in one click.`,
     access: "Subscriber access",
@@ -28,9 +29,9 @@ const T = {
       { label: "The heading", body: "The single repositioning move we would give it — the decision that would make it unmistakable." },
     ],
     inKicker: "What the subscription contains",
-    inTitle: "Everything below, every day.",
+    inTitle: "Everything below, already there.",
     contents: [
-      { n: "30+", t: "Brand reads", d: "Thirty real brands already dissected, a new one every day. Same six-block grid each time." },
+      { n: "350+", t: "Brand reads", d: "Real brands already dissected, searchable by sector and by theme. Same six-block grid every time." },
       { n: "IX", t: "The manifestos", d: "The nine Strawberry manifestos, in full. What the studio holds to be true about perception, scarcity and refusal — and what every working decision rests on." },
       { n: "05", t: "The lessons", d: "Five lessons, one per instrument. How to check that a positioning sentence holds, who your market actually compares you to, which words to abandon, how to make a founder say what they no longer see, and when to refuse." },
       { n: "03", t: "The applications", d: "Daily exercise, the sentence library, and the watch list on your own competitors." },
@@ -42,7 +43,7 @@ const T = {
     apps: [
       {
         n: "01",
-        t: "Today's exercise",
+        t: "The daily exercise",
         d: "A real positioning sentence, stripped of its brand name. Three questions: who does it exclude, what class does it place the house in, which word could a competitor not steal. The answer follows, with the reasoning.",
         why: "Judgement is not acquired by reading. It is acquired by deciding, then discovering whether you were right.",
       },
@@ -67,24 +68,24 @@ const T = {
       {
         n: "05",
         t: "The forbidden words list",
-        d: "The words your category has worn out \u2014 innovative, disruptive, tailor-made, passionate \u2014 tracked against what RADAR reads every day, so the list reflects what is actually being said this month, not a fixed list from a style guide.",
+        d: "The words your category has worn out \u2014 innovative, disruptive, tailor-made, passionate \u2014 tracked against the full archive, so the list reflects what is actually being said this month, not a fixed list from a style guide.",
         why: "A word becomes forbidden the moment three competitors are already standing on it. That moment moves; the list has to move with it.",
       },
     ],
     gridKicker: "The grid",
-    gridTitle: "Six blocks. Never changes.",
+    gridTitle: "Same grid, every time \u2014 so you learn to read it.",
     grid: ["Context", "The signal", "The noise", "The tension", "The heading", "Verdict"],
     bridge: "RADAR trains your eye on other people's brands. The one you can never read from the outside is your own: that is where BRAND NARRATIVE ARCHITECTURE comes in.",
     subLabel: "Subscription · 15€/mo",
-    subTitle: "The daily read, on tap.",
-    subBody: "The full library, one new read a day, and the habit that lets you price any positioning in seconds. Cancel anytime.",
+    subTitle: "The full archive, on tap.",
+    subBody: "Over 350 brands already read, searchable in seconds, plus the habit that lets you price any positioning at a glance. Cancel anytime.",
     bridgeCta: "See BRAND NARRATIVE ARCHITECTURE →",
   },
   fr: {
-    badge: "Une marque disséquée. Chaque jour, sans exception.",
+    badge: "350+ marques déjà disséquées. Une base à parcourir.",
     h1a: "Captez le signal d'une marque",
     h1b: "avant le marché.",
-    lead: "Chaque jour, une marque réelle passe au radar : ce qui émet (le signal), ce qui parasite (le bruit), et le cap que nous lui donnerions. Pas un cours — un instrument. L'avance que vos concurrents n'ont pas, jour après jour.",
+    lead: "Plus de 350 marques réelles, déjà passées au radar : ce qui émet, ce qui parasite, et le cap que nous leur donnerions. Pas un cours \u2014 un instrument consultable. L'avance que vos concurrents n'ont pas.",
     subscribe: "S'abonner",
     trial: (d: number) => `${d} jours offerts. Résiliable en un clic.`,
     access: "Accès abonné",
@@ -94,9 +95,9 @@ const T = {
       { label: "Le cap", body: "Le seul mouvement de repositionnement que nous lui donnerions — la décision qui la rendrait indiscutable." },
     ],
     inKicker: "Ce que contient l'abonnement",
-    inTitle: "Tout ce qui suit, chaque jour.",
+    inTitle: "Tout ce qui suit, déjà là.",
     contents: [
-      { n: "30+", t: "Les fiches", d: "Trente marques réelles déjà disséquées, une nouvelle chaque jour. La même grille en six blocs à chaque fois." },
+      { n: "350+", t: "Les fiches", d: "Des marques réelles déjà disséquées, cherchables par secteur et par thème. La même grille en six blocs à chaque fois." },
       { n: "IX", t: "Les manifestes", d: "Les neuf manifestes Strawberry, en entier. Ce que le studio tient pour vrai sur la perception, la rareté et le refus — et sur quoi chaque décision de travail s'appuie." },
       { n: "05", t: "Les leçons", d: "Cinq leçons, une par outil. Comment vérifier qu'une phrase de positionnement tient, contre qui votre marché vous compare vraiment, quels mots abandonner, comment faire dire à un fondateur ce qu'il ne sait plus voir, et quand refuser." },
       { n: "03", t: "Les applications", d: "L'entraînement du jour, la bibliothèque des phrases, et le carnet de veille sur vos propres concurrents." },
@@ -108,7 +109,7 @@ const T = {
     apps: [
       {
         n: "01",
-        t: "L'entraînement du jour",
+        t: "L'entraînement quotidien",
         d: "Une phrase de positionnement réelle, privée du nom de sa marque. Trois questions : qui exclut-elle, dans quelle classe place-t-elle la maison, quel mot un concurrent ne pourrait-il pas lui voler. La réponse suit, avec le raisonnement.",
         why: "Le jugement ne s'acquiert pas en lisant. Il s'acquiert en tranchant, puis en découvrant si on avait raison.",
       },
@@ -133,19 +134,78 @@ const T = {
       {
         n: "05",
         t: "La liste des mots interdits",
-        d: "Les mots que votre secteur a usés \u2014 innovant, disruptif, sur-mesure, passionné \u2014 suivis contre ce que RADAR lit chaque jour, pour que la liste reflète ce qui se dit réellement ce mois-ci, pas une liste figée sortie d'une charte éditoriale.",
+        d: "Les mots que votre secteur a usés \u2014 innovant, disruptif, sur-mesure, passionné \u2014 suivis contre l'ensemble de la base, pour que la liste reflète ce qui se dit réellement ce mois-ci, pas une liste figée sortie d'une charte éditoriale.",
         why: "Un mot devient interdit dès que trois concurrents s'y tiennent déjà. Ce moment se déplace ; la liste doit se déplacer avec lui.",
       },
     ],
     gridKicker: "La grille",
-    gridTitle: "Six blocs. Elle ne change jamais.",
+    gridTitle: "La même grille, à chaque fois \u2014 pour que vous appreniez à la lire.",
     grid: ["Contexte", "Le signal", "Le bruit", "La tension", "Le cap", "Verdict"],
     bridge: "RADAR forme votre œil sur les marques des autres. La seule que vous ne pourrez jamais lire de l'extérieur, c'est la vôtre : c'est là que BRAND NARRATIVE ARCHITECTURE intervient.",
     subLabel: "Abonnement · 15€/mois",
-    subTitle: "La lecture du jour, à volonté.",
-    subBody: "La bibliothèque complète, une nouvelle fiche par jour, et l'habitude qui vous fait lire n'importe quel positionnement en quelques secondes. Résiliable à tout moment.",
+    subTitle: "La base complète, à volonté.",
+    subBody: "Plus de 350 marques déjà lues, cherchables en quelques secondes, et l'habitude qui vous fait lire n'importe quel positionnement d'un coup d'œil. Résiliable à tout moment.",
     bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
   },
+}
+
+/**
+ * Un glyphe distinct par instrument, plutôt qu'un rectangle identique répété
+ * cinq fois. Traits fins, cohérents avec le reste du site — pas d'icône de
+ * bibliothèque générique.
+ */
+function AppIcon({ index }: { index: number }) {
+  const props = { viewBox: "0 0 32 32", width: 30, height: 30, "aria-hidden": true as const }
+  const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
+
+  switch (index) {
+    case 0: // l'entraînement quotidien — une cible
+      return (
+        <svg {...props}>
+          <circle cx="16" cy="16" r="11" {...stroke} opacity="0.35" />
+          <circle cx="16" cy="16" r="6.5" {...stroke} opacity="0.65" />
+          <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case 1: // la bibliothèque des phrases — des feuillets empilés
+      return (
+        <svg {...props}>
+          <rect x="8" y="6" width="14" height="18" rx="0.5" {...stroke} opacity="0.4" />
+          <rect x="6" y="9" width="14" height="18" rx="0.5" {...stroke} />
+          <line x1="9" y1="14" x2="17" y2="14" {...stroke} opacity="0.6" />
+          <line x1="9" y1="18" x2="17" y2="18" {...stroke} opacity="0.6" />
+          <line x1="9" y1="22" x2="14" y2="22" {...stroke} opacity="0.6" />
+        </svg>
+      )
+    case 2: // le carnet de veille — un balayage radar
+      return (
+        <svg {...props}>
+          <circle cx="16" cy="16" r="11" {...stroke} opacity="0.3" />
+          <circle cx="16" cy="16" r="6" {...stroke} opacity="0.5" />
+          <path d="M16 16 L16 5 A11 11 0 0 1 24.8 10.8 Z" fill="currentColor" opacity="0.18" stroke="none" />
+          <line x1="16" y1="16" x2="16" y2="5" {...stroke} />
+          <circle cx="24" cy="11" r="1.3" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case 3: // le jury des vingt lecteurs — des sièges face à un pupitre
+      return (
+        <svg {...props}>
+          <path d="M8 22 a8 8 0 0 1 16 0" {...stroke} opacity="0.4" />
+          {[7, 11.7, 16.3, 21].map((cx, i) => (
+            <circle key={i} cx={cx} cy="10" r="1.6" {...stroke} opacity={i === 2 ? 1 : 0.55} />
+          ))}
+        </svg>
+      )
+    default: // la liste des mots interdits — un mot barré
+      return (
+        <svg {...props}>
+          <line x1="7" y1="10" x2="25" y2="10" {...stroke} opacity="0.5" />
+          <line x1="7" y1="16" x2="20" y2="16" {...stroke} />
+          <line x1="6" y1="16" x2="21" y2="16" stroke="currentColor" strokeWidth="1.4" />
+          <line x1="7" y1="22" x2="17" y2="22" {...stroke} opacity="0.5" />
+        </svg>
+      )
+  }
 }
 
 function RadarScope() {
@@ -199,6 +259,7 @@ function RadarScope() {
 
 export default function RadarPage() {
   const t = useT(T)
+  const { lang } = useLang()
 
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
@@ -251,27 +312,40 @@ export default function RadarPage() {
         </div>
       </section>
 
-      {/* LES APPLICATIONS — ce qui distingue un abonnement d'une newsletter */}
+      {/* LES APPLICATIONS — ce qui distingue un abonnement d'une newsletter.
+          Reconstruites en registre éditorial : une icône propre à chaque
+          instrument plutôt que cinq rectangles identiques, le « pourquoi »
+          mis en avant comme une citation plutôt qu'en petit texte de bas de
+          carte. */}
       <section className="section bg-ink-soft">
         <div className="shell-lg">
-          <div className="mb-12 text-center">
+          <div className="mb-14 text-center">
             <div className="kicker mb-5">{t.appsKicker}</div>
             <h2 className="h-section mb-6">{t.appsTitle}</h2>
             <p className="lede mx-auto max-w-[640px]">{t.appsLead}</p>
           </div>
 
-          <div className="grid gap-px border border-white/[0.09] bg-white/[0.09] md:grid-cols-3">
-            {t.apps.map((a) => (
-              <div key={a.n} className="flex flex-col bg-ink px-7 py-8">
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="font-serif text-[1.6rem] font-bold leading-none text-brand">{a.n}</span>
-                  <span className="tag border-white/20 text-chalk-40">{t.appsSoon}</span>
+          <div className="mx-auto max-w-[920px]">
+            {t.apps.map((a, i) => (
+              <div
+                key={a.n}
+                className="grid gap-6 border-b border-white/[0.08] py-10 first:border-t md:grid-cols-[100px_minmax(0,1fr)] md:gap-10"
+              >
+                <div className="flex flex-row items-center gap-4 md:flex-col md:items-start md:gap-5">
+                  <div className="flex h-[64px] w-[64px] shrink-0 items-center justify-center border border-brand/35 bg-brand/[0.06] text-brand">
+                    <AppIcon index={i} />
+                  </div>
+                  <span className="tag border-white/20 text-chalk-40 md:mt-0">{t.appsSoon}</span>
                 </div>
-                <h3 className="mb-3 font-serif text-[1.25rem] font-bold leading-tight">{a.t}</h3>
-                <p className="mb-6 body-sm">{a.d}</p>
-                <p className="mt-auto border-t border-hair pt-4 font-serif text-[14px] italic leading-snug text-chalk-55">
-                  {a.why}
-                </p>
+
+                <div>
+                  <div className="mb-2 font-sans text-[11px] text-chalk-40">{a.n}</div>
+                  <h3 className="mb-3 font-serif text-[1.3rem] font-bold leading-tight">{a.t}</h3>
+                  <p className="mb-5 max-w-[600px] body-sm">{a.d}</p>
+                  <p className="max-w-[560px] border-l-2 border-brand/50 pl-4 font-serif text-[14.5px] italic leading-snug text-chalk-55">
+                    {a.why}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -297,8 +371,8 @@ export default function RadarPage() {
         </div>
       </section>
 
-      {/* FULL FREE SÉZANE READ */}
-      <section className="section text-center">
+      {/* L'ABONNEMENT */}
+      <section className="section pb-10 text-center">
         <div className="card mx-auto max-w-[560px] px-8 py-11">
           <span className="tag border-[rgba(120,180,255,0.4)] text-[rgba(150,195,255,0.9)]">{t.subLabel}</span>
           <h3 className="mb-3 mt-5 font-serif text-[1.8rem] font-bold">{t.subTitle}</h3>
@@ -307,6 +381,15 @@ export default function RadarPage() {
           {RADAR_TRIAL_DAYS > 0 && (
             <p className="mt-3 font-sans text-[13px] text-chalk-40">{t.trial(RADAR_TRIAL_DAYS)}</p>
           )}
+        </div>
+      </section>
+
+      {/* LA NEWSLETTER — l'unique porte gratuite. Il n'y a plus de lecture en
+          libre accès à parcourir sans engagement ; celui qui n'est pas encore
+          prêt à payer laisse un email plutôt que de repartir. */}
+      <section className="section pt-2 text-center">
+        <div className="mx-auto max-w-[560px]">
+          <RadarLeadCapture lang={lang} source="radar_lead_radar_page" />
         </div>
       </section>
 

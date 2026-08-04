@@ -135,6 +135,13 @@ const nextConfig = {
       { source: '/:lang(fr|en)/sample-audit', destination: '/:lang/documents/sillage', permanent: true },
       { source: '/:lang(fr|en)/exemple-audit', destination: '/:lang/documents/verso', permanent: true },
 
+      // Les lectures gratuites et la page d'échelle sont retirées.
+      { source: '/lectures', destination: '/fr/radar', permanent: true },
+      { source: '/lectures/:path*', destination: '/fr/radar', permanent: true },
+      { source: '/:lang(fr|en)/lectures/:path*', destination: '/:lang/radar', permanent: true },
+      { source: '/offres', destination: '/fr/brand-narrative-architecture', permanent: true },
+      { source: '/:lang(fr|en)/offres', destination: '/:lang/brand-narrative-architecture', permanent: true },
+
       // L'espagnol a été retiré du site. Les URL déjà indexées basculent en
       // français plutôt que de disparaître en 404.
       { source: '/es', destination: '/fr', permanent: true },

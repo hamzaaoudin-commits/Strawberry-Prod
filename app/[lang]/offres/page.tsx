@@ -1,24 +1,19 @@
-import { NavBar } from "@/components/strawberry/navbar"
-import { Footer } from "@/components/strawberry/footer"
-import { LadderSection } from "@/components/strawberry/ladder-section"
-import { ContactSection } from "@/components/strawberry/contact-section"
+import { redirect } from "next/navigation"
+import { isLang } from "@/lib/lang"
 
 /**
- * La page des offres.
+ * Route retirée.
  *
- * L'échelle vivait sur la page d'accueil, où elle mettait RADAR à 15€ et la
- * commande à 4 500€ sur le même plan visuel : le visiteur arbitrait entre
- * quatre barreaux au lieu de comprendre un seul travail. Elle vit désormais
- * ici, pour ceux qui viennent précisément comparer.
+ * La page d'échelle comparant les quatre offres n'apporte pas assez pour
+ * justifier son existence : chaque offre a déjà sa propre page, accessible
+ * depuis le pied de page.
  */
-export default function OffresPage() {
-  return (
-    <main className="min-h-screen bg-ink">
-      <NavBar />
-      <div className="pt-24" />
-      <LadderSection />
-      <ContactSection />
-      <Footer />
-    </main>
-  )
+export default async function LegacyOffresRoute({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang: raw } = await params
+  const lang = isLang(raw) ? raw : "fr"
+  redirect(`/${lang}/brand-narrative-architecture`)
 }

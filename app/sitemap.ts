@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next"
 import { LANGS } from "@/lib/lang"
-import { publishedReads } from "@/lib/radar-reads"
 import { SITE, localePath } from "@/lib/routing"
 
 /**
  * Generated sitemap, one entry per page per language, each carrying its
  * hreflang alternates. Replaces the hand-maintained public/sitemap.xml, which
  * listed a single language and drifted every time a route changed.
+ *
+ * /offres and /lectures were removed here: the ladder page didn't earn its
+ * place, and the free public reading previews were retired in favour of a
+ * weekly newsletter opt-in on /radar.
  */
 type Route = {
   path: string
@@ -17,13 +20,11 @@ type Route = {
 const ROUTES: Route[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/brand-narrative-architecture", priority: 0.95, changeFrequency: "monthly" },
-  { path: "/offres", priority: 0.9, changeFrequency: "monthly" },
   { path: "/brand-narrative-audit", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/sillage", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/verso", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/radar", priority: 0.85, changeFrequency: "daily" },
-  { path: "/lectures", priority: 0.9, changeFrequency: "daily" },
+  { path: "/radar", priority: 0.85, changeFrequency: "weekly" },
   { path: "/maisons", priority: 0.8, changeFrequency: "monthly" },
   { path: "/momentum", priority: 0.8, changeFrequency: "monthly" },
   { path: "/strawberry-method", priority: 0.8, changeFrequency: "monthly" },
@@ -40,18 +41,7 @@ const ROUTES: Route[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  /**
-   * Les lectures publiques s'ajoutent automatiquement. Une fiche publiée dans
-   * radar-reads.ts entre dans le sitemap le jour de sa parution, sans qu'aucune
-   * liste n'ait à être tenue à la main.
-   */
-  const readRoutes: Route[] = publishedReads().map((r) => ({
-    path: `/lectures/${r.slug}`,
-    priority: 0.7,
-    changeFrequency: "monthly",
-  }))
-
-  return [...ROUTES, ...readRoutes].flatMap((r) =>
+  return ROUTES.flatMap((r) =>
     LANGS.map((lang) => ({
       url: `${SITE}${localePath(r.path, lang)}`,
       lastModified: now,

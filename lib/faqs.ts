@@ -35,19 +35,19 @@ export const FAQ_AUDIT: FaqSet = {
 
 export const FAQ_RADAR: FaqSet = {
   en: [
-    { q: "What exactly arrives each day?", a: "One real brand, read through the same grid: what it emits, what jams it, and the single repositioning move we would give it. Around ten minutes of reading." },
+    { q: "What am I actually getting?", a: "Access to a growing archive of over 350 real brands, each read through the same grid: what it emits, what jams it, and the single repositioning move we would give it. Searchable by sector and theme. Around ten minutes per read." },
     { q: "Are these brands your clients?", a: "Never. Every read is editorial opinion built from public information only. A client's work is confidential and never appears here." },
     { q: "Can I cancel?", a: "Any time, in one click. No notice period, no call, no retention offer." },
-    { q: "Do I get the back catalogue?", a: "Yes. Subscribing opens the full library of past reads, not just the ones published from today." },
-    { q: "Isn't 15€ suspiciously cheap for this?", a: "It's a daily habit, not a deliverable. RADAR trains your eye so that when you do commission real work, you can judge it. It's meant to be an easy yes." },
+    { q: "Do I get the full archive?", a: "Yes. Subscribing opens the entire library from day one, not a slice of it." },
+    { q: "Isn't 15€ suspiciously cheap for this?", a: "It's a habit, not a deliverable. RADAR trains your eye so that when you do commission real work, you can judge it. It's meant to be an easy yes." },
     { q: "Will reading this fix my own positioning?", a: "No — and we would rather say so. RADAR trains your judgement so you can tell a real position from a slogan. Fixing your own is BRAND NARRATIVE ARCHITECTURE, because the one brand you structurally can't read is yours." },
   ],
   fr: [
-    { q: "Qu'est-ce qui arrive exactement chaque jour ?", a: "Une marque réelle, lue à travers la même grille : ce qu'elle émet, ce qui la parasite, et le seul mouvement de repositionnement que nous lui donnerions. Environ dix minutes de lecture." },
+    { q: "Qu'est-ce que je reçois exactement ?", a: "L'accès à une base de plus de 350 marques réelles, chacune lue à travers la même grille : ce qu'elle émet, ce qui la parasite, et le seul mouvement de repositionnement que nous lui donnerions. Cherchable par secteur et par thème. Environ dix minutes de lecture par fiche." },
     { q: "Ces marques sont-elles vos clients ?", a: "Jamais. Chaque lecture est une opinion éditoriale construite uniquement à partir d'informations publiques. Le travail d'un client est confidentiel et n'apparaît jamais ici." },
     { q: "Puis-je résilier ?", a: "À tout moment, en un clic. Pas de préavis, pas d'appel, pas d'offre de rétention." },
-    { q: "Ai-je accès aux fiches passées ?", a: "Oui. L'abonnement ouvre toute la bibliothèque des lectures précédentes, pas seulement celles publiées à partir d'aujourd'hui." },
-    { q: "15€, ce n'est pas suspicieusement peu ?", a: "C'est une habitude quotidienne, pas un livrable. RADAR forme votre œil pour que, le jour où vous commandez du vrai travail, vous puissiez le juger. C'est fait pour être un oui facile." },
+    { q: "Ai-je accès à toute la base ?", a: "Oui. L'abonnement ouvre l'intégralité de la bibliothèque dès le premier jour, pas une tranche." },
+    { q: "15€, ce n'est pas suspicieusement peu ?", a: "C'est une habitude, pas un livrable. RADAR forme votre œil pour que, le jour où vous commandez du vrai travail, vous puissiez le juger. C'est fait pour être un oui facile." },
     { q: "Est-ce que lire RADAR va régler mon propre positionnement ?", a: "Non — et nous préférons le dire. RADAR forme votre jugement pour que vous distinguiez une vraie position d'un slogan. Régler le vôtre, c'est BRAND NARRATIVE ARCHITECTURE : la seule marque que vous ne pouvez structurellement pas lire, c'est la vôtre." },
   ],
 }

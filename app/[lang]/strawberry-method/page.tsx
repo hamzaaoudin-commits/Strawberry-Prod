@@ -247,31 +247,6 @@ export default function StrawberryMethodPage() {
       </section>
 
       {/* WHY A METHOD */}
-      <section ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ textAlign: "center", marginBottom: 72 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lFramework}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              {t.whyH2a}<br />{t.whyH2b}
-            </h2>
-            <p style={{ fontFamily: SANS, fontSize: "clamp(1rem, 1.3vw, 1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
-              {t.whyLead}
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
-            {PRINCIPLES.map((p, i) => (
-              <div key={i} style={{ padding: "36px 28px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
-                <div style={{ fontFamily: SERIF, fontSize: "2rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 24 }}>
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.35rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{p.title}</h3>
-                <p style={{ fontFamily: SANS, fontSize: "0.95rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* THE REVEAL — bloc unique avec letter cards éclairées + verbes journey */}
       <section ref={reveal.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 65%)`, opacity: 0.3, pointerEvents: "none" }} />
@@ -316,6 +291,31 @@ export default function StrawberryMethodPage() {
             <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem, 1.7vw, 1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
               {t.fiveItalic}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          <div style={{ textAlign: "center", marginBottom: 72 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lFramework}</div>
+            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
+              {t.whyH2a}<br />{t.whyH2b}
+            </h2>
+            <p style={{ fontFamily: SANS, fontSize: "clamp(1rem, 1.3vw, 1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
+              {t.whyLead}
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+            {PRINCIPLES.map((p, i) => (
+              <div key={i} style={{ padding: "36px 28px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
+                <div style={{ fontFamily: SERIF, fontSize: "2rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 24 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 style={{ fontFamily: SERIF, fontSize: "1.35rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{p.title}</h3>
+                <p style={{ fontFamily: SANS, fontSize: "0.95rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{p.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
-const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/lectures", "/maisons"]
+const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/maisons"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -13,13 +13,10 @@ const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/lectu
  * eu la même longueur, tous les liens français ont glissé d'un cran.
  */
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
-  { href: "/offres", label: { fr: "Toutes les offres", en: "All the offers" } },
   { href: "/radar", label: { fr: "RADAR", en: "RADAR" } },
-  { href: "/radar/acces", label: { fr: "Accès abonné RADAR", en: "RADAR subscriber access" } },
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
   { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly" } },
-  { href: "/documents", label: { fr: "Les documents publiés", en: "The published documents" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
@@ -48,7 +45,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "The Studio", "The Book", "The Method", "The readings", "The Houses"],
+    explore: ["Home", "The Studio", "The Book", "The Method", "The Houses"],
     reach: ["Let's Talk", "LinkedIn", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -58,7 +55,7 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "Le Studio", "Le Livre", "La Méthode", "Les lectures", "Les Maisons"],
+    explore: ["Accueil", "Le Studio", "Le Livre", "La Méthode", "Les Maisons"],
     reach: ["Parlons-en", "LinkedIn", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },

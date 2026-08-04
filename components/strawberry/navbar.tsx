@@ -9,11 +9,9 @@ const T = {
     offers: "Offres",
     about: "Le Studio",
     method: "La Méthode",
-    lectures: "Les lectures",
     cta: "Commander le travail",
     menu: "Menu",
     offersMenu: [
-      { label: "Toutes les offres", href: "/offres" },
       { label: "RADAR — 15€/mois", href: "/radar" },
       { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-architecture" },
@@ -24,11 +22,9 @@ const T = {
     offers: "Offers",
     about: "The Studio",
     method: "The Method",
-    lectures: "The readings",
     cta: "Commission the Work",
     menu: "Menu",
     offersMenu: [
-      { label: "All the offers", href: "/offres" },
       { label: "RADAR — 15€/mo", href: "/radar" },
       { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
       { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-architecture" },

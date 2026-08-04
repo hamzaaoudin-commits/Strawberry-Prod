@@ -16,18 +16,18 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 const T = {
   en: {
     kicker: "Proof",
-    radarLabel: "Brands read since",
-    radarTitle: "The eye is trained daily, in public.",
+    radarLabel: "Brands read",
+    radarTitle: "The eye is trained in public, brand after brand.",
     radarBody:
-      "One brand dissected every day: what it emits, what interferes, and the heading we would give it. The judgement applied to your house is the same one exercised here, where anyone can check it.",
+      "Over 350 real brands dissected: what each one emits, what interferes, and the heading we would give it. The judgement applied to your house is the same one exercised here, where anyone can check it.",
     radarCta: "See RADAR",
   },
   fr: {
     kicker: "Les preuves",
-    radarLabel: "Marques lues depuis",
-    radarTitle: "L'œil s'entraîne tous les jours, en public.",
+    radarLabel: "Marques lues",
+    radarTitle: "L'œil s'entraîne en public, marque après marque.",
     radarBody:
-      "Une marque disséquée chaque jour : ce qui émet, ce qui parasite, et le cap que nous lui donnerions. Le jugement appliqué à votre maison est celui qui s'exerce ici, où n'importe qui peut le vérifier.",
+      "Plus de 350 marques réelles disséquées : ce que chacune émet, ce qui la parasite, et le cap que nous lui donnerions. Le jugement appliqué à votre maison est celui qui s'exerce ici, où n'importe qui peut le vérifier.",
     radarCta: "Voir RADAR",
   },
 }
@@ -47,7 +47,7 @@ export function ProofSection({ lang }: { lang: Lang }) {
               {LIVE.radar.count}
             </span>
             <span className="font-sans text-[13px] uppercase tracking-[0.14em] text-chalk-40">
-              {t.radarLabel} {LIVE.radar.since[lang]}
+              {t.radarLabel}
             </span>
           </div>
           <h3 className="mb-4 font-serif text-[clamp(1.25rem,2.4vw,1.7rem)] font-bold leading-snug">

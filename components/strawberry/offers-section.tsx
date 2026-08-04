@@ -9,8 +9,8 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
 /**
  * L'offre. Une seule.
  *
- * La page d'accueil ne vend plus que BRAND NARRATIVE ARCHITECTURE. L'audit à
- * 490€ et le reste de l'échelle vivent sur /offres, pour qui vient comparer.
+ * La page d'accueil ne vend plus que BRAND NARRATIVE ARCHITECTURE. Chaque
+ * autre offre a sa propre page, accessible depuis le pied de page.
  *
  * Les quatorze pièces portent chacune une ligne de bénéfice en tête et la
  * caractéristique en dessous : quatorze caractéristiques se lisent comme une
@@ -73,9 +73,8 @@ const T = {
     refundBody:
       "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
     cta1: "Commission the Work →",
-    cta2: "See the other offers",
+    cta2: "Read the full brief",
     limit: "Four commissions per quarter. Not a sales tactic — the structural limit of full attention.",
-    ladderCta: "See the other ways to work with the studio",
   },
   fr: {
     kicker: "La commande signature",
@@ -128,9 +127,8 @@ const T = {
     refundBody:
       "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
     cta1: "Commander le travail →",
-    cta2: "Voir les autres offres",
+    cta2: "Lire le brief complet",
     limit: "Quatre commandes par trimestre. Ce n'est pas une tactique de vente — c'est la limite structurelle d'une attention pleine.",
-    ladderCta: "Voir les autres façons de travailler avec le studio",
   },
 }
 
@@ -280,19 +278,13 @@ export function OffersSection({ lang }: { lang: Lang }) {
               >
                 {t.cta1}
               </TrackedLink>
-              <Link href="/offres" className="btn-quiet">
+              <Link href="/brand-narrative-architecture" className="btn-quiet">
                 {t.cta2}
               </Link>
             </div>
 
             <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
           </div>
-        </div>
-
-        <div className="mt-10 text-center">
-          <Link href="/offres" className="btn-quiet">
-            {t.ladderCta}
-          </Link>
         </div>
       </div>
     </section>
