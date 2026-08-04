@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
 import { CONTACT_ENDPOINT } from "@/lib/config"
 import { LIMITS, isValidEmail, sanitize, isBot, rateLimit, honeypotProps } from "@/lib/form-security"
@@ -142,7 +141,6 @@ export function ContactSection() {
       clearTimeout(timeout)
       if (res.ok) {
         setStatus("sent")
-        track("contact_submitted", { from: "home_contact" })
       } else {
         let msg = "Something went wrong. Please email us directly at hamza@gostrawberryprod.com."
         try {

@@ -1,8 +1,10 @@
 "use client"
 
 import { useCallback, useRef, useState } from "react"
-import { TrackLink } from "@/components/strawberry/track-link"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
+import { track } from "@vercel/analytics"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
  * Avant / après.
@@ -10,14 +12,6 @@ import { useT } from "@/lib/i18n"
  * Trois paires affichées côte à côte demandaient au lecteur de comparer six
  * phrases pour comprendre un seul mouvement. Une seule maison, un seul curseur :
  * le déplacement se voit au lieu de se lire.
- *
- * La version précédente ancrait les deux phrases au même bord gauche, sous
- * deux calques superposés : au repos, l'une masquait presque entièrement
- * l'autre et le curseur était bridé entre 6 % et 94 %, donc il ne montrait
- * jamais un état complet. « Avant » est maintenant ancré à droite du cadre,
- * « après » à gauche, chacun sur un fond de couleur distincte — le
- * déplacement révèle un vrai contraste, pas une même phrase qui apparaît et
- * disparaît au même endroit. Le curseur va désormais de 0 à 100 %.
  *
  * La phrase vient du document SILLAGE, publié en entier — le lecteur peut
  * l'ouvrir et retrouver le raisonnement qui mène de gauche à droite.
@@ -32,10 +26,10 @@ const T = {
     beforeLabel: "Avant",
     afterLabel: "Après",
     house: "SILLAGE · logiciel de chantier",
-    before: "Le suivi de chantier simple et visuel.",
-    after: "Sur un chantier, ce n'est pas ce qui s'est passé qui compte. C'est ce que vous pouvez prouver.",
+    before: "Le logiciel de suivi de chantier le plus simple du marché.",
+    after: "Sur un chantier, la vérité a un camp. SILLAGE est le camp de ceux qui ne discutent plus ce qui s'est passé — parce qu'ils l'ont déjà prouvé.",
     gainLabel: "Ce que ça change",
-    gain: "Sort de la comparaison avec un outil de productivité. Le prix cesse d'être arbitré sur des heures gagnées.",
+    gain: "Sort entièrement de la comparaison caractéristiques-et-prix. Les chefs de chantier n'adoptent pas un outil. Ils rejoignent une façon de travailler — et la défendent auprès de ceux qui n'ont pas encore basculé.",
     cta: "Lire le document complet →",
     aria: "Curseur avant / après",
   },
@@ -47,10 +41,10 @@ const T = {
     beforeLabel: "Before",
     afterLabel: "After",
     house: "SILLAGE · construction software",
-    before: "Simple, visual construction site tracking.",
-    after: "On a building site, what happened isn't what counts. What you can prove is.",
+    before: "The simplest construction-tracking software on the market.",
+    after: "On a site, truth has a side. SILLAGE is the side of the ones who no longer argue about what happened \u2014 because they already proved it.",
     gainLabel: "What it changes",
-    gain: "Leaves the productivity-tool comparison. Price stops being judged on hours saved.",
+    gain: "Leaves the feature-and-price comparison entirely. Foremen do not adopt a tool. They join a way of working \u2014 and defend it to the ones who have not switched yet.",
     cta: "Read the full document →",
     aria: "Before / after slider",
   },
@@ -59,7 +53,7 @@ const T = {
 export function BeforeAfterSection() {
   const t = useT(T)
   const box = useRef<HTMLDivElement | null>(null)
-  const [pct, setPct] = useState(35)
+  const [pct, setPct] = useState(50)
   const dragging = useRef(false)
 
   const setFromX = useCallback((clientX: number) => {
@@ -75,8 +69,8 @@ export function BeforeAfterSection() {
    * n'est pas annonçable aux lecteurs d'écran.
    */
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") setPct((v) => Math.max(0, v - 4))
-    else if (e.key === "ArrowRight") setPct((v) => Math.min(100, v + 4))
+    if (e.key === "ArrowLeft") setPct((v) => Math.max(0, v - 5))
+    else if (e.key === "ArrowRight") setPct((v) => Math.min(100, v + 5))
     else if (e.key === "Home") setPct(0)
     else if (e.key === "End") setPct(100)
     else return
@@ -85,6 +79,7 @@ export function BeforeAfterSection() {
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
+      <ViewTracker name="before_after" />
       <div className="shell relative">
         <div className="mb-12 text-center">
           <div className="kicker mb-6">{t.kicker}</div>
@@ -123,23 +118,20 @@ export function BeforeAfterSection() {
             }}
             className="relative h-[280px] cursor-ew-resize touch-none select-none overflow-hidden border border-hair-strong bg-ink outline-none focus-visible:border-brand sm:h-[240px]"
           >
-            {/* L'état de départ occupe toute la surface, ancré à droite : c'est
-                la zone que révèle un curseur tiré vers la gauche. */}
-            <div className="absolute inset-0 flex flex-col items-end justify-center bg-[#141414] px-6 text-right sm:px-10">
+            {/* L'état de départ occupe toute la surface. */}
+            <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-10">
               <div className="mb-4 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">
                 {t.beforeLabel}
               </div>
-              <p className="ml-auto max-w-[420px] font-serif text-[clamp(1.15rem,2.6vw,1.8rem)] leading-[1.3] text-white/45">
+              <p className="max-w-[560px] font-serif text-[clamp(1.15rem,2.6vw,1.8rem)] leading-[1.3] text-white/40">
                 {t.before}
               </p>
             </div>
 
             {/* L'état d'arrivée est découpé par la poignée. Le contenu garde une
-                largeur fixe pour que le texte ne se reflue pas pendant le geste.
-                Un fond distinct (chaud, teinté de la couleur de marque) rend le
-                contraste visible même avant de lire le texte. */}
+                largeur fixe pour que le texte ne se reflue pas pendant le geste. */}
             <div
-              className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-brand bg-[linear-gradient(135deg,#241012,#160b0c)]"
+              className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-brand bg-[#120c0d]"
               style={{ width: `${pct}%` }}
             >
               <div
@@ -173,14 +165,13 @@ export function BeforeAfterSection() {
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
             <span className="font-sans text-[13px] text-chalk-40">{t.house}</span>
-            <TrackLink
+            <Link
               href="/documents/sillage"
-              event="sillage_click"
-              data={{ from: "home_before_after" }}
               className="btn-quiet"
+              onClick={() => track("cta_click", { section: "before_after", target: "documents" })}
             >
               {t.cta}
-            </TrackLink>
+            </Link>
           </div>
         </div>
       </div>

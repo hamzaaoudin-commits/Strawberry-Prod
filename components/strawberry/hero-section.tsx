@@ -5,6 +5,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { track } from "@vercel/analytics"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
  * Le bandeau de logos a été retiré.
@@ -18,33 +19,31 @@ import { useT } from "@/lib/i18n"
 const T = {
   en: {
     badge: "NARRATIVE PERCEPTION STUDIO · PARIS",
-    hook: "People don't fall for the best product. They fall for the story they can't stop repeating about it.",
     slogan: "Impossible to confuse. Impossible to generate.",
-    h1a: "In three weeks, a brand story",
-    h1b: "your competitors cannot copy.",
-    h1sub: "The kind people adopt, repeat, and stay loyal to.",
-    sub: "You stop being an option people compare. You become the house people follow — and no one else can tell that story in your place.",
+    h1a: "The identity that makes people",
+    h1b: "belong to your brand, not just buy it.",
+    h1sub: "Extracted from you in three weeks — not generated, not copyable.",
+    sub: "The same work, seen by your market, becomes something people follow, defend and repeat. That is the difference between a customer and someone loyal.",
     cta1: "Commission the Work \u2192",
     trusted: "What you get, in three lines.",
     stats: [
-      "A brand people recognise on sight",
-      "Customers who stay instead of shopping around",
+      "People understand your brand instead of comparing it",
+      "You build a following, not a transaction list",
       "Usable the Monday after",
     ],
   },
   fr: {
     badge: "STUDIO DE PERCEPTION NARRATIVE · PARIS",
-    hook: "On ne s'attache pas au meilleur produit. On s'attache à l'histoire qu'on ne se lasse pas de raconter à son sujet.",
     slogan: "Impossible à confondre. Impossible à générer.",
-    h1a: "En trois semaines, un récit de marque",
-    h1b: "que vos concurrents ne peuvent pas copier.",
-    h1sub: "Celui qu'on adopte, qu'on répète, et auquel on reste fidèle.",
-    sub: "Vous cessez d'être une option qu'on compare. Vous devenez la maison qu'on suit — et personne d'autre ne peut raconter cette histoire à votre place.",
+    h1a: "L'identité qui fait qu'on adhère",
+    h1b: "à votre marque, pas qu'on l'achète.",
+    h1sub: "Extraite de vous en trois semaines — ni générée, ni copiable.",
+    sub: "Le même travail, vu par votre marché, devient quelque chose qu'on suit, qu'on défend et qu'on répète. C'est la différence entre un client et quelqu'un de fidèle.",
     cta1: "Commander le travail \u2192",
     trusted: "Ce que vous y gagnez, en trois lignes.",
     stats: [
-      "Une marque qu'on reconnaît au premier coup d'œil",
-      "Des clients qui restent au lieu d'aller comparer",
+      "On comprend votre marque au lieu de la comparer",
+      "Vous bâtissez une communauté, pas une liste de transactions",
       "Exploitable le lundi qui suit",
     ],
   },
@@ -67,6 +66,7 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
+      <ViewTracker name="hero" />
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
       <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
       <AnimatedOrb color="radial-gradient(circle,#dc2626,transparent)" size={300} x="80%" y="80%" opacity={0.1} />
@@ -115,10 +115,6 @@ export function HeroSection() {
               proposition de valeur — bénéfice, durée, différenciation. */}
           <p className="mb-4 font-sans text-[12px] uppercase tracking-[0.22em] text-chalk-40">
             {t.slogan}
-          </p>
-
-          <p className="mb-8 max-w-[560px] font-serif text-[clamp(0.95rem,1.7vw,1.15rem)] italic leading-snug text-chalk-55">
-            {t.hook}
           </p>
 
           <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.7rem,6vw,6.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">

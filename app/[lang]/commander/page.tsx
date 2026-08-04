@@ -1,7 +1,7 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { STRIPE_LINKS, HAS_3X, LIVE } from "@/lib/config"
+import { STRIPE_LINKS, HAS_3X, LIVE, HOUSES } from "@/lib/config"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 
@@ -50,8 +50,8 @@ const T = {
       ["La fenêtre avant production", "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous annulez et êtes remboursé intégralement, sous quinze jours."],
     ],
     houseKicker: "Ce que vous devenez",
-    houseBody: (p: string, r: number) =>
-      `Votre commande rejoint le registre public des Maisons. ${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
+    houseBody: (n: number, p: string, r: number) =>
+      `Vous entrez dans les Maisons. Votre commande portera le numéro ${String(n).padStart(3, "0")}. ${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     houseCta: "Voir le registre",
     afterKicker: "Après",
     afterBody: "L'architecture livrée, vous n'avez besoin de rien d'autre : elle vous appartient et ne se paie qu'une fois. Si vous voulez que le studio continue d'écrire à partir d'elle — scripts, récits, site web, plannings — MOMENTUM existe, au mois. Ce n'est pas la suite obligatoire, c'est une option.",
@@ -90,8 +90,8 @@ const T = {
       ["The window before production", "Within seven days of payment, and as long as the extraction interview has not taken place, you cancel and are refunded in full, within fifteen days."],
     ],
     houseKicker: "What you become",
-    houseBody: (p: string, r: number) =>
-      `Your commission joins the public register of Houses. ${p}: ${r} place${r > 1 ? "s" : ""} left.`,
+    houseBody: (n: number, p: string, r: number) =>
+      `You enter the Houses. Your commission will carry number ${String(n).padStart(3, "0")}. ${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     houseCta: "See the register",
     afterKicker: "Afterwards",
     afterBody: "Once the architecture is delivered you need nothing else: it is yours and it is paid for once. If you want the studio to keep writing from it — scripts, narratives, website, calendars — MOMENTUM exists, monthly. It is not the obligatory next step, it is an option.",
@@ -194,7 +194,7 @@ export default async function CommanderPage({
           <div className="mt-6 border border-hair p-7">
             <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">{t.houseKicker}</div>
             <p className="mb-6 font-serif text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-white">
-              {t.houseBody(sc.period, sc.remaining)}
+              {t.houseBody(HOUSES.nextNumber, sc.period, sc.remaining)}
             </p>
             <Link href="/maisons" className="btn-quiet">
               {t.houseCta}

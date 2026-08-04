@@ -1,11 +1,10 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { LocaleLink as Link } from "@/components/locale-link"
-import { TrackLink } from "@/components/strawberry/track-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { NextReadCapture } from "@/components/strawberry/next-read-capture"
 import { getRead, publishedReads, pickLocale, SECTION_LABELS, THEME_LABELS } from "@/lib/radar-reads"
+import { RadarLeadCapture } from "@/components/strawberry/radar-lead-capture"
 import { alternatesFor, SITE } from "@/lib/routing"
 import { pick } from "@/lib/t"
 import { isLang, LANGS, type Lang } from "@/lib/lang"
@@ -135,17 +134,19 @@ export default async function LecturePage({
             </h2>
             <p className="mb-8 body-sm">{t.cutBody}</p>
             <div className="flex flex-wrap items-center gap-5">
-              <TrackLink href="/radar" event="lectures_to_radar" data={{ from: "lecture_detail" }} className="btn-primary">
+              <Link href="/radar" className="btn-primary">
                 {t.cutCta}
-              </TrackLink>
-              <TrackLink href="/radar/acces" event="lectures_to_radar" data={{ from: "lecture_detail_login" }} className="btn-quiet">
+              </Link>
+              <Link href="/radar/acces" className="btn-quiet">
                 {t.cutAlt}
-              </TrackLink>
+              </Link>
             </div>
           </div>
 
+          {/* Pas prêt à payer maintenant ? Le pont capture l'email, sans
+              engagement, plutôt que de perdre le lecteur ici. */}
           <div className="mt-6 max-w-[720px]">
-            <NextReadCapture from="lecture_detail" />
+            <RadarLeadCapture lang={lang} source={`radar_lead_lecture_${slug}`} />
           </div>
 
           <div className="mt-6 max-w-[720px] border border-hair p-7 md:p-10">

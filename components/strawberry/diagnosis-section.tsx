@@ -1,111 +1,42 @@
-import { TrackLink } from "@/components/strawberry/track-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
- * Le diagnostic, en six blocs.
+ * Le diagnostic.
  *
- * Il s'insère entre le problème et l'offre, et fait le travail qu'aucune
- * section ne faisait : montrer au lecteur qu'il s'est trompé de cause, donc
- * qu'il a acheté les mauvaises solutions, et que celles-ci ont aggravé la
- * situation au lieu de la corriger.
+ * La version précédente suivait la théorie problème / fausse cause / fausse
+ * solution avec un intertitre par étape — ça se lisait comme un cours de
+ * marketing récité. Le raisonnement reste le même, mais en prose continue,
+ * sans étiquettes, comme on le dirait à voix haute.
  *
- * Le bloc 04 porte l'argument central du studio, qui n'était écrit nulle part :
- * chaque remède courant augmente l'indifférenciation. Il porte aussi l'ennemi
- * nommé — l'agence et son diaporama — tandis que l'IA reste ce qui rend le
- * problème urgent, pas ce contre quoi on vend.
+ * Le paragraphe sur la saturation par l'IA était la phrase la plus forte du
+ * site, cachée sur une sous-page que peu de visiteurs atteignent. Il est ici,
+ * sur la page que tout le monde voit.
  */
 
 const T = {
   en: {
-    kicker: "The diagnosis",
-    h2a: "You have probably already tried",
-    h2b: "to fix this. Twice.",
-    lead: "And it did not work, for a reason nobody sells you: the thing being repaired was never the thing that was broken.",
-    blocks: [
-      {
-        n: "01",
-        label: "What it looks like day to day",
-        body: "You are not chosen, or you are chosen on price. Prospects say they will think about it, then go with a name that does the same thing for less — and you have no sentence to answer with.",
-      },
-      {
-        n: "02",
-        label: "The reflex",
-        body: "You conclude that you should post more, write better, be more visible. It is the most reassuring explanation, because it only asks for more effort.",
-      },
-      {
-        n: "03",
-        label: "What you buy instead",
-        body: "A new logo. A moodboard. A branding agency and its forty slides. A content calendar. Or a positioning prompted out of an AI in nine seconds.",
-      },
-      {
-        n: "04",
-        label: "Why it backfires",
-        body: "A new logo on an indistinguishable sentence puts a spotlight on the sameness instead of hiding it. Posting more just makes you resemble everyone else, more often. And AI pulls every brand toward the same average sentence, because that average is exactly what it was trained on.",
-      },
-      {
-        n: "05",
-        label: "What's actually going on",
-        body: "You have never decided what you refuse — not what you do, but what you won't say, won't take on, and who you're willing to lose. That refusal is what a story is cut from.",
-      },
-      {
-        n: "06",
-        label: "What we do about it",
-        body: "We start by extraction: hours spent making you say what you no longer see, because you're inside it. What comes out isn't a style. It's a story your competitors cannot copy, because it wasn't invented — it was taken out of you.",
-      },
-    ],
-    enemyKicker: "What we are not",
-    enemy: [
-      ["An agency bills you assets.", "We write a constitution."],
-      ["It delivers forty slides.", "We deliver one document that decides."],
-      ["It has you approve moodboards.", "We have you refuse things."],
-    ],
-    methodCta: "See the five stages \u2192",
+    kicker: "What you have probably already tried",
+    h2a: "None of it was a lack of effort.",
+    h2b: "It was the wrong cause.",
+    p1: "A new logo. A branding agency. Posting more often. Asking a language model for a positioning statement. Each felt like progress, and none of it changed how your market sees you — because the problem was never how loud you are. It is that nobody has ever settled what you refuse, and without a refusal there is no identity to belong to.",
+    aiKicker: "Why this is urgent now",
+    aiP1: "AI is saturating your market faster than you can see it. Your competitors now produce in one click what used to take weeks: articles, visuals, pages, campaigns. Content is becoming free, infinite and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.",
+    aiP2a: "What cannot be generated is an identity. ",
+    aiP2strong: "Differentiation is no longer a marketing luxury — it is your condition for survival.",
+    enemy: "An agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
   },
   fr: {
-    kicker: "Le diagnostic",
-    h2a: "Vous avez sans doute déjà essayé",
-    h2b: "de régler ça. Deux fois.",
-    lead: "Et ça n'a pas marché, pour une raison que personne ne vous vend : ce qu'on réparait n'a jamais été ce qui était cassé.",
-    blocks: [
-      {
-        n: "01",
-        label: "Ce que ça donne au quotidien",
-        body: "On ne vous choisit pas, ou on vous choisit sur le prix. Les prospects disent qu'ils vont réfléchir, puis partent vers un nom qui fait la même chose pour moins cher — et vous n'avez aucune phrase à leur opposer.",
-      },
-      {
-        n: "02",
-        label: "Le réflexe",
-        body: "Vous en concluez qu'il faudrait poster davantage, mieux écrire, être plus visible. C'est l'explication la plus rassurante, parce qu'elle ne demande que plus d'efforts.",
-      },
-      {
-        n: "03",
-        label: "Ce qu'on achète à la place",
-        body: "Un logo neuf. Un moodboard. Une agence de branding et ses quarante slides. Un calendrier de contenu. Ou un positionnement demandé à une IA en neuf secondes.",
-      },
-      {
-        n: "04",
-        label: "Pourquoi ça se retourne contre vous",
-        body: "Un logo neuf posé sur une phrase indifférenciable éclaire la ressemblance au lieu de la cacher. Poster plus vous fait juste ressembler à tout le monde, plus souvent. Et l'IA ramène chaque marque vers la même phrase moyenne, parce que cette moyenne est exactement ce sur quoi elle a été entraînée.",
-      },
-      {
-        n: "05",
-        label: "Ce qui se joue vraiment",
-        body: "Vous n'avez jamais tranché ce que vous refusez — pas ce que vous faites, mais ce que vous ne direz pas, ne prendrez pas, et qui vous acceptez de perdre. C'est de ce refus qu'une histoire se découpe.",
-      },
-      {
-        n: "06",
-        label: "Ce qu'on fait, concrètement",
-        body: "On commence par l'extraction : des heures à vous faire dire ce que vous ne voyez plus, parce que vous êtes dedans. Ce qui en sort n'est pas un style. C'est une histoire que vos concurrents ne peuvent pas copier, parce qu'elle n'a pas été inventée — elle a été extraite de vous.",
-      },
-    ],
-    enemyKicker: "Ce que nous ne sommes pas",
-    enemy: [
-      ["Une agence vous facture des assets.", "Nous écrivons une constitution."],
-      ["Elle livre quarante slides.", "Nous livrons un document qui tranche."],
-      ["Elle vous fait valider des moodboards.", "Nous vous faisons refuser des choses."],
-    ],
-    methodCta: "Voir les cinq étapes \u2192",
+    kicker: "Ce que vous avez sans doute déjà essayé",
+    h2a: "Rien de tout ça n'a manqué de bonne volonté.",
+    h2b: "Ça a manqué de la bonne cause.",
+    p1: "Un logo refait. Une agence de branding. Poster plus souvent. Demander un positionnement à un modèle de langage. Chacune de ces tentatives ressemblait à un progrès, et aucune n'a changé la façon dont votre marché vous voit — parce que le problème n'a jamais été votre volume. C'est que personne n'a jamais tranché ce que vous refusez, et sans refus, il n'y a aucune identité à laquelle s'accrocher.",
+    aiKicker: "Pourquoi c'est urgent maintenant",
+    aiP1: "L'IA sature votre marché plus vite que vous ne le voyez. Vos concurrents produisent désormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualité ne suffit plus à vous distinguer : tout le monde est devenu bon.",
+    aiP2a: "Ce qui ne peut pas être généré, c'est une identité. ",
+    aiP2strong: "La différenciation n'est plus un luxe marketing — c'est votre condition de survie.",
+    enemy: "Une agence vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
   },
 }
 
@@ -114,60 +45,28 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
+      <ViewTracker name="diagnosis" />
       <div className="glow-center" aria-hidden />
 
-      <div className="shell relative">
-        <div className="mx-auto mb-14 max-w-[720px] text-center">
-          <div className="kicker mb-6">{t.kicker}</div>
-          <h2 className="h-section mb-7">
-            {t.h2a}
-            <br />
-            <span className="text-gradient">{t.h2b}</span>
-          </h2>
-          <p className="lede">{t.lead}</p>
+      <div className="shell relative mx-auto max-w-[780px]">
+        <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">{t.kicker}</div>
+        <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] font-bold leading-[1.16] tracking-[-0.02em]">
+          {t.h2a}
+          <br />
+          <span className="text-gradient">{t.h2b}</span>
+        </h2>
+        <p className="mb-12 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.p1}</p>
+
+        <div className="border-l-2 border-brand pl-6 md:pl-8">
+          <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{t.aiKicker}</div>
+          <p className="mb-5 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
+          <p className="font-serif text-[clamp(1.1rem,2.1vw,1.4rem)] leading-[1.5] text-white">
+            {t.aiP2a}
+            <strong>{t.aiP2strong}</strong>
+          </p>
         </div>
 
-        <ol className="mx-auto max-w-[860px] list-none border-t border-hair p-0">
-          {t.blocks.map((b) => (
-            <li key={b.n} className="border-b border-white/[0.07] py-8">
-              <div className="grid gap-4 md:grid-cols-[76px_minmax(0,1fr)] md:gap-8">
-                <div className="font-serif text-[1.9rem] font-bold leading-none text-brand">{b.n}</div>
-                <div>
-                  <h3 className="mb-3 font-serif text-[clamp(1.2rem,2.4vw,1.6rem)] font-bold leading-snug">
-                    {b.label}
-                  </h3>
-                  <p className="m-0 max-w-[620px] font-sans text-[15.5px] leading-[1.8] text-chalk-65">{b.body}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        {/* L'ennemi nommé. Trois lignes, aucune marque citée. */}
-        <div className="mx-auto mt-14 max-w-[860px] border border-brand-hair p-7 md:p-10">
-          <div className="mb-7 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
-            {t.enemyKicker}
-          </div>
-          <div className="grid gap-px bg-white/[0.09]">
-            {t.enemy.map(([them, us]) => (
-              <div key={them} className="grid gap-2 bg-ink px-5 py-4 sm:grid-cols-2 sm:gap-8">
-                <span className="font-sans text-[15px] text-chalk-40 line-through decoration-white/20">{them}</span>
-                <span className="font-sans text-[15px] text-white">{us}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <TrackLink
-              href="/strawberry-method"
-              event="method_click"
-              data={{ from: "home_diagnosis" }}
-              className="btn-quiet"
-            >
-              {t.methodCta}
-            </TrackLink>
-          </div>
-        </div>
+        <p className="mt-12 font-sans text-[15px] leading-relaxed text-chalk-55">{t.enemy}</p>
       </div>
     </section>
   )

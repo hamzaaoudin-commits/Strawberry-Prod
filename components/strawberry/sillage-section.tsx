@@ -1,5 +1,6 @@
-import { TrackLink } from "@/components/strawberry/track-link"
+import { TrackedLink } from "@/components/strawberry/tracked-link"
 import { pick } from "@/lib/t"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 import type { Lang } from "@/lib/lang"
 
 /**
@@ -8,12 +9,9 @@ import type { Lang } from "@/lib/lang"
  * Composant serveur : aucune interaction, donc aucune hydratation.
  *
  * Le document était annoncé mais jamais montré — un titre, un sous-titre, quatre
- * encadrés. Il est désormais présenté comme un objet : sa couverture, et les
- * quatorze pièces visibles d'un coup en registre. Ce qu'on peut voir se juge ;
- * ce qui n'est qu'annoncé se croit ou ne se croit pas.
- *
- * La couverture s'affiche seule, sans le double filet décoratif imitant une
- * pile de feuillets : ça alourdissait la carte sans rien ajouter au jugement.
+ * encadrés. Il est désormais présenté comme un objet : une pile de pages avec sa
+ * couverture, et les quatorze pièces visibles d'un coup en registre. Ce qu'on
+ * peut voir se juge ; ce qui n'est qu'annoncé se croit ou ne se croit pas.
  */
 
 const T = {
@@ -64,6 +62,7 @@ export function SillageSection({ lang }: { lang: Lang }) {
 
   return (
     <section id="work" className="section relative overflow-hidden bg-ink-soft text-white">
+      <ViewTracker name="sillage" />
       <div className="glow-center" aria-hidden />
 
       <div className="shell relative">
@@ -82,6 +81,10 @@ export function SillageSection({ lang }: { lang: Lang }) {
           <span className="bracket-br" aria-hidden />
 
           <div className="relative grid gap-10 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12">
+            {/* La pile : deux feuillets décalés sous la couverture. Le document
+                cesse d'être une promesse et devient un volume. */}
+            {/* Juste la couverture — l'effet de pile en dessous alourdissait
+                sans rien ajouter. */}
             <div className="mx-auto w-[170px] max-w-full md:mx-0 md:w-full">
               <div className="flex aspect-[3/4] flex-col items-center justify-center border border-white/25 bg-ink px-4 text-center">
                 <div className="font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
@@ -119,14 +122,9 @@ export function SillageSection({ lang }: { lang: Lang }) {
                 </div>
               </div>
 
-              <TrackLink
-                href="/documents/sillage"
-                event="sillage_click"
-                data={{ from: "home_sillage" }}
-                className="btn-primary"
-              >
+              <TrackedLink href="/documents/sillage" className="btn-primary" event="cta_click" data={{ section: "sillage", target: "documents" }}>
                 {t.cta}
-              </TrackLink>
+              </TrackedLink>
             </div>
           </div>
         </div>

@@ -1,7 +1,9 @@
 import { LocaleLink as Link } from "@/components/locale-link"
+import { TrackedLink } from "@/components/strawberry/tracked-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { LIVE } from "@/lib/config"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 import { OfferCover } from "@/components/strawberry/offer-covers"
 
 /**
@@ -17,19 +19,15 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
  * Trois choses qui étaient enterrées dans la FAQ remontent ici, collées au
  * prix, parce que c'est là qu'un acheteur décide : la garantie, la fenêtre de
  * remboursement, et la justification du montant.
- *
- * Le prix n'ouvre plus la section : c'est une conséquence de la perception,
- * pas l'argument. Ce qu'on vend, c'est une marque qu'on reconnaît et à
- * laquelle on reste — le prix cesse d'être la question qu'on se pose.
  */
 
 const T = {
   en: {
     kicker: "The commission",
-    h2a: "What you become:",
-    h2b: "a brand people follow, not compare.",
+    h2a: "What people will feel about your brand:",
+    h2b: "understood, not compared.",
     intro:
-      "Three weeks. One house at a time. What comes out is not a style guide — it is the story that makes people see you differently, hold on to it, and stay. Being compared on price is what stops happening once they do.",
+      "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
     coverFoot: "Fourteen parts",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
@@ -81,10 +79,10 @@ const T = {
   },
   fr: {
     kicker: "La commande signature",
-    h2a: "Ce que vous devenez :",
-    h2b: "une marque qu'on suit, pas qu'on compare.",
+    h2a: "Ce que votre marché ressentira :",
+    h2b: "vous comprendre, pas vous comparer.",
     intro:
-      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est le récit qui fait qu'on vous voit différemment, qu'on s'y attache, et qu'on reste. Être comparé au prix, c'est ce qui s'arrête une fois qu'on y est.",
+      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
     coverFoot: "Quatorze pièces",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
@@ -142,6 +140,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
   return (
     <section id="offers" className="section relative overflow-hidden bg-ink text-white">
+      <ViewTracker name="offers" />
       <div className="glow-center" aria-hidden />
 
       <div className="shell relative">
@@ -273,9 +272,14 @@ export function OffersSection({ lang }: { lang: Lang }) {
               {/* Le paiement ne s'ouvre plus depuis la page d'accueil.
                   Envoyer une carte bancaire à quelqu'un qui n'a pas lu la page
                   de vente, c'est parler de l'étape cinq pendant l'étape une. */}
-              <Link href="/brand-narrative-architecture" className="btn-primary">
+              <TrackedLink
+                href="/brand-narrative-architecture"
+                className="btn-primary"
+                event="cta_click"
+                data={{ section: "offers", target: "architecture" }}
+              >
                 {t.cta1}
-              </Link>
+              </TrackedLink>
               <Link href="/offres" className="btn-quiet">
                 {t.cta2}
               </Link>

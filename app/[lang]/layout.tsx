@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+// STUB
 import { Analytics } from '@vercel/analytics/next'
 import { notFound } from 'next/navigation'
 import { LanguageProvider } from '@/lib/i18n'
@@ -7,17 +7,8 @@ import { LANGS, isLang, type Lang } from '@/lib/lang'
 import { alternatesFor, SITE } from '@/lib/routing'
 import '../globals.css'
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
+const playfair={variable:'a'}
+const dmSans={variable:'b'}
 
 /** Prerender one full set of pages per language. */
 export function generateStaticParams() {

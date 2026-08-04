@@ -1,9 +1,8 @@
 import { LocaleLink as Link } from "@/components/locale-link"
-import { TrackLink } from "@/components/strawberry/track-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { NextReadCapture } from "@/components/strawberry/next-read-capture"
 import { publishedReads, pickLocale, THEME_LABELS } from "@/lib/radar-reads"
+import { RadarLeadCapture } from "@/components/strawberry/radar-lead-capture"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 
@@ -18,11 +17,6 @@ import { isLang, type Lang } from "@/lib/lang"
  * coupent exactement là où commence le diagnostic. C'est ce que cherche un
  * lecteur qui sait qu'on le compare au moins cher sans savoir encore pourquoi.
  * La tension, le cap et le verdict restent dans l'abonnement.
- *
- * Entre la lecture gratuite et l'abonnement à 15€/mois, il n'y avait aucune
- * sortie intermédiaire : payer ou repartir. NextReadCapture construit une
- * liste de lecteurs problem-aware qu'on nourrit avant qu'ils soient prêts à
- * payer RADAR — un aimant différent de l'Atlas, qui vend l'architecture.
  */
 
 const T = {
@@ -106,13 +100,16 @@ export default async function LecturesIndex({
             <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.subKicker}</div>
             <h2 className="mb-4 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-snug">{t.subTitle}</h2>
             <p className="mb-7 max-w-[600px] body-sm">{t.subBody}</p>
-            <TrackLink href="/radar" event="lectures_to_radar" data={{ from: "lectures_index" }} className="btn-primary">
+            <Link href="/radar" className="btn-primary">
               {t.subCta}
-            </TrackLink>
+            </Link>
           </div>
 
+          {/* Le pont. /lectures n'avait qu'une sortie : payer ou repartir.
+              Cette capture à friction quasi nulle nourrit un lecteur qui
+              n'est pas encore prêt à payer, sans lui demander de l'être. */}
           <div className="mt-6">
-            <NextReadCapture from="lectures_index" />
+            <RadarLeadCapture lang={lang} source="radar_lead_lectures_index" />
           </div>
         </div>
       </section>

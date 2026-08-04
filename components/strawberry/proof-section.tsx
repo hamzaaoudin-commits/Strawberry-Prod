@@ -1,18 +1,16 @@
-import { TrackLink } from "@/components/strawberry/track-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { LIVE } from "@/lib/config"
+import { TrackedLink } from "@/components/strawberry/tracked-link"
+import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
- * Les preuves qui n'étaient nulle part sur la page d'accueil.
+ * La preuve d'œil.
  *
- * Le compteur RADAR est une preuve d'œil : un chiffre vérifiable de marques
- * lues, pas une affirmation de compétence. Il vient de LIVE.radar dans
- * config.ts, tenu à la main — un compteur calculé par le code serait de la
- * preuve fabriquée.
- *
- * Le second bloc (« Qui l'écrit ») est retiré : le fondateur a déjà sa page,
- * et cette carte dupliquait l'about-section plus bas sans rien ajouter.
+ * Le compteur RADAR vient de LIVE.radar dans config.ts, tenu à la main — un
+ * compteur calculé par le code serait de la preuve fabriquée. Le fondateur a
+ * sa propre place sur la page Le Studio, avec la photo ; il n'a pas besoin
+ * d'être répété ici.
  */
 
 const T = {
@@ -21,7 +19,7 @@ const T = {
     radarLabel: "Brands read since",
     radarTitle: "The eye is trained daily, in public.",
     radarBody:
-      "One brand followed every day: what it emits, what interferes, and the heading we would give it. The judgement applied to your house is the same one exercised here, where anyone can check it.",
+      "One brand dissected every day: what it emits, what interferes, and the heading we would give it. The judgement applied to your house is the same one exercised here, where anyone can check it.",
     radarCta: "See RADAR",
   },
   fr: {
@@ -29,7 +27,7 @@ const T = {
     radarLabel: "Marques lues depuis",
     radarTitle: "L'œil s'entraîne tous les jours, en public.",
     radarBody:
-      "Une marque suivie chaque jour : ce qui émet, ce qui parasite, et le cap que nous lui donnerions. Le jugement appliqué à votre maison est celui qui s'exerce ici, où n'importe qui peut le vérifier.",
+      "Une marque disséquée chaque jour : ce qui émet, ce qui parasite, et le cap que nous lui donnerions. Le jugement appliqué à votre maison est celui qui s'exerce ici, où n'importe qui peut le vérifier.",
     radarCta: "Voir RADAR",
   },
 }
@@ -39,10 +37,11 @@ export function ProofSection({ lang }: { lang: Lang }) {
 
   return (
     <section className="section bg-ink-soft text-white">
+      <ViewTracker name="proof" />
       <div className="shell">
         <div className="kicker mb-10">{t.kicker}</div>
 
-        <div className="mx-auto flex max-w-[620px] flex-col border border-hair p-7 md:p-9">
+        <div className="mx-auto flex max-w-[560px] flex-col border border-hair p-7 md:p-9">
           <div className="mb-6 flex items-baseline gap-3">
             <span className="font-serif text-[clamp(2.6rem,6vw,3.6rem)] font-bold leading-none text-brand">
               {LIVE.radar.count}
@@ -55,14 +54,14 @@ export function ProofSection({ lang }: { lang: Lang }) {
             {t.radarTitle}
           </h3>
           <p className="mb-7 font-sans text-[15px] leading-relaxed text-chalk-65">{t.radarBody}</p>
-          <TrackLink
+          <TrackedLink
             href="/radar"
-            event="radar_click"
-            data={{ from: "home_proof" }}
             className="btn-quiet self-start"
+            event="cta_click"
+            data={{ section: "proof", target: "radar" }}
           >
             {t.radarCta}
-          </TrackLink>
+          </TrackedLink>
         </div>
       </div>
     </section>

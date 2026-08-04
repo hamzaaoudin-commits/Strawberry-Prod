@@ -5,10 +5,10 @@ import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
 import { useT, useLang } from "@/lib/i18n"
 import { AnimatedOrb } from "@/components/strawberry/animated-orb"
-import { AboutSection } from "@/components/strawberry/about-section"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { AboutSection } from "@/components/strawberry/about-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -220,11 +220,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-
-      {/* Section « Le Studio » — déplacée depuis la home, qui ne la montrait
-          qu'après le formulaire de contact, à un endroit où presque personne
-          ne descend. Elle vit ici, dans la page qui porte son nom. */}
-      <AboutSection lang={lang} />
 
       {/* WHY THIS STUDIO EXISTS */}
       <section
@@ -585,6 +580,12 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* LE STUDIO — reprise du bloc « ce qu'est ce studio, et ce qu'il n'est
+          pas », retiré de la home pour ne laisser sur la home que ce qui
+          fait avancer vers la commande. Il trouve ici sa vraie place, en
+          clôture de la page qui porte son nom. */}
+      <AboutSection lang={lang} />
 
       {/* FINAL CTA */}
       <section
