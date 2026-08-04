@@ -20,9 +20,9 @@ import { isLang, type Lang } from "@/lib/lang"
  *
  * Une page, une offre, une action. Le parcours suit la décision d'achat :
  * problème, diagnostic, mécanisme propriétaire, offre, démonstration, deux
- * dernières preuves (le livre, l'Atlas), les objections, puis le bandeau
- * final juste avant le formulaire — la dernière relance avant qu'on demande
- * d'écrire.
+ * dernières preuves (le livre, l'Atlas), le bandeau final, puis les
+ * objections et le formulaire — la relance arrive avant qu'on désamorce les
+ * dernières questions, pas après.
  *
  * La section « Les preuves » et le curseur avant/après sont partis d'ici : le
  * premier n'ajoutait rien après SILLAGE, le second vit désormais dans le
@@ -49,8 +49,8 @@ export default async function Home({
       <SillageSection lang={lang} />
       <BookSection lang={lang} />
       <AtlasSection />
-      <FaqSection faqs={FAQ_AUDIT} />
       <CTABanner />
+      <FaqSection faqs={FAQ_AUDIT} />
       <ContactSection />
       <Footer />
     </main>
