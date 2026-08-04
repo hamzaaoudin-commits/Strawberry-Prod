@@ -427,3 +427,18 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* Animation de logo au chargement (LoadingIntro). Le calque et ses lettres
+   partent visibles/masquées par défaut dans le HTML ; ce sont ces deux règles
+   qui font l'animation, pilotées par un script en ligne qui ajoute/retire des
+   classes et des styles au bon moment. */
+#sp-intro {
+  transition: opacity 400ms ease-out;
+}
+.sp-intro-letter {
+  transition: opacity 450ms ease-out, transform 450ms ease-out;
+}
+.sp-intro-letter.sp-intro-in {
+  opacity: 1;
+  transform: translateY(0);
+}
