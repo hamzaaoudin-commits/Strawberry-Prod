@@ -3,8 +3,9 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { useT } from "@/lib/i18n"
+import { useT, useLang } from "@/lib/i18n"
 import { AnimatedOrb } from "@/components/strawberry/animated-orb"
+import { AboutSection } from "@/components/strawberry/about-section"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
@@ -135,6 +136,7 @@ const T = {
 
 export default function AboutPage() {
   const t = useT(T)
+  const { lang } = useLang()
   const REFUSALS = t.refusals.map((r, i) => ({ ...r, n: `0${i + 1}` }))
   const INHERITANCE = t.inheritance
   const DISCIPLINE = t.discipline.map((d, i) => ({ ...d, n: `0${i + 1}` }))
@@ -218,6 +220,11 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+
+      {/* Section « Le Studio » — déplacée depuis la home, qui ne la montrait
+          qu'après le formulaire de contact, à un endroit où presque personne
+          ne descend. Elle vit ici, dans la page qui porte son nom. */}
+      <AboutSection lang={lang} />
 
       {/* WHY THIS STUDIO EXISTS */}
       <section

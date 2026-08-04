@@ -1,4 +1,4 @@
-import { LocaleLink as Link } from "@/components/locale-link"
+import { TrackLink } from "@/components/strawberry/track-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 
@@ -25,33 +25,33 @@ const T = {
     blocks: [
       {
         n: "01",
-        label: "The problem as you live it",
-        body: "You are not chosen, or you are chosen on price. Prospects say they will think about it. They compare you to a name that does the same thing for less, and you have no sentence to answer with. When you win, it is because someone already knew you — never because the market read you correctly.",
+        label: "What it looks like day to day",
+        body: "You are not chosen, or you are chosen on price. Prospects say they will think about it, then go with a name that does the same thing for less — and you have no sentence to answer with.",
       },
       {
         n: "02",
-        label: "The false cause",
-        body: "You conclude that your communication is not good enough, or not regular enough. That you should post more, write better, be more visible. It is the most reassuring diagnosis available, because it points at effort — something you can always supply more of.",
+        label: "The reflex",
+        body: "You conclude that you should post more, write better, be more visible. It is the most reassuring explanation, because it only asks for more effort.",
       },
       {
         n: "03",
-        label: "The false remedy",
-        body: "So you redo the logo. You build a moodboard. You brief a branding agency, which returns forty slides. You start producing content on a schedule. Or you ask a language model for a positioning, and it gives you one in nine seconds.",
+        label: "What you buy instead",
+        body: "A new logo. A moodboard. A branding agency and its forty slides. A content calendar. Or a positioning prompted out of an AI in nine seconds.",
       },
       {
         n: "04",
-        label: "Why it makes things worse",
-        body: "A new logo on an indistinguishable sentence does not hide the indistinguishability — it puts a spotlight on it. Posting more makes you resemble everyone else more often, at greater expense. And a language model pulls you toward the market average by construction, because the market average is exactly what it was trained on. Every one of these remedies increases the very thing you were trying to escape.",
+        label: "Why it backfires",
+        body: "A new logo on an indistinguishable sentence puts a spotlight on the sameness instead of hiding it. Posting more just makes you resemble everyone else, more often. And AI pulls every brand toward the same average sentence, because that average is exactly what it was trained on.",
       },
       {
         n: "05",
-        label: "The real cause",
-        body: "You have never settled what you refuse. Not what you do — what you will not do, will not say, will not take on, and who you are willing to lose. A position is a shape cut out of a field, and you cannot cut without refusing. Without refusal there is no position, only a list of qualities every competitor also claims.",
+        label: "What's actually going on",
+        body: "You have never decided what you refuse — not what you do, but what you won't say, won't take on, and who you're willing to lose. That refusal is what a story is cut from.",
       },
       {
         n: "06",
-        label: "The real remedy",
-        body: "Extraction first: several hours in which we make you say what you no longer see, because you have been inside it too long. Then the five stages, in order, each one earning the next. What comes out is not a style. It is a written constitution your competitors cannot copy, because it was not invented — it was taken out of you.",
+        label: "What we do about it",
+        body: "We start by extraction: hours spent making you say what you no longer see, because you're inside it. What comes out isn't a style. It's a story your competitors cannot copy, because it wasn't invented — it was taken out of you.",
       },
     ],
     enemyKicker: "What we are not",
@@ -70,33 +70,33 @@ const T = {
     blocks: [
       {
         n: "01",
-        label: "Le problème tel que vous le vivez",
-        body: "On ne vous choisit pas, ou on vous choisit sur le prix. Les prospects disent qu'ils vont réfléchir. Ils vous comparent à un nom qui fait la même chose pour moins cher, et vous n'avez aucune phrase à leur opposer. Quand vous gagnez, c'est parce qu'on vous connaissait déjà — jamais parce que le marché vous a lu correctement.",
+        label: "Ce que ça donne au quotidien",
+        body: "On ne vous choisit pas, ou on vous choisit sur le prix. Les prospects disent qu'ils vont réfléchir, puis partent vers un nom qui fait la même chose pour moins cher — et vous n'avez aucune phrase à leur opposer.",
       },
       {
         n: "02",
-        label: "La fausse cause",
-        body: "Vous en concluez que votre communication n'est pas assez bonne, ou pas assez régulière. Qu'il faudrait poster davantage, mieux écrire, être plus visible. C'est le diagnostic le plus rassurant qui soit, parce qu'il désigne l'effort — la seule chose dont vous pouvez toujours fournir plus.",
+        label: "Le réflexe",
+        body: "Vous en concluez qu'il faudrait poster davantage, mieux écrire, être plus visible. C'est l'explication la plus rassurante, parce qu'elle ne demande que plus d'efforts.",
       },
       {
         n: "03",
-        label: "La fausse solution",
-        body: "Alors vous refaites le logo. Vous montez un moodboard. Vous briefez une agence de branding, qui vous rend quarante slides. Vous vous mettez à produire du contenu au calendrier. Ou vous demandez un positionnement à un modèle de langage, qui vous en donne un en neuf secondes.",
+        label: "Ce qu'on achète à la place",
+        body: "Un logo neuf. Un moodboard. Une agence de branding et ses quarante slides. Un calendrier de contenu. Ou un positionnement demandé à une IA en neuf secondes.",
       },
       {
         n: "04",
-        label: "Pourquoi ça aggrave",
-        body: "Un logo neuf posé sur une phrase indifférenciable ne masque pas l'indifférenciation — il l'éclaire. Poster plus vous fait ressembler à tout le monde plus souvent, et plus cher. Et un modèle de langage vous ramène vers la moyenne du marché par construction, parce que la moyenne du marché est exactement ce sur quoi il a été entraîné. Chacun de ces remèdes augmente précisément ce que vous cherchiez à fuir.",
+        label: "Pourquoi ça se retourne contre vous",
+        body: "Un logo neuf posé sur une phrase indifférenciable éclaire la ressemblance au lieu de la cacher. Poster plus vous fait juste ressembler à tout le monde, plus souvent. Et l'IA ramène chaque marque vers la même phrase moyenne, parce que cette moyenne est exactement ce sur quoi elle a été entraînée.",
       },
       {
         n: "05",
-        label: "La vraie cause",
-        body: "Vous n'avez jamais tranché ce que vous refusez. Pas ce que vous faites — ce que vous ne ferez pas, ne direz pas, ne prendrez pas, et qui vous acceptez de perdre. Une position est une forme découpée dans un champ, et on ne découpe pas sans refuser. Sans refus, pas de position : seulement une liste de qualités que vos concurrents revendiquent aussi.",
+        label: "Ce qui se joue vraiment",
+        body: "Vous n'avez jamais tranché ce que vous refusez — pas ce que vous faites, mais ce que vous ne direz pas, ne prendrez pas, et qui vous acceptez de perdre. C'est de ce refus qu'une histoire se découpe.",
       },
       {
         n: "06",
-        label: "La vraie solution",
-        body: "L'Extraction d'abord : plusieurs heures pendant lesquelles nous vous faisons dire ce que vous ne voyez plus, parce que vous êtes dedans depuis trop longtemps. Puis les cinq étapes, dans l'ordre, chacune méritant la suivante. Ce qui en sort n'est pas un style. C'est une constitution écrite que vos concurrents ne peuvent pas copier, parce qu'elle n'a pas été inventée — elle a été extraite de vous.",
+        label: "Ce qu'on fait, concrètement",
+        body: "On commence par l'extraction : des heures à vous faire dire ce que vous ne voyez plus, parce que vous êtes dedans. Ce qui en sort n'est pas un style. C'est une histoire que vos concurrents ne peuvent pas copier, parce qu'elle n'a pas été inventée — elle a été extraite de vous.",
       },
     ],
     enemyKicker: "Ce que nous ne sommes pas",
@@ -158,9 +158,14 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
           </div>
 
           <div className="mt-8">
-            <Link href="/strawberry-method" className="btn-quiet">
+            <TrackLink
+              href="/strawberry-method"
+              event="method_click"
+              data={{ from: "home_diagnosis" }}
+              className="btn-quiet"
+            >
               {t.methodCta}
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </div>

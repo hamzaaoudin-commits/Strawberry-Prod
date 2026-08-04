@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useRef, useState } from "react"
-import { LocaleLink as Link } from "@/components/locale-link"
+import { TrackLink } from "@/components/strawberry/track-link"
 import { useT } from "@/lib/i18n"
 
 /**
@@ -10,6 +10,14 @@ import { useT } from "@/lib/i18n"
  * Trois paires affichées côte à côte demandaient au lecteur de comparer six
  * phrases pour comprendre un seul mouvement. Une seule maison, un seul curseur :
  * le déplacement se voit au lieu de se lire.
+ *
+ * La version précédente ancrait les deux phrases au même bord gauche, sous
+ * deux calques superposés : au repos, l'une masquait presque entièrement
+ * l'autre et le curseur était bridé entre 6 % et 94 %, donc il ne montrait
+ * jamais un état complet. « Avant » est maintenant ancré à droite du cadre,
+ * « après » à gauche, chacun sur un fond de couleur distincte — le
+ * déplacement révèle un vrai contraste, pas une même phrase qui apparaît et
+ * disparaît au même endroit. Le curseur va désormais de 0 à 100 %.
  *
  * La phrase vient du document SILLAGE, publié en entier — le lecteur peut
  * l'ouvrir et retrouver le raisonnement qui mène de gauche à droite.
@@ -51,14 +59,14 @@ const T = {
 export function BeforeAfterSection() {
   const t = useT(T)
   const box = useRef<HTMLDivElement | null>(null)
-  const [pct, setPct] = useState(50)
+  const [pct, setPct] = useState(35)
   const dragging = useRef(false)
 
   const setFromX = useCallback((clientX: number) => {
     const r = box.current?.getBoundingClientRect()
     if (!r) return
     const p = ((clientX - r.left) / r.width) * 100
-    setPct(Math.max(6, Math.min(94, p)))
+    setPct(Math.max(0, Math.min(100, p)))
   }, [])
 
   /**
@@ -67,10 +75,10 @@ export function BeforeAfterSection() {
    * n'est pas annonçable aux lecteurs d'écran.
    */
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") setPct((v) => Math.max(6, v - 4))
-    else if (e.key === "ArrowRight") setPct((v) => Math.min(94, v + 4))
-    else if (e.key === "Home") setPct(6)
-    else if (e.key === "End") setPct(94)
+    if (e.key === "ArrowLeft") setPct((v) => Math.max(0, v - 4))
+    else if (e.key === "ArrowRight") setPct((v) => Math.min(100, v + 4))
+    else if (e.key === "Home") setPct(0)
+    else if (e.key === "End") setPct(100)
     else return
     e.preventDefault()
   }
@@ -115,20 +123,23 @@ export function BeforeAfterSection() {
             }}
             className="relative h-[280px] cursor-ew-resize touch-none select-none overflow-hidden border border-hair-strong bg-ink outline-none focus-visible:border-brand sm:h-[240px]"
           >
-            {/* L'état de départ occupe toute la surface. */}
-            <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-10">
+            {/* L'état de départ occupe toute la surface, ancré à droite : c'est
+                la zone que révèle un curseur tiré vers la gauche. */}
+            <div className="absolute inset-0 flex flex-col items-end justify-center bg-[#141414] px-6 text-right sm:px-10">
               <div className="mb-4 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">
                 {t.beforeLabel}
               </div>
-              <p className="max-w-[560px] font-serif text-[clamp(1.15rem,2.6vw,1.8rem)] leading-[1.3] text-white/40">
+              <p className="ml-auto max-w-[420px] font-serif text-[clamp(1.15rem,2.6vw,1.8rem)] leading-[1.3] text-white/45">
                 {t.before}
               </p>
             </div>
 
             {/* L'état d'arrivée est découpé par la poignée. Le contenu garde une
-                largeur fixe pour que le texte ne se reflue pas pendant le geste. */}
+                largeur fixe pour que le texte ne se reflue pas pendant le geste.
+                Un fond distinct (chaud, teinté de la couleur de marque) rend le
+                contraste visible même avant de lire le texte. */}
             <div
-              className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-brand bg-[#120c0d]"
+              className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-brand bg-[linear-gradient(135deg,#241012,#160b0c)]"
               style={{ width: `${pct}%` }}
             >
               <div
@@ -162,9 +173,14 @@ export function BeforeAfterSection() {
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
             <span className="font-sans text-[13px] text-chalk-40">{t.house}</span>
-            <Link href="/documents/sillage" className="btn-quiet">
+            <TrackLink
+              href="/documents/sillage"
+              event="sillage_click"
+              data={{ from: "home_before_after" }}
+              className="btn-quiet"
+            >
               {t.cta}
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </div>

@@ -17,12 +17,10 @@ const T = {
   en: {
     kicker: "THE PROBLEM",
     h2: "Your market can see your work. It just cannot see the difference.",
-    p1a: "You are not losing to better work. You are losing to work that is ",
-    p1strong: "indistinguishable from yours",
-    p1b: " in the four seconds a prospect spends deciding whether you are worth a call. They are not judging your craft. They are judging the sentence that arrives before your craft — and that sentence sounds like everyone else's.",
-    p2: "Nothing about your delivery is broken. The perception of it is.",
+    p1a: "AI is saturating your market faster than you can see it. Your competitors now produce in one click what used to take weeks: articles, visuals, pages, campaigns. Content is becoming free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.",
+    p2: "What cannot be generated is an identity. Differentiation is no longer a marketing luxury — it is your condition for survival.",
     agitationKicker: "What it costs, over a year",
-    agitationLead: "Indifferentiation never sends an invoice. It bills you in three places at once, and none of them appear in your accounts.",
+    agitationLead: "It never shows up as a line on an invoice. It gets paid quietly, in three different places, all at once.",
     agitation: [
       { t: "The deals that never became conversations", b: "Prospects who saw you, understood nothing that separated you, and went to the name they already knew. You never learn about these. They do not show up as a loss because they never showed up at all." },
       { t: "The discount you grant without being asked", b: "When nothing distinguishes two offers, price becomes the only readable criterion. You start pre-discounting to stay in the running — five, ten, fifteen percent — on every single deal of the year." },
@@ -33,12 +31,10 @@ const T = {
   fr: {
     kicker: "LE PROBLÈME",
     h2: "Votre marché voit votre travail. Il ne voit simplement pas la différence.",
-    p1a: "Vous ne perdez pas face à un meilleur travail. Vous perdez face à un travail ",
-    p1strong: "indiscernable du vôtre",
-    p1b: " dans les quatre secondes qu'un prospect consacre à décider si vous valez un rendez-vous. Ce n'est pas votre métier qu'il juge. C'est la phrase qui arrive avant votre métier — et cette phrase sonne comme celle de tous les autres.",
-    p2: "Rien n'est cassé dans ce que vous livrez. C'est la perception qui l'est.",
+    p1a: "L'IA sature votre marché plus vite que vous ne le voyez. Vos concurrents produisent désormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualité ne suffit plus à vous distinguer : tout le monde est devenu bon.",
+    p2: "Ce qui ne peut pas être généré, c'est une identité. La différenciation n'est plus un luxe marketing — c'est votre condition de survie.",
     agitationKicker: "Ce que ça coûte, sur une année",
-    agitationLead: "L'indifférenciation n'envoie jamais de facture. Elle se prélève à trois endroits à la fois, et aucun n'apparaît dans votre comptabilité.",
+    agitationLead: "Ça ne se voit jamais sur une facture. Ça se paie ailleurs, en silence, à trois endroits différents.",
     agitation: [
       { t: "Les affaires qui ne sont jamais devenues des conversations", b: "Des prospects vous ont vu, n'ont rien compris de ce qui vous séparait des autres, et sont allés vers le nom qu'ils connaissaient déjà. Vous ne les connaîtrez jamais. Ils n'apparaissent pas comme une perte, puisqu'ils ne se sont jamais présentés." },
       { t: "La remise que vous accordez sans qu'on vous la demande", b: "Quand rien ne distingue deux offres, le prix devient le seul critère lisible. Vous vous mettez à décoter par avance pour rester dans la course — cinq, dix, quinze pour cent — sur chaque affaire de l'année." },
@@ -61,12 +57,8 @@ export function ProblemSection({ lang }: { lang: Lang }) {
           <h2 className="mb-8 font-serif text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
             {t.h2}
           </h2>
-          <p className="font-sans text-[17px] leading-[1.8] text-white/55">
-            {t.p1a}
-            <strong className="text-chalk-90">{t.p1strong}</strong>
-            {t.p1b}
-          </p>
-          <p className="mt-6 font-serif text-[clamp(1.15rem,2.2vw,1.6rem)] leading-snug text-white/90">
+          <p className="font-sans text-[17px] leading-[1.8] text-white/55">{t.p1a}</p>
+          <p className="mt-6 font-serif text-[clamp(1.15rem,2.2vw,1.6rem)] italic leading-snug text-brand">
             {t.p2}
           </p>
         </div>

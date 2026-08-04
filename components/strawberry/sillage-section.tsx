@@ -1,4 +1,4 @@
-import { LocaleLink as Link } from "@/components/locale-link"
+import { TrackLink } from "@/components/strawberry/track-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 
@@ -8,9 +8,12 @@ import type { Lang } from "@/lib/lang"
  * Composant serveur : aucune interaction, donc aucune hydratation.
  *
  * Le document était annoncé mais jamais montré — un titre, un sous-titre, quatre
- * encadrés. Il est désormais présenté comme un objet : une pile de pages avec sa
- * couverture, et les quatorze pièces visibles d'un coup en registre. Ce qu'on
- * peut voir se juge ; ce qui n'est qu'annoncé se croit ou ne se croit pas.
+ * encadrés. Il est désormais présenté comme un objet : sa couverture, et les
+ * quatorze pièces visibles d'un coup en registre. Ce qu'on peut voir se juge ;
+ * ce qui n'est qu'annoncé se croit ou ne se croit pas.
+ *
+ * La couverture s'affiche seule, sans le double filet décoratif imitant une
+ * pile de feuillets : ça alourdissait la carte sans rien ajouter au jugement.
  */
 
 const T = {
@@ -79,12 +82,8 @@ export function SillageSection({ lang }: { lang: Lang }) {
           <span className="bracket-br" aria-hidden />
 
           <div className="relative grid gap-10 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12">
-            {/* La pile : deux feuillets décalés sous la couverture. Le document
-                cesse d'être une promesse et devient un volume. */}
-            <div className="relative mx-auto w-[170px] max-w-full md:mx-0 md:w-full">
-              <div aria-hidden className="absolute left-2 top-2 h-full w-full border border-white/[0.07]" />
-              <div aria-hidden className="absolute left-1 top-1 h-full w-full border border-white/[0.11] bg-ink" />
-              <div className="relative flex aspect-[3/4] flex-col items-center justify-center border border-white/25 bg-ink px-4 text-center">
+            <div className="mx-auto w-[170px] max-w-full md:mx-0 md:w-full">
+              <div className="flex aspect-[3/4] flex-col items-center justify-center border border-white/25 bg-ink px-4 text-center">
                 <div className="font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
                   {t.docTitle}
                 </div>
@@ -120,9 +119,14 @@ export function SillageSection({ lang }: { lang: Lang }) {
                 </div>
               </div>
 
-              <Link href="/documents/sillage" className="btn-primary">
+              <TrackLink
+                href="/documents/sillage"
+                event="sillage_click"
+                data={{ from: "home_sillage" }}
+                className="btn-primary"
+              >
                 {t.cta}
-              </Link>
+              </TrackLink>
             </div>
           </div>
         </div>

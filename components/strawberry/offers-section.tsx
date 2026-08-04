@@ -1,7 +1,7 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
-import { LIVE, BOUND_OBJECT } from "@/lib/config"
+import { LIVE } from "@/lib/config"
 import { OfferCover } from "@/components/strawberry/offer-covers"
 
 /**
@@ -17,15 +17,19 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
  * Trois choses qui étaient enterrées dans la FAQ remontent ici, collées au
  * prix, parce que c'est là qu'un acheteur décide : la garantie, la fenêtre de
  * remboursement, et la justification du montant.
+ *
+ * Le prix n'ouvre plus la section : c'est une conséquence de la perception,
+ * pas l'argument. Ce qu'on vend, c'est une marque qu'on reconnaît et à
+ * laquelle on reste — le prix cesse d'être la question qu'on se pose.
  */
 
 const T = {
   en: {
     kicker: "The commission",
-    h2a: "What you will never be again:",
-    h2b: "compared on price.",
+    h2a: "What you become:",
+    h2b: "a brand people follow, not compare.",
     intro:
-      "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
+      "Three weeks. One house at a time. What comes out is not a style guide — it is the story that makes people see you differently, hold on to it, and stay. Being compared on price is what stops happening once they do.",
     coverFoot: "Fourteen parts",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
@@ -70,11 +74,6 @@ const T = {
     refundTitle: "The window before production",
     refundBody:
       "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
-    addonKicker: "Add-on",
-    addonTitle: "The bound object",
-    addonBody:
-      "Your architecture, printed and bound by hand, numbered and signed. One copy exists, and it is yours. A document that sits on a desk is read differently from a file in a drive.",
-    addonCta: "Add the bound object",
     cta1: "Commission the Work →",
     cta2: "See the other offers",
     limit: "Four commissions per quarter. Not a sales tactic — the structural limit of full attention.",
@@ -82,10 +81,10 @@ const T = {
   },
   fr: {
     kicker: "La commande signature",
-    h2a: "Ce que vous ne serez plus jamais :",
-    h2b: "comparé au moins cher.",
+    h2a: "Ce que vous devenez :",
+    h2b: "une marque qu'on suit, pas qu'on compare.",
     intro:
-      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
+      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est le récit qui fait qu'on vous voit différemment, qu'on s'y attache, et qu'on reste. Être comparé au prix, c'est ce qui s'arrête une fois qu'on y est.",
     coverFoot: "Quatorze pièces",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
@@ -130,11 +129,6 @@ const T = {
     refundTitle: "La fenêtre avant production",
     refundBody:
       "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
-    addonKicker: "En supplément",
-    addonTitle: "L'Objet relié",
-    addonBody:
-      "Votre architecture, imprimée et reliée à la main, numérotée et signée. Un seul exemplaire existe, et il est à vous. Un document posé sur un bureau ne se lit pas comme un fichier dans un drive.",
-    addonCta: "Ajouter l'Objet relié",
     cta1: "Commander le travail →",
     cta2: "Voir les autres offres",
     limit: "Quatre commandes par trimestre. Ce n'est pas une tactique de vente — c'est la limite structurelle d'une attention pleine.",
@@ -289,19 +283,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
           </div>
-        </div>
-
-        {/* L'OBJET RELIÉ — vendu, plus offert sur demande. */}
-        <div className="mx-auto mt-6 max-w-[980px] border border-hair bg-white/[0.02] p-7 md:p-10">
-          <div className="mb-4 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.addonKicker}</div>
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <h3 className="m-0 font-serif text-[clamp(1.3rem,2.6vw,1.8rem)] font-bold">{t.addonTitle}</h3>
-            <span className="font-serif text-[1.4rem] text-brand">{BOUND_OBJECT.price}</span>
-          </div>
-          <p className="mb-7 mt-4 max-w-[620px] font-sans text-[15px] leading-relaxed text-chalk-65">{t.addonBody}</p>
-          <a href={BOUND_OBJECT.url} className="btn-ghost" rel="noopener">
-            {t.addonCta}
-          </a>
         </div>
 
         <div className="mt-10 text-center">

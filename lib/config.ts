@@ -109,16 +109,6 @@ export const LIVE = {
 export const BOOK_URL = env(process.env.NEXT_PUBLIC_BOOK_URL, "/#contact")
 
 /**
- * L'Objet relié : édition numérotée, reliée à la main, signée.
- * Vendu en supplément de l'architecture au lieu d'être offert sur demande.
- */
-export const BOUND_OBJECT = {
-  price: env(process.env.NEXT_PUBLIC_BOUND_OBJECT_PRICE, "490€"),
-  url: env(process.env.NEXT_PUBLIC_STRIPE_BOUND_OBJECT_URL, "/#contact"),
-} as const
-
-
-/**
  * La cohorte.
  *
  * Le studio vend une appartenance autant qu'un document : on entre dans les

@@ -7,7 +7,7 @@ import { useT } from "@/lib/i18n"
 const T = {
   fr: {
     offers: "Offres",
-    about: "À propos",
+    about: "Le Studio",
     method: "La Méthode",
     lectures: "Les lectures",
     cta: "Commander le travail",
@@ -22,7 +22,7 @@ const T = {
   },
   en: {
     offers: "Offers",
-    about: "About",
+    about: "The Studio",
     method: "The Method",
     lectures: "The readings",
     cta: "Commission the Work",

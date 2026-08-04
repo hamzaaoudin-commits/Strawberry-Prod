@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
         message,
         source,
         _subject: isCapture
-          ? `Atlas capture — ${source}`
+          ? `Email capture — ${source}`
           : `New contact from ${name} — ${goal || "no goal selected"}`,
       }),
     })
