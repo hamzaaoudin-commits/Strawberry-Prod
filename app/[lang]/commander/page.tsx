@@ -1,7 +1,7 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { STRIPE_LINKS, HAS_3X, BOUND_OBJECT, LIVE, HOUSES } from "@/lib/config"
+import { STRIPE_LINKS, HAS_3X, LIVE } from "@/lib/config"
 import { pick } from "@/lib/t"
 import { isLang, type Lang } from "@/lib/lang"
 
@@ -26,7 +26,7 @@ const T = {
     recap: [
       ["Ce que vous recevez", "Un document éditorial de quatorze pièces, écrit pour votre maison seule."],
       ["Délai", "Trois à quatre semaines à compter de l'entretien d'extraction."],
-      ["Format", "PDF. L'Objet relié est disponible en supplément."],
+      ["Format", "PDF."],
       ["Propriété", "Le document est à vous, définitivement. Aucun abonnement, aucune reconduction."],
     ],
     nextKicker: "Ce qui se passe dans les 24 heures",
@@ -49,13 +49,9 @@ const T = {
       ["La garantie V2", "Si le document livré ne tape pas juste, nous en écrivons une seconde version. Sans discuter, sans facture supplémentaire."],
       ["La fenêtre avant production", "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous annulez et êtes remboursé intégralement, sous quinze jours."],
     ],
-    addonKicker: "En supplément",
-    addonTitle: "L'Objet relié",
-    addonBody: "Votre architecture imprimée, reliée à la main, numérotée et signée. Un seul exemplaire existe.",
-    addonCta: "L'ajouter",
     houseKicker: "Ce que vous devenez",
-    houseBody: (n: number, p: string, r: number) =>
-      `Vous entrez dans les Maisons. Votre commande portera le numéro ${String(n).padStart(3, "0")}. ${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
+    houseBody: (p: string, r: number) =>
+      `Votre commande rejoint le registre public des Maisons. ${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     houseCta: "Voir le registre",
     afterKicker: "Après",
     afterBody: "L'architecture livrée, vous n'avez besoin de rien d'autre : elle vous appartient et ne se paie qu'une fois. Si vous voulez que le studio continue d'écrire à partir d'elle — scripts, récits, site web, plannings — MOMENTUM existe, au mois. Ce n'est pas la suite obligatoire, c'est une option.",
@@ -70,7 +66,7 @@ const T = {
     recap: [
       ["What you receive", "An editorial document of fourteen parts, written for your house alone."],
       ["Lead time", "Three to four weeks from the extraction interview."],
-      ["Format", "PDF. The bound object is available as an add-on."],
+      ["Format", "PDF."],
       ["Ownership", "The document is yours, permanently. No subscription, no renewal."],
     ],
     nextKicker: "What happens within 24 hours",
@@ -93,13 +89,9 @@ const T = {
       ["The V2 guarantee", "If the delivered document does not hit the mark, we write a second version. No discussion, no extra invoice."],
       ["The window before production", "Within seven days of payment, and as long as the extraction interview has not taken place, you cancel and are refunded in full, within fifteen days."],
     ],
-    addonKicker: "Add-on",
-    addonTitle: "The bound object",
-    addonBody: "Your architecture printed, bound by hand, numbered and signed. One copy exists.",
-    addonCta: "Add it",
     houseKicker: "What you become",
-    houseBody: (n: number, p: string, r: number) =>
-      `You enter the Houses. Your commission will carry number ${String(n).padStart(3, "0")}. ${p}: ${r} place${r > 1 ? "s" : ""} left.`,
+    houseBody: (p: string, r: number) =>
+      `Your commission joins the public register of Houses. ${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     houseCta: "See the register",
     afterKicker: "Afterwards",
     afterBody: "Once the architecture is delivered you need nothing else: it is yours and it is paid for once. If you want the studio to keep writing from it — scripts, narratives, website, calendars — MOMENTUM exists, monthly. It is not the obligatory next step, it is an option.",
@@ -200,21 +192,9 @@ export default async function CommanderPage({
           </div>
 
           <div className="mt-6 border border-hair p-7">
-            <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">{t.addonKicker}</div>
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <h2 className="m-0 font-serif text-[1.25rem] font-bold">{t.addonTitle}</h2>
-              <span className="font-serif text-[1.2rem] text-brand">{BOUND_OBJECT.price}</span>
-            </div>
-            <p className="mb-6 mt-3 font-sans text-[14.5px] leading-relaxed text-chalk-65">{t.addonBody}</p>
-            <a href={BOUND_OBJECT.url} className="btn-quiet" rel="noopener">
-              {t.addonCta}
-            </a>
-          </div>
-
-          <div className="mt-6 border border-hair p-7">
             <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">{t.houseKicker}</div>
             <p className="mb-6 font-serif text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-white">
-              {t.houseBody(HOUSES.nextNumber, sc.period, sc.remaining)}
+              {t.houseBody(sc.period, sc.remaining)}
             </p>
             <Link href="/maisons" className="btn-quiet">
               {t.houseCta}

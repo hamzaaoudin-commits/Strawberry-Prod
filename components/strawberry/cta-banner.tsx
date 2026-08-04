@@ -1,6 +1,6 @@
 "use client"
 
-import { LocaleLink as Link } from "@/components/locale-link"
+import { TrackLink } from "@/components/strawberry/track-link"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
@@ -41,18 +41,22 @@ export function CTABanner() {
           {/* Un seul geste principal, nommé. Le second lien existe pour ceux
               que le prix arrête, sans jamais concurrencer le premier. */}
           <div className="relative flex flex-col items-center gap-5">
-            <Link
+            <TrackLink
               href="/brand-narrative-architecture"
+              event="commission_click"
+              data={{ from: "home_cta_banner" }}
               className="btn-primary max-w-full px-11 py-[18px] text-center leading-snug"
             >
               {t.cta1}
-            </Link>
-            <Link
+            </TrackLink>
+            <TrackLink
               href="/offres"
+              event="offers_click"
+              data={{ from: "home_cta_banner" }}
               className="border-b border-white/20 pb-0.5 font-sans text-[13px] tracking-[0.02em] text-white/50 no-underline transition-colors hover:border-white/45 hover:text-white"
             >
               {t.cta2}
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </div>
