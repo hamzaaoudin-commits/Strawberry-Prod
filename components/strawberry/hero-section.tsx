@@ -22,30 +22,18 @@ const T = {
     slogan: "Impossible to confuse. Impossible to generate.",
     h1a: "The identity that makes people",
     h1b: "belong to your brand, not just buy it.",
-    h1sub: "Extracted from you in three weeks — not generated, not copyable.",
-    sub: "The same work, seen by your market, becomes something people follow, defend and repeat. That is the difference between a customer and someone loyal.",
-    cta1: "Commission the Work \u2192",
-    trusted: "What you get, in three lines.",
-    stats: [
-      "People understand your brand instead of comparing it",
-      "You build a following, not a transaction list",
-      "Usable the Monday after",
-    ],
+    h1sub: "It isn't generated. It's extracted from who you already are.",
+    sub: "What you sell doesn't change. How the market perceives it does \u2014 enough to follow you, defend you, talk about you unprompted. That's the difference between a customer and someone loyal.",
+    cta1: "Place your commission \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
     h1a: "L'identité qui fait qu'on adhère",
     h1b: "à votre marque, pas qu'on l'achète.",
-    h1sub: "Extraite de vous en trois semaines — ni générée, ni copiable.",
-    sub: "Le même travail, vu par votre marché, devient quelque chose qu'on suit, qu'on défend et qu'on répète. C'est la différence entre un client et quelqu'un de fidèle.",
-    cta1: "Commander le travail \u2192",
-    trusted: "Ce que vous y gagnez, en trois lignes.",
-    stats: [
-      "On comprend votre marque au lieu de la comparer",
-      "Vous bâtissez une communauté, pas une liste de transactions",
-      "Exploitable le lundi qui suit",
-    ],
+    h1sub: "Elle n'est pas générée. Elle est extraite de ce que vous êtes déjà.",
+    sub: "Ce que vous vendez ne change pas. Ce que le marché en perçoit, si — au point de vous suivre, de vous défendre, d'en parler sans qu'on le lui demande. C'est la différence entre un client et quelqu'un de fidèle.",
+    cta1: "Passer commande \u2192",
   },
 }
 
@@ -146,19 +134,6 @@ export function HeroSection() {
                 premières secondes. Une page, une action. */}
           </div>
 
-          <div className="mt-20 border-t border-hair pt-10">
-            <p className="mb-2 font-sans text-sm text-chalk-40">{t.trusted}</p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              {t.stats.map((label) => (
-                <div key={label} className="flex items-center gap-2">
-                  <span aria-hidden className="text-base text-brand">&#10003;</span>
-                  <span className="font-sans text-sm text-white/60">{label}</span>
-                </div>
-              ))}
-            </div>
-
-          </div>
         </div>
       </div>
     </section>

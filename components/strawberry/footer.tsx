@@ -16,7 +16,6 @@ const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
   { href: "/radar", label: { fr: "RADAR", en: "RADAR" } },
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT — 490€", en: "BRAND NARRATIVE AUDIT — 490€" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE — 4 500€", en: "BRAND NARRATIVE ARCHITECTURE — 4,500€" } },
-  { href: "/momentum", label: { fr: "MOMENTUM — au mois", en: "MOMENTUM — monthly" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },

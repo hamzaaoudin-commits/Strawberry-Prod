@@ -27,8 +27,8 @@ import { OfferCover } from "@/components/strawberry/offer-covers"
 const T = {
   en: {
     kicker: "The commission",
-    h2a: "What people will feel about your brand:",
-    h2b: "understood, not compared.",
+    h2a: "Your market stops comparing you.",
+    h2b: "It starts understanding you.",
     intro:
       "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
     coverFoot: "Twenty parts",
@@ -76,21 +76,21 @@ const T = {
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
     roiTitle: "The return frame",
     roi: "One deal signed at full price, or one rate increase you actually hold, and the document has paid for itself.",
-    clock: "Already commissioned the audit? Its 490€ comes off this price — the clock runs sixty days.",
+    clock: "Already commissioned the audit? Its 490€ comes off this price, provided you commission within the following sixty days.",
     guaranteeTitle: "The V2 guarantee",
     guaranteeBody:
       "If the delivered document does not hit the mark, we write a second version. No discussion, no extra invoice.",
     refundTitle: "The window before production",
     refundBody:
       "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
-    cta1: "Commission the Work →",
+    cta1: "Place your commission →",
     cta2: "Read the full brief",
     limit: "Four commissions per quarter. Not a sales tactic — the structural limit of full attention.",
   },
   fr: {
     kicker: "La commande signature",
-    h2a: "Ce que votre marché ressentira :",
-    h2b: "vous comprendre, pas vous comparer.",
+    h2a: "Votre marché arrête de vous comparer.",
+    h2b: "Il commence à vous comprendre.",
     intro:
       "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
     coverFoot: "Vingt pièces",
@@ -138,14 +138,14 @@ const T = {
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
     roiTitle: "Le cadre de retour",
     roi: "Un seul contrat signé au prix plein, ou une augmentation de tarif que vous tenez, et le document est remboursé.",
-    clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix — l'horloge court soixante jours.",
+    clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix, à condition de commander dans les soixante jours qui suivent.",
     guaranteeTitle: "La garantie V2",
     guaranteeBody:
       "Si le document livré ne tape pas juste, nous écrivons une seconde version. Sans discuter, sans facture supplémentaire.",
     refundTitle: "La fenêtre avant production",
     refundBody:
       "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
-    cta1: "Commander le travail →",
+    cta1: "Passer commande →",
     cta2: "Lire le brief complet",
     limit: "Quatre commandes par trimestre. Ce n'est pas une tactique de vente — c'est la limite structurelle d'une attention pleine.",
   },

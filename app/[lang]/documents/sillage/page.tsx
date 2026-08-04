@@ -1,7 +1,9 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { NavBar } from "@/components/strawberry/navbar"
 import { Footer } from "@/components/strawberry/footer"
-import { SAMPLE_DOC, type Block } from "@/lib/sample-sillage"
+import { SAMPLE_DOC } from "@/lib/sample-sillage"
+import { DocumentReader } from "@/components/strawberry/document-reader"
+import { SillageBeforeAfter } from "@/components/strawberry/sillage-before-after"
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
@@ -13,94 +15,6 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
  * prerendered into static HTML at build time — the page ships no data fetching
  * and is fully indexable.
  */
-
-function RenderBlock({ b }: { b: Block }) {
-  switch (b.kind) {
-    case "h":
-      return (
-        <h3 className="mb-4 mt-10 font-serif text-[clamp(1.15rem,2vw,1.5rem)] font-bold tracking-[-0.01em] text-white first:mt-0">
-          {b.text}
-        </h3>
-      )
-
-    case "lead":
-      return <p className="mb-5 font-serif text-[1.15rem] italic leading-relaxed text-chalk-90">{b.text}</p>
-
-    case "p":
-      return <p className="mb-5 font-sans text-[15.5px] leading-[1.75] text-chalk-75">{b.text}</p>
-
-    case "quote":
-      return (
-        <blockquote className="my-7 border-l-2 border-brand bg-white/[0.02] py-5 pl-6 pr-5">
-          <p className="m-0 font-serif text-[clamp(1rem,1.6vw,1.2rem)] italic leading-[1.6] text-chalk-90">
-            {b.text}
-          </p>
-        </blockquote>
-      )
-
-    case "list":
-      return (
-        <ul className="mb-6 flex list-none flex-col gap-3.5 p-0">
-          {b.items.map((it, i) => (
-            <li key={i} className="flex items-start gap-3.5 font-sans text-[15px] leading-[1.7] text-chalk-75">
-              <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-brand" />
-              {it}
-            </li>
-          ))}
-        </ul>
-      )
-
-    case "table":
-      return (
-        <div className="mb-7 overflow-x-auto">
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr>
-                {b.head.map((h) => (
-                  <th
-                    key={h}
-                    className="border-b border-white/15 pb-3 pr-5 font-sans text-[10px] uppercase tracking-[0.18em] text-brand"
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {b.rows.map((row, i) => (
-                <tr key={i}>
-                  {row.map((cell, j) => (
-                    <td
-                      key={j}
-                      className={`border-b border-white/[0.07] py-4 pr-5 align-top font-sans text-[13.5px] leading-relaxed ${
-                        j === 0 ? "font-semibold text-white" : "text-chalk-65"
-                      }`}
-                    >
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )
-
-    case "pair":
-      return (
-        <div className="mb-6 grid gap-3 md:grid-cols-2">
-          <div className="border border-white/10 bg-white/[0.02] p-5">
-            <div className="mb-2.5 font-sans text-[10px] uppercase tracking-[0.2em] text-white/35">{b.beforeLabel}</div>
-            <p className="m-0 font-sans text-[14px] leading-relaxed text-white/45">{b.before}</p>
-          </div>
-          <div className="border border-brand-hair bg-brand/[0.05] p-5">
-            <div className="mb-2.5 font-sans text-[10px] uppercase tracking-[0.2em] text-brand">{b.afterLabel}</div>
-            <p className="m-0 font-sans text-[14px] leading-relaxed text-chalk-90">{b.after}</p>
-          </div>
-        </div>
-      )
-  }
-}
 
 export default async function SampleAuditPage({
   params,
@@ -174,46 +88,22 @@ export default async function SampleAuditPage({
         </div>
       </section>
 
-      {/* CONTENTS */}
+      {/* AVANT / APRÈS — un vrai extrait du document */}
       <section className="px-gutter pb-16">
-        <div className="mx-auto max-w-[820px] border-t border-white/[0.08] pt-10">
-          <div className="kicker mb-6">{d.contentsTitle}</div>
-          <ol className="m-0 grid list-none gap-x-8 gap-y-2.5 p-0 md:grid-cols-2">
-            {d.parts.map((part) => (
-              <li key={part.n}>
-                <a
-                  href={`#part-${part.n}`}
-                  className="flex items-baseline gap-3 font-sans text-[14px] text-chalk-65 no-underline transition-colors hover:text-white"
-                >
-                  <span className="font-serif text-brand">{part.n}</span>
-                  {part.title}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <SillageBeforeAfter lang={lang} />
       </section>
 
-      {/* THE DOCUMENT */}
-      <div className="px-gutter">
-        <div className="mx-auto max-w-[820px]">
-          {d.parts.map((part) => (
-            <section key={part.n} id={`part-${part.n}`} className="scroll-mt-24 border-t border-white/[0.08] py-14 md:py-20">
-              <div className="mb-2 flex items-baseline gap-4">
-                <span className="font-serif text-[2rem] font-bold leading-none text-brand">{part.n}</span>
-                <span className="eyebrow">{part.subtitle}</span>
-              </div>
-
-              <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.02em]">
-                {part.title}
-              </h2>
-
-              {part.blocks.map((b, i) => (
-                <RenderBlock key={i} b={b} />
-              ))}
-            </section>
-          ))}
-        </div>
+      {/* LE DOCUMENT, PAGE PAR PAGE */}
+      <div className="border-t border-white/[0.08]">
+        <DocumentReader
+          parts={d.parts}
+          labels={{
+            toc: d.contentsTitle,
+            prev: d.readerPrev,
+            next: d.readerNext,
+            pageOfTemplate: d.readerPageOfTemplate,
+          }}
+        />
       </div>
 
       {/* DISCLAIMER */}

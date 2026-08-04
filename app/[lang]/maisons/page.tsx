@@ -32,7 +32,7 @@ const T = {
     readCta: "Lire le document →",
     privacyNote: "Une maison n'apparaît au registre qu'avec son accord écrit. Beaucoup préfèrent que leur position ne soit pas rattachée publiquement à un studio — c'est une position défendable, et nous la respectons.",
     ctaTitle: "La place suivante est ouverte.",
-    ctaCta: "Commander le travail →",
+    ctaCta: "Passer commande →",
   },
   en: {
     kicker: "The Houses",
@@ -46,7 +46,7 @@ const T = {
     readCta: "Read the document →",
     privacyNote: "A house appears in the register only with its written consent. Many prefer their position not to be publicly attached to a studio — that is a defensible position, and we respect it.",
     ctaTitle: "The next place is open.",
-    ctaCta: "Commission the Work →",
+    ctaCta: "Place your commission →",
   },
 }
 

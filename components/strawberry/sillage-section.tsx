@@ -21,7 +21,7 @@ const T = {
     h2b: "before you pay for it.",
     lead: "A narrative architecture is the one document a house cannot share — it is the position itself. So we wrote a complete commission and published every part of it, so you can read exactly what you would receive.",
     docTitle: "SILLAGE",
-    docSub: "A fourteen-part Brand Narrative Architecture \u2014 published before the six department playbooks joined the offer.",
+    docSub: "A complete Brand Narrative Architecture, published in full.",
     docMeta: "Free · No email required",
     points: [
       { n: "01", t: "The field, dissected", d: "Five competitors, their sentences taken apart, and the ground none of them occupies." },
@@ -41,7 +41,7 @@ const T = {
     h2b: "avant de le payer.",
     lead: "Une architecture narrative est le seul document qu'une maison ne peut pas partager — c'est la position elle-même. Nous avons donc écrit une commande complète et publié chacune de ses pièces, pour que vous lisiez exactement ce que vous recevrez.",
     docTitle: "SILLAGE",
-    docSub: "Une Brand Narrative Architecture en quatorze pièces — publiée avant que les six playbooks par département rejoignent l'offre.",
+    docSub: "Une Brand Narrative Architecture complète, publiée en entier.",
     docMeta: "Accès libre · Sans email",
     points: [
       { n: "01", t: "Le champ, disséqué", d: "Cinq concurrents, leurs phrases démontées, et le terrain qu'aucun n'occupe." },

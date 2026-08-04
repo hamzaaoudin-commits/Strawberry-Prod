@@ -51,6 +51,9 @@ export type SampleDoc = {
   ctaFoot: string
   // in-page nav
   contentsTitle: string
+  readerPrev: string
+  readerNext: string
+  readerPageOfTemplate: string
 }
 
 export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
@@ -81,6 +84,9 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       ["Ce qu'elle est venue dire", "« On a du départ chez les architectes et on n'arrive pas à monter en gamme chez les entreprises. On est coincés au milieu. »"],
     ],
     contentsTitle: "Les quatorze pièces",
+    readerPrev: "← Partie précédente",
+    readerNext: "Partie suivante →",
+    readerPageOfTemplate: "Partie {i} / {n}",
     parts: [
   {
     n: "01",
@@ -436,6 +442,9 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       ["What she came to say", "\u201cWe're losing architects and we can't move upmarket with contractors. We're stuck in the middle.\u201d"],
     ],
     contentsTitle: "The fourteen parts",
+    readerPrev: "← Previous part",
+    readerNext: "Next part →",
+    readerPageOfTemplate: "Part {i} / {n}",
     parts: [
   {
     n: "01",

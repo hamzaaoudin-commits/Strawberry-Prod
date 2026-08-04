@@ -53,9 +53,6 @@ const T = {
     houseBody: (n: number, p: string, r: number) =>
       `Vous entrez dans les Maisons. Votre commande portera le numéro ${String(n).padStart(3, "0")}. ${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     houseCta: "Voir le registre",
-    afterKicker: "Après",
-    afterBody: "L'architecture livrée, vous n'avez besoin de rien d'autre : elle vous appartient et ne se paie qu'une fois. Si vous voulez que le studio continue d'écrire à partir d'elle — scripts, récits, site web, plannings — MOMENTUM existe, au mois. Ce n'est pas la suite obligatoire, c'est une option.",
-    afterCta: "Voir MOMENTUM",
     back: "Relire la page de l'offre",
   },
   en: {
@@ -93,9 +90,6 @@ const T = {
     houseBody: (n: number, p: string, r: number) =>
       `You enter the Houses. Your commission will carry number ${String(n).padStart(3, "0")}. ${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     houseCta: "See the register",
-    afterKicker: "Afterwards",
-    afterBody: "Once the architecture is delivered you need nothing else: it is yours and it is paid for once. If you want the studio to keep writing from it — scripts, narratives, website, calendars — MOMENTUM exists, monthly. It is not the obligatory next step, it is an option.",
-    afterCta: "See MOMENTUM",
     back: "Read the offer page again",
   },
 }
@@ -198,14 +192,6 @@ export default async function CommanderPage({
             </p>
             <Link href="/maisons" className="btn-quiet">
               {t.houseCta}
-            </Link>
-          </div>
-
-          <div className="mt-6 border border-hair p-7">
-            <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">{t.afterKicker}</div>
-            <p className="mb-6 font-sans text-[14.5px] leading-relaxed text-chalk-65">{t.afterBody}</p>
-            <Link href="/momentum" className="btn-quiet">
-              {t.afterCta}
             </Link>
           </div>
 

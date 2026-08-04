@@ -3,8 +3,8 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "SILLAGE — un exemple de commande complète", description: "Une commande en quatorze pièces, publiée en entier — avant que les six playbooks par département rejoignent l'offre. Lisez-la pour l'écriture." },
-  en: { title: "SILLAGE — a complete sample commission", description: "A fourteen-part commission, published in full — before the six department playbooks joined the offer. Read it for the writing." },
+  fr: { title: "SILLAGE — un exemple de commande complète", description: "Une commande en quatorze pièces, publiée en entier. Lisez-la pour l'écriture." },
+  en: { title: "SILLAGE — a complete sample commission", description: "A fourteen-part commission, published in full. Read it for the writing." },
 }
 
 export async function generateMetadata({

@@ -1,46 +1,57 @@
-# Strawberry — tour 9
+# Strawberry — tour 10
 
-13 fichiers, un seul glisser-déposer. Build validé.
+24 fichiers, un seul glisser-déposer. Build validé.
 
-Glissez les **dossiers** (`app`, `components`), jamais leur contenu.
+Glissez les **dossiers** (`app`, `components`, `lib`), jamais leur contenu.
 
 ## Ce qui change
 
-**Vocabulaire.** « Studio de perception narrative » devient partout « studio
-d'architecture narrative » — badge du hero, titre, meta description, JSON-LD,
-page Le Studio, pied de page. C'est la catégorie que vos notes proposent :
-Narrative Architecture, pas perception.
+**Hero.** Phrase sur les « trois semaines » retirée. Nouveau sous-titre :
+« Ce que vous vendez ne change pas. Ce que le marché en perçoit, si… ». Les
+trois lignes « Ce que vous y gagnez » sont supprimées — mal placées, pas
+convaincantes.
 
-**Diagnostic (home).** Deux ajouts après le paragraphe sur la saturation par
-l'IA : le renversement de valeur (la fabrication devient presque gratuite, ce
-qui reste rare c'est la stratégie et les décisions — c'est ce que vous
-vendez), et le principe directeur affiché (chaque nouvelle IA doit vous
-rendre plus reconnaissable, jamais plus dilué). L'ennemi nommé s'élargit aux
-agences de branding, marketing et storytelling, pas seulement « une agence ».
+**Tous les CTA** « Commander le travail » deviennent « Passer commande »,
+partout sur le site.
 
-**L'offre passe de quatorze à vingt pièces.** Les six playbooks par
-département — marketing, contenu, réseaux sociaux, vente, support, RH &
-management — rejoignent le corps de l'offre, inclus dans les 4 500€, nombre
-fixe. Le document est aussi présenté sous son surnom, la **Brand Narrative
-Bible**. Une note précise que chaque pièce écrite, playbooks compris, est
-rédigée pour être collée directement dans l'outil IA du client — sans rien
-que vous ayez à construire ou maintenir de votre côté.
+**Diagnostic.** Plus aucun sous-titre de type diapositive interne (« Pourquoi
+c'est urgent maintenant », etc.) — le texte s'enchaîne comme une explication
+qu'on donnerait à voix haute. « C'est ce que nous vendons » devient « c'est
+ce que nous proposons ». La phrase creuse sur le « principe IA » est
+supprimée.
 
-**Cohérence avec SILLAGE.** Le document de démonstration reste à quatorze
-pièces — c'est un document déjà publié, le réécrire à vingt aurait été un
-chantier disproportionné. Partout où il était présenté comme équivalent à
-l'offre actuelle, une phrase précise désormais qu'il a été publié avant les
-six playbooks : /documents, la home, la page Architecture, et les
-métadonnées de la page SILLAGE elle-même.
+**STRAW sur la home** reprend exactement la version encadrée en rouge de la
+page méthode — les grandes lettres dans un cadre avec lueur — au lieu du
+texte simple qu'il y avait avant.
 
-**FAQ.** Une question ajoutée sur la compatibilité des playbooks avec les
-outils IA internes du client.
+**L'offre.** Titre corrigé : « Votre marché arrête de vous comparer. Il
+commence à vous comprendre. » La phrase sur les 60 jours est maintenant en
+français correct.
+
+**SILLAGE.** Le document se lit maintenant page par page — sommaire
+dépliable, navigation précédent/suivant — plutôt qu'en un seul long
+défilement. Le curseur avant/après, retiré de la home, vit maintenant dans
+SILLAGE, avec un vrai extrait du document (la partie « Faux / Juste ») au
+lieu d'une phrase inventée sans rapport.
+
+**Home.** La section « Les preuves » est retirée. Le livre et la ressource
+gratuite (Atlas) passent maintenant avant le formulaire de contact, pas
+après.
+
+**MOMENTUM est retiré des surfaces marketing** : navbar, pied de page, menu
+déroulant du formulaire de contact, page de commande, page Le Studio,
+sitemap, FAQ. `/momentum` redirige maintenant vers
+`/brand-narrative-architecture`. Je n'ai pas touché à `/momentum/atelier` :
+c'est l'espace privé de livraison des maisons déjà accompagnées, pas une
+page marketing — le retirer couperait l'accès de clients actifs. Si vous
+voulez fermer complètement cet espace, dites-le-moi séparément.
+
+**FAQ.** « Signes-vous un NDA ? » corrigé en « Signez-vous un NDA ? ».
 
 ## Vérifications après dépôt
 
-- La home et `/brand-narrative-architecture` doivent afficher « vingt
-  pièces », pas « quatorze ».
-- Le sommaire sur la page Architecture doit lister les six playbooks à la
-  suite des quatorze pièces existantes.
-- `/documents/sillage` doit toujours afficher « quatorze pièces » — c'est
-  normal, c'est la démonstration figée, avec la clarification qui va avec.
+- La home ne doit plus mentionner MOMENTUM nulle part.
+- `/documents/sillage` doit s'ouvrir sur un lecteur page par page, avec un
+  bouton « Suivant » en bas.
+- `/momentum` doit rediriger vers `/brand-narrative-architecture`, pas
+  afficher un 404.

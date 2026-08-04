@@ -18,7 +18,7 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "Do you sign an NDA?", a: "Yes, on request. And by default, your work will never be mentioned, adapted, or reused for another house." },
     { q: "In what language is the document delivered?", a: "In the language you build your brand in — French or English." },
     { q: "Do the playbooks work with our internal AI tools?", a: "Yes. Every written piece, including the six department playbooks, is written to be pasted directly into whatever AI tool your teams already use. We don't build or maintain anything on your side — the writing does the work." },
-    { q: "What happens after delivery?", a: "One month later we meet for a ninety-minute walkthrough. If you want the studio to keep executing after that, MOMENTUM exists — but it's optional, never bundled." },
+    { q: "What happens after delivery?", a: "One month later we meet for a ninety-minute walkthrough. If anything needs adjusting, we handle it then." },
   ],
   fr: [
     { q: "Est-ce que c'est pour moi ?", a: "Ceci est écrit pour une personne : le fondateur d'une maison de une à vingt personnes, trois à dix ans d'existence, dont le travail est réellement meilleur que celui du marché et qui est pourtant lu comme interchangeable avec lui. On vous met en concurrence avec des noms qui font une version plus grossière de ce que vous faites, pour moins cher, et rien dans la façon dont vous êtes perçu ne dit pourquoi cette comparaison est fausse. Si en revanche vous cherchez quelqu'un pour produire du contenu, tenir vos réseaux ou refaire un logo — non." },
@@ -28,10 +28,10 @@ export const FAQ_AUDIT: FaqSet = {
     { q: "Je ne peux pas le faire moi-même ?", a: "Vous pouvez faire les exercices. Ce que vous ne pouvez pas faire, c'est voir votre propre angle mort — vous êtes dans votre récit depuis si longtemps qu'il vous paraît évident et reste invisible pour tous les autres. La valeur ici n'est pas la méthode, c'est quelqu'un d'extérieur à votre tête qui l'applique." },
     { q: "Comment se déroule le processus ?", a: "Une fois la commande confirmée, vous recevez un questionnaire d'onboarding. Il prend 20 à 30 minutes et contient tout ce dont nous avons besoin pour bâtir votre architecture narrative de zéro." },
     { q: "Et si je ne suis pas satisfait ?", a: "Si le livrable ne tape pas juste, j'écris une V2. Sans discuter." },
-    { q: "Signes-vous un NDA ?", a: "Oui, sur demande. Et par défaut, votre travail ne sera jamais mentionné, adapté ni réutilisé pour une autre maison." },
+    { q: "Signez-vous un NDA ?", a: "Oui, sur demande. Et par défaut, votre travail ne sera jamais mentionné, adapté ni réutilisé pour une autre maison." },
     { q: "Dans quelle langue le document est-il livré ?", a: "Dans la langue dans laquelle vous construisez votre marque — français ou anglais." },
     { q: "Les playbooks fonctionnent-ils avec nos outils IA internes ?", a: "Oui. Chaque pièce écrite, y compris les six playbooks par département, est rédigée pour être collée directement dans l'outil IA que vos équipes utilisent déjà. Nous ne construisons ni ne maintenons rien de votre côté — l'écriture fait le travail." },
-    { q: "Que se passe-t-il après la livraison ?", a: "Un mois plus tard, on se revoit pour une revue de quatre-vingt-dix minutes. Si vous voulez que le studio continue d'exécuter ensuite, MOMENTUM existe — mais c'est optionnel, jamais inclus d'office." },
+    { q: "Que se passe-t-il après la livraison ?", a: "Un mois plus tard, on se revoit pour une revue de quatre-vingt-dix minutes. S'il y a un ajustement à faire, on le fait à ce moment-là." },
   ],
 }
 

@@ -20,7 +20,7 @@ const T = {
     h1b: "avant de le commander.",
     lead: "Deux documents complets, publiés en entier, sans email à laisser. Ils portent sur des maisons inventées pour l'exercice — aucun client n'a à servir de vitrine.",
     docs: [
-      { name: "SILLAGE", sub: "Logiciel de chantier", kind: "BRAND NARRATIVE ARCHITECTURE · quatorze pièces sur vingt", body: "Une commande complète, de la dissection du champ narratif jusqu'aux quatre-vingt-dix premiers jours de déploiement. Publiée avant que les six playbooks par département rejoignent l'offre — lisez-la pour l'écriture, la commande actuelle en compte six de plus.", href: "/documents/sillage" },
+      { name: "SILLAGE", sub: "Logiciel de chantier", kind: "BRAND NARRATIVE ARCHITECTURE · quatorze pièces", body: "Une commande complète, de la dissection du champ narratif jusqu'aux quatre-vingt-dix premiers jours de déploiement.", href: "/documents/sillage" },
       { name: "VERSO", sub: "Reliure d'art", kind: "BRAND NARRATIVE AUDIT · cinq blocs", body: "Un diagnostic écrit : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements précis à faire. Le format de l'offre d'entrée, en entier.", href: "/documents/verso" },
     ],
     read: "Lire le document →",
@@ -31,7 +31,7 @@ const T = {
     h1b: "before commissioning it.",
     lead: "Two complete documents, published in full, with no email to leave. They cover houses invented for the exercise — no client has to serve as a showcase.",
     docs: [
-      { name: "SILLAGE", sub: "Construction software", kind: "BRAND NARRATIVE ARCHITECTURE · fourteen of twenty parts", body: "A complete commission, from the dissection of the narrative field to the first ninety days of deployment. Published before the six department playbooks joined the offer — read it for the writing, the current commission includes six more.", href: "/documents/sillage" },
+      { name: "SILLAGE", sub: "Construction software", kind: "BRAND NARRATIVE ARCHITECTURE · fourteen parts", body: "A complete commission, from the dissection of the narrative field to the first ninety days of deployment.", href: "/documents/sillage" },
       { name: "VERSO", sub: "Art bindery", kind: "BRAND NARRATIVE AUDIT · five blocks", body: "A written diagnosis: what lands, what makes you indistinguishable from competitors, and the precise moves to make. The entry offer's format, in full.", href: "/documents/verso" },
     ],
     read: "Read the document →",
