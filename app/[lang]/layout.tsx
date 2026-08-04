@@ -6,6 +6,7 @@ import { LanguageProvider } from '@/lib/i18n'
 import { LANGS, isLang, type Lang } from '@/lib/lang'
 import { alternatesFor, SITE } from '@/lib/routing'
 import '../globals.css'
+import { LoadingIntro } from '@/components/strawberry/loading-intro'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -129,6 +130,7 @@ export default async function LocaleLayout({
   return (
     <html lang={lang} className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased bg-[#0a0a0a] text-white overflow-x-hidden">
+        <LoadingIntro />
         <LanguageProvider lang={lang}>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
         <script

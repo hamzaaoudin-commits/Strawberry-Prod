@@ -37,27 +37,51 @@ const T = {
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
     bibleName: "Also called the Brand Narrative Bible.",
     deliverablesKicker: "What changes, part by part",
-    deliverables: [
-      ["You will never again be compared to the competitor next door.", "Differentiation diagnostic — five competitors dissected, the words they share, and the empty ground you take."],
-      ["You know what to answer when someone asks what you do.", "Narrative platform — the constitution of the house, in writing."],
-      ["Your words stop being everyone else's.", "Language system — the vocabulary, the tone, the daily tests."],
-      ["You know what to do the Monday after.", "Deployment kit — the first ninety days, in order."],
-      ["You settle questions alone, without calling us back.", "Coherence guide — written for the founder, not for the team."],
-      ["You raise your prices with a reason you can give.", "Pricing narrative — price as doctrine, not as a number."],
-      ["You are introduced correctly when you are not in the room.", "Biography system — four formats, one single break."],
-      ["You know exactly where each rival is weak.", "Competitor autopsy — one sheet per player in the market."],
-      ["You have something to publish that resembles nobody.", "The signature piece — an essay publishable as it stands."],
-      ["People understand why you exist in two hundred and fifty words.", "Origin manifesto — exactly that length, no more."],
-      ["You hold the same story in front of whoever is pricing a bet.", "Investor and partner translation."],
-      ["Your designer stops guessing.", "Visual identity brief — written for a designer who thinks."],
-      ["You see the empty ground nobody occupies.", "Positioning map — two axes that reveal what category axes hide."],
-      ["You speak each segment's language without changing position.", "Audience intelligence report — four segments, one language each."],
-      ["Your marketing team stops guessing which ideas the house would refuse.", "Marketing playbook — the angles you can explore, the ones you can't, and how to catch an idea that betrays the house."],
-      ["Anyone who writes for you sounds like you.", "Content playbook — the voice turned into concrete rules, with corrected examples."],
-      ["Your editorial calendar stops drifting after month three.", "Social media playbook — tone by platform, posting rhythm, how to answer comments without contradicting yourself."],
-      ["Your sales team answers objections with your own words, not theirs.", "Sales playbook — how to present the house, defuse common objections, adapt the pitch without betraying it."],
-      ["An angry customer reads the same house as a happy one.", "Support playbook — how to handle sensitive situations without losing the tone that sets you apart."],
-      ["A new hire understands who you are in their first week.", "HR & management playbook — the culture handed down at onboarding, retranslated to guide internal decisions."],
+    groups: [
+      {
+        icon: "diagnostic",
+        title: "Diagnostic",
+        items: [
+          ["You will never again be compared to the competitor next door.", "Differentiation diagnostic — five competitors dissected, the words they share, and the empty ground you take."],
+          ["You know exactly where each rival is weak.", "Competitor autopsy — one sheet per player in the market."],
+          ["You see the empty ground nobody occupies.", "Positioning map — two axes that reveal what category axes hide."],
+          ["You speak each segment's language without changing position.", "Audience intelligence report — four segments, one language each."],
+        ],
+      },
+      {
+        icon: "identity",
+        title: "Identity & language",
+        items: [
+          ["You know what to answer when someone asks what you do.", "Narrative platform — the constitution of the house, in writing."],
+          ["Your words stop being everyone else's.", "Language system — the vocabulary, the tone, the daily tests."],
+          ["You raise your prices with a reason you can give.", "Pricing narrative — price as doctrine, not as a number."],
+          ["People understand why you exist in two hundred and fifty words.", "Origin manifesto — exactly that length, no more."],
+        ],
+      },
+      {
+        icon: "assets",
+        title: "Assets & deployment",
+        items: [
+          ["You know what to do the Monday after.", "Deployment kit — the first ninety days, in order."],
+          ["You settle questions alone, without calling us back.", "Coherence guide — written for the founder, not for the team."],
+          ["You are introduced correctly when you are not in the room.", "Biography system — four formats, one single break."],
+          ["You have something to publish that resembles nobody.", "The signature piece — an essay publishable as it stands."],
+          ["You hold the same story in front of whoever is pricing a bet.", "Investor and partner translation."],
+          ["Your designer stops guessing.", "Visual identity brief — written for a designer who thinks."],
+        ],
+      },
+      {
+        icon: "playbooks",
+        title: "The six department playbooks",
+        items: [
+          ["Your marketing team stops guessing which ideas the house would refuse.", "Marketing playbook — the angles you can explore, the ones you can't, and how to catch an idea that betrays the house."],
+          ["Anyone who writes for you sounds like you.", "Content playbook — the voice turned into concrete rules, with corrected examples."],
+          ["Your editorial calendar stops drifting after month three.", "Social media playbook — tone by platform, posting rhythm, how to answer comments without contradicting yourself."],
+          ["Your sales team answers objections with your own words, not theirs.", "Sales playbook — how to present the house, defuse common objections, adapt the pitch without betraying it."],
+          ["An angry customer reads the same house as a happy one.", "Support playbook — how to handle sensitive situations without losing the tone that sets you apart."],
+          ["A new hire understands who you are in their first week.", "HR & management playbook — the culture handed down at onboarding, retranslated to guide internal decisions."],
+        ],
+      },
     ],
     specs: [
       { k: "Lead time", v: "3 to 4 weeks" },
@@ -99,27 +123,51 @@ const T = {
       "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
     bibleName: "Aussi appelée la Brand Narrative Bible.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
-    deliverables: [
-      ["Vous ne serez plus jamais comparé au concurrent d'à côté.", "Diagnostic de différenciation — cinq concurrents disséqués, leurs mots communs, et le terrain vide que vous prenez."],
-      ["Vous savez quoi répondre quand on vous demande ce que vous faites.", "Plateforme narrative — la constitution de la maison, par écrit."],
-      ["Vos mots cessent d'être ceux de tout le monde.", "Système de langage — le vocabulaire, le ton, les tests quotidiens."],
-      ["Vous savez quoi faire dès le lundi qui suit.", "Kit de déploiement — les quatre-vingt-dix premiers jours, dans l'ordre."],
-      ["Vous tranchez seul, sans avoir à nous rappeler.", "Guide de cohérence — écrit pour le fondateur, pas pour l'équipe."],
-      ["Vous augmentez vos prix avec une raison à donner.", "Récit tarifaire — le prix comme doctrine, pas comme un chiffre."],
-      ["On vous présente correctement quand vous n'êtes pas dans la pièce.", "Système biographique — quatre formats, une seule rupture."],
-      ["Vous savez exactement où chaque rival est faible.", "Autopsie des concurrents — une fiche par acteur du marché."],
-      ["Vous avez quelque chose à publier qui ne ressemble à personne.", "La pièce signature — un essai publiable en l'état."],
-      ["On comprend pourquoi vous existez en deux cent cinquante mots.", "Manifeste d'origine — exactement cette longueur, pas une de plus."],
-      ["Vous tenez le même récit devant qui évalue un pari.", "Traduction investisseurs et partenaires."],
-      ["Votre designer arrête de deviner.", "Brief d'identité visuelle — écrit pour un designer qui pense."],
-      ["Vous voyez le terrain vide que personne n'occupe.", "Carte de positionnement — deux axes qui révèlent ce que les axes de catégorie masquent."],
-      ["Vous parlez la langue de chaque segment sans changer de position.", "Rapport d'intelligence d'audience — quatre segments, un langage par segment."],
-      ["Votre équipe marketing arrête de deviner ce que la maison refuserait.", "Playbook marketing — les axes que vous pouvez explorer, ceux que vous devez refuser, et comment reconnaître une idée qui trahit la maison."],
-      ["Toute personne qui écrit pour vous sonne comme vous.", "Playbook contenu — la voix mise en règles concrètes, avec des exemples corrigés."],
-      ["Votre calendrier éditorial ne dérive plus au bout de trois mois.", "Playbook réseaux sociaux — le ton par plateforme, le rythme de publication, comment répondre aux commentaires sans se contredire."],
-      ["Votre équipe commerciale répond aux objections avec vos mots, pas les leurs.", "Playbook vente — comment présenter la maison, désamorcer les objections courantes, adapter le discours sans le trahir."],
-      ["Un client en colère lit la même maison qu'un client satisfait.", "Playbook support — comment répondre dans les situations sensibles sans perdre le ton qui vous distingue."],
-      ["Un nouvel employé comprend qui vous êtes dès sa première semaine.", "Playbook RH & management — la culture transmise à l'arrivée, retraduite pour guider les décisions internes."],
+    groups: [
+      {
+        icon: "diagnostic",
+        title: "Diagnostic",
+        items: [
+          ["Vous ne serez plus jamais comparé au concurrent d'à côté.", "Diagnostic de différenciation — cinq concurrents disséqués, leurs mots communs, et le terrain vide que vous prenez."],
+          ["Vous savez exactement où chaque rival est faible.", "Autopsie des concurrents — une fiche par acteur du marché."],
+          ["Vous voyez le terrain vide que personne n'occupe.", "Carte de positionnement — deux axes qui révèlent ce que les axes de catégorie masquent."],
+          ["Vous parlez la langue de chaque segment sans changer de position.", "Rapport d'intelligence d'audience — quatre segments, un langage par segment."],
+        ],
+      },
+      {
+        icon: "identity",
+        title: "Identité & langage",
+        items: [
+          ["Vous savez quoi répondre quand on vous demande ce que vous faites.", "Plateforme narrative — la constitution de la maison, par écrit."],
+          ["Vos mots cessent d'être ceux de tout le monde.", "Système de langage — le vocabulaire, le ton, les tests quotidiens."],
+          ["Vous augmentez vos prix avec une raison à donner.", "Récit tarifaire — le prix comme doctrine, pas comme un chiffre."],
+          ["On comprend pourquoi vous existez en deux cent cinquante mots.", "Manifeste d'origine — exactement cette longueur, pas une de plus."],
+        ],
+      },
+      {
+        icon: "assets",
+        title: "Pièces & déploiement",
+        items: [
+          ["Vous savez quoi faire dès le lundi qui suit.", "Kit de déploiement — les quatre-vingt-dix premiers jours, dans l'ordre."],
+          ["Vous tranchez seul, sans avoir à nous rappeler.", "Guide de cohérence — écrit pour le fondateur, pas pour l'équipe."],
+          ["On vous présente correctement quand vous n'êtes pas dans la pièce.", "Système biographique — quatre formats, une seule rupture."],
+          ["Vous avez quelque chose à publier qui ne ressemble à personne.", "La pièce signature — un essai publiable en l'état."],
+          ["Vous tenez le même récit devant qui évalue un pari.", "Traduction investisseurs et partenaires."],
+          ["Votre designer arrête de deviner.", "Brief d'identité visuelle — écrit pour un designer qui pense."],
+        ],
+      },
+      {
+        icon: "playbooks",
+        title: "Les six playbooks par département",
+        items: [
+          ["Votre équipe marketing arrête de deviner ce que la maison refuserait.", "Playbook marketing — les axes que vous pouvez explorer, ceux que vous devez refuser, et comment reconnaître une idée qui trahit la maison."],
+          ["Toute personne qui écrit pour vous sonne comme vous.", "Playbook contenu — la voix mise en règles concrètes, avec des exemples corrigés."],
+          ["Votre calendrier éditorial ne dérive plus au bout de trois mois.", "Playbook réseaux sociaux — le ton par plateforme, le rythme de publication, comment répondre aux commentaires sans se contredire."],
+          ["Votre équipe commerciale répond aux objections avec vos mots, pas les leurs.", "Playbook vente — comment présenter la maison, désamorcer les objections courantes, adapter le discours sans le trahir."],
+          ["Un client en colère lit la même maison qu'un client satisfait.", "Playbook support — comment répondre dans les situations sensibles sans perdre le ton qui vous distingue."],
+          ["Un nouvel employé comprend qui vous êtes dès sa première semaine.", "Playbook RH & management — la culture transmise à l'arrivée, retraduite pour guider les décisions internes."],
+        ],
+      },
     ],
     specs: [
       { k: "Délai", v: "3 à 4 semaines" },
@@ -218,22 +266,47 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          {/* LES VINGT PIÈCES — bénéfice en tête, caractéristique dessous. */}
+          {/* LES VINGT PIÈCES, regroupées en quatre catégories avec une icône
+              chacune — un long registre uniforme de vingt lignes se parcourt
+              mal ; des groupes qu'on peut saisir d'un coup d'œil se lisent. */}
           <div className="relative mt-14">
             <div className="mb-7 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
               {t.deliverablesKicker}
             </div>
-            <ol className="list-none border-t border-hair p-0">
-              {t.deliverables.map(([benefit, feature], i) => (
-                <li key={benefit} className="flex items-baseline gap-4 border-b border-white/[0.06] py-4">
-                  <span className="font-serif text-[13px] text-brand">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <p className="m-0 font-sans text-[15.5px] font-semibold leading-snug text-white">{benefit}</p>
-                    <p className="m-0 mt-1 font-sans text-[13.5px] leading-snug text-chalk-40">{feature}</p>
+
+            <div className="flex flex-col gap-5">
+              {t.groups.map((group) => {
+                let n = 0
+                for (const g of t.groups) {
+                  if (g === group) break
+                  n += g.items.length
+                }
+                return (
+                  <div key={group.title} className="border border-hair-strong bg-white/[0.015] p-6 md:p-7">
+                    <div className="mb-5 flex items-center gap-3.5">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-brand/30 bg-brand/[0.07] text-brand">
+                        <GroupIcon kind={group.icon} />
+                      </div>
+                      <h4 className="m-0 font-serif text-[1.05rem] font-bold text-white">{group.title}</h4>
+                    </div>
+
+                    <ol className="list-none border-t border-hair p-0">
+                      {group.items.map(([benefit, feature], i) => (
+                        <li key={benefit} className="flex items-baseline gap-4 border-b border-white/[0.06] py-4 last:border-b-0">
+                          <span className="font-serif text-[13px] text-brand">
+                            {String(n + i + 1).padStart(2, "0")}
+                          </span>
+                          <div>
+                            <p className="m-0 font-sans text-[15px] font-semibold leading-snug text-white">{benefit}</p>
+                            <p className="m-0 mt-1 font-sans text-[13px] leading-snug text-chalk-40">{feature}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
                   </div>
-                </li>
-              ))}
-            </ol>
+                )
+              })}
+            </div>
 
             <p className="mt-7 max-w-[620px] font-sans text-[13.5px] leading-relaxed text-chalk-40">
               {t.aiCompat}
@@ -313,4 +386,48 @@ export function OffersSection({ lang }: { lang: Lang }) {
       </div>
     </section>
   )
+}
+
+/**
+ * Un glyphe par catégorie de livrables, plutôt qu'un simple numéro répété
+ * vingt fois — la remarque qui a motivé ce regroupement, appliquée jusqu'au
+ * bout.
+ */
+function GroupIcon({ kind }: { kind: string }) {
+  const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
+  const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
+
+  switch (kind) {
+    case "diagnostic":
+      return (
+        <svg {...props}>
+          <circle cx="10.5" cy="10.5" r="6.5" {...stroke} />
+          <line x1="19" y1="19" x2="15.2" y2="15.2" {...stroke} />
+        </svg>
+      )
+    case "identity":
+      return (
+        <svg {...props}>
+          <path d="M5 7h14" {...stroke} />
+          <path d="M5 12h9" {...stroke} />
+          <path d="M5 17h6" {...stroke} />
+        </svg>
+      )
+    case "assets":
+      return (
+        <svg {...props}>
+          <rect x="5" y="4" width="14" height="16" rx="0.5" {...stroke} />
+          <line x1="8" y1="9" x2="16" y2="9" {...stroke} opacity="0.6" />
+          <line x1="8" y1="13" x2="16" y2="13" {...stroke} opacity="0.6" />
+          <line x1="8" y1="17" x2="12.5" y2="17" {...stroke} opacity="0.6" />
+        </svg>
+      )
+    default: // playbooks
+      return (
+        <svg {...props}>
+          <path d="M4 5.5c2-1 4.5-1 6.5 0v13c-2-1-4.5-1-6.5 0z" {...stroke} />
+          <path d="M20 5.5c-2-1-4.5-1-6.5 0v13c2-1 4.5-1 6.5 0z" {...stroke} />
+        </svg>
+      )
+  }
 }

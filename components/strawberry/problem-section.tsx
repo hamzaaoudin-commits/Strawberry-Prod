@@ -20,6 +20,7 @@ const T = {
     p1: "When a brand has no identity people can hold onto, it gets evaluated like a commodity — feature against feature, price against price. Nothing to belong to, nothing to defend, nothing to repeat to a friend.",
     p2a: "Price is the visible part. What creates it is invisible: ",
     p2strong: "a brand nobody has fully understood yet.",
+    p3: "Without an identity that holds, every piece of communication starts from zero. The site, the socials, a deck \u2014 each tells a different micro-story, and the market meets your brand a hundred times without remembering any of it, because nothing stacks.",
     close: "The fix is not more content or a better logo. It is a narrative identity strong enough that people stop comparing you — and start belonging to what you stand for.",
   },
   fr: {
@@ -28,6 +29,7 @@ const T = {
     p1: "Quand une marque n'a aucune identité à laquelle s'accrocher, on l'évalue comme une commodité — caractéristique contre caractéristique, prix contre prix. Rien à quoi appartenir, rien à défendre, rien à répéter à un ami.",
     p2a: "Le prix est la partie visible. Ce qui le crée est invisible : ",
     p2strong: "une marque que personne n'a encore vraiment comprise.",
+    p3: "Sans identit\u00e9 qui tient, chaque prise de parole repart de z\u00e9ro. Le site, les r\u00e9seaux, une plaquette \u2014 chacun raconte une micro-histoire diff\u00e9rente, et le march\u00e9 rencontre votre marque cent fois sans se souvenir de rien, parce que rien ne s'empile.",
     close: "Le remède n'est pas plus de contenu ni un meilleur logo. C'est une identité narrative assez forte pour que le marché cesse de vous comparer — et commence à adhérer à ce que vous représentez.",
   },
 }
@@ -51,6 +53,7 @@ export function ProblemSection({ lang }: { lang: Lang }) {
             {t.p2a}
             <strong className="text-chalk-90">{t.p2strong}</strong>
           </p>
+          <p className="mb-8 font-sans text-[16.5px] leading-[1.75] text-white/60">{t.p3}</p>
           <p className="font-serif text-[clamp(1.15rem,2.2vw,1.55rem)] leading-snug text-white/90">{t.close}</p>
         </div>
       </div>
