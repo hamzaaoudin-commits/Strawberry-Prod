@@ -21,6 +21,10 @@ const T = {
     aiP2a: "What cannot be generated is an identity. ",
     aiP2strong: "Differentiation is no longer a marketing luxury — it is your condition for survival.",
     aiP3: "The value has moved. It used to sit in the making. Today, making things costs almost nothing. What stays scarce is the strategy, the coherence, the vision, the decisions — that is what we offer.",
+    diagramBefore: "Yesterday",
+    diagramAfter: "Today",
+    diagramFabrication: "The making",
+    diagramArchitecture: "The strategy",
     enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
   },
   fr: {
@@ -31,6 +35,10 @@ const T = {
     aiP2a: "Ce qui ne peut pas être généré, c'est une identité. ",
     aiP2strong: "La différenciation n'est plus un luxe marketing — c'est votre condition de survie.",
     aiP3: "La valeur a changé de camp. Elle vivait dans la fabrication. Aujourd'hui, fabriquer coûte presque rien. Ce qui reste rare, c'est la stratégie, la cohérence, la vision, les décisions — c'est ce que nous proposons.",
+    diagramBefore: "Hier",
+    diagramAfter: "Aujourd'hui",
+    diagramFabrication: "La fabrication",
+    diagramArchitecture: "La stratégie",
     enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
   },
 }
@@ -58,6 +66,44 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             <strong>{t.aiP2strong}</strong>
           </p>
           <p className="font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
+
+          {/* Le renversement, en image : hier la fabrication portait la
+              valeur, aujourd'hui c'est l'inverse. */}
+          <div className="mt-8 flex items-end justify-center gap-10 sm:gap-16">
+            <div className="flex flex-col items-center">
+              <div className="flex h-[120px] w-[64px] flex-col-reverse overflow-hidden border border-white/15">
+                <div className="h-[85%] bg-white/10" />
+                <div className="h-[15%] bg-brand/40" />
+              </div>
+              <div className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-chalk-40">
+                {t.diagramBefore}
+              </div>
+            </div>
+
+            <div aria-hidden className="mb-14 text-brand">
+              →
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="flex h-[120px] w-[64px] flex-col-reverse overflow-hidden border border-brand-hair">
+                <div className="h-[15%] bg-white/10" />
+                <div className="h-[85%] bg-brand" />
+              </div>
+              <div className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-brand">
+                {t.diagramAfter}
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 flex justify-center gap-6 font-sans text-[11px] text-chalk-40">
+            <span>
+              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 bg-white/20 align-middle" />
+              {t.diagramFabrication}
+            </span>
+            <span>
+              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 bg-brand align-middle" />
+              {t.diagramArchitecture}
+            </span>
+          </div>
         </div>
 
         <p className="mt-10 font-sans text-[15px] leading-relaxed text-chalk-55">{t.enemy}</p>
