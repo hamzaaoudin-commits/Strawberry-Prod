@@ -4,7 +4,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/strawberry/language-toggle"
 
-const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method", "/maisons"]
+const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method"]
 /**
  * Le bloc « Le Travail ».
  *
@@ -44,7 +44,7 @@ const T = {
     hExplore: "Explore",
     hWork: "The Work",
     hReach: "Reach",
-    explore: ["Home", "The Studio", "The Book", "The Method", "The Houses"],
+    explore: ["Home", "The Studio", "The Book", "The Method"],
     reach: ["Let's Talk", "LinkedIn", "Instagram", "Email"],
     rights: "All rights reserved.",
   },
@@ -54,7 +54,7 @@ const T = {
     hExplore: "Explorer",
     hWork: "Le Travail",
     hReach: "Contact",
-    explore: ["Accueil", "Le Studio", "Le Livre", "La Méthode", "Les Maisons"],
+    explore: ["Accueil", "Le Studio", "Le Livre", "La Méthode"],
     reach: ["Parlons-en", "LinkedIn", "Instagram", "Email"],
     rights: "Tous droits réservés.",
   },

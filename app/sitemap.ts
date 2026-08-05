@@ -25,7 +25,6 @@ const ROUTES: Route[] = [
   { path: "/documents/sillage", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/verso", priority: 0.85, changeFrequency: "monthly" },
   { path: "/radar", priority: 0.85, changeFrequency: "weekly" },
-  { path: "/maisons", priority: 0.8, changeFrequency: "monthly" },
   { path: "/strawberry-method", priority: 0.8, changeFrequency: "monthly" },
   { path: "/le-livre", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.75, changeFrequency: "monthly" },
