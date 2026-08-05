@@ -73,6 +73,8 @@ const T = {
       {
         icon: "playbooks",
         title: "The six department playbooks",
+        covers: ["Marketing", "Content", "Social", "Sales", "Support", "HR"],
+        playbooksNote: "Each playbook is written to be used by a human teammate and handed to an AI agent without changing a word \u2014 same page, same rules, either side.",
         items: [
           ["Your marketing team stops guessing which ideas the house would refuse.", "Marketing playbook — the angles you can explore, the ones you can't, and how to catch an idea that betrays the house."],
           ["Anyone who writes for you sounds like you.", "Content playbook — the voice turned into concrete rules, with corrected examples."],
@@ -159,6 +161,8 @@ const T = {
       {
         icon: "playbooks",
         title: "Les six playbooks par département",
+        covers: ["Marketing", "Contenu", "Réseaux", "Vente", "Support", "RH"],
+        playbooksNote: "Chaque playbook est écrit pour être utilisé par un collaborateur humain et remis tel quel à un agent IA — la même page, les mêmes règles, des deux côtés.",
         items: [
           ["Votre équipe marketing arrête de deviner ce que la maison refuserait.", "Playbook marketing — les axes que vous pouvez explorer, ceux que vous devez refuser, et comment reconnaître une idée qui trahit la maison."],
           ["Toute personne qui écrit pour vous sonne comme vous.", "Playbook contenu — la voix mise en règles concrètes, avec des exemples corrigés."],
@@ -281,6 +285,9 @@ export function OffersSection({ lang }: { lang: Lang }) {
                   if (g === group) break
                   n += g.items.length
                 }
+                const isPlaybooks = group.icon === "playbooks"
+                const covers = group.covers
+                const playbooksNote = group.playbooksNote
                 return (
                   <div key={group.title} className="border border-hair-strong bg-white/[0.015] p-6 md:p-7">
                     <div className="mb-5 flex items-center gap-3.5">
@@ -289,6 +296,25 @@ export function OffersSection({ lang }: { lang: Lang }) {
                       </div>
                       <h4 className="m-0 font-serif text-[1.05rem] font-bold text-white">{group.title}</h4>
                     </div>
+
+                    {/* Les six playbooks reçoivent chacun une petite couverture —
+                        un actif visuel distinct par département, plutôt qu'un
+                        numéro identique répété six fois. */}
+                    {isPlaybooks && covers && (
+                      <div className="mb-6 grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+                        {covers.map((label, i) => (
+                          <div
+                            key={label}
+                            className="flex aspect-[3/4] flex-col items-center justify-center gap-2 border border-brand/25 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center"
+                          >
+                            <PlaybookIcon index={i} />
+                            <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
+                              {label}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     <ol className="list-none border-t border-hair p-0">
                       {group.items.map(([benefit, feature], i) => (
@@ -303,6 +329,12 @@ export function OffersSection({ lang }: { lang: Lang }) {
                         </li>
                       ))}
                     </ol>
+
+                    {isPlaybooks && playbooksNote && (
+                      <p className="m-0 mt-5 border-t border-hair pt-5 font-sans text-[13px] italic leading-relaxed text-chalk-55">
+                        {playbooksNote}
+                      </p>
+                    )}
                   </div>
                 )
               })}
@@ -427,6 +459,63 @@ function GroupIcon({ kind }: { kind: string }) {
         <svg {...props}>
           <path d="M4 5.5c2-1 4.5-1 6.5 0v13c-2-1-4.5-1-6.5 0z" {...stroke} />
           <path d="M20 5.5c-2-1-4.5-1-6.5 0v13c2-1 4.5-1 6.5 0z" {...stroke} />
+        </svg>
+      )
+  }
+}
+
+/**
+ * Une couverture par playbook : six glyphes distincts, un par département,
+ * plutôt qu'un seul motif "playbooks" répété six fois.
+ */
+function PlaybookIcon({ index }: { index: number }) {
+  const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
+  const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
+  const color = "#e63946"
+
+  switch (index) {
+    case 0: // marketing — un mégaphone
+      return (
+        <svg {...props}>
+          <path d="M4 10v4h3l6 4V6l-6 4z" {...stroke} stroke={color} />
+          <path d="M17 9.5c1 .8 1 4.2 0 5" {...stroke} stroke={color} />
+        </svg>
+      )
+    case 1: // contenu — une plume
+      return (
+        <svg {...props}>
+          <path d="M19 5c-7 0-13 5-13 13 8 0 13-6 13-13z" {...stroke} stroke={color} />
+          <path d="M6 18l4-4" {...stroke} stroke={color} />
+        </svg>
+      )
+    case 2: // réseaux sociaux — une bulle de chat
+      return (
+        <svg {...props}>
+          <path d="M4 6h16v10H9l-4 3v-3H4z" {...stroke} stroke={color} />
+        </svg>
+      )
+    case 3: // vente — une poignée de main / accord
+      return (
+        <svg {...props}>
+          <path d="M3 13l4-4 4 2 4-4 6 5" {...stroke} stroke={color} />
+          <path d="M14 16l3 3 4-4" {...stroke} stroke={color} />
+        </svg>
+      )
+    case 4: // support — un casque
+      return (
+        <svg {...props}>
+          <path d="M5 13v-1a7 7 0 0 1 14 0v1" {...stroke} stroke={color} />
+          <rect x="3.5" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
+          <rect x="17" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
+        </svg>
+      )
+    default: // RH — deux personnes
+      return (
+        <svg {...props}>
+          <circle cx="9" cy="8" r="2.4" {...stroke} stroke={color} />
+          <path d="M4 19c0-3 2.2-5 5-5s5 2 5 5" {...stroke} stroke={color} />
+          <circle cx="17" cy="9" r="2" {...stroke} stroke={color} opacity="0.6" />
+          <path d="M15 19c.2-2.2 1.6-3.8 3.5-4.2" {...stroke} stroke={color} opacity="0.6" />
         </svg>
       )
   }

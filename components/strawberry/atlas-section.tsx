@@ -3,65 +3,51 @@
 import { useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
-import { AtlasCover } from "@/components/strawberry/offer-covers"
 import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
+/**
+ * L'Atlas, en notification plutôt qu'en section.
+ *
+ * L'ancienne version occupait une pleine section de la home — couverture,
+ * longue liste de citations, gros titre — au même niveau visuel que le reste
+ * du contenu. Ce n'est pas du contenu qu'on lit, c'est une offre annexe
+ * ponctuelle : elle mérite d'être présentée comme telle, une carte compacte
+ * avec deux issues explicites — lire l'Atlas (email), ou ignorer et
+ * continuer.
+ */
 
 const T = {
   en: {
     free: "Free Resource",
-    freeBadge: "FREE RESOURCE",
-    h2a: "30 Architectures.",
-    h2b: "An Atlas.",
+    badge: "FREE RESOURCE",
+    h2: "30 Architectures. An Atlas.",
+    lead: "128 pages. Thirty narrative situations founders find themselves in, and the moves that resolved them.",
+    read: "Read the Atlas \u2192",
+    dismiss: "No thanks",
     modalSub: "128 pages. Free. Enter your email and the Atlas opens immediately.",
     opening: "Opening the Atlas\u2026",
     emailPlaceholder: "Your email",
     loading: "Opening\u2026",
-    read: "Read the Atlas \u2192",
     error: "Something went wrong. Try again.",
     nospam: "No spam. One email to receive the Atlas.",
-    lead: "Thirty composite portraits of the narrative situations founders find themselves in \u2014 and the architectural moves that resolved them. Not a portfolio. A map.",
-    italic: "If you recognize yourself in one of them \u2014 you have already begun the work.",
-    meta: "128 pages \u00b7 PDF \u00b7 Free \u00b7 One email. No spam.",
-    items: [
-      "We had pivoted three times. I no longer knew what to say at dinner.",
-      "I sold the company. I took two years. I came back. I refuse to be the founder of my last company.",
-      "I refuse to hire. I refuse to scale. I cannot keep apologizing for it.",
-      "Every brief we receive treats us as an agency. We are not.",
-      "We are building something that does not exist. Every prospect tries to put us in a box that already does.",
-      "Our competitors are three times cheaper and say exactly the same sentence we do.",
-      "I am the third to carry this name. I still do not know whether that is an inheritance or a weight.",
-      "+ 25 more architectures across 5 categories.",
-    ],
   },
   fr: {
     free: "Ressource gratuite",
-    freeBadge: "RESSOURCE GRATUITE",
-    h2a: "30 Architectures.",
-    h2b: "Un Atlas.",
-    modalSub: "128 pages. Gratuit. Entrez votre email et l'Atlas s'ouvre imm\u00e9diatement.",
+    badge: "RESSOURCE GRATUITE",
+    h2: "30 Architectures. Un Atlas.",
+    lead: "128 pages. Trente situations narratives dans lesquelles se trouvent des fondateurs, et les mouvements qui les ont résolues.",
+    read: "Lire l'Atlas \u2192",
+    dismiss: "Non merci",
+    modalSub: "128 pages. Gratuit. Entrez votre email et l'Atlas s'ouvre immédiatement.",
     opening: "Ouverture de l'Atlas\u2026",
     emailPlaceholder: "Votre email",
     loading: "Ouverture\u2026",
-    read: "Lire l'Atlas \u2192",
-    error: "Une erreur est survenue. Merci de r\u00e9essayer.",
+    error: "Une erreur est survenue. Merci de réessayer.",
     nospam: "Pas de spam. Un seul email pour recevoir l'Atlas.",
-    lead: "Trente portraits composites des situations narratives dans lesquelles se trouvent les fondateurs \u2014 et les mouvements d'architecture qui les ont r\u00e9solues. Pas un portfolio. Une carte.",
-    italic: "Si vous vous reconnaissez dans l'un d'eux \u2014 vous avez d\u00e9j\u00e0 commenc\u00e9 le travail.",
-    meta: "128 pages \u00b7 PDF \u00b7 Gratuit \u00b7 Un email. Pas de spam.",
-    items: [
-      "On avait piv\u00f4t\u00e9 trois fois. Je ne savais plus quoi dire \u00e0 un d\u00eener.",
-      "J'ai vendu la bo\u00eete. J'ai pris deux ans. Je suis revenu. Je refuse d'\u00eatre le fondateur de ma derni\u00e8re entreprise.",
-      "Je refuse de recruter. Je refuse de scaler. Je ne peux plus continuer \u00e0 m'en excuser.",
-      "Chaque brief qu'on re\u00e7oit nous traite comme une agence. On n'en est pas une.",
-      "On construit quelque chose qui n'existe pas. Chaque prospect essaie de nous mettre dans une case qui existe d\u00e9j\u00e0.",
-      "Nos concurrents sont trois fois moins chers et disent exactement la m\u00eame phrase que nous.",
-      "Je suis le troisi\u00e8me \u00e0 porter ce nom. Je ne sais pas encore si c'est un h\u00e9ritage ou un poids.",
-      "+ 25 autres architectures r\u00e9parties en 5 cat\u00e9gories.",
-    ],
   },
 }
+
 function AtlasModal({ onClose }: { onClose: () => void }) {
   const t = useT(T)
   const [email, setEmail] = useState("")
@@ -70,7 +56,6 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
-    // Validate and clamp before anything leaves the browser.
     const clean = sanitize(email, LIMITS.email)
     if (!isValidEmail(clean)) {
       setStatus("error")
@@ -133,9 +118,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         <div className="eyebrow mb-4 text-brand">{t.free}</div>
 
         <h2 className="mb-3 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight tracking-[-0.02em] text-white">
-          {t.h2a}
-          <br />
-          {t.h2b}
+          {t.h2}
         </h2>
 
         <p className="mb-7 font-sans text-sm leading-relaxed text-white/55">{t.modalSub}</p>
@@ -179,63 +162,45 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
 export function AtlasSection() {
   const t = useT(T)
   const [showModal, setShowModal] = useState(false)
+  const [dismissed, setDismissed] = useState(false)
+
+  if (dismissed) return null
 
   return (
-    <section className="border-t border-white/[0.06] bg-ink-soft px-gutter py-16 md:py-32">
+    <section className="border-t border-white/[0.06] bg-ink-soft px-gutter py-14">
       {showModal && <AtlasModal onClose={() => setShowModal(false)} />}
 
-      <div className="shell">
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-wrap items-start justify-between gap-8">
-            <AtlasCover className="order-2 w-[180px] shrink-0 md:order-none" />
-            <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
-                <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">
-                  {t.freeBadge}
-                </span>
-              </div>
-              <h2 className="m-0 font-serif text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
-                {t.h2a}
-                <br />
-                <span className="text-gradient">{t.h2b}</span>
-              </h2>
-            </div>
+      {/* Une carte, pas une section pleine largeur : ceci est une offre
+          annexe ponctuelle, pas un contenu de la page. */}
+      <div className="mx-auto max-w-[640px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.06)_0%,rgba(10,10,10,0.4)_100%)] p-7 md:p-9">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
+          <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">{t.badge}</span>
+        </div>
 
-            <div className="max-w-[480px] pt-2">
-              <p className="m-0 mb-8 font-sans text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.8] text-white/50">
-                {t.lead}
-              </p>
-              <p className="m-0 mb-8 font-serif text-[clamp(0.95rem,1.4vw,1.05rem)] italic leading-[1.7] text-white/35">
-                {t.italic}
-              </p>
+        <h2 className="m-0 mb-3 font-serif text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+          {t.h2}
+        </h2>
 
-              <button
-                type="button"
-                onClick={() => {
-                  track("atlas_click", { from: "home" })
-                  setShowModal(true)
-                }}
-                className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-8 py-3.5 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
-              >
-                {t.read}
-              </button>
+        <p className="m-0 mb-7 max-w-[480px] font-sans text-[14.5px] leading-relaxed text-white/55">{t.lead}</p>
 
-              <p className="mt-3 font-sans text-xs tracking-[0.05em] text-white/25">{t.meta}</p>
-            </div>
-          </div>
-
-          <div className="grid gap-px overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.06] [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
-            {["01", "03", "07", "13", "19", "..."].map((n, idx) => (
-              <div key={n} className="flex gap-4 bg-ink px-6 py-7">
-                <span className="shrink-0 pt-[3px] font-sans text-[11px] font-bold tracking-[0.08em] text-brand">
-                  {n}
-                </span>
-                <p className="m-0 font-serif text-[13px] italic leading-[1.7] text-chalk-40">
-                  {t.items[idx]}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={() => {
+              track("atlas_click", { from: "home" })
+              setShowModal(true)
+            }}
+            className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
+          >
+            {t.read}
+          </button>
+          <button
+            type="button"
+            onClick={() => setDismissed(true)}
+            className="cursor-pointer border-none bg-transparent font-sans text-[13px] text-chalk-40 underline-offset-2 hover:text-white hover:underline"
+          >
+            {t.dismiss}
+          </button>
         </div>
       </div>
     </section>

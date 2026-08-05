@@ -69,7 +69,7 @@ export function ImpactStats({ lang }: { lang: Lang }) {
 
         <div className="mx-auto grid max-w-[880px] gap-px bg-white/[0.09] sm:grid-cols-2">
           {t.stats.map((s) => (
-            <div key={s.n} className="bg-ink px-7 py-9 md:px-9">
+            <div key={s.n} className="bg-ink px-7 py-9 text-center md:px-9">
               <div className="mb-4 font-serif text-[clamp(2.6rem,6vw,3.6rem)] font-bold leading-none text-brand">
                 {s.n}
               </div>

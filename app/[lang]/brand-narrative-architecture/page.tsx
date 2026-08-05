@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { track } from "@vercel/analytics"
-import { useT } from "@/lib/i18n"
+import { useT, useLang } from "@/lib/i18n"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { SillageSection } from "@/components/strawberry/sillage-section"
 import { STRIPE_LINKS } from "@/lib/config"
 
 
@@ -659,6 +660,7 @@ function ActTitle({ roman, title }: { roman: string; title: string }) {
 
 export default function BrandNarrativeArchitecturePage() {
   const t = useT(T)
+  const { lang } = useLang()
   const DELIVERABLES = t.deliverables.map((d, i) => ({ ...d, n: `0${i + 1}` }))
   const HUMAN_PACT = t.pact
   const ALSO_RECEIVE = t.alsoReceive
@@ -868,32 +870,12 @@ export default function BrandNarrativeArchitecturePage() {
         </div>
       </section>
 
-      {/* THE PUBLISHED SAMPLE — placé après la présentation de l'offre, et non avant :
-          on lit un document complet une fois qu'on sait ce qu'il contient. Avant,
-          le lien partait avant même que la commande soit expliquée. */}
-      <section className="section">
-        <div className="relative mx-auto max-w-[900px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.07)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-14">
-          <span className="bracket-tl" aria-hidden />
-          <span className="bracket-br" aria-hidden />
-
-          <div className="tag mb-7 border-brand text-brand">{t.sampleBadge}</div>
-
-          <h2 className="mb-5 font-serif text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em]">
-            {t.sampleH2}
-          </h2>
-
-          <p className="mb-8 max-w-[640px] font-sans text-[16px] leading-relaxed text-chalk-75">
-            {t.sampleP}
-          </p>
-
-          <div className="flex flex-wrap items-center gap-5">
-            <Link href="/documents/sillage" className="btn-primary">
-              {t.sampleCta}
-            </Link>
-            <span className="font-sans text-[13px] text-chalk-40">{t.sampleMeta}</span>
-          </div>
-        </div>
-      </section>
+      {/* SILLAGE — la démonstration complète, déplacée ici depuis la home.
+          Sur la home, un document entier en plus du reste faisait trop lire
+          à quelqu'un qui découvre à peine l'offre. Ici, le lecteur est déjà
+          en train d'évaluer la commande : voir le document complet est
+          exactement ce qu'il cherche à ce stade. */}
+      <SillageSection lang={lang} />
 
       <section ref={success.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: success.visible ? 1 : 0, transform: success.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>

@@ -6,7 +6,6 @@ import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
 import { OffersSection } from "@/components/strawberry/offers-section"
-import { SillageSection } from "@/components/strawberry/sillage-section"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { CTABanner } from "@/components/strawberry/cta-banner"
@@ -20,15 +19,15 @@ import { isLang, type Lang } from "@/lib/lang"
  * La page d'accueil.
  *
  * Une page, une offre, une action. Le parcours suit la décision d'achat :
- * problème, diagnostic, mécanisme propriétaire, offre, démonstration, deux
- * dernières preuves (le livre, l'Atlas), le bandeau final, puis les
- * objections et le formulaire — la relance arrive avant qu'on désamorce les
- * dernières questions, pas après.
+ * problème, diagnostic, deux statistiques réelles, mécanisme propriétaire,
+ * offre, le livre, l'Atlas (en notification, pas en section), le bandeau
+ * final, puis les objections et le formulaire.
  *
- * La section « Les preuves » et le curseur avant/après sont partis d'ici : le
- * premier n'ajoutait rien après SILLAGE, le second vit désormais dans le
- * document SILLAGE lui-même, avec un vrai extrait du document plutôt qu'une
- * phrase inventée.
+ * Le document SILLAGE n'est plus ici : il a déménagé sur la page
+ * /brand-narrative-architecture, avec le curseur avant/après qui l'accompagne
+ * — un document complet en plus du reste, c'était trop à lire pour quelqu'un
+ * qui découvre à peine l'offre sur la home. La section « Les preuves » est
+ * partie aussi, elle n'ajoutait rien après SILLAGE.
  */
 export default async function Home({
   params,
@@ -48,7 +47,6 @@ export default async function Home({
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
       <OffersSection lang={lang} />
-      <SillageSection lang={lang} />
       <BookSection lang={lang} />
       <AtlasSection />
       <CTABanner />

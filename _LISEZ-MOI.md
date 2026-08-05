@@ -1,45 +1,42 @@
-# Strawberry — tour 17
+# Strawberry — tour 18
 
-11 fichiers, un seul glisser-déposer. Build validé.
+8 fichiers, un seul glisser-déposer. Build validé.
 
 Glissez les **dossiers** (`app`, `components`), jamais leur contenu.
 
-Deux ou trois fichiers de ce zip reprennent des correctifs déjà envoyés dans
-des tours précédents (l'intro de chargement, la page méthode) — mon suivi
-interne a montré une incertitude sur s'ils avaient bien été déposés. Aucun
-risque à les redéposer : le contenu est identique à ce qu'il devrait déjà
-être, ça ne fait qu'écraser un fichier par lui-même dans le pire des cas.
+## Ce qui change
 
-## Ce qui est nouveau
+**Le titre du hero est plus petit**, et le bouton « Passer commande » en
+dessous du sous-titre est retiré — la home n'a plus qu'un seul CTA, plus loin
+dans la page.
 
-**Deux statistiques réelles, avec de vraies sources**, sur la home entre le
-diagnostic et le mécanisme :
+**Une phrase d'introduction** précède maintenant « Rien de tout ça n'a
+manqué de bonne volonté » dans le diagnostic, pour que la phrase ait un
+sujet clair dès la première lecture.
 
-- **38%** — ce que paient en plus les acheteurs qui perçoivent une marque
-  comme réellement différente, contre 11% en moyenne. Source : Kantar,
-  analyse BrandZ.
-- **85%** — la part des consommateurs incapables de citer une seule histoire
-  de marque qui leur a marqué l'esprit, sur 2 000 adultes interrogés.
-  Source : Headstream, Brand Storytelling Report, 2015 (la date est affichée
-  sur le site — l'étude a dix ans, ce n'est pas caché).
+**Les statistiques sont centrées** : le pourcentage est maintenant au-dessus
+de chaque paragraphe, pas collé à gauche.
 
-Aucun chiffre inventé : les deux sources sont citées, avec leur date.
+**SILLAGE a déménagé sur la page Architecture.** Sur la home, un document
+complet en plus du reste faisait trop lire à quelqu'un qui découvre à peine
+l'offre. Sur la page de vente, le lecteur évalue déjà la commande — c'est
+exactement là qu'il veut voir le document complet.
 
-**Deux schémas ajoutés :**
+**Les six playbooks ont chacun leur couverture**, dans le bloc de l'offre
+sur la home : une icône propre à chaque département (marketing, contenu,
+réseaux, vente, support, RH), affichées en grille au-dessus du détail de
+chaque playbook. Une phrase précise explicitement qu'ils servent aussi bien
+à un collaborateur humain qu'à un agent IA.
 
-- Dans le bloc problème : « sans architecture » (des points dispersés) contre
-  « avec architecture » (une ligne qui monte), à côté du texte sur le
-  narratif qui s'empile.
-- Dans le diagnostic : « hier » contre « aujourd'hui », deux barres qui
-  montrent le renversement entre la fabrication et la stratégie.
+**Le livre** n'a plus qu'un bouton sur la home — « En savoir plus », qui
+mène à la page dédiée. Le bouton d'achat direct reste sur cette page-là.
 
-**`/commander` est maintenant une redirection directe vers Stripe**, comme le
-reste du site. Elle ne menait plus nulle part depuis deux tours ; elle
-redirige maintenant plutôt que de rester une impasse.
+**L'Atlas devient une notification**, pas une section. Une carte compacte
+avec deux choix explicites : lire l'Atlas (email), ou « Non merci » qui
+fait disparaître la carte sans rien demander.
 
-## Ce que je n'ai pas touché
+## Une correction sur mon propre travail
 
-La FAQ est déjà en accordéon (questions repliées, réponse au clic) — c'est
-déjà le bon traitement contre le mur de texte, pas besoin d'y ajouter des
-icônes. Le bloc « ce qu'est / n'est pas ce studio » a déjà des cartes
-numérotées et colorées ; je l'ai laissé tel quel plutôt que d'en rajouter.
+Dans ma dernière livraison, SILLAGE restait affichée à la fois sur la home
+et sur la page Architecture — je ne l'avais retirée que dans mes intentions,
+pas dans le code. C'est corrigé ici : elle ne vit plus qu'à un seul endroit.

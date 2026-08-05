@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { LocaleLink as Link } from "@/components/locale-link"
-import { track } from "@vercel/analytics"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -105,7 +103,7 @@ export function HeroSection() {
             {t.slogan}
           </p>
 
-          <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.7rem,6vw,6.5rem)] font-bold leading-[1.1] tracking-[-0.02em] text-white">
+          <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.5rem,4.8vw,4.8rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white">
             {t.h1a}
             <br />
             <span className="block bg-[linear-gradient(135deg,#e63946_20%,#ff1a1a_60%,#dc2626)] bg-clip-text pb-[0.14em] text-transparent">
@@ -120,19 +118,6 @@ export function HeroSection() {
           <p className="mb-12 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
             {t.sub}
           </p>
-
-          <div className="flex flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <Link
-              href="/brand-narrative-architecture"
-              onClick={() => track("audit_click", { from: "home_hero" })}
-              className="btn-primary px-9 py-4 font-bold tracking-[0.04em] shadow-[0_8px_32px_rgba(230,57,70,0.4)]"
-            >
-              {t.cta1}
-            </Link>
-            {/* Le second bouton est retiré : il invitait à quitter une page qui
-                ne vend qu'une chose pour la page qui en propose quatre, dans les
-                premières secondes. Une page, une action. */}
-          </div>
 
         </div>
       </div>

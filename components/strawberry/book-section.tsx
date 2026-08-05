@@ -1,7 +1,5 @@
-import { TrackLink } from "@/components/strawberry/track-link"
-import { TrackAnchor } from "@/components/strawberry/track-anchor"
+import { LocaleLink as Link } from "@/components/locale-link"
 import { pick } from "@/lib/t"
-import { BOOK_URL } from "@/lib/config"
 import type { Lang } from "@/lib/lang"
 
 /**
@@ -113,12 +111,9 @@ export function BookSection({ lang }: { lang: Lang }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <TrackAnchor href={BOOK_URL} event="book_buy_click" data={{ from: "home_book" }} className="btn-primary" rel="noopener">
-                {t.buy}
-              </TrackAnchor>
-              <TrackLink href="/le-livre" event="book_click" data={{ from: "home_book" }} className="btn-quiet">
+              <Link href="/le-livre" className="btn-primary">
                 {t.cta}
-              </TrackLink>
+              </Link>
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ const T = {
   en: {
     h2a: "None of it was a lack of effort.",
     h2b: "It was the wrong cause.",
+    lead: "You've probably already tried to fix this.",
     p1: "A new logo. A branding agency. Posting more often. Asking a language model for a positioning statement. Each felt like progress, and none of it changed how your market sees you — because the problem was never how loud you are. It is that nobody has ever settled what you refuse, and without a refusal there is no identity to belong to.",
     aiP1: "AI is saturating your market faster than you can see it. Your competitors now produce in one click what used to take weeks: articles, visuals, pages, campaigns. Content is becoming free, infinite and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.",
     aiP2a: "What cannot be generated is an identity. ",
@@ -30,6 +31,7 @@ const T = {
   fr: {
     h2a: "Rien de tout ça n'a manqué de bonne volonté.",
     h2b: "Ça a manqué de la bonne cause.",
+    lead: "Vous avez sans doute déjà essayé de régler ça.",
     p1: "Un logo refait. Une agence de branding. Poster plus souvent. Demander un positionnement à un modèle de langage. Chacune de ces tentatives ressemblait à un progrès, et aucune n'a changé la façon dont votre marché vous voit — parce que le problème n'a jamais été votre volume. C'est que personne n'a jamais tranché ce que vous refusez, et sans refus, il n'y a aucune identité à laquelle s'accrocher.",
     aiP1: "L'IA sature votre marché plus vite que vous ne le voyez. Vos concurrents produisent désormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualité ne suffit plus à vous distinguer : tout le monde est devenu bon.",
     aiP2a: "Ce qui ne peut pas être généré, c'est une identité. ",
@@ -52,6 +54,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
       <div className="glow-center" aria-hidden />
 
       <div className="shell relative mx-auto max-w-[780px]">
+        <p className="mb-4 font-sans text-[15px] text-chalk-40">{t.lead}</p>
         <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] font-bold leading-[1.16] tracking-[-0.02em]">
           {t.h2a}
           <br />
