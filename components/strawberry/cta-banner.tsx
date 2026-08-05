@@ -15,7 +15,19 @@ export function CTABanner() {
 
   return (
     <section className="relative overflow-hidden bg-ink-soft px-gutter py-20">
-      <div ref={ref} className="shell">
+      {/* Le mot qui déborde. Chaque section du site reste contenue dans le
+          même gabarit centré — celle-ci en sort. « ARCHITECTURE » est le mot
+          que le site répète depuis le début ; ici, il cesse d'être une
+          étiquette et devient un geste graphique, en fantôme derrière le
+          texte, débordant des deux côtés de l'écran. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 w-[200vw] -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center font-serif text-[22vw] font-bold uppercase leading-none tracking-[-0.02em] text-white/[0.035] md:text-[16vw]"
+      >
+        Architecture
+      </div>
+
+      <div ref={ref} className="shell relative">
         <div
           className={[
             "relative overflow-hidden rounded-[36px] border border-white/10 px-8 py-20 text-center md:px-24",

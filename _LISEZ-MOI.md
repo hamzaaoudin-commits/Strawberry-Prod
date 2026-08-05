@@ -1,35 +1,24 @@
-# Strawberry — tour 24
+# Strawberry — tour 25
 
-6 fichiers, un seul glisser-déposer. Build validé.
+3 fichiers, un seul glisser-déposer. Build validé.
 
-Glissez les **dossiers** (`app`, `components`), jamais leur contenu.
+Glissez le dossier `components`, pas son contenu.
 
-## Ce qui est nouveau
+## Ce qui change
 
-**SILLAGE et VERSO ont chacun leur couverture**, sur la page `/documents`
-qui ne montrait jusqu'ici que du texte. SILLAGE reprend la grille de plan
-déjà utilisée ailleurs sur le site ; VERSO a son propre motif — des tranches
-verticales de largeur inégale, comme des dos de livres reliés à la main.
-La modale de l'Atlas reçoit aussi une petite couverture (le « 30 » dans son
-propre cadre) au lieu d'être un simple formulaire sans image, et ses coins
-arrondis sont corrigés pour rejoindre le style à crochets du reste du site.
+**Les vingt pièces sont maintenant une constellation.** Au-dessus du
+registre détaillé (conservé tel quel, avec ses bénéfices et ses icônes),
+un schéma reprend le vocabulaire déjà établi ailleurs sur le site : vingt
+nœuds groupés en quatre amas — diagnostic, identité, pièces & déploiement,
+playbooks — chacun relié à un centre unique qui représente l'architecture.
+Le même principe que le champ de points du hero et les cercles du sceau,
+appliqué à l'endroit qui compte le plus. Décoratif et complémentaire : le
+schéma ne remplace aucun texte, il donne une forme visuelle à ce que le
+registre en dessous détaille déjà. Masqué sur mobile, où l'espace ne permet
+pas de le lire correctement — le registre y reste seul, comme avant.
 
-**Les cartes de contenu réagissent maintenant à la souris** : les groupes de
-l'offre, les cartes de documents et les statistiques d'impact éclaircissent
-légèrement leur bordure ou leur fond au survol. La FAQ va plus loin — la
-question passe en rouge et le « + » grossit légèrement avant même le clic,
-pour signaler l'interactivité.
-
-**Les lettres S.T.R.A.W. arrivent une par une** sur la page Méthode, au lieu
-de apparaître toutes en même temps. Chaque lettre a son propre délai
-(90ms d'écart), avec un léger effet d'échelle en plus du fondu.
-
-## Une chose que je n'ai pas faite, volontairement
-
-La version de STRAW affichée sur la home (`mechanism-strip.tsx`) n'a pas
-reçu le même effet en cascade — c'est un composant serveur sans état de
-défilement, et lui ajouter ce comportement demande de le convertir en
-composant client avec son propre détecteur de scroll. Vous ne l'aviez pas
-demandé, donc je ne l'ai pas fait de moi-même. Dites-le si vous voulez que
-je l'ajoute aussi, pour que les deux versions soient parfaitement
-cohérentes.
+**« ARCHITECTURE » déborde du cadre**, en fantôme, derrière le bandeau
+final « Devenez impossible à confondre ». C'est le premier moment du site
+qui sort complètement de la largeur centrée habituelle — le mot que le site
+répète depuis le début, ici comme un geste graphique plutôt qu'une
+étiquette.

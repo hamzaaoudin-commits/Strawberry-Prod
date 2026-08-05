@@ -1,5 +1,6 @@
 import { LocaleLink as Link } from "@/components/locale-link"
 import { TrackedLink } from "@/components/strawberry/tracked-link"
+import { ConstellationMap } from "@/components/strawberry/constellation-map"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { LIVE } from "@/lib/config"
@@ -270,13 +271,18 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          {/* LES VINGT PIÈCES, regroupées en quatre catégories avec une icône
-              chacune — un long registre uniforme de vingt lignes se parcourt
-              mal ; des groupes qu'on peut saisir d'un coup d'œil se lisent. */}
+          {/* LES VINGT PIÈCES. La constellation reprend le langage déjà
+              établi ailleurs sur le site — le champ de points du hero, les
+              cercles du sceau — plutôt qu'un cinquième système de liste.
+              Elle reste décorative : le détail lisible de chaque pièce vit
+              dans le registre juste en dessous, groupé par catégorie avec
+              une icône chacune. */}
           <div className="relative mt-14">
             <div className="mb-7 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">
               {t.deliverablesKicker}
             </div>
+
+            <ConstellationMap labels={[t.groups[0].title, t.groups[1].title, t.groups[2].title, t.groups[3].title]} />
 
             <div className="flex flex-col gap-5">
               {t.groups.map((group) => {
