@@ -44,14 +44,14 @@ export function FaqSection({ faqs }: { faqs: FaqSet }) {
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${i}`}
                   id={`faq-trigger-${i}`}
-                  className="flex w-full items-center justify-between gap-6 border-none bg-transparent py-7 text-left"
+                  className="group flex w-full items-center justify-between gap-6 border-none bg-transparent py-7 text-left"
                 >
-                  <span className="font-serif text-[clamp(1rem,1.8vw,1.25rem)] font-semibold leading-snug tracking-[-0.01em] text-white">
+                  <span className="font-serif text-[clamp(1rem,1.8vw,1.25rem)] font-semibold leading-snug tracking-[-0.01em] text-white transition-colors duration-300 group-hover:text-brand">
                     {faq.q}
                   </span>
                   <span
                     aria-hidden
-                    className={`shrink-0 text-[22px] text-brand transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                    className={`shrink-0 text-[22px] text-brand transition-transform duration-300 group-hover:scale-110 ${isOpen ? "rotate-45" : ""}`}
                   >
                     +
                   </span>

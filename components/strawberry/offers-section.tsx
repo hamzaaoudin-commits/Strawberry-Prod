@@ -289,7 +289,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 const covers = group.covers
                 const playbooksNote = group.playbooksNote
                 return (
-                  <div key={group.title} className="border border-hair-strong bg-white/[0.015] p-6 md:p-7">
+                  <div key={group.title} className="border border-hair-strong bg-white/[0.015] p-6 transition-colors duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)] hover:border-brand/35 md:p-7">
                     <div className="mb-5 flex items-center gap-3.5">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-brand/30 bg-brand/[0.07] text-brand">
                         <GroupIcon kind={group.icon} />

@@ -111,8 +111,11 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[480px] rounded-xl border border-brand/25 bg-ink-soft p-8 md:p-12"
+        className="relative w-full max-w-[480px] border border-brand/25 bg-ink-soft p-8 md:p-12"
       >
+        <span className="bracket-tl" aria-hidden />
+        <span className="bracket-br" aria-hidden />
+
         <button
           type="button"
           onClick={onClose}
@@ -122,7 +125,18 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
           ×
         </button>
 
-        <div className="eyebrow mb-4 text-brand">{t.free}</div>
+        {/* Une petite couverture, pas seulement un chiffre dans une phrase —
+            la même logique que les autres documents du site. */}
+        <div className="mb-6 flex items-center gap-5">
+          <div className="relative flex aspect-[3/4] w-[68px] shrink-0 flex-col items-center justify-center overflow-hidden border border-brand/25 bg-[linear-gradient(155deg,#120d0e_0%,#0a0a0a_65%)] shadow-[0_14px_30px_rgba(0,0,0,0.5)]">
+            <svg viewBox="0 0 68 90" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.16]">
+              <circle cx="34" cy="45" r="24" fill="none" stroke="#e63946" strokeWidth="0.6" />
+              <circle cx="34" cy="45" r="15" fill="none" stroke="#e63946" strokeWidth="0.5" />
+            </svg>
+            <div className="relative font-serif text-[1.5rem] font-bold leading-none text-brand">30</div>
+          </div>
+          <div className="eyebrow text-brand">{t.free}</div>
+        </div>
 
         <h2 className="mb-3 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight tracking-[-0.02em] text-white">
           {t.h2}

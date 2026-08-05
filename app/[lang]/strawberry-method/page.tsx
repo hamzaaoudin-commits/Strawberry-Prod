@@ -261,8 +261,17 @@ export default function StrawberryMethodPage() {
 
           {/* Giant letter cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "clamp(8px, 1.2vw, 16px)", marginBottom: 64 }}>
-            {LETTERS.map((l) => (
-              <div key={l.letter} style={{ textAlign: "center" }}>
+            {LETTERS.map((l, i) => (
+              <div
+                key={l.letter}
+                style={{
+                  textAlign: "center",
+                  opacity: reveal.visible ? 1 : 0,
+                  transform: reveal.visible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.96)",
+                  transition: "opacity 700ms cubic-bezier(.22,.68,0,1.2), transform 700ms cubic-bezier(.22,.68,0,1.2)",
+                  transitionDelay: reveal.visible ? `${i * 90}ms` : "0ms",
+                }}
+              >
                 <div style={{ border: `2px solid ${COLOR}`, padding: "clamp(20px, 4vw, 48px) 0", fontFamily: SERIF, fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 20, background: "rgba(230,57,70,0.06)", boxShadow: `0 20px 60px ${GLOW}` }}>
                   {l.letter}
                 </div>
