@@ -1,20 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
 import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 
 /**
- * L'Atlas, en notification plutôt qu'en section.
+ * L'Atlas, en vraie notification cette fois.
  *
- * L'ancienne version occupait une pleine section de la home — couverture,
- * longue liste de citations, gros titre — au même niveau visuel que le reste
- * du contenu. Ce n'est pas du contenu qu'on lit, c'est une offre annexe
- * ponctuelle : elle mérite d'être présentée comme telle, une carte compacte
- * avec deux issues explicites — lire l'Atlas (email), ou ignorer et
- * continuer.
+ * La première version était déjà plus compacte qu'une section pleine
+ * largeur, mais elle restait statique dans le flux — visible dès le
+ * chargement, sans rien qui la distingue d'un bloc de contenu normal. Ce
+ * n'est pas ce qu'on demande à une notification : elle doit arriver.
+ *
+ * Celle-ci reste invisible tant qu'elle n'est pas scrollée dans le champ de
+ * vision (IntersectionObserver, seuil à 40%), puis entre en scène avec un
+ * léger rebond — pas un simple fondu. Une lueur rouge s'allume derrière elle
+ * au même moment, pour marquer l'instant plutôt que de rester un décor fixe.
+ * Le rejet a sa propre sortie animée (la carte se réduit et s'efface) plutôt
+ * que de disparaître d'un coup, et un bouton de fermeture explicite (×)
+ * s'ajoute au lien texte « Non merci ». Respecte prefers-reduced-motion : la
+ * carte apparaît directement, sans mouvement, pour qui en a demandé moins.
  */
 
 const T = {
@@ -162,45 +169,127 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
 export function AtlasSection() {
   const t = useT(T)
   const [showModal, setShowModal] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+  const [dismissing, setDismissing] = useState(false)
   const [dismissed, setDismissed] = useState(false)
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    // Sans mouvement demandé : la carte apparaît directement, pas d'animation
+    // d'entrée à respecter.
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduced) {
+      setRevealed(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.4 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  function dismiss() {
+    setDismissing(true)
+    // Le temps de la transition CSS avant de retirer l'élément du DOM — un
+    // clic ne doit pas faire disparaître la carte d'un coup sec.
+    setTimeout(() => setDismissed(true), 350)
+  }
 
   if (dismissed) return null
 
   return (
-    <section className="border-t border-white/[0.06] bg-ink-soft px-gutter py-14">
+    <section ref={ref} className="relative overflow-hidden border-t border-white/[0.06] bg-ink-soft px-gutter py-20">
       {showModal && <AtlasModal onClose={() => setShowModal(false)} />}
 
-      {/* Une carte, pas une section pleine largeur : ceci est une offre
-          annexe ponctuelle, pas un contenu de la page. */}
-      <div className="mx-auto max-w-[640px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.06)_0%,rgba(10,10,10,0.4)_100%)] p-7 md:p-9">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
-          <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">{t.badge}</span>
-        </div>
+      {/* La lueur ambiante ne s'allume qu'à l'apparition — elle fait partie
+          du "moment", pas du décor permanent de la page. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/20 blur-[110px] transition-opacity duration-[900ms] ${
+          revealed ? "opacity-100" : "opacity-0"
+        }`}
+      />
 
-        <h2 className="m-0 mb-3 font-serif text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold leading-tight tracking-[-0.02em] text-white">
-          {t.h2}
-        </h2>
+      {/* La carte elle-même : posée en avant du fond plutôt que dedans (bord
+          plus marqué, ombre propre) pour qu'elle se lise comme une
+          interruption ponctuelle et non comme le contenu qui suit. Elle entre
+          en scène avec un léger rebond quand elle devient visible — pas
+          seulement un fondu — pour qu'on sente qu'elle "arrive" plutôt
+          qu'elle "était déjà là". */}
+      <div
+        className={`relative mx-auto max-w-[620px] transition-all ease-out ${
+          dismissing
+            ? "translate-y-2 scale-[0.97] opacity-0 duration-300"
+            : revealed
+              ? "translate-y-0 scale-100 opacity-100 duration-[550ms]"
+              : "translate-y-6 scale-[0.96] opacity-0 duration-0"
+        }`}
+        style={{ transitionTimingFunction: revealed && !dismissing ? "cubic-bezier(0.22,1.3,0.36,1)" : undefined }}
+      >
+        <div className="relative border border-brand/30 bg-[#0d0a0b] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.55),0_0_0_1px_rgba(230,57,70,0.06)] md:p-10">
+          <span className="bracket-tl" aria-hidden />
+          <span className="bracket-br" aria-hidden />
 
-        <p className="m-0 mb-7 max-w-[480px] font-sans text-[14.5px] leading-relaxed text-white/55">{t.lead}</p>
-
-        <div className="flex flex-wrap items-center gap-4">
           <button
             type="button"
-            onClick={() => {
-              track("atlas_click", { from: "home" })
-              setShowModal(true)
-            }}
-            className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
+            onClick={dismiss}
+            aria-label={t.dismiss}
+            className="absolute right-4 top-4 flex h-8 w-8 cursor-pointer items-center justify-center border-none bg-white/[0.04] text-lg leading-none text-chalk-40 transition-colors hover:bg-white/10 hover:text-white"
           >
-            {t.read}
+            ×
           </button>
-          <button
-            type="button"
-            onClick={() => setDismissed(true)}
-            className="cursor-pointer border-none bg-transparent font-sans text-[13px] text-chalk-40 underline-offset-2 hover:text-white hover:underline"
-          >
-            {t.dismiss}
-          </button>
+
+          <div className="flex items-start gap-5 md:gap-7">
+            {/* Le "30" porte la carte visuellement, comme un badge plutôt
+                qu'un simple chiffre dans une phrase. */}
+            <div className="hidden shrink-0 select-none font-serif text-[3.4rem] font-bold leading-none text-brand/90 sm:block">
+              30
+            </div>
+
+            <div className="min-w-0">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3.5 py-1.5">
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand" />
+                <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">{t.badge}</span>
+              </div>
+
+              <h2 className="m-0 mb-3 font-serif text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+                {t.h2}
+              </h2>
+
+              <p className="m-0 mb-7 max-w-[460px] font-sans text-[14.5px] leading-relaxed text-white/55">{t.lead}</p>
+
+              <div className="flex flex-wrap items-center gap-5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    track("atlas_click", { from: "home" })
+                    setShowModal(true)
+                  }}
+                  className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
+                >
+                  {t.read}
+                </button>
+                <button
+                  type="button"
+                  onClick={dismiss}
+                  className="cursor-pointer border-none bg-transparent font-sans text-[13px] text-chalk-40 underline-offset-2 hover:text-white hover:underline"
+                >
+                  {t.dismiss}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
