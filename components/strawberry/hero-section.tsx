@@ -14,6 +14,35 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
  * retirés. Ce qui reste dit la même chose et est vrai.
  */
 
+/**
+ * Le champ de points de l'extraction : des fragments dispersés, dont un
+ * sous-groupe ("near") se rapproche du point de convergence à droite. Défini
+ * en dehors du composant — c'est une donnée statique, elle n'a rien à faire
+ * recalculée à chaque rendu.
+ */
+const EXTRACTION_POINTS = [
+  { x: 60, y: 90, near: false },
+  { x: 160, y: 220, near: false },
+  { x: 90, y: 400, near: false },
+  { x: 220, y: 560, near: false },
+  { x: 60, y: 700, near: false },
+  { x: 340, y: 130, near: false },
+  { x: 400, y: 640, near: false },
+  { x: 480, y: 60, near: false },
+  { x: 520, y: 740, near: false },
+  { x: 610, y: 170, near: true },
+  { x: 640, y: 540, near: true },
+  { x: 700, y: 230, near: true },
+  { x: 690, y: 480, near: true },
+  { x: 730, y: 300, near: true },
+  { x: 720, y: 420, near: true },
+  { x: 800, y: 260, near: true },
+  { x: 810, y: 440, near: true },
+  { x: 850, y: 340, near: false },
+  { x: 900, y: 200, near: false },
+  { x: 920, y: 500, near: false },
+]
+
 const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
@@ -43,13 +72,6 @@ export function HeroSection() {
     setTimeout(() => setMounted(true), 100) 
   }, [])
 
-  const floatingShapes = [
-    { size: 80, x: "12%", y: "20%", color: "#e63946", delay: "0s", anim: "A" },
-    { size: 50, x: "85%", y: "15%", color: "#ff1a1a", delay: "0.5s", anim: "B" },
-    { size: 65, x: "75%", y: "70%", color: "#dc2626", delay: "1s", anim: "A" },
-    { size: 35, x: "20%", y: "78%", color: "#e63946", delay: "0.3s", anim: "B" },
-  ]
-
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
       <ViewTracker name="hero" />
@@ -63,24 +85,36 @@ export function HeroSection() {
         className="absolute inset-0 z-0 bg-[length:60px_60px] bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_30%,transparent_100%)]"
       />
 
-      {/* Les formes flottantes suivaient la souris et se déformaient sans fin.
-          Elles restent, immobiles et masquées sur petit écran : sur téléphone
-          elles ne servaient qu'à faire travailler le compositeur. */}
-      {floatingShapes.map((shape) => (
-        <div
-          key={shape.x + shape.y}
-          aria-hidden
-          className="absolute z-0 hidden rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-2 opacity-25 md:block motion-reduce:hidden"
-          style={{
-            left: shape.x,
-            top: shape.y,
-            width: shape.size,
-            height: shape.size,
-            borderColor: shape.color,
-            animation: `morphFloat${shape.anim} 8s ${shape.delay} ease-in-out infinite`,
-          }}
-        />
-      ))}
+      {/* L'extraction, en image plutôt qu'en blobs génériques. Les anciennes
+          formes qui se déformaient sans fin sont un cliché de landing page ;
+          ceci dit littéralement ce que fait le studio — des fragments
+          dispersés qui convergent vers un seul point — plutôt que de
+          décorer sans rien dire. Masqué sur petit écran et sous mouvement
+          réduit, comme l'ancien élément qu'il remplace. */}
+      <svg
+        aria-hidden
+        viewBox="0 0 1000 800"
+        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full opacity-[0.22] md:block motion-reduce:hidden"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        {EXTRACTION_POINTS.map((p, i) => (
+          <line
+            key={`l${i}`}
+            x1={p.x}
+            y1={p.y}
+            x2="760"
+            y2="360"
+            stroke="#e63946"
+            strokeWidth="0.6"
+            opacity={p.near ? 0.55 : 0.18}
+          />
+        ))}
+        {EXTRACTION_POINTS.map((p, i) => (
+          <circle key={`p${i}`} cx={p.x} cy={p.y} r={p.near ? 2.6 : 1.6} fill="#e63946" opacity={p.near ? 0.9 : 0.5} />
+        ))}
+        <circle cx="760" cy="360" r="4" fill="#e63946" />
+        <circle cx="760" cy="360" r="14" fill="none" stroke="#e63946" strokeWidth="1" opacity="0.4" />
+      </svg>
 
       <div className="relative z-[1] w-full shell px-gutter pt-32">
         <div

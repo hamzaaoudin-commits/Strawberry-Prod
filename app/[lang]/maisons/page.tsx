@@ -85,29 +85,50 @@ export default async function MaisonsPage({
       </section>
 
       <section className="section pt-0">
-        <div className="shell max-w-[860px]">
-          <div className="mb-6 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.registerKicker}</div>
+        <div className="shell max-w-[900px]">
+          <div className="mb-8 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.registerKicker}</div>
 
-          <ul className="list-none border-t border-hair p-0">
+          {/* Le registre en plaques plutôt qu'en lignes de tableau. Une
+              maison qui entre dans une cohorte fermée mérite mieux qu'une
+              ligne parmi d'autres — chaque entrée est traitée comme une
+              pièce gravée, pas comme une donnée dans une liste. */}
+          <div className="grid gap-5 sm:grid-cols-2">
             {HOUSES.register.map((h) => (
-              <li
+              <div
                 key={h.n}
-                className="flex flex-wrap items-baseline gap-x-6 gap-y-2 border-b border-white/[0.07] py-5"
+                className="group relative flex flex-col items-center border border-hair-strong bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_100%)] px-7 pb-7 pt-8 text-center transition-colors duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)] hover:border-brand/40"
               >
-                <span className="font-serif text-[15px] text-brand">N&deg;&nbsp;{h.n}</span>
-                <span className="font-serif text-[clamp(1.1rem,2.2vw,1.45rem)] font-bold text-white">{h.name}</span>
-                <span className="font-sans text-[13.5px] text-chalk-40">{h.sector[lang] ?? h.sector.fr}</span>
+                <span aria-hidden className="absolute left-1/2 top-0 h-px w-10 -translate-x-1/2 bg-brand/50" />
+
+                <div className="mb-4 font-serif text-[13px] tracking-[0.08em] text-brand">
+                  N&deg;&nbsp;{h.n}
+                </div>
+
+                <div className="mb-3 font-serif text-[clamp(1.3rem,2.6vw,1.7rem)] font-bold tracking-[0.01em] text-white">
+                  {h.name}
+                </div>
+
+                <span aria-hidden className="mb-3 h-px w-6 bg-white/15" />
+
+                <div className="mb-5 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
+                  {h.sector[lang] ?? h.sector.fr}
+                </div>
+
                 {h.demo && (
-                  <span className="tag border-white/20 text-chalk-40">{t.demoTag}</span>
+                  <span className="tag mb-5 border-white/20 text-chalk-40">{t.demoTag}</span>
                 )}
-                <Link href={h.href} className="ml-auto font-sans text-[13px] text-brand no-underline hover:underline">
+
+                <Link
+                  href={h.href}
+                  className="mt-auto font-sans text-[13px] text-brand no-underline hover:underline"
+                >
                   {t.readCta}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
 
-          <p className="mt-8 max-w-[620px] font-sans text-[14px] leading-relaxed text-chalk-40">{t.privacyNote}</p>
+          <p className="mt-10 max-w-[620px] font-sans text-[14px] leading-relaxed text-chalk-40">{t.privacyNote}</p>
 
           <div className="mt-14 border border-brand-hair bg-brand/[0.04] p-7 md:p-10">
             <h2 className="mb-6 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-snug">{t.ctaTitle}</h2>
