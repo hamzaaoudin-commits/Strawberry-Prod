@@ -173,7 +173,7 @@ export default async function BookPage({
       <section className="section bg-ink-soft">
         <div className="shell">
           <h2 className="mb-7 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight">{t.whyH}</h2>
-          <p className="mb-5 max-w-[720px] font-sans text-base leading-[1.85] text-chalk-65">{t.whyP1}</p>
+          <p className="drop-cap mb-5 max-w-[720px] font-sans text-base leading-[1.85] text-chalk-65">{t.whyP1}</p>
           <p className="max-w-[720px] font-sans text-base leading-[1.85] text-chalk-65">{t.whyP2}</p>
         </div>
       </section>

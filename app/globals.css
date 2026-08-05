@@ -478,3 +478,22 @@ body::before {
    sa propre cadence, plus rapide et plus staccato — c'est un flourish de
    marque ponctuel, pas un motif de révélation de contenu répété.
    ============================================================ */
+
+/* ============================================================
+   Lettrine.
+   ============================================================
+   Pour le premier paragraphe d'une page de lecture longue — la marque d'un
+   vrai travail éditorial, pas d'une page web composée en blocs plats.
+   ::first-letter est la bonne technique : natif, aucun JS, le texte se
+   réenroule normalement autour.
+   ============================================================ */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.09em;
+  padding-top: 0.02em;
+  color: var(--color-brand);
+}

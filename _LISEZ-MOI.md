@@ -1,29 +1,37 @@
-# Strawberry — tour 21
+# Strawberry — tour 22
 
-3 fichiers, un seul glisser-déposer. Build validé.
+5 fichiers, un seul glisser-déposer. Build validé.
 
 Glissez les **dossiers** (`app`, `components`), jamais leur contenu.
 
 ## Ce qui est nouveau
 
-**Le hero de la home a un vrai motif, pas des blobs génériques.** Les formes
-qui se déformaient sans fin (un cliché de landing page très reconnaissable)
-sont remplacées par un champ de points dispersés qui convergent vers un seul
-point, à droite du texte — ça dit littéralement ce que fait le studio :
-des fragments épars qui se rassemblent en une seule architecture. Masqué sur
-mobile et sous mouvement réduit, comme l'élément qu'il remplace.
+**La page Le Studio a son propre motif.** Une ligne verticale avec quatre
+marques, dont une pleine — un fondateur, quatre commandes par trimestre,
+l'idée qui gouverne toute la page. Différent du sceau de l'Architecture et
+du champ de points de la home : chaque page majeure a maintenant son propre
+geste.
 
-**Le registre des Maisons est passé de lignes de tableau à des plaques.**
-Chaque maison a maintenant sa propre carte — numéro en tête, nom en grand,
-secteur en dessous, disposées en grille plutôt qu'empilées en liste. Une
-cohorte fermée mérite mieux qu'une ligne parmi d'autres.
+**Le champ de points du hero se forme sous les yeux.** Les lignes de
+connexion se dessinent progressivement au chargement (technique
+`pathLength`, en cascade sur environ 1,5 seconde) au lieu d'apparaître déjà
+tracées. Les points s'allument juste après, comme s'ils se posaient au bout
+de chaque ligne qui arrive.
 
-**Tous les boutons du site ont un vrai geste au survol.** Avant : un simple
-fondu à 92% d'opacité. Maintenant : le bouton se soulève légèrement et une
-lueur rouge s'intensifie derrière lui, avec la même signature de mouvement
-que le reste du site. Ce changement touche un seul fichier
-(`app/globals.css`) mais s'applique à chaque bouton primaire et secondaire,
-partout — home, offre, commande, tous les CTA.
+**Deux lettrines** : sur le premier paragraphe de la biographie du fondateur
+(page Le Studio) et sur le premier paragraphe de « Pourquoi ce livre
+existe » (page du livre). Une classe CSS réutilisable (`.drop-cap`), pure
+`::first-letter`, aucun JavaScript.
 
-Nettoyage au passage : les anciennes animations de blobs (`morphFloatA`,
-`morphFloatB`) sont retirées du CSS puisqu'elles ne servent plus à rien.
+**La couverture de SILLAGE** passe d'un simple rectangle à bordure blanche
+à un traitement complet : dégradé de fond, ombre portée, crochets de coin
+assortis au reste du site, et une grille de plan en filigrane — un rappel
+discret que le document est une architecture, pas juste du texte dans un
+cadre.
+
+## Ce que je n'ai pas encore touché
+
+La couverture de VERSO et celle de l'Atlas restent dans leur état actuel —
+j'ai priorisé SILLAGE parce qu'elle apparaît sur la page qui compte le plus
+(l'Architecture). Si vous voulez que je fasse le même travail sur les
+autres couvertures, dites-le et j'enchaîne.

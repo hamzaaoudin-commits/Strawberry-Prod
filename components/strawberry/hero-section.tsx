@@ -107,10 +107,28 @@ export function HeroSection() {
             stroke="#e63946"
             strokeWidth="0.6"
             opacity={p.near ? 0.55 : 0.18}
+            pathLength={1}
+            strokeDasharray={1}
+            strokeDashoffset={mounted ? 0 : 1}
+            style={{
+              transition: "stroke-dashoffset 1400ms cubic-bezier(.22,.68,0,1)",
+              transitionDelay: `${150 + i * 45}ms`,
+            }}
           />
         ))}
         {EXTRACTION_POINTS.map((p, i) => (
-          <circle key={`p${i}`} cx={p.x} cy={p.y} r={p.near ? 2.6 : 1.6} fill="#e63946" opacity={p.near ? 0.9 : 0.5} />
+          <circle
+            key={`p${i}`}
+            cx={p.x}
+            cy={p.y}
+            r={p.near ? 2.6 : 1.6}
+            fill="#e63946"
+            opacity={mounted ? (p.near ? 0.9 : 0.5) : 0}
+            style={{
+              transition: "opacity 500ms ease-out",
+              transitionDelay: `${150 + i * 45 + 900}ms`,
+            }}
+          />
         ))}
         <circle cx="760" cy="360" r="4" fill="#e63946" />
         <circle cx="760" cy="360" r="14" fill="none" stroke="#e63946" strokeWidth="1" opacity="0.4" />

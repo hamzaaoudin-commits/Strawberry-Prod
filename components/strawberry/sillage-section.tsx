@@ -86,12 +86,28 @@ export function SillageSection({ lang }: { lang: Lang }) {
             {/* Juste la couverture — l'effet de pile en dessous alourdissait
                 sans rien ajouter. */}
             <div className="mx-auto w-[170px] max-w-full md:mx-0 md:w-full">
-              <div className="flex aspect-[3/4] flex-col items-center justify-center border border-white/25 bg-ink px-4 text-center">
-                <div className="font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
+              <div className="relative flex aspect-[3/4] flex-col items-center justify-center overflow-hidden border border-brand/25 bg-[linear-gradient(155deg,#120d0e_0%,#0a0a0a_65%)] px-4 text-center shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
+                <span className="bracket-tl" aria-hidden />
+                <span className="bracket-br" aria-hidden />
+
+                {/* Une grille de plan, en filigrane — le document est une
+                    architecture, la couverture le rappelle discrètement au
+                    lieu de rester un simple rectangle de texte. */}
+                <svg viewBox="0 0 170 226" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.14]">
+                  {[38, 76, 114, 152, 190].map((y) => (
+                    <line key={y} x1="0" y1={y} x2="170" y2={y} stroke="#e63946" strokeWidth="0.5" />
+                  ))}
+                  {[34, 68, 102, 136].map((x) => (
+                    <line key={x} x1={x} y1="0" x2={x} y2="226" stroke="#e63946" strokeWidth="0.5" />
+                  ))}
+                  <circle cx="85" cy="113" r="20" fill="none" stroke="#e63946" strokeWidth="0.6" />
+                </svg>
+
+                <div className="relative font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
                   {t.docTitle}
                 </div>
-                <div aria-hidden className="my-3 h-px w-7 bg-brand/50" />
-                <div className="whitespace-pre-line font-sans text-[11px] uppercase leading-[1.5] tracking-[0.14em] text-chalk-40">
+                <div aria-hidden className="relative my-3 h-px w-7 bg-brand/50" />
+                <div className="relative whitespace-pre-line font-sans text-[11px] uppercase leading-[1.5] tracking-[0.14em] text-chalk-40">
                   {t.coverSub}
                 </div>
               </div>

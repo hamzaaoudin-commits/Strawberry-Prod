@@ -170,6 +170,35 @@ export default function AboutPage() {
         <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="-5%" y="20%" opacity={0.15} />
         <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={400} x="70%" y="60%" opacity={0.08} />
 
+        {/* Le repère du studio : une ligne, quatre marques. Un fondateur,
+            quatre commandes par trimestre — l'idée qui gouverne toute cette
+            page, en dessin plutôt qu'en texte seul. Différent du sceau de la
+            page Architecture et du champ de points de la home : chaque page
+            majeure a maintenant son propre geste, pas une variation du même
+            motif recyclé. */}
+        <svg
+          aria-hidden
+          viewBox="0 0 400 800"
+          style={{
+            position: "absolute",
+            right: "4%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "min(420px, 34vw)",
+            height: "min(800px, 78vh)",
+            opacity: 0.16,
+            pointerEvents: "none",
+          }}
+        >
+          <line x1="200" y1="40" x2="200" y2="760" stroke={COLOR} strokeWidth="1" />
+          {[140, 320, 500, 680].map((y, i) => (
+            <g key={y}>
+              <line x1="150" y1={y} x2="250" y2={y} stroke={COLOR} strokeWidth="1" opacity="0.7" />
+              <circle cx="200" cy={y} r={i === 0 ? 7 : 5} fill={i === 0 ? COLOR : "none"} stroke={COLOR} strokeWidth="1.4" />
+            </g>
+          ))}
+        </svg>
+
         <div style={{ maxWidth: 1100, width: "100%", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div
             style={{
@@ -508,7 +537,7 @@ export default function AboutPage() {
 
             <div style={{ paddingTop: "clamp(1rem,3vw,2rem)" }}>
               <div style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.4vw,1.2rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.8, letterSpacing: "-0.005em" }}>
-                <p style={{ marginBottom: 24 }}>
+                <p className="drop-cap" style={{ marginBottom: 24 }}>
                   {t.founderP1}
                 </p>
                 <p style={{ marginBottom: 24 }}>
