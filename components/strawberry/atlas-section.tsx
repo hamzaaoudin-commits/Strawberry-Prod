@@ -232,10 +232,10 @@ export function AtlasSection() {
           dismissing
             ? "translate-y-2 scale-[0.97] opacity-0 duration-300"
             : revealed
-              ? "translate-y-0 scale-100 opacity-100 duration-[550ms]"
+              ? "translate-y-0 scale-100 opacity-100 duration-[900ms]"
               : "translate-y-6 scale-[0.96] opacity-0 duration-0"
         }`}
-        style={{ transitionTimingFunction: revealed && !dismissing ? "cubic-bezier(0.22,1.3,0.36,1)" : undefined }}
+        style={{ transitionTimingFunction: revealed && !dismissing ? "cubic-bezier(.22,.68,0,1.2)" : undefined }}
       >
         <div className="relative border border-brand/30 bg-[#0d0a0b] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.55),0_0_0_1px_rgba(230,57,70,0.06)] md:p-10">
           <span className="bracket-tl" aria-hidden />

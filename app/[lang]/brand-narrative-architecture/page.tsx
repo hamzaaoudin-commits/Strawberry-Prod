@@ -686,8 +686,50 @@ export default function BrandNarrativeArchitecturePage() {
     <main style={{ background: "#0a0a0a", color: "#fff", minHeight: "100vh", fontFamily: SANS, overflow: "hidden" }}>
       <BackHomeButton />
 
-      <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative" }}>
+      <section ref={hero.ref as any} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "120px clamp(1.5rem,4vw,4rem) 80px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.4, pointerEvents: "none" }} />
+
+        {/* Le sceau. Le seul moment du site qui ne réutilise ni carte ni
+            bordure ni motif numéroté — un dessin fait pour cette page, qui
+            porte l'idée d'une constitution qu'on scelle plutôt qu'un simple
+            document qu'on remet. Assez grand pour être un vrai geste, assez
+            discret pour ne jamais concurrencer le texte. */}
+        <svg
+          viewBox="0 0 800 800"
+          aria-hidden
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: "min(900px, 130vw)",
+            height: "min(900px, 130vw)",
+            transform: "translate(-50%, -50%)",
+            opacity: 0.16,
+            pointerEvents: "none",
+          }}
+        >
+          <circle cx="400" cy="400" r="360" fill="none" stroke={COLOR} strokeWidth="1" />
+          <circle cx="400" cy="400" r="300" fill="none" stroke={COLOR} strokeWidth="1" opacity="0.6" />
+          <circle cx="400" cy="400" r="120" fill="none" stroke={COLOR} strokeWidth="1.4" />
+          {Array.from({ length: 48 }).map((_, i) => {
+            const angle = (i / 48) * Math.PI * 2
+            const inner = 330
+            const outer = i % 4 === 0 ? 358 : 344
+            return (
+              <line
+                key={i}
+                x1={400 + Math.cos(angle) * inner}
+                y1={400 + Math.sin(angle) * inner}
+                x2={400 + Math.cos(angle) * outer}
+                y2={400 + Math.sin(angle) * outer}
+                stroke={COLOR}
+                strokeWidth="1"
+              />
+            )
+          })}
+          <rect x="382" y="382" width="36" height="36" fill={COLOR} transform="rotate(45 400 400)" />
+        </svg>
+
         <div style={{ maxWidth: 1100, width: "100%", textAlign: "center", position: "relative", opacity: hero.visible ? 1 : 0, transform: hero.visible ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
           <div style={{ display: "inline-block", padding: "8px 20px", border: "1px solid " + COLOR, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
             {t.badge}

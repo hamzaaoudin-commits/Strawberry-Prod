@@ -442,3 +442,44 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ============================================================
+   Grain de fond.
+   ============================================================
+   Le noir plat (#0a0a0a) partout donnait au site une texture d'écran
+   d'ordinateur plutôt que de matière. Ce grain est un bruit SVG encodé en
+   data URI — aucune image à charger, aucun poids réseau — posé en calque fixe
+   par-dessus tout le contenu avec mix-blend-mode: overlay, pour qu'il
+   affecte uniformément le fond ET les cartes plutôt que de rester confiné
+   à l'arrière-plan. Volontairement discret : on doit sentir une matière,
+   pas remarquer un filtre.
+   ============================================================ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { display: none; }
+}
+
+/* ============================================================
+   La signature de mouvement du site.
+   ============================================================
+   cubic-bezier(.22,.68,0,1.2), 900ms — le léger rebond en fin de course qui
+   distingue une apparition d'un simple fondu. C'était déjà la courbe la plus
+   utilisée sur le site (hero, à propos, bandeau final, Atlas, contact) ;
+   elle est maintenant la seule pour toute apparition déclenchée au scroll,
+   au lieu de plusieurs variantes proches codées séparément selon la session.
+
+   Exception assumée : l'animation des lettres de l'intro de chargement garde
+   sa propre cadence, plus rapide et plus staccato — c'est un flourish de
+   marque ponctuel, pas un motif de révélation de contenu répété.
+   ============================================================ */

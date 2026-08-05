@@ -43,7 +43,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
   const BELIEFS = t.beliefs.map((b, i) => ({ ...b, n: `0${i + 1}`, color: BELIEF_COLORS[i] }))
 
   return (
-    <section id="about" className="relative overflow-hidden bg-ink px-gutter py-28">
+    <section id="about" className="relative overflow-hidden bg-ink px-gutter py-20">
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="70%" y="10%" opacity={0.12} />
 
       <div

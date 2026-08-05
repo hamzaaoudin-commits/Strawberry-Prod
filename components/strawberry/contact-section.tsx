@@ -166,7 +166,7 @@ export function ContactSection() {
 
       <div
         className={[
-          "relative mx-auto w-full max-w-[1100px] transition-all duration-[800ms]",
+          "relative mx-auto w-full max-w-[1100px] transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
           visible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
         ].join(" ")}
       >
