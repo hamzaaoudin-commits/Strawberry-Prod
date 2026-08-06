@@ -49,7 +49,13 @@ export function ProblemSection({ lang }: { lang: Lang }) {
     <section className="section overflow-hidden bg-ink-soft">
       <ViewTracker name="problem" />
       <div className="shell">
-        <div className="mx-auto max-w-[760px]">
+        {/* Une asymétrie assumée, plutôt que le container centré utilisé
+            partout ailleurs : le texte occupe un peu plus de la moitié de la
+            largeur à gauche, le reste respire en vide à droite. Seulement à
+            partir de lg — en dessous, la grille repasse en une colonne
+            pleine largeur comme le reste du site. */}
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
           <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
             {t.kicker}
           </div>
@@ -101,6 +107,7 @@ export function ProblemSection({ lang }: { lang: Lang }) {
             </div>
           </div>
           <p className="font-serif text-[clamp(1.15rem,2.2vw,1.55rem)] leading-snug text-white/90">{t.close}</p>
+          </div>
         </div>
       </div>
     </section>

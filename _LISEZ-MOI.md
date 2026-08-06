@@ -1,15 +1,23 @@
-# Strawberry — tour 26 (retour en arrière)
+# Strawberry — tour 27
 
-2 fichiers. Glissez le dossier `components`, pas son contenu.
+4 fichiers, un seul glisser-déposer. Build validé.
 
-## Ce qui change
+Glissez les dossiers `app` et `components`, jamais leur contenu.
 
-La constellation des vingt pièces et le mot « ARCHITECTURE » en fantôme
-derrière le bandeau final sont entièrement retirés. Les deux fichiers
-reviennent exactement à leur état d'avant ces deux ajouts — l'offre reprend
-ses quatre groupes en cartes, le bandeau final reprend sa forme simple sans
-texte en arrière-plan.
+## Ce qui est nouveau
 
-Le fichier `constellation-map.tsx` n'est plus utilisé : si vous l'avez
-déposé au tour précédent, vous pouvez le supprimer depuis GitHub, il ne sert
-plus à rien.
+**Un curseur personnalisé** — un point qui suit la souris exactement, et un
+anneau qui suit avec un léger retard, qui grossit et se colore plus fort au
+survol de tout ce qui est cliquable. Seulement sur souris/trackpad
+(`pointer: fine`) : sur mobile et tablette, rien ne change, le curseur
+système reste celui de toujours. Respecte aussi la préférence de mouvement
+réduit.
+
+**La section problème respire de manière asymétrique.** Elle occupait un
+container centré de largeur fixe, comme toutes les autres sections du site.
+Elle occupe maintenant environ sept douzièmes de la largeur à gauche, avec
+du vide assumé à droite — sur grand écran seulement (`lg:` et plus) ; en
+dessous, elle repasse en pleine largeur comme avant, pour ne rien risquer
+sur mobile ou tablette.
+
+La photo du fondateur reste inchangée, en noir et blanc, comme demandé.
