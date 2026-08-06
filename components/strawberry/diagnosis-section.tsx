@@ -63,11 +63,20 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
         <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.p1}</p>
 
         <div className="border-l-2 border-brand pl-6 md:pl-8">
-          <p className="mb-5 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
-          <p className="mb-5 font-serif text-[clamp(1.1rem,2.1vw,1.4rem)] leading-[1.5] text-white">
-            {t.aiP2a}
-            <strong>{t.aiP2strong}</strong>
-          </p>
+          <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
+
+          {/* La phrase la plus forte du diagnostic, sortie du paragraphe et
+              agrandie — plutôt que noyée dans le texte courant. */}
+          <div className="mb-8 -ml-6 max-w-[560px] text-center md:-ml-8">
+            <div aria-hidden className="font-serif text-[2.5rem] leading-[0.4] text-brand/30">
+              &ldquo;
+            </div>
+            <p className="mt-2 font-serif text-[clamp(1.3rem,2.6vw,1.8rem)] font-bold leading-[1.3] text-white">
+              {t.aiP2a}
+            </p>
+            <p className="mt-3 font-sans text-[13px] leading-relaxed text-chalk-55">{t.aiP2strong}</p>
+          </div>
+
           <p className="font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
 
           {/* Le renversement, en image : hier la fabrication portait la

@@ -102,6 +102,7 @@ export default async function SampleAuditPage({
             prev: d.readerPrev,
             next: d.readerNext,
             pageOfTemplate: d.readerPageOfTemplate,
+            ofCount: d.readerOfCount,
           }}
         />
       </div>

@@ -110,7 +110,7 @@ export function DocumentReader({
   labels,
 }: {
   parts: Part[]
-  labels: { toc: string; prev: string; next: string; pageOfTemplate: string }
+  labels: { toc: string; prev: string; next: string; pageOfTemplate: string; ofCount: string }
 }) {
   const [i, setI] = useState(0)
   const [tocOpen, setTocOpen] = useState(false)
@@ -142,7 +142,24 @@ export function DocumentReader({
             <span aria-hidden className="text-brand">☰</span>
             {labels.toc}
           </button>
-          <span className="font-sans text-[12px] text-chalk-40">{pageLabel}</span>
+          {/* Une pile de pages plutôt qu'un simple « Partie 4/14 » en texte —
+              l'idée d'un document qu'on feuillette, rendue physique. */}
+          <div
+            className="flex items-center gap-3"
+            role="status"
+            aria-label={pageLabel}
+          >
+            <div className="relative h-[30px] w-[24px]" aria-hidden>
+              <div className="absolute left-[3px] top-[3px] h-[30px] w-[24px] border border-white/10 bg-[#151010]" />
+              <div className="absolute left-[1.5px] top-[1.5px] h-[30px] w-[24px] border border-white/15 bg-ink" />
+              <div className="relative flex h-[30px] w-[24px] items-center justify-center border border-brand bg-ink font-serif text-[11px] font-bold text-brand">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+            </div>
+            <span className="font-sans text-[12px] text-chalk-40">
+              {labels.ofCount.replace("{n}", String(parts.length))}
+            </span>
+          </div>
         </div>
 
         {tocOpen && (

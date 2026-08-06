@@ -23,25 +23,27 @@ export function LanguageToggle() {
   }
 
   return (
-    <div className="inline-flex items-center" role="group" aria-label="Language">
-      {LANGS.map((l: Lang, i) => {
+    <div
+      className="inline-flex items-center gap-0.5 rounded-full border border-white/15 p-[3px]"
+      role="group"
+      aria-label="Language"
+    >
+      {LANGS.map((l: Lang) => {
         const active = lang === l
         return (
-          <span key={l} className="inline-flex items-center">
-            {i > 0 && <span className="mx-1.5 select-none text-[10px] text-white/20">/</span>}
-            <NextLink
-              href={swapTo(l)}
-              hrefLang={l}
-              lang={l}
-              aria-current={active ? "true" : undefined}
-              className={[
-                "font-sans text-xs uppercase tracking-[0.08em] no-underline transition-colors",
-                active ? "font-semibold text-brand" : "text-chalk-40 hover:text-chalk-75",
-              ].join(" ")}
-            >
-              {l}
-            </NextLink>
-          </span>
+          <NextLink
+            key={l}
+            href={swapTo(l)}
+            hrefLang={l}
+            lang={l}
+            aria-current={active ? "true" : undefined}
+            className={[
+              "rounded-full px-3 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.06em] no-underline transition-colors duration-300",
+              active ? "bg-brand text-white" : "text-chalk-40 hover:text-white",
+            ].join(" ")}
+          >
+            {l}
+          </NextLink>
         )
       })}
     </div>

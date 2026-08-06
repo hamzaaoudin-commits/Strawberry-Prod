@@ -54,6 +54,7 @@ export type SampleDoc = {
   readerPrev: string
   readerNext: string
   readerPageOfTemplate: string
+  readerOfCount: string
 }
 
 export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
@@ -87,6 +88,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     readerPrev: "← Partie précédente",
     readerNext: "Partie suivante →",
     readerPageOfTemplate: "Partie {i} / {n}",
+    readerOfCount: "sur {n} parties",
     parts: [
   {
     n: "01",
@@ -445,6 +447,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     readerPrev: "← Previous part",
     readerNext: "Next part →",
     readerPageOfTemplate: "Part {i} / {n}",
+    readerOfCount: "of {n} parts",
     parts: [
   {
     n: "01",
