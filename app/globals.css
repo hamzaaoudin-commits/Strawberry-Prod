@@ -497,11 +497,3 @@ body::before {
   padding-top: 0.02em;
   color: var(--color-brand);
 }
-
-/* Curseur personnalisé : le curseur système ne se cache que sur les
-   appareils à pointeur fin, une fois la classe posée par le composant côté
-   client — jamais avant, pour ne jamais laisser un visiteur sans curseur. */
-html.sp-cursor-active,
-html.sp-cursor-active * {
-  cursor: none !important;
-}
