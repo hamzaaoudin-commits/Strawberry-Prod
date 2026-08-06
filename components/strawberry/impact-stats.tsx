@@ -60,6 +60,7 @@ const T = {
 
 export function ImpactStats({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
+  const [a, b] = t.stats
 
   return (
     <section className="section bg-ink-soft text-white">
@@ -67,17 +68,24 @@ export function ImpactStats({ lang }: { lang: Lang }) {
       <div className="shell">
         <div className="kicker mb-10 text-center">{t.kicker}</div>
 
-        <div className="mx-auto grid max-w-[880px] gap-px bg-white/[0.09] sm:grid-cols-2">
-          {t.stats.map((s) => (
-            <div key={s.n} className="bg-ink px-7 py-9 text-center transition-colors duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)] hover:bg-white/[0.02] md:px-9">
-              <div className="mb-4 font-serif text-[clamp(2.6rem,6vw,3.6rem)] font-bold leading-none text-brand">
-                {s.n}
-              </div>
-              <p className="m-0 mb-4 font-serif text-[1.05rem] font-bold leading-snug text-white">{s.title}</p>
-              <p className="m-0 mb-5 font-sans text-[13.5px] leading-relaxed text-chalk-55">{s.body}</p>
-              <div className="font-sans text-[11px] uppercase tracking-[0.14em] text-chalk-40">{s.source}</div>
-            </div>
-          ))}
+        {/* Une frise plutôt que deux cartes empilées : les deux chiffres se
+            lisent comme une seule phrase, séparés par un simple trait. */}
+        <div className="mx-auto flex max-w-[820px] flex-col items-center justify-center gap-8 rounded-sm bg-white/[0.015] px-6 py-10 sm:flex-row sm:gap-0 md:px-10">
+          <div className="flex flex-col items-center text-center sm:flex-1 sm:items-end sm:pr-8 sm:text-right">
+            <div className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-brand">{a.n}</div>
+            <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{a.title}</p>
+            <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{a.body}</p>
+            <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{a.source}</div>
+          </div>
+
+          <div aria-hidden className="h-px w-16 bg-brand/30 sm:h-16 sm:w-px" />
+
+          <div className="flex flex-col items-center text-center sm:flex-1 sm:items-start sm:pl-8 sm:text-left">
+            <div className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-brand">{b.n}</div>
+            <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{b.title}</p>
+            <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{b.body}</p>
+            <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{b.source}</div>
+          </div>
         </div>
       </div>
     </section>

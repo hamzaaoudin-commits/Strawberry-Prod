@@ -5,6 +5,7 @@ import type { Lang } from "@/lib/lang"
 import { LIVE } from "@/lib/config"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
 import { OfferCover } from "@/components/strawberry/offer-covers"
+import { DeliverablesTabs } from "@/components/strawberry/deliverables-tabs"
 
 /**
  * L'offre. Une seule.
@@ -278,67 +279,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
               {t.deliverablesKicker}
             </div>
 
-            <div className="flex flex-col gap-5">
-              {t.groups.map((group) => {
-                let n = 0
-                for (const g of t.groups) {
-                  if (g === group) break
-                  n += g.items.length
-                }
-                const isPlaybooks = group.icon === "playbooks"
-                const covers = group.covers
-                const playbooksNote = group.playbooksNote
-                return (
-                  <div key={group.title} className="border border-hair-strong bg-white/[0.015] p-6 transition-colors duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)] hover:border-brand/35 md:p-7">
-                    <div className="mb-5 flex items-center gap-3.5">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-brand/30 bg-brand/[0.07] text-brand">
-                        <GroupIcon kind={group.icon} />
-                      </div>
-                      <h4 className="m-0 font-serif text-[1.05rem] font-bold text-white">{group.title}</h4>
-                    </div>
-
-                    {/* Les six playbooks reçoivent chacun une petite couverture —
-                        un actif visuel distinct par département, plutôt qu'un
-                        numéro identique répété six fois. */}
-                    {isPlaybooks && covers && (
-                      <div className="mb-6 grid grid-cols-3 gap-2.5 sm:grid-cols-6">
-                        {covers.map((label, i) => (
-                          <div
-                            key={label}
-                            className="flex aspect-[3/4] flex-col items-center justify-center gap-2 border border-brand/25 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center"
-                          >
-                            <PlaybookIcon index={i} />
-                            <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
-                              {label}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <ol className="list-none border-t border-hair p-0">
-                      {group.items.map(([benefit, feature], i) => (
-                        <li key={benefit} className="flex items-baseline gap-4 border-b border-white/[0.06] py-4 last:border-b-0">
-                          <span className="font-serif text-[13px] text-brand">
-                            {String(n + i + 1).padStart(2, "0")}
-                          </span>
-                          <div>
-                            <p className="m-0 font-sans text-[15px] font-semibold leading-snug text-white">{benefit}</p>
-                            <p className="m-0 mt-1 font-sans text-[13px] leading-snug text-chalk-40">{feature}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-
-                    {isPlaybooks && playbooksNote && (
-                      <p className="m-0 mt-5 border-t border-hair pt-5 font-sans text-[13px] italic leading-relaxed text-chalk-55">
-                        {playbooksNote}
-                      </p>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
+            <DeliverablesTabs groups={t.groups} />
 
             <p className="mt-7 max-w-[620px] font-sans text-[13.5px] leading-relaxed text-chalk-40">
               {t.aiCompat}
@@ -418,105 +359,4 @@ export function OffersSection({ lang }: { lang: Lang }) {
       </div>
     </section>
   )
-}
-
-/**
- * Un glyphe par catégorie de livrables, plutôt qu'un simple numéro répété
- * vingt fois — la remarque qui a motivé ce regroupement, appliquée jusqu'au
- * bout.
- */
-function GroupIcon({ kind }: { kind: string }) {
-  const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
-  const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
-
-  switch (kind) {
-    case "diagnostic":
-      return (
-        <svg {...props}>
-          <circle cx="10.5" cy="10.5" r="6.5" {...stroke} />
-          <line x1="19" y1="19" x2="15.2" y2="15.2" {...stroke} />
-        </svg>
-      )
-    case "identity":
-      return (
-        <svg {...props}>
-          <path d="M5 7h14" {...stroke} />
-          <path d="M5 12h9" {...stroke} />
-          <path d="M5 17h6" {...stroke} />
-        </svg>
-      )
-    case "assets":
-      return (
-        <svg {...props}>
-          <rect x="5" y="4" width="14" height="16" rx="0.5" {...stroke} />
-          <line x1="8" y1="9" x2="16" y2="9" {...stroke} opacity="0.6" />
-          <line x1="8" y1="13" x2="16" y2="13" {...stroke} opacity="0.6" />
-          <line x1="8" y1="17" x2="12.5" y2="17" {...stroke} opacity="0.6" />
-        </svg>
-      )
-    default: // playbooks
-      return (
-        <svg {...props}>
-          <path d="M4 5.5c2-1 4.5-1 6.5 0v13c-2-1-4.5-1-6.5 0z" {...stroke} />
-          <path d="M20 5.5c-2-1-4.5-1-6.5 0v13c2-1 4.5-1 6.5 0z" {...stroke} />
-        </svg>
-      )
-  }
-}
-
-/**
- * Une couverture par playbook : six glyphes distincts, un par département,
- * plutôt qu'un seul motif "playbooks" répété six fois.
- */
-function PlaybookIcon({ index }: { index: number }) {
-  const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
-  const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
-  const color = "#e63946"
-
-  switch (index) {
-    case 0: // marketing — un mégaphone
-      return (
-        <svg {...props}>
-          <path d="M4 10v4h3l6 4V6l-6 4z" {...stroke} stroke={color} />
-          <path d="M17 9.5c1 .8 1 4.2 0 5" {...stroke} stroke={color} />
-        </svg>
-      )
-    case 1: // contenu — une plume
-      return (
-        <svg {...props}>
-          <path d="M19 5c-7 0-13 5-13 13 8 0 13-6 13-13z" {...stroke} stroke={color} />
-          <path d="M6 18l4-4" {...stroke} stroke={color} />
-        </svg>
-      )
-    case 2: // réseaux sociaux — une bulle de chat
-      return (
-        <svg {...props}>
-          <path d="M4 6h16v10H9l-4 3v-3H4z" {...stroke} stroke={color} />
-        </svg>
-      )
-    case 3: // vente — une poignée de main / accord
-      return (
-        <svg {...props}>
-          <path d="M3 13l4-4 4 2 4-4 6 5" {...stroke} stroke={color} />
-          <path d="M14 16l3 3 4-4" {...stroke} stroke={color} />
-        </svg>
-      )
-    case 4: // support — un casque
-      return (
-        <svg {...props}>
-          <path d="M5 13v-1a7 7 0 0 1 14 0v1" {...stroke} stroke={color} />
-          <rect x="3.5" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
-          <rect x="17" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
-        </svg>
-      )
-    default: // RH — deux personnes
-      return (
-        <svg {...props}>
-          <circle cx="9" cy="8" r="2.4" {...stroke} stroke={color} />
-          <path d="M4 19c0-3 2.2-5 5-5s5 2 5 5" {...stroke} stroke={color} />
-          <circle cx="17" cy="9" r="2" {...stroke} stroke={color} opacity="0.6" />
-          <path d="M15 19c.2-2.2 1.6-3.8 3.5-4.2" {...stroke} stroke={color} opacity="0.6" />
-        </svg>
-      )
-  }
 }

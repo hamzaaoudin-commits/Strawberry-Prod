@@ -73,9 +73,18 @@ export function Footer() {
   const REACH = t.reach.map((label, i) => ({ label, ...REACH_HREFS[i] }))
 
   return (
-    <footer className="relative border-t border-hair bg-ink font-sans text-white">
+    <footer className="relative overflow-hidden border-t border-hair bg-ink font-sans text-white">
       <div className="mx-auto max-w-[1280px] px-gutter pb-12 pt-20">
-        <div className="mb-16 grid gap-8 md:gap-20 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
+        {/* Le nom du studio en filigrane, avant les colonnes de liens — un
+            repère plutôt qu'une simple répétition du logo de la navbar. */}
+        <div
+          aria-hidden
+          className="pointer-events-none select-none whitespace-nowrap font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold leading-none tracking-[-0.01em] text-white/[0.05]"
+        >
+          Strawberry Production
+        </div>
+
+        <div className="mb-16 mt-10 grid gap-8 md:gap-20 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
           <div>
             <Link href="/" className="mb-5 inline-block font-serif text-[22px] font-bold tracking-[-0.02em] text-white no-underline">
               <span className="text-gradient">Strawberry</span> Prod.
