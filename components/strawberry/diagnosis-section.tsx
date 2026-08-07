@@ -26,6 +26,8 @@ const T = {
     diagramAfter: "Today",
     diagramFabrication: "The making",
     diagramArchitecture: "The strategy",
+    splitBefore: "The making carried the value.",
+    splitAfter: "The strategy carries the value.",
     enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
   },
   fr: {
@@ -41,6 +43,8 @@ const T = {
     diagramAfter: "Aujourd'hui",
     diagramFabrication: "La fabrication",
     diagramArchitecture: "La stratégie",
+    splitBefore: "La fabrication portait la valeur.",
+    splitAfter: "La stratégie porte la valeur.",
     enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
   },
 }
@@ -78,43 +82,33 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
           </div>
 
           <p className="font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
+        </div>
 
-          {/* Le renversement, en image : hier la fabrication portait la
-              valeur, aujourd'hui c'est l'inverse. */}
-          <div className="mt-8 flex items-end justify-center gap-10 sm:gap-16">
-            <div className="flex flex-col items-center">
-              <div className="flex h-[120px] w-[64px] flex-col-reverse overflow-hidden border border-white/15">
-                <div className="h-[85%] bg-white/10" />
-                <div className="h-[15%] bg-brand/40" />
-              </div>
-              <div className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-chalk-40">
+        {/* Le renversement, en plein écran divisé plutôt qu'en deux petites
+            barres — sort volontairement du container centré pour occuper
+            toute la largeur du viewport, contraste net entre gris désaturé
+            et rouge. */}
+        <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2">
+          <div className="flex h-[200px] overflow-hidden sm:h-[240px]">
+            <div className="flex flex-1 flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]">
+              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
                 {t.diagramBefore}
               </div>
+              <p className="m-0 max-w-[220px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
+                {t.splitBefore}
+              </p>
             </div>
 
-            <div aria-hidden className="mb-14 text-brand">
-              →
-            </div>
+            <div aria-hidden className="w-[2px] shrink-0 bg-brand" />
 
-            <div className="flex flex-col items-center">
-              <div className="flex h-[120px] w-[64px] flex-col-reverse overflow-hidden border border-brand-hair">
-                <div className="h-[15%] bg-white/10" />
-                <div className="h-[85%] bg-brand" />
-              </div>
-              <div className="mt-3 font-sans text-[11px] uppercase tracking-[0.14em] text-brand">
+            <div className="flex flex-1 flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center">
+              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
                 {t.diagramAfter}
               </div>
+              <p className="m-0 max-w-[220px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
+                {t.splitAfter}
+              </p>
             </div>
-          </div>
-          <div className="mt-3 flex justify-center gap-6 font-sans text-[11px] text-chalk-40">
-            <span>
-              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 bg-white/20 align-middle" />
-              {t.diagramFabrication}
-            </span>
-            <span>
-              <span aria-hidden className="mr-1.5 inline-block h-2 w-2 bg-brand align-middle" />
-              {t.diagramArchitecture}
-            </span>
           </div>
         </div>
 

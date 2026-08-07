@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/strawberry/hero-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
+import { SectionDivider } from "@/components/strawberry/section-divider"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
 import { OffersSection } from "@/components/strawberry/offers-section"
@@ -44,6 +45,7 @@ export default async function Home({
       <ReadMarquee />
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />
+      <SectionDivider lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
       <OffersSection lang={lang} />

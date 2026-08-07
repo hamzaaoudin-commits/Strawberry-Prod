@@ -1,25 +1,20 @@
-# Strawberry — tour 30
+# Strawberry — tour 31
 
-7 fichiers, un seul glisser-déposer. Build validé.
+3 fichiers, un seul glisser-déposer. Build validé.
 
-Glissez les dossiers `app`, `components` et `lib`, jamais leur contenu.
+Glissez les dossiers `app` et `components`, jamais leur contenu.
 
-## Ce qui est nouveau — les 4 maquettes validées
+## Ce qui est nouveau — les 2 maquettes validées
 
-**#11 — Barre de progression de lecture.** Une fine ligne rouge collée en
-haut de l'écran, sur tout le site, qui avance avec le défilement de la
-page. Calculée une fois par image plutôt qu'à chaque événement de scroll.
+**#21 — Un bandeau plein rouge entre deux sections noires.** « REFUS. » en
+grand, sur fond rouge plein, entre le diagnostic et les statistiques d'impact
+sur la home. Rupture franche de couleur plutôt qu'un simple filet — un seul
+mot du vocabulaire de la marque, qui reprend directement l'argument du
+diagnostic (personne n'a tranché ce qu'il refuse).
 
-**#14 — Le lecteur SILLAGE en pile de pages.** « Partie 4/14 » en texte
-devient une petite pile de trois feuillets superposés, le numéro de la
-partie courante sur celui du dessus — l'idée d'un document qu'on feuillette,
-rendue physique.
-
-**#15 — Le sélecteur de langue en interrupteur.** « FR / EN » en texte
-simple devient un interrupteur à deux positions, la langue active nettement
-marquée en rouge plutôt qu'une simple différence de graisse.
-
-**#19 — La phrase la plus forte du diagnostic, en citation extraite.**
-« Ce qui ne peut pas être généré, c'est une identité » sort du paragraphe
-courant, s'agrandit, se centre, avec un guillemet en arrière-plan — au lieu
-de rester noyée dans le texte qui l'entoure.
+**#22 — Hier / aujourd'hui en plein écran divisé.** Les deux petites barres
+verticales sont remplacées par un panneau plein écran qui sort du container
+centré habituel : à gauche, « hier », en gris désaturé — à droite,
+« aujourd'hui », en teinte rouge — séparés par une ligne nette. Le contraste
+visuel porte maintenant le renversement de valeur, plutôt que deux barres
+discrètes qu'on pouvait manquer.
