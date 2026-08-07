@@ -1,27 +1,29 @@
-# Strawberry — tour 34
+# Strawberry — tour 35
 
 6 fichiers, un seul glisser-déposer. Build validé.
 
 Glissez les dossiers `app` et `components`, jamais leur contenu.
 
-## Ce qui est nouveau — les 3 maquettes validées
+## Ce qui est nouveau
 
-**#46 — Le lecteur SILLAGE et VERSO tournent vraiment la page.** Au clic sur
-« Suivant » ou « Précédent » (ou depuis le sommaire), la partie courante
-pivote sur son axe et disparaît, puis la suivante pivote et apparaît dans
-l'axe opposé — un vrai geste de page qu'on tourne, pas un remplacement de
-contenu instantané. Désactivé sous préférence de mouvement réduit : le
-contenu change alors directement, sans pivot.
+**Plus de dégradé rouge sur le texte**, à quatre endroits qui étaient en
+blanc ou en rouge plat :
+- Le titre du bandeau final (« Devenez impossible à confondre. »)
+- Le prix de l'offre sur la home (« 4 500€ »)
+- Les deux statistiques d'impact (38%, 85%)
+- Les trois chiffres de la frise de confiance
 
-**#49 — Le bandeau plein rouge devient un dispositif reconnaissable.** REFUS
-reste sur la home, après le diagnostic. ARCHITECTURE apparaît maintenant sur
-la page Architecture, juste avant le prix. MÉMOIRE apparaît sur RADAR, juste
-avant l'abonnement. Le composant (`SectionDivider`) a été généralisé pour
-accepter n'importe quel mot plutôt que d'être figé sur REFUS.
+**Les icônes des groupes de l'offre et des playbooks sont gravées**, pas
+seulement en traits fins. Chacune reçoit des hachures internes — cercles
+concentriques et croix pour le diagnostic, petits traits diagonaux pour
+l'identité, les pièces, les playbooks — façon gravure de plan technique
+plutôt que le contour minimaliste standard. Deux icônes de RADAR (la cible
+de l'entraînement quotidien, les sièges du jury) reçoivent le même
+traitement pour rester cohérentes.
 
-**#50 — Le titre du diagnostic s'épaissit au défilement.** « Rien de tout ça
-n'a manqué de bonne volonté » — chaque mot part fin et pâle, et devient gras
-et blanc en traversant le centre de l'écran. La deuxième phrase (« Ça a
-manqué de la bonne cause. ») garde son traitement en dégradé existant,
-inchangé. Effet réservé à ce seul titre — l'appliquer partout aurait coûté
-cher en performance pour un effet qui perd son sens à force d'être répété.
+## Ce que je n'ai pas touché
+
+Les 22 icônes de la FAQ n'ont pas reçu ce traitement — les redessiner une
+par une aurait pris beaucoup de temps pour un gain marginal, puisqu'elles
+sont plus petites et moins centrales que celles de l'offre. Dites-le si vous
+voulez que je les fasse aussi.

@@ -295,7 +295,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
             <div className="mb-6 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.investKicker}</div>
 
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="font-serif text-[clamp(2.6rem,6vw,4rem)] font-bold leading-none text-white">
+              <span className="font-serif text-[clamp(2.6rem,6vw,4rem)] font-bold leading-none text-gradient">
                 {t.price}
               </span>
               <span className="font-sans text-[14px] text-chalk-40">{t.priceCadence}</span>

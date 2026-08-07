@@ -73,7 +73,7 @@ export function ImpactStats({ lang }: { lang: Lang }) {
             lisent comme une seule phrase, séparés par un simple trait. */}
         <div className="mx-auto flex max-w-[820px] flex-col items-center justify-center gap-8 rounded-sm bg-white/[0.015] px-6 py-10 sm:flex-row sm:gap-0 md:px-10">
           <div className="flex flex-col items-center text-center sm:flex-1 sm:items-end sm:pr-8 sm:text-right">
-            <CountUp value={a.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-brand" />
+            <CountUp value={a.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient" />
             <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{a.title}</p>
             <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{a.body}</p>
             <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{a.source}</div>
@@ -82,7 +82,7 @@ export function ImpactStats({ lang }: { lang: Lang }) {
           <div aria-hidden className="h-px w-16 bg-brand/30 sm:h-16 sm:w-px" />
 
           <div className="flex flex-col items-center text-center sm:flex-1 sm:items-start sm:pl-8 sm:text-left">
-            <CountUp value={b.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-brand" />
+            <CountUp value={b.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient" />
             <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{b.title}</p>
             <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{b.body}</p>
             <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{b.source}</div>

@@ -101,12 +101,16 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
 function GroupIcon({ kind }: { kind: string }) {
   const props = { viewBox: "0 0 24 24", width: 16, height: 16, "aria-hidden": true as const }
   const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
+  const fine = { stroke: "currentColor", strokeWidth: 0.5, opacity: 0.55 }
 
   switch (kind) {
     case "diagnostic":
       return (
         <svg {...props}>
           <circle cx="10.5" cy="10.5" r="6.5" {...stroke} />
+          <circle cx="10.5" cy="10.5" r="4" fill="none" {...fine} />
+          <line x1="7.2" y1="10.5" x2="13.8" y2="10.5" {...fine} />
+          <line x1="10.5" y1="7.2" x2="10.5" y2="13.8" {...fine} />
           <line x1="19" y1="19" x2="15.2" y2="15.2" {...stroke} />
         </svg>
       )
@@ -116,6 +120,8 @@ function GroupIcon({ kind }: { kind: string }) {
           <path d="M5 7h14" {...stroke} />
           <path d="M5 12h9" {...stroke} />
           <path d="M5 17h6" {...stroke} />
+          <line x1="6" y1="9" x2="8" y2="7" {...fine} />
+          <line x1="6" y1="14" x2="8" y2="12" {...fine} />
         </svg>
       )
     case "assets":
@@ -125,6 +131,8 @@ function GroupIcon({ kind }: { kind: string }) {
           <line x1="8" y1="9" x2="16" y2="9" {...stroke} opacity="0.6" />
           <line x1="8" y1="13" x2="16" y2="13" {...stroke} opacity="0.6" />
           <line x1="8" y1="17" x2="12.5" y2="17" {...stroke} opacity="0.6" />
+          <line x1="15" y1="15.5" x2="17.5" y2="18" {...fine} />
+          <line x1="16.5" y1="14.5" x2="17.5" y2="15.5" {...fine} />
         </svg>
       )
     default: // playbooks
@@ -132,6 +140,10 @@ function GroupIcon({ kind }: { kind: string }) {
         <svg {...props}>
           <path d="M4 5.5c2-1 4.5-1 6.5 0v13c-2-1-4.5-1-6.5 0z" {...stroke} />
           <path d="M20 5.5c-2-1-4.5-1-6.5 0v13c2-1 4.5-1 6.5 0z" {...stroke} />
+          <line x1="6" y1="8" x2="9" y2="8.6" {...fine} />
+          <line x1="6" y1="11" x2="9" y2="11.6" {...fine} />
+          <line x1="15" y1="8.6" x2="18" y2="8" {...fine} />
+          <line x1="15" y1="11.6" x2="18" y2="11" {...fine} />
         </svg>
       )
   }
@@ -141,6 +153,7 @@ function PlaybookIcon({ index }: { index: number }) {
   const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
   const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
   const color = "#e63946"
+  const fine = { stroke: color, strokeWidth: 0.5, opacity: 0.5, strokeLinecap: "round" as const }
 
   switch (index) {
     case 0:
@@ -148,6 +161,8 @@ function PlaybookIcon({ index }: { index: number }) {
         <svg {...props}>
           <path d="M4 10v4h3l6 4V6l-6 4z" {...stroke} stroke={color} />
           <path d="M17 9.5c1 .8 1 4.2 0 5" {...stroke} stroke={color} />
+          <line x1="19.5" y1="8.3" x2="20.3" y2="7.3" {...fine} />
+          <line x1="19.5" y1="15.7" x2="20.3" y2="16.7" {...fine} />
         </svg>
       )
     case 1:
@@ -155,12 +170,16 @@ function PlaybookIcon({ index }: { index: number }) {
         <svg {...props}>
           <path d="M19 5c-7 0-13 5-13 13 8 0 13-6 13-13z" {...stroke} stroke={color} />
           <path d="M6 18l4-4" {...stroke} stroke={color} />
+          <line x1="10" y1="9" x2="12.5" y2="8" {...fine} />
+          <line x1="9" y1="12" x2="11.5" y2="11" {...fine} />
         </svg>
       )
     case 2:
       return (
         <svg {...props}>
           <path d="M4 6h16v10H9l-4 3v-3H4z" {...stroke} stroke={color} />
+          <line x1="7" y1="9.5" x2="17" y2="9.5" {...fine} />
+          <line x1="7" y1="12" x2="14" y2="12" {...fine} />
         </svg>
       )
     case 3:
@@ -168,6 +187,7 @@ function PlaybookIcon({ index }: { index: number }) {
         <svg {...props}>
           <path d="M3 13l4-4 4 2 4-4 6 5" {...stroke} stroke={color} />
           <path d="M14 16l3 3 4-4" {...stroke} stroke={color} />
+          <line x1="6" y1="16" x2="7.5" y2="14.5" {...fine} />
         </svg>
       )
     case 4:
@@ -176,6 +196,7 @@ function PlaybookIcon({ index }: { index: number }) {
           <path d="M5 13v-1a7 7 0 0 1 14 0v1" {...stroke} stroke={color} />
           <rect x="3.5" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
           <rect x="17" y="13" width="3.5" height="5" rx="1" {...stroke} stroke={color} />
+          <line x1="9.5" y1="7.5" x2="14.5" y2="7.5" {...fine} />
         </svg>
       )
     default:
@@ -185,6 +206,7 @@ function PlaybookIcon({ index }: { index: number }) {
           <path d="M4 19c0-3 2.2-5 5-5s5 2 5 5" {...stroke} stroke={color} />
           <circle cx="17" cy="9" r="2" {...stroke} stroke={color} opacity="0.6" />
           <path d="M15 19c.2-2.2 1.6-3.8 3.5-4.2" {...stroke} stroke={color} opacity="0.6" />
+          <line x1="7.5" y1="7" x2="10.5" y2="9" {...fine} />
         </svg>
       )
   }

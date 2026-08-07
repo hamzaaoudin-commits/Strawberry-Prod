@@ -30,7 +30,7 @@ export function CTABanner() {
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(230,57,70,0.12),transparent_70%)]"
           />
 
-          <h2 className="relative mb-5 font-serif text-[clamp(2rem,5vw,4rem)] font-bold tracking-[-0.03em] text-white">
+          <h2 className="relative mb-5 font-serif text-[clamp(2rem,5vw,4rem)] font-bold tracking-[-0.03em] text-gradient">
             {t.h2}
           </h2>
 

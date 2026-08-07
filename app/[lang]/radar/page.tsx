@@ -166,6 +166,10 @@ function AppIcon({ index }: { index: number }) {
           <circle cx="16" cy="16" r="11" {...stroke} opacity="0.35" />
           <circle cx="16" cy="16" r="6.5" {...stroke} opacity="0.65" />
           <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none" />
+          <line x1="16" y1="3.5" x2="16" y2="7" {...stroke} strokeWidth="0.5" opacity="0.4" />
+          <line x1="16" y1="25" x2="16" y2="28.5" {...stroke} strokeWidth="0.5" opacity="0.4" />
+          <line x1="3.5" y1="16" x2="7" y2="16" {...stroke} strokeWidth="0.5" opacity="0.4" />
+          <line x1="25" y1="16" x2="28.5" y2="16" {...stroke} strokeWidth="0.5" opacity="0.4" />
         </svg>
       )
     case 1: // la bibliothèque des phrases — des feuillets empilés
@@ -192,6 +196,7 @@ function AppIcon({ index }: { index: number }) {
       return (
         <svg {...props}>
           <path d="M8 22 a8 8 0 0 1 16 0" {...stroke} opacity="0.4" />
+          <line x1="12" y1="21" x2="20" y2="21" {...stroke} strokeWidth="0.5" opacity="0.35" />
           {[7, 11.7, 16.3, 21].map((cx, i) => (
             <circle key={i} cx={cx} cy="10" r="1.6" {...stroke} opacity={i === 2 ? 1 : 0.55} />
           ))}
