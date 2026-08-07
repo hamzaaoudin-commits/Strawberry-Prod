@@ -6,6 +6,7 @@ import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
+import { SuccessCheck } from "@/components/strawberry/success-check"
 
 /**
  * Le pont entre une lecture et RADAR.
@@ -97,9 +98,10 @@ export function RadarLeadCapture({ lang, source }: { lang: Lang; source: string 
       <p className="mb-6 max-w-[440px] font-sans text-[14.5px] leading-relaxed text-chalk-65">{t.body}</p>
 
       {status === "done" ? (
-        <p role="status" aria-live="polite" className="font-serif text-[15px] italic text-brand">
-          {t.done}
-        </p>
+        <div role="status" aria-live="polite" className="text-center sm:text-left">
+          <SuccessCheck />
+          <p className="m-0 font-serif text-[15px] italic text-brand">{t.done}</p>
+        </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row sm:items-start" noValidate>
           <input

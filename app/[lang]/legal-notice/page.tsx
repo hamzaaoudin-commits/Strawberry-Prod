@@ -119,6 +119,11 @@ export default function LegalNoticePage() {
       <section style={{ padding: "60px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", transition: "all 0.8s ease" }}>
 
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, border: "1px solid rgba(255,255,255,0.1)", borderBottom: `1px solid ${COLOR}66`, padding: "16px 22px", marginBottom: 32 }}>
+            <span style={{ fontFamily: SERIF, fontSize: 15, fontWeight: 700, color: "#fff" }}>Legal Notice</span>
+            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rev. May 30, 2026</span>
+          </div>
+
           <div style={{ marginBottom: 64, padding: "20px 24px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.02)", borderLeft: `3px solid ${COLOR}` }}>
             <p style={{ fontFamily: SANS, fontSize: "0.9rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>
               <strong style={{ color: COLOR }}>Note:</strong> This English version is a courtesy translation. The <Link href="/mentions-legales" style={{ color: COLOR, textDecoration: "underline" }}>French version</Link> is the only legally binding version. In case of any discrepancy in interpretation, the French version shall prevail.

@@ -8,6 +8,7 @@ import { AnimatedOrb } from "@/components/strawberry/animated-orb"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
 import { AboutSection } from "@/components/strawberry/about-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -252,6 +253,7 @@ export default function AboutPage() {
 
       {/* WHY THIS STUDIO EXISTS */}
       <section
+        id="sec-why"
         ref={why[0] as any}
         style={{
           padding: "120px clamp(1.5rem,4vw,4rem)",
@@ -309,6 +311,7 @@ export default function AboutPage() {
 
       {/* WHAT I REFUSE */}
       <section
+        id="sec-refuse"
         ref={refuse[0] as any}
         style={{
           padding: "140px clamp(1.5rem,4vw,4rem)",
@@ -495,6 +498,7 @@ export default function AboutPage() {
       </section>
 
       <section
+        id="sec-founder"
         ref={founder[0] as any}
         style={{
           padding: "120px clamp(1.5rem,4vw,4rem)",
@@ -654,6 +658,14 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FloatingSectionPill
+        sections={[
+          { id: "sec-why", label: t.whyKicker },
+          { id: "sec-refuse", label: t.refuseKicker },
+          { id: "sec-founder", label: t.founderKicker },
+        ]}
+      />
 
       <Footer />
     </main>

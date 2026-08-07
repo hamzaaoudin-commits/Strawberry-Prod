@@ -1,4 +1,5 @@
 import { LIVE } from "@/lib/config"
+import { CountUp } from "@/components/strawberry/count-up"
 
 /**
  * La frise de confiance.
@@ -37,7 +38,7 @@ export function TrustStrip({ lang }: { lang: "fr" | "en" }) {
             key={it.label}
             className={`px-8 py-6 text-center ${i > 0 ? "border-l border-white/[0.06]" : ""}`}
           >
-            <div className="font-serif text-[1.5rem] font-bold leading-none text-brand">{it.n}</div>
+            <CountUp value={it.n} className="font-serif text-[1.5rem] font-bold leading-none text-brand" />
             <div className="mt-1.5 font-sans text-[10px] uppercase tracking-[0.14em] text-chalk-40">{it.label}</div>
           </div>
         ))}

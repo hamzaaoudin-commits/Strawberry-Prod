@@ -506,3 +506,19 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   @keyframes sp-navpulse { 0%, 100% { opacity: 0; transform: scale(1); } }
 }
+
+/* La coche de confirmation (SuccessCheck) : le cercle se trace, la coche
+   suit avec un léger retard. Désactivé sous mouvement réduit — le résultat
+   final s'affiche directement, sans animation. */
+@keyframes sp-check-circle {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes sp-check-mark {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes sp-check-circle { from, to { stroke-dashoffset: 0; } }
+  @keyframes sp-check-mark { from, to { stroke-dashoffset: 0; } }
+}

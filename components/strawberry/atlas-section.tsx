@@ -5,6 +5,7 @@ import { track } from "@vercel/analytics"
 import { useT } from "@/lib/i18n"
 import { CONTACT_ENDPOINT } from "@/lib/config"
 import { isValidEmail, sanitize, LIMITS, rateLimit } from "@/lib/form-security"
+import { SuccessCheck } from "@/components/strawberry/success-check"
 
 /**
  * L'Atlas, en vraie notification cette fois.
@@ -145,9 +146,10 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         <p className="mb-7 font-sans text-sm leading-relaxed text-white/55">{t.modalSub}</p>
 
         {status === "done" ? (
-          <p role="status" aria-live="polite" className="py-4 text-center font-serif text-base italic text-brand">
-            {t.opening}
-          </p>
+          <div role="status" aria-live="polite" className="py-4 text-center">
+            <SuccessCheck />
+            <p className="m-0 font-serif text-base italic text-brand">{t.opening}</p>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
             <input

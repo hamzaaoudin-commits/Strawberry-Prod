@@ -62,16 +62,24 @@ export function FaqSection({ faqs }: { faqs: FaqSet }) {
                   </span>
                 </button>
 
+                {/* Le panneau se déplie en hauteur (grille 0fr → 1fr,
+                    technique CSS pure) au lieu d'apparaître d'un coup avec
+                    l'attribut hidden — et un filet rouge accompagne le texte
+                    plutôt qu'un simple dépliage nu. */}
                 <div
                   id={`faq-panel-${i}`}
                   role="region"
                   aria-labelledby={`faq-trigger-${i}`}
-                  hidden={!isOpen}
-                  className="pb-7"
+                  className="grid transition-[grid-template-rows] duration-400 ease-[cubic-bezier(.22,.68,0,1.2)]"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                 >
-                  <p className="m-0 font-sans text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.75] text-chalk-65">
-                    {faq.a}
-                  </p>
+                  <div className="overflow-hidden">
+                    <div className="border-l-2 border-brand py-0.5 pb-7 pl-4">
+                      <p className="m-0 font-sans text-[clamp(0.95rem,1.2vw,1.05rem)] leading-[1.75] text-chalk-65">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             )

@@ -1,47 +1,38 @@
-# Strawberry — tour 32
+# Strawberry — tour 33
 
-12 fichiers, un seul glisser-déposer. Build validé.
+14 fichiers, un seul glisser-déposer. Build validé.
 
-Glissez les dossiers `app`, `components` et `lib`, jamais leur contenu.
+Glissez les dossiers `app` et `components`, jamais leur contenu.
 
-## Ce qui est nouveau — les 8 maquettes validées
+## Ce qui est nouveau — les 5 maquettes validées
 
-**#27 — Garanties en icônes.** La garantie V2 et la fenêtre de remboursement
-apparaissent maintenant juste sous le prix, en deux lignes avec icône —
-avant, il fallait descendre les chercher plus bas sur la page.
+**#37 — Les chiffres comptent jusqu'à leur valeur.** 38%, 85%, et les trois
+chiffres de la frise de confiance montent depuis zéro quand ils entrent dans
+l'écran, une seule fois. Un composant réutilisable (`CountUp`) qui reconnaît
+n'importe quel préfixe numérique — fonctionne pour « 38% » comme « 340+ ».
 
-**#28 — Jauge de rareté.** Quatre segments, remplis selon les commandes déjà
-prises ce trimestre, sous le texte habituel.
+**#39 — Une pastille flottante indique la section en cours.** Sur la page
+Architecture (cinq sections) et la page Le Studio (trois sections), une
+petite pastille en bas d'écran montre où on se trouve, sans être un sommaire
+complet — elle n'apparaît qu'après le premier écran et disparaît en scrollant
+vers le haut.
 
-**#29 — Sommaire de SILLAGE en panneau fixe.** Sur grand écran, le sommaire
-reste visible en permanence à gauche pendant la lecture, au lieu d'un menu
-qu'il fallait rouvrir à chaque changement de partie. Sur mobile et tablette,
-le comportement précédent (menu qu'on ouvre) reste inchangé.
+**#40 — Une vraie coche de confirmation.** Le cercle se trace, puis la coche
+suit, sur la modale Atlas et le formulaire newsletter RADAR — au lieu d'un
+simple texte de confirmation.
 
-**#30 — Couvertures de playbooks au survol.** Chaque couverture se retourne
-et montre son bénéfice au survol de la souris, sur la home et sur la page
-Architecture.
+**#41 — La FAQ se déplie en douceur.** Le panneau de réponse s'ouvre en
+hauteur (une technique CSS pure, pas de JavaScript pour l'animation), avec un
+filet rouge qui accompagne le texte plutôt qu'un dépliage brut.
 
-**#31 — Frise de confiance.** Trois faits — marques lues par RADAR, commandes
-par trimestre, un seul studio — juste sous le hero de la home, avant le
-diagnostic.
+**#42 — Les trois pages légales anglaises ont leur en-tête.** Terms, Legal
+Notice et Privacy Policy reçoivent le même bandeau que leurs équivalents
+français, déposé au tour précédent — ce chantier est maintenant complet des
+deux côtés.
 
-**#32 — En-têtes des pages légales.** CGV, mentions légales et politique de
-confidentialité ont maintenant un bandeau façon lettre officielle en haut du
-document, avec la date de révision — avant, elle n'apparaissait qu'en bas de
-page.
+## Une erreur trouvée et corrigée avant l'envoi
 
-**#33 — Anneau qui respire sur le bouton de la navbar.** Un anneau discret
-qui s'étend et s'efface toutes les 2,4 secondes, désactivé sous préférence
-de mouvement réduit.
-
-**#36 — VERSO reçoit le même lecteur paginé que SILLAGE.** Les deux
-documents du site partagent maintenant la même expérience de lecture page
-par page, avec sommaire et navigation précédent/suivant, au lieu que VERSO
-reste en long défilement.
-
-## Ce que je n'ai pas fait, par manque de temps
-
-Les en-têtes de pages légales (#32) ne couvrent que les trois pages en
-français. Les versions anglaises (`/en/terms`, `/en/legal-notice`,
-`/en/privacy`) sont des fichiers séparés que je n'ai pas encore touchés.
+En construisant, j'ai oublié d'importer le composant de coche dans le
+formulaire newsletter RADAR — le build a échoué, je l'ai corrigé
+immédiatement et revalidé avant de packager. Rien de cassé n'est parti dans
+ce zip.
