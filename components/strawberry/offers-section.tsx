@@ -104,6 +104,8 @@ const T = {
     roiTitle: "The return frame",
     roi: "One deal signed at full price, or one rate increase you actually hold, and the document has paid for itself.",
     clock: "Already commissioned the audit? Its 490€ comes off this price, provided you commission within the following sixty days.",
+    guaranteeShort: "V2 guarantee if it misses",
+    refundShort: "Refundable within 7 days",
     guaranteeTitle: "The V2 guarantee",
     guaranteeBody:
       "If the delivered document does not hit the mark, we write a second version. No discussion, no extra invoice.",
@@ -192,6 +194,8 @@ const T = {
     roiTitle: "Le cadre de retour",
     roi: "Un seul contrat signé au prix plein, ou une augmentation de tarif que vous tenez, et le document est remboursé.",
     clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix, à condition de commander dans les soixante jours qui suivent.",
+    guaranteeShort: "Garantie V2 si le document ne tape pas juste",
+    refundShort: "Remboursable sous 7 jours",
     guaranteeTitle: "La garantie V2",
     guaranteeBody:
       "Si le document livré ne tape pas juste, nous écrivons une seconde version. Sans discuter, sans facture supplémentaire.",
@@ -297,6 +301,26 @@ export function OffersSection({ lang }: { lang: Lang }) {
               <span className="font-sans text-[14px] text-chalk-40">{t.priceCadence}</span>
             </div>
 
+            {/* Les garanties, en icônes, juste sous le prix — au lieu de
+                phrases qu'il fallait descendre chercher plus bas. Le détail
+                complet reste en dessous pour qui veut le lire en entier. */}
+            <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:gap-6">
+              <div className="flex items-center gap-2.5">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#e63946" strokeWidth="1.6">
+                  <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                <span className="font-sans text-[12.5px] text-chalk-65">{t.guaranteeShort}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#e63946" strokeWidth="1.6">
+                  <rect x="3" y="6" width="18" height="13" rx="1.5" />
+                  <path d="M3 10h18" />
+                </svg>
+                <span className="font-sans text-[12.5px] text-chalk-65">{t.refundShort}</span>
+              </div>
+            </div>
+
             <p className="mt-6 max-w-[620px] font-sans text-[15.5px] leading-[1.8] text-chalk-65">{t.justify}</p>
 
             <div className="mt-8 border border-brand-hair bg-brand/[0.04] px-6 py-5">
@@ -322,18 +346,30 @@ export function OffersSection({ lang }: { lang: Lang }) {
             <p className="mt-6 font-sans text-[13.5px] text-chalk-40">{t.clock}</p>
 
             {/* Rareté vérifiable : une constante tenue à la main dans config.ts. */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 border border-hair px-5 py-4">
-              <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full bg-brand shadow-[0_0_8px_#e63946]" />
-              <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
-                {t.scarcityLabel}
-              </span>
-              <span className="font-serif text-[15px] text-white">
-                {t.scarcityLine(sc.period, sc.remaining)}
-              </span>
-              <span className="font-sans text-[13.5px] text-chalk-55">{t.scarcityNext(sc.nextOpening[lang])}</span>
-              {sc.closesOn[lang] && (
-                <span className="font-sans text-[13.5px] text-brand">{t.scarcityCloses(sc.closesOn[lang])}</span>
-              )}
+            <div className="mt-8 border border-hair px-5 py-4">
+              <div className="mb-3 flex flex-wrap items-center gap-3">
+                <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
+                  {t.scarcityLabel}
+                </span>
+                <span className="font-serif text-[15px] text-white">
+                  {t.scarcityLine(sc.period, sc.remaining)}
+                </span>
+                <span className="font-sans text-[13.5px] text-chalk-55">{t.scarcityNext(sc.nextOpening[lang])}</span>
+                {sc.closesOn[lang] && (
+                  <span className="font-sans text-[13.5px] text-brand">{t.scarcityCloses(sc.closesOn[lang])}</span>
+                )}
+              </div>
+
+              {/* La jauge : autant de segments que de commandes possibles ce
+                  trimestre, remplis selon ce qui est déjà pris. */}
+              <div className="flex gap-1.5" aria-hidden>
+                {Array.from({ length: sc.total }).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-[7px] flex-1 ${i < sc.total - sc.remaining ? "bg-brand" : "bg-white/10"}`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">

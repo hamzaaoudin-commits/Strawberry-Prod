@@ -1,5 +1,6 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
+import { TrustStrip } from "@/components/strawberry/trust-strip"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
@@ -42,6 +43,7 @@ export default async function Home({
     <main className="min-h-screen">
       <NavBar />
       <HeroSection />
+      <TrustStrip lang={lang} />
       <ReadMarquee />
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />

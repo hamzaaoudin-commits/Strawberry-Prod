@@ -131,13 +131,22 @@ export function NavBar() {
             </Link>
           ))}
 
-          <Link
-            href="/brand-narrative-architecture"
-            className="rounded-full px-5 py-2.5 font-sans text-[13px] font-semibold tracking-[0.04em] text-white no-underline"
-            style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
-          >
-            {t.cta}
-          </Link>
+          {/* Un anneau qui respire autour du bouton, très doucement — signale
+              le CTA sans clignoter ni distraire de la lecture. */}
+          <div className="relative inline-block">
+            <span
+              aria-hidden
+              className="absolute -inset-1 rounded-full border border-brand/50"
+              style={{ animation: "sp-navpulse 2.4s ease-out infinite" }}
+            />
+            <Link
+              href="/brand-narrative-architecture"
+              className="relative rounded-full px-5 py-2.5 font-sans text-[13px] font-semibold tracking-[0.04em] text-white no-underline"
+              style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
+            >
+              {t.cta}
+            </Link>
+          </div>
         </div>
       </div>
 

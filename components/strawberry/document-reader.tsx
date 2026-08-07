@@ -1,7 +1,23 @@
 "use client"
 
 import { useRef, useState } from "react"
-import type { Part, Block } from "@/lib/sample-sillage"
+
+/**
+ * Types du lecteur, définis ici plutôt qu'importés d'un seul document —
+ * SILLAGE et VERSO ont chacun leurs propres types de blocs, proches mais pas
+ * identiques (VERSO n'a ni titre de sous-section ni sous-titre de partie).
+ * Le lecteur accepte l'intersection des deux plutôt que d'être lié à un seul.
+ */
+export type ReaderBlock =
+  | { kind: "h"; text: string }
+  | { kind: "lead"; text: string }
+  | { kind: "p"; text: string }
+  | { kind: "quote"; text: string }
+  | { kind: "list"; items: string[] }
+  | { kind: "table"; head: string[]; rows: string[][] }
+  | { kind: "pair"; beforeLabel: string; afterLabel: string; before: string; after: string }
+
+export type ReaderPart = { n: string; title: string; subtitle?: string; blocks: ReaderBlock[] }
 
 /**
  * Le lecteur du document, page par page.
@@ -17,7 +33,7 @@ import type { Part, Block } from "@/lib/sample-sillage"
  * présentation change.
  */
 
-function RenderBlock({ b }: { b: Block }) {
+function RenderBlock({ b }: { b: ReaderBlock }) {
   switch (b.kind) {
     case "h":
       return (
@@ -109,7 +125,7 @@ export function DocumentReader({
   parts,
   labels,
 }: {
-  parts: Part[]
+  parts: ReaderPart[]
   labels: { toc: string; prev: string; next: string; pageOfTemplate: string; ofCount: string }
 }) {
   const [i, setI] = useState(0)
@@ -130,66 +146,97 @@ export function DocumentReader({
   }
 
   return (
-    <div>
-      {/* Barre de navigation : sommaire + position dans le document. */}
-      <div ref={topRef} className="sticky top-[64px] z-10 border-y border-hair bg-ink/95 backdrop-blur">
-        <div className="mx-auto flex max-w-[820px] items-center justify-between gap-4 px-gutter py-3">
-          <button
-            type="button"
-            onClick={() => setTocOpen((v) => !v)}
-            className="flex items-center gap-2 bg-transparent font-sans text-[13px] text-chalk-65 transition-colors hover:text-white"
-          >
-            <span aria-hidden className="text-brand">☰</span>
-            {labels.toc}
-          </button>
-          {/* Une pile de pages plutôt qu'un simple « Partie 4/14 » en texte —
-              l'idée d'un document qu'on feuillette, rendue physique. */}
-          <div
-            className="flex items-center gap-3"
-            role="status"
-            aria-label={pageLabel}
-          >
-            <div className="relative h-[30px] w-[24px]" aria-hidden>
-              <div className="absolute left-[3px] top-[3px] h-[30px] w-[24px] border border-white/10 bg-[#151010]" />
-              <div className="absolute left-[1.5px] top-[1.5px] h-[30px] w-[24px] border border-white/15 bg-ink" />
-              <div className="relative flex h-[30px] w-[24px] items-center justify-center border border-brand bg-ink font-serif text-[11px] font-bold text-brand">
-                {String(i + 1).padStart(2, "0")}
+    <div className="mx-auto max-w-[1040px] px-gutter lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start lg:gap-10">
+      {/* Le sommaire, en panneau fixe à gauche sur grand écran — il reste
+          visible pendant la lecture au lieu de disparaître dans un menu
+          qu'il faut rouvrir à chaque fois qu'on veut changer de partie. */}
+      <nav
+        aria-label={labels.toc}
+        className="sticky top-[80px] hidden max-h-[calc(100vh-100px)] overflow-y-auto border-r border-hair pb-10 pr-6 pt-10 lg:block"
+      >
+        <div className="mb-4 font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">{labels.toc}</div>
+        <ol className="m-0 flex list-none flex-col gap-1 p-0">
+          {parts.map((p, idx) => (
+            <li key={p.n}>
+              <button
+                type="button"
+                onClick={() => go(idx)}
+                className={`flex w-full items-baseline gap-2.5 border-l-2 bg-transparent py-1.5 pl-3 text-left font-sans text-[13px] no-underline transition-colors ${
+                  idx === i ? "border-brand text-white" : "border-transparent text-chalk-55 hover:text-white"
+                }`}
+              >
+                <span className="font-serif text-[11px] text-brand">{p.n}</span>
+                {p.title}
+              </button>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div>
+        {/* Barre de navigation mobile/tablette : le sommaire redevient un
+            menu qu'on ouvre, faute de place pour un panneau fixe. */}
+        <div ref={topRef} className="sticky top-[64px] z-10 -mx-gutter border-y border-hair bg-ink/95 px-gutter backdrop-blur lg:hidden">
+          <div className="flex items-center justify-between gap-4 py-3">
+            <button
+              type="button"
+              onClick={() => setTocOpen((v) => !v)}
+              className="flex items-center gap-2 bg-transparent font-sans text-[13px] text-chalk-65 transition-colors hover:text-white"
+            >
+              <span aria-hidden className="text-brand">☰</span>
+              {labels.toc}
+            </button>
+            {/* Une pile de pages plutôt qu'un simple « Partie 4/14 » en texte —
+                l'idée d'un document qu'on feuillette, rendue physique. */}
+            <div className="flex items-center gap-3" role="status" aria-label={pageLabel}>
+              <div className="relative h-[30px] w-[24px]" aria-hidden>
+                <div className="absolute left-[3px] top-[3px] h-[30px] w-[24px] border border-white/10 bg-[#151010]" />
+                <div className="absolute left-[1.5px] top-[1.5px] h-[30px] w-[24px] border border-white/15 bg-ink" />
+                <div className="relative flex h-[30px] w-[24px] items-center justify-center border border-brand bg-ink font-serif text-[11px] font-bold text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
               </div>
+              <span className="font-sans text-[12px] text-chalk-40">
+                {labels.ofCount.replace("{n}", String(parts.length))}
+              </span>
             </div>
-            <span className="font-sans text-[12px] text-chalk-40">
-              {labels.ofCount.replace("{n}", String(parts.length))}
-            </span>
           </div>
+
+          {tocOpen && (
+            <div className="border-t border-hair bg-ink">
+              <ol className="m-0 grid list-none gap-x-8 gap-y-1 py-5">
+                {parts.map((p, idx) => (
+                  <li key={p.n}>
+                    <button
+                      type="button"
+                      onClick={() => go(idx)}
+                      className={`flex w-full items-baseline gap-3 bg-transparent py-1 text-left font-sans text-[14px] no-underline transition-colors hover:text-white ${
+                        idx === i ? "text-white" : "text-chalk-55"
+                      }`}
+                    >
+                      <span className="font-serif text-brand">{p.n}</span>
+                      {p.title}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </div>
 
-        {tocOpen && (
-          <div className="border-t border-hair bg-ink">
-            <ol className="mx-auto grid max-w-[820px] list-none gap-x-8 gap-y-1 px-gutter py-5 md:grid-cols-2">
-              {parts.map((p, idx) => (
-                <li key={p.n}>
-                  <button
-                    type="button"
-                    onClick={() => go(idx)}
-                    className={`flex w-full items-baseline gap-3 bg-transparent py-1 text-left font-sans text-[14px] no-underline transition-colors hover:text-white ${
-                      idx === i ? "text-white" : "text-chalk-55"
-                    }`}
-                  >
-                    <span className="font-serif text-brand">{p.n}</span>
-                    {p.title}
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </div>
-        )}
-      </div>
+        {/* Position dans le document, visible en permanence sur grand écran
+            puisque le sommaire fixe ne la montre plus dans une barre du haut. */}
+        <div className="hidden items-center justify-end gap-3 pt-10 lg:flex" role="status" aria-label={pageLabel}>
+          <span className="font-sans text-[12px] text-chalk-40">
+            {labels.ofCount.replace("{n}", String(parts.length))}
+          </span>
+        </div>
 
-      {/* La partie courante. */}
-      <div className="px-gutter">
-        <div className="mx-auto max-w-[820px] py-14 md:py-20">
+        {/* La partie courante. */}
+        <div className="py-10 lg:py-10">
           <div className="mb-2 flex items-baseline gap-4">
             <span className="font-serif text-[2rem] font-bold leading-none text-brand">{part.n}</span>
-            <span className="eyebrow">{part.subtitle}</span>
+            {part.subtitle && <span className="eyebrow">{part.subtitle}</span>}
           </div>
 
           <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.02em]">
@@ -200,27 +247,27 @@ export function DocumentReader({
             <RenderBlock key={idx} b={b} />
           ))}
         </div>
-      </div>
 
-      {/* Précédent / suivant. */}
-      <div className="border-t border-hair px-gutter py-8">
-        <div className="mx-auto flex max-w-[820px] items-center justify-between gap-4">
-          <button
-            type="button"
-            onClick={() => go(i - 1)}
-            disabled={i === 0}
-            className="btn-ghost disabled:cursor-not-allowed disabled:opacity-30"
-          >
-            {labels.prev}
-          </button>
-          <button
-            type="button"
-            onClick={() => go(i + 1)}
-            disabled={i === parts.length - 1}
-            className="btn-primary disabled:cursor-not-allowed disabled:opacity-30"
-          >
-            {labels.next}
-          </button>
+        {/* Précédent / suivant. */}
+        <div className="border-t border-hair py-8">
+          <div className="flex items-center justify-between gap-4">
+            <button
+              type="button"
+              onClick={() => go(i - 1)}
+              disabled={i === 0}
+              className="btn-ghost disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              {labels.prev}
+            </button>
+            <button
+              type="button"
+              onClick={() => go(i + 1)}
+              disabled={i === parts.length - 1}
+              className="btn-primary disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              {labels.next}
+            </button>
+          </div>
         </div>
       </div>
     </div>

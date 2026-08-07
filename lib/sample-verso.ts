@@ -29,6 +29,11 @@ export type AuditDoc = {
   dossierTitle: string
   dossierRows: [string, string][]
   parts: AuditPart[]
+  readerToc: string
+  readerPrev: string
+  readerNext: string
+  readerPageOfTemplate: string
+  readerOfCount: string
   scopeTitle: string
   scopeBody: string
   scopeNot: string[]
@@ -47,6 +52,11 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
     disclaimer:
       "Exemple publié à titre d'illustration. VERSO et les maisons citées ne correspondent à aucune entreprise existante.",
     dossierTitle: "Le dossier",
+    readerToc: "Sommaire",
+    readerPrev: "← Partie précédente",
+    readerNext: "Partie suivante →",
+    readerPageOfTemplate: "Partie {i} / {n}",
+    readerOfCount: "sur {n} blocs",
     dossierRows: [
       ["La maison", "VERSO — Bordeaux, six ans. Reliure et édition d'art à façon."],
       ["Ce qu'elle vend", "Des tirages reliés à la main pour galeries, musées et collectionneurs."],
@@ -219,6 +229,11 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
     disclaimer:
       "Published as an illustration. VERSO and the houses named here correspond to no existing company.",
     dossierTitle: "The dossier",
+    readerToc: "Contents",
+    readerPrev: "← Previous part",
+    readerNext: "Next part →",
+    readerPageOfTemplate: "Part {i} / {n}",
+    readerOfCount: "of {n} blocks",
     dossierRows: [
       ["The house", "VERSO — Bordeaux, six years old. Bespoke art binding and editions."],
       ["What it sells", "Hand-bound editions for galleries, museums and collectors."],

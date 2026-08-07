@@ -241,6 +241,13 @@ export default function CGVPage() {
       <section style={{ padding: "60px clamp(1.5rem,4vw,4rem) 140px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", transition: "all 0.8s ease" }}>
 
+          {/* L'en-tête façon lettre officielle — le titre et la date de
+              révision côte à côte, avant que les articles ne commencent. */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, border: "1px solid rgba(255,255,255,0.1)", borderBottom: `1px solid ${COLOR}66`, padding: "16px 22px", marginBottom: 48 }}>
+            <span style={{ fontFamily: SERIF, fontSize: 15, fontWeight: 700, color: "#fff" }}>Conditions Générales de Vente</span>
+            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rév. 30 mai 2026</span>
+          </div>
+
           {ARTICLES.map((s, i) => (
             <article key={i} style={{ marginBottom: 56, paddingBottom: 56, borderBottom: i < ARTICLES.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
               <div style={{ fontFamily: SERIF, fontSize: "1.3rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.02em" }}>

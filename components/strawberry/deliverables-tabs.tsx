@@ -54,12 +54,23 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
             {group.covers.map((label, i) => (
               <div
                 key={label}
-                className="flex aspect-[3/4] flex-col items-center justify-center gap-2 border border-brand/25 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center"
+                className="group/cover relative aspect-[3/4] overflow-hidden border border-brand/25"
               >
-                <PlaybookIcon index={i} />
-                <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
-                  {label}
-                </span>
+                {/* Face avant : icône + nom du département. */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center transition-opacity duration-300 group-hover/cover:opacity-0">
+                  <PlaybookIcon index={i} />
+                  <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
+                    {label}
+                  </span>
+                </div>
+
+                {/* Au survol : le bénéfice de ce playbook précis, plutôt que
+                    d'obliger à descendre le lire dans la liste plus bas. */}
+                <div className="absolute inset-0 flex items-center justify-center bg-brand p-2 text-center opacity-0 transition-opacity duration-300 group-hover/cover:opacity-100">
+                  <span className="font-sans text-[9.5px] font-semibold leading-tight text-ink">
+                    {group.items[i]?.[0]}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

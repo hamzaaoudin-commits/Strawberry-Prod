@@ -497,3 +497,12 @@ body::before {
   padding-top: 0.02em;
   color: var(--color-brand);
 }
+
+/* L'anneau qui respire autour du bouton de la navbar. */
+@keyframes sp-navpulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes sp-navpulse { 0%, 100% { opacity: 0; transform: scale(1); } }
+}
