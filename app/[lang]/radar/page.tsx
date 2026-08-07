@@ -9,6 +9,7 @@ import { RadarLeadCapture } from "@/components/strawberry/radar-lead-capture"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_RADAR } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { SectionDivider } from "@/components/strawberry/section-divider"
 
 
 // TODO: replace with the live RADAR subscription Stripe link when created.
@@ -370,6 +371,8 @@ export default function RadarPage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider lang={lang} word={lang === "fr" ? "MÉMOIRE." : "MEMORY."} caption={lang === "fr" ? "Ce que RADAR construit, une marque à la fois" : "What RADAR builds, one brand at a time"} />
 
       {/* L'ABONNEMENT */}
       <section className="section pb-10 text-center">

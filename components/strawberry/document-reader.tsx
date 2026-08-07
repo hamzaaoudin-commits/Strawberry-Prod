@@ -130,6 +130,9 @@ export function DocumentReader({
 }) {
   const [i, setI] = useState(0)
   const [tocOpen, setTocOpen] = useState(false)
+  // "idle" : rien en cours. "out" : la page courante pivote pour disparaître.
+  // "in" : la nouvelle page pivote pour apparaître, dans l'axe opposé.
+  const [flip, setFlip] = useState<{ phase: "idle" | "out" | "in"; dir: 1 | -1 }>({ phase: "idle", dir: 1 })
   const topRef = useRef<HTMLDivElement | null>(null)
   const part = parts[i]
 
@@ -138,11 +141,31 @@ export function DocumentReader({
     .replace("{n}", String(parts.length))
 
   const go = (next: number) => {
-    setI(Math.max(0, Math.min(parts.length - 1, next)))
+    const target = Math.max(0, Math.min(parts.length - 1, next))
+    if (target === i) return
     setTocOpen(false)
-    // Un lecteur de document tourne la page : il revient en haut de la
-    // partie courante, il ne garde pas son ancienne position de défilement.
-    topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+
+    const reduced =
+      typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduced) {
+      setI(target)
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+      return
+    }
+
+    // Un lecteur de document tourne vraiment la page : la partie courante
+    // pivote et disparaît, puis la suivante pivote et apparaît dans l'axe
+    // opposé — plutôt qu'un remplacement instantané du contenu.
+    const dir: 1 | -1 = target > i ? 1 : -1
+    setFlip({ phase: "out", dir })
+    window.setTimeout(() => {
+      setI(target)
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+      setFlip({ phase: "in", dir })
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setFlip({ phase: "idle", dir }))
+      })
+    }, 260)
   }
 
   return (
@@ -232,20 +255,42 @@ export function DocumentReader({
           </span>
         </div>
 
-        {/* La partie courante. */}
-        <div className="py-10 lg:py-10">
-          <div className="mb-2 flex items-baseline gap-4">
-            <span className="font-serif text-[2rem] font-bold leading-none text-brand">{part.n}</span>
-            {part.subtitle && <span className="eyebrow">{part.subtitle}</span>}
+        {/* La partie courante — la page tourne vraiment plutôt que de se
+            remplacer d'un coup. "perspective" donne la profondeur, le
+            contenu pivote sur son axe Y et disparaît/apparaît de profil. */}
+        <div style={{ perspective: "1400px" }}>
+          <div
+            className="py-10 lg:py-10"
+            style={{
+              transformStyle: "preserve-3d",
+              transform:
+                flip.phase === "out"
+                  ? `rotateY(${flip.dir * -90}deg)`
+                  : flip.phase === "in"
+                    ? `rotateY(${flip.dir * 90}deg)`
+                    : "rotateY(0deg)",
+              opacity: flip.phase === "idle" ? 1 : 0,
+              transition:
+                flip.phase === "out"
+                  ? "transform 260ms cubic-bezier(.4,0,.6,1), opacity 260ms linear"
+                  : flip.phase === "in"
+                    ? "none"
+                    : "transform 300ms cubic-bezier(.22,.68,0,1), opacity 220ms linear",
+            }}
+          >
+            <div className="mb-2 flex items-baseline gap-4">
+              <span className="font-serif text-[2rem] font-bold leading-none text-brand">{part.n}</span>
+              {part.subtitle && <span className="eyebrow">{part.subtitle}</span>}
+            </div>
+
+            <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.02em]">
+              {part.title}
+            </h2>
+
+            {part.blocks.map((b, idx) => (
+              <RenderBlock key={idx} b={b} />
+            ))}
           </div>
-
-          <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.02em]">
-            {part.title}
-          </h2>
-
-          {part.blocks.map((b, idx) => (
-            <RenderBlock key={idx} b={b} />
-          ))}
         </div>
 
         {/* Précédent / suivant. */}

@@ -9,6 +9,7 @@ import { FAQ_AUDIT } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { SillageSection } from "@/components/strawberry/sillage-section"
 import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
+import { SectionDivider } from "@/components/strawberry/section-divider"
 import { STRIPE_LINKS } from "@/lib/config"
 
 
@@ -962,6 +963,8 @@ export default function BrandNarrativeArchitecturePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider lang={lang} word={lang === "fr" ? "ARCHITECTURE." : "ARCHITECTURE."} caption={lang === "fr" ? "Ce que vous êtes sur le point de commander" : "What you are about to commission"} />
 
       <section id="sec-invest" ref={invest.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>

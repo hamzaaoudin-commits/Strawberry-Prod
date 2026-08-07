@@ -1,38 +1,27 @@
-# Strawberry — tour 33
+# Strawberry — tour 34
 
-14 fichiers, un seul glisser-déposer. Build validé.
+6 fichiers, un seul glisser-déposer. Build validé.
 
 Glissez les dossiers `app` et `components`, jamais leur contenu.
 
-## Ce qui est nouveau — les 5 maquettes validées
+## Ce qui est nouveau — les 3 maquettes validées
 
-**#37 — Les chiffres comptent jusqu'à leur valeur.** 38%, 85%, et les trois
-chiffres de la frise de confiance montent depuis zéro quand ils entrent dans
-l'écran, une seule fois. Un composant réutilisable (`CountUp`) qui reconnaît
-n'importe quel préfixe numérique — fonctionne pour « 38% » comme « 340+ ».
+**#46 — Le lecteur SILLAGE et VERSO tournent vraiment la page.** Au clic sur
+« Suivant » ou « Précédent » (ou depuis le sommaire), la partie courante
+pivote sur son axe et disparaît, puis la suivante pivote et apparaît dans
+l'axe opposé — un vrai geste de page qu'on tourne, pas un remplacement de
+contenu instantané. Désactivé sous préférence de mouvement réduit : le
+contenu change alors directement, sans pivot.
 
-**#39 — Une pastille flottante indique la section en cours.** Sur la page
-Architecture (cinq sections) et la page Le Studio (trois sections), une
-petite pastille en bas d'écran montre où on se trouve, sans être un sommaire
-complet — elle n'apparaît qu'après le premier écran et disparaît en scrollant
-vers le haut.
+**#49 — Le bandeau plein rouge devient un dispositif reconnaissable.** REFUS
+reste sur la home, après le diagnostic. ARCHITECTURE apparaît maintenant sur
+la page Architecture, juste avant le prix. MÉMOIRE apparaît sur RADAR, juste
+avant l'abonnement. Le composant (`SectionDivider`) a été généralisé pour
+accepter n'importe quel mot plutôt que d'être figé sur REFUS.
 
-**#40 — Une vraie coche de confirmation.** Le cercle se trace, puis la coche
-suit, sur la modale Atlas et le formulaire newsletter RADAR — au lieu d'un
-simple texte de confirmation.
-
-**#41 — La FAQ se déplie en douceur.** Le panneau de réponse s'ouvre en
-hauteur (une technique CSS pure, pas de JavaScript pour l'animation), avec un
-filet rouge qui accompagne le texte plutôt qu'un dépliage brut.
-
-**#42 — Les trois pages légales anglaises ont leur en-tête.** Terms, Legal
-Notice et Privacy Policy reçoivent le même bandeau que leurs équivalents
-français, déposé au tour précédent — ce chantier est maintenant complet des
-deux côtés.
-
-## Une erreur trouvée et corrigée avant l'envoi
-
-En construisant, j'ai oublié d'importer le composant de coche dans le
-formulaire newsletter RADAR — le build a échoué, je l'ai corrigé
-immédiatement et revalidé avant de packager. Rien de cassé n'est parti dans
-ce zip.
+**#50 — Le titre du diagnostic s'épaissit au défilement.** « Rien de tout ça
+n'a manqué de bonne volonté » — chaque mot part fin et pâle, et devient gras
+et blanc en traversant le centre de l'écran. La deuxième phrase (« Ça a
+manqué de la bonne cause. ») garde son traitement en dégradé existant,
+inchangé. Effet réservé à ce seul titre — l'appliquer partout aurait coûté
+cher en performance pour un effet qui perd son sens à force d'être répété.

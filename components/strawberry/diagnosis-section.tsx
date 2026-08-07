@@ -1,6 +1,7 @@
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { ScrollFillText } from "@/components/strawberry/scroll-fill-text"
 
 /**
  * Le diagnostic.
@@ -59,10 +60,10 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
 
       <div className="shell relative mx-auto max-w-[780px]">
         <p className="mb-4 font-sans text-[15px] text-chalk-40">{t.lead}</p>
-        <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] font-bold leading-[1.16] tracking-[-0.02em]">
-          {t.h2a}
+        <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.16] tracking-[-0.02em]">
+          <ScrollFillText text={t.h2a} />
           <br />
-          <span className="text-gradient">{t.h2b}</span>
+          <span className="text-gradient font-bold">{t.h2b}</span>
         </h2>
         <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.p1}</p>
 
