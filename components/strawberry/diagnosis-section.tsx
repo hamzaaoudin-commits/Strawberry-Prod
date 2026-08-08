@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -30,6 +33,8 @@ const T = {
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
     enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
+    expand: "Why it's urgent now",
+    collapse: "Show less",
   },
   fr: {
     h2a: "Rien de tout ça n'a manqué de bonne volonté.",
@@ -47,11 +52,14 @@ const T = {
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
     enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
+    expand: "Pourquoi c'est urgent maintenant",
+    collapse: "Réduire",
   },
 }
 
 export function DiagnosisSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
@@ -68,11 +76,16 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
         <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.p1}</p>
 
         <div className="border-l-2 border-brand pl-6 md:pl-8">
-          <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
+          {/* Le paragraphe qui pose l'urgence (saturation par l'IA) est replié
+              par défaut : c'est une élaboration du diagnostic déjà posé
+              au-dessus, pas une information qu'il faut lire pour comprendre
+              l'offre. La citation reste visible — c'est la phrase la plus
+              forte de la section, elle ne doit pas dépendre d'un clic. */}
+          {expanded && (
+            <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
+          )}
 
-          {/* La phrase la plus forte du diagnostic, sortie du paragraphe et
-              agrandie — plutôt que noyée dans le texte courant. */}
-          <div className="mb-8 -ml-6 max-w-[560px] text-center md:-ml-8">
+          <div className="mb-6 -ml-6 max-w-[560px] text-center md:-ml-8">
             <div aria-hidden className="font-serif text-[2.5rem] leading-[0.4] text-brand/30">
               &ldquo;
             </div>
@@ -82,7 +95,17 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             <p className="mt-3 font-sans text-[13px] leading-relaxed text-chalk-55">{t.aiP2strong}</p>
           </div>
 
-          <p className="font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="mb-2 font-sans text-[13px] font-semibold tracking-[0.02em] text-brand underline decoration-brand/40 underline-offset-4 transition-colors hover:text-white"
+          >
+            {expanded ? `\u2212 ${t.collapse}` : `+ ${t.expand}`}
+          </button>
+
+          {expanded && (
+            <p className="mt-4 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
+          )}
         </div>
 
         {/* Le renversement, en plein écran divisé plutôt qu'en deux petites

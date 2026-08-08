@@ -1,38 +1,31 @@
-# Strawberry — patch : le copywriting retravaillé
+# Strawberry — patch : le diagnostic replié par défaut
 
-Deux fichiers : `components/strawberry/hero-section.tsx` et
-`app/[lang]/brand-narrative-architecture/page.tsx`.
+Un seul fichier — `components/strawberry/diagnosis-section.tsx`.
 
 ## Ce qui change
 
-**Le hero ancre sa formule dans du concret.** Après « L'identité qui fait
-qu'on adhère à votre marque, pas qu'on l'achète », une nouvelle ligne
-plate, factuelle, en petites capitales : « Vingt pièces écrites à la main.
-Quatre maisons par trimestre. » La formule au-dessus se croit davantage
-quand une ligne vérifiable la suit immédiatement — c'est la logique de
-Stripe (jamais une phrase abstraite sans l'ancrer dans la phrase
-d'après), pas un ajout décoratif.
+Le texte n'est pas coupé, il est replié. Restent toujours visibles : l'accroche,
+le titre, le premier paragraphe (le vrai diagnostic — logo refait, agence,
+plus de posts, IA), la citation forte (« La différenciation n'est plus un
+luxe marketing... »), le schéma avant/après, et la ligne de contre-positionnement
+à la fin.
 
-**Le pacte humain (page Architecture) casse le motif répété.** Deux des
-quatre items se terminaient par le même geste — une affirmation sur l'IA
-suivie d'un « Nous non » sec. Une fois, c'est une signature. Deux fois sur
-quatre, dans la même section, c'est le mécanisme qui se voit plus que le
-sens.
+Repliés par défaut, derrière un bouton « + Pourquoi c'est urgent
+maintenant » : les deux paragraphes qui développent l'angle IA (saturation
+du marché, déplacement de la valeur de la fabrication vers la stratégie).
+Rien n'est perdu — quiconque veut l'argument complet clique une fois et le
+lit. Personne n'est obligé de le lire pour arriver à l'offre.
 
-- « Écrit une fois » ne finit plus sur « L'IA recycle. Nous non. » —
-  remplacé par une affirmation vérifiable : « Si vous demandiez à lire les
-  cinq derniers récits écrits par ce studio, aucun ne rimerait avec un
-  autre, ni avec le vôtre. »
-- « Quatre commandes par trimestre » ne finit plus sur « L'IA passe à
-  l'échelle à l'infini. Nous non. » — remplacé par une image concrète sur
-  la charge mentale réelle d'un fondateur qui porte quatre dossiers en
-  tête à la fois, jusqu'à pourquoi une cinquième commande abîmerait les
-  quatre autres.
+Sur les ~254 mots de la section, environ 90 sont désormais optionnels — la
+première lecture, non dépliée, tombe autour de 165 mots.
 
-Les deux autres items (le premier et « Depuis Paris ») restent
-inchangés — ils ne suivaient pas ce motif et n'en avaient pas besoin.
+## Suggestion
+
+Si ça fonctionne bien ici, le même traitement s'applique facilement à
+`problem-section.tsx` (163 mots, moins dense, probablement pas nécessaire)
+et à d'autres sections denses de la page Architecture. Dites-moi si vous
+voulez que j'étende le principe ailleurs.
 
 ## Fichiers inclus
 
-- `components/strawberry/hero-section.tsx`
-- `app/[lang]/brand-narrative-architecture/page.tsx`
+- `components/strawberry/diagnosis-section.tsx`
