@@ -1,39 +1,38 @@
-# Strawberry — patch : chaque page retravaillée
+# Strawberry — patch : le copywriting retravaillé
 
-Un seul fichier, `app/[lang]/brand-narrative-architecture/page.tsx`.
+Deux fichiers : `components/strawberry/hero-section.tsx` et
+`app/[lang]/brand-narrative-architecture/page.tsx`.
 
-## Le vrai défaut trouvé en premier
+## Ce qui change
 
-La toute première page de contenu après la couverture — le Diagnostic de
-différenciation — n'avait pas la ligne de pied de page que les 26 autres
-ont. Elle avait l'air inachevée à l'endroit précis où un acheteur commence
-à juger si le document est fini. Corrigé.
+**Le hero ancre sa formule dans du concret.** Après « L'identité qui fait
+qu'on adhère à votre marque, pas qu'on l'achète », une nouvelle ligne
+plate, factuelle, en petites capitales : « Vingt pièces écrites à la main.
+Quatre maisons par trimestre. » La formule au-dessus se croit davantage
+quand une ligne vérifiable la suit immédiatement — c'est la logique de
+Stripe (jamais une phrase abstraite sans l'ancrer dans la phrase
+d'après), pas un ajout décoratif.
 
-## Ce qui change sur les 14 pages génériques
+**Le pacte humain (page Architecture) casse le motif répété.** Deux des
+quatre items se terminaient par le même geste — une affirmation sur l'IA
+suivie d'un « Nous non » sec. Une fois, c'est une signature. Deux fois sur
+quatre, dans la même section, c'est le mécanisme qui se voit plus que le
+sens.
 
-Trois choses, pour qu'elles ne se lisent plus comme un gabarit rempli
-quatorze fois :
+- « Écrit une fois » ne finit plus sur « L'IA recycle. Nous non. » —
+  remplacé par une affirmation vérifiable : « Si vous demandiez à lire les
+  cinq derniers récits écrits par ce studio, aucun ne rimerait avec un
+  autre, ni avec le vôtre. »
+- « Quatre commandes par trimestre » ne finit plus sur « L'IA passe à
+  l'échelle à l'infini. Nous non. » — remplacé par une image concrète sur
+  la charge mentale réelle d'un fondateur qui porte quatre dossiers en
+  tête à la fois, jusqu'à pourquoi une cinquième commande abîmerait les
+  quatre autres.
 
-**Un numéro de pièce en filigrane.** Chaque page affiche désormais son
-numéro dans les vingt, immense et presque invisible en fond de page — le
-même geste que la numérotation de commande sur la page de signature
-finale. Un document qui compte ses pièces une à une, pas des pages
-interchangeables.
-
-**Deux nouveaux types de blocs.** Au-delà de la liste, la citation, le
-tableau et la comparaison déjà là : un chiffre en évidence (utilisé pour
-le prix et pour la règle de décision RH) et une jauge de score (utilisée
-pour l'autopsie concurrentielle, qui se lisait comme un tableau plat et se
-lit maintenant comme une vraie analyse chiffrée).
-
-**Six playbooks, six formes différentes.** Ils utilisaient tous exactement
-le même squelette (une liste à puces). Marketing et Support restent en
-liste ; Contenu aussi ; Réseaux sociaux passe en comparaison par plateforme
-(LinkedIn / Instagram) ; Vente ouvre sur l'objection la plus fréquente
-citée puis répond ; RH ouvre sur la règle de décision unique en chiffre
-mis en avant. Feuilleter les six ne donne plus l'impression de lire le
-même texte recopié.
+Les deux autres items (le premier et « Depuis Paris ») restent
+inchangés — ils ne suivaient pas ce motif et n'en avaient pas besoin.
 
 ## Fichiers inclus
 
+- `components/strawberry/hero-section.tsx`
 - `app/[lang]/brand-narrative-architecture/page.tsx`

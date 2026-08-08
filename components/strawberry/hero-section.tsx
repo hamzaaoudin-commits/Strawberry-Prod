@@ -50,6 +50,7 @@ const T = {
     h1a: "The identity that makes people",
     h1b: "belong to your brand, not just buy it.",
     h1sub: "It isn't generated. It's extracted from who you already are.",
+    grounding: "Twenty pieces, written by hand. Four houses a quarter.",
     sub: "What you sell doesn't change. How the market perceives it does \u2014 enough to follow you, defend you, talk about you unprompted. That's the difference between a customer and someone loyal.",
     cta1: "Place your commission \u2192",
   },
@@ -59,6 +60,7 @@ const T = {
     h1a: "L'identité qui fait qu'on adhère",
     h1b: "à votre marque, pas qu'on l'achète.",
     h1sub: "Elle n'est pas générée. Elle est extraite de ce que vous êtes déjà.",
+    grounding: "Vingt pièces écrites à la main. Quatre maisons par trimestre.",
     sub: "Ce que vous vendez ne change pas. Ce que le marché en perçoit, si — au point de vous suivre, de vous défendre, d'en parler sans qu'on le lui demande. C'est la différence entre un client et quelqu'un de fidèle.",
     cta1: "Passer commande \u2192",
   },
@@ -186,6 +188,13 @@ export function HeroSection() {
 
           <p className="mb-6 max-w-[680px] font-serif text-[clamp(1.05rem,2.2vw,1.6rem)] leading-[1.35] text-white/85">
             {t.h1sub}
+          </p>
+
+          {/* La ligne d'ancrage : après la formule, un fait plat, vérifiable,
+              sans image ni tournure — pour que la formule au-dessus se
+              croie, pas seulement se retienne. */}
+          <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em] text-brand/80">
+            {t.grounding}
           </p>
 
           <p className="mb-12 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
