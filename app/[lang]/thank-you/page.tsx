@@ -80,7 +80,7 @@ const T = {
     steps: [
       { title: "V\u00e9rifie votre bo\u00eete mail", body: "Un email de confirmation avec votre facture est en route. Si vous ne le vois pas d'ici quelques minutes, regarde dans vos spams." },
       { title: "Remplis le Questionnaire d'onboarding", body: "Vous allez recevoir un deuxi\u00e8me email avec votre Questionnaire d'onboarding. C'est l\u00e0 que commence l'extraction \u2014 vos r\u00e9ponses deviennent la mati\u00e8re premi\u00e8re de votre Architecture. Prenez votre temps. Il n'y a pas de mauvaises r\u00e9ponses, seulement des honn\u00eates." },
-      { title: "Le travail commence", body: "Une fois votre questionnaire re\u00e7u, je d\u00e9marre. Vous n'entendras pas du silence \u2014 vous n'entendras rien jusqu'\u00e0 ce que le travail soit pr\u00eat \u00e0 \u00eatre exceptionnel. Livraison dans le d\u00e9lai convenu." },
+      { title: "Le travail commence", body: "Une fois votre questionnaire re\u00e7u, nous d\u00e9marrons. Vous n'entendrez pas du silence \u2014 vous n'entendrez rien jusqu'\u00e0 ce que le travail soit pr\u00eat \u00e0 \u00eatre exceptionnel. Livraison dans le d\u00e9lai convenu." },
     ],
     coming: [
       "Un Diagnostic de diff\u00e9renciation qui vous montre noir sur blanc le terrain libre qu'aucun concurrent n'occupe.",

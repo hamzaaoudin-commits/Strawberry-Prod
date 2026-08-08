@@ -143,7 +143,7 @@ const T = {
       "Sans Weaponize — pas d'incarnation. La doctrine ne rencontre jamais le monde.",
     ],
     bridgeH2: "L'atelier. Et ce qui en sort.",
-    bridgeLeadA: "S.T.R.A.W. est le processus — les cinq \u00e9tapes que je traverse pour b\u00e2tir une maison. La ",
+    bridgeLeadA: "S.T.R.A.W. est le processus — les cinq \u00e9tapes que nous traversons pour b\u00e2tir une maison. La ",
     bridgeLeadStrong: "Brand Narrative Architecture",
     bridgeLeadB: " est ce que ces \u00e9tapes produisent — cinq livrables, reli\u00e9s en un seul document \u00e9ditorial, remis \u00e0 la fin de la quatri\u00e8me semaine.",
     colMethod: "\u00c9tape de m\u00e9thode",

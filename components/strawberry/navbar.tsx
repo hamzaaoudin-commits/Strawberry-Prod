@@ -12,9 +12,9 @@ const T = {
     cta: "Passer commande",
     menu: "Menu",
     offersMenu: [
-      { label: "RADAR — 15€/mois", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4 500€", href: "/brand-narrative-architecture" },
+      { label: "RADAR", sub: "L'archive à consulter", href: "/radar" },
+      { label: "L'audit", sub: "Le diagnostic", href: "/brand-narrative-audit" },
+      { label: "L'architecture", sub: "La commande signature", href: "/brand-narrative-architecture" },
     ],
   },
   en: {
@@ -24,9 +24,9 @@ const T = {
     cta: "Place your commission",
     menu: "Menu",
     offersMenu: [
-      { label: "RADAR — 15€/mo", href: "/radar" },
-      { label: "BRAND NARRATIVE AUDIT — 490€", href: "/brand-narrative-audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE — 4,500€", href: "/brand-narrative-architecture" },
+      { label: "RADAR", sub: "The archive to browse", href: "/radar" },
+      { label: "The audit", sub: "The diagnosis", href: "/brand-narrative-audit" },
+      { label: "The architecture", sub: "The signature commission", href: "/brand-narrative-architecture" },
     ],
   },
 }
@@ -111,9 +111,10 @@ export function NavBar() {
                       key={o.href}
                       href={o.href}
                       onClick={() => setOffersOpen(false)}
-                      className="block rounded-lg px-3.5 py-2.5 font-sans text-[13px] text-chalk-75 no-underline transition-colors hover:bg-brand/10 hover:text-white"
+                      className="block rounded-lg px-3.5 py-2.5 no-underline transition-colors hover:bg-brand/10"
                     >
-                      {o.label}
+                      <div className="font-sans text-[13px] text-chalk-90">{o.label}</div>
+                      <div className="mt-0.5 font-sans text-[11px] text-chalk-40">{o.sub}</div>
                     </Link>
                   ))}
                 </div>
@@ -159,9 +160,10 @@ export function NavBar() {
                 key={o.href}
                 href={o.href}
                 onClick={() => setMobileOpen(false)}
-                className="pl-3 font-sans text-[14.5px] text-chalk-75 no-underline"
+                className="pl-3 no-underline"
               >
-                {o.label}
+                <div className="font-sans text-[14.5px] text-chalk-75">{o.label}</div>
+                <div className="mt-0.5 font-sans text-[12px] text-chalk-40">{o.sub}</div>
               </Link>
             ))}
             <div className="my-1.5 h-px bg-white/10" />

@@ -1,54 +1,42 @@
-# Strawberry — tour 36
+# Strawberry — patch : nav, chiffre RADAR, voix
 
-10 fichiers, un seul glisser-déposer. Build validé.
-
-Glissez les dossiers `app` et `components`, jamais leur contenu.
+Six fichiers. Glissez-les dans leurs dossiers exacts (`app/[lang]/...`,
+`components/strawberry/...`, `lib/...`), jamais le dossier `strawberry-patch`
+lui-même. Chaque fichier écrase son homologue.
 
 ## Ce qui change
 
-**1. Le bug d'animation du hero est corrigé.** La cause : un minuteur au
-montage qui ne se redéclenchait pas de façon fiable quand Next.js restaure
-la page depuis son cache de navigation plutôt que de la remonter
-entièrement — l'animation ne jouait qu'au rafraîchissement complet.
-Remplacé par un déclencheur basé sur la visibilité réelle (les lignes se
-dessinent chaque fois que le hero redevient visible, peu importe comment on
-y arrive).
+**1. Le chiffre RADAR est unifié à 350.** `lib/config.ts` est la seule source
+— la home, la page RADAR et sa FAQ le lisent tous depuis `LIVE.radar.count`.
+Avant : la home affichait 340 pendant que RADAR et sa FAQ affichaient 350 en
+dur à six endroits. Maintenant, changer ce chiffre à l'avenir ne se fait
+qu'à un seul endroit.
 
-**2. Le panneau de confiance (340+, 4, 1 studio) déménage.** Retiré de juste
-après le hero, il apparaît maintenant juste avant l'offre, en réassurance
-avant le prix.
+**2. Le nav et le footer n'affichent plus les trois prix côte à côte.** Le
+menu « Offres » montrait RADAR à 15€, l'Audit à 490€ et l'Architecture à
+4 500€ sur trois lignes, en permanence, sur chaque page — y compris sur la
+home qui ne vend que l'Architecture. Il montre maintenant trois noms avec un
+sous-titre d'une ligne (« L'archive à consulter », « Le diagnostic », « La
+commande signature »), sans prix. Le choix reste visible, la comparaison de
+prix qui parasitait la home a disparu.
 
-**3. Le défilement des marques se rapproche du hero.** La hauteur minimale
-du hero passe de 100vh à 82vh — moins de vide entre le texte et la ligne de
-marques qui défile.
+**3. La voix bascule sur « nous » à trois endroits qui étaient restés en
+« je ».** FAQ (« si le livrable ne tape pas juste, nous écrivons une V2 »),
+page Méthode et page de remerciement. La bio du fondateur sur `/about` et
+les citations du client fictif dans le document SILLAGE n'ont pas été
+touchées — la première est une biographie, qui se raconte légitimement en
+« je », et la seconde est la voix d'un personnage, pas celle du studio.
+Dites-moi si vous voulez que je les bascule aussi.
 
-**4. Le schéma « sans/avec architecture » est animé.** Les points et la
-ligne se dessinent au défilement, comme le reste du site — il restait le
-seul élément statique.
+**4. Une faute au passage** : la page de remerciement disait « vous
+n'entendras » (tutoiement) dans une phrase au vouvoiement. Corrigé en
+« vous n'entendrez ».
 
-**6. L'alignement des statistiques d'impact est corrigé.** Chiffre, titre,
-corps et source s'alignent maintenant sur la même ligne des deux côtés,
-même si un texte est plus long que l'autre — une vraie grille remplace deux
-colonnes indépendantes.
+## Fichiers inclus
 
-**7. Les lettres S.T.R.A.W. de la home arrivent en cascade.** Même
-traitement que sur la page méthode, plutôt qu'un bloc figé.
-
-**8. La phrase sur l'« attention pleine » est retirée** de la section
-offre. « Quatre commandes par trimestre. » reste seul.
-
-**9. L'Atlas quitte la home**, et vit maintenant sur les deux pages
-d'offre — Architecture et Audit — juste après leur FAQ respective.
-
-## Un vrai bug trouvé au passage, pas demandé mais corrigé
-
-En travaillant sur la page Architecture, j'ai remarqué qu'elle **n'avait
-aucun pied de page** — ni liens légaux, ni navigation secondaire, rien.
-C'est corrigé : le pied de page standard y est maintenant présent.
-
-## Le seul point resté en attente
-
-**Le panneau rouge et son titre** — votre message pouvait vouloir dire deux
-choses différentes à cet endroit, et l'une casserait le sens du schéma
-sans/avec architecture. Je n'ai rien touché plutôt que de deviner. Dites-moi
-ce que vous vouliez exactement et je le fais dans le prochain tour.
+- `lib/config.ts`
+- `lib/faqs.ts`
+- `components/strawberry/navbar.tsx`
+- `components/strawberry/footer.tsx`
+- `app/[lang]/strawberry-method/page.tsx`
+- `app/[lang]/thank-you/page.tsx`

@@ -93,7 +93,7 @@ export const LIVE = {
    * `since` est le mois de départ affiché à côté du chiffre.
    */
   radar: {
-    count: 340,
+    count: 350,
     since: { fr: "janvier", en: "January" },
   },
 } as const
