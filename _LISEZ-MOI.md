@@ -1,42 +1,43 @@
-# Strawberry — patch : nav, chiffre RADAR, voix
+# Strawberry — patch : le livrable en livre feuilletable
 
-Six fichiers. Glissez-les dans leurs dossiers exacts (`app/[lang]/...`,
-`components/strawberry/...`, `lib/...`), jamais le dossier `strawberry-patch`
-lui-même. Chaque fichier écrase son homologue.
+Deux fichiers, dont un nouveau. Glissez-les dans leurs dossiers exacts
+(`components/strawberry/` et `app/[lang]/brand-narrative-architecture/`),
+jamais le dossier `strawberry-patch` lui-même.
 
 ## Ce qui change
 
-**1. Le chiffre RADAR est unifié à 350.** `lib/config.ts` est la seule source
-— la home, la page RADAR et sa FAQ le lisent tous depuis `LIVE.radar.count`.
-Avant : la home affichait 340 pendant que RADAR et sa FAQ affichaient 350 en
-dur à six endroits. Maintenant, changer ce chiffre à l'avenir ne se fait
-qu'à un seul endroit.
+**Les onze aperçus de pages ne sont plus en grille.** Avant : quatre blocs
+empilés (« Acte I », « Acte II »...), chacun affichant ses pages côte à côte
+sur toute la largeur du conteneur — plusieurs écrans de hauteur à faire
+défiler avant d'arriver au sommaire complet.
 
-**2. Le nav et le footer n'affichent plus les trois prix côte à côte.** Le
-menu « Offres » montrait RADAR à 15€, l'Audit à 490€ et l'Architecture à
-4 500€ sur trois lignes, en permanence, sur chaque page — y compris sur la
-home qui ne vend que l'Architecture. Il montre maintenant trois noms avec un
-sous-titre d'une ligne (« L'archive à consulter », « Le diagnostic », « La
-commande signature »), sans prix. Le choix reste visible, la comparaison de
-prix qui parasitait la home a disparu.
+Maintenant : un seul cadre de 420px de large, une page à la fois. On clique
+sur les flèches ou on swipe au doigt sur mobile pour tourner la page ; les
+flèches gauche/droite du clavier fonctionnent aussi. Le repère d'acte
+(« Acte II — L'identité ») reste affiché au-dessus du livre en permanence, et
+des points groupés par acte en dessous montrent où on se trouve dans les
+onze pages sans avoir à les compter. Deux fines tranches de page dessinées
+derrière la page visible font lire un livre plutôt qu'une image isolée.
 
-**3. La voix bascule sur « nous » à trois endroits qui étaient restés en
-« je ».** FAQ (« si le livrable ne tape pas juste, nous écrivons une V2 »),
-page Méthode et page de remerciement. La bio du fondateur sur `/about` et
-les citations du client fictif dans le document SILLAGE n'ont pas été
-touchées — la première est une biographie, qui se raconte légitimement en
-« je », et la seconde est la voix d'un personnage, pas celle du studio.
-Dites-moi si vous voulez que je les bascule aussi.
+**Nouveau fichier : `components/strawberry/document-flipbook.tsx`.** Le
+composant est générique — il prend n'importe quelle liste de pages groupées
+par actes, donc réutilisable ailleurs sur le site si vous voulez le même
+traitement pour un autre document (le livre, l'audit).
 
-**4. Une faute au passage** : la page de remerciement disait « vous
-n'entendras » (tutoiement) dans une phrase au vouvoiement. Corrigé en
-« vous n'entendrez ».
+**Nettoyage :** `MockupGrid` et `ActTitle`, qui ne servaient qu'à l'ancien
+affichage en grille, ont été retirés de `page.tsx` — ils ne sont plus
+appelés nulle part.
+
+## Vérification après déploiement
+
+- `/fr/brand-narrative-architecture` et `/en/brand-narrative-architecture` :
+  le livre s'affiche, les flèches et les points tournent bien les pages.
+- Respecte la réduction de mouvement (réglage système) : la page suivante
+  apparaît par un fondu simple, sans rotation.
+- Les onze pages et leurs légendes sont identiques à avant — seul
+  l'affichage change, aucun texte n'a été retouché.
 
 ## Fichiers inclus
 
-- `lib/config.ts`
-- `lib/faqs.ts`
-- `components/strawberry/navbar.tsx`
-- `components/strawberry/footer.tsx`
-- `app/[lang]/strawberry-method/page.tsx`
-- `app/[lang]/thank-you/page.tsx`
+- `components/strawberry/document-flipbook.tsx` (nouveau)
+- `app/[lang]/brand-narrative-architecture/page.tsx`

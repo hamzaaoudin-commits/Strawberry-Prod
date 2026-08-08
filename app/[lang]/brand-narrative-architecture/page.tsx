@@ -11,6 +11,7 @@ import { SillageSection } from "@/components/strawberry/sillage-section"
 import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
 import { SectionDivider } from "@/components/strawberry/section-divider"
 import { AtlasSection } from "@/components/strawberry/atlas-section"
+import { DocumentFlipbook, type FlipbookPage, type FlipbookAct } from "@/components/strawberry/document-flipbook"
 import { Footer } from "@/components/strawberry/footer"
 import { STRIPE_LINKS } from "@/lib/config"
 
@@ -97,6 +98,9 @@ const T = {
     ],
     glimpseNote: "Stylized previews \u00b7 Final document delivered as PDF",
     actLabel: "Act",
+    flipPrev: "Previous page",
+    flipNext: "Next page",
+    flipPage: (i: number, n: number) => `Page ${i} / ${n}`,
     acts: ["The Frame", "The Identity", "The Deployment", "The Signature"],
     measureH2: "Remarkable is measurable.",
     measureLead: "Before we start, we note together how you would describe today what sets you apart \u2014 usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.",
@@ -212,6 +216,9 @@ const T = {
     ],
     glimpseNote: "Aper\u00e7us stylis\u00e9s \u00b7 Document final livr\u00e9 en PDF",
     actLabel: "Acte",
+    flipPrev: "Page précédente",
+    flipNext: "Page suivante",
+    flipPage: (i: number, n: number) => `Page ${i} / ${n}`,
     acts: ["Le Cadre", "L'Identit\u00e9", "Le D\u00e9ploiement", "La Signature"],
     measureH2: "Le remarquable se mesure.",
     measureLead: "Avant de commencer, on note ensemble comment vous d\u00e9crivez aujourd'hui ce qui vous distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
@@ -624,44 +631,6 @@ const ACT_II_C = [<MockupPerceptionMap key="pm" />, <MockupSpine key="sp" />, <M
 const ACT_III_C = [<MockupContentIdeas key="ci" />, <MockupDistribution key="di" />]
 const ACT_IV_C = [<MockupSignature key="sg" />]
 
-type MockItem = { component: React.ReactNode; label: string; caption: string }
-
-function MockupGrid({ items }: { items: MockItem[] }) {
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28 }}>
-      {items.map((m, i) => (
-        <figure key={i} style={{ margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ boxShadow: "0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden" }}>
-            {m.component}
-          </div>
-          <figcaption>
-            <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 6, textTransform: "uppercase", fontFamily: SANS }}>
-              {m.label}
-            </div>
-            <p style={{ fontFamily: SERIF, fontSize: "0.95rem", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
-              {m.caption}
-            </p>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  )
-}
-
-function ActTitle({ roman, title }: { roman: string; title: string }) {
-  return (
-    <div style={{ textAlign: "center", marginBottom: 48, marginTop: 24 }}>
-      <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: COLOR, fontStyle: "italic", marginBottom: 8, letterSpacing: "-0.01em" }}>
-        {roman}
-      </div>
-      <div style={{ width: 40, height: 1, background: COLOR, margin: "0 auto 16px" }} />
-      <div style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: "0.3em", textTransform: "uppercase" }}>
-        {title}
-      </div>
-    </div>
-  )
-}
-
 export default function BrandNarrativeArchitecturePage() {
   const t = useT(T)
   const { lang } = useLang()
@@ -673,6 +642,20 @@ export default function BrandNarrativeArchitecturePage() {
   const ACT_II = t.mockups.actII.map((m, i) => ({ ...m, component: ACT_II_C[i] }))
   const ACT_III = t.mockups.actIII.map((m, i) => ({ ...m, component: ACT_III_C[i] }))
   const ACT_IV = t.mockups.actIV.map((m, i) => ({ ...m, component: ACT_IV_C[i] }))
+
+  // Le livre feuilletable : les quatre actes mis bout à bout en une seule
+  // séquence de onze pages, chacune gardant la mémoire de son acte d'origine
+  // pour le repère affiché au-dessus du livre et le regroupement des points.
+  const FLIPBOOK_PAGES: FlipbookPage[] = [
+    ...ACT_I.map((m) => ({ ...m, actIndex: 0 })),
+    ...ACT_II.map((m) => ({ ...m, actIndex: 1 })),
+    ...ACT_III.map((m) => ({ ...m, actIndex: 2 })),
+    ...ACT_IV.map((m) => ({ ...m, actIndex: 3 })),
+  ]
+  const FLIPBOOK_ACTS: FlipbookAct[] = t.acts.map((title, i) => ({
+    roman: `${t.actLabel} ${["I", "II", "III", "IV"][i]}`,
+    title,
+  }))
   const hero = useReveal()
   const why = useReveal()
   const human = useReveal()
@@ -873,17 +856,13 @@ export default function BrandNarrativeArchitecturePage() {
               {t.glimpseLead}
             </p>
           </div>
-          <ActTitle roman={`${t.actLabel} I`} title={t.acts[0]} />
-          <MockupGrid items={ACT_I} />
-          <div style={{ height: 100 }} />
-          <ActTitle roman={`${t.actLabel} II`} title={t.acts[1]} />
-          <MockupGrid items={ACT_II} />
-          <div style={{ height: 100 }} />
-          <ActTitle roman={`${t.actLabel} III`} title={t.acts[2]} />
-          <MockupGrid items={ACT_III} />
-          <div style={{ height: 100 }} />
-          <ActTitle roman={`${t.actLabel} IV`} title={t.acts[3]} />
-          <MockupGrid items={ACT_IV} />
+          <DocumentFlipbook
+            pages={FLIPBOOK_PAGES}
+            acts={FLIPBOOK_ACTS}
+            prevLabel={t.flipPrev}
+            nextLabel={t.flipNext}
+            pageLabel={t.flipPage}
+          />
           {/* Le sommaire complet. Les quatre actes ne montraient qu'un
               échantillon de pages : un prospect qui engage 4 500€ doit voir
               l'intégralité de ce qu'il reçoit, pas un aperçu. */}
