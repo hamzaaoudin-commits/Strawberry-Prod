@@ -527,6 +527,9 @@ function MockupPerceptionMap() {
         <circle cx="70" cy="70" r="7" fill="#e63946" />
         <text x="70" y="55" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" textAnchor="middle" fontWeight="700">THE HOUSE</text>
       </g>
+      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Four competitors, one shared quadrant. You do not belong there.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
   )
 }
@@ -738,6 +741,8 @@ type Block =
   | { t: "quote"; text: string[] }
   | { t: "split"; leftTitle: string; leftItems: string[]; rightTitle: string; rightItems: string[] }
   | { t: "table"; rows: [string, string][] }
+  | { t: "stat"; value: string; label: string; note: string }
+  | { t: "meter"; rows: [string, number, string][] }
 
 /**
  * Le gabarit générique.
@@ -758,6 +763,7 @@ function MockupGeneric({
   title,
   blocks,
   footnote,
+  piece,
 }: {
   section: string
   page: string
@@ -765,11 +771,20 @@ function MockupGeneric({
   title: string[]
   blocks: Block[]
   footnote: string
+  /** Numéro de la pièce dans les vingt \u2014 affiché en filigrane, écho du
+      numéro de commande sur la page de signature finale. */
+  piece: string
 }) {
   let y = 0
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
+      {/* Le numéro de la pièce, en très grand et très discret \u2014 la
+          signature visuelle d'un document qui compte ses pièces une à une,
+          pas d'une page générique parmi d'autres. */}
+      <text x="392" y="330" fill="rgba(255,255,255,0.035)" fontFamily="Playfair Display, serif" fontSize="220" fontWeight="700" textAnchor="end">
+        {piece}
+      </text>
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{section}</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">{page}</text>
@@ -834,6 +849,37 @@ function MockupGeneric({
             y += h + 16
             return g
           }
+          if (b.t === "stat") {
+            const h = 130
+            const g = (
+              <g key={bi} transform={`translate(0, ${y})`}>
+                <line x1="0" y1="0" x2="0" y2="96" stroke="#e63946" strokeWidth="2" />
+                <text x="18" y="60" fill="#fff" fontFamily="Playfair Display, serif" fontSize="40" fontWeight="700">{b.value}</text>
+                <text x="18" y="82" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{b.label}</text>
+                <text x="18" y="110" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">{b.note}</text>
+              </g>
+            )
+            y += h
+            return g
+          }
+          if (b.t === "meter") {
+            const rowH = 46
+            const h = b.rows.length * rowH
+            const g = (
+              <g key={bi} transform={`translate(0, ${y})`}>
+                {b.rows.map(([label, pct, note], i) => (
+                  <g key={i} transform={`translate(0, ${i * rowH})`}>
+                    <text x="0" y="0" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="1" fontWeight="700">{label}</text>
+                    <rect x="0" y="8" width="340" height="4" fill="rgba(255,255,255,0.1)" />
+                    <rect x="0" y="8" width={Math.max(6, (pct / 100) * 340)} height="4" fill="#e63946" />
+                    <text x="0" y="30" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">{note}</text>
+                  </g>
+                ))}
+              </g>
+            )
+            y += h
+            return g
+          }
           // table
           const h = b.rows.length * 30 + 6
           const g = (
@@ -893,20 +939,26 @@ function MockupPositioningMap() {
 
 // Les huit pièces restantes de "L'Identité" et les six playbooks de "Le
 // Déploiement" — un objet de contenu par page, passé au gabarit générique.
-// Le contenu reste volontairement en anglais, comme le reste des maquettes :
-// ce sont des aperçus stylisés, pas la traduction du vrai livrable.
+// Chaque page varie volontairement sa composition de blocs (liste, citation,
+// comparaison, chiffre, jauge) : feuilleter six playbooks qui se ressemblent
+// tous coûte plus cher en crédibilité que de leur donner chacun une forme.
+// Le contenu reste en anglais, comme le reste des maquettes : ce sont des
+// aperçus stylisés, pas la traduction du vrai livrable.
 const PRICING = (
   <MockupGeneric
-    key="pricing"
+    key="pricing" piece="06"
     section="02 · IDENTITY" page="P. 16" kicker="PRICING NARRATIVE"
     title={["The price is a sentence,", "not a number."]}
-    blocks={[{ t: "quote", text: ["\u201cWe cost more than an agency", "because we refuse more than one.", "Four houses a quarter. This is one.\u201d"] }]}
+    blocks={[
+      { t: "stat", value: "4,500\u20ac", label: "NOT A STARTING PRICE", note: "One number. No range, no \u201ccontact us,\u201d no negotiation ritual." },
+      { t: "quote", text: ["\u201cWe cost more than an agency", "because we refuse more than one.", "Four houses a quarter. This is one.\u201d"] },
+    ]}
     footnote="Price as doctrine, not as a number to be negotiated down."
   />
 )
 const BIOGRAPHY = (
   <MockupGeneric
-    key="biography"
+    key="biography" piece="07"
     section="02 · IDENTITY" page="P. 17" kicker="BIOGRAPHY SYSTEM"
     title={["Four formats,", "one single break."]}
     blocks={[{ t: "lines", items: ["Bio, 160 characters — the scroll-stopping line.", "Speaker introduction — read aloud by someone else.", "Press one-liner — quotable as it stands.", "Long-form bio — the full arc, origin to now."] }]}
@@ -915,16 +967,21 @@ const BIOGRAPHY = (
 )
 const AUTOPSY = (
   <MockupGeneric
-    key="autopsy"
+    key="autopsy" piece="08"
     section="02 · IDENTITY" page="P. 18" kicker="COMPETITOR AUTOPSY"
-    title={["One sheet", "per player."]}
-    blocks={[{ t: "table", rows: [["COMPETITOR A", "Same words, safer claim."], ["COMPETITOR B", "Loudest, says the least."], ["COMPETITOR C", "Cheapest, sounds like it."], ["COMPETITOR D", "The one you actually fear."]] }]}
-    footnote="Not a SWOT. A dissection of what each one dares to say."
+    title={["One sheet,", "one score, per player."]}
+    blocks={[{ t: "meter", rows: [
+      ["COMPETITOR A", 62, "Same words, safer claim."],
+      ["COMPETITOR B", 45, "Loudest, says the least."],
+      ["COMPETITOR C", 30, "Cheapest, sounds like it."],
+      ["COMPETITOR D", 71, "The one you actually fear."],
+    ] }]}
+    footnote="Not a SWOT. A distinctiveness score for what each one dares to say."
   />
 )
 const SIGNATURE_PIECE = (
   <MockupGeneric
-    key="signature-piece"
+    key="signature-piece" piece="09"
     section="02 · IDENTITY" page="P. 19" kicker="THE SIGNATURE PIECE"
     title={["An essay,", "publishable as it stands."]}
     blocks={[{ t: "quote", text: ["\u201cEvery category starts the same way:", "one refusal, loud enough that others", "have to answer it or disappear.\u201d"] }]}
@@ -933,7 +990,7 @@ const SIGNATURE_PIECE = (
 )
 const INVESTOR = (
   <MockupGeneric
-    key="investor"
+    key="investor" piece="11"
     section="02 · IDENTITY" page="P. 20" kicker="INVESTOR & PARTNER TRANSLATION"
     title={["The same story,", "for whoever judges a bet."]}
     blocks={[{ t: "split", leftTitle: "TO A CUSTOMER", leftItems: ["\u201cYou will finally be", "impossible to confuse.\u201d"], rightTitle: "TO AN INVESTOR", rightItems: ["\u201cCategory ownership is", "a pricing power multiplier.\u201d"] }]}
@@ -942,7 +999,7 @@ const INVESTOR = (
 )
 const VISUAL_BRIEF = (
   <MockupGeneric
-    key="visual-brief"
+    key="visual-brief" piece="12"
     section="02 · IDENTITY" page="P. 21" kicker="VISUAL IDENTITY BRIEF"
     title={["Written for a designer", "who thinks."]}
     blocks={[{ t: "lines", items: ["The feeling before the palette.", "Typography logic, not a font list.", "Color as argument, not decoration.", "What to refuse — the moodboard clichés."] }]}
@@ -951,24 +1008,39 @@ const VISUAL_BRIEF = (
 )
 const AUDIENCE = (
   <MockupGeneric
-    key="audience"
+    key="audience" piece="14"
     section="02 · IDENTITY" page="P. 22" kicker="AUDIENCE INTELLIGENCE REPORT"
     title={["Four segments,", "one language each."]}
     blocks={[{ t: "table", rows: [["THE SKEPTIC", "Show, do not claim."], ["THE REFERRED", "Confirm, do not convince."], ["THE COMPARER", "Name the alternative first."], ["THE RETURNER", "Reward the memory."]] }]}
     footnote="The same offer, worded four different ways on purpose."
   />
 )
-function playbook(key: string, page: string, kicker: string, title: string[], items: string[], footnote: string) {
+function playbook(key: string, piece: string, page: string, kicker: string, title: string[], blocks: Block[], footnote: string) {
   return (
-    <MockupGeneric key={key} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={[{ t: "lines", items }]} footnote={footnote} />
+    <MockupGeneric key={key} piece={piece} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={blocks} footnote={footnote} />
   )
 }
-const PB_MARKETING = playbook("pb-marketing", "P. 26", "MARKETING PLAYBOOK", ["Angles to explore,", "angles to refuse."], ["Explore: the refusal, stated plainly.", "Explore: proof over adjectives.", "Refuse: comparison tables with rivals.", "Refuse: any claim we cannot defend live."], "What the market team is allowed to try — and not.")
-const PB_CONTENT = playbook("pb-content", "P. 27", "CONTENT PLAYBOOK", ["The voice,", "turned into rules."], ["Short sentences. Cut the qualifier.", "Name the enemy before the offer.", "One idea per piece, never three.", "End on the sentence, not the summary."], "Anyone can follow it. No one needs to ask you first.")
-const PB_SOCIAL = playbook("pb-social", "P. 28", "SOCIAL MEDIA PLAYBOOK", ["Tone by platform,", "rhythm, and replies."], ["LinkedIn: the essay's argument, condensed.", "Instagram: the artifact, not the process.", "Comments: answer once, precisely, and stop.", "Never: engagement bait disguised as opinion."], "The doctrine, adapted per platform — never diluted.")
-const PB_SALES = playbook("pb-sales", "P. 29", "SALES PLAYBOOK", ["How to present the house", "and defuse objections."], ["Open with the refusal, not the offer.", "\u201cWhy so expensive\u201d \u2192 the scarcity is structural.", "\u201cWe already have a logo\u201d \u2192 a logo is not a doctrine.", "Close by inviting the no, not chasing the yes."], "Objections stop being objections once they are named first.")
-const PB_SUPPORT = playbook("pb-support", "P. 30", "SUPPORT PLAYBOOK", ["How to stay on-voice", "in sensitive situations."], ["Apologize in one sentence. Then fix.", "Never hide behind \u201cpolicy.\u201d Explain the reason.", "Bad news, stated plainly \u2014 never buried in praise.", "The tone holds even when the news does not."], "The identity that survives contact with a complaint.")
-const PB_HR = playbook("pb-hr", "P. 31", "HR & MANAGEMENT PLAYBOOK", ["The culture, retranslated", "to guide decisions."], ["Hire for the refusal, not the resume.", "The doctrine decides ties, not seniority.", "Onboarding teaches the enemy before the offer.", "Reviews ask: did this decision sound like us?"], "Culture as a decision rule, not a poster in the hallway.")
+const PB_MARKETING = playbook("pb-marketing", "15", "P. 26", "MARKETING PLAYBOOK", ["Angles to explore,", "angles to refuse."], [
+  { t: "lines", items: ["Explore: the refusal, stated plainly.", "Explore: proof over adjectives.", "Refuse: comparison tables with rivals.", "Refuse: any claim we cannot defend live."] },
+], "What the market team is allowed to try — and not.")
+const PB_CONTENT = playbook("pb-content", "16", "P. 27", "CONTENT PLAYBOOK", ["The voice,", "turned into rules."], [
+  { t: "lines", items: ["Short sentences. Cut the qualifier.", "Name the enemy before the offer.", "One idea per piece, never three.", "End on the sentence, not the summary."] },
+], "Anyone can follow it. No one needs to ask you first.")
+const PB_SOCIAL = playbook("pb-social", "17", "P. 28", "SOCIAL MEDIA PLAYBOOK", ["Tone by platform,", "rhythm, and replies."], [
+  { t: "split", leftTitle: "LINKEDIN", leftItems: ["The essay's argument,", "condensed to one post."], rightTitle: "INSTAGRAM", rightItems: ["The artifact, shown.", "Never the process."] },
+  { t: "lines", items: ["Comments: answer once, precisely, and stop.", "Never: engagement bait disguised as opinion."] },
+], "The doctrine, adapted per platform — never diluted.")
+const PB_SALES = playbook("pb-sales", "18", "P. 29", "SALES PLAYBOOK", ["How to defuse", "an objection before it lands."], [
+  { t: "quote", text: ["\u201cWhy so expensive?\u201d", "\u2014 The scarcity is structural, not a sales tactic."] },
+  { t: "lines", items: ["Open with the refusal, not the offer.", "\u201cWe already have a logo\u201d \u2192 a logo is not a doctrine.", "Close by inviting the no, not chasing the yes."] },
+], "Objections stop being objections once they are named first.")
+const PB_SUPPORT = playbook("pb-support", "19", "P. 30", "SUPPORT PLAYBOOK", ["How to stay on-voice", "in sensitive situations."], [
+  { t: "lines", items: ["Apologize in one sentence. Then fix.", "Never hide behind \u201cpolicy.\u201d Explain the reason.", "Bad news, stated plainly \u2014 never buried in praise.", "The tone holds even when the news does not."] },
+], "The identity that survives contact with a complaint.")
+const PB_HR = playbook("pb-hr", "20", "P. 31", "HR & MANAGEMENT PLAYBOOK", ["The culture, retranslated", "to guide decisions."], [
+  { t: "stat", value: "1", label: "QUESTION THAT DECIDES TIES", note: "\u201cDid this decision sound like us?\u201d Not seniority. Not consensus." },
+  { t: "lines", items: ["Hire for the refusal, not the resume.", "Onboarding teaches the enemy before the offer."] },
+], "Culture as a decision rule, not a poster in the hallway.")
 const ACT_I_C = [<MockupCover key="c" />, <MockupDedication key="d" />, <MockupIndex key="i" />]
 const ACT_II_C = [
   <MockupPerceptionMap key="pm" />,

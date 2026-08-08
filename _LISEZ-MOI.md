@@ -1,41 +1,38 @@
-# Strawberry — patch : les vingt pièces, sans exception
+# Strawberry — patch : chaque page retravaillée
 
-Un seul fichier, `app/[lang]/brand-narrative-architecture/page.tsx`. Le
-composant `document-flipbook.tsx` livré précédemment n'a pas besoin d'être
-retouché.
+Un seul fichier, `app/[lang]/brand-narrative-architecture/page.tsx`.
 
-## Ce qui manquait vraiment
+## Le vrai défaut trouvé en premier
 
-Le sommaire de la page en dit vingt : « Les vingt pièces, sans exception. »
-Je n'en avais mis en scène qu'une poignée — cinq environ, celles qui
-correspondaient au résumé marketing en cinq lignes, pas à la vraie table des
-matières. Douze pièces n'avaient aucune page, dont les six playbooks
-entiers (marketing, contenu, réseaux sociaux, vente, support, RH). Vous
-aviez raison de le relever deux fois.
+La toute première page de contenu après la couverture — le Diagnostic de
+différenciation — n'avait pas la ligne de pied de page que les 26 autres
+ont. Elle avait l'air inachevée à l'endroit précis où un acheteur commence
+à juger si le document est fini. Corrigé.
 
-## Ce qui change
+## Ce qui change sur les 14 pages génériques
 
-Le livre passe de 13 à 27 pages, réparties sur les mêmes quatre actes :
+Trois choses, pour qu'elles ne se lisent plus comme un gabarit rempli
+quatorze fois :
 
-- **Acte I — Le Cadre** : inchangé (couverture, dédicace, sommaire).
-- **Acte II — L'Identité** : 13 pages. Les cinq déjà là, plus le récit
-  tarifaire, le système de biographies, l'autopsie concurrentielle, la
-  pièce signature, la traduction investisseurs, le brief d'identité
-  visuelle, la carte de positionnement (une vraie carte à deux axes, pas
-  un texte), et le rapport d'intelligence audience.
-- **Acte III — Le Déploiement** : 10 pages. Les quatre déjà là, plus les
-  six playbooks — chacun avec son propre contenu, pas un texte générique
-  recopié six fois.
-- **Acte IV — La Signature** : inchangé.
+**Un numéro de pièce en filigrane.** Chaque page affiche désormais son
+numéro dans les vingt, immense et presque invisible en fond de page — le
+même geste que la numérotation de commande sur la page de signature
+finale. Un document qui compte ses pièces une à une, pas des pages
+interchangeables.
 
-Techniquement : plutôt que d'écrire quatorze fonctions SVG quasi
-identiques, j'ai construit un gabarit générique (`MockupGeneric`) qui prend
-un titre et des blocs de contenu (liste, citation, comparaison, tableau) et
-rend la même grammaire visuelle que le reste du document. Une maquette sur
-mesure reste écrite à la main pour la carte de positionnement, qui a besoin
-d'un vrai visuel. Le contenu des nouvelles pages reste en anglais, comme
-toutes les maquettes existantes — ce sont des aperçus stylisés du gabarit,
-pas la traduction du vrai livrable.
+**Deux nouveaux types de blocs.** Au-delà de la liste, la citation, le
+tableau et la comparaison déjà là : un chiffre en évidence (utilisé pour
+le prix et pour la règle de décision RH) et une jauge de score (utilisée
+pour l'autopsie concurrentielle, qui se lisait comme un tableau plat et se
+lit maintenant comme une vraie analyse chiffrée).
+
+**Six playbooks, six formes différentes.** Ils utilisaient tous exactement
+le même squelette (une liste à puces). Marketing et Support restent en
+liste ; Contenu aussi ; Réseaux sociaux passe en comparaison par plateforme
+(LinkedIn / Instagram) ; Vente ouvre sur l'objection la plus fréquente
+citée puis répond ; RH ouvre sur la règle de décision unique en chiffre
+mis en avant. Feuilleter les six ne donne plus l'impression de lire le
+même texte recopié.
 
 ## Fichiers inclus
 
