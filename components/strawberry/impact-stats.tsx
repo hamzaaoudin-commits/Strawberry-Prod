@@ -70,22 +70,40 @@ export function ImpactStats({ lang }: { lang: Lang }) {
         <div className="kicker mb-10 text-center">{t.kicker}</div>
 
         {/* Une frise plutôt que deux cartes empilées : les deux chiffres se
-            lisent comme une seule phrase, séparés par un simple trait. */}
-        <div className="mx-auto flex max-w-[820px] flex-col items-center justify-center gap-8 rounded-sm bg-white/[0.015] px-6 py-10 sm:flex-row sm:gap-0 md:px-10">
-          <div className="flex flex-col items-center text-center sm:flex-1 sm:items-end sm:pr-8 sm:text-right">
-            <CountUp value={a.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient" />
-            <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{a.title}</p>
-            <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{a.body}</p>
-            <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{a.source}</div>
+            lisent comme une seule phrase, séparés par un simple trait.
+            Grille à quatre lignes partagées entre les deux colonnes — le
+            chiffre, le titre, le corps et la source s'alignent à la même
+            hauteur des deux côtés, même si un texte est plus long que
+            l'autre et prend plus de lignes. */}
+        <div className="mx-auto grid max-w-[820px] grid-cols-1 items-center gap-x-10 gap-y-8 rounded-sm bg-white/[0.015] px-6 py-10 sm:grid-cols-[1fr_auto_1fr] sm:grid-rows-[auto_auto_auto_auto] md:px-10">
+          <CountUp
+            value={a.n}
+            className="sm:[grid-column:1] sm:[grid-row:1] text-center font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient sm:text-right"
+          />
+          <p className="m-0 sm:[grid-column:1] sm:[grid-row:2] max-w-[240px] justify-self-center text-center font-sans text-[13px] font-semibold leading-snug text-white sm:justify-self-end sm:text-right">
+            {a.title}
+          </p>
+          <p className="m-0 sm:[grid-column:1] sm:[grid-row:3] max-w-[240px] justify-self-center text-center font-sans text-[12px] leading-snug text-chalk-55 sm:justify-self-end sm:text-right">
+            {a.body}
+          </p>
+          <div className="sm:[grid-column:1] sm:[grid-row:4] justify-self-center text-center font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40 sm:justify-self-end sm:text-right">
+            {a.source}
           </div>
 
-          <div aria-hidden className="h-px w-16 bg-brand/30 sm:h-16 sm:w-px" />
+          <div aria-hidden className="h-px w-16 justify-self-center bg-brand/30 sm:[grid-column:2] sm:[grid-row:1/5] sm:h-full sm:w-px" />
 
-          <div className="flex flex-col items-center text-center sm:flex-1 sm:items-start sm:pl-8 sm:text-left">
-            <CountUp value={b.n} className="font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient" />
-            <p className="m-0 mt-3 max-w-[240px] font-sans text-[13px] font-semibold leading-snug text-white">{b.title}</p>
-            <p className="m-0 mt-1.5 max-w-[240px] font-sans text-[12px] leading-snug text-chalk-55">{b.body}</p>
-            <div className="mt-3 font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40">{b.source}</div>
+          <CountUp
+            value={b.n}
+            className="sm:[grid-column:3] sm:[grid-row:1] text-center font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient sm:text-left"
+          />
+          <p className="m-0 sm:[grid-column:3] sm:[grid-row:2] max-w-[240px] justify-self-center text-center font-sans text-[13px] font-semibold leading-snug text-white sm:justify-self-start sm:text-left">
+            {b.title}
+          </p>
+          <p className="m-0 sm:[grid-column:3] sm:[grid-row:3] max-w-[240px] justify-self-center text-center font-sans text-[12px] leading-snug text-chalk-55 sm:justify-self-start sm:text-left">
+            {b.body}
+          </p>
+          <div className="sm:[grid-column:3] sm:[grid-row:4] justify-self-center text-center font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40 sm:justify-self-start sm:text-left">
+            {b.source}
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { LettersReveal } from "@/components/strawberry/letters-reveal"
 
 /**
  * Le mécanisme : S.T.R.A.W.
@@ -54,21 +55,10 @@ export function MechanismStrip({ lang }: { lang: Lang }) {
         </div>
 
         {/* Les grandes lettres encadrées en rouge, reprises telles quelles de
-            la page méthode. Le "S.T.R.A.W." en texte simple au-dessus est
+            la page méthode — et animées en cascade comme elle, plutôt que
+            figées d'un bloc. Le "S.T.R.A.W." en texte simple au-dessus est
             retiré : il doublait ce que les lettres montrent déjà. */}
-        <div className="mx-auto grid max-w-[900px] grid-cols-5 gap-2 sm:gap-4">
-          {t.letters.map((l) => (
-            <div key={l.letter} className="text-center">
-              <div className="mb-5 border-2 border-brand bg-brand/[0.06] py-5 font-serif text-[clamp(2rem,6vw,4rem)] font-bold leading-none text-brand shadow-[0_20px_60px_rgba(230,57,70,0.35)] sm:py-10">
-                {l.letter}
-              </div>
-              <div aria-hidden className="mx-auto mb-3 h-1.5 w-1.5 rounded-full bg-brand" />
-              <div className="font-sans text-[10px] font-semibold uppercase tracking-[0.1em] text-white sm:text-[13px]">
-                {l.name}
-              </div>
-            </div>
-          ))}
-        </div>
+        <LettersReveal letters={t.letters} />
 
         {/* Le déroulé des verbes, relié par des tirets. */}
         <div className="mx-auto mt-10 flex max-w-[900px] flex-wrap items-center justify-center gap-x-3 gap-y-2">

@@ -114,7 +114,7 @@ const T = {
       "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
     cta1: "Place your commission →",
     cta2: "Read the full brief",
-    limit: "Four commissions per quarter. Not a sales tactic — the structural limit of full attention.",
+    limit: "Four commissions per quarter.",
   },
   fr: {
     kicker: "La commande signature",
@@ -204,7 +204,7 @@ const T = {
       "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
     cta1: "Passer commande →",
     cta2: "Lire le brief complet",
-    limit: "Quatre commandes par trimestre. Ce n'est pas une tactique de vente — c'est la limite structurelle d'une attention pleine.",
+    limit: "Quatre commandes par trimestre.",
   },
 }
 

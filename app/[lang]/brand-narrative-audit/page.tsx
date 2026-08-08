@@ -8,6 +8,7 @@ import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { AUDIT_DOC } from "@/lib/sample-verso"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { AtlasSection } from "@/components/strawberry/atlas-section"
 
 const T = {
   fr: {
@@ -347,6 +348,8 @@ export default async function BrandNarrativeAuditPage({
       </section>
 
       <FaqSection faqs={FAQ_AUDIT490} />
+
+      <AtlasSection />
 
       <Footer />
     </main>

@@ -1,6 +1,7 @@
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { ArchitectureDiagram } from "@/components/strawberry/architecture-diagram"
 
 /**
  * Le problème.
@@ -66,40 +67,12 @@ export function ProblemSection({ lang }: { lang: Lang }) {
           {/* Le schéma : sans architecture, des fragments dispersés qui ne
               s'accumulent pas. Avec, une ligne qui monte parce que chaque
               prise de parole s'appuie sur la précédente. */}
-          <div className="mb-8 grid gap-6 sm:grid-cols-2">
-            <div className="border border-hair p-5">
-              <svg viewBox="0 0 200 70" className="mb-3 h-[64px] w-full" aria-hidden>
-                <circle cx="20" cy="45" r="4" fill="currentColor" className="text-white/25" />
-                <circle cx="60" cy="20" r="4" fill="currentColor" className="text-white/25" />
-                <circle cx="100" cy="52" r="4" fill="currentColor" className="text-white/25" />
-                <circle cx="140" cy="15" r="4" fill="currentColor" className="text-white/25" />
-                <circle cx="180" cy="38" r="4" fill="currentColor" className="text-white/25" />
-              </svg>
-              <div className="font-sans text-[12px] uppercase tracking-[0.14em] text-chalk-40">
-                {t.diagramWithout}
-              </div>
-              <p className="m-0 mt-1.5 font-sans text-[13px] leading-snug text-chalk-55">{t.diagramWithoutSub}</p>
-            </div>
-
-            <div className="border border-brand-hair bg-brand/[0.03] p-5">
-              <svg viewBox="0 0 200 70" className="mb-3 h-[64px] w-full" aria-hidden>
-                <polyline
-                  points="20,58 60,46 100,34 140,22 180,10"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className="text-brand/50"
-                />
-                <circle cx="20" cy="58" r="4" fill="currentColor" className="text-brand" />
-                <circle cx="60" cy="46" r="4" fill="currentColor" className="text-brand" />
-                <circle cx="100" cy="34" r="4" fill="currentColor" className="text-brand" />
-                <circle cx="140" cy="22" r="4" fill="currentColor" className="text-brand" />
-                <circle cx="180" cy="10" r="4" fill="currentColor" className="text-brand" />
-              </svg>
-              <div className="font-sans text-[12px] uppercase tracking-[0.14em] text-brand">{t.diagramWith}</div>
-              <p className="m-0 mt-1.5 font-sans text-[13px] leading-snug text-chalk-75">{t.diagramWithSub}</p>
-            </div>
-          </div>
+          <ArchitectureDiagram
+            labelWithout={t.diagramWithout}
+            subWithout={t.diagramWithoutSub}
+            labelWith={t.diagramWith}
+            subWith={t.diagramWithSub}
+          />
           <p className="font-serif text-[clamp(1.15rem,2.2vw,1.55rem)] leading-snug text-white/90">{t.close}</p>
         </div>
       </div>

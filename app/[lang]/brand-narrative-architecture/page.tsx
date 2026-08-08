@@ -10,6 +10,8 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { SillageSection } from "@/components/strawberry/sillage-section"
 import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
 import { SectionDivider } from "@/components/strawberry/section-divider"
+import { AtlasSection } from "@/components/strawberry/atlas-section"
+import { Footer } from "@/components/strawberry/footer"
 import { STRIPE_LINKS } from "@/lib/config"
 
 
@@ -1006,6 +1008,8 @@ export default function BrandNarrativeArchitecturePage() {
 
       <FaqSection faqs={FAQ_AUDIT} />
 
+      <AtlasSection />
+
       <FloatingSectionPill
         sections={[
           { id: "sec-why", label: t.lWhy },
@@ -1015,6 +1019,8 @@ export default function BrandNarrativeArchitecturePage() {
           { id: "sec-invest", label: t.lInvest },
         ]}
       />
+
+      <Footer />
 
     </main>
   )

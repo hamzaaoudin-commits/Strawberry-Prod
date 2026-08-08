@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -67,13 +67,34 @@ const T = {
 export function HeroSection() {
   const t = useT(T)
   const [mounted, setMounted] = useState(false)
-  
-  useEffect(() => { 
-    setTimeout(() => setMounted(true), 100) 
+  const heroRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    // Un minuteur au montage ne se redéclenche pas de façon fiable quand
+    // Next.js restaure une page depuis son cache de navigation plutôt que de
+    // la remonter entièrement — l'animation ne jouait alors qu'au
+    // rafraîchissement complet. Un observateur de visibilité est robuste
+    // dans les deux cas : il se redéclenche à chaque fois que le hero
+    // redevient visible, peu importe comment on y est arrivé.
+    const el = heroRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setMounted(true), 100)
+        } else {
+          setMounted(false)
+        }
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-ink">
+    <section id="home" ref={heroRef as any} className="relative flex min-h-[82vh] items-center overflow-hidden bg-ink">
       <ViewTracker name="hero" />
       <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
       <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
