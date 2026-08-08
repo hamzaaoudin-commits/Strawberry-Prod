@@ -38,6 +38,7 @@ export type FlipbookAct = {
 const COLOR = "#e63946"
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
+const DURATION = 700
 
 export function DocumentFlipbook({
   pages,
@@ -55,30 +56,62 @@ export function DocumentFlipbook({
 }) {
   const [index, setIndex] = useState(0)
   const [dir, setDir] = useState<1 | -1>(1)
-  const [turning, setTurning] = useState(false)
+  // idle : rien ne tourne. armed : la page qui tourne est montée à son point
+  // de départ, transition coupée — le temps qu'un premier rendu passe avant
+  // d'activer la transition, sans quoi le navigateur saute directement à
+  // l'état final et rien ne s'anime. animating : la transition tourne.
+  const [phase, setPhase] = useState<"idle" | "armed" | "animating">("idle")
+  const [pendingIndex, setPendingIndex] = useState<number | null>(null)
   const [reduced, setReduced] = useState(false)
   const touchStartX = useRef<number | null>(null)
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches)
   }, [])
 
+  const turning = phase !== "idle"
+
   const goTo = useCallback(
     (next: number) => {
-      if (next < 0 || next >= pages.length || next === index) return
-      setDir(next > index ? 1 : -1)
-      setTurning(true)
+      if (next < 0 || next >= pages.length || next === index || turning) return
       track("flipbook_page_turn", { to: next })
-      window.setTimeout(
-        () => {
-          setIndex(next)
-          setTurning(false)
-        },
-        reduced ? 0 : 260
-      )
+      if (reduced) {
+        setIndex(next)
+        return
+      }
+      setDir(next > index ? 1 : -1)
+      setPendingIndex(next)
+      setPhase("armed")
     },
-    [index, pages.length, reduced]
+    [index, pages.length, reduced, turning]
   )
+
+  // Deux images animation-frame avant de déclencher la transition : le
+  // premier laisse le navigateur peindre l'état de départ (page à plat,
+  // transition coupée), le second bascule sur l'état final avec la
+  // transition active — c'est ce qui force réellement l'animation à jouer
+  // au lieu de sauter directement au résultat.
+  useEffect(() => {
+    if (phase !== "armed") return
+    const raf1 = requestAnimationFrame(() => {
+      rafRef.current = requestAnimationFrame(() => setPhase("animating"))
+    })
+    return () => {
+      cancelAnimationFrame(raf1)
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+    }
+  }, [phase])
+
+  useEffect(() => {
+    if (phase !== "animating" || pendingIndex === null) return
+    const t = window.setTimeout(() => {
+      setIndex(pendingIndex)
+      setPendingIndex(null)
+      setPhase("idle")
+    }, DURATION)
+    return () => window.clearTimeout(t)
+  }, [phase, pendingIndex])
 
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -88,8 +121,22 @@ export function DocumentFlipbook({
     [goTo, index]
   )
 
-  const current = pages[index]
-  const act = acts[current.actIndex]
+  // La page à afficher pour le repère d'acte, la légende et la pagination :
+  // dès le clic, on bascule sur la destination — visuellement la nouvelle
+  // page est déjà "là", sous la page qui tourne.
+  const displayIndex = turning && pendingIndex !== null ? pendingIndex : index
+  const display = pages[displayIndex]
+  const act = acts[display.actIndex]
+
+  // La couche du dessous : la page qui reste en place. En avançant, c'est
+  // directement la destination (la page qui tourne la révèle en dessous).
+  // En reculant, c'est encore la page actuelle, le temps que la page
+  // précédente se rabatte par-dessus.
+  const baseIndex = turning ? (dir === 1 ? pendingIndex! : index) : index
+  // La couche du dessus : la page qui tourne. En avançant, la page actuelle
+  // qui se rabat vers la gauche. En reculant, la page précédente qui revient
+  // se poser par-dessus.
+  const flapIndex = turning ? (dir === 1 ? index : pendingIndex!) : null
 
   return (
     <div
@@ -166,20 +213,55 @@ export function DocumentFlipbook({
           style={{
             position: "relative",
             boxShadow: "0 30px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06)",
-            perspective: 1400,
+            perspective: 1600,
           }}
         >
-          <div
-            key={index}
-            style={{
-              transformOrigin: dir === 1 ? "left center" : "right center",
-              transform: turning && !reduced ? `rotateY(${dir === 1 ? "-14deg" : "14deg"})` : "rotateY(0deg)",
-              opacity: turning ? 0.4 : 1,
-              transition: reduced ? "opacity 150ms ease" : "transform 260ms ease, opacity 260ms ease",
-            }}
-          >
-            {current.component}
-          </div>
+          {/* Page de base : toujours à plat, jamais animée. */}
+          <div style={{ visibility: turning ? "hidden" : "visible" }}>{pages[baseIndex].component}</div>
+          {turning && (
+            <div style={{ position: "absolute", inset: 0 }}>{pages[baseIndex].component}</div>
+          )}
+
+          {/* Page qui tourne : montée sur son bord gauche comme une reliure,
+              pivote à 180°. Passé la moitié du mouvement, son dos masqué
+              (backfaceVisibility) la fait disparaître d'un coup — exactement
+              l'instant où une vraie page cesse d'être visible de face. */}
+          {turning && flapIndex !== null && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                transformStyle: "preserve-3d",
+                transformOrigin: "left center",
+                backfaceVisibility: "hidden",
+                transform:
+                  phase === "animating"
+                    ? dir === 1
+                      ? "rotateY(-180deg)"
+                      : "rotateY(0deg)"
+                    : dir === 1
+                      ? "rotateY(0deg)"
+                      : "rotateY(-180deg)",
+                transition: phase === "animating" ? `transform ${DURATION}ms cubic-bezier(0.45,0,0.2,1)` : "none",
+                boxShadow: "-2px 0 12px rgba(0,0,0,0.4)",
+              }}
+            >
+              {pages[flapIndex].component}
+              {/* Ombre qui balaie la page au moment où elle pivote, pour
+                  suggérer le relief plutôt qu'un aplat qui tourne sur lui-même. */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to right, rgba(0,0,0,0.5), transparent 55%)",
+                  opacity: phase === "animating" ? 1 : 0,
+                  transition: `opacity ${DURATION * 0.6}ms ease`,
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Flèches, posées de part et d'autre du livre plutôt qu'en dessous —
@@ -187,7 +269,7 @@ export function DocumentFlipbook({
         <button
           type="button"
           aria-label={prevLabel}
-          disabled={index === 0}
+          disabled={index === 0 || turning}
           onClick={() => goTo(index - 1)}
           style={arrowStyle("left")}
         >
@@ -196,7 +278,7 @@ export function DocumentFlipbook({
         <button
           type="button"
           aria-label={nextLabel}
-          disabled={index === pages.length - 1}
+          disabled={index === pages.length - 1 || turning}
           onClick={() => goTo(index + 1)}
           style={arrowStyle("right")}
         >
@@ -215,7 +297,7 @@ export function DocumentFlipbook({
             marginBottom: 6,
           }}
         >
-          {current.label}
+          {display.label}
         </div>
         <p
           style={{
@@ -228,7 +310,7 @@ export function DocumentFlipbook({
             maxWidth: 360,
           }}
         >
-          {current.caption}
+          {display.caption}
         </p>
       </div>
 
@@ -241,16 +323,17 @@ export function DocumentFlipbook({
             key={i}
             type="button"
             aria-label={pageLabel(i + 1, pages.length)}
-            aria-current={i === index}
+            aria-current={i === displayIndex}
+            disabled={turning}
             onClick={() => goTo(i)}
             style={{
               width: 6,
               height: 6,
               borderRadius: "50%",
               border: "none",
-              cursor: "pointer",
+              cursor: turning ? "default" : "pointer",
               padding: 0,
-              background: i === index ? COLOR : "rgba(255,255,255,0.18)",
+              background: i === displayIndex ? COLOR : "rgba(255,255,255,0.18)",
               marginRight: i < pages.length - 1 && pages[i + 1].actIndex !== p.actIndex ? 10 : 0,
               transition: "background 200ms ease",
             }}
@@ -267,7 +350,7 @@ export function DocumentFlipbook({
           color: "rgba(255,255,255,0.35)",
         }}
       >
-        {pageLabel(index + 1, pages.length)}
+        {pageLabel(displayIndex + 1, pages.length)}
       </div>
     </div>
   )

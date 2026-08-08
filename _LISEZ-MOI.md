@@ -1,43 +1,36 @@
-# Strawberry — patch : le livrable en livre feuilletable
+# Strawberry — patch : vraie animation de page qui tourne
 
-Deux fichiers, dont un nouveau. Glissez-les dans leurs dossiers exacts
-(`components/strawberry/` et `app/[lang]/brand-narrative-architecture/`),
-jamais le dossier `strawberry-patch` lui-même.
+Un seul fichier — il remplace le composant livré précédemment
+(`components/strawberry/document-flipbook.tsx`). Rien d'autre à toucher :
+`brand-narrative-architecture/page.tsx` n'a pas changé, ce composant
+garde exactement la même interface.
+
+## Ce qui ne marchait pas
+
+La version précédente ne faisait pivoter la page que de 14° avec un fondu
+d'opacité — un tremblement, pas une page qui tourne. Rien ne simulait
+réellement le geste.
 
 ## Ce qui change
 
-**Les onze aperçus de pages ne sont plus en grille.** Avant : quatre blocs
-empilés (« Acte I », « Acte II »...), chacun affichant ses pages côte à côte
-sur toute la largeur du conteneur — plusieurs écrans de hauteur à faire
-défiler avant d'arriver au sommaire complet.
+La page pivote maintenant à 180° sur son bord gauche, comme une vraie
+reliure : perspective 3D, disparition nette au passage de la moitié du
+mouvement (on est censé voir son dos, donc elle s'efface), et une ombre qui
+balaie la page pendant qu'elle tourne pour donner du relief. La page de
+destination est déjà là, en dessous, révélée au fur et à mesure. 700ms,
+easing progressif — assez lent pour se voir, assez rapide pour ne pas
+traîner.
 
-Maintenant : un seul cadre de 420px de large, une page à la fois. On clique
-sur les flèches ou on swipe au doigt sur mobile pour tourner la page ; les
-flèches gauche/droite du clavier fonctionnent aussi. Le repère d'acte
-(« Acte II — L'identité ») reste affiché au-dessus du livre en permanence, et
-des points groupés par acte en dessous montrent où on se trouve dans les
-onze pages sans avoir à les compter. Deux fines tranches de page dessinées
-derrière la page visible font lire un livre plutôt qu'une image isolée.
+Techniquement : l'animation est déclenchée en deux temps (l'état de départ
+est peint sans transition, puis la transition démarre au repaint suivant) —
+c'est ce qui manquait pour que la transition CSS s'exécute réellement au
+lieu de sauter directement au résultat final. Les boutons et points de
+pagination sont désactivés pendant qu'une page tourne, pour ne pas
+interrompre le mouvement en cours.
 
-**Nouveau fichier : `components/strawberry/document-flipbook.tsx`.** Le
-composant est générique — il prend n'importe quelle liste de pages groupées
-par actes, donc réutilisable ailleurs sur le site si vous voulez le même
-traitement pour un autre document (le livre, l'audit).
-
-**Nettoyage :** `MockupGrid` et `ActTitle`, qui ne servaient qu'à l'ancien
-affichage en grille, ont été retirés de `page.tsx` — ils ne sont plus
-appelés nulle part.
-
-## Vérification après déploiement
-
-- `/fr/brand-narrative-architecture` et `/en/brand-narrative-architecture` :
-  le livre s'affiche, les flèches et les points tournent bien les pages.
-- Respecte la réduction de mouvement (réglage système) : la page suivante
-  apparaît par un fondu simple, sans rotation.
-- Les onze pages et leurs légendes sont identiques à avant — seul
-  l'affichage change, aucun texte n'a été retouché.
+`prefers-reduced-motion` continue d'être respecté : la page change alors
+sans rotation.
 
 ## Fichiers inclus
 
-- `components/strawberry/document-flipbook.tsx` (nouveau)
-- `app/[lang]/brand-narrative-architecture/page.tsx`
+- `components/strawberry/document-flipbook.tsx`
