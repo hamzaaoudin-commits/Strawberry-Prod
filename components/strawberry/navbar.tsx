@@ -13,8 +13,8 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR", sub: "L'archive à consulter", href: "/radar" },
-      { label: "L'audit", sub: "Le diagnostic", href: "/brand-narrative-audit" },
-      { label: "L'architecture", sub: "La commande signature", href: "/brand-narrative-architecture" },
+      { label: "BRAND NARRATIVE AUDIT", sub: "Le diagnostic", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE", sub: "La commande signature", href: "/brand-narrative-architecture" },
     ],
   },
   en: {
@@ -25,8 +25,8 @@ const T = {
     menu: "Menu",
     offersMenu: [
       { label: "RADAR", sub: "The archive to browse", href: "/radar" },
-      { label: "The audit", sub: "The diagnosis", href: "/brand-narrative-audit" },
-      { label: "The architecture", sub: "The signature commission", href: "/brand-narrative-architecture" },
+      { label: "BRAND NARRATIVE AUDIT", sub: "The diagnosis", href: "/brand-narrative-audit" },
+      { label: "BRAND NARRATIVE ARCHITECTURE", sub: "The signature commission", href: "/brand-narrative-architecture" },
     ],
   },
 }
