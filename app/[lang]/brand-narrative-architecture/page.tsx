@@ -145,10 +145,26 @@ const T = {
         { label: "The Origin Story", caption: "The rupture before. The conviction after. Named with precision." },
         { label: "The Manifesto", caption: "A single page. The doctrine, made unforgettable." },
         { label: "The Language System", caption: "Your words. The forbidden ones. Before and after." },
+        { label: "The Pricing Narrative", caption: "The price is a sentence, not a number \u2014 said once, defended always." },
+        { label: "The Biography System", caption: "Four formats, one single break, sized for four different rooms." },
+        { label: "The Competitor Autopsy", caption: "One sheet per player \u2014 what each one dares to say, and what it hides." },
+        { label: "The Signature Piece", caption: "An essay, publishable as it stands \u2014 under your name." },
+        { label: "Investor & Partner Translation", caption: "The same story, worded for whoever is judging a bet." },
+        { label: "The Visual Identity Brief", caption: "Written for a designer who thinks, not just executes." },
+        { label: "The Positioning Map", caption: "Two axes that reveal what the category's usual axes hide." },
+        { label: "Audience Intelligence Report", caption: "Four segments, one language each \u2014 the same offer, worded on purpose." },
       ],
       actIII: [
+        { label: "The Homepage Rewrite", caption: "Headline, subhead, key sections \u2014 rewritten, ready to paste." },
+        { label: "The Presentation Line", caption: "One line, one paragraph, one 30-second pitch. Sized for the moment." },
         { label: "The Deployment Kit", caption: "Speaking angles by pillar. Ready the Monday after." },
         { label: "The Coherence Guide", caption: "One voice, any hand. Your identity holds without you." },
+        { label: "Marketing Playbook", caption: "Angles to explore, angles to refuse \u2014 decided in advance." },
+        { label: "Content Playbook", caption: "The voice, turned into rules anyone on the team can follow." },
+        { label: "Social Media Playbook", caption: "Tone by platform, rhythm, and how to answer comments." },
+        { label: "Sales Playbook", caption: "How to present the house and defuse objections before they land." },
+        { label: "Support Playbook", caption: "How to stay on-voice in sensitive, difficult situations." },
+        { label: "HR & Management Playbook", caption: "The culture, retranslated into a rule that guides decisions." },
       ],
       actIV: [
         { label: "The Signature Page", caption: "Numbered. Dated. Signed. A document built to be kept." },
@@ -263,10 +279,26 @@ const T = {
         { label: "Le R\u00e9cit d'origine", caption: "La rupture d'avant. La conviction d'apr\u00e8s. Nomm\u00e9es avec pr\u00e9cision." },
         { label: "Le Manifeste", caption: "Une seule page. La doctrine, rendue inoubliable." },
         { label: "Le Syst\u00e8me de langage", caption: "Vos mots. Les interdits. Avant et apr\u00e8s." },
+        { label: "Le R\u00e9cit tarifaire", caption: "Le prix comme une phrase, pas un chiffre \u2014 dite une fois, d\u00e9fendue toujours." },
+        { label: "Le Syst\u00e8me de biographies", caption: "Quatre formats, une seule rupture, calibr\u00e9s pour quatre publics." },
+        { label: "L'Autopsie concurrentielle", caption: "Une fiche par acteur \u2014 ce que chacun ose dire, et ce qu'il cache." },
+        { label: "La Pi\u00e8ce signature", caption: "Un essai, publiable en l'\u00e9tat \u2014 sous votre nom." },
+        { label: "Traduction investisseurs & partenaires", caption: "Le m\u00eame r\u00e9cit, formul\u00e9 pour qui juge un pari." },
+        { label: "Le Brief d'identit\u00e9 visuelle", caption: "\u00c9crit pour un designer qui r\u00e9fl\u00e9chit, pas qui ex\u00e9cute." },
+        { label: "La Carte de positionnement", caption: "Deux axes qui r\u00e9v\u00e8lent ce que les axes habituels de la cat\u00e9gorie cachent." },
+        { label: "Le Rapport d'intelligence audience", caption: "Quatre segments, une langue chacun \u2014 la m\u00eame offre, formul\u00e9e \u00e0 dessein." },
       ],
       actIII: [
+        { label: "La Home r\u00e9\u00e9crite", caption: "Titre, sous-titre, sections cl\u00e9s \u2014 r\u00e9\u00e9crits, pr\u00eats \u00e0 coller." },
+        { label: "La Phrase de pr\u00e9sentation", caption: "Une ligne, un paragraphe, un pitch de 30 secondes. Selon le moment." },
         { label: "Le Kit de d\u00e9ploiement", caption: "Angles de prise de parole par pilier. Pr\u00eats d\u00e8s lundi." },
         { label: "Le Guide de coh\u00e9rence", caption: "Une voix, n'importe quelle main. Votre identit\u00e9 tient sans vous." },
+        { label: "Playbook marketing", caption: "Les axes \u00e0 explorer, ceux \u00e0 refuser \u2014 d\u00e9cid\u00e9s \u00e0 l'avance." },
+        { label: "Playbook contenu", caption: "La voix, mise en r\u00e8gles que n'importe qui dans l'\u00e9quipe peut suivre." },
+        { label: "Playbook r\u00e9seaux sociaux", caption: "Le ton par plateforme, le rythme, et comment r\u00e9pondre aux commentaires." },
+        { label: "Playbook vente", caption: "Comment pr\u00e9senter la maison et d\u00e9samorcer les objections avant qu'elles n'arrivent." },
+        { label: "Playbook support", caption: "Comment rester dans le ton dans les situations sensibles et difficiles." },
+        { label: "Playbook RH & management", caption: "La culture, retraduite en une r\u00e8gle qui guide les d\u00e9cisions." },
       ],
       actIV: [
         { label: "La Page de signature", caption: "Num\u00e9rot\u00e9e. Dat\u00e9e. Sign\u00e9e. Un document fait pour \u00eatre gard\u00e9." },
@@ -529,6 +561,81 @@ function MockupArchetype() {
   )
 }
 
+function MockupHomepageRewrite() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 20</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">HOMEPAGE REWRITE</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Ready to paste. Not a suggestion.</text>
+      <g transform="translate(30, 155)">
+        <rect x="0" y="0" width="340" height="130" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <text x="14" y="24" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">BEFORE</text>
+        <text x="14" y="56" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">We deliver innovative solutions</text>
+        <text x="14" y="76" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">tailored to your needs.</text>
+        <text x="14" y="110" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">Sounds like the other eleven tabs open</text>
+        <text x="14" y="124" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">in the same browser window.</text>
+      </g>
+      <g transform="translate(30, 300)">
+        <rect x="0" y="0" width="340" height="130" fill="rgba(230,57,70,0.05)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
+        <text x="14" y="24" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">AFTER</text>
+        <text x="14" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">The last agency you will ever</text>
+        <text x="14" y="80" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">need to explain yourself to.</text>
+        <text x="14" y="112" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9">Headline, subhead, key sections — rewritten.</text>
+      </g>
+      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Copy you paste on Monday, not a slide you file away.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
+    </svg>
+  )
+}
+
+function MockupTagline() {
+  const rows: [string, string, number][] = [
+    ["ONE LINE", "The identity people join, not just buy.", 60],
+    ["ONE PARAGRAPH", "Three sentences that hold the position, the fight, and the proof — in the order a stranger needs them.", 100],
+    ["30-SECOND PITCH", "The version you say out loud, at a dinner, to someone who has never heard of you — and remembers it after.", 130],
+  ]
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 21</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE PRESENTATION LINE · THREE FORMATS</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Say it short. Say it long. Say it once.</text>
+      <g transform="translate(30, 155)">
+        {(() => {
+          let y = 0
+          return rows.map(([tag, line, h], i) => {
+            const g = (
+              <g key={i} transform={`translate(0, ${y})`}>
+                <rect x="0" y="0" width="340" height={h} fill={i === 0 ? "rgba(230,57,70,0.05)" : "rgba(255,255,255,0.02)"} stroke={i === 0 ? "rgba(230,57,70,0.3)" : "rgba(255,255,255,0.1)"} strokeWidth="1" />
+                <text x="14" y="22" fill={i === 0 ? "#e63946" : "rgba(255,255,255,0.5)"} fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">{tag}</text>
+                <text x="14" y="46" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">
+                  <tspan x="14" dy="0">{line.length > 42 ? line.slice(0, 42) : line}</tspan>
+                  {line.length > 42 && <tspan x="14" dy="18">{line.slice(42)}</tspan>}
+                </text>
+              </g>
+            )
+            y += h + 14
+            return g
+          })
+        })()}
+      </g>
+      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">One idea, sized for a bio, a pitch, or a stage.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
+    </svg>
+  )
+}
+
 function MockupContentIdeas() {
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
@@ -626,9 +733,270 @@ function MockupSignature() {
   )
 }
 
+type Block =
+  | { t: "lines"; items: string[] }
+  | { t: "quote"; text: string[] }
+  | { t: "split"; leftTitle: string; leftItems: string[]; rightTitle: string; rightItems: string[] }
+  | { t: "table"; rows: [string, string][] }
+
+/**
+ * Le gabarit générique.
+ *
+ * Vingt pièces, chacune sa page — mais pas chacune sa fonction SVG de
+ * zéro : au-delà des pages qui méritaient une illustration sur mesure
+ * (la carte de positionnement, les avant/après), la plupart des pièces
+ * restantes se disent très bien avec la même grammaire visuelle que le
+ * reste du document (bandeau, titre, bloc de contenu, note de bas de
+ * page) et un contenu qui change. Un gabarit paramétré évite quatorze
+ * fonctions quasi identiques à maintenir, sans que la page ait l'air
+ * moins soignée — le cadre est déjà celui de tout le document.
+ */
+function MockupGeneric({
+  section,
+  page,
+  kicker,
+  title,
+  blocks,
+  footnote,
+}: {
+  section: string
+  page: string
+  kicker: string
+  title: string[]
+  blocks: Block[]
+  footnote: string
+}) {
+  let y = 0
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{section}</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">{page}</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">{kicker}</text>
+      {title.map((line, i) => (
+        <text key={i} x="30" y={118 + i * 24} fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">
+          {line}
+        </text>
+      ))}
+      <g transform={`translate(30, ${118 + title.length * 24 + 20})`}>
+        {blocks.map((b, bi) => {
+          if (b.t === "lines") {
+            const h = b.items.length * 26 + 14
+            const g = (
+              <g key={bi} transform={`translate(0, ${y})`}>
+                {b.items.map((line, i) => (
+                  <g key={i} transform={`translate(0, ${i * 26})`}>
+                    <circle cx="4" cy="-4" r="2" fill="#e63946" />
+                    <text x="16" y="0" fill="rgba(255,255,255,0.75)" fontFamily="Playfair Display, serif" fontSize="12" fontStyle="italic">
+                      {line}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            )
+            y += h
+            return g
+          }
+          if (b.t === "quote") {
+            const h = b.text.length * 26 + 30
+            const g = (
+              <g key={bi} transform={`translate(0, ${y})`}>
+                <line x1="0" y1="-10" x2="0" y2={b.text.length * 26 - 8} stroke="#e63946" strokeWidth="2" />
+                {b.text.map((line, i) => (
+                  <text key={i} x="18" y={i * 26} fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">
+                    {line}
+                  </text>
+                ))}
+              </g>
+            )
+            y += h
+            return g
+          }
+          if (b.t === "split") {
+            const rowsN = Math.max(b.leftItems.length, b.rightItems.length)
+            const h = 30 + rowsN * 20
+            const g = (
+              <g key={bi} transform={`translate(0, ${y})`}>
+                <rect x="0" y="0" width="162" height={h} fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="1" />
+                <text x="14" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1.5" fontWeight="700">{b.leftTitle}</text>
+                {b.leftItems.map((line, i) => (
+                  <text key={i} x="14" y={44 + i * 20} fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">{line}</text>
+                ))}
+                <rect x="178" y="0" width="162" height={h} fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+                <text x="192" y="22" fill="rgba(255,255,255,0.55)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1.5" fontWeight="700">{b.rightTitle}</text>
+                {b.rightItems.map((line, i) => (
+                  <text key={i} x="192" y={44 + i * 20} fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">{line}</text>
+                ))}
+              </g>
+            )
+            y += h + 16
+            return g
+          }
+          // table
+          const h = b.rows.length * 30 + 6
+          const g = (
+            <g key={bi} transform={`translate(0, ${y})`}>
+              {b.rows.map((row, i) => (
+                <g key={i} transform={`translate(0, ${i * 30})`}>
+                  <line x1="0" y1="18" x2="340" y2="18" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                  <text x="0" y="10" fill="rgba(255,255,255,0.45)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="1">{row[0]}</text>
+                  <text x="340" y="10" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="end">{row[1]}</text>
+                </g>
+              ))}
+            </g>
+          )
+          y += h
+          return g
+        })}
+      </g>
+      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">{footnote}</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
+    </svg>
+  )
+}
+
+function MockupPositioningMap() {
+  return (
+    <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
+      <rect width="400" height="520" fill="#0d0d0d" />
+      <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · IDENTITY</text>
+      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 15</text>
+      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">POSITIONING MAP</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">Two axes the category hides.</text>
+      <g transform="translate(60, 160)">
+        <line x1="0" y1="130" x2="280" y2="130" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <line x1="140" y1="0" x2="140" y2="260" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        <text x="0" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1">GENERIC</text>
+        <text x="280" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="end">NAMED</text>
+        <text x="140" y="-6" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">LOUD</text>
+        <text x="140" y="272" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">QUIET</text>
+        <circle cx="80" cy="60" r="5" fill="rgba(255,255,255,0.3)" />
+        <circle cx="60" cy="90" r="5" fill="rgba(255,255,255,0.3)" />
+        <circle cx="100" cy="40" r="5" fill="rgba(255,255,255,0.3)" />
+        <circle cx="70" cy="70" r="5" fill="rgba(255,255,255,0.3)" />
+        <circle cx="220" cy="200" r="9" fill="#e63946" />
+        <text x="220" y="222" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="700" textAnchor="middle">YOUR HOUSE</text>
+      </g>
+      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">The empty quadrant is not a coincidence. It is the plan.</text>
+      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
+      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
+    </svg>
+  )
+}
+
+// Les huit pièces restantes de "L'Identité" et les six playbooks de "Le
+// Déploiement" — un objet de contenu par page, passé au gabarit générique.
+// Le contenu reste volontairement en anglais, comme le reste des maquettes :
+// ce sont des aperçus stylisés, pas la traduction du vrai livrable.
+const PRICING = (
+  <MockupGeneric
+    key="pricing"
+    section="02 · IDENTITY" page="P. 16" kicker="PRICING NARRATIVE"
+    title={["The price is a sentence,", "not a number."]}
+    blocks={[{ t: "quote", text: ["\u201cWe cost more than an agency", "because we refuse more than one.", "Four houses a quarter. This is one.\u201d"] }]}
+    footnote="Price as doctrine, not as a number to be negotiated down."
+  />
+)
+const BIOGRAPHY = (
+  <MockupGeneric
+    key="biography"
+    section="02 · IDENTITY" page="P. 17" kicker="BIOGRAPHY SYSTEM"
+    title={["Four formats,", "one single break."]}
+    blocks={[{ t: "lines", items: ["Bio, 160 characters — the scroll-stopping line.", "Speaker introduction — read aloud by someone else.", "Press one-liner — quotable as it stands.", "Long-form bio — the full arc, origin to now."] }]}
+    footnote="The same person, sized for four rooms."
+  />
+)
+const AUTOPSY = (
+  <MockupGeneric
+    key="autopsy"
+    section="02 · IDENTITY" page="P. 18" kicker="COMPETITOR AUTOPSY"
+    title={["One sheet", "per player."]}
+    blocks={[{ t: "table", rows: [["COMPETITOR A", "Same words, safer claim."], ["COMPETITOR B", "Loudest, says the least."], ["COMPETITOR C", "Cheapest, sounds like it."], ["COMPETITOR D", "The one you actually fear."]] }]}
+    footnote="Not a SWOT. A dissection of what each one dares to say."
+  />
+)
+const SIGNATURE_PIECE = (
+  <MockupGeneric
+    key="signature-piece"
+    section="02 · IDENTITY" page="P. 19" kicker="THE SIGNATURE PIECE"
+    title={["An essay,", "publishable as it stands."]}
+    blocks={[{ t: "quote", text: ["\u201cEvery category starts the same way:", "one refusal, loud enough that others", "have to answer it or disappear.\u201d"] }]}
+    footnote="Long-form, under your name — not a blog post assignment."
+  />
+)
+const INVESTOR = (
+  <MockupGeneric
+    key="investor"
+    section="02 · IDENTITY" page="P. 20" kicker="INVESTOR & PARTNER TRANSLATION"
+    title={["The same story,", "for whoever judges a bet."]}
+    blocks={[{ t: "split", leftTitle: "TO A CUSTOMER", leftItems: ["\u201cYou will finally be", "impossible to confuse.\u201d"], rightTitle: "TO AN INVESTOR", rightItems: ["\u201cCategory ownership is", "a pricing power multiplier.\u201d"] }]}
+    footnote="Identical conviction. Different proof each audience needs."
+  />
+)
+const VISUAL_BRIEF = (
+  <MockupGeneric
+    key="visual-brief"
+    section="02 · IDENTITY" page="P. 21" kicker="VISUAL IDENTITY BRIEF"
+    title={["Written for a designer", "who thinks."]}
+    blocks={[{ t: "lines", items: ["The feeling before the palette.", "Typography logic, not a font list.", "Color as argument, not decoration.", "What to refuse — the moodboard clichés."] }]}
+    footnote="A brief a designer can argue with, not just execute."
+  />
+)
+const AUDIENCE = (
+  <MockupGeneric
+    key="audience"
+    section="02 · IDENTITY" page="P. 22" kicker="AUDIENCE INTELLIGENCE REPORT"
+    title={["Four segments,", "one language each."]}
+    blocks={[{ t: "table", rows: [["THE SKEPTIC", "Show, do not claim."], ["THE REFERRED", "Confirm, do not convince."], ["THE COMPARER", "Name the alternative first."], ["THE RETURNER", "Reward the memory."]] }]}
+    footnote="The same offer, worded four different ways on purpose."
+  />
+)
+function playbook(key: string, page: string, kicker: string, title: string[], items: string[], footnote: string) {
+  return (
+    <MockupGeneric key={key} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={[{ t: "lines", items }]} footnote={footnote} />
+  )
+}
+const PB_MARKETING = playbook("pb-marketing", "P. 26", "MARKETING PLAYBOOK", ["Angles to explore,", "angles to refuse."], ["Explore: the refusal, stated plainly.", "Explore: proof over adjectives.", "Refuse: comparison tables with rivals.", "Refuse: any claim we cannot defend live."], "What the market team is allowed to try — and not.")
+const PB_CONTENT = playbook("pb-content", "P. 27", "CONTENT PLAYBOOK", ["The voice,", "turned into rules."], ["Short sentences. Cut the qualifier.", "Name the enemy before the offer.", "One idea per piece, never three.", "End on the sentence, not the summary."], "Anyone can follow it. No one needs to ask you first.")
+const PB_SOCIAL = playbook("pb-social", "P. 28", "SOCIAL MEDIA PLAYBOOK", ["Tone by platform,", "rhythm, and replies."], ["LinkedIn: the essay's argument, condensed.", "Instagram: the artifact, not the process.", "Comments: answer once, precisely, and stop.", "Never: engagement bait disguised as opinion."], "The doctrine, adapted per platform — never diluted.")
+const PB_SALES = playbook("pb-sales", "P. 29", "SALES PLAYBOOK", ["How to present the house", "and defuse objections."], ["Open with the refusal, not the offer.", "\u201cWhy so expensive\u201d \u2192 the scarcity is structural.", "\u201cWe already have a logo\u201d \u2192 a logo is not a doctrine.", "Close by inviting the no, not chasing the yes."], "Objections stop being objections once they are named first.")
+const PB_SUPPORT = playbook("pb-support", "P. 30", "SUPPORT PLAYBOOK", ["How to stay on-voice", "in sensitive situations."], ["Apologize in one sentence. Then fix.", "Never hide behind \u201cpolicy.\u201d Explain the reason.", "Bad news, stated plainly \u2014 never buried in praise.", "The tone holds even when the news does not."], "The identity that survives contact with a complaint.")
+const PB_HR = playbook("pb-hr", "P. 31", "HR & MANAGEMENT PLAYBOOK", ["The culture, retranslated", "to guide decisions."], ["Hire for the refusal, not the resume.", "The doctrine decides ties, not seniority.", "Onboarding teaches the enemy before the offer.", "Reviews ask: did this decision sound like us?"], "Culture as a decision rule, not a poster in the hallway.")
 const ACT_I_C = [<MockupCover key="c" />, <MockupDedication key="d" />, <MockupIndex key="i" />]
-const ACT_II_C = [<MockupPerceptionMap key="pm" />, <MockupSpine key="sp" />, <MockupOrigin key="or" />, <MockupManifesto key="mf" />, <MockupArchetype key="ar" />]
-const ACT_III_C = [<MockupContentIdeas key="ci" />, <MockupDistribution key="di" />]
+const ACT_II_C = [
+  <MockupPerceptionMap key="pm" />,
+  <MockupSpine key="sp" />,
+  <MockupOrigin key="or" />,
+  <MockupManifesto key="mf" />,
+  <MockupArchetype key="ar" />,
+  PRICING,
+  BIOGRAPHY,
+  AUTOPSY,
+  SIGNATURE_PIECE,
+  INVESTOR,
+  VISUAL_BRIEF,
+  <MockupPositioningMap key="pos" />,
+  AUDIENCE,
+]
+const ACT_III_C = [
+  <MockupHomepageRewrite key="hr" />,
+  <MockupTagline key="tl" />,
+  <MockupContentIdeas key="ci" />,
+  <MockupDistribution key="di" />,
+  PB_MARKETING,
+  PB_CONTENT,
+  PB_SOCIAL,
+  PB_SALES,
+  PB_SUPPORT,
+  PB_HR,
+]
 const ACT_IV_C = [<MockupSignature key="sg" />]
 
 export default function BrandNarrativeArchitecturePage() {
