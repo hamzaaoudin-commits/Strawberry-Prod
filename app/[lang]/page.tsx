@@ -6,7 +6,6 @@ import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { SectionDivider } from "@/components/strawberry/section-divider"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
-import { ArchitectureBlueprint } from "@/components/strawberry/architecture-blueprint"
 import { TrustStrip } from "@/components/strawberry/trust-strip"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { FaqSection } from "@/components/strawberry/faq-section"
@@ -53,7 +52,6 @@ export default async function Home({
       <SectionDivider lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
-      <ArchitectureBlueprint lang={lang} />
       <TrustStrip lang={lang} />
       <OffersSection lang={lang} />
       <BookSection lang={lang} />
