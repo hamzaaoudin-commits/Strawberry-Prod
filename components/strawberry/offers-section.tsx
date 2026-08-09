@@ -42,6 +42,7 @@ const T = {
       {
         icon: "diagnostic",
         title: "Diagnostic",
+        covers: ["Diagnostic", "Autopsy", "Positioning", "Audience"],
         items: [
           ["You will never again be compared to the competitor next door.", "Differentiation diagnostic — five competitors dissected, the words they share, and the empty ground you take."],
           ["You know exactly where each rival is weak.", "Competitor autopsy — one sheet per player in the market."],
@@ -52,6 +53,7 @@ const T = {
       {
         icon: "identity",
         title: "Identity & language",
+        covers: ["Platform", "Language", "Pricing", "Origin"],
         items: [
           ["You know what to answer when someone asks what you do.", "Narrative platform — the constitution of the house, in writing."],
           ["Your words stop being everyone else's.", "Language system — the vocabulary, the tone, the daily tests."],
@@ -62,6 +64,7 @@ const T = {
       {
         icon: "assets",
         title: "Assets & deployment",
+        covers: ["Deployment", "Coherence", "Biography", "Signature", "Investor", "Visual brief"],
         items: [
           ["You know what to do the Monday after.", "Deployment kit — the first ninety days, in order."],
           ["You settle questions alone, without calling us back.", "Coherence guide — written for the founder, not for the team."],
@@ -132,6 +135,7 @@ const T = {
       {
         icon: "diagnostic",
         title: "Diagnostic",
+        covers: ["Diagnostic", "Autopsie", "Positionnement", "Audience"],
         items: [
           ["Vous ne serez plus jamais comparé au concurrent d'à côté.", "Diagnostic de différenciation — cinq concurrents disséqués, leurs mots communs, et le terrain vide que vous prenez."],
           ["Vous savez exactement où chaque rival est faible.", "Autopsie des concurrents — une fiche par acteur du marché."],
@@ -142,6 +146,7 @@ const T = {
       {
         icon: "identity",
         title: "Identité & langage",
+        covers: ["Plateforme", "Langage", "Tarifaire", "Origine"],
         items: [
           ["Vous savez quoi répondre quand on vous demande ce que vous faites.", "Plateforme narrative — la constitution de la maison, par écrit."],
           ["Vos mots cessent d'être ceux de tout le monde.", "Système de langage — le vocabulaire, le ton, les tests quotidiens."],
@@ -152,6 +157,7 @@ const T = {
       {
         icon: "assets",
         title: "Pièces & déploiement",
+        covers: ["Déploiement", "Cohérence", "Biographie", "Signature", "Investisseurs", "Brief visuel"],
         items: [
           ["Vous savez quoi faire dès le lundi qui suit.", "Kit de déploiement — les quatre-vingt-dix premiers jours, dans l'ordre."],
           ["Vous tranchez seul, sans avoir à nous rappeler.", "Guide de cohérence — écrit pour le fondateur, pas pour l'équipe."],

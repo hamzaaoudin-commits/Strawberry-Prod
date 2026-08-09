@@ -23,6 +23,7 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
   const [active, setActive] = useState(0)
   const group = groups[active]
   const isPlaybooks = group.icon === "playbooks"
+  const cols = (group.covers?.length ?? 0) > 4 ? "grid-cols-3 sm:grid-cols-6" : "grid-cols-2 sm:grid-cols-4"
 
   let n = 0
   for (let i = 0; i < active; i++) n += groups[i].items.length
@@ -49,14 +50,18 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
 
       {/* Le groupe actif. */}
       <div>
-        {isPlaybooks && group.covers && (
-          <div className="mb-6 grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+        {/* La grille de tuiles avec bascule au survol \u2014 auparavant réservée
+            aux playbooks, désormais pour tout groupe qui fournit des
+            `covers`. Un seul des quatre onglets avait un visuel ; les trois
+            autres n'étaient qu'une liste de texte. */}
+        {group.covers && (
+          <div className={`mb-6 grid gap-2.5 ${cols}`}>
             {group.covers.map((label, i) => (
               <div
                 key={label}
                 className="group/cover relative aspect-[3/4] overflow-hidden border border-brand/25"
               >
-                {/* Face avant : icône + nom du département. */}
+                {/* Face avant : icône + nom de la pièce. */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center transition-opacity duration-300 group-hover/cover:opacity-0">
                   <PlaybookIcon index={i} />
                   <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
@@ -64,7 +69,7 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
                   </span>
                 </div>
 
-                {/* Au survol : le bénéfice de ce playbook précis, plutôt que
+                {/* Au survol : le bénéfice de cette pièce précise, plutôt que
                     d'obliger à descendre le lire dans la liste plus bas. */}
                 <div className="absolute inset-0 flex items-center justify-center bg-brand p-2 text-center opacity-0 transition-opacity duration-300 group-hover/cover:opacity-100">
                   <span className="font-sans text-[9.5px] font-semibold leading-tight text-ink">
