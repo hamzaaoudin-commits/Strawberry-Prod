@@ -17,6 +17,10 @@ export const LIMITS = {
   email: 254, // RFC 5321 maximum
   message: 4000,
   goal: 120,
+  /** Réponse courte du questionnaire (phrase de positionnement, lien, tagline concurrent). */
+  short: 400,
+  /** Réponse longue du questionnaire (conviction, rupture, portrait...). Une réponse honnête déborde largement un message de contact. */
+  narrative: 6000,
 } as const
 
 /** Minimum time (ms) a real human needs to fill the form. Faster = bot. */
