@@ -36,7 +36,6 @@ const T = {
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
-    bibleName: "Also called the Brand Narrative Bible.",
     deliverablesKicker: "What changes, part by part",
     groups: [
       {
@@ -104,8 +103,6 @@ const T = {
     priceCadence: "one commission, paid once",
     justify:
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
-    roiTitle: "The return frame",
-    roi: "One deal signed at full price, or one rate increase you actually hold, and the document has paid for itself.",
     clock: "Already commissioned the audit? Its 490€ comes off this price, provided you commission within the following sixty days.",
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
@@ -117,7 +114,6 @@ const T = {
       "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
     cta1: "Place your commission →",
     cta2: "Read the full brief",
-    limit: "Four commissions per quarter.",
   },
   fr: {
     kicker: "La commande signature",
@@ -129,7 +125,6 @@ const T = {
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
       "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
-    bibleName: "Aussi appelée la Brand Narrative Bible.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     groups: [
       {
@@ -197,8 +192,6 @@ const T = {
     priceCadence: "une commande, payée une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
-    roiTitle: "Le cadre de retour",
-    roi: "Un seul contrat signé au prix plein, ou une augmentation de tarif que vous tenez, et le document est remboursé.",
     clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix, à condition de commander dans les soixante jours qui suivent.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
@@ -210,7 +203,6 @@ const T = {
       "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
     cta1: "Passer commande →",
     cta2: "Lire le brief complet",
-    limit: "Quatre commandes par trimestre.",
   },
 }
 
@@ -260,7 +252,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <div>
               <div className="pill mb-3">BRAND NARRATIVE ARCHITECTURE</div>
-              <div className="mb-7 font-serif text-[13px] italic text-chalk-40">{t.bibleName}</div>
 
               <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
                 {t.h3}
@@ -329,11 +320,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <p className="mt-6 max-w-[620px] font-sans text-[15.5px] leading-[1.8] text-chalk-65">{t.justify}</p>
 
-            <div className="mt-8 border border-brand-hair bg-brand/[0.04] px-6 py-5">
-              <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{t.roiTitle}</div>
-              <p className="m-0 font-serif text-[clamp(1.05rem,2vw,1.3rem)] leading-snug text-white">{t.roi}</p>
-            </div>
-
             <div className="mt-6 grid gap-px bg-white/10 sm:grid-cols-2">
               <div className="bg-ink px-6 py-5">
                 <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">
@@ -394,8 +380,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 {t.cta2}
               </Link>
             </div>
-
-            <p className="mt-6 font-sans text-[13px] text-chalk-40">{t.limit}</p>
           </div>
         </div>
       </div>

@@ -18,8 +18,7 @@ const T = {
     author: "Hamza El Jaouahiry · 158 pages · Strawberry Production, Paris",
     epigraph:
       "In a market where everyone has access to the same machine, the best product no longer wins. The clearest doctrine does.",
-    body: "This studio does not improvise its doctrine commission by commission. It is written down, argued across 158 pages, and published in French and in English — including the five-stage method, demonstrated end to end on three houses.",
-    close: "The machine made everyone identical. Start underground.",
+    body: "This studio does not improvise its doctrine commission by commission. It is written down, argued across 158 pages — including the five-stage method, demonstrated end to end on three houses.",
     buy: "Get the book →",
     cta: "Read about the book →",
     parts: [
@@ -36,8 +35,7 @@ const T = {
     author: "Hamza El Jaouahiry · 158 pages · Strawberry Production, Paris",
     epigraph:
       "Sur un marché où tout le monde a accès à la même machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
-    body: "Ce studio n'improvise pas sa doctrine commande après commande. Elle est écrite, argumentée sur 158 pages, et publiée en français et en anglais — méthode en cinq étapes comprise, démontrée de bout en bout sur trois maisons.",
-    close: "La machine a rendu tout le monde identique. Commencez sous terre.",
+    body: "Ce studio n'improvise pas sa doctrine commande après commande. Elle est écrite, argumentée sur 158 pages — méthode en cinq étapes comprise, démontrée de bout en bout sur trois maisons.",
     buy: "Se procurer le livre →",
     cta: "En savoir plus sur le livre →",
     parts: [
@@ -90,8 +88,6 @@ export function BookSection({ lang }: { lang: Lang }) {
             </blockquote>
 
             <p className="mb-6 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.body}</p>
-
-            <p className="mb-7 font-serif text-[1.05rem] italic text-chalk-75">{t.close}</p>
 
             {/* Le sommaire : ce qui distingue un livre d'une plaquette. */}
             <div className="mb-7 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]">

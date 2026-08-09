@@ -16,7 +16,7 @@ const T = {
   fr: {
     kicker: "Le mécanisme propriétaire du studio",
     h2: "S.T.R.A.W.",
-    lead: "Ce n'est pas une méthode empruntée. C'est celle que Strawberry Production a développée, et qu'aucun autre studio n'applique — l'ordre exact dans lequel une identité se découpe plutôt que s'invente.",
+    lead: "Ce n'est pas une méthode empruntée. C'est celle que Strawberry Production a développée, et qu'aucun autre studio n'applique.",
     letters: [
       { letter: "S", name: "Soul", verb: "Trouver l'âme" },
       { letter: "T", name: "Territory", verb: "Cartographier le territoire" },
@@ -30,7 +30,7 @@ const T = {
   en: {
     kicker: "The studio's proprietary mechanism",
     h2: "S.T.R.A.W.",
-    lead: "This is not a borrowed framework. It is the one Strawberry Production developed, and no other studio applies it — the exact order in which an identity is cut, rather than invented.",
+    lead: "This is not a borrowed framework. It is the one Strawberry Production developed, and no other studio applies it.",
     letters: [
       { letter: "S", name: "Soul", verb: "Find the soul" },
       { letter: "T", name: "Territory", verb: "Map the territory" },
