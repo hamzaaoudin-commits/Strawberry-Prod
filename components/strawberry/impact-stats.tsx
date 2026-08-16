@@ -15,11 +15,17 @@ import { CountUp } from "@/components/strawberry/count-up"
  * cessez d'être comparé au prix — avec un chiffre derrière plutôt qu'une
  * affirmation.
  *
- * Le 85% vient du Brand Storytelling Report 2015 de Headstream, une enquête
- * indépendante menée sur 2 000 adultes britanniques : 85% d'entre eux étaient
- * incapables de citer un seul exemple d'histoire de marque qui leur avait
- * marqué l'esprit. L'étude date de 2015 — la date est affichée, sans la
- * cacher.
+ * Le 74% vient de l'étude publiée par Ahrefs : leur détecteur maison a
+ * analysé 900 000 pages web anglophones nouvellement créées en avril 2025,
+ * une par domaine. 74,2% contenaient du contenu généré par IA — 2,5%
+ * entièrement, 71,7% en mélange avec de l'écriture humaine. Seules 25,8%
+ * étaient purement humaines.
+ *
+ * Il remplace une enquête Headstream de 2015 qui disait que 85% des
+ * consommateurs ne pouvaient citer aucune histoire de marque mémorable :
+ * vraie, mais elle datait de onze ans et contredisait l'argument temporel du
+ * site — si le problème existait déjà en 2015, la machine n'a rien déclenché.
+ * Celle-ci date de la bonne année et prouve la saturation elle-même.
  */
 
 const T = {
@@ -33,10 +39,10 @@ const T = {
         source: "Kantar, analyse BrandZ",
       },
       {
-        n: "85%",
-        title: "des consommateurs incapables de citer une seule histoire de marque qui leur ait marqué l'esprit",
-        body: "Sur 2 000 adultes interrogés, malgré des décennies de contenu de marque produit pour eux.",
-        source: "Headstream, Brand Storytelling Report, 2015",
+        n: "74%",
+        title: "des nouvelles pages web contiennent désormais du texte généré par une machine",
+        body: "Sur 900 000 pages analysées, une par domaine. Seule une sur quatre est encore entièrement écrite par un humain.",
+        source: "Ahrefs, analyse de 900 000 pages, 2025",
       },
     ],
   },
@@ -50,10 +56,10 @@ const T = {
         source: "Kantar, BrandZ analysis",
       },
       {
-        n: "85%",
-        title: "of consumers unable to name a single brand story that stayed with them",
-        body: "Out of 2,000 adults surveyed, despite decades of brand content made for them.",
-        source: "Headstream, Brand Storytelling Report, 2015",
+        n: "74%",
+        title: "of newly created web pages now contain text written by a machine",
+        body: "Across 900,000 pages analysed, one per domain. Only one in four is still written entirely by a human.",
+        source: "Ahrefs, 900,000-page analysis, 2025",
       },
     ],
   },

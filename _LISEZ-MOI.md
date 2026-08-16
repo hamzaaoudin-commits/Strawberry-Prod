@@ -1,76 +1,45 @@
-# Strawberry — patch : retrait complet de l'offre RADAR
+# Strawberry — patch : source récente + prix annoncé plus tôt
 
-Vingt fichiers modifiés. Glissez-les dans leurs dossiers exacts, jamais le
-dossier `strawberry-patch` lui-même.
+Deux fichiers : `components/strawberry/impact-stats.tsx` et
+`components/strawberry/hero-section.tsx`.
 
-## Ce qui change
+## 1. La statistique de 2015 est remplacée
 
-**Visible sur le site :**
-- Nav (desktop + mobile) et footer : l'entrée RADAR retirée.
-- Formulaire de contact : "M'abonner à RADAR" retiré du menu déroulant.
-- Home : le compteur "350+ marques lues" retiré de la frise de confiance
-  (il ne reste que "4 par trimestre" et "1 fondateur") ; le bandeau
-  défilant d'extraits RADAR retiré de la page.
-- FAQ : les six questions propres à RADAR retirées.
-- CGV : l'offre RADAR retirée de la liste des offres et des deux clauses
-  de rétractation qui la concernaient spécifiquement.
-- Sitemap : l'entrée `/radar` retirée.
+**Avant :** 85% des consommateurs incapables de citer une histoire de marque
+mémorable — Headstream, Brand Storytelling Report, **2015**. Vraie, mais
+elle datait de onze ans et contredisait l'argument temporel du site : si le
+problème existait déjà en 2015, la machine n'a rien déclenché.
 
-**Les routes `/radar/*` :** transformées en redirections vers la home,
-plutôt que supprimées — même logique que la route MOMENTUM héritée
-laissée dans le dépôt avant vous : un zip ne sait pas retirer un fichier,
-et ça évite qu'un ancien lien ou une page indexée par Google tombe sur une
-404. Les trois anciennes redirections qui pointaient vers `/fr/radar`
-pointent maintenant vers la home.
+**Après :** 74% des nouvelles pages web contiennent désormais du texte
+généré par une machine.
 
-**`lib/config.ts` :** le lien Stripe RADAR, l'essai gratuit et le
-compteur RADAR retirés de la source unique de vérité du site.
+- **Source :** Ahrefs, analyse de 900 000 pages, avril 2025.
+- **Lien :** https://ahrefs.com/blog/what-percentage-of-new-content-is-ai-generated
+- **Méthode :** leur détecteur maison (bot_or_not) a analysé 900 000 pages
+  anglophones nouvellement créées, une seule par domaine — donc 900 000
+  domaines différents. Résultat : 74,2% contenaient de l'IA (2,5%
+  entièrement générées, 71,7% en mélange humain-IA), 25,8% étaient
+  purement humaines.
 
-**`proof-section.tsx` :** ce composant n'était déjà appelé nulle part
-(vérifié) mais référençait le compteur RADAR supprimé — laissé tel quel,
-il aurait cassé la compilation malgré son inutilisation, Next.js
-vérifiant les types de tous les fichiers du projet, pas seulement ceux
-réellement importés. Vidé en un composant qui ne rend rien.
+C'est une source primaire — l'étude publiée par Ahrefs eux-mêmes, pas un
+agrégateur de statistiques. Elle prouve la saturation elle-même plutôt que
+d'en décrire une conséquence, et elle date de la bonne période.
 
-## Ce qui reste dans le dépôt, à supprimer vous-même
+Le 38% de Kantar reste inchangé : il tient tout seul et sert directement
+l'argument central (cesser d'être comparé au prix).
 
-Rien ne les appelle plus, mais je ne peux pas retirer un fichier par ce
-mode de livraison — seulement en ajouter ou en écraser :
+## 2. Le prix apparaît dès le hero
 
-- `components/strawberry/radar-lead-capture.tsx`
-- `components/strawberry/radar-signout.tsx`
-- `components/strawberry/read-marquee.tsx`
-- `components/strawberry/next-read-capture.tsx`
-- `lib/radar-library.tsx`
-- `lib/radar-reads.ts`
-- `app/api/radar/access/route.ts`
-- `app/api/radar/logout/route.ts`
+La ligne factuelle sous le titre devient : « Vingt pièces écrites à la main.
+Quatre maisons par trimestre. À partir de 4 500 €. »
 
-## Ce qui reste volontairement en place
-
-`lib/radar-access.ts` : le nom vient de RADAR, mais c'est l'infrastructure
-de signature de cookie partagée dont l'Atlas (le PDF gratuit contre email)
-dépend encore. La toucher aurait cassé l'Atlas.
+Le prix n'apparaissait nulle part avant la section offre, très bas dans la
+page. Sur une commande à 4 500 €, l'annoncer tôt qualifie l'audience au lieu
+de laisser quelqu'un lire tout l'argumentaire pour découvrir le prix trop
+tard. « À partir de » plutôt que le montant sec, puisque l'audit à 490 €
+existe aussi.
 
 ## Fichiers inclus
 
-- `components/strawberry/trust-strip.tsx`
-- `lib/config.ts`
-- `lib/faqs.ts`
-- `components/strawberry/navbar.tsx`
-- `components/strawberry/footer.tsx`
-- `app/[lang]/page.tsx`
-- `components/strawberry/contact-section.tsx`
-- `components/strawberry/section-divider.tsx`
-- `components/strawberry/success-check.tsx`
-- `components/strawberry/proof-section.tsx`
-- `app/[lang]/radar/page.tsx`
-- `app/[lang]/radar/acces/page.tsx`
-- `app/[lang]/radar/lecture/page.tsx`
-- `app/[lang]/radar/lecture/[slug]/page.tsx`
-- `app/[lang]/radar/lecture/manifeste/[slug]/page.tsx`
-- `app/radar/page.tsx`
-- `app/manifesto/page.tsx`
-- `app/[lang]/manifesto/page.tsx`
-- `app/[lang]/cgv/page.tsx`
-- `app/sitemap.ts`
+- `components/strawberry/impact-stats.tsx`
+- `components/strawberry/hero-section.tsx`
