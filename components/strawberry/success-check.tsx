@@ -2,7 +2,7 @@
  * La coche de confirmation.
  *
  * Le cercle se trace, puis la coche suit — remplace le simple texte de
- * confirmation sur les formulaires du site (Atlas, newsletter RADAR).
+ * confirmation sur les formulaires du site (Atlas, contact).
  * Pur CSS (stroke-dasharray/dashoffset), aucune dépendance JS pour
  * l'animation elle-même.
  */

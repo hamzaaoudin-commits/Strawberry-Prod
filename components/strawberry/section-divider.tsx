@@ -6,8 +6,8 @@
  * largeur. Composant serveur, aucune interaction : juste un moment.
  *
  * Généralisé pour devenir un dispositif reconnaissable plutôt qu'un geste
- * isolé : REFUS sur la home, ARCHITECTURE avant le prix, MÉMOIRE avant
- * l'abonnement RADAR — le mot et la légende se passent en props.
+ * isolé : REFUS sur la home, ARCHITECTURE avant le prix — le mot et la
+ * légende se passent en props.
  */
 
 const DEFAULTS = {

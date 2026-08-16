@@ -4,19 +4,16 @@ import { CountUp } from "@/components/strawberry/count-up"
 /**
  * La frise de confiance.
  *
- * Trois faits vérifiables côte à côte, juste sous le hero — avant même le
- * diagnostic. Aucun chiffre inventé : le compteur RADAR vient de la même
- * constante que partout ailleurs sur le site, tenue à la main.
+ * Deux faits vérifiables côte à côte, juste sous le hero — avant même le
+ * diagnostic. Aucun chiffre inventé.
  */
 
 const T = {
   fr: {
-    radarLabel: "Marques lues",
     quarterLabel: "Par trimestre",
     studioLabel: "Studio, un fondateur",
   },
   en: {
-    radarLabel: "Brands read",
     quarterLabel: "Per quarter",
     studioLabel: "Studio, one founder",
   },
@@ -25,7 +22,6 @@ const T = {
 export function TrustStrip({ lang }: { lang: "fr" | "en" }) {
   const t = T[lang] ?? T.fr
   const items = [
-    { n: `${LIVE.radar.count}+`, label: t.radarLabel },
     { n: String(LIVE.scarcity.total), label: t.quarterLabel },
     { n: "1", label: t.studioLabel },
   ]

@@ -38,7 +38,6 @@ export const CONTACT_ENDPOINT = "/api/contact"
 export const STRIPE_LINKS = {
   architecture: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
   audit490: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT490_URL, "https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"),
-  radar: env(process.env.NEXT_PUBLIC_STRIPE_RADAR_URL, "https://buy.stripe.com/3cI9AM1s0bmY7widvOf7i0c"),
   momentum: env(process.env.NEXT_PUBLIC_STRIPE_MOMENTUM_URL, "https://buy.stripe.com/7sYdR26Mk0IkeYKcrKf7i0d"),
 
   /**
@@ -54,15 +53,6 @@ export const STRIPE_LINKS = {
 
 /** Le paiement fractionné n'est affiché que lorsqu'il existe réellement. */
 export const HAS_3X = STRIPE_LINKS.architecture3x.length > 0
-
-/**
- * Essai gratuit RADAR.
- *
- * À activer dans Stripe sur le lien d'abonnement (période d'essai de 7 jours).
- * Ce booléen ne fait qu'annoncer l'essai sur le site : le mettre à `true` sans
- * l'avoir configuré chez Stripe promettrait quelque chose qui n'arrive pas.
- */
-export const RADAR_TRIAL_DAYS = Number(env(process.env.NEXT_PUBLIC_RADAR_TRIAL_DAYS, "0"))
 
 export const SITE_URL = env(process.env.NEXT_PUBLIC_SITE_URL, "https://www.gostrawberryprod.com")
 
@@ -86,15 +76,6 @@ export const LIVE = {
      * exactement ce qu'un fondateur repère, et le studio vend de la crédibilité.
      */
     closesOn: { fr: "", en: "" },
-  },
-
-  /**
-   * Compteur RADAR. À REMPLACER par le nombre réel de marques publiées.
-   * `since` est le mois de départ affiché à côté du chiffre.
-   */
-  radar: {
-    count: 350,
-    since: { fr: "janvier", en: "January" },
   },
 } as const
 

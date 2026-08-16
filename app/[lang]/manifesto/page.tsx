@@ -9,5 +9,5 @@ import { redirect } from "next/navigation"
  * existants et l'indexation atterrissent sur l'offre.
  */
 export default function ManifestoMoved() {
-  redirect("/fr/radar")
+  redirect("/fr")
 }

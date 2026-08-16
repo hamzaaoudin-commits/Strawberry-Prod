@@ -12,5 +12,5 @@ import { redirect } from "next/navigation"
  * risque.
  */
 export default function LegacyRoute() {
-  redirect("/fr/radar")
+  redirect("/fr")
 }

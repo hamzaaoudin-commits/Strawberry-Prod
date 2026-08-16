@@ -9,7 +9,8 @@ import { SITE, localePath } from "@/lib/routing"
  *
  * /offres and /lectures were removed here: the ladder page didn't earn its
  * place, and the free public reading previews were retired in favour of a
- * weekly newsletter opt-in on /radar.
+ * weekly newsletter opt-in on /radar — itself since retired along with the
+ * RADAR offer.
  */
 type Route = {
   path: string
@@ -24,7 +25,6 @@ const ROUTES: Route[] = [
   { path: "/documents", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/sillage", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/verso", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/radar", priority: 0.85, changeFrequency: "weekly" },
   { path: "/strawberry-method", priority: 0.8, changeFrequency: "monthly" },
   { path: "/le-livre", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.75, changeFrequency: "monthly" },

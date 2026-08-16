@@ -12,7 +12,6 @@ const T = {
     cta: "Passer commande",
     menu: "Menu",
     offersMenu: [
-      { label: "RADAR", sub: "L'archive à consulter", href: "/radar" },
       { label: "BRAND NARRATIVE AUDIT", sub: "Le diagnostic", href: "/brand-narrative-audit" },
       { label: "BRAND NARRATIVE ARCHITECTURE", sub: "La commande signature", href: "/brand-narrative-architecture" },
     ],
@@ -24,7 +23,6 @@ const T = {
     cta: "Place your commission",
     menu: "Menu",
     offersMenu: [
-      { label: "RADAR", sub: "The archive to browse", href: "/radar" },
       { label: "BRAND NARRATIVE AUDIT", sub: "The diagnosis", href: "/brand-narrative-audit" },
       { label: "BRAND NARRATIVE ARCHITECTURE", sub: "The signature commission", href: "/brand-narrative-architecture" },
     ],
