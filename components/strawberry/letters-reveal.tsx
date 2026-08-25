@@ -10,6 +10,10 @@ import { useEffect, useRef, useState } from "react"
  * d'un coup, sans le geste qui fait de STRAW le meilleur moment du site.
  * Même principe ici : chaque lettre a son propre délai, déclenché une fois
  * que le bloc entre dans le champ de vision.
+ * Ralentie à la demande du fondateur : à 100ms de décalage entre chaque
+ * lettre et 550ms de transition, la cascade se terminait avant d'avoir eu
+ * le temps d'être vue. 220ms de décalage et 700ms de transition — la
+ * dernière lettre arrive maintenant à environ 1,6s, au lieu d'environ 1s.
  */
 export function LettersReveal({ letters }: { letters: { letter: string; name: string }[] }) {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -47,8 +51,8 @@ export function LettersReveal({ letters }: { letters: { letter: string; name: st
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.94)",
-            transition: "opacity 550ms cubic-bezier(.22,.68,0,1.2), transform 550ms cubic-bezier(.22,.68,0,1.2)",
-            transitionDelay: `${i * 100}ms`,
+            transition: "opacity 700ms cubic-bezier(.22,.68,0,1.2), transform 700ms cubic-bezier(.22,.68,0,1.2)",
+            transitionDelay: `${i * 220}ms`,
           }}
         >
           <div className="mb-5 border-2 border-brand bg-brand/[0.06] py-5 font-serif text-[clamp(2rem,6vw,4rem)] font-bold leading-none text-brand shadow-[0_20px_60px_rgba(230,57,70,0.35)] sm:py-10">

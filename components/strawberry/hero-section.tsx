@@ -43,15 +43,26 @@ const EXTRACTION_POINTS = [
   { x: 920, y: 500, near: false },
 ]
 
+/**
+ * Pseudo-aléatoire déterministe (pas Math.random) : le rendu serveur et le
+ * premier rendu client doivent produire exactement les mêmes valeurs, sous
+ * peine d'avertissement d'hydratation React. La graine vient de l'index du
+ * point, donc chaque point garde toujours le même rythme de scintillement
+ * d'un chargement à l'autre — mais un rythme différent de ses voisins.
+ */
+function seeded(i: number, salt: number) {
+  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453
+  return x - Math.floor(x)
+}
+
 const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
     h1a: "The identity that makes people",
     h1b: "belong to your brand, not just buy it.",
-    h1sub: "It isn't generated. It's extracted from who you already are.",
     grounding: "Twenty pieces, written by hand. Four houses a quarter. From 4,500€.",
-    sub: "What you sell doesn't change. How the market perceives it does \u2014 enough to follow you, defend you, talk about you unprompted. That's the difference between a customer and someone loyal.",
+    sub: "Your product stays the same. What changes is how people see it: enough to keep coming back, to defend you to a friend, to talk about you without being asked. That's the gap between a customer and someone loyal.",
     cta1: "Place your commission \u2192",
   },
   fr: {
@@ -59,9 +70,8 @@ const T = {
     slogan: "Impossible à confondre. Impossible à générer.",
     h1a: "L'identité qui fait qu'on adhère",
     h1b: "à votre marque, pas qu'on l'achète.",
-    h1sub: "Elle n'est pas générée. Elle est extraite de ce que vous êtes déjà.",
     grounding: "Vingt pièces écrites à la main. Quatre maisons par trimestre. À partir de 4 500 €.",
-    sub: "Ce que vous vendez ne change pas. Ce que le marché en perçoit, si — au point de vous suivre, de vous défendre, d'en parler sans qu'on le lui demande. C'est la différence entre un client et quelqu'un de fidèle.",
+    sub: "Votre produit ne change pas. Ce qui change, c'est la façon dont on le perçoit : au point de revenir, de vous défendre auprès d'un ami, de parler de vous sans qu'on le lui demande. C'est ça, l'écart entre un client et quelqu'un de fidèle.",
     cta1: "Passer commande \u2192",
   },
 }
@@ -120,6 +130,16 @@ export function HeroSection() {
         className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full opacity-[0.22] md:block motion-reduce:hidden"
         preserveAspectRatio="xMidYMid slice"
       >
+        {/* Le scintillement : chaque point passe l'essentiel de son temps à
+            son opacité normale et ne s'illumine qu'un bref instant, à un
+            rythme propre à chaque point (durée et décalage tirés de son
+            index) — jamais synchronisés, jamais tous en même temps. */}
+        <style>{`
+          @keyframes hero-twinkle {
+            0%, 88%, 100% { opacity: var(--twinkle-base); }
+            94% { opacity: 1; }
+          }
+        `}</style>
         {EXTRACTION_POINTS.map((p, i) => (
           <line
             key={`l${i}`}
@@ -139,20 +159,29 @@ export function HeroSection() {
             }}
           />
         ))}
-        {EXTRACTION_POINTS.map((p, i) => (
-          <circle
-            key={`p${i}`}
-            cx={p.x}
-            cy={p.y}
-            r={p.near ? 2.6 : 1.6}
-            fill="#e63946"
-            opacity={mounted ? (p.near ? 0.9 : 0.5) : 0}
-            style={{
-              transition: "opacity 500ms ease-out",
-              transitionDelay: `${150 + i * 45 + 900}ms`,
-            }}
-          />
-        ))}
+        {EXTRACTION_POINTS.map((p, i) => {
+          const base = p.near ? 0.9 : 0.5
+          const duration = 4000 + seeded(i, 1) * 5000
+          const delay = seeded(i, 2) * 6000
+          return (
+            <circle
+              key={`p${i}`}
+              cx={p.x}
+              cy={p.y}
+              r={p.near ? 2.6 : 1.6}
+              fill="#e63946"
+              opacity={mounted ? base : 0}
+              style={
+                {
+                  "--twinkle-base": base,
+                  transition: mounted ? undefined : "opacity 500ms ease-out",
+                  transitionDelay: mounted ? undefined : `${150 + i * 45 + 900}ms`,
+                  animation: mounted ? `hero-twinkle ${duration}ms ease-in-out ${delay}ms infinite` : undefined,
+                } as React.CSSProperties
+              }
+            />
+          )
+        })}
         <circle cx="760" cy="360" r="4" fill="#e63946" />
         <circle cx="760" cy="360" r="14" fill="none" stroke="#e63946" strokeWidth="1" opacity="0.4" />
       </svg>
@@ -186,13 +215,6 @@ export function HeroSection() {
             </span>
           </h1>
 
-          <p className="mb-6 max-w-[680px] font-serif text-[clamp(1.05rem,2.2vw,1.6rem)] leading-[1.35] text-white/85">
-            {t.h1sub}
-          </p>
-
-          {/* La ligne d'ancrage : après la formule, un fait plat, vérifiable,
-              sans image ni tournure — pour que la formule au-dessus se
-              croie, pas seulement se retienne. */}
           <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em] text-brand/80">
             {t.grounding}
           </p>

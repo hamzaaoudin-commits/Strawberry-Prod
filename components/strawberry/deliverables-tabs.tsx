@@ -25,9 +25,6 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
   const isPlaybooks = group.icon === "playbooks"
   const cols = (group.covers?.length ?? 0) > 4 ? "grid-cols-3 sm:grid-cols-6" : "grid-cols-2 sm:grid-cols-4"
 
-  let n = 0
-  for (let i = 0; i < active; i++) n += groups[i].items.length
-
   return (
     <div>
       {/* Les onglets. */}
@@ -53,9 +50,13 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
         {/* La grille de tuiles avec bascule au survol \u2014 auparavant réservée
             aux playbooks, désormais pour tout groupe qui fournit des
             `covers`. Un seul des quatre onglets avait un visuel ; les trois
-            autres n'étaient qu'une liste de texte. */}
+            autres n'étaient qu'une liste de texte.
+            La liste numérotée qui vivait en dessous (bénéfice + description,
+            colonne par colonne) a été retirée : elle redisait exactement ce
+            que la tuile affiche déjà au survol. Tout vit dans la tuile
+            maintenant \u2014 le nom au repos, le bénéfice au survol. */}
         {group.covers && (
-          <div className={`mb-6 grid gap-2.5 ${cols}`}>
+          <div className={`grid gap-2.5 ${cols}`}>
             {group.covers.map((label, i) => (
               <div
                 key={label}
@@ -69,8 +70,7 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
                   </span>
                 </div>
 
-                {/* Au survol : le bénéfice de cette pièce précise, plutôt que
-                    d'obliger à descendre le lire dans la liste plus bas. */}
+                {/* Au survol : le bénéfice de cette pièce précise. */}
                 <div className="absolute inset-0 flex items-center justify-center bg-brand p-2 text-center opacity-0 transition-opacity duration-300 group-hover/cover:opacity-100">
                   <span className="font-sans text-[9.5px] font-semibold leading-tight text-ink">
                     {group.items[i]?.[0]}
@@ -80,18 +80,6 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
             ))}
           </div>
         )}
-
-        <ol className="list-none border-t border-hair p-0">
-          {group.items.map(([benefit, feature], i) => (
-            <li key={benefit} className="flex items-baseline gap-4 border-b border-white/[0.06] py-4 last:border-b-0">
-              <span className="font-serif text-[13px] text-brand">{String(n + i + 1).padStart(2, "0")}</span>
-              <div>
-                <p className="m-0 font-sans text-[15px] font-semibold leading-snug text-white">{benefit}</p>
-                <p className="m-0 mt-1 font-sans text-[13px] leading-snug text-chalk-40">{feature}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
 
         {isPlaybooks && group.playbooksNote && (
           <p className="m-0 mt-5 border-t border-hair pt-5 font-sans text-[13px] italic leading-relaxed text-chalk-55">

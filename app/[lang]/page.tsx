@@ -1,11 +1,11 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
+import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { SectionDivider } from "@/components/strawberry/section-divider"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
-import { TrustStrip } from "@/components/strawberry/trust-strip"
 import { OffersSection } from "@/components/strawberry/offers-section"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
@@ -19,9 +19,13 @@ import { isLang, type Lang } from "@/lib/lang"
  * La page d'accueil.
  *
  * Une page, une offre, une action. Le parcours suit la décision d'achat :
- * problème, diagnostic, deux statistiques réelles, mécanisme propriétaire,
- * trois faits de confiance juste avant l'offre, l'offre elle-même, le livre,
- * le bandeau final, puis les objections et le formulaire.
+ * bandeau de marques, problème, diagnostic, deux statistiques réelles,
+ * mécanisme propriétaire, l'offre elle-même, le livre, le bandeau final,
+ * puis les objections et le formulaire.
+ *
+ * La frise "4 par trimestre / 1 studio, un fondateur" a été retirée à la
+ * demande du fondateur — l'offre et le pacte humain, plus bas, disent déjà
+ * la même chose.
  *
  * L'Atlas n'est plus ici : il vit désormais sur les pages d'offre
  * (Architecture, Audit) plutôt que sur la home — une ressource gratuite
@@ -45,12 +49,12 @@ export default async function Home({
     <main className="min-h-screen">
       <NavBar />
       <HeroSection />
+      <ReadMarquee />
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />
       <SectionDivider lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
-      <TrustStrip lang={lang} />
       <OffersSection lang={lang} />
       <BookSection lang={lang} />
       <CTABanner />

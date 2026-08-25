@@ -6,6 +6,7 @@ import { LIVE } from "@/lib/config"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
 import { OfferCover } from "@/components/strawberry/offer-covers"
 import { DeliverablesTabs } from "@/components/strawberry/deliverables-tabs"
+import { CountUp } from "@/components/strawberry/count-up"
 
 /**
  * L'offre. Une seule.
@@ -31,7 +32,7 @@ const T = {
     h2a: "Your market stops comparing you.",
     h2b: "It starts understanding you.",
     intro:
-      "Three weeks. One house at a time. What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
+      "What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
     coverFoot: "Twenty parts",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
@@ -98,6 +99,7 @@ const T = {
     scarcityLine: (p: string, r: number) => `${p}: ${r} place${r > 1 ? "s" : ""} left.`,
     scarcityNext: (d: string) => `Next opening ${d}.`,
     scarcityCloses: (d: string) => `Applications close ${d}.`,
+    daysToOpening: (n: number) => (n <= 0 ? "Opens today." : n === 1 ? "1 day left before the next opening." : `${n} days left before the next opening.`),
     investKicker: "The investment",
     price: "4,500€",
     priceCadence: "one commission, paid once",
@@ -120,7 +122,7 @@ const T = {
     h2a: "Votre marché arrête de vous comparer.",
     h2b: "Il commence à vous comprendre.",
     intro:
-      "Trois semaines. Une maison à la fois. Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
+      "Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
     coverFoot: "Vingt pièces",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
@@ -187,6 +189,7 @@ const T = {
     scarcityLine: (p: string, r: number) => `${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
     scarcityNext: (d: string) => `Prochaine ouverture le ${d}.`,
     scarcityCloses: (d: string) => `Clôture des candidatures le ${d}.`,
+    daysToOpening: (n: number) => (n <= 0 ? "Ouverture aujourd'hui." : n === 1 ? "Plus qu'1 jour avant la prochaine ouverture." : `Plus que ${n} jours avant la prochaine ouverture.`),
     investKicker: "L'investissement",
     price: "4 500€",
     priceCadence: "une commande, payée une fois",
@@ -209,6 +212,7 @@ const T = {
 export function OffersSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
   const sc = LIVE.scarcity
+  const daysToOpening = Math.max(0, Math.ceil((new Date(sc.nextOpeningDate).getTime() - Date.now()) / 86400000))
 
   return (
     <section id="offers" className="section relative overflow-hidden bg-ink text-white">
@@ -292,9 +296,10 @@ export function OffersSection({ lang }: { lang: Lang }) {
             <div className="mb-6 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{t.investKicker}</div>
 
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="font-serif text-[clamp(2.6rem,6vw,4rem)] font-bold leading-none text-gradient">
-                {t.price}
-              </span>
+              <CountUp
+                value={t.price}
+                className="font-serif text-[clamp(2.6rem,6vw,4rem)] font-bold leading-none text-gradient"
+              />
               <span className="font-sans text-[14px] text-chalk-40">{t.priceCadence}</span>
             </div>
 
@@ -337,7 +342,13 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <p className="mt-6 font-sans text-[13.5px] text-chalk-40">{t.clock}</p>
 
-            {/* Rareté vérifiable : une constante tenue à la main dans config.ts. */}
+            {/* Rareté vérifiable : une constante tenue à la main dans config.ts.
+                Le nombre de places lui-même n'est jamais recalculé — un
+                fondateur qui commande à ce niveau repère une jauge qui
+                bouge toute seule, et ça coûterait toute la crédibilité que
+                l'honnêteté du reste du site a construite. Le compte à
+                rebours ci-dessous, en revanche, change réellement chaque
+                jour sans rien inventer : c'est un vrai calcul de date. */}
             <div className="mt-8 border border-hair px-5 py-4">
               <div className="mb-3 flex flex-wrap items-center gap-3">
                 <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
@@ -362,6 +373,8 @@ export function OffersSection({ lang }: { lang: Lang }) {
                   />
                 ))}
               </div>
+
+              <p className="m-0 mt-3 font-sans text-[12.5px] text-chalk-40">{t.daysToOpening(daysToOpening)}</p>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">

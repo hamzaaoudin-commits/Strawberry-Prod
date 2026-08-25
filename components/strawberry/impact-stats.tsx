@@ -26,6 +26,11 @@ import { CountUp } from "@/components/strawberry/count-up"
  * vraie, mais elle datait de onze ans et contredisait l'argument temporel du
  * site — si le problème existait déjà en 2015, la machine n'a rien déclenché.
  * Celle-ci date de la bonne année et prouve la saturation elle-même.
+ *
+ * La phrase de clôture relie explicitement les deux chiffres : l'impact du
+ * 74% (se fondre dans le bruit) et ce que représente le 38% (être
+ * l'exception qu'on remarque et qu'on paie plus cher) — sans elle, les deux
+ * restaient côte à côte sans se répondre.
  */
 
 const T = {
@@ -45,6 +50,7 @@ const T = {
         source: "Ahrefs, analyse de 900 000 pages, 2025",
       },
     ],
+    closing: "Sur un marché où trois contenus sur quatre sortent déjà d'une machine, se fondre dans le bruit n'est plus un risque théorique — c'est le scénario par défaut. Une identité écrite à la main reste l'exception qu'on remarque, qu'on suit, qu'on paie plus cher.",
   },
   en: {
     kicker: "Why it matters",
@@ -62,6 +68,7 @@ const T = {
         source: "Ahrefs, 900,000-page analysis, 2025",
       },
     ],
+    closing: "In a market where three pieces of content out of four already come from a machine, blending into the noise isn't a theoretical risk anymore — it's the default outcome. An identity written by hand stays the exception people notice, follow, and pay more for.",
   },
 }
 
@@ -112,6 +119,12 @@ export function ImpactStats({ lang }: { lang: Lang }) {
             {b.source}
           </div>
         </div>
+
+        {/* Relie les deux chiffres : l'impact du 74% et ce que représente
+            le 38% — sans quoi ils restaient deux faits côte à côte. */}
+        <p className="mx-auto mt-8 max-w-[620px] text-center font-serif text-[1.05rem] italic leading-[1.6] text-white/75">
+          {t.closing}
+        </p>
       </div>
     </section>
   )

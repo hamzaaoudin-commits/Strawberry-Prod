@@ -71,6 +71,14 @@ export const LIVE = {
     total: 4,
     nextOpening: { fr: "1er octobre", en: "1 October" },
     /**
+     * Même date que `nextOpening` ci-dessus, au format ISO — sert à calculer
+     * le compte à rebours en jours affiché à côté. Les deux doivent rester
+     * synchronisées à la main : ce n'est pas calculé à partir de l'autre,
+     * volontairement, pour qu'un oubli de mise à jour se voie tout de suite
+     * plutôt que de dériver en silence.
+     */
+    nextOpeningDate: "2026-10-01",
+    /**
      * Date de clôture des candidatures pour le trimestre en cours.
      * Laisser vide tant qu'elle n'est pas réelle : une échéance inventée est
      * exactement ce qu'un fondateur repère, et le studio vend de la crédibilité.
@@ -82,12 +90,11 @@ export const LIVE = {
 /**
  * Le livre.
  *
- * `BOOK_URL` doit pointer vers la page de vente ou de téléchargement réelle.
- * Tant qu'elle vaut la valeur par défaut, la page du livre affiche le
- * formulaire de contact — ce qui fait de la meilleure preuve d'autorité du
- * studio un cul-de-sac. À changer en priorité.
+ * `BOOK_URL` pointe vers le lien Stripe de vente directe. À remplacer si le
+ * lien Stripe change — `NEXT_PUBLIC_BOOK_URL` permet de le faire depuis
+ * Vercel sans toucher au code.
  */
-export const BOOK_URL = env(process.env.NEXT_PUBLIC_BOOK_URL, "/#contact")
+export const BOOK_URL = env(process.env.NEXT_PUBLIC_BOOK_URL, "https://buy.stripe.com/cNi6oAb2A4YA9EqfDWf7i0f")
 
 /**
  * La cohorte.
