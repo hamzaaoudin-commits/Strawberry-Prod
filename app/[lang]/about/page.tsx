@@ -19,7 +19,7 @@ const GLOW = "rgba(230,57,70,0.35)"
 const T = {
   en: {
     badge: "The Studio",
-    h1a: "A studio of one.",
+    h1a: "An atelier, not an agency.",
     h1b: "From Paris. By inheritance.",
     lead: "Strawberry Production is a narrative architecture studio operating from Paris. One founder. Four commissions per quarter. A single offer, refined commission after commission. This page is what you should know before you write.",
     whyKicker: "Why this studio exists",
@@ -30,7 +30,7 @@ const T = {
     refuseH2: "What this studio refuses.",
     refuseLead: "A studio is defined by what it does not do. The list below is the structural backbone of the practice.",
     refusals: [
-      { title: "We refuse to scale.", body: "No growing team, no associates, no plans for either. Every word delivered has been written here. AI scales infinitely. We do not. Four houses per quarter is not a sales tactic — it is the structural limit of full attention." },
+      { title: "We refuse to scale.", body: "No growing team, no associates, no plans for either. Every word delivered has been written here. AI scales infinitely. We do not. Four houses per quarter is not a sales tactic — it is the discipline of an atelier that refuses to dilute its attention." },
       { title: "We refuse to work with everyone.", body: "Most inquiries do not become commissions. Some founders are not ready. Some are ready but for a different studio. We take on the houses whose convictions we believe we can defend properly, and we say so plainly when that is not the case." },
       { title: "We refuse hourly billing.", body: "No scope creep, no hourly rate, no project manager between you and the writing. The offer carries a published price and a written scope. Agency economics optimise billable volume. This studio optimises what survives a decade." },
       { title: "We refuse the vocabulary of the field.", body: "Solutions, synergy, leverage, disrupt, game-changer, ROI — these are the words by which mediocre studios announce themselves. They appear nowhere in the work this studio produces. The first thing we retire from your brand is the language that makes you sound like the field." },
@@ -77,7 +77,7 @@ const T = {
   },
   fr: {
     badge: "Le Studio",
-    h1a: "Un studio d'un seul.",
+    h1a: "Un atelier, pas une agence.",
     h1b: "Depuis Paris. Par h\u00e9ritage.",
     lead: "Strawberry Production est un studio d'architecture narrative bas\u00e9 \u00e0 Paris. Un fondateur. Quatre commandes par trimestre.",
     whyKicker: "Pourquoi ce studio existe",
@@ -88,7 +88,7 @@ const T = {
     refuseH2: "Ce que ce studio refuse.",
     refuseLead: "Un studio se d\u00e9finit par ce qu'il ne fait pas. La liste ci-dessous est l'ossature structurelle de la pratique.",
     refusals: [
-      { title: "Nous refusons de scaler.", body: "Pas d'\u00e9quipe, pas d'associ\u00e9s, aucun projet d'en avoir. Chaque mot livr\u00e9 dans une commande est \u00e9crit par nous. L'IA scale \u00e0 l'infini. Nous non. Quatre maisons par trimestre n'est pas une tactique commerciale — c'est la limite structurelle d'un seul esprit \u00e0 pleine attention." },
+      { title: "Nous refusons de scaler.", body: "Pas d'\u00e9quipe, pas d'associ\u00e9s, aucun projet d'en avoir. Chaque mot livr\u00e9 dans une commande est \u00e9crit par nous. L'IA scale \u00e0 l'infini. Nous non. Quatre maisons par trimestre n'est pas une tactique commerciale — c'est la discipline d'un atelier qui refuse de diluer son attention." },
       { title: "Nous refusons de travailler avec tout le monde.", body: "La plupart des demandes ne deviennent pas des commandes. Certains fondateurs ne sont pas pr\u00eats. D'autres le sont, mais pour un autre studio. Nous prenons les maisons dont nous pensons pouvoir d\u00e9fendre correctement les convictions, et nous le disons franchement quand ce n'est pas le cas." },
       { title: "Nous refusons la facturation \\u00e0 l'heure.", body: "Pas de d\\u00e9rive de p\\u00e9rim\\u00e8tre, pas de taux horaire, pas de chef de projet entre vous et l'\\u00e9criture. L'offre porte un prix affich\\u00e9 et un p\\u00e9rim\\u00e8tre \\u00e9crit. L'\\u00e9conomie des agences optimise le volume factur\\u00e9. Ce studio optimise ce qui survit une d\\u00e9cennie." },
       { title: "Nous refusons le vocabulaire du champ.", body: "Solutions, synergie, levier, disrupter, game-changer, ROI — ce sont les mots par lesquels les studios m\u00e9diocres s'annoncent. Ils n'apparaissent nulle part dans le travail que produit ce studio. La premi\u00e8re chose que nous retirons de votre marque, c'est le langage qui vous fait sonner comme le champ." },

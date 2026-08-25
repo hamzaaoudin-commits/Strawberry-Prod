@@ -28,7 +28,6 @@ const T = {
     lStages: "The five stages",
     lWorks: "Why it works",
     lCommission: "BRAND NARRATIVE ARCHITECTURE",
-    acronymNote: "Five stages. Each one earns the next.",
     kickerArtifact: "From method to artifact",
     kickerApplied: "The method, applied",
     h1a: "The Strawberry",
@@ -84,7 +83,6 @@ const T = {
       { stage: "All five", deliverable: "Coherence Guide", note: "The doctrine, made transmissible" },
     ],
     bridgeItalic: "The method is the discipline by which the artifact is made. The artifact is what you take home.",
-    bridgeCta: "See the Commission →",
     ctaH2a: "Run S.T.R.A.W.",
     ctaH2b: "on your house.",
     ctaLead: "The Brand Narrative Architecture is the method, made operational for your house. Four weeks. Five stages. One constitution.",
@@ -100,7 +98,6 @@ const T = {
     lStages: "Les cinq \u00e9tapes",
     lWorks: "Pourquoi \u00e7a marche",
     lCommission: "BRAND NARRATIVE ARCHITECTURE",
-    acronymNote: "Cinq \u00e9tapes. Chacune m\u00e9rite la suivante.",
     kickerArtifact: "De la m\u00e9thode \u00e0 l'artefact",
     kickerApplied: "La m\u00e9thode, appliqu\u00e9e",
     h1a: "La M\u00e9thode",
@@ -156,7 +153,6 @@ const T = {
       { stage: "Les cinq", deliverable: "Guide de coh\u00e9rence", note: "La doctrine, rendue transmissible" },
     ],
     bridgeItalic: "La m\u00e9thode est la discipline par laquelle l'artefact est fait. L'artefact est ce que vous emportez.",
-    bridgeCta: "Voir BRAND NARRATIVE ARCHITECTURE →",
     ctaH2a: "Appliquez S.T.R.A.W.",
     ctaH2b: "\u00e0 votre maison.",
     ctaLead: "La Brand Narrative Architecture, c'est la m\u00e9thode rendue op\u00e9rationnelle pour votre maison. Quatre semaines. Cinq \u00e9tapes. Une constitution.",
@@ -221,28 +217,6 @@ export default function StrawberryMethodPage() {
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
             {t.lead}
-          </p>
-
-          {/* L'acronyme, posé dès le hero : le lecteur voit la méthode entière
-              avant de lire une seule étape. */}
-          <div className="mt-14 flex flex-wrap items-start justify-center gap-x-6 gap-y-7 sm:gap-x-10">
-            {t.letters.map((st) => (
-              <div key={st.letter} className="min-w-[76px] text-center">
-                <div className="font-serif text-[clamp(2.75rem,7vw,4.5rem)] font-bold leading-none tracking-[-0.02em] text-brand">
-                  {st.letter}
-                </div>
-                {/* Le mot anglais porte la lettre — l'acronyme ne tient pas
-                    autrement. La traduction passe dessous, en gris. */}
-                <div className="mt-2 font-sans text-[10px] uppercase tracking-[0.2em] text-chalk-55">
-                  {st.name}
-                </div>
-                <div className="mt-1 font-serif text-[11px] italic text-chalk-40">{st.gloss}</div>
-              </div>
-            ))}
-          </div>
-
-          <p className="mx-auto mt-6 max-w-[520px] font-serif text-[clamp(0.95rem,1.4vw,1.1rem)] italic text-chalk-40">
-            {t.acronymNote}
           </p>
         </div>
       </section>
@@ -475,12 +449,9 @@ export default function StrawberryMethodPage() {
           </div>
 
           <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto" }}>
-            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", marginBottom: 32 }}>
+            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
               {t.bridgeItalic}
             </p>
-            <Link href="/brand-narrative-architecture" style={{ display: "inline-block", color: COLOR, fontFamily: SANS, fontSize: 14, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", padding: "12px 28px", border: `1px solid ${COLOR}`, borderRadius: 100, transition: "all 0.2s" }}>
-              {t.bridgeCta}
-            </Link>
           </div>
         </div>
       </section>

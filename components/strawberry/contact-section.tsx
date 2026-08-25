@@ -9,6 +9,7 @@ import { LIMITS, isValidEmail, sanitize, isBot, rateLimit, honeypotProps } from 
 
 const CONTACT_VALUES = ["hamza@gostrawberryprod.com", "@strawberry_prods", "Paris, France"]
 const CONTACT_ICONS = ["✉", "◈", "◎"]
+const CONTACT_HREFS: (string | undefined)[] = [undefined, "https://instagram.com/strawberry_prods", undefined]
 
 const T = {
   en: {
@@ -18,14 +19,14 @@ const T = {
     intro: "Tell us about your house. The conviction you can't articulate yet. The thing your competitors keep stealing — or copying badly. We read every message ourselves.",
     lines: "Direct lines",
     labels: ["Email", "Instagram", "Location"],
-    note: "Limited to four commissions per quarter. If we're full, you'll be the first told when the next slot opens. Every message answered within 24 hours.",
+    note: "If we're full, you'll be the first told when the next slot opens. Every message answered within 24 hours.",
     sentTitle: "Message received.",
     sentBody: "I read every one personally. Expect a reply within 24 hours.",
     nameLabel: "Your name",
     goalLabel: "What brings you here",
     goals: ["Commission the Brand Narrative Architecture", "Commission the Brand Narrative Audit", "Find out if this is for me", "Other"],
     messageLabel: "Your message (optional)",
-    messagePlaceholder: "One line is enough. What you want to be unforgettable for, if you already know.",
+    messagePlaceholder: "One line is enough.",
     sending: "Sending...",
     send: "Send Message \u2192",
     answered: "Answered within 24 hours.",
@@ -40,14 +41,14 @@ const T = {
     intro: "Parlez-nous de votre maison. La conviction que vous n'arrivez pas encore à articuler. Ce que vos concurrents vous prennent sans cesse — ou copient mal. Nous lisons chaque message nous-mêmes.",
     lines: "Lignes directes",
     labels: ["Email", "Instagram", "Localisation"],
-    note: "Limité à quatre commandes par trimestre. Si c'est complet, vous serez le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",
+    note: "Si c'est complet, vous serez le premier prévenu à l'ouverture du prochain créneau. Chaque message reçoit une réponse sous 24 heures.",
     sentTitle: "Message reçu.",
     sentBody: "Nous lisons chaque message nous-mêmes. Réponse sous 24 heures.",
     nameLabel: "Votre nom",
     goalLabel: "Ce qui vous amène",
     goals: ["Commander la Brand Narrative Architecture", "Commander le Brand Narrative Audit", "Savoir si c'est pour moi", "Autre"],
     messageLabel: "Votre message (facultatif)",
-    messagePlaceholder: "Une ligne suffit. Ce pour quoi vous voulez être inoubliable, si vous le savez déjà.",
+    messagePlaceholder: "Une ligne suffit.",
     sending: "Envoi...",
     send: "Envoyer le message \u2192",
     answered: "Réponse sous 24 heures.",
@@ -76,7 +77,7 @@ function useReveal() {
 
 export function ContactSection() {
   const t = useT(T)
-  const CONTACT_INFO = t.labels.map((label, i) => ({ label, value: CONTACT_VALUES[i], icon: CONTACT_ICONS[i] }))
+  const CONTACT_INFO = t.labels.map((label, i) => ({ label, value: CONTACT_VALUES[i], icon: CONTACT_ICONS[i], href: CONTACT_HREFS[i] }))
   const GOALS = t.goals
   const { ref, visible } = useReveal()
   const [form, setForm] = useState({ name: "", email: "", goal: "", message: "" })
@@ -199,7 +200,20 @@ export function ContactSection() {
                       <div className="mb-1 font-sans text-[10px] uppercase tracking-[0.2em] text-white/50">
                         {c.label}
                       </div>
-                      <div className="font-sans text-sm text-chalk-90">{c.value}</div>
+                      <div className="font-sans text-sm text-chalk-90">
+                        {c.href ? (
+                          <a
+                            href={c.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-chalk-90 no-underline transition-colors hover:text-brand"
+                          >
+                            {c.value}
+                          </a>
+                        ) : (
+                          c.value
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}

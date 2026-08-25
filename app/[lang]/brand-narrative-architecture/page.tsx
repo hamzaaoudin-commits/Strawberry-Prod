@@ -55,7 +55,7 @@ const T = {
     lProof: "How we will know it worked",
     lAlso: "What you also receive",
     lInvest: "The investment",
-    pactH2: "The AI-proof pact.",
+    pactH2: "The human pact.",
     pactLead: "What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.",
     pactQuote: "When everyone has access to the same machine, the only edge left is the one a human refuses to share.",
     offerP1: "We build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors \u2014 even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.",
@@ -105,7 +105,7 @@ const T = {
     measureH2: "Remarkable is measurable.",
     measureLead: "Before we start, we note together how you would describe today what sets you apart \u2014 usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.",
     alsoH2: "Beyond the document.",
-    investLead: "The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, belongs to you and works for you continuously.",
+    investLead: "The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, does not wear out: it belongs to you, never goes out of date, and keeps working for you years after it was written.",
     ctaH2: "Become impossible to confuse.",
     cta: "Place your commission \u2192",
     ctaLimit: "Limited to four commissions per quarter.",
@@ -132,6 +132,8 @@ const T = {
       "People come to you, instead of you chasing them",
       "You hold your prices without negotiating them down",
       "People start repeating your own words back to you",
+      "A new hire picks up the tone from a single read, without anyone explaining it",
+      "People recognise your brand before they've read its name",
     ],
     mockups: {
       actI: [
@@ -189,7 +191,7 @@ const T = {
     lProof: "Comment nous saurons que ça a marché",
     lAlso: "Ce que vous recevez aussi",
     lInvest: "L'investissement",
-    pactH2: "Le pacte anti-IA.",
+    pactH2: "Le pacte humain.",
     pactLead: "Ce qui rend une maison inoubliable, ce n'est plus le document. C'est celui qui a refus\u00e9 de l'\u00e9crire comme tout le monde.",
     pactQuote: "Quand tout le monde a acc\u00e8s \u00e0 la m\u00eame machine, le seul avantage restant est celui qu'un humain refuse de partager.",
     offerP1: "Nous b\u00e2tissons le r\u00e9cit qui rend votre marque reconnaissable au premier regard et impossible \u00e0 confondre avec vos concurrents \u2014 m\u00eame arm\u00e9s d'IA. Pas un slogan de surface : l'identit\u00e9, la position et le langage qui font qu'on se souvient de vous, qu'on vous cite et qu'on vous choisit, m\u00eame quand l'offre d'en face co\u00fbte moins cher.",
@@ -239,7 +241,7 @@ const T = {
     measureH2: "Le remarquable se mesure.",
     measureLead: "Avant de commencer, on note ensemble comment vous d\u00e9crivez aujourd'hui ce qui vous distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
     alsoH2: "Au-del\u00e0 du document.",
-    investLead: "Le prix de quelques semaines de publicit\u00e9, qui cesse d'exister le jour o\u00f9 vous cessez de payer. Un r\u00e9cit, lui, vous appartient et continue de travailler. Votre r\u00e9cit, lui, vous appartient et travaille pour vous en continu.",
+    investLead: "Le prix de quelques semaines de publicit\u00e9, qui cesse d'exister le jour o\u00f9 vous cessez de payer. Votre r\u00e9cit, lui, ne s'use pas : il vous appartient, ne date jamais, et continue de travailler pour vous des ann\u00e9es apr\u00e8s avoir \u00e9t\u00e9 \u00e9crit.",
     ctaH2: "Devenez impossible \u00e0 confondre.",
     cta: "Passer commande \u2192",
     ctaLimit: "Limit\u00e9 \u00e0 quatre commandes par trimestre.",
@@ -266,6 +268,8 @@ const T = {
       "Ce sont eux qui viennent \u00e0 vous",
       "Vous tenez vos prix sans les n\u00e9gocier \u00e0 la baisse",
       "Votre march\u00e9 finit par vous citer avec vos propres mots",
+      "Un nouveau membre de l'équipe adopte le ton dès la première lecture, sans qu'on ait à le lui expliquer",
+      "On reconnaît votre marque avant même d'en avoir lu le nom",
     ],
     mockups: {
       actI: [
@@ -1393,7 +1397,7 @@ export default function BrandNarrativeArchitecturePage() {
           <div style={{ fontFamily: SERIF, fontSize: "clamp(4rem,8vw,6rem)", fontWeight: 700, lineHeight: 1, marginBottom: 16, letterSpacing: "-0.04em" }}>
             <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.price}</span>
           </div>
-          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>A complete repositioning &middot; Delivered and exploitable</div>
+          <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>{lang === "fr" ? "Un repositionnement complet · Livré et exploitable" : "A complete repositioning · Delivered and exploitable"}</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
             {t.investLead}
           </p>

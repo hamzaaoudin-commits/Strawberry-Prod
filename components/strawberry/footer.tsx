@@ -75,10 +75,28 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-hair bg-ink font-sans text-white">
       <div className="mx-auto max-w-[1280px] px-gutter pb-12 pt-20">
         {/* Le nom du studio en filigrane, avant les colonnes de liens — un
-            repère plutôt qu'une simple répétition du logo de la navbar. */}
+            repère plutôt qu'une simple répétition du logo de la navbar.
+            Gris plutôt que quasi invisible, avec un reflet qui balaie le
+            texte lentement — l'effet "métal brossé" plutôt qu'un dégradé
+            de marque, pour rester un filigrane discret, pas un second logo. */}
+        <style>{`
+          @keyframes footer-shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -100% 0; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .footer-watermark { animation: none !important; background-position: 50% 0 !important; }
+          }
+        `}</style>
         <div
           aria-hidden
-          className="pointer-events-none select-none whitespace-nowrap font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold leading-none tracking-[-0.01em] text-white/[0.05]"
+          className="footer-watermark pointer-events-none select-none whitespace-nowrap bg-clip-text font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold leading-none tracking-[-0.01em] text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(100deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.09) 35%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.09) 65%, rgba(255,255,255,0.09) 100%)",
+            backgroundSize: "250% 100%",
+            animation: "footer-shine 7s ease-in-out infinite",
+          }}
         >
           Strawberry Production
         </div>

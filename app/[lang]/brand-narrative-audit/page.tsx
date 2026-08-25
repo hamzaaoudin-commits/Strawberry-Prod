@@ -27,8 +27,8 @@ const T = {
     previewLabels: ["Bloc 01 — La lecture du champ", "Bloc 02 — L'autopsie de votre phrase", "Bloc 05 — Le verdict"],
     // — What it is
     whatKicker: "Ce que vous recevez",
-    whatH2: "Un document écrit, rien d'autre.",
-    whatLead: "Vous remplissez un questionnaire de vingt minutes et vous envoyez vos liens. Sept jours plus tard, vous recevez un PDF de vingt à trente pages qui dit ce que votre marque raconte aujourd'hui, et ce qu'elle devrait raconter.",
+    whatH2: "Une analyse en profondeur. Aucune réécriture.",
+    whatLead: "Vous remplissez un questionnaire de vingt minutes et nous partagez votre site, vos réseaux, vos contenus récents — tout ce qui dit qui vous êtes aujourd'hui, pas seulement une page. Sept jours plus tard, vous recevez un PDF de vingt à trente pages qui dit ce que votre marque raconte aujourd'hui, et ce qu'elle devrait raconter.",
     blocks: [
       { n: "01", t: "La lecture du champ", d: "Vos trois à cinq concurrents directs, leurs phrases, ce qu'ils promettent réellement. La carte de ce qui est déjà occupé — et le terrain qui ne l'est pas." },
       { n: "02", t: "L'autopsie de votre phrase", d: "Votre phrase de positionnement actuelle, disséquée mot par mot. Ce qu'elle emprunte au champ, ce qu'elle dilue, ce qui est mort à l'arrivée parce que tout le monde l'emploie déjà." },
@@ -90,8 +90,8 @@ const T = {
     previewCta: "Read all five blocks \u2192",
     previewLabels: ["Block 01 — The field, read", "Block 02 — Your sentence, autopsied", "Block 05 — The verdict"],
     whatKicker: "What you receive",
-    whatH2: "One written document, nothing else.",
-    whatLead: "You fill in a twenty-minute questionnaire and send your links. Seven days later you receive a twenty to thirty page PDF stating what your brand says today, and what it should be saying.",
+    whatH2: "A deep analysis. No rewrite.",
+    whatLead: "You fill in a twenty-minute questionnaire and share your site, your social presence, your recent content — everything that says who you are today, not just one page. Seven days later you receive a twenty to thirty page PDF stating what your brand says today, and what it should be saying.",
     blocks: [
       { n: "01", t: "The field, read", d: "Your three to five direct competitors, their sentences, what they actually promise. A map of what is already occupied — and the ground that isn't." },
       { n: "02", t: "Your sentence, autopsied", d: "Your current positioning sentence, dissected word by word. What it borrows from the field, where it dilutes, which words are dead on arrival because everyone already uses them." },
