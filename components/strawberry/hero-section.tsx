@@ -133,11 +133,15 @@ export function HeroSection() {
         {/* Le scintillement : chaque point passe l'essentiel de son temps à
             son opacité normale et ne s'illumine qu'un bref instant, à un
             rythme propre à chaque point (durée et décalage tirés de son
-            index) — jamais synchronisés, jamais tous en même temps. */}
+            index) — jamais synchronisés, jamais tous en même temps.
+            Le pic anime aussi le rayon et ajoute une lueur : à l'opacité de
+            base du graphique (22%), un simple changement d'opacité du point
+            passait inaperçu. Rendu deux fois plus grand et lumineux au pic
+            pour rester visible malgré la faible opacité d'ensemble. */}
         <style>{`
           @keyframes hero-twinkle {
-            0%, 88%, 100% { opacity: var(--twinkle-base); }
-            94% { opacity: 1; }
+            0%, 80%, 100% { opacity: var(--twinkle-base); r: var(--twinkle-r); filter: none; }
+            90% { opacity: 1; r: calc(var(--twinkle-r) * 2); filter: drop-shadow(0 0 6px #e63946) drop-shadow(0 0 2px #fff); }
           }
         `}</style>
         {EXTRACTION_POINTS.map((p, i) => (
@@ -161,19 +165,21 @@ export function HeroSection() {
         ))}
         {EXTRACTION_POINTS.map((p, i) => {
           const base = p.near ? 0.9 : 0.5
-          const duration = 4000 + seeded(i, 1) * 5000
-          const delay = seeded(i, 2) * 6000
+          const radius = p.near ? 2.6 : 1.6
+          const duration = 2200 + seeded(i, 1) * 2600
+          const delay = seeded(i, 2) * 4000
           return (
             <circle
               key={`p${i}`}
               cx={p.x}
               cy={p.y}
-              r={p.near ? 2.6 : 1.6}
+              r={radius}
               fill="#e63946"
               opacity={mounted ? base : 0}
               style={
                 {
                   "--twinkle-base": base,
+                  "--twinkle-r": radius,
                   transition: mounted ? undefined : "opacity 500ms ease-out",
                   transitionDelay: mounted ? undefined : `${150 + i * 45 + 900}ms`,
                   animation: mounted ? `hero-twinkle ${duration}ms ease-in-out ${delay}ms infinite` : undefined,
