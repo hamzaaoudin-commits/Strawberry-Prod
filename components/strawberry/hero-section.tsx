@@ -134,14 +134,18 @@ export function HeroSection() {
             son opacité normale et ne s'illumine qu'un bref instant, à un
             rythme propre à chaque point (durée et décalage tirés de son
             index) — jamais synchronisés, jamais tous en même temps.
-            Le pic anime aussi le rayon et ajoute une lueur : à l'opacité de
+            Le pic grossit le point et ajoute une lueur : à l'opacité de
             base du graphique (22%), un simple changement d'opacité du point
-            passait inaperçu. Rendu deux fois plus grand et lumineux au pic
-            pour rester visible malgré la faible opacité d'ensemble. */}
+            passait inaperçu.
+            Agrandi via `transform: scale()`, jamais via l'attribut `r` — une
+            valeur `r` animée par variable CSS sans unité est invalide pour
+            certains navigateurs, qui annulent alors le rayon en permanence
+            et rendent le point invisible en continu, pas seulement au repos.
+            `transform` sur `scale()` n'a pas ce problème. */}
         <style>{`
           @keyframes hero-twinkle {
-            0%, 80%, 100% { opacity: var(--twinkle-base); r: var(--twinkle-r); filter: none; }
-            90% { opacity: 1; r: calc(var(--twinkle-r) * 2); filter: drop-shadow(0 0 6px #e63946) drop-shadow(0 0 2px #fff); }
+            0%, 80%, 100% { opacity: var(--twinkle-base); transform: scale(1); filter: none; }
+            90% { opacity: 1; transform: scale(2); filter: drop-shadow(0 0 6px #e63946) drop-shadow(0 0 2px #fff); }
           }
         `}</style>
         {EXTRACTION_POINTS.map((p, i) => (
@@ -179,7 +183,8 @@ export function HeroSection() {
               style={
                 {
                   "--twinkle-base": base,
-                  "--twinkle-r": radius,
+                  transformBox: "fill-box",
+                  transformOrigin: "center",
                   transition: mounted ? undefined : "opacity 500ms ease-out",
                   transitionDelay: mounted ? undefined : `${150 + i * 45 + 900}ms`,
                   animation: mounted ? `hero-twinkle ${duration}ms ease-in-out ${delay}ms infinite` : undefined,
