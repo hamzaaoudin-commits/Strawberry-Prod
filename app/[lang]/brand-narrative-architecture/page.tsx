@@ -749,6 +749,49 @@ type Block =
  * fonctions quasi identiques à maintenir, sans que la page ait l'air
  * moins soignée — le cadre est déjà celui de tout le document.
  */
+/**
+ * Une ligne de corps de texte : un vrai fragment de phrase, rendu petit.
+ *
+ * Ce que ces maquettes rataient : une page de document imprimé porte trente
+ * à quarante lignes de texte, pas six puces et une note. À six éléments,
+ * l'oeil lit « schéma », pas « page ». Le corps de texte ci-dessous est de
+ * la vraie prose, pas des barres grises simulant du texte — à 4,6px elle
+ * n'est pas lue, mais elle a la texture et l'irrégularité du texte réel,
+ * ce qu'aucune barre grise ne produit.
+ */
+function BodyLines({
+  lines,
+  x,
+  y,
+  lineHeight = 8.2,
+  width = 232,
+}: {
+  lines: string[]
+  x: number
+  y: number
+  lineHeight?: number
+  width?: number
+}) {
+  return (
+    <>
+      {lines.map((l, i) => (
+        <text
+          key={i}
+          x={x}
+          y={y + i * lineHeight}
+          fill="rgba(255,255,255,0.42)"
+          fontFamily="Georgia, serif"
+          fontSize="4.6"
+          textLength={i === lines.length - 1 ? undefined : width}
+          lengthAdjust="spacingAndGlyphs"
+        >
+          {l}
+        </text>
+      ))}
+    </>
+  )
+}
+
 function MockupGeneric({
   section,
   page,
@@ -757,6 +800,9 @@ function MockupGeneric({
   blocks,
   footnote,
   piece,
+  body,
+  marginNote,
+  folio,
 }: {
   section: string
   page: string
@@ -764,40 +810,81 @@ function MockupGeneric({
   title: string[]
   blocks: Block[]
   footnote: string
-  /** Numéro de la pièce dans les vingt \u2014 affiché en filigrane, écho du
-      numéro de commande sur la page de signature finale. */
+  /** Numéro de la pièce dans les vingt — affiché en filigrane. */
   piece: string
+  /** Le corps de texte de la page : de la vraie prose, dense. */
+  body: string[]
+  /** La note portée dans la marge extérieure, comme une annotation d'auteur. */
+  marginNote?: string
+  /** Le folio en pied de page, à côté du nom du document. */
+  folio?: string
 }) {
   let y = 0
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
-      {/* Le numéro de la pièce, en très grand et très discret \u2014 la
-          signature visuelle d'un document qui compte ses pièces une à une,
-          pas d'une page générique parmi d'autres. */}
-      <text x="392" y="330" fill="rgba(255,255,255,0.035)" fontFamily="Playfair Display, serif" fontSize="220" fontWeight="700" textAnchor="end">
+
+      {/* Le numéro de pièce en filigrane. */}
+      <text x="392" y="330" fill="rgba(255,255,255,0.03)" fontFamily="Playfair Display, serif" fontSize="220" fontWeight="700" textAnchor="end">
         {piece}
       </text>
+
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{section}</text>
-      <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">{page}</text>
-      <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">{kicker}</text>
+
+      {/* En-tête courant : le nom du document à gauche, la section à droite —
+          comme sur toute page intérieure d'un ouvrage relié. */}
+      <text x="30" y="30" fill="rgba(255,255,255,0.22)" fontFamily="Inter, sans-serif" fontSize="5.5" letterSpacing="1.6">BRAND NARRATIVE ARCHITECTURE</text>
+      <text x="370" y="30" fill="rgba(255,255,255,0.22)" fontFamily="Inter, sans-serif" fontSize="5.5" letterSpacing="1.6" textAnchor="end">{section}</text>
+      <line x1="30" y1="36" x2="370" y2="36" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" />
+
+      <text x="30" y="58" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{page}</text>
+      <text x="30" y="82" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">{kicker}</text>
       {title.map((line, i) => (
-        <text key={i} x="30" y={118 + i * 24} fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">
+        <text key={i} x="30" y={110 + i * 24} fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">
           {line}
         </text>
       ))}
-      <g transform={`translate(30, ${118 + title.length * 24 + 20})`}>
+
+      {/* Le filet de marge : sépare la colonne de texte de la colonne
+          d'annotation, comme dans un livre à marges larges. */}
+      <line x1="278" y1={110 + title.length * 24 + 6} x2="278" y2="440" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" />
+
+      {/* La lettrine, puis le corps de texte en colonne étroite. */}
+      <text x="30" y={110 + title.length * 24 + 30} fill="#e63946" fontFamily="Playfair Display, serif" fontSize="26" fontWeight="700">
+        {body[0]?.charAt(0) ?? ""}
+      </text>
+      <BodyLines
+        lines={[(body[0] ?? "").slice(1), ...body.slice(1)]}
+        x={44}
+        y={110 + title.length * 24 + 18}
+        width={218}
+      />
+
+      {/* La note de marge, dans la colonne extérieure. */}
+      {marginNote && (
+        <>
+          <line x1="288" y1={110 + title.length * 24 + 14} x2="288" y2={110 + title.length * 24 + 40} stroke="#e63946" strokeWidth="1" />
+          <text x="294" y={110 + title.length * 24 + 20} fill="rgba(255,255,255,0.34)" fontFamily="Georgia, serif" fontSize="5" fontStyle="italic">
+            {marginNote.split("|").map((l, i) => (
+              <tspan key={i} x="294" dy={i === 0 ? 0 : 7}>
+                {l}
+              </tspan>
+            ))}
+          </text>
+        </>
+      )}
+
+      {/* Les blocs structurés, sous le corps de texte. */}
+      <g transform={`translate(30, ${110 + title.length * 24 + 18 + Math.max(body.length * 8.2, 60) + 22})`}>
         {blocks.map((b, bi) => {
           if (b.t === "lines") {
-            const h = b.items.length * 26 + 14
+            const h = b.items.length * 21 + 10
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
                 {b.items.map((line, i) => (
-                  <g key={i} transform={`translate(0, ${i * 26})`}>
-                    <circle cx="4" cy="-4" r="2" fill="#e63946" />
-                    <text x="16" y="0" fill="rgba(255,255,255,0.75)" fontFamily="Playfair Display, serif" fontSize="12" fontStyle="italic">
+                  <g key={i} transform={`translate(0, ${i * 21})`}>
+                    <circle cx="3" cy="-3" r="1.6" fill="#e63946" />
+                    <text x="14" y="0" fill="rgba(255,255,255,0.72)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">
                       {line}
                     </text>
                   </g>
@@ -808,12 +895,12 @@ function MockupGeneric({
             return g
           }
           if (b.t === "quote") {
-            const h = b.text.length * 26 + 30
+            const h = b.text.length * 21 + 24
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <line x1="0" y1="-10" x2="0" y2={b.text.length * 26 - 8} stroke="#e63946" strokeWidth="2" />
+                <line x1="0" y1="-9" x2="0" y2={b.text.length * 21 - 8} stroke="#e63946" strokeWidth="1.6" />
                 {b.text.map((line, i) => (
-                  <text key={i} x="18" y={i * 26} fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">
+                  <text key={i} x="14" y={i * 21} fill="#fff" fontFamily="Playfair Display, serif" fontSize="11.5" fontStyle="italic">
                     {line}
                   </text>
                 ))}
@@ -824,48 +911,48 @@ function MockupGeneric({
           }
           if (b.t === "split") {
             const rowsN = Math.max(b.leftItems.length, b.rightItems.length)
-            const h = 30 + rowsN * 20
+            const h = 26 + rowsN * 17
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <rect x="0" y="0" width="162" height={h} fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="1" />
-                <text x="14" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1.5" fontWeight="700">{b.leftTitle}</text>
+                <rect x="0" y="0" width="162" height={h} fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="0.8" />
+                <text x="12" y="18" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.4" fontWeight="700">{b.leftTitle}</text>
                 {b.leftItems.map((line, i) => (
-                  <text key={i} x="14" y={44 + i * 20} fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="10">{line}</text>
+                  <text key={i} x="12" y={36 + i * 17} fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="9">{line}</text>
                 ))}
-                <rect x="178" y="0" width="162" height={h} fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-                <text x="192" y="22" fill="rgba(255,255,255,0.55)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1.5" fontWeight="700">{b.rightTitle}</text>
+                <rect x="178" y="0" width="162" height={h} fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" strokeWidth="0.8" />
+                <text x="190" y="18" fill="rgba(255,255,255,0.55)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.4" fontWeight="700">{b.rightTitle}</text>
                 {b.rightItems.map((line, i) => (
-                  <text key={i} x="192" y={44 + i * 20} fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">{line}</text>
+                  <text key={i} x="190" y={36 + i * 17} fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="9">{line}</text>
                 ))}
               </g>
             )
-            y += h + 16
+            y += h + 14
             return g
           }
           if (b.t === "stat") {
-            const h = 130
+            const h = 104
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <line x1="0" y1="0" x2="0" y2="96" stroke="#e63946" strokeWidth="2" />
-                <text x="18" y="60" fill="#fff" fontFamily="Playfair Display, serif" fontSize="40" fontWeight="700">{b.value}</text>
-                <text x="18" y="82" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{b.label}</text>
-                <text x="18" y="110" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">{b.note}</text>
+                <line x1="0" y1="0" x2="0" y2="78" stroke="#e63946" strokeWidth="1.6" />
+                <text x="14" y="48" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">{b.value}</text>
+                <text x="14" y="66" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.8">{b.label}</text>
+                <text x="14" y="88" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic">{b.note}</text>
               </g>
             )
             y += h
             return g
           }
           if (b.t === "meter") {
-            const rowH = 46
+            const rowH = 38
             const h = b.rows.length * rowH
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
                 {b.rows.map(([label, pct, note], i) => (
                   <g key={i} transform={`translate(0, ${i * rowH})`}>
-                    <text x="0" y="0" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="1" fontWeight="700">{label}</text>
-                    <rect x="0" y="8" width="340" height="4" fill="rgba(255,255,255,0.1)" />
-                    <rect x="0" y="8" width={Math.max(6, (pct / 100) * 340)} height="4" fill="#e63946" />
-                    <text x="0" y="30" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">{note}</text>
+                    <text x="0" y="0" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="7.5" letterSpacing="0.8" fontWeight="700">{label}</text>
+                    <rect x="0" y="6" width="340" height="3" fill="rgba(255,255,255,0.1)" />
+                    <rect x="0" y="6" width={Math.max(5, (pct / 100) * 340)} height="3" fill="#e63946" />
+                    <text x="0" y="25" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="9" fontStyle="italic">{note}</text>
                   </g>
                 ))}
               </g>
@@ -874,14 +961,14 @@ function MockupGeneric({
             return g
           }
           // table
-          const h = b.rows.length * 30 + 6
+          const h = b.rows.length * 24 + 4
           const g = (
             <g key={bi} transform={`translate(0, ${y})`}>
               {b.rows.map((row, i) => (
-                <g key={i} transform={`translate(0, ${i * 30})`}>
-                  <line x1="0" y1="18" x2="340" y2="18" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-                  <text x="0" y="10" fill="rgba(255,255,255,0.45)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="1">{row[0]}</text>
-                  <text x="340" y="10" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="end">{row[1]}</text>
+                <g key={i} transform={`translate(0, ${i * 24})`}>
+                  <line x1="0" y1="14" x2="340" y2="14" stroke="rgba(255,255,255,0.08)" strokeWidth="0.7" />
+                  <text x="0" y="8" fill="rgba(255,255,255,0.45)" fontFamily="Inter, sans-serif" fontSize="7.5" letterSpacing="0.8">{row[0]}</text>
+                  <text x="340" y="8" fill="#fff" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic" textAnchor="end">{row[1]}</text>
                 </g>
               ))}
             </g>
@@ -890,13 +977,18 @@ function MockupGeneric({
           return g
         })}
       </g>
-      <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">{footnote}</text>
-      <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
+
+      {/* Pied de page : la note en italique, puis le folio et le nom court
+          du document, séparés par un filet — l'anatomie d'une page reliée. */}
+      <line x1="30" y1="452" x2="370" y2="452" stroke="rgba(255,255,255,0.1)" strokeWidth="0.7" />
+      <text x="30" y="470" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic">{footnote}</text>
+      <line x1="30" y1="492" x2="370" y2="492" stroke="#1a1a1a" strokeWidth="0.7" />
+      <text x="30" y="504" fill="rgba(255,255,255,0.25)" fontFamily="Inter, sans-serif" fontSize="5.5" letterSpacing="1.4">SILLAGE · ÉDITION N° 000</text>
+      <text x="370" y="504" fill="rgba(255,255,255,0.35)" fontFamily="Georgia, serif" fontSize="7" textAnchor="end">{folio ?? piece}</text>
     </svg>
   )
 }
+
 
 function MockupPositioningMap() {
   return (
@@ -940,6 +1032,8 @@ function MockupPositioningMap() {
 const PRICING = (
   <MockupGeneric
     key="pricing" piece="06"
+    body={["The price is not the last decision of a commission. It is the first sentence of the", "positioning, written in numbers rather than in words, and every buyer reads it before", "reading anything else. A rate that can be negotiated announces a service whose value", "the seller cannot locate. A rate that holds announces the opposite, and it announces it", "before a single argument has been made.", "The mechanism is not scarcity theatre. Four houses a quarter is what one person can", "hold in full — every refusal, every discarded draft, and why. The fifth commission does", "not reduce the attention available to it alone; it reduces the attention available to all five.", "That is a structural ceiling, not a marketing device, and it is the only honest reason to", "charge what this charges.", "What follows is the exact wording to use when the number is questioned, and the three", "reframes that move the conversation off price without ever defending it."]}
+    marginNote="Never defend the|number. Restate|what it buys, and|let the silence do|the arithmetic."
     section="02 · IDENTITY" page="P. 16" kicker="PRICING NARRATIVE"
     title={["The price is a sentence,", "not a number."]}
     blocks={[
@@ -952,6 +1046,8 @@ const PRICING = (
 const BIOGRAPHY = (
   <MockupGeneric
     key="biography" piece="07"
+    body={["A founder is asked to introduce themselves in four situations that share nothing: a", "bio field capped at 160 characters, a stage introduction read aloud by a stranger, a", "press line that will be quoted without permission, and a long-form account that has to", "carry an entire arc. Most founders write one and truncate it three times.", "Truncation is the error. Each format has a different job. The short bio must survive being", "scanned; the spoken introduction must survive being read by someone who has never", "met you; the press line must survive being cut in half by an editor; the long form must", "survive being read slowly by someone deciding whether to trust you.", "All four are built from the same single break — the moment the founder stopped doing", "one thing and started doing this one. What changes across the four is not the story but", "how much of it the format can carry."]}
+    marginNote="One break, four|lengths. Never one|text cut down|three times."
     section="02 · IDENTITY" page="P. 17" kicker="BIOGRAPHY SYSTEM"
     title={["Four formats,", "one single break."]}
     blocks={[{ t: "lines", items: ["Bio, 160 characters — the scroll-stopping line.", "Speaker introduction — read aloud by someone else.", "Press one-liner — quotable as it stands.", "Long-form bio — the full arc, origin to now."] }]}
@@ -961,6 +1057,8 @@ const BIOGRAPHY = (
 const AUTOPSY = (
   <MockupGeneric
     key="autopsy" piece="08"
+    body={["A competitive analysis that lists features is a purchasing document, not a positioning", "one. What matters is not what each player builds; it is what each player is willing to say,", "and what saying it costs them. A claim nobody would dare copy is a position. A claim", "everyone makes is a category description wearing a logo.", "Each player receives one sheet. The sheet records the claim they lead with, the claim", "they avoid, the buyer they are structurally unable to serve, and the sentence they could", "not publish without contradicting their own pricing. The distinctiveness score at left is", "not a quality judgement — a well-run company scores low here simply by saying the", "same things as everyone else, competently.", "The most useful sheet is always the one for the player the founder mentions last, and", "with the flattest voice. That is the one they actually fear."]}
+    marginNote="Score what they|dare to say, not|what they build.|Features are not|positions."
     section="02 · IDENTITY" page="P. 18" kicker="COMPETITOR AUTOPSY"
     title={["One sheet,", "one score, per player."]}
     blocks={[{ t: "meter", rows: [
@@ -975,6 +1073,8 @@ const AUTOPSY = (
 const SIGNATURE_PIECE = (
   <MockupGeneric
     key="signature-piece" piece="09"
+    body={["Every category has a founding text, whether or not anyone intended to write one. It is", "the piece that states the refusal plainly enough that others have to answer it, and from", "that moment the conversation happens on its terms. Most categories acquire theirs by", "accident. This one is written on purpose.", "The essay runs long — two thousand words or more — because the argument does not", "survive compression. It is published under the founder's name, not the company's, and", "it is not a blog post assignment handed to a content team. It says the thing the market", "has been circling and has not yet been willing to say out loud.", "It is delivered publishable as it stands. No editing pass is expected, and none is", "required before it goes out."]}
+    marginNote="The text others|have to answer.|Under a name,|not a logo."
     section="02 · IDENTITY" page="P. 19" kicker="THE SIGNATURE PIECE"
     title={["An essay,", "publishable as it stands."]}
     blocks={[{ t: "quote", text: ["\u201cEvery category starts the same way:", "one refusal, loud enough that others", "have to answer it or disappear.\u201d"] }]}
@@ -984,6 +1084,8 @@ const SIGNATURE_PIECE = (
 const INVESTOR = (
   <MockupGeneric
     key="investor" piece="11"
+    body={["The same conviction has to reach two audiences who judge it by opposite standards. A", "customer asks what changes for them. An investor asks what compounds. Told the", "customer story, an investor hears a nice business; told the investor story, a customer", "hears a company talking about itself.", "This is not two positionings. It is one position with two proofs. The customer proof is", "recognition — the moment they stop comparing you and start describing you. The", "investor proof is pricing power, retention, and the cost of the alternative for the buyer", "who has already chosen you.", "Both versions are written out in full, with the sentence that must not be said in either", "room, and the one question each audience will ask that the other never does."]}
+    marginNote="One position.|Two proofs. The|proof changes,|never the claim."
     section="02 · IDENTITY" page="P. 20" kicker="INVESTOR & PARTNER TRANSLATION"
     title={["The same story,", "for whoever judges a bet."]}
     blocks={[{ t: "split", leftTitle: "TO A CUSTOMER", leftItems: ["\u201cYou will finally be", "impossible to confuse.\u201d"], rightTitle: "TO AN INVESTOR", rightItems: ["\u201cCategory ownership is", "a pricing power multiplier.\u201d"] }]}
@@ -993,6 +1095,8 @@ const INVESTOR = (
 const VISUAL_BRIEF = (
   <MockupGeneric
     key="visual-brief" piece="12"
+    body={["A designer given a moodboard executes a taste. A designer given a brief argues with it,", "and the argument is where the identity is actually decided. This brief is written to be", "argued with — it states the reasoning behind each constraint so a good designer can", "tell you which constraint is wrong.", "It does not specify fonts. It specifies what the typography has to do: whether the reader", "should feel addressed or informed, whether the voice is older than the company or", "younger. Colour is treated as an argument, not decoration — what it claims, and what it", "concedes to competitors who already own the obvious choice.", "The last section lists what to refuse: the executions that would be technically", "competent and strategically fatal, named specifically enough to be recognised."]}
+    marginNote="Written to be|argued with, not|executed. Reasons,|not references."
     section="02 · IDENTITY" page="P. 21" kicker="VISUAL IDENTITY BRIEF"
     title={["Written for a designer", "who thinks."]}
     blocks={[{ t: "lines", items: ["The feeling before the palette.", "Typography logic, not a font list.", "Color as argument, not decoration.", "What to refuse — the moodboard clichés."] }]}
@@ -1002,38 +1106,40 @@ const VISUAL_BRIEF = (
 const AUDIENCE = (
   <MockupGeneric
     key="audience" piece="14"
+    body={["Four segments buy the same thing for four incompatible reasons, and a single message", "written for all of them reaches none. What separates them is not demographics. It is the", "trigger — the specific event that moves someone from tolerating the problem to", "searching for a solution — and the resistance that follows it.", "For each segment: the trigger, the exact words used in private, the objection that", "surfaces first, the deeper objection hiding behind it, and the content that converts. The", "private wording matters most. It is almost never the wording used in public, and the", "gap between them is where most marketing dies.", "One segment appears here with a recommendation to stop addressing it. That is a", "decision, not an omission, and the reasoning is set out in full."]}
+    marginNote="Same offer, four|languages. The|trigger is an|event, never a|demographic."
     section="02 · IDENTITY" page="P. 22" kicker="AUDIENCE INTELLIGENCE REPORT"
     title={["Four segments,", "one language each."]}
     blocks={[{ t: "table", rows: [["THE SKEPTIC", "Show, do not claim."], ["THE REFERRED", "Confirm, do not convince."], ["THE COMPARER", "Name the alternative first."], ["THE RETURNER", "Reward the memory."]] }]}
     footnote="The same offer, worded four different ways on purpose."
   />
 )
-function playbook(key: string, piece: string, page: string, kicker: string, title: string[], blocks: Block[], footnote: string) {
+function playbook(key: string, piece: string, page: string, kicker: string, title: string[], blocks: Block[], footnote: string, body: string[], marginNote: string) {
   return (
-    <MockupGeneric key={key} piece={piece} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={blocks} footnote={footnote} />
+    <MockupGeneric key={key} piece={piece} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={blocks} footnote={footnote} body={body} marginNote={marginNote} />
   )
 }
 const PB_MARKETING = playbook("pb-marketing", "15", "P. 26", "MARKETING PLAYBOOK", ["Angles to explore,", "angles to refuse."], [
   { t: "lines", items: ["Explore: the refusal, stated plainly.", "Explore: proof over adjectives.", "Refuse: comparison tables with rivals.", "Refuse: any claim we cannot defend live."] },
-], "What the market team is allowed to try — and not.")
+], "What the market team is allowed to try — and not.", ["A playbook is not a strategy document. It exists so that a decision about an angle takes", "thirty seconds, without a meeting, and without the founder arbitrating. It does not", "prescribe what to produce. It states what is permitted to exist under this name.", "The angles to explore are listed with the reason each one works, because an angle", "copied without its reason degrades within three iterations. The angles to refuse are", "listed with what they cost, because a team that does not know the cost will eventually", "try the refused angle when a quarter goes badly.", "The publication test at the foot of this page removes roughly half of what a marketing", "team produces by instinct. That is its purpose, not a side effect."], "Decisions in|thirty seconds.|No meeting. No|arbitration.")
 const PB_CONTENT = playbook("pb-content", "16", "P. 27", "CONTENT PLAYBOOK", ["The voice,", "turned into rules."], [
   { t: "lines", items: ["Short sentences. Cut the qualifier.", "Name the enemy before the offer.", "One idea per piece, never three.", "End on the sentence, not the summary."] },
-], "Anyone can follow it. No one needs to ask you first.")
+], "Anyone can follow it. No one needs to ask you first.", ["The voice of a house is usually held by one person and transmitted by osmosis, which", "means it degrades the moment that person stops reviewing every line. Writing it down", "as rules is what lets someone who has never met the founder write correctly in their", "first week.", "The rules are stated as operations, not adjectives. Not “be authentic”, which cannot be", "checked, but “if the first sentence holds no number, date or scene, rewrite it”, which", "can. Six rules, each with a before-and-after showing the same sentence failing and", "then passing.", "One rule outranks the others and is marked as such. When two rules conflict, that one", "wins, and the conflict does not need to be escalated."], "Rules that can be|checked. Not|adjectives that|cannot.")
 const PB_SOCIAL = playbook("pb-social", "17", "P. 28", "SOCIAL MEDIA PLAYBOOK", ["Tone by platform,", "rhythm, and replies."], [
   { t: "split", leftTitle: "LINKEDIN", leftItems: ["The essay's argument,", "condensed to one post."], rightTitle: "INSTAGRAM", rightItems: ["The artifact, shown.", "Never the process."] },
   { t: "lines", items: ["Comments: answer once, precisely, and stop.", "Never: engagement bait disguised as opinion."] },
-], "The doctrine, adapted per platform — never diluted.")
+], "The doctrine, adapted per platform — never diluted.", ["Three platforms, three jobs, one doctrine. The failure mode is not posting too little; it is", "posting the same thing everywhere, which reads as absence rather than presence.", "Each platform gets a defined job, a cadence that can be sustained without heroics, and", "a list of formats that are structurally wrong for it. The comment policy is written out", "because comments are where a carefully held voice usually breaks — the second reply", "in an argument serves nobody but the two people writing it.", "The final section lists what never ships: the posts that perform well and build nothing.", "They are named specifically, because a team under pressure will otherwise rediscover", "them every quarter."], "The form changes.|The position|never does.")
 const PB_SALES = playbook("pb-sales", "18", "P. 29", "SALES PLAYBOOK", ["How to defuse", "an objection before it lands."], [
   { t: "quote", text: ["\u201cWhy so expensive?\u201d", "\u2014 The scarcity is structural, not a sales tactic."] },
   { t: "lines", items: ["Open with the refusal, not the offer.", "\u201cWe already have a logo\u201d \u2192 a logo is not a doctrine.", "Close by inviting the no, not chasing the yes."] },
-], "Objections stop being objections once they are named first.")
+], "Objections stop being objections once they are named first.", ["Order matters more than argument. A correct answer delivered at the wrong moment", "creates the objection it was meant to close, which is why this playbook fixes the", "sequence before it supplies any wording.", "The opening question is specified exactly, because the first question decides which", "category the conversation happens in — and in the wrong category the house is one", "option among a dozen, however good the rest of the call is.", "Four objections are mapped in the order they actually arrive, each with what it conceals.", "Price objections are usually category objections; redundancy objections are usually", "identity objections. Answering the surface version of either loses the deal politely.", "The close invites the no. It loses marginal business and earns credibility on everything", "else — the commercial form of the refusal the house is built on."], "Answer the hidden|objection, never|the stated one.")
 const PB_SUPPORT = playbook("pb-support", "19", "P. 30", "SUPPORT PLAYBOOK", ["How to stay on-voice", "in sensitive situations."], [
   { t: "lines", items: ["Apologize in one sentence. Then fix.", "Never hide behind \u201cpolicy.\u201d Explain the reason.", "Bad news, stated plainly \u2014 never buried in praise.", "The tone holds even when the news does not."] },
-], "The identity that survives contact with a complaint.")
+], "The identity that survives contact with a complaint.", ["An identity that does not survive the first bad week is a campaign, not an identity. This", "playbook covers the moments nobody rehearses: the client is angry, the product failed,", "the news is bad and cannot be softened.", "Four rules, each written against a specific failure. Apologise in one sentence, because a", "long apology moves attention onto the person apologising. Never retreat behind policy,", "because policy is what a company says when it does not want to give a reason. Lead", "with the bad news. Never promise a date to calm someone in the moment.", "The severe case is documented separately, in full, with the exact message to send. It is", "written in advance precisely because it will be needed on a day when nobody has the", "composure to write it well."], "Written in|advance, for a day|when nobody can|write well.")
 const PB_HR = playbook("pb-hr", "20", "P. 31", "HR & MANAGEMENT PLAYBOOK", ["The culture, retranslated", "to guide decisions."], [
   { t: "stat", value: "1", label: "QUESTION THAT DECIDES TIES", note: "\u201cDid this decision sound like us?\u201d Not seniority. Not consensus." },
   { t: "lines", items: ["Hire for the refusal, not the resume.", "Onboarding teaches the enemy before the offer."] },
-], "Culture as a decision rule, not a poster in the hallway.")
+], "Culture as a decision rule, not a poster in the hallway.", ["A doctrine that guides no internal decision becomes a poster in a corridor within a", "year. This playbook makes it operative in the three places culture is actually decided:", "who is hired, what they learn first, and how ties are broken.", "Hiring is done on the refusal rather than the résumé. The interview question is specified,", "along with what an empty answer means and why it disqualifies. Onboarding begins", "with the enemy, not the product — a new hire who understands what the house refuses", "finds the right words alone, while one who learned the features first spends six months", "sounding like a vendor.", "Ties are broken by one question, asked out loud, including when the answer costs", "money. Seniority does not break ties here. Consensus does not either."], "One question|breaks ties. Not|seniority. Not|consensus.")
 const ACT_I_C = [<MockupCover key="c" />, <MockupDedication key="d" />, <MockupIndex key="i" />]
 const ACT_II_C = [
   <MockupPerceptionMap key="pm" />,
