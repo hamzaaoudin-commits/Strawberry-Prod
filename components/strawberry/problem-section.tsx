@@ -64,25 +64,30 @@ export function ProblemSection({ lang }: { lang: Lang }) {
           {/* La triade, sortie du paragraphe : trois manques posés l'un sous
               l'autre frappent plus fort que la même phrase noyée en fin de
               paragraphe, où l'œil la traverse sans s'arrêter. Chaque ligne
-              entre en scène à son tour au scroll. */}
-          <ul ref={listRef} className="mb-8 list-none space-y-3 p-0">
-            {t.p1List.map((item, i) => (
-              <li
-                key={item}
-                className="flex items-baseline gap-3 font-serif text-[clamp(1.1rem,2vw,1.45rem)] leading-snug text-white/85 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
-                style={{
-                  opacity: listVisible ? 1 : 0,
-                  transform: listVisible ? "translateX(0)" : "translateX(-12px)",
-                  transitionDelay: `${i * 160}ms`,
-                }}
-              >
-                <span aria-hidden className="text-[0.7em] text-brand">
-                  ✦
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+              entre en scène à son tour au scroll.
+              Le ref est porté par ce div et non par le <ul> : useScrollReveal
+              renvoie une référence typée HTMLDivElement, l'attacher à une
+              liste casse la vérification de types au build. */}
+          <div ref={listRef}>
+            <ul className="mb-8 list-none space-y-3 p-0">
+              {t.p1List.map((item, i) => (
+                <li
+                  key={item}
+                  className="flex items-baseline gap-3 font-serif text-[clamp(1.1rem,2vw,1.45rem)] leading-snug text-white/85 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
+                  style={{
+                    opacity: listVisible ? 1 : 0,
+                    transform: listVisible ? "translateX(0)" : "translateX(-12px)",
+                    transitionDelay: `${i * 160}ms`,
+                  }}
+                >
+                  <span aria-hidden className="text-[0.7em] text-brand">
+                    ✦
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <p className="mb-8 font-sans text-[16.5px] leading-[1.75] text-white/60">{t.p3}</p>
 

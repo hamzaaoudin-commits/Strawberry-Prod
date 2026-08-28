@@ -1,88 +1,54 @@
-# Strawberry — patch : dix changements
+# Strawberry — patch : dix changements (build corrigé)
 
-Huit fichiers. Glissez-les dans leurs dossiers exacts.
+Huit fichiers. Remplace le patch précédent, qui cassait le build.
 
-## 1. Le logo de chargement
+## Le bug du build, et pourquoi il m'a échappé
 
-`loading-intro.tsx` — « Strawberry Prod. » devient « STRAWBERRY PROD. »,
-entièrement en rouge (avant : dégradé sur les dix premières lettres, blanc
-sur le reste).
+`problem-section.tsx` ligne 68 : j'avais attaché le `ref` de
+`useScrollReveal` à un `<ul>`, alors que ce hook renvoie une référence
+typée `HTMLDivElement`. TypeScript refuse — d'où l'échec du build Vercel.
 
-## 2. La triade en liste
+La cause de fond de mon côté : je validais mes fichiers avec esbuild, qui
+ne vérifie **que la syntaxe**, jamais les types. Le build Vercel, lui, fait
+un vrai contrôle de types. Mes vérifications passaient donc alors que le
+build échouait.
 
-`problem-section.tsx` — « Rien à quoi appartenir, rien à défendre, rien à
-répéter à un ami » sortait en fin de paragraphe, où l'œil la traversait
-sans s'arrêter. Devient trois lignes distinctes, chacune précédée du signe
-✦ rouge, qui entrent l'une après l'autre au scroll.
+Pour ce patch, j'ai installé TypeScript et lancé un vrai `tsc` sur les huit
+fichiers : zéro erreur venant de mon code. (Les seules erreurs restantes
+dans mon environnement viennent de Next.js et `@vercel/analytics` qui n'y
+sont pas installés, et de trois `<style jsx>` déjà présents dans votre
+dépôt avant mes modifications — vérifié sur la version en ligne. Ceux-là
+compilent sans problème sur Vercel.)
 
-## 3. Le schéma sans/avec architecture, animé
+## Le correctif
 
-`architecture-diagram.tsx` — réécrit. Ce n'est plus deux vignettes figées
-côte à côte : c'est un seul schéma où les mêmes cinq points se déplacent
-réellement de la dispersion vers la ligne qui monte, la ligne se trace
-pendant qu'ils se rangent, et le libellé bascule avec l'état. La boucle
-rejoue la transformation en continu, pour que quelqu'un qui arrive en
-cours de cycle la voie entière.
+Le `ref` est maintenant porté par un `<div>` qui enveloppe la liste ; le
+`<ul>` et les `<li>` restent en place, donc le balisage sémantique de la
+liste est préservé et le rendu est identique à ce qui était prévu.
 
-Sous mouvement réduit (réglage système), les deux vignettes côte à côte
-d'avant restent affichées — la comparaison reste lisible sans animation.
+## Les dix changements (inchangés par rapport au patch précédent)
 
-## 4. « Ça a manqué de la bonne cause. » enfle au scroll
-
-`diagnosis-section.tsx` — la phrase grossit brièvement (×1,12) puis reprend
-sa taille quand la section entre dans le champ de vision.
-
-## 5. Les quatre fausses causes, révélées en trois temps
-
-`diagnosis-section.tsx` — exactement la séquence demandée, par bloc :
-le mot apparaît (« Un logo refait ») → le trait de rature se dessine de
-gauche à droite → la raison de l'échec monte (« Nouvelle vitrine, même
-confusion... ») → la flèche arrive avec votre solution (« → Chez nous, le
-logo vient après la doctrine »). Chaque bloc démarre 420ms après le
-précédent, donc le raisonnement se déroule au lieu d'être livré tout fait.
-
-## 6. Le bandeau rouge REFUS, retiré
-
-`app/[lang]/page.tsx` — retiré de la home, import compris.
-
-## 7. Le bandeau rouge ARCHITECTURE, retiré
-
-`brand-narrative-architecture/page.tsx` — « L'ARCHITECTURE / Ce que vous
-êtes sur le point de commander », retiré, import compris.
-
-**Note :** `components/strawberry/section-divider.tsx` n'est désormais
-appelé nulle part. Vous pouvez le supprimer du dépôt.
-
-## 8. La phrase cassée de la page studio
-
-`about/page.tsx` — c'était un vrai bug, pas une coquille : les
-échappements Unicode étaient doublés dans le code (`\\u00e9` au lieu de
-`\u00e9`), donc les codes s'affichaient en clair au lieu des accents.
-Réécrite avec les vrais caractères accentués. C'était la seule ligne du
-fichier touchée.
-
-## 9. Le message du formulaire de contact
-
-`contact-section.tsx` — « Une ligne suffit. » →  « Où en êtes-vous
-aujourd'hui, et qu'aimeriez-vous que le marché comprenne de vous ? »
-Une question ouverte donne un point de départ à quelqu'un qui ne sait pas
-par où commencer, là où « une ligne suffit » ne disait que la longueur
-attendue.
-
-## 10. La section « Au-delà du document », retirée
-
-`brand-narrative-architecture/page.tsx` — la section entière sur l'objet
-relié (impression, reliure main, édition numérotée) est retirée, avec ses
-textes de traduction FR et EN devenus orphelins, puisque vous ne
-fournissez plus l'objet.
-
-## Restent à traiter (pas dans ce patch)
-
-- **Les visuels de l'artefact** — j'ai besoin de savoir ce qui cloche
-  précisément avant de refaire les 27 maquettes.
-- **Le document SILLAGE** — il contient 14 sections, pas 20. Il manque les
-  six playbooks (marketing, contenu, réseaux sociaux, vente, support,
-  RH & management).
+1. **Logo de chargement** — « STRAWBERRY PROD. », tout en rouge, en majuscules.
+2. **La triade** « Rien à quoi appartenir / Rien à défendre / Rien à
+   répéter à un ami » — sortie du paragraphe, en trois lignes qui entrent
+   l'une après l'autre.
+3. **Le schéma sans/avec architecture** — les cinq points se déplacent
+   réellement de la dispersion vers la ligne montante, en boucle, avec le
+   libellé qui bascule. Les deux vignettes figées restent sous mouvement
+   réduit.
+4. **« Ça a manqué de la bonne cause. »** — enfle brièvement puis reprend
+   sa taille au scroll.
+5. **Les quatre fausses causes** — révélation en trois temps : le mot, puis
+   la rature qui se dessine et la raison, puis la flèche avec la solution.
+6. **Le bandeau rouge REFUS** — retiré de la home.
+7. **Le bandeau rouge ARCHITECTURE** — retiré.
+   `components/strawberry/section-divider.tsx` n'est plus appelé nulle
+   part, vous pouvez le supprimer.
+8. **La phrase cassée de la page studio** — échappements Unicode doublés
+   (`\\u00e9` au lieu de `\u00e9`), réécrite avec les vrais accents.
+9. **Le message du formulaire** — « Où en êtes-vous aujourd'hui, et
+   qu'aimeriez-vous que le marché comprenne de vous ? »
+10. **La section « Au-delà du document »** — retirée avec ses traductions.
 
 ## Fichiers inclus
 
