@@ -9,7 +9,6 @@ import { FAQ_AUDIT } from "@/lib/faqs"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { SillageSection } from "@/components/strawberry/sillage-section"
 import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
-import { SectionDivider } from "@/components/strawberry/section-divider"
 import { AtlasSection } from "@/components/strawberry/atlas-section"
 import { DocumentFlipbook, type FlipbookPage, type FlipbookAct } from "@/components/strawberry/document-flipbook"
 import { Footer } from "@/components/strawberry/footer"
@@ -53,7 +52,6 @@ const T = {
     lReceive: "What you receive",
     lInside: "Inside the architecture",
     lProof: "How we will know it worked",
-    lAlso: "What you also receive",
     lInvest: "The investment",
     pactH2: "The human pact.",
     pactLead: "What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.",
@@ -104,7 +102,6 @@ const T = {
     acts: ["The Frame", "The Identity", "The Deployment", "The Signature"],
     measureH2: "Remarkable is measurable.",
     measureLead: "Before we start, we note together how you would describe today what sets you apart \u2014 usually it is vague, and sounds like what the others would say. A few months later, we look at what changed.",
-    alsoH2: "Beyond the document.",
     investLead: "The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, does not wear out: it belongs to you, never goes out of date, and keeps working for you years after it was written.",
     ctaH2: "Become impossible to confuse.",
     cta: "Place your commission \u2192",
@@ -123,9 +120,6 @@ const T = {
       { title: "Written once. For you only.", body: "Each brand is built from scratch \u2014 no template underneath, no earlier client's structure with new names dropped in. If you asked to read the last five narratives this studio wrote, none would rhyme with each other, or with yours." },
       { title: "From Paris. By inheritance.", body: "This studio operates from Paris \u2014 heir to a French school of narrative precision. Barthes. Foucault. Pivot. Beigbeder. A culture where what is not said matters as much as what is. Where a sentence is rewritten until nothing can be removed." },
       { title: "Four commissions per quarter. No more.", body: "Not a sales tactic \u2014 a structural choice. One person can hold four houses in their head at once, in full, for months: every refusal, every discarded draft, why. A fifth would mean writing all five worse." },
-    ],
-    alsoReceive: [
-      { label: "The Object", title: "The artifact, optionally bound.", body: "On request, the work is printed, hand-bound, and signed. A single numbered edition for your house. Delivered to your office or your home. The PDF is for working. The bound edition is for keeping." },
     ],
     successSignals: [
       "You are cited as a reference, not just another option",
@@ -189,7 +183,6 @@ const T = {
     lReceive: "Ce que vous recevez",
     lInside: "Dans l'architecture",
     lProof: "Comment nous saurons que ça a marché",
-    lAlso: "Ce que vous recevez aussi",
     lInvest: "L'investissement",
     pactH2: "Le pacte humain.",
     pactLead: "Ce qui rend une maison inoubliable, ce n'est plus le document. C'est celui qui a refus\u00e9 de l'\u00e9crire comme tout le monde.",
@@ -240,7 +233,6 @@ const T = {
     acts: ["Le Cadre", "L'Identit\u00e9", "Le D\u00e9ploiement", "La Signature"],
     measureH2: "Le remarquable se mesure.",
     measureLead: "Avant de commencer, on note ensemble comment vous d\u00e9crivez aujourd'hui ce qui vous distingue \u2014 en g\u00e9n\u00e9ral c'est vague, et \u00e7a ressemble \u00e0 ce que diraient les autres. Quelques mois plus tard, on regarde ce qui a chang\u00e9.",
-    alsoH2: "Au-del\u00e0 du document.",
     investLead: "Le prix de quelques semaines de publicit\u00e9, qui cesse d'exister le jour o\u00f9 vous cessez de payer. Votre r\u00e9cit, lui, ne s'use pas : il vous appartient, ne date jamais, et continue de travailler pour vous des ann\u00e9es apr\u00e8s avoir \u00e9t\u00e9 \u00e9crit.",
     ctaH2: "Devenez impossible \u00e0 confondre.",
     cta: "Passer commande \u2192",
@@ -259,9 +251,6 @@ const T = {
       { title: "\u00c9crit une fois. Pour vous seul.", body: "Chaque marque est b\u00e2tie de z\u00e9ro \u2014 aucun gabarit en dessous, aucune structure d'un client pr\u00e9c\u00e9dent avec de nouveaux noms glissés dedans. Si vous demandiez \u00e0 lire les cinq derniers r\u00e9cits \u00e9crits par ce studio, aucun ne rimerait avec un autre, ni avec le v\u00f4tre." },
       { title: "Depuis Paris. Par h\u00e9ritage.", body: "Ce studio op\u00e8re depuis Paris \u2014 h\u00e9ritier d'une \u00e9cole fran\u00e7aise de pr\u00e9cision narrative. Barthes. Foucault. Pivot. Beigbeder. Une culture o\u00f9 ce qui n'est pas dit compte autant que ce qui l'est. O\u00f9 une phrase est r\u00e9\u00e9crite jusqu'\u00e0 ce que rien ne puisse en \u00eatre retir\u00e9." },
       { title: "Quatre commandes par trimestre. Pas plus.", body: "Pas une tactique commerciale \u2014 un choix structurel. Une seule personne peut porter quatre maisons dans sa t\u00eate \u00e0 la fois, en entier, pendant des mois : chaque refus, chaque brouillon \u00e9cart\u00e9, pourquoi. Une cinqui\u00e8me voudrait dire \u00e9crire les cinq moins bien." },
-    ],
-    alsoReceive: [
-      { label: "L'Objet", title: "L'artefact, reli\u00e9 en option.", body: "Sur demande, le travail est imprim\u00e9, reli\u00e9 \u00e0 la main et sign\u00e9. Une \u00e9dition unique num\u00e9rot\u00e9e pour votre maison. Livr\u00e9e \u00e0 votre bureau ou chez vous. Le PDF est fait pour travailler. L'\u00e9dition reli\u00e9e est faite pour \u00eatre gard\u00e9e." },
     ],
     successSignals: [
       "Vous êtes cit\u00e9 comme r\u00e9f\u00e9rence, pas comme une option parmi d'autres",
@@ -1080,7 +1069,6 @@ export default function BrandNarrativeArchitecturePage() {
   const { lang } = useLang()
   const DELIVERABLES = t.deliverables.map((d, i) => ({ ...d, n: `0${i + 1}` }))
   const HUMAN_PACT = t.pact
-  const ALSO_RECEIVE = t.alsoReceive
   const SUCCESS_SIGNALS = t.successSignals
   const ACT_I = t.mockups.actI.map((m, i) => ({ ...m, component: ACT_I_C[i] }))
   const ACT_II = t.mockups.actII.map((m, i) => ({ ...m, component: ACT_II_C[i] }))
@@ -1109,7 +1097,6 @@ export default function BrandNarrativeArchitecturePage() {
   const deliver = useReveal()
   const inside = useReveal()
   const success = useReveal()
-  const also = useReveal()
   const invest = useReveal()
   const cta = useReveal()
 
@@ -1367,29 +1354,6 @@ export default function BrandNarrativeArchitecturePage() {
           </div>
         </div>
       </section>
-
-      <section ref={also.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d", position: "relative" }}>
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 65%)", opacity: 0.15, pointerEvents: "none" }} />
-        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", opacity: also.visible ? 1 : 0, transform: also.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
-          <div style={{ textAlign: "center", marginBottom: 80 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lAlso}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-              {t.alsoH2}
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 28 }}>
-            {ALSO_RECEIVE.map((r, i) => (
-              <div key={i} style={{ padding: "44px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", display: "flex", flexDirection: "column", gap: 20 }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, textTransform: "uppercase", fontFamily: SANS }}>{r.label}</div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem,2vw,1.6rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>{r.title}</h3>
-                <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>{r.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider lang={lang} word={lang === "fr" ? "ARCHITECTURE." : "ARCHITECTURE."} caption={lang === "fr" ? "Ce que vous êtes sur le point de commander" : "What you are about to commission"} />
 
       <section id="sec-invest" ref={invest.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>

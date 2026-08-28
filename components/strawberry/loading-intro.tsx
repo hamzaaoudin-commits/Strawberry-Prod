@@ -21,17 +21,17 @@
  * ne fait que poser des classes et des délais, rien de coûteux.
  */
 
-const WORD = "Strawberry Prod."
+const WORD = "STRAWBERRY PROD."
 
 export function LoadingIntro() {
   return (
     <div id="sp-intro" className="fixed inset-0 z-[999] flex items-center justify-center bg-[#0a0a0a]">
-      <span className="font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold tracking-[-0.02em]">
+      <span className="font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold tracking-[-0.02em] text-brand">
         {WORD.split("").map((ch, i) => (
           <span
             key={i}
             data-sp-letter
-            className={`sp-intro-letter inline-block opacity-0 translate-y-3 ${i < 10 ? "text-gradient" : "text-white"}`}
+            className="sp-intro-letter inline-block translate-y-3 opacity-0"
             style={{ whiteSpace: ch === " " ? "pre" : "normal", transitionDelay: `${i * 28}ms` }}
           >
             {ch}

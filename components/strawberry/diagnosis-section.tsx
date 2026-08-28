@@ -108,6 +108,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
   const [expanded, setExpanded] = useState(false)
   const [listRef, listVisible] = useScrollReveal()
+  const [h2Ref, h2Visible] = useScrollReveal()
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
@@ -119,35 +120,94 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
         <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.16] tracking-[-0.02em]">
           <ScrollFillText text={t.h2a} />
           <br />
-          <span className="text-gradient font-bold">{t.h2b}</span>
+          {/* La bascule du diagnostic : elle enfle brièvement au moment où
+              elle entre dans le champ de vision, puis reprend sa taille —
+              le mouvement fait lever les yeux dessus au lieu de la laisser
+              passer comme une deuxième ligne de titre. */}
+          <span
+            ref={h2Ref}
+            className="text-gradient inline-block font-bold"
+            style={{
+              transform: h2Visible ? "scale(1)" : "scale(1)",
+              animation: h2Visible ? "diagnosis-swell 1400ms cubic-bezier(.22,.68,0,1) 200ms both" : undefined,
+              transformOrigin: "left center",
+            }}
+          >
+            {t.h2b}
+          </span>
+          <style>{`
+            @keyframes diagnosis-swell {
+              0% { transform: scale(1); }
+              38% { transform: scale(1.12); }
+              100% { transform: scale(1); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              @keyframes diagnosis-swell { 0%, 100% { transform: scale(1); } }
+            }
+          `}</style>
         </h2>
         <p className="mb-6 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.p1}</p>
 
-        {/* Les quatre fausses causes : plus une simple liste de mots, chacune
-            dit maintenant en quoi elle ne fonctionne pas et ce qu'on fait à
-            la place. Entrée décalée au scroll, une pièce à la fois — le
-            même principe que le champ de points du hero, appliqué à du
-            texte plutôt qu'à des particules. */}
-        <div ref={listRef} className="mb-8 flex flex-col gap-4">
-          {t.falseCauses.map((fc, i) => (
-            <div
-              key={fc.label}
-              className="border-l border-white/10 pl-5 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
-              style={{
-                opacity: listVisible ? 1 : 0,
-                transform: listVisible ? "translateX(0)" : "translateX(-10px)",
-                transitionDelay: `${i * 140}ms`,
-              }}
-            >
-              <div className="font-serif text-[1.05rem] italic text-white/50 line-through decoration-brand/50">
-                {fc.label}
+        {/* Les quatre fausses causes, révélées en trois temps : d'abord ce
+            qu'ils ont déjà essayé, puis le mot se barre et la raison de
+            l'échec apparaît, puis la flèche avec ce qu'on fait à la place.
+            Le décalage entre les trois temps fait vivre le raisonnement au
+            lieu de le livrer tout fait. */}
+        <div ref={listRef} className="mb-8 flex flex-col gap-5">
+          {t.falseCauses.map((fc, i) => {
+            const base = i * 420
+            return (
+              <div
+                key={fc.label}
+                className="border-l border-white/10 pl-5 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
+                style={{
+                  opacity: listVisible ? 1 : 0,
+                  transform: listVisible ? "translateX(0)" : "translateX(-10px)",
+                  transitionDelay: `${base}ms`,
+                }}
+              >
+                {/* Temps 1 puis 2 : le mot apparaît, puis se barre. Le trait
+                    se dessine de gauche à droite plutôt que d'apparaître
+                    d'un coup — on voit la rature se faire. */}
+                <span className="relative inline-block font-serif text-[1.05rem] italic text-white/50">
+                  {fc.label}
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-1/2 h-px bg-brand/70"
+                    style={{
+                      width: listVisible ? "100%" : "0%",
+                      transition: "width 480ms cubic-bezier(.22,.68,0,1)",
+                      transitionDelay: `${base + 420}ms`,
+                    }}
+                  />
+                </span>
+
+                <p
+                  className="m-0 mt-1 font-sans text-[13.5px] leading-snug text-chalk-55 transition-all duration-500"
+                  style={{
+                    opacity: listVisible ? 1 : 0,
+                    transform: listVisible ? "translateY(0)" : "translateY(4px)",
+                    transitionDelay: `${base + 640}ms`,
+                  }}
+                >
+                  {fc.impact}
+                </p>
+
+                {/* Temps 3 : la solution, décalée encore, pour qu'elle
+                    arrive comme une réponse et non comme une suite. */}
+                <p
+                  className="m-0 mt-1.5 font-sans text-[13.5px] font-semibold leading-snug text-white transition-all duration-500"
+                  style={{
+                    opacity: listVisible ? 1 : 0,
+                    transform: listVisible ? "translateX(0)" : "translateX(-6px)",
+                    transitionDelay: `${base + 1000}ms`,
+                  }}
+                >
+                  <span className="text-brand">→</span> {fc.choice}
+                </p>
               </div>
-              <p className="m-0 mt-1 font-sans text-[13.5px] leading-snug text-chalk-55">{fc.impact}</p>
-              <p className="m-0 mt-1.5 font-sans text-[13.5px] font-semibold leading-snug text-white">
-                <span className="text-brand">→</span> {fc.choice}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.falseCauseOutro}</p>
