@@ -1,54 +1,52 @@
-# Strawberry — patch : casser la régularité machine
+# Strawberry — patch : les maquettes ancrées sur SILLAGE
 
 Un seul fichier, `app/[lang]/brand-narrative-architecture/page.tsx`.
-Remplace la version du patch précédent.
 
-## Pourquoi ça faisait « IA »
+## 1. Les pages parlent enfin d'une vraie maison
 
-Ce n'était pas une question de goût, il y avait une cause technique
-précise. Dans le patch précédent, je forçais chaque ligne de corps de
-texte à faire exactement la même largeur (`textLength` avec
-`lengthAdjust`), ce qui produisait un bloc de texte aux deux bords
-parfaitement droits, sur toutes les lignes, sur les treize pages. Aucune
-composition humaine ne fait ça — c'est la signature la plus reconnaissable
-d'une page fabriquée par une machine.
+C'était le plafond réel. Le corps de texte que j'avais écrit décrivait *ce
+que fait* un récit tarifaire, *comment* se décline une biographie — de la
+méta-description. Un lecteur y voit un modèle de page, quelle que soit la
+qualité de la mise en page, parce que ce texte pourrait appartenir à
+n'importe qui.
 
-Deuxième cause : les treize pages avaient exactement la même anatomie au
-pixel près. Même lettrine, même note de marge à la même hauteur, même
-filigrane à la même place. Feuilleter treize pages identiquement
-structurées lit « gabarit rempli », pas « document composé ».
+Les treize pages sont réécrites sur SILLAGE, la maison fictive du document
+de démonstration déjà présent sur le site : Claire Vasseur, Lyon, les
+quatorze mille euros payés pour un chantier bien fait qu'elle ne pouvait
+pas prouver, l'abonnement à 89 € comparé au mauvais objet, BATIFLOW et sa
+phrase que onze concurrents pourraient signer. Le livre feuilletable et le
+document SILLAGE se répondent maintenant au lieu de coexister.
 
-## Ce qui change
+## 2. Tout est passé en français
 
-**La justification forcée est supprimée.** Le bord droit du bloc de texte
-est maintenant irrégulier, comme dans n'importe quel ouvrage réel.
+Un fondateur français qui feuilletait l'aperçu de ce qu'il allait recevoir
+lisait un document anglais, sur un site parfaitement bilingue partout
+ailleurs. Corps de texte, notes de marge, titres, listes, tableaux,
+citations, en-têtes de section (« 02 · IDENTITÉ », « 03 · DÉPLOIEMENT ») :
+tout est en français.
 
-**Des micro-irrégularités déterministes.** Chaque ligne dérive de quelques
-dixièmes de pixel horizontalement et verticalement, et son opacité varie
-très légèrement — comme une encre qui ne dépose pas identiquement partout.
-C'est calculé à partir du numéro de la pièce, jamais aléatoire (un
-`Math.random` casserait l'hydratation React), donc chaque page garde
-toujours les mêmes irrégularités sans jamais les partager avec sa voisine.
+## 3. Les fausses lignes de texte ont disparu
 
-**La lettrine n'apparaît plus que sur une page sur trois.** Un ouvrage
-réel ouvre un chapitre par une lettrine, pas chacune de ses pages
-intérieures.
+Trois maquettes dessinées à la main (la colonne vertébrale, le récit
+d'origine, le guide de cohérence) simulaient encore leur corps de texte
+avec des **barres grises** — dix-neuf au total dans le fichier. C'est
+exactement l'artefact « placeholder » que j'avais éliminé sur les treize
+autres pages, resté en place ici. Remplacées par de la vraie prose SILLAGE,
+avec les mêmes micro-irrégularités que le reste. Il n'en reste zéro dans le
+fichier.
 
-**La note de marge apparaît sur deux pages sur trois**, et jamais à la
-même hauteur : une annotation d'auteur se pose en face du passage qu'elle
-commente, pas à un taquet fixe répété page après page.
+## Ce que je n'ai volontairement pas densifié
 
-**Le filigrane géant n'apparaît plus qu'une page sur deux**, et jamais
-tout à fait à la même place.
-
-Résultat : les treize pages partagent une grammaire commune sans être
-treize exemplaires du même moule.
+La couverture, la dédicace et la page de signature restent dépouillées.
+Dans un livre imprimé, ces trois pages **sont** vides — les remplir ferait
+moins vrai, pas plus. C'est la seule raison pour laquelle elles portent
+peu de texte, et c'est intentionnel.
 
 ## Vérification
 
 Contrôle de types TypeScript réel : zéro erreur venant de ce fichier. (La
 seule erreur signalée dans mon environnement est le `<style jsx>` déjà
-présent dans votre dépôt avant mes modifications.)
+présent dans votre dépôt avant mes modifications — Next.js le gère.)
 
 ## Fichiers inclus
 

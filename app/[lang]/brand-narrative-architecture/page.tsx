@@ -403,24 +403,34 @@ function MockupSpine() {
       <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">A house is not</text>
       <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">a positioning.</text>
       <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">It is a mythology.</text>
-      <g fill="rgba(255,255,255,0.35)">
-        <rect x="30" y="230" width="340" height="3" />
-        <rect x="30" y="240" width="320" height="3" />
-        <rect x="30" y="250" width="335" height="3" />
-        <rect x="30" y="260" width="290" height="3" />
-        <rect x="30" y="270" width="310" height="3" />
-        <rect x="30" y="280" width="325" height="3" />
-      </g>
+      <BodyLines
+        lines={[
+          "SILLAGE ne vend pas un logiciel de suivi de chantier. Elle vend ce qui reste quand le",
+          "chantier n'existe plus — la trace opposable de ce qui a été exécuté, constituée au fur et",
+          "à mesure, sans que personne ait à remplir quoi que ce soit. La distinction paraît",
+          "mince ; elle sépare deux catégories entières, deux niveaux de prix et deux acheteurs.",
+          "La mythologie de la maison tient en une phrase que Claire Vasseur répète sans s'en",
+          "apercevoir : le travail bien fait devient invisible dès que l'échafaudage tombe.",
+        ]}
+        x={30}
+        y={232}
+        seed={2}
+      />
       <line x1="30" y1="320" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
       <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">The conviction the</text>
       <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">founder holds when</text>
       <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">no one is watching.</text>
-      <g fill="rgba(255,255,255,0.35)">
-        <rect x="30" y="415" width="340" height="3" />
-        <rect x="30" y="425" width="305" height="3" />
-        <rect x="30" y="435" width="320" height="3" />
-        <rect x="30" y="445" width="280" height="3" />
-      </g>
+      <BodyLines
+        lines={[
+          "Ce que cette conviction interdit : parler de gain de temps, promettre une meilleure",
+          "organisation, se comparer à un outil de pilotage. Ces trois formulations sont vraies et",
+          "vendraient mieux à court terme. Elles ramènent SILLAGE dans une catégorie où elle est",
+          "la douzième option, et où son prix devient indéfendable.",
+        ]}
+        x={30}
+        y={417}
+        seed={5}
+      />
       <line x1="30" y1="485" x2="370" y2="485" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="500" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -454,12 +464,17 @@ function MockupOrigin() {
       <text x="48" y="332" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">A conversation. A failure.</text>
       <text x="48" y="354" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">A refusal. We name it,</text>
       <text x="48" y="376" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">and the house begins.</text>
-      <g fill="rgba(255,255,255,0.35)">
-        <rect x="30" y="420" width="340" height="3" />
-        <rect x="30" y="430" width="310" height="3" />
-        <rect x="30" y="440" width="335" height="3" />
-        <rect x="30" y="450" width="290" height="3" />
-      </g>
+      <BodyLines
+        lines={[
+          "Ce que le récit d'origine ne dit pas : que SILLAGE a été fondée pour révolutionner le",
+          "bâtiment. Elle a été fondée parce qu'une femme a payé quatorze mille euros pour un",
+          "chantier qu'elle avait bien fait et qu'elle ne pouvait pas prouver. La rupture est petite,",
+          "datée, vérifiable — c'est ce qui la rend impossible à recopier par un concurrent.",
+        ]}
+        x={30}
+        y={422}
+        seed={3}
+      />
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -692,13 +707,19 @@ function MockupDistribution() {
         <text x="192" y="94" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Chase every trend</text>
         <text x="192" y="112" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Sound like the field</text>
       </g>
-      <g transform="translate(30, 320)" fill="rgba(255,255,255,0.35)">
-        <rect x="0" y="0" width="340" height="3" />
-        <rect x="0" y="12" width="310" height="3" />
-        <rect x="0" y="24" width="330" height="3" />
-        <rect x="0" y="36" width="285" height="3" />
-        <rect x="0" y="48" width="320" height="3" />
-      </g>
+      <BodyLines
+        lines={[
+          "Le guide n'est pas un document de marque destiné à être admiré : il est écrit pour être",
+          "consulté un mardi à dix-huit heures par quelqu'un qui doit répondre à un client mécontent",
+          "et qui n'a pas le temps de demander. Chaque règle est formulée comme une opération",
+          "vérifiable, jamais comme une intention. Un adjectif ne se contrôle pas ; une règle si.",
+          "Le signal de réussite est simple : deux semaines après son arrivée, un nouvel arrivant",
+          "écrit un message client que personne n'a besoin de corriger.",
+        ]}
+        x={30}
+        y={322}
+        seed={7}
+      />
       <line x1="30" y1="410" x2="370" y2="410" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
       <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Your identity holds, even when you are not the one writing.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
@@ -1074,117 +1095,131 @@ function MockupPositioningMap() {
 // tous coûte plus cher en crédibilité que de leur donner chacun une forme.
 // Le contenu reste en anglais, comme le reste des maquettes : ce sont des
 // aperçus stylisés, pas la traduction du vrai livrable.
+// Les huit pièces restantes de "L'Identité" et les six playbooks de "Le
+// Déploiement".
+//
+// Écrites sur SILLAGE — la maison fictive du document de démonstration —
+// et non en méta-description de ce que chaque pièce contient. Une page qui
+// explique ce qu'est un récit tarifaire pourrait appartenir à n'importe
+// quelle marque, donc elle se lit comme un gabarit quoi qu'on fasse de sa
+// mise en page. Une page qui parle de Claire Vasseur, de Lyon et d'une
+// contestation à quatorze mille euros se lit comme une vraie page d'un vrai
+// document. C'est le même écart qu'entre un modèle et une commande.
+//
+// En français : le reste du site l'est, et un fondateur français qui
+// feuillette l'aperçu de ce qu'il va recevoir ne devrait pas lire un
+// document anglais.
 const PRICING = (
   <MockupGeneric
     key="pricing" piece="06"
-    body={["The price is not the last decision of a commission. It is the first sentence of the", "positioning, written in numbers rather than in words, and every buyer reads it before", "reading anything else. A rate that can be negotiated announces a service whose value", "the seller cannot locate. A rate that holds announces the opposite, and it announces it", "before a single argument has been made.", "The mechanism is not scarcity theatre. Four houses a quarter is what one person can", "hold in full — every refusal, every discarded draft, and why. The fifth commission does", "not reduce the attention available to it alone; it reduces the attention available to all five.", "That is a structural ceiling, not a marketing device, and it is the only honest reason to", "charge what this charges.", "What follows is the exact wording to use when the number is questioned, and the three", "reframes that move the conversation off price without ever defending it."]}
-    marginNote="Never defend the|number. Restate|what it buys, and|let the silence do|the arithmetic."
-    section="02 · IDENTITY" page="P. 16" kicker="PRICING NARRATIVE"
-    title={["The price is a sentence,", "not a number."]}
+    body={["Le prix de SILLAGE n'a jamais été discuté avec un client sans que la conversation ne", "bascule aussitôt sur le suivi de chantier — c'est-à-dire sur une catégorie où l'abonnement", "à 89 € par mois se compare à des outils vendus 19 €. La comparaison est perdue d'avance,", "et elle est perdue avant le premier argument.", "Le récit tarifaire déplace le point de comparaison. Ce n'est pas un logiciel de suivi à", "89 € par mois, c'est une trace opposable à 1 068 € par an, face à un coût moyen de", "contestation perdue de quatorze mille euros. Le chiffre ne change pas ; ce à quoi on le", "compare, si.", "Les trois formulations ci-dessous ont été testées en rendez-vous. La troisième est celle", "qui met fin à la négociation sans jamais défendre le montant."]}
+    marginNote={"Ne jamais défendre|le prix. Changer|ce à quoi on le|compare."}
+    section="02 · IDENTITÉ" page="P. 16" kicker="RÉCIT TARIFAIRE"
+    title={["Le prix est une phrase,", "pas un chiffre."]}
     blocks={[
-      { t: "stat", value: "4,500\u20ac", label: "NOT A STARTING PRICE", note: "One number. No range, no \u201ccontact us,\u201d no negotiation ritual." },
-      { t: "quote", text: ["\u201cWe cost more than an agency", "because we refuse more than one.", "Four houses a quarter. This is one.\u201d"] },
+      { t: "stat", value: "1 068 €", label: "PAR AN, PAS 89 € PAR MOIS", note: "Face à quatorze mille euros de contestation perdue. C'est le seul rapport qui compte." },
+      { t: "quote", text: ["« Ce n'est pas un outil de chantier.", "C'est ce qui vous reste quand", "le chantier n'existe plus. »"] },
     ]}
-    footnote="Price as doctrine, not as a number to be negotiated down."
+    footnote="Le prix cesse d'être discuté quand il cesse d'être comparé au bon objet."
   />
 )
 const BIOGRAPHY = (
   <MockupGeneric
     key="biography" piece="07"
-    body={["A founder is asked to introduce themselves in four situations that share nothing: a", "bio field capped at 160 characters, a stage introduction read aloud by a stranger, a", "press line that will be quoted without permission, and a long-form account that has to", "carry an entire arc. Most founders write one and truncate it three times.", "Truncation is the error. Each format has a different job. The short bio must survive being", "scanned; the spoken introduction must survive being read by someone who has never", "met you; the press line must survive being cut in half by an editor; the long form must", "survive being read slowly by someone deciding whether to trust you.", "All four are built from the same single break — the moment the founder stopped doing", "one thing and started doing this one. What changes across the four is not the story but", "how much of it the format can carry."]}
-    marginNote="One break, four|lengths. Never one|text cut down|three times."
-    section="02 · IDENTITY" page="P. 17" kicker="BIOGRAPHY SYSTEM"
-    title={["Four formats,", "one single break."]}
-    blocks={[{ t: "lines", items: ["Bio, 160 characters — the scroll-stopping line.", "Speaker introduction — read aloud by someone else.", "Press one-liner — quotable as it stands.", "Long-form bio — the full arc, origin to now."] }]}
-    footnote="The same person, sized for four rooms."
+    body={["Claire Vasseur est présentée quatre fois par semaine et jamais de la même manière : un", "champ de 160 caractères sur LinkedIn, une introduction lue à voix haute par un", "organisateur de salon qui ne l'a jamais rencontrée, une ligne reprise par la presse", "professionnelle sans qu'on lui demande son avis, et un récit long sur la page à propos.", "L'erreur habituelle consiste à écrire la version longue et à la couper trois fois. Chaque", "format a un métier différent : la courte doit survivre au survol, l'orale doit survivre à un", "inconnu qui la lit mal, celle de presse doit survivre à une coupe en deux, la longue doit", "survivre à une lecture lente par quelqu'un qui décide s'il vous fait confiance.", "Les quatre partent de la même rupture — dix ans de maîtrise d'œuvre, puis quatorze", "mille euros payés pour un chantier bien fait qu'elle ne pouvait pas prouver."]}
+    marginNote={"Une rupture,|quatre longueurs.|Jamais un texte|coupé trois fois."}
+    section="02 · IDENTITÉ" page="P. 17" kicker="SYSTÈME DE BIOGRAPHIES"
+    title={["Quatre formats,", "une seule rupture."]}
+    blocks={[{ t: "lines", items: ["160 caractères — la ligne qui arrête le survol.", "Introduction orale — lue par quelqu'un d'autre.", "Ligne de presse — citable telle quelle.", "Récit long — l'arc entier, de la rupture à aujourd'hui."] }]}
+    footnote="La même personne, calibrée pour quatre salles différentes."
   />
 )
 const AUTOPSY = (
   <MockupGeneric
     key="autopsy" piece="08"
-    body={["A competitive analysis that lists features is a purchasing document, not a positioning", "one. What matters is not what each player builds; it is what each player is willing to say,", "and what saying it costs them. A claim nobody would dare copy is a position. A claim", "everyone makes is a category description wearing a logo.", "Each player receives one sheet. The sheet records the claim they lead with, the claim", "they avoid, the buyer they are structurally unable to serve, and the sentence they could", "not publish without contradicting their own pricing. The distinctiveness score at left is", "not a quality judgement — a well-run company scores low here simply by saying the", "same things as everyone else, competently.", "The most useful sheet is always the one for the player the founder mentions last, and", "with the flattest voice. That is the one they actually fear."]}
-    marginNote="Score what they|dare to say, not|what they build.|Features are not|positions."
-    section="02 · IDENTITY" page="P. 18" kicker="COMPETITOR AUTOPSY"
-    title={["One sheet,", "one score, per player."]}
+    body={["Une analyse concurrentielle qui liste des fonctionnalités est un document d'achat, pas", "un document de positionnement. Ce qui compte n'est pas ce que chaque acteur", "construit, c'est ce qu'il ose dire, et ce que le dire lui coûte.", "BATIFLOW dit « pilotez vos chantiers en temps réel » — une phrase que ses onze", "concurrents pourraient signer sans mentir. C'est une description de catégorie portant un", "logo, pas une position. Personne ne l'a choisie ; elle s'est imposée parce qu'elle ne", "coûte rien à personne.", "Le score ci-contre ne juge pas la qualité : une entreprise bien tenue y obtient une note", "basse simplement en disant, avec compétence, ce que tout le monde dit. La fiche la plus", "utile est toujours celle de l'acteur que la fondatrice cite en dernier et d'une voix plate."]}
+    marginNote={"Noter ce qu'ils|osent dire, pas ce|qu'ils construisent."}
+    section="02 · IDENTITÉ" page="P. 18" kicker="AUTOPSIE CONCURRENTIELLE"
+    title={["Une fiche, un score,", "par acteur."]}
     blocks={[{ t: "meter", rows: [
-      ["COMPETITOR A", 62, "Same words, safer claim."],
-      ["COMPETITOR B", 45, "Loudest, says the least."],
-      ["COMPETITOR C", 30, "Cheapest, sounds like it."],
-      ["COMPETITOR D", 71, "The one you actually fear."],
+      ["BATIFLOW", 62, "Mêmes mots, revendication plus prudente."],
+      ["CHANTIER+", 45, "Le plus visible, le moins engagé."],
+      ["ARDOISE", 30, "Le moins cher, et ça s'entend."],
+      ["KAPTÉO", 71, "Celui qu'elle cite en dernier."],
     ] }]}
-    footnote="Not a SWOT. A distinctiveness score for what each one dares to say."
+    footnote="Pas un SWOT. Un score de distinction sur ce que chacun ose affirmer."
   />
 )
 const SIGNATURE_PIECE = (
   <MockupGeneric
     key="signature-piece" piece="09"
-    body={["Every category has a founding text, whether or not anyone intended to write one. It is", "the piece that states the refusal plainly enough that others have to answer it, and from", "that moment the conversation happens on its terms. Most categories acquire theirs by", "accident. This one is written on purpose.", "The essay runs long — two thousand words or more — because the argument does not", "survive compression. It is published under the founder's name, not the company's, and", "it is not a blog post assignment handed to a content team. It says the thing the market", "has been circling and has not yet been willing to say out loud.", "It is delivered publishable as it stands. No editing pass is expected, and none is", "required before it goes out."]}
-    marginNote="The text others|have to answer.|Under a name,|not a logo."
-    section="02 · IDENTITY" page="P. 19" kicker="THE SIGNATURE PIECE"
-    title={["An essay,", "publishable as it stands."]}
-    blocks={[{ t: "quote", text: ["\u201cEvery category starts the same way:", "one refusal, loud enough that others", "have to answer it or disappear.\u201d"] }]}
-    footnote="Long-form, under your name — not a blog post assignment."
+    body={["Toute catégorie possède un texte fondateur, que quelqu'un ait eu l'intention de l'écrire", "ou non. C'est la pièce qui énonce le refus assez clairement pour que les autres soient", "obligés d'y répondre, et à partir de là, la conversation se tient sur ses termes.", "Le secteur du bâtiment n'a pas encore le sien sur la question de la trace. Les articles", "existants parlent d'outils, de digitalisation, de gain de temps. Aucun ne dit la chose que", "tout le monde sait : à la seconde où l'échafaudage est démonté, le travail exécuté", "devient invisible, et sa réalité ne dépend plus que de ce que chacun se rappelle.", "L'essai fait deux mille mots, il est signé par Claire Vasseur et non par SILLAGE, et il est", "livré publiable en l'état. Aucune relecture n'est prévue, aucune n'est nécessaire."]}
+    marginNote={"Le texte auquel|les autres devront|répondre. Signé|d'un nom, pas|d'un logo."}
+    section="02 · IDENTITÉ" page="P. 19" kicker="LA PIÈCE SIGNATURE"
+    title={["Un essai,", "publiable en l'état."]}
+    blocks={[{ t: "quote", text: ["« Quand l'échafaudage tombe,", "le travail bien fait devient invisible.", "Il ne reste que ce qu'on a enregistré. »"] }]}
+    footnote="Format long, sous son nom — pas un article commandé à une agence."
   />
 )
 const INVESTOR = (
   <MockupGeneric
     key="investor" piece="11"
-    body={["The same conviction has to reach two audiences who judge it by opposite standards. A", "customer asks what changes for them. An investor asks what compounds. Told the", "customer story, an investor hears a nice business; told the investor story, a customer", "hears a company talking about itself.", "This is not two positionings. It is one position with two proofs. The customer proof is", "recognition — the moment they stop comparing you and start describing you. The", "investor proof is pricing power, retention, and the cost of the alternative for the buyer", "who has already chosen you.", "Both versions are written out in full, with the sentence that must not be said in either", "room, and the one question each audience will ask that the other never does."]}
-    marginNote="One position.|Two proofs. The|proof changes,|never the claim."
-    section="02 · IDENTITY" page="P. 20" kicker="INVESTOR & PARTNER TRANSLATION"
-    title={["The same story,", "for whoever judges a bet."]}
-    blocks={[{ t: "split", leftTitle: "TO A CUSTOMER", leftItems: ["\u201cYou will finally be", "impossible to confuse.\u201d"], rightTitle: "TO AN INVESTOR", rightItems: ["\u201cCategory ownership is", "a pricing power multiplier.\u201d"] }]}
-    footnote="Identical conviction. Different proof each audience needs."
+    body={["La même conviction doit atteindre deux publics qui la jugent selon des critères", "opposés. Une entreprise générale demande ce que ça change pour elle lundi matin. Un", "fonds demande ce qui s'accumule sur cinq ans.", "Racontez à un investisseur l'histoire du chantier et il entend une jolie petite affaire ;", "racontez à une entreprise générale l'histoire de la part de marché et elle entend une", "société qui parle d'elle-même.", "Ce ne sont pas deux positionnements, c'est une position avec deux preuves. Côté client,", "la preuve est la reconnaissance : le moment où il cesse de comparer SILLAGE à un outil", "de suivi. Côté investisseur, la preuve est le pouvoir de fixation du prix et le coût de la", "sortie pour une entreprise qui a déjà trois ans d'historique enregistré."]}
+    marginNote={"Une position, deux|preuves. La preuve|change, jamais la|revendication."}
+    section="02 · IDENTITÉ" page="P. 20" kicker="TRADUCTION INVESTISSEURS & PARTENAIRES"
+    title={["Le même récit,", "pour qui évalue un pari."]}
+    blocks={[{ t: "split", leftTitle: "À UNE ENTREPRISE", leftItems: ["« Vous ne paierez plus", "pour ce que vous avez", "bien fait. »"], rightTitle: "À UN INVESTISSEUR", rightItems: ["« Trois ans d'archive", "rendent le départ", "structurellement coûteux. »"] }]}
+    footnote="Conviction identique. Chaque public a besoin d'une preuve différente."
   />
 )
 const VISUAL_BRIEF = (
   <MockupGeneric
     key="visual-brief" piece="12"
-    body={["A designer given a moodboard executes a taste. A designer given a brief argues with it,", "and the argument is where the identity is actually decided. This brief is written to be", "argued with — it states the reasoning behind each constraint so a good designer can", "tell you which constraint is wrong.", "It does not specify fonts. It specifies what the typography has to do: whether the reader", "should feel addressed or informed, whether the voice is older than the company or", "younger. Colour is treated as an argument, not decoration — what it claims, and what it", "concedes to competitors who already own the obvious choice.", "The last section lists what to refuse: the executions that would be technically", "competent and strategically fatal, named specifically enough to be recognised."]}
-    marginNote="Written to be|argued with, not|executed. Reasons,|not references."
-    section="02 · IDENTITY" page="P. 21" kicker="VISUAL IDENTITY BRIEF"
-    title={["Written for a designer", "who thinks."]}
-    blocks={[{ t: "lines", items: ["The feeling before the palette.", "Typography logic, not a font list.", "Color as argument, not decoration.", "What to refuse — the moodboard clichés."] }]}
-    footnote="A brief a designer can argue with, not just execute."
+    body={["Un designer à qui l'on remet un moodboard exécute un goût. Un designer à qui l'on", "remet un brief argumenté discute — et c'est dans la discussion que l'identité se décide", "réellement. Ce brief est écrit pour qu'on puisse lui répondre qu'il a tort.", "Il ne prescrit aucune police. Il dit ce que la typographie doit faire : SILLAGE s'adresse à", "des gens qui portent des chaussures de sécurité et lisent sur un téléphone sale, au", "bord d'un chantier, entre deux appels. Toute élégance qui suppose un écran propre et", "une lumière stable est une élégance qui échoue.", "La dernière section liste ce qu'il faut refuser : les exécutions techniquement", "irréprochables et stratégiquement fatales — le bleu logiciel, la photo de casque", "souriant, l'illustration isométrique. Nommées, pour être reconnues."]}
+    marginNote={"Écrit pour être|discuté, pas|exécuté. Des|raisons, pas des|références."}
+    section="02 · IDENTITÉ" page="P. 21" kicker="BRIEF D'IDENTITÉ VISUELLE"
+    title={["Écrit pour un designer", "qui réfléchit."]}
+    blocks={[{ t: "lines", items: ["La sensation avant la palette.", "Une logique typographique, pas une liste de polices.", "La couleur comme argument, pas comme décoration.", "Ce qu'il faut refuser — le bleu logiciel, le casque souriant."] }]}
+    footnote="Un brief qu'un designer peut contredire, pas seulement appliquer."
   />
 )
 const AUDIENCE = (
   <MockupGeneric
     key="audience" piece="14"
-    body={["Four segments buy the same thing for four incompatible reasons, and a single message", "written for all of them reaches none. What separates them is not demographics. It is the", "trigger — the specific event that moves someone from tolerating the problem to", "searching for a solution — and the resistance that follows it.", "For each segment: the trigger, the exact words used in private, the objection that", "surfaces first, the deeper objection hiding behind it, and the content that converts. The", "private wording matters most. It is almost never the wording used in public, and the", "gap between them is where most marketing dies.", "One segment appears here with a recommendation to stop addressing it. That is a", "decision, not an omission, and the reasoning is set out in full."]}
-    marginNote="Same offer, four|languages. The|trigger is an|event, never a|demographic."
-    section="02 · IDENTITY" page="P. 22" kicker="AUDIENCE INTELLIGENCE REPORT"
-    title={["Four segments,", "one language each."]}
-    blocks={[{ t: "table", rows: [["THE SKEPTIC", "Show, do not claim."], ["THE REFERRED", "Confirm, do not convince."], ["THE COMPARER", "Name the alternative first."], ["THE RETURNER", "Reward the memory."]] }]}
-    footnote="The same offer, worded four different ways on purpose."
+    body={["Quatre segments achètent la même chose pour quatre raisons incompatibles, et un", "message unique écrit pour tous n'en atteint aucun. Ce qui les sépare n'est pas la taille", "ni le métier : c'est le déclencheur, l'événement précis qui fait passer de « je supporte »", "à « je cherche », et la résistance qui suit immédiatement.", "Pour l'entreprise générale, le déclencheur n'est pas la recherche d'un outil, c'est la", "réception d'un courrier — et la recherche démarre trois à six semaines après le", "règlement, jamais pendant, parce que pendant, le dirigeant limite les dégâts.", "Les mots employés en privé comptent plus que ceux employés en public, et l'écart entre", "les deux est l'endroit exact où meurt la plupart du marketing. Un segment figure ici avec", "la recommandation de cesser de l'adresser : c'est une décision, pas un oubli."]}
+    marginNote={"Le déclencheur est|un événement,|jamais un profil."}
+    section="02 · IDENTITÉ" page="P. 22" kicker="RAPPORT D'INTELLIGENCE AUDIENCE"
+    title={["Quatre segments,", "une langue chacun."]}
+    blocks={[{ t: "table", rows: [["L'ENTREPRISE GÉNÉRALE", "Un courrier reçu, pas un besoin d'outil."], ["LE MAÎTRE D'ŒUVRE", "Confirmer, ne pas convaincre."], ["L'ARCHITECTE", "Segment servi, plus adressé."], ["LE SOUS-TRAITANT", "Récompenser la mémoire."]] }]}
+    footnote="La même offre, formulée quatre fois différemment. À dessein."
   />
 )
 function playbook(key: string, piece: string, page: string, kicker: string, title: string[], blocks: Block[], footnote: string, body: string[], marginNote: string) {
   return (
-    <MockupGeneric key={key} piece={piece} section="03 · DEPLOYMENT" page={page} kicker={kicker} title={title} blocks={blocks} footnote={footnote} body={body} marginNote={marginNote} />
+    <MockupGeneric key={key} piece={piece} section="03 · DÉPLOIEMENT" page={page} kicker={kicker} title={title} blocks={blocks} footnote={footnote} body={body} marginNote={marginNote} />
   )
 }
-const PB_MARKETING = playbook("pb-marketing", "15", "P. 26", "MARKETING PLAYBOOK", ["Angles to explore,", "angles to refuse."], [
-  { t: "lines", items: ["Explore: the refusal, stated plainly.", "Explore: proof over adjectives.", "Refuse: comparison tables with rivals.", "Refuse: any claim we cannot defend live."] },
-], "What the market team is allowed to try — and not.", ["A playbook is not a strategy document. It exists so that a decision about an angle takes", "thirty seconds, without a meeting, and without the founder arbitrating. It does not", "prescribe what to produce. It states what is permitted to exist under this name.", "The angles to explore are listed with the reason each one works, because an angle", "copied without its reason degrades within three iterations. The angles to refuse are", "listed with what they cost, because a team that does not know the cost will eventually", "try the refused angle when a quarter goes badly.", "The publication test at the foot of this page removes roughly half of what a marketing", "team produces by instinct. That is its purpose, not a side effect."], "Decisions in|thirty seconds.|No meeting. No|arbitration.")
-const PB_CONTENT = playbook("pb-content", "16", "P. 27", "CONTENT PLAYBOOK", ["The voice,", "turned into rules."], [
-  { t: "lines", items: ["Short sentences. Cut the qualifier.", "Name the enemy before the offer.", "One idea per piece, never three.", "End on the sentence, not the summary."] },
-], "Anyone can follow it. No one needs to ask you first.", ["The voice of a house is usually held by one person and transmitted by osmosis, which", "means it degrades the moment that person stops reviewing every line. Writing it down", "as rules is what lets someone who has never met the founder write correctly in their", "first week.", "The rules are stated as operations, not adjectives. Not “be authentic”, which cannot be", "checked, but “if the first sentence holds no number, date or scene, rewrite it”, which", "can. Six rules, each with a before-and-after showing the same sentence failing and", "then passing.", "One rule outranks the others and is marked as such. When two rules conflict, that one", "wins, and the conflict does not need to be escalated."], "Rules that can be|checked. Not|adjectives that|cannot.")
-const PB_SOCIAL = playbook("pb-social", "17", "P. 28", "SOCIAL MEDIA PLAYBOOK", ["Tone by platform,", "rhythm, and replies."], [
-  { t: "split", leftTitle: "LINKEDIN", leftItems: ["The essay's argument,", "condensed to one post."], rightTitle: "INSTAGRAM", rightItems: ["The artifact, shown.", "Never the process."] },
-  { t: "lines", items: ["Comments: answer once, precisely, and stop.", "Never: engagement bait disguised as opinion."] },
-], "The doctrine, adapted per platform — never diluted.", ["Three platforms, three jobs, one doctrine. The failure mode is not posting too little; it is", "posting the same thing everywhere, which reads as absence rather than presence.", "Each platform gets a defined job, a cadence that can be sustained without heroics, and", "a list of formats that are structurally wrong for it. The comment policy is written out", "because comments are where a carefully held voice usually breaks — the second reply", "in an argument serves nobody but the two people writing it.", "The final section lists what never ships: the posts that perform well and build nothing.", "They are named specifically, because a team under pressure will otherwise rediscover", "them every quarter."], "The form changes.|The position|never does.")
-const PB_SALES = playbook("pb-sales", "18", "P. 29", "SALES PLAYBOOK", ["How to defuse", "an objection before it lands."], [
-  { t: "quote", text: ["\u201cWhy so expensive?\u201d", "\u2014 The scarcity is structural, not a sales tactic."] },
-  { t: "lines", items: ["Open with the refusal, not the offer.", "\u201cWe already have a logo\u201d \u2192 a logo is not a doctrine.", "Close by inviting the no, not chasing the yes."] },
-], "Objections stop being objections once they are named first.", ["Order matters more than argument. A correct answer delivered at the wrong moment", "creates the objection it was meant to close, which is why this playbook fixes the", "sequence before it supplies any wording.", "The opening question is specified exactly, because the first question decides which", "category the conversation happens in — and in the wrong category the house is one", "option among a dozen, however good the rest of the call is.", "Four objections are mapped in the order they actually arrive, each with what it conceals.", "Price objections are usually category objections; redundancy objections are usually", "identity objections. Answering the surface version of either loses the deal politely.", "The close invites the no. It loses marginal business and earns credibility on everything", "else — the commercial form of the refusal the house is built on."], "Answer the hidden|objection, never|the stated one.")
-const PB_SUPPORT = playbook("pb-support", "19", "P. 30", "SUPPORT PLAYBOOK", ["How to stay on-voice", "in sensitive situations."], [
-  { t: "lines", items: ["Apologize in one sentence. Then fix.", "Never hide behind \u201cpolicy.\u201d Explain the reason.", "Bad news, stated plainly \u2014 never buried in praise.", "The tone holds even when the news does not."] },
-], "The identity that survives contact with a complaint.", ["An identity that does not survive the first bad week is a campaign, not an identity. This", "playbook covers the moments nobody rehearses: the client is angry, the product failed,", "the news is bad and cannot be softened.", "Four rules, each written against a specific failure. Apologise in one sentence, because a", "long apology moves attention onto the person apologising. Never retreat behind policy,", "because policy is what a company says when it does not want to give a reason. Lead", "with the bad news. Never promise a date to calm someone in the moment.", "The severe case is documented separately, in full, with the exact message to send. It is", "written in advance precisely because it will be needed on a day when nobody has the", "composure to write it well."], "Written in|advance, for a day|when nobody can|write well.")
-const PB_HR = playbook("pb-hr", "20", "P. 31", "HR & MANAGEMENT PLAYBOOK", ["The culture, retranslated", "to guide decisions."], [
-  { t: "stat", value: "1", label: "QUESTION THAT DECIDES TIES", note: "\u201cDid this decision sound like us?\u201d Not seniority. Not consensus." },
-  { t: "lines", items: ["Hire for the refusal, not the resume.", "Onboarding teaches the enemy before the offer."] },
-], "Culture as a decision rule, not a poster in the hallway.", ["A doctrine that guides no internal decision becomes a poster in a corridor within a", "year. This playbook makes it operative in the three places culture is actually decided:", "who is hired, what they learn first, and how ties are broken.", "Hiring is done on the refusal rather than the résumé. The interview question is specified,", "along with what an empty answer means and why it disqualifies. Onboarding begins", "with the enemy, not the product — a new hire who understands what the house refuses", "finds the right words alone, while one who learned the features first spends six months", "sounding like a vendor.", "Ties are broken by one question, asked out loud, including when the answer costs", "money. Seniority does not break ties here. Consensus does not either."], "One question|breaks ties. Not|seniority. Not|consensus.")
+const PB_MARKETING = playbook("pb-marketing", "15", "P. 26", "PLAYBOOK MARKETING", ["Les angles à explorer,", "ceux à refuser."], [
+  { t: "lines", items: ["Explorer : le coût chiffré d'une contestation, ligne par ligne.", "Explorer : pourquoi le classeur de chantier meurt en trois semaines.", "Refuser : toute comparaison frontale avec BATIFLOW.", "Refuser : le vocabulaire de la transformation digitale."] },
+], "Ce que l'équipe a le droit d'essayer — et ce qu'elle n'a pas le droit d'essayer.", ["Ce playbook existe pour qu'une décision d'angle se prenne en trente secondes, sans", "réunion et sans arbitrage de Claire. Il ne dit pas quoi produire ; il dit ce qui a le droit", "d'exister sous le nom SILLAGE.", "Les angles à explorer sont donnés avec la raison qui les fait fonctionner, parce qu'un", "angle recopié sans sa raison se dégrade en trois itérations. Les angles à refuser sont", "donnés avec ce qu'ils coûtent, parce qu'une équipe qui ignore le coût finira par essayer", "l'angle interdit le trimestre où les chiffres seront mauvais.", "Le test en bas de page élimine environ la moitié de ce qu'une équipe marketing produit", "spontanément. C'est son objet, pas son effet secondaire."], "Trente secondes.|Sans réunion.|Sans arbitrage.")
+const PB_CONTENT = playbook("pb-content", "16", "P. 27", "PLAYBOOK CONTENU", ["La voix,", "transformée en règles."], [
+  { t: "lines", items: ["Un fait avant une opinion. Toujours.", "Constater, jamais alarmer.", "Le vocabulaire du chantier, pas celui du logiciel.", "Disculper l'acheteur, systématiquement."] },
+], "N'importe qui peut la suivre. Personne n'a besoin de demander d'abord.", ["La voix d'une maison est en général portée par une seule personne et transmise par", "osmose, ce qui veut dire qu'elle se dégrade dès que cette personne cesse de relire", "chaque ligne. L'écrire en règles est ce qui permet à quelqu'un qui n'a jamais rencontré", "Claire d'écrire juste dès sa première semaine.", "Les règles sont formulées comme des opérations, pas comme des adjectifs. Pas « soyez", "authentiques », qui ne se vérifie pas, mais « si la première phrase ne contient ni chiffre,", "ni date, ni scène, réécrivez-la », qui se vérifie. Six règles, chacune avec un avant-après", "montrant la même phrase qui échoue puis qui passe.", "Une règle prime sur les autres et c'est indiqué : quand deux règles se contredisent,", "celle-là gagne, et le conflit n'a pas besoin de remonter."], "Des règles qu'on|peut vérifier. Pas|des adjectifs.")
+const PB_SOCIAL = playbook("pb-social", "17", "P. 28", "PLAYBOOK RÉSEAUX SOCIAUX", ["Le ton par plateforme,", "le rythme, les réponses."], [
+  { t: "split", leftTitle: "LINKEDIN", leftItems: ["L'argument développé,", "condensé en un post."], rightTitle: "YOUTUBE", rightItems: ["La démonstration filmée", "sur chantier réel."] },
+  { t: "lines", items: ["Répondre une fois, précisément, et s'arrêter.", "Jamais : l'appât à engagement déguisé en opinion."] },
+], "La doctrine, adaptée par plateforme — jamais diluée.", ["Trois plateformes, trois métiers distincts, une seule doctrine. Le mode d'échec n'est pas", "de publier trop peu, c'est de publier la même chose partout — ce qui se lit comme une", "absence, pas comme une présence.", "Chaque plateforme reçoit un métier défini, une cadence tenable sans héroïsme, et une", "liste de formats structurellement faux pour elle. La règle des commentaires est écrite,", "parce que c'est là qu'une voix soigneusement tenue casse d'habitude : le deuxième", "aller-retour d'une discussion ne sert personne d'autre que les deux qui l'écrivent.", "La dernière section liste ce qui ne se publie jamais : les posts qui performent et ne", "construisent rien. Ils sont nommés, sinon une équipe sous pression les redécouvre", "chaque trimestre."], "La forme change.|La position, jamais.")
+const PB_SALES = playbook("pb-sales", "18", "P. 29", "PLAYBOOK VENTE", ["Désamorcer une objection", "avant qu'elle n'arrive."], [
+  { t: "quote", text: ["« Votre dernière contestation,", "elle remonte à quand ? »"] },
+  { t: "lines", items: ["Ouvrir sur le refus, jamais sur l'offre.", "« On a déjà un groupe photos » → combien de temps pour retrouver mars dernier ?", "Clore en invitant le non, pas en poursuivant le oui."] },
+], "Une objection cesse d'en être une quand elle est nommée en premier.", ["L'ordre compte plus que les arguments. Une bonne réponse donnée au mauvais moment", "crée l'objection qu'elle devait fermer, et c'est pourquoi ce playbook fixe la séquence", "avant de fournir la moindre formulation.", "La question d'ouverture est écrite mot pour mot, parce que la première question décide", "de la catégorie dans laquelle la conversation se tient — et dans la mauvaise catégorie,", "SILLAGE est une option parmi douze, quelle que soit la qualité du reste de l'entretien.", "Quatre objections sont cartographiées dans l'ordre où elles arrivent réellement, chacune", "avec ce qu'elle dissimule. L'objection de prix est presque toujours une objection de", "catégorie ; l'objection de redondance est presque toujours une objection d'identité.", "Répondre à la version de surface, c'est perdre l'affaire poliment."], "Répondre à|l'objection cachée,|jamais à celle qui|est formulée.")
+const PB_SUPPORT = playbook("pb-support", "19", "P. 30", "PLAYBOOK SUPPORT", ["Tenir la voix quand", "la nouvelle est mauvaise."], [
+  { t: "lines", items: ["S'excuser en une phrase. Puis réparer.", "Ne jamais se retrancher derrière la procédure.", "Annoncer la mauvaise nouvelle en premier, jamais enterrée.", "Ne jamais promettre une date pour calmer sur le moment."] },
+], "L'identité qui survit au contact d'une réclamation.", ["Une identité qui ne survit pas à la première mauvaise semaine n'est pas une identité,", "c'est une campagne. Ce playbook couvre les moments que personne ne répète : le client", "est en colère, l'outil a échoué, la nouvelle est mauvaise et ne peut pas être adoucie.", "Quatre règles, chacune écrite contre un échec précis. S'excuser en une phrase, parce", "qu'une excuse longue déplace l'attention vers celui qui s'excuse. Ne jamais se retrancher", "derrière la procédure, parce que la procédure est ce qu'une entreprise invoque quand", "elle ne veut pas donner de raison.", "Le cas grave — une donnée perdue chez une maison qui vend une trace — est documenté", "à part, avec le message exact à envoyer. Il est écrit à l'avance précisément parce qu'il", "servira un jour où personne n'aura le sang-froid de bien l'écrire."], "Écrit à l'avance,|pour un jour où|personne ne saura|bien écrire.")
+const PB_HR = playbook("pb-hr", "20", "P. 31", "PLAYBOOK RH & MANAGEMENT", ["La culture, retraduite", "en règle de décision."], [
+  { t: "stat", value: "1", label: "QUESTION QUI TRANCHE", note: "« Est-ce que cette décision nous ressemble ? » Pas l'ancienneté. Pas le consensus." },
+  { t: "lines", items: ["Recruter sur le refus, pas sur le parcours.", "L'intégration enseigne l'ennemi avant le produit."] },
+], "La culture comme règle de décision, pas comme affiche dans un couloir.", ["Une doctrine qui ne guide aucune décision interne devient une affiche dans un couloir", "en moins d'un an. Ce playbook la rend opérante aux trois endroits où la culture se décide", "réellement : qui est recruté, ce qu'il apprend en premier, et comment les arbitrages se", "tranchent.", "On recrute sur le refus plutôt que sur le parcours. La question d'entretien est écrite, avec", "ce que signifie une réponse vide et pourquoi elle élimine. L'intégration commence par", "l'ennemi, pas par le produit — un nouvel arrivant qui a compris le moment de la", "contestation trouve seul les bons mots, celui qui a d'abord appris les fonctionnalités", "passe six mois à parler comme un éditeur de logiciel.", "Les arbitrages se tranchent par une question, posée à voix haute, y compris quand la", "réponse coûte de l'argent."], "Une question|tranche. Pas|l'ancienneté. Pas|le consensus.")
 const ACT_I_C = [<MockupCover key="c" />, <MockupDedication key="d" />, <MockupIndex key="i" />]
 const ACT_II_C = [
   <MockupPerceptionMap key="pm" />,
