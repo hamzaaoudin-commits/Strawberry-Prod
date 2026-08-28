@@ -764,33 +764,48 @@ function BodyLines({
   x,
   y,
   lineHeight = 8.2,
-  width = 232,
+  seed = 0,
 }: {
   lines: string[]
   x: number
   y: number
   lineHeight?: number
-  width?: number
+  /** Décale les micro-irrégularités d'une page à l'autre. */
+  seed?: number
 }) {
   return (
     <>
-      {lines.map((l, i) => (
-        <text
-          key={i}
-          x={x}
-          y={y + i * lineHeight}
-          fill="rgba(255,255,255,0.42)"
-          fontFamily="Georgia, serif"
-          fontSize="4.6"
-          textLength={i === lines.length - 1 ? undefined : width}
-          lengthAdjust="spacingAndGlyphs"
-        >
-          {l}
-        </text>
-      ))}
+      {lines.map((l, i) => {
+        // Aucune justification forcée : la version précédente étirait chaque
+        // ligne à la même largeur exacte, ce qui produisait un bloc aux deux
+        // bords parfaitement droits — la signature la plus reconnaissable
+        // d'une page fabriquée par une machine. Une composition réelle a un
+        // bord droit irrégulier.
+        //
+        // S'y ajoutent deux irrégularités minuscules, déterministes (jamais
+        // Math.random, qui casserait l'hydratation) : l'interlignage respire
+        // de quelques centièmes et l'opacité varie très légèrement d'une
+        // ligne à l'autre, comme une encre qui ne dépose pas identiquement
+        // partout. Invisible consciemment, mais c'est ce qui distingue une
+        // page composée d'une grille remplie.
+        const drift = Math.sin((i + 1) * 3.7 + seed * 1.9)
+        return (
+          <text
+            key={i}
+            x={x + drift * 0.35}
+            y={y + i * lineHeight + drift * 0.22}
+            fill={`rgba(255,255,255,${(0.4 + drift * 0.035).toFixed(3)})`}
+            fontFamily="Georgia, serif"
+            fontSize="4.6"
+          >
+            {l}
+          </text>
+        )
+      })}
     </>
   )
 }
+
 
 function MockupGeneric({
   section,
@@ -820,14 +835,31 @@ function MockupGeneric({
   folio?: string
 }) {
   let y = 0
+  // Le numéro de la pièce sert de graine : chaque page garde toujours les
+  // mêmes irrégularités, mais aucune ne les partage avec sa voisine.
+  const seed = parseInt(piece, 10) || 0
+  const hasDropCap = seed % 3 === 0
   return (
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
 
-      {/* Le numéro de pièce en filigrane. */}
-      <text x="392" y="330" fill="rgba(255,255,255,0.03)" fontFamily="Playfair Display, serif" fontSize="220" fontWeight="700" textAnchor="end">
-        {piece}
-      </text>
+      {/* Le numéro de pièce en filigrane, une page sur deux seulement, et
+          jamais tout à fait à la même place. Répété à l'identique sur les
+          treize pages, il devenait un motif de gabarit plutôt qu'un
+          détail d'édition. */}
+      {seed % 2 === 0 && (
+        <text
+          x={392 - (seed % 3) * 6}
+          y={330 + (seed % 5) * 8}
+          fill="rgba(255,255,255,0.03)"
+          fontFamily="Playfair Display, serif"
+          fontSize="220"
+          fontWeight="700"
+          textAnchor="end"
+        >
+          {piece}
+        </text>
+      )}
 
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
 
@@ -849,22 +881,35 @@ function MockupGeneric({
           d'annotation, comme dans un livre à marges larges. */}
       <line x1="278" y1={110 + title.length * 24 + 6} x2="278" y2="440" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" />
 
-      {/* La lettrine, puis le corps de texte en colonne étroite. */}
-      <text x="30" y={110 + title.length * 24 + 30} fill="#e63946" fontFamily="Playfair Display, serif" fontSize="26" fontWeight="700">
-        {body[0]?.charAt(0) ?? ""}
-      </text>
-      <BodyLines
-        lines={[(body[0] ?? "").slice(1), ...body.slice(1)]}
-        x={44}
-        y={110 + title.length * 24 + 18}
-        width={218}
-      />
-
-      {/* La note de marge, dans la colonne extérieure. */}
-      {marginNote && (
+      {/* Le corps de texte. La lettrine n'apparaît que sur une page sur
+          trois : la mettre partout donnait treize pages bâties sur le même
+          gabarit au pixel près, ce qui se lit comme une grille remplie par
+          une machine plutôt que comme un document composé page par page.
+          Un ouvrage réel ouvre un chapitre par une lettrine, pas chacune
+          de ses pages intérieures. */}
+      {hasDropCap ? (
         <>
-          <line x1="288" y1={110 + title.length * 24 + 14} x2="288" y2={110 + title.length * 24 + 40} stroke="#e63946" strokeWidth="1" />
-          <text x="294" y={110 + title.length * 24 + 20} fill="rgba(255,255,255,0.34)" fontFamily="Georgia, serif" fontSize="5" fontStyle="italic">
+          <text x="30" y={110 + title.length * 24 + 30} fill="#e63946" fontFamily="Playfair Display, serif" fontSize="26" fontWeight="700">
+            {body[0]?.charAt(0) ?? ""}
+          </text>
+          <BodyLines
+            lines={[(body[0] ?? "").slice(1), ...body.slice(1)]}
+            x={44}
+            y={110 + title.length * 24 + 18}
+            seed={seed}
+          />
+        </>
+      ) : (
+        <BodyLines lines={body} x={30} y={110 + title.length * 24 + 18} seed={seed} />
+      )}
+
+      {/* La note de marge : présente sur deux pages sur trois, et jamais à la
+          même hauteur — une annotation d'auteur se pose en face du passage
+          qu'elle commente, pas à un taquet fixe répété page après page. */}
+      {marginNote && seed % 3 !== 1 && (
+        <>
+          <line x1="288" y1={110 + title.length * 24 + 14 + (seed % 4) * 9} x2="288" y2={110 + title.length * 24 + 40 + (seed % 4) * 9} stroke="#e63946" strokeWidth="1" />
+          <text x="294" y={110 + title.length * 24 + 20 + (seed % 4) * 9} fill="rgba(255,255,255,0.34)" fontFamily="Georgia, serif" fontSize="5" fontStyle="italic">
             {marginNote.split("|").map((l, i) => (
               <tspan key={i} x="294" dy={i === 0 ? 0 : 7}>
                 {l}
