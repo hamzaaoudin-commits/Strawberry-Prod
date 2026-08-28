@@ -1,52 +1,45 @@
-# Strawberry — patch : les maquettes ancrées sur SILLAGE
+# Strawberry — patch : les 27 pages passent toutes en français
 
 Un seul fichier, `app/[lang]/brand-narrative-architecture/page.tsx`.
 
-## 1. Les pages parlent enfin d'une vraie maison
+## Ce que j'avais raté
 
-C'était le plafond réel. Le corps de texte que j'avais écrit décrivait *ce
-que fait* un récit tarifaire, *comment* se décline une biographie — de la
-méta-description. Un lecteur y voit un modèle de page, quelle que soit la
-qualité de la mise en page, parce que ce texte pourrait appartenir à
-n'importe qui.
+Au tour précédent j'avais traduit les treize pages qui utilisent le
+gabarit générique, et laissé les quatorze dessinées à la main en anglais.
+D'où le mélange que vous avez vu en feuilletant : une page sur deux en
+français, l'autre en anglais.
 
-Les treize pages sont réécrites sur SILLAGE, la maison fictive du document
-de démonstration déjà présent sur le site : Claire Vasseur, Lyon, les
-quatorze mille euros payés pour un chantier bien fait qu'elle ne pouvait
-pas prouver, l'abonnement à 89 € comparé au mauvais objet, BATIFLOW et sa
-phrase que onze concurrents pourraient signer. Le livre feuilletable et le
-document SILLAGE se répondent maintenant au lieu de coexister.
+## Ce qui change
 
-## 2. Tout est passé en français
+Les quatorze maquettes restantes sont traduites intégralement :
+couverture, dédicace, sommaire, plateforme narrative, récit d'origine,
+manifeste, diagnostic de différenciation, système de langage, angles de
+prise de parole, guide de cohérence, page de signature, home réécrite,
+phrase de présentation, carte de positionnement.
 
-Un fondateur français qui feuilletait l'aperçu de ce qu'il allait recevoir
-lisait un document anglais, sur un site parfaitement bilingue partout
-ailleurs. Corps de texte, notes de marge, titres, listes, tableaux,
-citations, en-têtes de section (« 02 · IDENTITÉ », « 03 · DÉPLOIEMENT ») :
-tout est en français.
+121 remplacements au total, en deux passes — la seconde après un contrôle
+automatique qui a débusqué 24 fragments anglais que la première avait
+manqués (les listes à puces du guide de cohérence, les angles de contenu,
+les légendes de la carte de positionnement).
 
-## 3. Les fausses lignes de texte ont disparu
+Vérification automatique finale : zéro fragment anglais restant dans les
+27 maquettes.
 
-Trois maquettes dessinées à la main (la colonne vertébrale, le récit
-d'origine, le guide de cohérence) simulaient encore leur corps de texte
-avec des **barres grises** — dix-neuf au total dans le fichier. C'est
-exactement l'artefact « placeholder » que j'avais éliminé sur les treize
-autres pages, resté en place ici. Remplacées par de la vraie prose SILLAGE,
-avec les mêmes micro-irrégularités que le reste. Il n'en reste zéro dans le
-fichier.
+## Ancrage sur SILLAGE
 
-## Ce que je n'ai volontairement pas densifié
-
-La couverture, la dédicace et la page de signature restent dépouillées.
-Dans un livre imprimé, ces trois pages **sont** vides — les remplir ferait
-moins vrai, pas plus. C'est la seule raison pour laquelle elles portent
-peu de texte, et c'est intentionnel.
+Tant qu'à traduire, les contenus d'exemple ont aussi été ancrés sur la
+maison SILLAGE plutôt que de rester génériques — le système de langage
+liste maintenant « chantier · trace · réception · refuser » plutôt que
+des mots abstraits, la home réécrite oppose « Pilotez vos chantiers en
+temps réel » à « Ce qui reste quand le chantier n'existe plus », et les
+angles de contenu parlent de reprises contestées. Cohérent avec les
+treize pages du tour précédent.
 
 ## Vérification
 
 Contrôle de types TypeScript réel : zéro erreur venant de ce fichier. (La
 seule erreur signalée dans mon environnement est le `<style jsx>` déjà
-présent dans votre dépôt avant mes modifications — Next.js le gère.)
+présent dans votre dépôt avant mes modifications.)
 
 ## Fichiers inclus
 

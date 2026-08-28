@@ -54,7 +54,7 @@ const T = {
     lProof: "How we will know it worked",
     lInvest: "The investment",
     pactH2: "The human pact.",
-    pactLead: "What makes a house unforgettable is no longer the document. It is who refused to write it like everyone else.",
+    pactLead: "What makes a house unforgettable is no longer the document. It is qui refusentd to write it like tout le monde.",
     pactQuote: "When everyone has access to the same machine, the only edge left is the one a human refuses to share.",
     offerP1: "We build the story that makes your brand recognizable at first glance and impossible to confuse with your competitors \u2014 even when they arm themselves with AI. Not a surface slogan: the identity, position, and language that make people remember you, cite you, and choose you, even when the offer across the table costs less.",
     offerH3: "It begins with an extraction no one can automate.",
@@ -109,11 +109,11 @@ const T = {
     ctaFoot: "Confidential commission \u00b7 NDA available",
     price: "4,500\u20ac",
     deliverables: [
-      { title: "The Differentiation Diagnostic", body: "An analysis of your narrative competitive field: what your 5-6 direct competitors say, the words and promises they all share, and a map of the territories already saturated. You see in black and white why you all sound alike \u2014 and the open ground no one occupies, that you will take." },
-      { title: "The Narrative Platform", body: "Your unique position written as one defensible sentence. Your brand story structured \u2014 origin, fight, vision. And your 3-4 message pillars: the ideas you will hammer until people associate them with you instinctively." },
-      { title: "The Language System", body: "Your tone of voice described with precision. Your lexicon: the words that belong to you, and the forbidden list \u2014 your competitors' words \u2014 so you never sound like them. With before/after examples drawn from your own communications." },
-      { title: "The Deployment Kit", body: "The part you use the Monday after. Ready-to-use copy, not abstract recommendations: a rewrite of your homepage (headline, subhead, key sections); your presentation line in three formats (one line / one paragraph / 30-second pitch); 10 to 15 speaking angles ready to turn into posts, articles or newsletters, each tied to one of your pillars; a reusable bio and company description." },
-      { title: "The Coherence Guide", body: "A short document that lets anyone on your team write in your voice without consulting you: rules, examples, do/don't. Your identity holds, even when you are not the one writing." },
+      { title: "The Diagnostic de différenciation", body: "An analysis of your narrative competitive field: what your 5-6 direct competitors say, the words and promises they all share, and a map of the territories already saturated. You see in black and white why you all sound alike \u2014 and the open ground no one occupies, that you will take." },
+      { title: "La plateforme narrative", body: "Your unique position written as one defensible sentence. Your brand story structured \u2014 origin, fight, vision. And your 3-4 message pillars: the ideas you will hammer until people associate them with you instinctively." },
+      { title: "Le système de langage", body: "Your tone of voice described with precision. Your lexicon: the words that belong to you, and the forbidden list \u2014 your competitors' words \u2014 so you never sound like them. With before/after examples drawn from your own communications." },
+      { title: "Le kit de déploiement", body: "The part you use the Monday after. Ready-to-use copy, not abstract recommendations: a rewrite of your homepage (headline, subhead, key sections); your presentation line in three formats (one line / one paragraph / 30-second pitch); 10 to 15 speaking angles ready to turn into posts, articles or newsletters, each tied to one of your pillars; a reusable bio and company description." },
+      { title: "Le guide de cohérence", body: "A short document that lets anyone on your team write in your voice without consulting you: rules, examples, do/don't. Votre identité tient, même quand ce n'est pas vous qui écrivez." },
     ],
     pact: [
       { title: "Anyone can prompt 45 pages in three minutes.", body: "Most do. The result reads like every other brand document. This is what happens when a human spends weeks listening, refusing, and choosing \u2014 when the goal is not to be produced, but to be unforgettable. The AI can write a brand document. It cannot decide which sentence deserves to be torn out." },
@@ -136,11 +136,11 @@ const T = {
         { label: "The Index", caption: "Five deliverables, one signature. The architecture, declared." },
       ],
       actII: [
-        { label: "The Differentiation Diagnostic", caption: "The narrative field, with the ground no one occupies located." },
-        { label: "The Narrative Platform", caption: "Your position, your story, your pillars \u2014 articulated." },
+        { label: "The Diagnostic de différenciation", caption: "The narrative field, with the ground no one occupies located." },
+        { label: "La plateforme narrative", caption: "Your position, your story, your pillars \u2014 articulated." },
         { label: "The Origin Story", caption: "The rupture before. The conviction after. Named with precision." },
         { label: "The Manifesto", caption: "A single page. The doctrine, made unforgettable." },
-        { label: "The Language System", caption: "Your words. The forbidden ones. Before and after." },
+        { label: "Le système de langage", caption: "Your words. The forbidden ones. Before and after." },
         { label: "The Pricing Narrative", caption: "The price is a sentence, not a number \u2014 said once, defended always." },
         { label: "The Biography System", caption: "Four formats, one single break, sized for four different rooms." },
         { label: "The Competitor Autopsy", caption: "One sheet per player \u2014 what each one dares to say, and what it hides." },
@@ -153,8 +153,8 @@ const T = {
       actIII: [
         { label: "The Homepage Rewrite", caption: "Headline, subhead, key sections \u2014 rewritten, ready to paste." },
         { label: "The Presentation Line", caption: "One line, one paragraph, one 30-second pitch. Sized for the moment." },
-        { label: "The Deployment Kit", caption: "Speaking angles by pillar. Ready the Monday after." },
-        { label: "The Coherence Guide", caption: "One voice, any hand. Your identity holds without you." },
+        { label: "Le kit de déploiement", caption: "Speaking angles by pillar. Ready the Monday after." },
+        { label: "Le guide de cohérence", caption: "One voice, any hand. Your identity holds without you." },
         { label: "Marketing Playbook", caption: "Angles to explore, angles to refuse \u2014 decided in advance." },
         { label: "Content Playbook", caption: "The voice, turned into rules anyone on the team can follow." },
         { label: "Social Media Playbook", caption: "Tone by platform, rhythm, and how to answer comments." },
@@ -323,12 +323,12 @@ function MockupCover() {
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <rect x="40" y="60" width="40" height="2" fill="#e63946" />
       <text x="40" y="88" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">N° 001</text>
-      <text x="40" y="236" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">The Brand</text>
+      <text x="40" y="236" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">La Constitution</text>
       <text x="40" y="272" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">Narrative</text>
-      <text x="40" y="308" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="30" fontStyle="italic" fontWeight="400">Architecture.</text>
+      <text x="40" y="308" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="30" fontStyle="italic" fontWeight="400">de la Maison.</text>
       <line x1="40" y1="430" x2="360" y2="430" stroke="#2a2a2a" strokeWidth="1" />
-      <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMISSIONED FOR</text>
-      <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">The House</text>
+      <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMANDÉ POUR</text>
+      <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">La Maison</text>
       <text x="360" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="end">STRAWBERRY PROD.</text>
     </svg>
   )
@@ -341,14 +341,14 @@ function MockupDedication() {
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— DEDICATION —</text>
       <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="200" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">To the founders</text>
-      <text x="200" y="230" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">who refuse</text>
-      <text x="200" y="260" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">to sound like</text>
-      <text x="200" y="290" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">everyone else.</text>
+      <text x="200" y="200" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Aux fondateurs</text>
+      <text x="200" y="230" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">qui refusent</text>
+      <text x="200" y="260" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">de parler comme</text>
+      <text x="200" y="290" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">tout le monde.</text>
       <line x1="180" y1="330" x2="220" y2="330" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-      <text x="200" y="360" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">This document is</text>
-      <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">your constitution.</text>
-      <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Treat it as one.</text>
+      <text x="200" y="360" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Ce document est</text>
+      <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">votre constitution.</text>
+      <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Traitez-la comme telle.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 02 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -360,25 +360,25 @@ function MockupIndex() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">CONTENTS</text>
+      <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">SOMMAIRE</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 03</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Index.</text>
+      <text x="30" y="100" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Sommaire.</text>
       <g transform="translate(30, 150)">
         <text x="0" y="0" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">01.</text>
-        <text x="34" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Differentiation Diagnostic</text>
+        <text x="34" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Diagnostic de différenciation</text>
         <text x="340" y="0" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">04</text>
         <text x="0" y="36" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">02.</text>
-        <text x="34" y="36" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Narrative Platform</text>
+        <text x="34" y="36" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">La plateforme narrative</text>
         <text x="340" y="36" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">10</text>
         <text x="0" y="72" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">03.</text>
-        <text x="34" y="72" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Language System</text>
+        <text x="34" y="72" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le système de langage</text>
         <text x="340" y="72" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">16</text>
         <text x="0" y="108" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">04.</text>
-        <text x="34" y="108" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Deployment Kit</text>
+        <text x="34" y="108" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le kit de déploiement</text>
         <text x="340" y="108" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">22</text>
         <text x="0" y="144" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">05.</text>
-        <text x="34" y="144" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">The Coherence Guide</text>
+        <text x="34" y="144" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le guide de cohérence</text>
         <text x="340" y="144" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">28</text>
         <line x1="0" y1="180" x2="340" y2="180" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="0" y="210" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">APPENDIX</text>
@@ -399,10 +399,10 @@ function MockupSpine() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 10</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE NARRATIVE PLATFORM</text>
-      <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">A house is not</text>
-      <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">a positioning.</text>
-      <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">It is a mythology.</text>
+      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PLATEFORME NARRATIVE</text>
+      <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Une maison n'est pas</text>
+      <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">un positionnement.</text>
+      <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">C'est une mythologie.</text>
       <BodyLines
         lines={[
           "SILLAGE ne vend pas un logiciel de suivi de chantier. Elle vend ce qui reste quand le",
@@ -417,9 +417,9 @@ function MockupSpine() {
         seed={2}
       />
       <line x1="30" y1="320" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
-      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">The conviction the</text>
-      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">founder holds when</text>
-      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">no one is watching.</text>
+      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">La conviction que la</text>
+      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">fondatrice garde quand</text>
+      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">personne ne regarde.</text>
       <BodyLines
         lines={[
           "Ce que cette conviction interdit : parler de gain de temps, promettre une meilleure",
@@ -445,25 +445,25 @@ function MockupOrigin() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 12</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE ORIGIN STORY</text>
-      <text x="30" y="130" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">The moment</text>
-      <text x="30" y="154" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">everything changed.</text>
+      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE RÉCIT D'ORIGINE</text>
+      <text x="30" y="130" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Le moment où</text>
+      <text x="30" y="154" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">tout a basculé.</text>
       <g transform="translate(30, 200)">
         <line x1="0" y1="20" x2="340" y2="20" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <circle cx="20" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
-        <text x="20" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">BEFORE</text>
+        <text x="20" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">AVANT</text>
         <circle cx="130" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
         <text x="130" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">RUPTURE</text>
         <circle cx="240" cy="20" r="10" fill="#e63946" />
         <text x="240" y="50" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle" fontWeight="700">THE MOMENT</text>
         <circle cx="330" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
-        <text x="330" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">AFTER</text>
+        <text x="330" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">APRÈS</text>
       </g>
       <line x1="30" y1="290" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
-      <text x="48" y="310" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">There is always a date.</text>
+      <text x="48" y="310" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Il y a toujours une date.</text>
       <text x="48" y="332" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">A conversation. A failure.</text>
-      <text x="48" y="354" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">A refusal. We name it,</text>
-      <text x="48" y="376" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">and the house begins.</text>
+      <text x="48" y="354" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Un refus. Nous le nommons,</text>
+      <text x="48" y="376" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">et la maison commence.</text>
       <BodyLines
         lines={[
           "Ce que le récit d'origine ne dit pas : que SILLAGE a été fondée pour révolutionner le",
@@ -488,16 +488,16 @@ function MockupManifesto() {
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— MANIFESTO —</text>
       <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="150" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">We do not whisper.</text>
-      <text x="200" y="180" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">We do not shout.</text>
-      <text x="200" y="220" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">We are heard.</text>
+      <text x="200" y="150" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Nous ne chuchotons pas.</text>
+      <text x="200" y="180" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Nous ne crions pas.</text>
+      <text x="200" y="220" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">On nous entend.</text>
       <line x1="160" y1="250" x2="240" y2="250" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="200" y="290" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">We refuse the consensus.</text>
-      <text x="200" y="312" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">We refuse the algorithm.</text>
-      <text x="200" y="334" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">We refuse the noise.</text>
+      <text x="200" y="290" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">Nous refusons le consensus.</text>
+      <text x="200" y="312" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">Nous refusons l'algorithme.</text>
+      <text x="200" y="334" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">Nous refusons le bruit.</text>
       <line x1="180" y1="360" x2="220" y2="360" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="200" y="395" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">This is our house.</text>
-      <text x="200" y="415" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">Built to be remembered.</text>
+      <text x="200" y="395" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">Voici notre maison.</text>
+      <text x="200" y="415" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontWeight="700" textAnchor="middle">Bâtie pour qu'on s'en souvienne.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 14 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -512,17 +512,17 @@ function MockupPerceptionMap() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">01 · DIAGNOSTIC</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 06</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DIFFERENTIATION DIAGNOSTIC</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Where the field stands.</text>
-      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">And the ground no one occupies.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DIAGNOSTIC DE DIFFÉRENCIATION</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Où se tient le champ.</text>
+      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Et le terrain que personne n'occupe.</text>
       <g transform="translate(60, 180)">
         <line x1="140" y1="0" x2="140" y2="280" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <line x1="0" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <rect x="0" y="0" width="280" height="280" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="140" y="-10" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">EMOTIONAL</text>
-        <text x="140" y="298" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">RATIONAL</text>
-        <text x="-8" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="end">QUIET</text>
-        <text x="288" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">LOUD</text>
+        <text x="140" y="-10" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">ÉMOTIONNEL</text>
+        <text x="140" y="298" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">RATIONNEL</text>
+        <text x="-8" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="end">DISCRET</text>
+        <text x="288" y="143" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2">VISIBLE</text>
         <circle cx="200" cy="90" r="4" fill="rgba(255,255,255,0.3)" />
         <text x="208" y="93" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. A</text>
         <circle cx="220" cy="170" r="4" fill="rgba(255,255,255,0.3)" />
@@ -535,7 +535,7 @@ function MockupPerceptionMap() {
         <circle cx="70" cy="70" r="7" fill="#e63946" />
         <text x="70" y="55" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" textAnchor="middle" fontWeight="700">THE HOUSE</text>
       </g>
-      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Four competitors, one shared quadrant. You do not belong there.</text>
+      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Quatre concurrents, un seul quadrant. Vous n'y êtes pas.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -550,22 +550,22 @@ function MockupArchetype() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">03 · LANGUAGE</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 16</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE LANGUAGE SYSTEM</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Words that belong to you.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE SYSTÈME DE LANGAGE</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Les mots qui vous appartiennent.</text>
       <g transform="translate(30, 150)">
-        <text x="0" y="0" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">WORDS WE USE</text>
-        <text x="0" y="22" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">house · doctrine · craft · refuse</text>
-        <text x="0" y="42" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">unforgettable · constitution</text>
+        <text x="0" y="0" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">MOTS QUE NOUS UTILISONS</text>
+        <text x="0" y="22" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">chantier · trace · réception · refuser</text>
+        <text x="0" y="42" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">contestation · preuve</text>
         <text x="0" y="78" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">WORDS WE NEVER USE</text>
         <text x="0" y="100" fill="rgba(255,255,255,0.4)" fontFamily="Playfair Display, serif" fontSize="12" textDecoration="line-through">solutions · synergy · leverage</text>
         <text x="0" y="120" fill="rgba(255,255,255,0.4)" fontFamily="Playfair Display, serif" fontSize="12" textDecoration="line-through">disrupt · game-changer · ROI</text>
       </g>
       <line x1="30" y1="300" x2="370" y2="300" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="326" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">BEFORE</text>
-      <text x="30" y="346" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">We provide innovative branding solutions</text>
-      <text x="30" y="364" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">to help businesses grow.</text>
-      <text x="30" y="396" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">AFTER</text>
-      <text x="30" y="416" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">We build the universe your brand lives in.</text>
+      <text x="30" y="326" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">AVANT</text>
+      <text x="30" y="346" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Un logiciel complet pour piloter</text>
+      <text x="30" y="364" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">vos chantiers au quotidien.</text>
+      <text x="30" y="396" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">APRÈS</text>
+      <text x="30" y="416" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Ce qui reste quand le chantier n'existe plus.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -580,25 +580,25 @@ function MockupHomepageRewrite() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 20</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">HOMEPAGE REWRITE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Ready to paste. Not a suggestion.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA HOME RÉÉCRITE</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Prêt à coller. Pas une suggestion.</text>
       <g transform="translate(30, 155)">
         <rect x="0" y="0" width="340" height="130" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="14" y="24" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">BEFORE</text>
-        <text x="14" y="56" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">We deliver innovative solutions</text>
-        <text x="14" y="76" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">tailored to your needs.</text>
-        <text x="14" y="110" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">Sounds like the other eleven tabs open</text>
-        <text x="14" y="124" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">in the same browser window.</text>
+        <text x="14" y="24" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">AVANT</text>
+        <text x="14" y="56" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">Pilotez vos chantiers en temps réel</text>
+        <text x="14" y="76" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="13" textDecoration="line-through">avec une solution tout-en-un.</text>
+        <text x="14" y="110" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">Onze concurrents pourraient signer</text>
+        <text x="14" y="124" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">cette phrase sans mentir.</text>
       </g>
       <g transform="translate(30, 300)">
         <rect x="0" y="0" width="340" height="130" fill="rgba(230,57,70,0.05)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
-        <text x="14" y="24" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">AFTER</text>
-        <text x="14" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">The last agency you will ever</text>
-        <text x="14" y="80" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">need to explain yourself to.</text>
-        <text x="14" y="112" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9">Headline, subhead, key sections — rewritten.</text>
+        <text x="14" y="24" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">APRÈS</text>
+        <text x="14" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">Ce qui vous reste quand</text>
+        <text x="14" y="80" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">le chantier n'existe plus.</text>
+        <text x="14" y="112" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9">Titre, sous-titre, sections clés — réécrits.</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Copy you paste on Monday, not a slide you file away.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Du texte qu'on colle lundi, pas une slide qu'on archive.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -618,8 +618,8 @@ function MockupTagline() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 21</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE PRESENTATION LINE · THREE FORMATS</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Say it short. Say it long. Say it once.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PHRASE DE PRÉSENTATION · TROIS FORMATS</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Dites-le court. Dites-le long. Dites-le une fois.</text>
       <g transform="translate(30, 155)">
         {(() => {
           let y = 0
@@ -640,7 +640,7 @@ function MockupTagline() {
         })()}
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">One idea, sized for a bio, a pitch, or a stage.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Une idée, calibrée pour une bio, un pitch ou une scène.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -655,28 +655,28 @@ function MockupContentIdeas() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 24</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">SPEAKING ANGLES · BY PILLAR</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Ready by Monday.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">ANGLES DE PRISE DE PAROLE · PAR PILIER</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Prêts dès lundi.</text>
       <g transform="translate(30, 160)">
         <rect x="0" y="0" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
-        <text x="12" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR I · AUTHORITY</text>
-        <text x="12" y="40" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why we refuse the playbook everyone follows.</text>
-        <text x="12" y="54" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The thing nobody says about scaling.</text>
+        <text x="12" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILIER I · AUTORITÉ</text>
+        <text x="12" y="40" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Ce que coûte vraiment une reprise contestée.</text>
+        <text x="12" y="54" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Pourquoi le classeur de chantier meurt en trois semaines.</text>
         <rect x="0" y="68" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="90" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR II · CONTRARIAN</text>
-        <text x="12" y="108" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The myth of growth hacks.</text>
-        <text x="12" y="122" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Why your funnel quietly died.</text>
+        <text x="12" y="108" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Le coût réel d'une reprise contestée.</text>
+        <text x="12" y="122" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Pourquoi le classeur meurt en trois semaines.</text>
         <rect x="0" y="136" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="158" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR III · TRANSFORMATION</text>
-        <text x="12" y="176" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">From service provider to category leader.</text>
-        <text x="12" y="190" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The identity shift nobody prepared you for.</text>
+        <text x="12" y="176" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">De l'outil de suivi à la preuve opposable.</text>
+        <text x="12" y="190" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">L'échéance que personne ne prépare.</text>
         <rect x="0" y="204" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
         <text x="12" y="226" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR IV · PROOF</text>
-        <text x="12" y="244" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">The before and after of a real house.</text>
-        <text x="12" y="258" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">What changed when the words changed.</text>
+        <text x="12" y="244" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">L'avant et l'après d'un chantier réel.</text>
+        <text x="12" y="258" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Ce qui change quand les mots changent.</text>
       </g>
       <line x1="30" y1="440" x2="370" y2="440" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="466" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">10-15 angles, each tied to a pillar. Posts, articles, newsletters.</text>
+      <text x="30" y="466" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">10 à 15 angles, chacun rattaché à un pilier. Posts, articles, newsletters.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -691,21 +691,21 @@ function MockupDistribution() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">05 · COHERENCE</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 28</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">THE COHERENCE GUIDE</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">One voice. Any hand.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE GUIDE DE COHÉRENCE</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Une voix. N'importe quelle main.</text>
       <g transform="translate(30, 160)">
         <rect x="0" y="0" width="162" height="120" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="1" />
         <text x="14" y="26" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO</text>
-        <text x="14" y="50" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Lead with conviction</text>
-        <text x="14" y="72" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Name the enemy</text>
+        <text x="14" y="50" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Ouvrir sur le refus</text>
+        <text x="14" y="72" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Nommer le moment</text>
         <text x="14" y="94" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Short. Declarative.</text>
-        <text x="14" y="112" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Cut the qualifier</text>
+        <text x="14" y="112" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Couper le qualificatif</text>
         <rect x="178" y="0" width="162" height="120" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-        <text x="192" y="26" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO NOT</text>
-        <text x="192" y="50" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Hedge with maybe</text>
+        <text x="192" y="26" fill="rgba(255,255,255,0.6)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">À NE PAS FAIRE</text>
+        <text x="192" y="50" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Alarmer plutôt que constater</text>
         <text x="192" y="72" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Use corporate jargon</text>
         <text x="192" y="94" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Chase every trend</text>
-        <text x="192" y="112" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Sound like the field</text>
+        <text x="192" y="112" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">— Parler comme la catégorie</text>
       </g>
       <BodyLines
         lines={[
@@ -721,7 +721,7 @@ function MockupDistribution() {
         seed={7}
       />
       <line x1="30" y1="410" x2="370" y2="410" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Your identity holds, even when you are not the one writing.</text>
+      <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Votre identité tient, même quand ce n'est pas vous qui écrivez.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -735,13 +735,13 @@ function MockupSignature() {
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— THE END —</text>
       <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="170" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">This was your house.</text>
-      <text x="200" y="200" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">Now build it.</text>
+      <text x="200" y="170" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">C'était votre maison.</text>
+      <text x="200" y="200" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">Construisez-la.</text>
       <line x1="100" y1="260" x2="300" y2="260" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-      <text x="200" y="290" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">COMMISSION</text>
+      <text x="200" y="290" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">COMMANDE</text>
       <text x="200" y="312" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">N° 001</text>
-      <text x="200" y="350" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">DELIVERED</text>
-      <text x="200" y="372" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">Date of delivery</text>
+      <text x="200" y="350" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">LIVRÉE</text>
+      <text x="200" y="372" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">Date de livraison</text>
       <text x="200" y="410" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">SIGNED</text>
       <text x="200" y="438" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="18" fontStyle="italic" textAnchor="middle">Strawberry Production</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
@@ -1064,24 +1064,24 @@ function MockupPositioningMap() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · IDENTITY</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 15</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">POSITIONING MAP</text>
-      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">Two axes the category hides.</text>
+      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">CARTE DE POSITIONNEMENT</text>
+      <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">Deux axes que la catégorie masque.</text>
       <g transform="translate(60, 160)">
         <line x1="0" y1="130" x2="280" y2="130" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
         <line x1="140" y1="0" x2="140" y2="260" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-        <text x="0" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1">GENERIC</text>
-        <text x="280" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="end">NAMED</text>
-        <text x="140" y="-6" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">LOUD</text>
-        <text x="140" y="272" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">QUIET</text>
+        <text x="0" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1">GÉNÉRIQUE</text>
+        <text x="280" y="145" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="end">NOMMÉ</text>
+        <text x="140" y="-6" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">VISIBLE</text>
+        <text x="140" y="272" fill="rgba(255,255,255,0.35)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1" textAnchor="middle">DISCRET</text>
         <circle cx="80" cy="60" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="60" cy="90" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="100" cy="40" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="70" cy="70" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="220" cy="200" r="9" fill="#e63946" />
-        <text x="220" y="222" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="700" textAnchor="middle">YOUR HOUSE</text>
+        <text x="220" y="222" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="700" textAnchor="middle">VOTRE MAISON</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">The empty quadrant is not a coincidence. It is the plan.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Le quadrant vide n'est pas un hasard. C'est le plan.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
