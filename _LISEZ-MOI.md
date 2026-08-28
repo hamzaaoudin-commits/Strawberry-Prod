@@ -1,62 +1,54 @@
-# Strawberry — patch : dix changements (build corrigé)
+# Strawberry — chantier 1 : SILLAGE passe à vingt pièces
 
-Huit fichiers. Remplace le patch précédent, qui cassait le build.
+Un seul fichier, `lib/sample-sillage.ts`.
 
-## Le bug du build, et pourquoi il m'a échappé
+## Ce qui manquait
 
-`problem-section.tsx` ligne 68 : j'avais attaché le `ref` de
-`useScrollReveal` à un `<ul>`, alors que ce hook renvoie une référence
-typée `HTMLDivElement`. TypeScript refuse — d'où l'échec du build Vercel.
+Le document de démonstration annonçait quatorze pièces et en contenait
+quatorze — alors que BRAND NARRATIVE ARCHITECTURE en vend vingt. Les six
+playbooks (marketing, contenu, réseaux sociaux, vente, support, RH &
+management) n'existaient nulle part dans le document. Un prospect qui
+lisait SILLAGE en entier voyait donc une commande amputée de six pièces
+qu'il paie.
 
-La cause de fond de mon côté : je validais mes fichiers avec esbuild, qui
-ne vérifie **que la syntaxe**, jamais les types. Le build Vercel, lui, fait
-un vrai contrôle de types. Mes vérifications passaient donc alors que le
-build échouait.
+## Ce qui a été ajouté
 
-Pour ce patch, j'ai installé TypeScript et lancé un vrai `tsc` sur les huit
-fichiers : zéro erreur venant de mon code. (Les seules erreurs restantes
-dans mon environnement viennent de Next.js et `@vercel/analytics` qui n'y
-sont pas installés, et de trois `<style jsx>` déjà présents dans votre
-dépôt avant mes modifications — vérifié sur la version en ligne. Ceux-là
-compilent sans problème sur Vercel.)
+Six nouvelles parties (n° 15 à 20), en français et en anglais, écrites dans
+le même registre que les quatorze existantes : contenu spécifique à
+SILLAGE, jamais du remplissage générique. Chacune contient de la matière
+réellement opérationnelle, avec la même grammaire de blocs que le reste du
+document (listes, tableaux, citations, avant/après).
 
-## Le correctif
+- **15 — Playbook marketing.** Quatre angles à explorer, quatre à refuser,
+  et le test avant publication (« un concurrent pourrait-il publier ceci en
+  changeant seulement le logo ? »).
+- **16 — Playbook contenu.** Six règles d'écriture, plus un avant/après qui
+  montre la réécriture concrète d'une phrase générique.
+- **17 — Playbook réseaux sociaux.** Tableau par plateforme (usage,
+  cadence), règle des commentaires, et ce qui ne se publie jamais.
+- **18 — Playbook vente.** La question d'ouverture, un tableau des quatre
+  objections dans l'ordre où elles arrivent — avec ce que chacune cache et
+  la réponse — puis la clôture qui invite le non.
+- **19 — Playbook support.** Quatre règles, plus le cas le plus grave
+  traité en détail (une donnée perdue chez une maison qui vend une trace),
+  avec le message type.
+- **20 — Playbook RH & management.** La question qui tranche les
+  arbitrages, les règles de recrutement, et l'intégration qui commence par
+  l'ennemi plutôt que par le produit.
 
-Le `ref` est maintenant porté par un `<div>` qui enveloppe la liste ; le
-`<ul>` et les `<li>` restent en place, donc le balisage sémantique de la
-liste est préservé et le rendu est identique à ce qui était prévu.
+## Ce qui a été mis à jour partout ailleurs
 
-## Les dix changements (inchangés par rapport au patch précédent)
+« quatorze pièces » → « vingt pièces », dans l'en-tête, le sommaire, le
+bloc d'avertissement sur l'extrait partiel, et le commentaire en tête de
+fichier — versions française et anglaise. La liste de ce qui est retiré de
+l'édition web mentionne désormais aussi les playbooks en version longue.
 
-1. **Logo de chargement** — « STRAWBERRY PROD. », tout en rouge, en majuscules.
-2. **La triade** « Rien à quoi appartenir / Rien à défendre / Rien à
-   répéter à un ami » — sortie du paragraphe, en trois lignes qui entrent
-   l'une après l'autre.
-3. **Le schéma sans/avec architecture** — les cinq points se déplacent
-   réellement de la dispersion vers la ligne montante, en boucle, avec le
-   libellé qui bascule. Les deux vignettes figées restent sous mouvement
-   réduit.
-4. **« Ça a manqué de la bonne cause. »** — enfle brièvement puis reprend
-   sa taille au scroll.
-5. **Les quatre fausses causes** — révélation en trois temps : le mot, puis
-   la rature qui se dessine et la raison, puis la flèche avec la solution.
-6. **Le bandeau rouge REFUS** — retiré de la home.
-7. **Le bandeau rouge ARCHITECTURE** — retiré.
-   `components/strawberry/section-divider.tsx` n'est plus appelé nulle
-   part, vous pouvez le supprimer.
-8. **La phrase cassée de la page studio** — échappements Unicode doublés
-   (`\\u00e9` au lieu de `\u00e9`), réécrite avec les vrais accents.
-9. **Le message du formulaire** — « Où en êtes-vous aujourd'hui, et
-   qu'aimeriez-vous que le marché comprenne de vous ? »
-10. **La section « Au-delà du document »** — retirée avec ses traductions.
+## Vérification
+
+Contrôle de types TypeScript réel (`tsc`) sur `sample-sillage.ts` et sur la
+page qui le consomme : zéro erreur. Comptage confirmé : 20 parties en
+français, 20 en anglais.
 
 ## Fichiers inclus
 
-- `components/strawberry/loading-intro.tsx`
-- `components/strawberry/problem-section.tsx`
-- `components/strawberry/architecture-diagram.tsx`
-- `components/strawberry/diagnosis-section.tsx`
-- `app/[lang]/page.tsx`
-- `app/[lang]/brand-narrative-architecture/page.tsx`
-- `app/[lang]/about/page.tsx`
-- `components/strawberry/contact-section.tsx`
+- `lib/sample-sillage.ts`

@@ -3,7 +3,7 @@ import type { Lang } from "@/lib/i18n"
 /**
  * The SILLAGE demonstration document.
  *
- * SILLAGE is a fictional house. This is an abridged web edition of a fourteen-part
+ * SILLAGE is a fictional house. This is an abridged web edition of a twenty-part
  * commission — every part is represented, none is reproduced in full. The complete
  * document delivered to a commissioner runs to roughly ninety pages.
  *
@@ -62,12 +62,12 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     eyebrow: "Un exemple de ce que vous recevrez",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "SILLAGE",
-    edition: "Commande n° 000 — quatorze pièces",
+    edition: "Commande n° 000 — vingt pièces",
     disclaimer:
       "Exemple publié à titre d'illustration. SILLAGE, sa fondatrice et les maisons citées ne correspondent à aucune entreprise existante.",
     partialTitle: "Ceci n'est qu'une partie de ce que vous recevras.",
     partialBody:
-      "BRAND NARRATIVE ARCHITECTURE compte quatorze pièces et représente environ quatre-vingt-dix pages. La page que vous lisez en présente la structure intégrale — les quatorze pièces sont là — mais chacune est resserrée pour l'écran. Ce qui est retiré de cette édition web :",
+      "BRAND NARRATIVE ARCHITECTURE compte vingt pièces et représente environ quatre-vingt-dix pages. La page que vous lisez en présente la structure intégrale — les vingt pièces sont là — mais chacune est resserrée pour l'écran. Ce qui est retiré de cette édition web :",
     partialPoints: [
       "Les développements longs de chaque analyse, réduits ici à leur conclusion",
       "Les fiches concurrent complètes, une par acteur du champ, dissection phrase par phrase",
@@ -75,6 +75,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       "Les quatre profils d'audience détaillés, avec déclencheurs, résistances et mots exacts",
       "Le brief d'identité visuelle complet, avec références directionnelles et exécutions à refuser",
       "L'essai signature intégral, publiable en l'état, et le manifeste d'origine",
+      "Les six playbooks dans leur version longue : scripts complets, arbres d'objections, protocoles d'incident et grilles d'entretien",
     ],
     dossierTitle: "Le dossier",
     dossierRows: [
@@ -84,7 +85,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       ["La fracture", "Bâtie pour les architectes indépendants. 61 % du revenu vient désormais d'entreprises générales. Le discours parle toujours aux premiers."],
       ["Ce qu'elle est venue dire", "« On a du départ chez les architectes et on n'arrive pas à monter en gamme chez les entreprises. On est coincés au milieu. »"],
     ],
-    contentsTitle: "Les quatorze pièces",
+    contentsTitle: "Les vingt pièces",
     readerPrev: "← Partie précédente",
     readerNext: "Partie suivante →",
     readerPageOfTemplate: "Partie {i} / {n}",
@@ -409,6 +410,132 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       { kind: "quote", text: "Les quatre segments partagent une condition unique : ils exercent tous une activité où la valeur produite est physique, immédiate et non enregistrée, et où la contestation intervient toujours à retardement. À la seconde où l'échafaudage est démonté, tout ce qui a été exécuté devient invisible, et sa réalité ne dépend plus que de ce que chacun se rappelle. Dans un secteur où le travail s'efface derrière son propre résultat, seule la trace décide de ce qui a existé." },
     ],
   },
+  {
+    n: "15",
+    title: "Playbook marketing",
+    subtitle: "Les angles à explorer, ceux à refuser.",
+    blocks: [
+      { kind: "lead", text: "Ce playbook existe pour qu'une décision d'angle se prenne en trente secondes, sans réunion et sans arbitrage de la fondatrice. Il ne dit pas quoi produire. Il dit ce qui a le droit d'exister sous le nom SILLAGE." },
+      { kind: "h", text: "Les angles à explorer" },
+      { kind: "list", items: [
+        "Le coût chiffré d'une contestation, ligne par ligne. C'est l'angle le plus performant du dispositif et le plus difficile à copier : il exige des chiffres réels, que les concurrents n'ont pas.",
+        "Le mécanisme de l'oubli. Pourquoi le classeur de chantier meurt au bout de trois semaines — angle qui disculpe l'acheteur, donc angle qui convertit.",
+        "L'asymétrie de préparation. Il a huit mois pour bâtir son dossier, vous avez le mercredi soir. Angle émotionnel, à réserver aux formats courts.",
+        "Le dossier ouvert. Un désaccord réel, anonymisé, résolu par trois lignes d'horodatage.",
+      ]},
+      { kind: "h", text: "Les angles à refuser" },
+      { kind: "list", items: [
+        "Toute comparaison frontale avec BATIFLOW. Nommer un concurrent le fait exister dans une tête où il n'était pas.",
+        "Le vocabulaire de la transformation digitale. Il désigne un acheteur que SILLAGE ne vise pas et fait fuir celui qu'elle vise.",
+        "La peur brute du procès. On constate un coût, on n'agite pas une menace : un acheteur en position de défense n'achète pas.",
+        "Toute promesse de gain de temps. C'est l'argument de la catégorie « suivi de chantier » — celle que SILLAGE a précisément quittée.",
+      ]},
+      { kind: "h", text: "Le test avant publication" },
+      { kind: "quote", text: "Un concurrent pourrait-il publier ce contenu à l'identique en changeant seulement le logo ? Si oui, il ne sort pas. Ce test élimine environ la moitié de ce qu'une équipe marketing produit spontanément, et c'est son intérêt." },
+    ],
+  },
+  {
+    n: "16",
+    title: "Playbook contenu",
+    subtitle: "La voix, transformée en règles applicables.",
+    blocks: [
+      { kind: "lead", text: "Écrit pour que quelqu'un qui n'a jamais parlé à Claire Vasseur écrive comme SILLAGE dès sa première semaine. La voix cesse d'être une intuition transmissible seulement par osmose." },
+      { kind: "h", text: "Les six règles" },
+      { kind: "list", items: [
+        "Un fait avant une opinion. Toujours. Si la première phrase ne contient pas un chiffre, une date ou une scène, elle est à réécrire.",
+        "Constater, jamais alarmer. « 91 dossiers sur 300 comptes en douze mois » — pas « vous êtes en danger ».",
+        "Le vocabulaire du chantier, pas celui du logiciel. On dit réception, reprise, désordre, levée de réserves. Jamais workflow, jamais solution, jamais optimiser.",
+        "Une idée par pièce. Si deux idées valent la peine, ce sont deux pièces.",
+        "Disculper l'acheteur, systématiquement. La faille est de conception, pas de discipline. Cette règle prime sur toutes les autres.",
+        "Finir sur la phrase, pas sur le résumé. Le dernier paragraphe ne récapitule rien.",
+      ]},
+      { kind: "h", text: "Le test de la relecture" },
+      { kind: "pair", beforeLabel: "Ce qu'on écrit spontanément", afterLabel: "Ce qu'on publie", before: "SILLAGE vous aide à digitaliser le suivi de vos chantiers et à gagner du temps au quotidien.", after: "Huit mois après la réception, il vous reste ce que vous avez enregistré. Le reste, c'est votre parole contre la sienne." },
+      { kind: "quote", text: "La voix de SILLAGE n'est pas une affaire de ton, c'est une affaire de position : elle parle depuis le chantier, pas depuis l'éditeur de logiciel. Un texte qui pourrait être signé par un éditeur est un texte raté, même bien écrit." },
+    ],
+  },
+  {
+    n: "17",
+    title: "Playbook réseaux sociaux",
+    subtitle: "Le ton par plateforme, le rythme, les réponses.",
+    blocks: [
+      { kind: "lead", text: "Trois plateformes, trois usages distincts, une seule doctrine. Ce qui change est la forme ; ce qui ne change jamais est la position." },
+      { kind: "table", head: ["Plateforme", "Usage", "Cadence"], rows: [
+        ["LinkedIn", "L'argument développé. Le chiffrage, le mécanisme, le dossier ouvert.", "Deux fois par semaine"],
+        ["YouTube", "La démonstration filmée sur chantier réel. Format long, zéro montage nerveux.", "Une fois par mois"],
+        ["Terrain (salons, fédérations)", "La conversation directe. Aucun contenu produit : de l'écoute qui alimente les deux autres.", "Continu"],
+      ]},
+      { kind: "h", text: "La règle des commentaires" },
+      { kind: "list", items: [
+        "Répondre une fois, précisément, et s'arrêter. Le deuxième aller-retour n'apporte rien à personne d'autre qu'aux deux personnes qui l'écrivent.",
+        "Face à un concurrent qui commente : remercier, ne jamais argumenter. Le débat public profite toujours au plus petit des deux.",
+        "Face à un client mécontent : sortir du fil en une phrase et proposer un appel. Toujours, sans exception.",
+        "Ne jamais poser de question dont la réponse ne nous intéresse pas réellement.",
+      ]},
+      { kind: "h", text: "Ce qui ne se publie pas" },
+      { kind: "list", items: [
+        "Les coulisses de l'équipe, les recrutements célébrés, les levées de fonds. SILLAGE n'a pas d'histoire d'entreprise à raconter, elle a un moment de chantier à occuper.",
+        "Les carrousels de conseils génériques. Ils performent et ne construisent rien.",
+        "Toute publication dont l'objectif réel est l'engagement plutôt que la position.",
+      ]},
+    ],
+  },
+  {
+    n: "18",
+    title: "Playbook vente",
+    subtitle: "Présenter la maison, désamorcer avant l'objection.",
+    blocks: [
+      { kind: "lead", text: "L'ordre importe plus que les arguments. Ce playbook fixe la séquence, parce qu'une bonne réponse donnée au mauvais moment est une objection créée." },
+      { kind: "h", text: "L'ouverture" },
+      { kind: "quote", text: "« Votre dernière contestation, elle remonte à quand ? » — Jamais « comment vous gérez vos chantiers ? ». La première question place la conversation dans la catégorie de SILLAGE ; la seconde la place dans celle du suivi de chantier, où SILLAGE est un acteur parmi douze." },
+      { kind: "h", text: "Les quatre objections, dans l'ordre où elles arrivent" },
+      { kind: "table", head: ["Objection", "Ce qu'elle cache", "La réponse"], rows: [
+        ["« On a déjà un groupe photos »", "Redondance apparente, pas prix", "« Combien de temps pour retrouver une photo de mars dernier ? Le problème n'est pas de prendre la photo, c'est de la retrouver huit mois après. »"],
+        ["« C'est cher pour ce que c'est »", "Comparaison à un outil de suivi", "Ne pas défendre le prix. Rappeler le coût moyen d'une contestation perdue, et laisser le calcul se faire."],
+        ["« Mes gars ne rempliront jamais »", "Expérience réelle d'échec passé", "« Ils n'auront rien à remplir. Si quelque chose est à remplir, ce ne sera pas fait — c'est pour ça que le classeur meurt en trois semaines. »"],
+        ["« On va y réfléchir »", "Absence d'échéance ressentie", "Ne pas relancer sur le produit. Relancer à la prochaine réception de chantier : l'échéance vient d'elle-même."],
+      ]},
+      { kind: "h", text: "La clôture" },
+      { kind: "p", text: "Inviter le non plutôt que poursuivre le oui. « Si vous n'avez pas eu de contestation en trois ans, ce n'est pas pour vous, et je préfère vous le dire. » Cette phrase perd des affaires marginales et gagne de la crédibilité sur toutes les autres — elle est la version commerciale du refus qui fonde la maison." },
+    ],
+  },
+  {
+    n: "19",
+    title: "Playbook support",
+    subtitle: "Tenir la voix quand la situation est mauvaise.",
+    blocks: [
+      { kind: "lead", text: "Une identité qui ne survit pas au premier incident n'est pas une identité, c'est une campagne. Ce playbook couvre les moments où le client est en colère, où l'outil a échoué, où la nouvelle est mauvaise." },
+      { kind: "h", text: "Les quatre règles" },
+      { kind: "list", items: [
+        "S'excuser en une phrase, puis réparer. L'excuse longue déplace l'attention vers celui qui s'excuse.",
+        "Ne jamais se retrancher derrière la procédure. Expliquer la raison réelle, même quand elle est peu flatteuse.",
+        "Annoncer la mauvaise nouvelle en premier, jamais enterrée après trois paragraphes de contexte.",
+        "Ne jamais promettre une date qu'on ne tiendra pas pour calmer quelqu'un sur le moment.",
+      ]},
+      { kind: "h", text: "Le cas le plus grave : une donnée perdue" },
+      { kind: "p", text: "SILLAGE vend une trace. Perdre une donnée n'est pas un incident technique, c'est une atteinte à la promesse centrale. Le protocole est écrit à part : notification dans l'heure, périmètre exact, ce qui est récupérable et ce qui ne l'est pas, appel de la fondatrice si le client a un dossier en cours." },
+      { kind: "quote", text: "« On a perdu vos données de la semaine du 3 au 9. Voici précisément ce qui manque. Ce n'est pas récupérable et je ne vais pas vous dire le contraire. Si vous avez une contestation en cours sur cette période, appelez-moi directement, aujourd'hui. »" },
+    ],
+  },
+  {
+    n: "20",
+    title: "Playbook RH & management",
+    subtitle: "La culture, retraduite en règle de décision.",
+    blocks: [
+      { kind: "lead", text: "Une doctrine qui ne guide aucune décision interne finit en affiche dans un couloir. Ce playbook la rend opérante à l'embauche, à l'intégration et dans les arbitrages." },
+      { kind: "h", text: "La question qui tranche" },
+      { kind: "quote", text: "« Est-ce que cette décision ressemble à nous ? » — pas « qui est le plus ancien », pas « qu'est-ce qui fait consensus ». Une seule question, posée à voix haute, y compris quand la réponse coûte de l'argent." },
+      { kind: "h", text: "Recruter" },
+      { kind: "list", items: [
+        "Recruter sur le refus, pas sur le parcours. La question d'entretien est : « racontez-moi une fois où vous avez refusé un client ». Une réponse vide est éliminatoire.",
+        "Pour les postes en contact avec le chantier : une expérience de terrain prime sur une expérience logicielle. On peut apprendre le logiciel, pas la légitimité.",
+        "Ne jamais recruter quelqu'un qui n'a pas lu la plateforme narrative avant le deuxième entretien.",
+      ]},
+      { kind: "h", text: "Intégrer" },
+      { kind: "p", text: "L'intégration commence par l'ennemi, jamais par le produit. Première semaine : lire quatre dossiers de contestation réels, dans le détail. Un nouvel arrivant qui a compris le moment de la contestation trouve seul les bons mots ; celui qui a d'abord appris les fonctionnalités passe six mois à parler comme un éditeur de logiciel." },
+      { kind: "quote", text: "Le signal de réussite est simple et vérifiable : au bout de deux semaines, un nouvel arrivant écrit un message client qu'on n'a pas besoin de corriger." },
+    ],
+  },
 ],
     ctaTitle: "Voilà ce que vous recevez.",
     ctaBody:
@@ -421,12 +548,12 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     eyebrow: "An example of what you receive",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "SILLAGE",
-    edition: "Commission n° 000 — fourteen parts",
+    edition: "Commission n° 000 — twenty parts",
     disclaimer:
       "Published as an illustration. SILLAGE, its founder and the houses named here correspond to no existing company.",
     partialTitle: "This is only a portion of what you would receive.",
     partialBody:
-      "The full commission runs to fourteen parts and roughly ninety pages. The page you are reading presents the complete structure — all fourteen parts are here — but each is tightened for the screen. What this web edition leaves out:",
+      "The full commission runs to twenty parts and roughly ninety pages. The page you are reading presents the complete structure — all twenty parts are here — but each is tightened for the screen. What this web edition leaves out:",
     partialPoints: [
       "The long development of each analysis, reduced here to its conclusion",
       "The complete competitor files, one per player, dissected sentence by sentence",
@@ -434,6 +561,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       "The four detailed audience profiles, with triggers, resistances and exact wording",
       "The complete visual identity brief, with directional references and executions to refuse",
       "The full signature essay, publishable as-is, and the origin manifesto",
+      "The six playbooks in long form: full scripts, objection trees, incident protocols and interview grids",
     ],
     dossierTitle: "The dossier",
     dossierRows: [
@@ -443,7 +571,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       ["The fracture", "Built for independent architects. 61% of revenue now comes from general contractors. The language still speaks to the former."],
       ["What she came to say", "\u201cWe're losing architects and we can't move upmarket with contractors. We're stuck in the middle.\u201d"],
     ],
-    contentsTitle: "The fourteen parts",
+    contentsTitle: "The twenty parts",
     readerPrev: "← Previous part",
     readerNext: "Next part →",
     readerPageOfTemplate: "Part {i} / {n}",
@@ -766,6 +894,132 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       { kind: "p", text: "The content that converts. None, within the current plan — and that is a decision, not a gap. This segment stays served on a per-site offer and stops being addressed. Its attrition will accelerate, and that is the price of the chosen territory." },
       { kind: "h", text: "Synthesis — the audience in one paragraph" },
       { kind: "quote", text: "The four segments share one condition: they all practise a trade where the value produced is physical, immediate and unrecorded, and where the dispute always arrives late. The second the scaffolding comes down, everything executed becomes invisible, and its reality depends solely on what each party remembers. In a sector where the work disappears behind its own result, only the record decides what existed." },
+    ],
+  },
+  {
+    n: "15",
+    title: "Marketing playbook",
+    subtitle: "Angles to explore, angles to refuse.",
+    blocks: [
+      { kind: "lead", text: "This playbook exists so an angle decision takes thirty seconds, without a meeting and without the founder arbitrating. It does not say what to produce. It says what is allowed to exist under the SILLAGE name." },
+      { kind: "h", text: "Angles to explore" },
+      { kind: "list", items: [
+        "The costed anatomy of a dispute, line by line. The strongest angle in the system and the hardest to copy: it requires real numbers, which competitors do not have.",
+        "The mechanics of forgetting. Why the site binder dies after three weeks — an angle that exonerates the buyer, and therefore converts.",
+        "The preparation asymmetry. He has had eight months to build his case; you have Wednesday evening. Emotional angle, short formats only.",
+        "The open file. A real disagreement, anonymised, closed by three timestamped lines.",
+      ]},
+      { kind: "h", text: "Angles to refuse" },
+      { kind: "list", items: [
+        "Any head-on comparison with BATIFLOW. Naming a competitor makes it exist in a mind where it was absent.",
+        "The vocabulary of digital transformation. It describes a buyer SILLAGE is not addressing, and repels the one it is.",
+        "Raw fear of litigation. We state a cost, we do not brandish a threat: a buyer on the defensive does not buy.",
+        "Any promise of time saved. That is the argument of the site-management category — precisely the one SILLAGE left.",
+      ]},
+      { kind: "h", text: "The pre-publication test" },
+      { kind: "quote", text: "Could a competitor publish this identically by changing only the logo? If yes, it does not ship. This test removes roughly half of what a marketing team produces by instinct, which is the point of it." },
+    ],
+  },
+  {
+    n: "16",
+    title: "Content playbook",
+    subtitle: "The voice, turned into rules anyone can follow.",
+    blocks: [
+      { kind: "lead", text: "Written so that someone who has never spoken to Claire Vasseur writes like SILLAGE in their first week. The voice stops being an intuition transmitted only by osmosis." },
+      { kind: "h", text: "The six rules" },
+      { kind: "list", items: [
+        "A fact before an opinion. Always. If the first sentence holds no number, date or scene, rewrite it.",
+        "State, never alarm. \u201c91 files across 300 accounts in twelve months\u201d — not \u201cyou are at risk\u201d.",
+        "The vocabulary of the site, not of software. We say handover, remedial work, defect, snagging. Never workflow, never solution, never optimise.",
+        "One idea per piece. If two ideas are worth it, that is two pieces.",
+        "Exonerate the buyer, systematically. The flaw is by design, not by discipline. This rule outranks the others.",
+        "End on the sentence, not the summary. The last paragraph recaps nothing.",
+      ]},
+      { kind: "h", text: "The rewrite test" },
+      { kind: "pair", beforeLabel: "What gets written by instinct", afterLabel: "What ships", before: "SILLAGE helps you digitise your site management and save time day to day.", after: "Eight months after handover, what you have is what you recorded. The rest is your word against his." },
+      { kind: "quote", text: "The SILLAGE voice is not a matter of tone, it is a matter of position: it speaks from the site, not from the software company. Any text that could be signed by a software vendor is a failed text, however well written." },
+    ],
+  },
+  {
+    n: "17",
+    title: "Social media playbook",
+    subtitle: "Tone by platform, rhythm, replies.",
+    blocks: [
+      { kind: "lead", text: "Three platforms, three distinct uses, one doctrine. What changes is the form; what never changes is the position." },
+      { kind: "table", head: ["Platform", "Use", "Cadence"], rows: [
+        ["LinkedIn", "The developed argument. The costing, the mechanism, the open file.", "Twice weekly"],
+        ["YouTube", "Filmed demonstration on a real site. Long form, no restless editing.", "Monthly"],
+        ["In person (trade shows, federations)", "Direct conversation. No content produced: listening that feeds the other two.", "Continuous"],
+      ]},
+      { kind: "h", text: "The comment rule" },
+      { kind: "list", items: [
+        "Answer once, precisely, then stop. The second exchange serves nobody but the two people writing it.",
+        "A competitor comments: thank them, never argue. Public debate always benefits the smaller of the two.",
+        "An unhappy client: leave the thread in one sentence and offer a call. Always, no exception.",
+        "Never ask a question whose answer does not genuinely interest us.",
+      ]},
+      { kind: "h", text: "What never ships" },
+      { kind: "list", items: [
+        "Team behind-the-scenes, celebrated hires, funding news. SILLAGE has no company story to tell; it has a moment on a building site to occupy.",
+        "Generic advice carousels. They perform and build nothing.",
+        "Any post whose real objective is engagement rather than position.",
+      ]},
+    ],
+  },
+  {
+    n: "18",
+    title: "Sales playbook",
+    subtitle: "Present the house, defuse before the objection.",
+    blocks: [
+      { kind: "lead", text: "Order matters more than arguments. This playbook fixes the sequence, because a good answer given at the wrong moment is an objection created." },
+      { kind: "h", text: "The opening" },
+      { kind: "quote", text: "\u201cWhen was your last dispute?\u201d — never \u201chow do you manage your sites?\u201d. The first question places the conversation in SILLAGE's category; the second places it in site management, where SILLAGE is one of twelve." },
+      { kind: "h", text: "The four objections, in the order they arrive" },
+      { kind: "table", head: ["Objection", "What it hides", "The answer"], rows: [
+        ["\u201cWe already have a photo group chat\u201d", "Apparent redundancy, not price", "\u201cHow long to find a photo from last March? The problem is not taking the photo, it is finding it eight months later.\u201d"],
+        ["\u201cThat's expensive for what it is\u201d", "Comparison with a site-management tool", "Do not defend the price. Restate the average cost of a lost dispute, and let the arithmetic happen."],
+        ["\u201cMy crew will never fill it in\u201d", "Real experience of past failure", "\u201cThere is nothing to fill in. If something has to be filled in, it will not be — that is why the binder dies in three weeks.\u201d"],
+        ["\u201cWe'll think about it\u201d", "No felt deadline", "Do not follow up on the product. Follow up at the next site handover: the deadline arrives on its own."],
+      ]},
+      { kind: "h", text: "The close" },
+      { kind: "p", text: "Invite the no rather than chase the yes. \u201cIf you have not had a dispute in three years, this is not for you, and I would rather say so.\u201d That sentence loses marginal deals and earns credibility on every other one — it is the commercial version of the refusal the house is built on." },
+    ],
+  },
+  {
+    n: "19",
+    title: "Support playbook",
+    subtitle: "Holding the voice when the news is bad.",
+    blocks: [
+      { kind: "lead", text: "An identity that does not survive the first incident is not an identity, it is a campaign. This playbook covers the moments when the client is angry, the tool failed, the news is bad." },
+      { kind: "h", text: "The four rules" },
+      { kind: "list", items: [
+        "Apologise in one sentence, then fix it. A long apology moves attention onto the person apologising.",
+        "Never hide behind procedure. Explain the real reason, even when it is unflattering.",
+        "Lead with the bad news, never buried after three paragraphs of context.",
+        "Never promise a date you will not hold in order to calm someone in the moment.",
+      ]},
+      { kind: "h", text: "The worst case: lost data" },
+      { kind: "p", text: "SILLAGE sells a record. Losing data is not a technical incident, it is a breach of the central promise. The protocol is written separately: notification within the hour, exact scope, what is recoverable and what is not, a call from the founder if the client has a live dispute." },
+      { kind: "quote", text: "\u201cWe lost your data for the week of the 3rd to the 9th. Here is exactly what is missing. It is not recoverable and I am not going to tell you otherwise. If you have a live dispute covering that period, call me directly, today.\u201d" },
+    ],
+  },
+  {
+    n: "20",
+    title: "HR & management playbook",
+    subtitle: "The culture, retranslated into a decision rule.",
+    blocks: [
+      { kind: "lead", text: "A doctrine that guides no internal decision ends up as a poster in a corridor. This playbook makes it operative in hiring, onboarding and trade-offs." },
+      { kind: "h", text: "The question that settles it" },
+      { kind: "quote", text: "\u201cDoes this decision sound like us?\u201d — not \u201cwho is most senior\u201d, not \u201cwhat is the consensus\u201d. One question, asked out loud, including when the answer costs money." },
+      { kind: "h", text: "Hiring" },
+      { kind: "list", items: [
+        "Hire for the refusal, not the CV. The interview question is: \u201ctell me about a time you turned a client down\u201d. An empty answer is disqualifying.",
+        "For roles in contact with sites: field experience outranks software experience. The software can be learned; the standing cannot.",
+        "Never hire someone who has not read the narrative platform before the second interview.",
+      ]},
+      { kind: "h", text: "Onboarding" },
+      { kind: "p", text: "Onboarding starts with the enemy, never with the product. First week: read four real dispute files, in detail. A new hire who has understood the moment of dispute finds the right words alone; one who learned the features first spends six months sounding like a software vendor." },
+      { kind: "quote", text: "The success signal is simple and checkable: after two weeks, a new hire writes a client message nobody needs to correct." },
     ],
   },
 ],
