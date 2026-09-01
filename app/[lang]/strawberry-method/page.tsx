@@ -5,6 +5,7 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { STRIPE_LINKS } from "@/lib/config"
+import { AtlasSection } from "@/components/strawberry/atlas-section"
 
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -455,6 +456,12 @@ export default function StrawberryMethodPage() {
           </div>
         </div>
       </section>
+
+      {/* L'ATLAS — déplacé depuis les pages d'offre : une ressource
+          gratuite sur les architectures narratives a davantage sa place
+          au bout de la page qui explique la méthode qu'au bout d'une page
+          qui vend une commande. */}
+      <AtlasSection />
 
       {/* FINAL CTA */}
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>

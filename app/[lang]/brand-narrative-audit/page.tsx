@@ -8,7 +8,6 @@ import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { AUDIT_DOC } from "@/lib/sample-verso"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
-import { AtlasSection } from "@/components/strawberry/atlas-section"
 
 const T = {
   fr: {
@@ -20,7 +19,7 @@ const T = {
     ctaSecondary: "Voir un exemple de livrable",
     previewKicker: "Un exemplaire, publié en entier",
     previewH2: "Voici exactement ce que vous recevrez.",
-    previewLead: "Voici trois extraits d'un audit complet, mené sur VERSO — une maison de reliure d'art inventée pour l'exercice, afin qu'aucun client n'ait à servir de vitrine. Les cinq blocs sont lisibles en entier, gratuitement.",
+    previewLead: "Voici trois extraits d'un audit complet, mené sur VERSO, une maison de reliure d'art. Les cinq blocs sont lisibles en entier, gratuitement.",
     previewHouse: "VERSO",
     previewHouseSub: "Reliure et édition d'art · Bordeaux · maison de démonstration",
     previewCta: "Lire les cinq blocs \u2192",
@@ -84,7 +83,7 @@ const T = {
     ctaSecondary: "See a sample deliverable",
     previewKicker: "One copy, published in full",
     previewH2: "This is exactly what you would receive.",
-    previewLead: "Three excerpts from a complete audit, run on VERSO — an art bindery invented for the exercise, so that no client has to serve as a showcase. All five blocks are readable in full, free.",
+    previewLead: "Three excerpts from a complete audit, run on VERSO, an art bindery. All five blocks are readable in full, free.",
     previewHouse: "VERSO",
     previewHouseSub: "Art binding and editions · Bordeaux · demonstration house",
     previewCta: "Read all five blocks \u2192",
@@ -349,7 +348,6 @@ export default async function BrandNarrativeAuditPage({
 
       <FaqSection faqs={FAQ_AUDIT490} />
 
-      <AtlasSection />
 
       <Footer />
     </main>

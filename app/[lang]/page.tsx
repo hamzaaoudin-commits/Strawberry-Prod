@@ -18,9 +18,11 @@ import { isLang, type Lang } from "@/lib/lang"
  * La page d'accueil.
  *
  * Une page, une offre, une action. Le parcours suit la décision d'achat :
- * bandeau de marques, problème, diagnostic, deux statistiques réelles,
- * mécanisme propriétaire, l'offre elle-même, le livre, le bandeau final,
- * puis les objections et le formulaire.
+ * bandeau de marques, problème, diagnostic, puis l'offre — remontée avant
+ * les statistiques et le mécanisme, qui la retardaient sans être
+ * nécessaires pour la comprendre. Ils la suivent désormais comme
+ * justification pour qui n'a pas encore décidé. Ensuite le livre, le
+ * bandeau final, les objections et le formulaire.
  *
  * La frise "4 par trimestre / 1 studio, un fondateur" a été retirée à la
  * demande du fondateur — l'offre et le pacte humain, plus bas, disent déjà
@@ -51,9 +53,9 @@ export default async function Home({
       <ReadMarquee />
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />
+      <OffersSection lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
-      <OffersSection lang={lang} />
       <BookSection lang={lang} />
       <CTABanner />
       <FaqSection faqs={FAQ_AUDIT} />

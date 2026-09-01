@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -46,10 +45,6 @@ const T = {
       },
     ],
     falseCauseOutro: "The problem was never how loud you are. It is that nobody has ever settled what you refuse, and without a refusal there is no identity to belong to.",
-    aiP1: "AI is saturating your market faster than you can see it. Your competitors now produce in one click what used to take weeks: articles, visuals, pages, campaigns. Content is becoming free, infinite and perfectly interchangeable. In that noise, quality is no longer enough to set you apart — everyone has become good.",
-    aiP2a: "What cannot be generated is an identity. ",
-    aiP2strong: "Differentiation is no longer a marketing luxury — it is your condition for survival.",
-    aiP3: "The value has moved. It used to sit in the making. Today, making things costs almost nothing. What stays scarce is the strategy, the coherence, the vision, the decisions — that is what we offer.",
     diagramBefore: "Yesterday",
     diagramAfter: "Today",
     diagramFabrication: "The making",
@@ -57,8 +52,6 @@ const T = {
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
     enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
-    expand: "Why it's urgent now",
-    collapse: "Show less",
   },
   fr: {
     h2a: "Rien de tout ça n'a manqué de bonne volonté.",
@@ -88,10 +81,6 @@ const T = {
       },
     ],
     falseCauseOutro: "Le problème n'a jamais été votre volume. C'est que personne n'a jamais tranché ce que vous refusez, et sans refus, il n'y a aucune identité à laquelle s'accrocher.",
-    aiP1: "L'IA sature votre marché plus vite que vous ne le voyez. Vos concurrents produisent désormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualité ne suffit plus à vous distinguer : tout le monde est devenu bon.",
-    aiP2a: "Ce qui ne peut pas être généré, c'est une identité. ",
-    aiP2strong: "La différenciation n'est plus un luxe marketing — c'est votre condition de survie.",
-    aiP3: "La valeur a changé de camp. Elle vivait dans la fabrication. Aujourd'hui, fabriquer coûte presque rien. Ce qui reste rare, c'est la stratégie, la cohérence, la vision, les décisions — c'est ce que nous proposons.",
     diagramBefore: "Hier",
     diagramAfter: "Aujourd'hui",
     diagramFabrication: "La fabrication",
@@ -99,16 +88,14 @@ const T = {
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
     enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
-    expand: "Pourquoi c'est urgent maintenant",
-    collapse: "Réduire",
   },
 }
 
 export function DiagnosisSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
-  const [expanded, setExpanded] = useState(false)
   const [listRef, listVisible] = useScrollReveal()
   const [h2Ref, h2Visible] = useScrollReveal()
+  const [splitRef, splitVisible] = useScrollReveal()
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
@@ -155,7 +142,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             lieu de le livrer tout fait. */}
         <div ref={listRef} className="mb-8 flex flex-col gap-5">
           {t.falseCauses.map((fc, i) => {
-            const base = i * 420
+            const base = i * 1100
             return (
               <div
                 key={fc.label}
@@ -177,7 +164,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                     style={{
                       width: listVisible ? "100%" : "0%",
                       transition: "width 480ms cubic-bezier(.22,.68,0,1)",
-                      transitionDelay: `${base + 420}ms`,
+                      transitionDelay: `${base + 520}ms`,
                     }}
                   />
                 </span>
@@ -187,7 +174,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                   style={{
                     opacity: listVisible ? 1 : 0,
                     transform: listVisible ? "translateY(0)" : "translateY(4px)",
-                    transitionDelay: `${base + 640}ms`,
+                    transitionDelay: `${base + 760}ms`,
                   }}
                 >
                   {fc.impact}
@@ -200,7 +187,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                   style={{
                     opacity: listVisible ? 1 : 0,
                     transform: listVisible ? "translateX(0)" : "translateX(-6px)",
-                    transitionDelay: `${base + 1000}ms`,
+                    transitionDelay: `${base + 1020}ms`,
                   }}
                 >
                   <span className="text-brand">→</span> {fc.choice}
@@ -212,46 +199,24 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
 
         <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.falseCauseOutro}</p>
 
-        <div className="border-l-2 border-brand pl-6 md:pl-8">
-          {/* Le paragraphe qui pose l'urgence (saturation par l'IA) est replié
-              par défaut : c'est une élaboration du diagnostic déjà posé
-              au-dessus, pas une information qu'il faut lire pour comprendre
-              l'offre. La citation reste visible — c'est la phrase la plus
-              forte de la section, elle ne doit pas dépendre d'un clic. */}
-          {expanded && (
-            <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP1}</p>
-          )}
-
-          <div className="mb-6 -ml-6 max-w-[560px] text-center md:-ml-8">
-            <div aria-hidden className="font-serif text-[2.5rem] leading-[0.4] text-brand/30">
-              &ldquo;
-            </div>
-            <p className="mt-2 font-serif text-[clamp(1.3rem,2.6vw,1.8rem)] font-bold leading-[1.3] text-white">
-              {t.aiP2a}
-            </p>
-            <p className="mt-3 font-sans text-[13px] leading-relaxed text-chalk-55">{t.aiP2strong}</p>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="mb-2 font-sans text-[13px] font-semibold tracking-[0.02em] text-brand underline decoration-brand/40 underline-offset-4 transition-colors hover:text-white"
-          >
-            {expanded ? `\u2212 ${t.collapse}` : `+ ${t.expand}`}
-          </button>
-
-          {expanded && (
-            <p className="mt-4 font-serif text-[clamp(1.05rem,2vw,1.35rem)] leading-[1.55] text-white/90">{t.aiP3}</p>
-          )}
-        </div>
-
         {/* Le renversement, en plein écran divisé plutôt qu'en deux petites
             barres — sort volontairement du container centré pour occuper
             toute la largeur du viewport, contraste net entre gris désaturé
             et rouge. */}
-        <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2">
+        {/* Animé au scroll : le panneau « Hier » glisse depuis la gauche, le
+            trait rouge se déploie du centre, puis « Aujourd'hui » arrive
+            depuis la droite. Le décalage fait lire le renversement comme un
+            basculement, alors que les deux panneaux posés d'un coup se
+            lisaient comme une simple comparaison figée. */}
+        <div ref={splitRef} className="relative left-1/2 mt-10 w-screen -translate-x-1/2">
           <div className="flex h-[200px] overflow-hidden sm:h-[240px]">
-            <div className="flex flex-1 flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]">
+            <div
+              className="flex flex-1 flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)] transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)]"
+              style={{
+                opacity: splitVisible ? 1 : 0,
+                transform: splitVisible ? "translateX(0)" : "translateX(-24px)",
+              }}
+            >
               <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
                 {t.diagramBefore}
               </div>
@@ -260,9 +225,20 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
               </p>
             </div>
 
-            <div aria-hidden className="w-[2px] shrink-0 bg-brand" />
+            <div
+              aria-hidden
+              className="w-[2px] shrink-0 origin-center bg-brand transition-transform duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]"
+              style={{ transform: splitVisible ? "scaleY(1)" : "scaleY(0)", transitionDelay: "350ms" }}
+            />
 
-            <div className="flex flex-1 flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center">
+            <div
+              className="flex flex-1 flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)]"
+              style={{
+                opacity: splitVisible ? 1 : 0,
+                transform: splitVisible ? "translateX(0)" : "translateX(24px)",
+                transitionDelay: "620ms",
+              }}
+            >
               <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
                 {t.diagramAfter}
               </div>

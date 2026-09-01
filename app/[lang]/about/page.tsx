@@ -62,14 +62,6 @@ const T = {
     founderP3: "When you commission the work, you commission the people who will do it. No account manager stands between you and the writing, no junior is substituted after signature, no scope is negotiated downward. The document you receive carries the name of whoever wrote it.",
     founderQuote: "\"I do not build brands. I write the constitution by which a house declares what it is, what it refuses, and how it sounds when it speaks.\"",
     founderSig: "Hamza El Jaouahiry \u00b7 Founder",
-    practiceKicker: "The Practice",
-    practiceH2: "How the work is made.",
-    practiceLead: "Four operating principles. They explain why a commission takes four weeks, why no two ever look alike, and why the work survives the month after delivery.",
-    discipline: [
-      { title: "Extraction before architecture.", body: "Every commission begins with conversation, not strategy. We make founders talk, at length, until something appears that no machine could have written — the conviction beneath the elevator pitch, the refusal beneath the founding story. From that human material, the architecture is built." },
-      { title: "Single authorship, no committees.", body: "One person extracts the founder's truth. The same person writes the architecture. The same person delivers it. No handoffs, no telephone games, no smoothing committees. The voice of the document is the voice of one mind that paid attention to one founder for four weeks." },
-      { title: "Editorial, not advisory.", body: "We do not produce decks. We produce documents — designed to be read like manifestos and consulted like constitutions. The artifact is built to outlive the engagement. The bound edition, optional, is delivered to be kept on a shelf, not opened on a screen." },
-    ],
     ctaH2: "Now you know who you would be working with.",
     ctaP: "One commission per house. Four houses per quarter. The next opening is announced here.",
     cta: "See our offers \u2192",
@@ -120,14 +112,6 @@ const T = {
     founderP3: "Quand vous commandez le travail, vous commandez ceux qui le feront. Aucun chef de projet ne s'interpose entre vous et l'\u00e9criture, aucun junior n'est substitu\u00e9 apr\u00e8s signature, aucun p\u00e9rim\u00e8tre n'est n\u00e9goci\u00e9 \u00e0 la baisse. Le document que vous recevez porte le nom de celui qui l'a \u00e9crit.",
     founderQuote: "\u00ab Je ne construis pas des marques. J'\u00e9cris la constitution par laquelle une maison d\u00e9clare ce qu'elle est, ce qu'elle refuse, et comment elle sonne quand elle parle. \u00bb",
     founderSig: "Hamza El Jaouahiry \u00b7 Fondateur",
-    practiceKicker: "La Pratique",
-    practiceH2: "Comment le travail se fait.",
-    practiceLead: "Quatre principes op\u00e9ratoires. Ils expliquent pourquoi une commande prend quatre semaines, pourquoi deux ne se ressemblent jamais, et pourquoi le travail survit au mois qui suit la livraison.",
-    discipline: [
-      { title: "L'extraction avant l'architecture.", body: "Chaque commande commence par une conversation, pas une strat\u00e9gie. Nous faisons parler les fondateurs, longuement, jusqu'\u00e0 ce qu'appara\u00eesse quelque chose qu'aucune machine n'aurait pu \u00e9crire — la conviction sous le pitch, le refus sous le r\u00e9cit fondateur. De cette mati\u00e8re humaine, l'architecture est b\u00e2tie." },
-      { title: "Auctorialit\u00e9 unique, pas de comit\u00e9s.", body: "Une personne extrait la v\u00e9rit\u00e9 du fondateur. La m\u00eame personne \u00e9crit l'architecture. La m\u00eame personne la livre. Pas de passages de relais, pas de t\u00e9l\u00e9phone arabe, pas de comit\u00e9s de lissage. La voix du document est celle d'un seul esprit qui a pr\u00eat\u00e9 attention \u00e0 un seul fondateur pendant quatre semaines." },
-      { title: "\u00c9ditorial, pas consultatif.", body: "Nous ne produisons pas de decks. Nous produisons des documents — con\u00e7us pour \u00eatre lus comme des manifestes et consult\u00e9s comme des constitutions. L'artefact est fait pour survivre \u00e0 la mission. L'\u00e9dition reli\u00e9e, en option, est livr\u00e9e pour \u00eatre gard\u00e9e sur une \u00e9tag\u00e8re, pas ouverte sur un \u00e9cran." },
-    ],
     ctaH2: "Maintenant vous savez avec qui vous travailleriez.",
     ctaP: "Une commande par maison. Quatre maisons par trimestre. La prochaine ouverture est annonc\u00e9e ici.",
     cta: "Voir nos offres \u2192",
@@ -140,13 +124,11 @@ export default function AboutPage() {
   const { lang } = useLang()
   const REFUSALS = t.refusals.map((r, i) => ({ ...r, n: `0${i + 1}` }))
   const INHERITANCE = t.inheritance
-  const DISCIPLINE = t.discipline.map((d, i) => ({ ...d, n: `0${i + 1}` }))
   const hero = useScrollReveal()
   const why = useScrollReveal()
   const refuse = useScrollReveal()
   const inheritance = useScrollReveal()
   const founder = useScrollReveal()
-  const discipline = useScrollReveal()
   const cta = useScrollReveal()
 
   return (
@@ -568,50 +550,6 @@ export default function AboutPage() {
           .founder-grid { grid-template-columns: 1fr 1fr; }
           @media (max-width: 768px) { .founder-grid { grid-template-columns: 1fr; } }
         `}</style>
-      </section>
-
-      {/* HOW I WORK */}
-      <section
-        ref={discipline[0] as any}
-        style={{
-          padding: "120px clamp(1.5rem,4vw,4rem)",
-          borderTop: "1px solid rgba(255,255,255,0.07)",
-          opacity: discipline[1] ? 1 : 0,
-          transform: discipline[1] ? "translateY(0)" : "translateY(20px)",
-          transition: "all 0.8s ease",
-        }}
-      >
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 80 }}>
-            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
-              {t.practiceKicker}
-            </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
-              {t.practiceH2}
-            </h2>
-            <p style={{ fontFamily: SANS, fontSize: "clamp(0.98rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
-              {t.practiceLead}
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.07)" }}>
-            {DISCIPLINE.map((d) => (
-              <div key={d.n} style={{ background: "#0a0a0a", padding: "44px clamp(1.5rem,3vw,3rem)", display: "grid", gridTemplateColumns: "auto 1fr", gap: "clamp(1.5rem,4vw,3.5rem)", alignItems: "start" }}>
-                <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,2.5vw,2rem)", color: COLOR, fontWeight: 700, lineHeight: 1, minWidth: 60 }}>
-                  {d.n}
-                </div>
-                <div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.2rem,1.8vw,1.55rem)", fontWeight: 600, marginBottom: 14, letterSpacing: "-0.02em", color: "#fff" }}>
-                    {d.title}
-                  </h3>
-                  <p style={{ fontFamily: SANS, fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: 0 }}>
-                    {d.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* LE STUDIO — reprise du bloc « ce qu'est ce studio, et ce qu'il n'est

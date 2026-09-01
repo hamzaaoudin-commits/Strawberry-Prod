@@ -108,12 +108,6 @@ const T = {
     clock: "Already commissioned the audit? Its 490€ comes off this price, provided you commission within the following sixty days.",
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
-    guaranteeTitle: "The V2 guarantee",
-    guaranteeBody:
-      "If the delivered document does not hit the mark, we write a second version. No discussion, no extra invoice.",
-    refundTitle: "The window before production",
-    refundBody:
-      "Within seven days of payment, and as long as the extraction interview has not taken place, you can cancel and be refunded in full, within fifteen days.",
     cta1: "Place your commission →",
     cta2: "Read the full brief",
   },
@@ -198,12 +192,6 @@ const T = {
     clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix, à condition de commander dans les soixante jours qui suivent.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
-    guaranteeTitle: "La garantie V2",
-    guaranteeBody:
-      "Si le document livré ne tape pas juste, nous écrivons une seconde version. Sans discuter, sans facture supplémentaire.",
-    refundTitle: "La fenêtre avant production",
-    refundBody:
-      "Dans les sept jours suivant le paiement, et tant que l'entretien d'extraction n'a pas eu lieu, vous pouvez annuler et être remboursé intégralement, sous quinze jours.",
     cta1: "Passer commande →",
     cta2: "Lire le brief complet",
   },
@@ -324,21 +312,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
 
             <p className="mt-6 max-w-[620px] font-sans text-[15.5px] leading-[1.8] text-chalk-65">{t.justify}</p>
-
-            <div className="mt-6 grid gap-px bg-white/10 sm:grid-cols-2">
-              <div className="bg-ink px-6 py-5">
-                <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">
-                  {t.guaranteeTitle}
-                </div>
-                <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-75">{t.guaranteeBody}</p>
-              </div>
-              <div className="bg-ink px-6 py-5">
-                <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">
-                  {t.refundTitle}
-                </div>
-                <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-75">{t.refundBody}</p>
-              </div>
-            </div>
 
             <p className="mt-6 font-sans text-[13.5px] text-chalk-40">{t.clock}</p>
 

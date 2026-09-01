@@ -120,21 +120,36 @@ export function ArchitectureDiagram({
             transitionDelay: ordered ? "260ms" : "0ms",
           }}
         />
+        {/* Le clignotement : à chaque changement d'état, les cinq points
+            s'allument l'un après l'autre plutôt que tous ensemble. La clé
+            React inclut l'état, donc l'animation est rejouée depuis le début
+            à chaque bascule — sans cette clé, elle ne se déclencherait qu'au
+            tout premier rendu. */}
+        <style>{`
+          @keyframes diagram-blink {
+            0%   { opacity: 0; transform: scale(0.4); }
+            45%  { opacity: 1; transform: scale(1.6); }
+            100% { opacity: 1; transform: scale(1); }
+          }
+        `}</style>
         {pts.map(([cx, cy], i) => (
           <circle
-            key={i}
+            key={`${ordered ? "on" : "off"}-${i}`}
             cx={cx}
             cy={cy}
             r="4"
             fill="currentColor"
             className={ordered ? "text-brand" : "text-white/25"}
             style={{
+              transformBox: "fill-box",
+              transformOrigin: "center",
               // Chaque point met un temps légèrement différent à rejoindre
               // sa place : ils se rangent l'un après l'autre plutôt qu'en
               // bloc, ce qui lit comme une construction et non un basculement.
               transition:
                 "cx 800ms cubic-bezier(.22,.68,0,1), cy 800ms cubic-bezier(.22,.68,0,1), color 600ms ease",
               transitionDelay: `${i * 90}ms`,
+              animation: `diagram-blink 620ms ease-out ${i * 150}ms both`,
             }}
           />
         ))}
