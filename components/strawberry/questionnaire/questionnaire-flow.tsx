@@ -2,12 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState } from "react"
 import {
-  ARCHETYPES,
-  WORDS,
+  wordsFor,
   stepsForOffer,
   type OfferKey,
   type Question,
 } from "@/lib/questionnaire-data"
+import type { Lang } from "@/lib/lang"
 import { isBot, rateLimit, honeypotProps } from "@/lib/form-security"
 
 /**
@@ -76,18 +76,140 @@ function isValid(step: Question, a: Answers): boolean {
   }
 }
 
+/** All chrome copy that isn't a question. Questions live in questionnaire-data. */
+const UI_COPY = {
+  fr: {
+    kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
+    coverTitle: "C'est parti.",
+    coverLede:
+      "Ceci est le fondement de votre maison. Prenez votre temps. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
+    minutesArchitecture: "45 à 70",
+    minutesAudit: "20 à 25",
+    aboutMinutes: (m: string, n: number, optional: boolean) =>
+      `Environ ${m} minutes · ${n} questions${optional ? " (quelques-unes facultatives)" : ""}`,
+    resumeNote:
+      "Vous pouvez fermer cet onglet à tout moment : tout est sauvegardé, vous reprendrez exactement où vous en étiez.",
+    prefilled: "Déjà rempli pour vous",
+    start: "Commencer →",
+    previous: "Précédent",
+    optional: "Facultatif",
+    continue: "Continuer →",
+    skip: "Passer",
+    words: "mots",
+    digDeeper: "+ Creuser plus loin (facultatif)",
+    fieldName: "Nom",
+    fieldHouse: "Nom de la maison",
+    fieldEmail: "Email",
+    phName: "Votre nom",
+    phHouse: "Le nom de votre maison",
+    phEmail: "vous@maison.com",
+    competitorName: "Nom du concurrent",
+    competitorLine: "Leur phrase, exacte",
+    remove: "Retirer",
+    addCompetitor: "+ Ajouter un concurrent",
+    linkSite: "Site actuel",
+    linkLinkedin: "LinkedIn du fondateur",
+    linkContent: "Un contenu déjà publié (facultatif)",
+    phContent: "Lien vers un post, un article, une vidéo",
+    upToChoices: (n: number) => `Jusqu'à ${n} choix.`,
+    myWords: "Ce sont mes mots",
+    neverMyWords: "Ce ne sont jamais les miens",
+    beforeSending: "Avant d'envoyer",
+    reviewTitle: "Relisez, puis envoyez.",
+    reviewNote: "Rien n'est envoyé tant que vous n'avez pas confirmé.",
+    edit: "Modifier",
+    optionalSuffix: " (facultatif)",
+    send: "Envoyer ✓",
+    sending: "Envoi...",
+    back: "Retour",
+    rateLimited: "Une soumission a déjà été envoyée récemment. Réessayez dans un instant.",
+    sendFailed: "L'envoi a échoué. Vérifiez votre connexion et réessayez — vos réponses restent sauvegardées.",
+    doneKicker: "C'EST REÇU",
+    doneTitle: "Le travail commence.",
+    doneLede:
+      "Vous n'entendrez pas de silence — vous n'entendrez rien jusqu'à ce que le travail soit prêt à être exceptionnel.",
+    deeperLabel: "(Plus loin)",
+    siteLabel: "Site",
+    dash: "—",
+  },
+  en: {
+    kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
+    coverTitle: "Let's begin.",
+    coverLede:
+      "This is the foundation of your house. Take your time. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
+    minutesArchitecture: "45 to 70",
+    minutesAudit: "20 to 25",
+    aboutMinutes: (m: string, n: number, optional: boolean) =>
+      `About ${m} minutes · ${n} questions${optional ? " (a few are optional)" : ""}`,
+    resumeNote:
+      "You can close this tab at any time: everything is saved, and you will pick up exactly where you left off.",
+    prefilled: "Already filled in for you",
+    start: "Begin →",
+    previous: "Previous",
+    optional: "Optional",
+    continue: "Continue →",
+    skip: "Skip",
+    words: "words",
+    digDeeper: "+ Dig deeper (optional)",
+    fieldName: "Name",
+    fieldHouse: "Name of the house",
+    fieldEmail: "Email",
+    phName: "Your name",
+    phHouse: "The name of your house",
+    phEmail: "you@house.com",
+    competitorName: "Competitor name",
+    competitorLine: "Their sentence, exact",
+    remove: "Remove",
+    addCompetitor: "+ Add a competitor",
+    linkSite: "Current website",
+    linkLinkedin: "Founder's LinkedIn",
+    linkContent: "Something you've published (optional)",
+    phContent: "Link to a post, an article, a video",
+    upToChoices: (n: number) => `Up to ${n} choices.`,
+    myWords: "These are my words",
+    neverMyWords: "These are never mine",
+    beforeSending: "Before you send",
+    reviewTitle: "Read it over, then send.",
+    reviewNote: "Nothing is sent until you confirm.",
+    edit: "Edit",
+    optionalSuffix: " (optional)",
+    send: "Send ✓",
+    sending: "Sending...",
+    back: "Back",
+    rateLimited: "A submission was already sent recently. Try again in a moment.",
+    sendFailed: "Sending failed. Check your connection and try again — your answers are still saved.",
+    doneKicker: "RECEIVED",
+    doneTitle: "The work begins.",
+    doneLede:
+      "You will not hear silence — you will hear nothing until the work is ready to be exceptional.",
+    deeperLabel: "(Deeper)",
+    siteLabel: "Site",
+    dash: "—",
+  },
+}
+
+/**
+ * Widened on purpose: no `as const` here. With const assertions the FR strings
+ * become literal types, and the EN block stops being assignable to Copy.
+ */
+type Copy = (typeof UI_COPY)["fr"]
+
 function storageKey(offer: OfferKey, email: string) {
   return `sp_questionnaire:${offer}:${email.trim().toLowerCase() || "anon"}`
 }
 
 export function QuestionnaireFlow({
   offer,
+  lang,
   prefill,
 }: {
   offer: OfferKey
+  lang: Lang
   prefill?: Partial<IdentityAnswers>
 }) {
-  const steps = useMemo(() => stepsForOffer(offer), [offer])
+  const steps = useMemo(() => stepsForOffer(offer, lang), [offer, lang])
+  const copy = UI_COPY[lang]
+  const words = useMemo(() => wordsFor(lang), [lang])
   const [screen, setScreen] = useState<"cover" | "steps" | "review" | "done" | "error">("cover")
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>(() => emptyAnswers(prefill))
@@ -152,7 +274,7 @@ export function QuestionnaireFlow({
     }
     const limit = rateLimit(`questionnaire:${offer}`)
     if (!limit.ok) {
-      setErrorMsg("Une soumission a déjà été envoyée récemment. Réessayez dans un instant.")
+      setErrorMsg(copy.rateLimited)
       return
     }
     setSubmitting(true)
@@ -163,6 +285,7 @@ export function QuestionnaireFlow({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           offer,
+          lang,
           answers,
           company_website: honeypot,
           startedAt: startedAt.current,
@@ -177,7 +300,7 @@ export function QuestionnaireFlow({
       }
       setScreen("done")
     } catch {
-      setErrorMsg("L'envoi a échoué. Vérifiez votre connexion et réessayez — vos réponses restent sauvegardées.")
+      setErrorMsg(copy.sendFailed)
     } finally {
       setSubmitting(false)
     }
@@ -199,6 +322,7 @@ export function QuestionnaireFlow({
         {screen === "cover" && (
           <CoverScreen
             offer={offer}
+            copy={copy}
             stepCount={steps.length}
             identity={answers.identity}
             onStart={() => setScreen("steps")}
@@ -208,6 +332,8 @@ export function QuestionnaireFlow({
         {screen === "steps" && step && (
           <StepScreen
             step={step}
+            copy={copy}
+            words={words}
             index={idx}
             total={steps.length}
             pct={pct}
@@ -224,6 +350,7 @@ export function QuestionnaireFlow({
         {screen === "review" && (
           <ReviewScreen
             steps={steps}
+            copy={copy}
             answers={answers}
             submitting={submitting}
             errorMsg={errorMsg}
@@ -239,7 +366,7 @@ export function QuestionnaireFlow({
           />
         )}
 
-        {screen === "done" && <DoneScreen />}
+        {screen === "done" && <DoneScreen copy={copy} />}
       </div>
     </div>
   )
@@ -247,45 +374,36 @@ export function QuestionnaireFlow({
 
 function CoverScreen({
   offer,
+  copy,
   stepCount,
   identity,
   onStart,
 }: {
   offer: OfferKey
+  copy: Copy
   stepCount: number
   identity: IdentityAnswers
   onStart: () => void
 }) {
-  const minutes = offer === "architecture" ? "45 à 70" : "20 à 25"
+  const isArchitecture = offer === "architecture"
+  const minutes = isArchitecture ? copy.minutesArchitecture : copy.minutesAudit
   return (
     <div className="text-center">
-      <div className="kicker mb-4">STRAWBERRY PRODUCTION · ONBOARDING</div>
-      <h1 className="h-section mb-4">C&apos;est parti.</h1>
-      <p className="lede mx-auto mb-2 max-w-md italic">
-        Ceci est le fondement de votre maison. Prenez votre temps. Écrivez comme vous
-        parleriez à quelqu&apos;un qui comprend déjà. Il n&apos;y a pas de mauvaises
-        réponses — seulement des honnêtes et des malhonnêtes.
-      </p>
-      <div className="body-sm mb-1">
-        Environ {minutes} minutes · {stepCount} questions
-        {offer === "architecture" ? " (quelques-unes facultatives)" : ""}
-      </div>
-      {offer === "architecture" && (
-        <p className="body-sm mt-3 text-chalk-40">
-          Vous pouvez fermer cet onglet à tout moment : tout est sauvegardé, vous
-          reprendrez exactement où vous en étiez.
-        </p>
-      )}
+      <div className="kicker mb-4">{copy.kicker}</div>
+      <h1 className="h-section mb-4">{copy.coverTitle}</h1>
+      <p className="lede mx-auto mb-2 max-w-md italic">{copy.coverLede}</p>
+      <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
+      {isArchitecture && <p className="body-sm mt-3 text-chalk-40">{copy.resumeNote}</p>}
       {(identity.name || identity.house) && (
         <div className="mx-auto mt-7 mb-8 max-w-sm border border-hair-strong bg-white/[0.02] px-5 py-4 text-left">
-          <div className="field-label mb-1.5">Déjà rempli pour vous</div>
+          <div className="field-label mb-1.5">{copy.prefilled}</div>
           <div className="text-[14.5px] text-white">
-            {identity.name || "—"} — {identity.house || "—"}
+            {identity.name || copy.dash} — {identity.house || copy.dash}
           </div>
         </div>
       )}
       <button type="button" className="btn-primary mt-6" onClick={onStart}>
-        Commencer →
+        {copy.start}
       </button>
     </div>
   )
@@ -293,6 +411,8 @@ function CoverScreen({
 
 function StepScreen({
   step,
+  copy,
+  words,
   index,
   total,
   pct,
@@ -305,6 +425,8 @@ function StepScreen({
   onSkip,
 }: {
   step: Question
+  copy: Copy
+  words: string[]
   index: number
   total: number
   pct: number
@@ -323,7 +445,7 @@ function StepScreen({
         <button
           type="button"
           onClick={onBack}
-          aria-label="Précédent"
+          aria-label={copy.previous}
           className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-hair-strong text-chalk-55"
         >
           ←
@@ -331,7 +453,10 @@ function StepScreen({
         <div className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
           <div
             className="h-full rounded-full"
-            style={{ width: `${pct}%`, background: "linear-gradient(90deg, var(--color-brand), var(--color-brand-bright))" }}
+            style={{
+              width: `${pct}%`,
+              background: "linear-gradient(90deg, var(--color-brand), var(--color-brand-bright))",
+            }}
           />
         </div>
         <div className="body-sm flex-shrink-0">
@@ -341,20 +466,28 @@ function StepScreen({
 
       <div className="mb-3">
         {step.tag && <span className="tag mr-1.5">{step.tag}</span>}
-        {step.optional && <span className="tag border-brand-hair text-brand">Facultatif</span>}
+        {step.optional && <span className="tag border-brand-hair text-brand">{copy.optional}</span>}
       </div>
       <h2 className="h-card mb-2.5">{step.label}</h2>
       {step.help ? <p className="body-sm mb-6">{step.help}</p> : <div className="mb-6" />}
 
-      <QuestionInput step={step} answers={answers} deepOpen={deepOpen} onOpenDeep={onOpenDeep} onChange={onChange} />
+      <QuestionInput
+        step={step}
+        copy={copy}
+        words={words}
+        answers={answers}
+        deepOpen={deepOpen}
+        onOpenDeep={onOpenDeep}
+        onChange={onChange}
+      />
 
       <div className="mt-8 flex items-center gap-4">
         <button type="button" className="btn-primary" disabled={!valid} onClick={onNext}>
-          Continuer →
+          {copy.continue}
         </button>
         {onSkip && (
           <button type="button" className="btn-quiet" onClick={onSkip}>
-            Passer
+            {copy.skip}
           </button>
         )}
       </div>
@@ -364,12 +497,16 @@ function StepScreen({
 
 function QuestionInput({
   step,
+  copy,
+  words,
   answers,
   deepOpen,
   onOpenDeep,
   onChange,
 }: {
   step: Question
+  copy: Copy
+  words: string[]
   answers: Answers
   deepOpen: boolean
   onOpenDeep: () => void
@@ -381,16 +518,16 @@ function QuestionInput({
     return (
       <div className="space-y-3.5">
         <div>
-          <label className="field-label">Nom</label>
-          <input className="field" value={v.name} onChange={(e) => set({ name: e.target.value })} placeholder="Votre nom" />
+          <label className="field-label">{copy.fieldName}</label>
+          <input className="field" value={v.name} onChange={(e) => set({ name: e.target.value })} placeholder={copy.phName} />
         </div>
         <div>
-          <label className="field-label">Nom de la maison</label>
-          <input className="field" value={v.house} onChange={(e) => set({ house: e.target.value })} placeholder="Le nom de votre maison" />
+          <label className="field-label">{copy.fieldHouse}</label>
+          <input className="field" value={v.house} onChange={(e) => set({ house: e.target.value })} placeholder={copy.phHouse} />
         </div>
         <div>
-          <label className="field-label">Email</label>
-          <input className="field" value={v.email} onChange={(e) => set({ email: e.target.value })} placeholder="vous@maison.com" />
+          <label className="field-label">{copy.fieldEmail}</label>
+          <input className="field" value={v.email} onChange={(e) => set({ email: e.target.value })} placeholder={copy.phEmail} />
         </div>
       </div>
     )
@@ -403,12 +540,14 @@ function QuestionInput({
 
   if (step.type === "textarea") {
     const v = (answers[step.id] as string) ?? ""
-    const words = v.trim().length ? v.trim().split(/\s+/).length : 0
+    const wordCount = v.trim().length ? v.trim().split(/\s+/).length : 0
     const deepVal = (answers[`${step.id}_deep`] as string) ?? ""
     return (
       <div>
         <AutoTextarea value={v} placeholder={step.ph} onChange={(val) => onChange(step.id, val)} />
-        <div className="mt-1.5 text-right text-[11px] text-chalk-40">{words} mots</div>
+        <div className="mt-1.5 text-right text-[11px] text-chalk-40">
+          {wordCount} {copy.words}
+        </div>
         {step.deep &&
           (deepOpen ? (
             <div className="mt-4 border-l-2 border-brand pl-4">
@@ -417,7 +556,7 @@ function QuestionInput({
             </div>
           ) : (
             <button type="button" className="btn-quiet mt-4" onClick={onOpenDeep}>
-              + Creuser plus loin (facultatif)
+              {copy.digDeeper}
             </button>
           ))}
       </div>
@@ -434,12 +573,12 @@ function QuestionInput({
       <div>
         {rows.map((c, i) => (
           <div key={i} className="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-[1fr_1.6fr_auto]">
-            <input className="field" placeholder="Nom du concurrent" value={c.name} onChange={(e) => setRow(i, { name: e.target.value })} />
-            <input className="field" placeholder="Leur phrase, exacte" value={c.line} onChange={(e) => setRow(i, { line: e.target.value })} />
+            <input className="field" placeholder={copy.competitorName} value={c.name} onChange={(e) => setRow(i, { name: e.target.value })} />
+            <input className="field" placeholder={copy.competitorLine} value={c.line} onChange={(e) => setRow(i, { line: e.target.value })} />
             {rows.length > 3 ? (
               <button
                 type="button"
-                aria-label="Retirer"
+                aria-label={copy.remove}
                 className="flex h-[52px] w-9 items-center justify-center border border-hair-strong text-chalk-55"
                 onClick={() => onChange("competitors", rows.filter((_, idx) => idx !== i))}
               >
@@ -452,7 +591,7 @@ function QuestionInput({
         ))}
         {rows.length < 5 && (
           <button type="button" className="btn-quiet mt-1" onClick={() => onChange("competitors", [...rows, { name: "", line: "" }])}>
-            + Ajouter un concurrent
+            {copy.addCompetitor}
           </button>
         )}
       </div>
@@ -465,16 +604,16 @@ function QuestionInput({
     return (
       <div className="space-y-3.5">
         <div>
-          <label className="field-label">Site actuel</label>
+          <label className="field-label">{copy.linkSite}</label>
           <input className="field" value={v.site} onChange={(e) => set({ site: e.target.value })} placeholder="https://" />
         </div>
         <div>
-          <label className="field-label">LinkedIn du fondateur</label>
+          <label className="field-label">{copy.linkLinkedin}</label>
           <input className="field" value={v.linkedin} onChange={(e) => set({ linkedin: e.target.value })} placeholder="https://linkedin.com/in/..." />
         </div>
         <div>
-          <label className="field-label">Un contenu déjà publié (facultatif)</label>
-          <input className="field" value={v.content} onChange={(e) => set({ content: e.target.value })} placeholder="Lien vers un post, un article, une vidéo" />
+          <label className="field-label">{copy.linkContent}</label>
+          <input className="field" value={v.content} onChange={(e) => set({ content: e.target.value })} placeholder={copy.phContent} />
         </div>
       </div>
     )
@@ -512,7 +651,7 @@ function QuestionInput({
             )
           })}
         </div>
-        {step.multi && <div className="body-sm mt-2">Jusqu&apos;à {step.max} choix.</div>}
+        {step.multi && <div className="body-sm mt-2">{copy.upToChoices(step.max ?? 2)}</div>}
       </div>
     )
   }
@@ -556,7 +695,7 @@ function QuestionInput({
       <div className="mb-5">
         <div className="field-label mb-2.5">{title}</div>
         <div className="flex flex-wrap gap-2">
-          {WORDS.map((w) => (
+          {words.map((w) => (
             <button
               key={w}
               type="button"
@@ -573,8 +712,8 @@ function QuestionInput({
     )
     return (
       <div>
-        {renderGroup("Ce sont mes mots", "mine")}
-        {renderGroup("Ce ne sont jamais les miens", "notmine")}
+        {renderGroup(copy.myWords, "mine")}
+        {renderGroup(copy.neverMyWords, "notmine")}
       </div>
     )
   }
@@ -614,6 +753,7 @@ function AutoTextarea({
 
 function ReviewScreen({
   steps,
+  copy,
   answers,
   submitting,
   errorMsg,
@@ -622,6 +762,7 @@ function ReviewScreen({
   onSubmit,
 }: {
   steps: Question[]
+  copy: Copy
   answers: Answers
   submitting: boolean
   errorMsg: string
@@ -629,48 +770,54 @@ function ReviewScreen({
   onBack: () => void
   onSubmit: () => void
 }) {
+  const dash = copy.dash
+
   function summarize(step: Question): string {
     if (step.type === "identity") return `${answers.identity.name} — ${answers.identity.house}`
-    if (step.type === "shorttext") return (answers[step.id] as string) || "—"
+    if (step.type === "shorttext") return (answers[step.id] as string) || dash
     if (step.type === "textarea") {
-      let v = (answers[step.id] as string) || "—"
+      let v = (answers[step.id] as string) || dash
       const deep = answers[`${step.id}_deep`] as string
-      if (deep) v += `\n\n(Plus loin) ${deep}`
+      if (deep) v += `\n\n${copy.deeperLabel} ${deep}`
       return v
     }
     if (step.type === "competitors") {
       const parts = answers.competitors.filter((c) => c.name).map((c) => `${c.name} : "${c.line}"`)
-      return parts.join("\n") || "—"
+      return parts.join("\n") || dash
     }
-    if (step.type === "links") return `Site : ${answers.links.site || "—"}\nLinkedIn : ${answers.links.linkedin || "—"}`
+    if (step.type === "links") {
+      return `${copy.siteLabel} : ${answers.links.site || dash}\nLinkedIn : ${answers.links.linkedin || dash}`
+    }
     if (step.type === "choice") {
       const v = answers[step.id]
-      return step.multi ? (Array.isArray(v) ? v.join(", ") : "—") || "—" : (v as string) || "—"
+      return step.multi ? (Array.isArray(v) ? v.join(", ") : "") || dash : (v as string) || dash
     }
     if (step.type === "sliders") {
       return (step.axes ?? []).map((ax) => `${ax.l}/${ax.r} : ${answers.tone[ax.id] ?? 50}`).join("\n")
     }
     if (step.type === "wordbank") {
-      return `Mes mots : ${answers.wordbank.mine.join(", ") || "—"}\nJamais : ${answers.wordbank.notmine.join(", ") || "—"}`
+      return `${copy.myWords} : ${answers.wordbank.mine.join(", ") || dash}\n${copy.neverMyWords} : ${
+        answers.wordbank.notmine.join(", ") || dash
+      }`
     }
-    return "—"
+    return dash
   }
 
   return (
     <div>
-      <div className="kicker mb-3">Avant d&apos;envoyer</div>
-      <h2 className="h-card mb-2">Relisez, puis envoyez.</h2>
-      <p className="body-sm mb-1">Rien n&apos;est envoyé tant que vous n&apos;avez pas confirmé.</p>
+      <div className="kicker mb-3">{copy.beforeSending}</div>
+      <h2 className="h-card mb-2">{copy.reviewTitle}</h2>
+      <p className="body-sm mb-1">{copy.reviewNote}</p>
       <div>
         {steps.map((step, i) => (
           <div key={step.id} className="border-t border-hair py-4">
             <div className="flex items-start justify-between gap-3">
               <div className="mb-1.5 text-[11px] uppercase tracking-[0.14em] text-brand">
                 {step.label}
-                {step.optional ? " (facultatif)" : ""}
+                {step.optional ? copy.optionalSuffix : ""}
               </div>
               <button type="button" className="btn-quiet flex-shrink-0" onClick={() => onEdit(i)}>
-                Modifier
+                {copy.edit}
               </button>
             </div>
             <div className="whitespace-pre-wrap text-[14.5px] leading-relaxed text-chalk-75">{summarize(step)}</div>
@@ -680,25 +827,22 @@ function ReviewScreen({
       {errorMsg && <p className="mt-4 text-[13px] text-brand">{errorMsg}</p>}
       <div className="mt-8 flex flex-wrap gap-4">
         <button type="button" className="btn-primary" disabled={submitting} onClick={onSubmit}>
-          {submitting ? "Envoi..." : "Envoyer ✓"}
+          {submitting ? copy.sending : copy.send}
         </button>
         <button type="button" className="btn-ghost" onClick={onBack}>
-          Retour
+          {copy.back}
         </button>
       </div>
     </div>
   )
 }
 
-function DoneScreen() {
+function DoneScreen({ copy }: { copy: Copy }) {
   return (
     <div className="py-6 text-center">
-      <div className="kicker mb-4">C&apos;EST REÇU</div>
-      <h1 className="h-section mb-5">Le travail commence.</h1>
-      <p className="lede mx-auto max-w-md italic">
-        Vous n&apos;entendrez pas de silence — vous n&apos;entendrez rien jusqu&apos;à
-        ce que le travail soit prêt à être exceptionnel.
-      </p>
+      <div className="kicker mb-4">{copy.doneKicker}</div>
+      <h1 className="h-section mb-5">{copy.doneTitle}</h1>
+      <p className="lede mx-auto max-w-md italic">{copy.doneLede}</p>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { LIMITS, isValidEmail, sanitize, isBot } from "@/lib/form-security"
-import { QUESTIONS, stepsForOffer, isOfferKey, type OfferKey } from "@/lib/questionnaire-data"
+import { stepsForOffer, isOfferKey, type OfferKey, type Question } from "@/lib/questionnaire-data"
+import { DEFAULT_LANG, isLang } from "@/lib/lang"
 
 /**
  * Server-side submission endpoint for the onboarding questionnaire.
@@ -37,7 +38,7 @@ const str = (v: unknown) => (typeof v === "string" ? v : "")
 const num = (v: unknown) => (typeof v === "number" ? v : 0)
 
 /** Renders one answer for the plain-text email body, in question order. */
-function formatAnswer(step: (typeof QUESTIONS)[number], answers: Record<string, unknown>): string {
+function formatAnswer(step: Question, answers: Record<string, unknown>): string {
   const label = step.label
 
   if (step.type === "identity") {
@@ -106,6 +107,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true })
   }
 
+  const langRaw = str(body.lang)
+  const lang = isLang(langRaw) ? langRaw : DEFAULT_LANG
+
   const offerRaw = str(body.offer)
   if (!isOfferKey(offerRaw)) {
     return NextResponse.json({ ok: false, error: "invalid_offer" }, { status: 422 })
@@ -126,7 +130,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "not_configured" }, { status: 500 })
   }
 
-  const steps = stepsForOffer(offer)
+  // Labels are always rendered in FR so every submission lands in the studio's
+  // inbox in one consistent language; the client's own words stay exactly as
+  // they typed them. The locale they used is recorded separately below.
+  const steps = stepsForOffer(offer, DEFAULT_LANG)
   const formatted = steps.map((step) => formatAnswer(step, answers)).join("\n\n")
 
   try {
@@ -142,6 +149,7 @@ export async function POST(req: NextRequest) {
         email,
         house,
         offer,
+        lang,
         answers: formatted,
         _subject: `Questionnaire ${offer === "architecture" ? "Architecture" : "Audit"} — ${house} (${name})`,
       }),
