@@ -1,5 +1,6 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
+import { DoorsSection } from "@/components/strawberry/doors-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
@@ -17,7 +18,11 @@ import { isLang, type Lang } from "@/lib/lang"
 /**
  * La page d'accueil.
  *
- * Une page, une offre, une action. Le parcours suit la décision d'achat :
+ * Le hero pose la promesse du studio, puis les deux portes — Marques et
+ * THE ROOM — laissent choisir. Tout ce qui suit concerne les marques ;
+ * ceux qui exploitent un lieu sont partis vers /the-room.
+ *
+ * Le parcours suit ensuite la décision d'achat :
  * bandeau de marques, problème, diagnostic, puis l'offre — remontée avant
  * les statistiques et le mécanisme, qui la retardaient sans être
  * nécessaires pour la comprendre. Ils la suivent désormais comme
@@ -50,6 +55,7 @@ export default async function Home({
     <main className="min-h-screen">
       <NavBar />
       <HeroSection />
+      <DoorsSection />
       <ReadMarquee />
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />

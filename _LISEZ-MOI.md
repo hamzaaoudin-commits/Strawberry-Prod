@@ -1,47 +1,42 @@
-# Strawberry — la porte devient THE ROOM
+# Strawberry — la home à deux portes
 
-13 fichiers. Le design, les animations et le copywriting sont inchangés :
-c'est un renommage de route, plus la recoloration du patch précédent.
+Deux fichiers : un nouveau composant et la home.
 
-## Le nom
+## Le parcours
 
-`/lieux` devient `/the-room`, une seule route pour les deux langues. Le
-brief prévoyait `/lieux` en français et `/venues` en anglais ; un nom
-bilingue rend cette dualité inutile et simplifie le référencement — une
-seule URL à indexer au lieu de deux qui disent la même chose.
+Hero (la promesse du studio) → **les deux portes** → tout le reste.
 
-Le wordmark géant du hero affiche THE ROOM. Dans le menu et le pied de
-page, l'entrée s'appelle THE ROOM dans les deux langues, avec un
-sous-titre qui précise de quoi il s'agit : « Lieux · le sprint d'écriture »
-en français, « Venues · the writing sprint » en anglais. Le nom ne se
-traduit pas, l'explication si — la même convention que BRAND NARRATIVE
-AUDIT, qui reste en anglais sur la version française.
+Quelqu'un qui arrive lit d'abord ce que fait Strawberry Production, puis
+choisit : **Marques** ou **THE ROOM**. Tout ce qui suit sur la page
+concerne les marques — le problème, le diagnostic, l'offre, le livre. Ceux
+qui exploitent un lieu sont déjà partis vers `/the-room`.
 
-## Les routes
+## Les deux panneaux
 
-- `app/[lang]/the-room/page.tsx` — la page.
-- `app/[lang]/lieux/page.tsx` — redirection conservée vers `/the-room`.
-  La route a existé publiquement, autant ne pas casser un lien.
-- `next.config.mjs` — `/nocta` et `/lieux` à plat redirigent vers
-  `/fr/the-room`, et `the-room` est ajouté à la liste des routes qui
-  reçoivent automatiquement le préfixe de langue. Sans cette dernière
-  ligne, `/the-room` sans langue aurait donné une 404.
-- Sitemap, `locale-link.tsx` et le commentaire de `lib/routing.ts` mis à
-  jour.
+Deux panneaux côte à côte plutôt que des cartes empilées : le choix doit
+se lire comme un embranchement, pas comme une liste d'offres.
 
-## Rappel du contenu de ce dossier
+- **Marques** — « Vous vendez un produit ou un service. » La mention de la
+  narration du dirigeant est explicite, comme le brief le demandait : « le
+  récit de la maison comme celui de son dirigeant ». Mène vers
+  BRAND NARRATIVE ARCHITECTURE.
+- **THE ROOM** — « Vous tenez un lieu qu'on pousse. » Restaurant, bar,
+  club, coffee shop nommés, pour que personne ne se demande si c'est pour
+  lui. Mène vers `/the-room`.
 
-`public/nocta/` contient les quatre fichiers de NOCTA portés tels quels,
-avec la palette passée aux couleurs du studio (rouge de marque, encre
-`#0a0a0a`), y compris les 33 couleurs codées en dur et la palette du
-canvas bokeh 3D dans le JavaScript.
+Chaque panneau porte son cadre temporel en pied (Audit · Architecture
+d'un côté, sprint de 2 à 3 semaines de l'autre) et un liseré qui se trace
+au survol. Celui de THE ROOM reprend le dégradé de sa propre page —
+un indice qu'on va ailleurs, pas dans une sous-section.
+
+Entrée décalée au scroll, panneau après panneau.
+
+## Ce qui reste du brief
+
+La page de vente des deux ouvrages. Il me manque toujours trois choses :
+le lien Stripe du second livre, les deux prix, et comment le PDF est remis
+après paiement (page de remerciement avec lien, ou e-mail ?).
 
 ## Vérification
 
-Contrôle de types réel : zéro erreur. Plus aucune référence en dur à
-`/lieux` dans le code, hors la redirection volontaire.
-
-## À supprimer plus tard
-
-`app/[lang]/lieux/` peut disparaître une fois que plus aucun lien externe
-ne pointe dessus. Sans urgence : une redirection ne coûte rien.
+Contrôle de types réel : zéro erreur.
