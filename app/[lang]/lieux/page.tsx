@@ -1,789 +1,367 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { LocaleLink as Link } from "@/components/locale-link"
-import { useT } from "@/lib/i18n"
-import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { useEffect } from "react"
 
 /**
- * La porte Lieux — reprise intégrale de l'ancien site NOCTA.
+ * La porte Lieux — le site NOCTA porté tel quel.
  *
- * Le contenu vient du dépôt NOCTA (index.html) : le constat, le sprint en
- * cinq étapes, le comparateur publier/raconter, les trois chiffres, la
- * comparaison agence au mois contre sprint facturé une fois. La marque
- * NOCTA est retirée — c'est désormais une porte de Strawberry Production,
- * pas une marque séparée.
+ * Ce fichier ne réimplémente rien. Il injecte le HTML d'origine de la home
+ * NOCTA et charge ses propres fichiers, copiés sans modification dans
+ * `public/nocta/` : `styles.css` (40 Ko), `app.js` (le canvas bokeh, le
+ * révélateur mot à mot du manifeste, les compteurs, le parcours épinglé,
+ * le comparateur, l'accordéon de la FAQ), `i18n.js` et `config.js`.
  *
- * Les visuels sont repris dans leur structure (typologies en chips, sprint
- * en étapes numérotées, poignée à glisser entre les deux réalités, cartes
- * de chiffres, colonnes de prix face à face) mais rendus avec les jetons
- * de style de Strawberry — rouge de marque, Playfair et DM Sans. NOCTA
- * avait sa propre palette et ses propres polices ; les transposer telles
- * quelles aurait donné une page qui n'appartient visuellement pas au site
- * sur lequel elle vit.
+ * Pourquoi ainsi plutôt qu'en composants React : les tentatives précédentes
+ * réécrivaient le design à la main et en perdaient une partie à chaque fois
+ * — sections oubliées, animations approximées, textes reformulés. Porter
+ * les fichiers d'origine est la seule façon d'avoir exactement le site, y
+ * compris les animations que personne n'irait réimplémenter à l'identique.
+ *
+ * Seules modifications au HTML : le wordmark NOCTA devient LIEUX, et le
+ * formulaire de contact est retiré (la page renvoie vers celui du studio).
+ *
+ * Le CSS de NOCTA redéfinit body et html ; il n'est chargé que sur cette
+ * route, jamais globalement, pour ne pas déteindre sur le reste du site.
  */
 
-const T = {
-  fr: {
-    kicker: "Sprint d'écriture · Paris & Île-de-France",
-    h1a: "Votre lieu est déjà une histoire.",
-    h1b: "Personne ne l'a écrite.",
-    cta: "Prendre contact →",
-    scrollHint: "Comment ça se passe",
-    types: ["Restaurants", "Bars", "Clubs", "Coffee shops", "Caves & bistrots", "Rooftops"],
+const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hidden="true" class="ambient"></div><div aria-hidden="true" class="letterbox lb-top"></div><div aria-hidden="true" class="letterbox lb-bot"></div>
+<!-- ============ HERO ============ -->
+<section class="hero">
+<div class="hero-fallback"></div>
+<div class="hero-scrim"></div>
+<div class="wrap">
+<span class="hero-kicker eyebrow"><span class="dot"></span><span data-i18n="hero.kicker">Sprint d'écriture · Paris &amp; Île-de-France</span></span>
+<h1 class="wordmark flicker">LIEUX</h1>
+<p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
+<div class="hero-cta">
+<a class="btn btn-primary" href="#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
+<a class="btn btn-ghost" data-i18n="hero.cta2" href="#prestations">Comment ça se passe</a>
+</div>
+</div>
+<span class="scroll-hint" data-i18n="hero.scroll">Défiler</span>
+</section>
+<!-- ============ MARQUEE ============ -->
+<div aria-hidden="true" class="marquee">
+<div class="marquee-track">
+<span class="marquee-item" data-i18n="mq.1">Restaurants</span>
+<span class="marquee-item" data-i18n="mq.2">Bars</span>
+<span class="marquee-item" data-i18n="mq.3">Clubs</span>
+<span class="marquee-item" data-i18n="mq.4">Coffee shops</span>
+<span class="marquee-item" data-i18n="mq.5">Caves &amp; bistrots</span>
+<span class="marquee-item" data-i18n="mq.6">Rooftops</span>
+</div>
+</div>
+<!-- ============ MANIFESTO ============ -->
+<section class="section manifesto">
+<div class="wrap">
+<span class="eyebrow reveal" data-i18n="man.eyebrow">Le constat</span>
+<p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
+<p class="reveal d2" data-i18n="man.body2" style="margin-top:1.6rem">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
+</div>
+</section><section class="story-section section" id="prestations">
+<div class="story-pin"><div class="story-sticky"><div class="wrap story">
+<div class="section-head reveal" style="margin-bottom:0">
+<div class="story-head">
+<div>
+<span class="eyebrow" data-i18n="st.eyebrow">Le sprint</span>
+<h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">Deux à trois semaines, cinq étapes.</h2>
+</div>
+<div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
+</div>
+</div>
+<div class="story-track">
+<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
+<circle class="st" cx="52" cy="52" r="22"></circle>
+<path class="st" d="M68 68 L92 92"></path>
+<path class="st2" d="M40 52 h24 M52 40 v24" opacity=".45"></path>
+<circle class="fl2" cx="98" cy="30" r="3.5"></circle>
+<circle class="fl" cx="22" cy="88" r="3"></circle>
+</svg><span class="idx" data-i18n="st.1.i">01</span><h3 data-i18n="st.1.t">Je viens chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
+<ul class="ch-list">
+<li data-i18n="st.1.b1">Immersion pendant un service complet</li>
+<li data-i18n="st.1.b2">Entretien avec vous et deux personnes de l'équipe</li>
+</ul></article>
+<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
+<rect class="st2" height="72" rx="7" width="56" x="22" y="24"></rect>
+<line class="st" x1="34" x2="70" y1="42" y2="42"></line>
+<line class="st2" opacity=".5" x1="34" x2="66" y1="54" y2="54"></line>
+<line class="st2" opacity=".35" x1="34" x2="58" y1="64" y2="64"></line>
+<path class="st" d="M78 78 l18 -18 a5 5 0 0 0 -7 -7 l-18 18 z"></path>
+<path class="fl" d="M71 71 l-4 11 11 -4 z"></path>
+</svg><span class="idx" data-i18n="st.2.i">02</span><h3 data-i18n="st.2.t">J'écris votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
+<ul class="ch-list">
+<li data-i18n="st.2.b1">La promesse du lieu, en une phrase qui tient</li>
+<li data-i18n="st.2.b2">Décor, heure, lumière, atmosphère</li>
+<li data-i18n="st.2.b3">Casting et rituels de la maison</li>
+</ul></article>
+<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
+<path class="st2" d="M26 26 h68 v68 h-68 z"></path>
+<line class="st" x1="26" x2="94" y1="46" y2="46"></line>
+<line class="st2" opacity=".5" x1="46" x2="46" y1="46" y2="94"></line>
+<circle class="fl" cx="36" cy="36" r="3"></circle>
+<path class="st" d="M56 62 h28 M56 74 h20" opacity=".7"></path>
+</svg><span class="idx" data-i18n="st.3.i">03</span><h3 data-i18n="st.3.t">Je pose la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
+<ul class="ch-list">
+<li data-i18n="st.3.b1">3 à 5 rubriques récurrentes avec leur intention</li>
+<li data-i18n="st.3.b2">Le vocabulaire : ce qu'on dit, ce qu'on ne dit jamais</li>
+<li data-i18n="st.3.b3">Bio, fiche Google, menu, réponses-types aux avis</li>
+</ul></article>
+<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
+<rect class="st2" height="46" rx="6" width="66" x="20" y="48"></rect>
+<path class="st" d="M20 60 h66"></path>
+<path class="st2" d="M22 34 l60 -10 4 14 -60 10 z"></path>
+<path class="fl" d="M38 27 l4 13 M54 24 l4 13 M70 21 l4 13" opacity=".7"></path>
+<circle class="fl2" cx="96" cy="74" r="4"></circle>
+</svg><span class="idx" data-i18n="st.4.i">04</span><h3 data-i18n="st.4.t">Je vous laisse le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
+<ul class="ch-list">
+<li data-i18n="st.4.b1">20 à 30 scripts-types, plan par plan</li>
+<li data-i18n="st.4.b2">Un calendrier sur 4 semaines, reconductible</li>
+<li data-i18n="st.4.b3">Le protocole de captation pendant le service</li>
+</ul></article>
+<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
+<rect class="st2" height="60" rx="8" width="38" x="20" y="30"></rect>
+<rect class="st" height="60" rx="8" width="38" x="62" y="30"></rect>
+<path class="fl2" d="M81 48 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 z"></path>
+<line class="st2" opacity=".5" x1="28" x2="50" y1="50" y2="50"></line>
+<line class="st2" opacity=".35" x1="28" x2="44" y1="60" y2="60"></line>
+</svg><span class="idx" data-i18n="st.5.i">05</span><h3 data-i18n="st.5.t">Et je vous le prouve.</h3><p data-i18n="st.5.d">Avant de partir, je produis la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
+<ul class="ch-list">
+<li data-i18n="st.5.b1">La première semaine de contenu, produite et livrée</li>
+<li data-i18n="st.5.b2">Une passation avec la personne qui prendra le relais</li>
+</ul></article>
+</div>
+<div class="story-nav">
+<div class="story-dots"></div>
+<div class="story-arrows">
+<button aria-label="Précédent" class="story-arrow" data-story="prev">←</button>
+<button aria-label="Suivant" class="story-arrow" data-story="next">→</button>
+</div>
+</div>
+</div></div></div>
+</section>
+<!-- ============ FOCUS DEMO ============ -->
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="focus.eyebrow">La différence</span>
+<h2 class="h-sec" data-i18n="focus.title">Publier, ou raconter.</h2>
+<p class="lead" data-i18n="focus.lead" style="margin-top:1.2rem">Le même lieu, deux réalités. Prenez la poignée et tirez : à gauche on publie sans savoir quoi dire, à droite le monde est écrit et l'équipe le tient.</p>
+</div>
+<div class="cmp wipe">
+<div class="cmp-base"><div aria-hidden="true" class="feed feed-bad"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<span class="tag" data-i18n="focus.bad.tag">Un lieu qui publie</span>
+<span class="big" data-i18n="focus.bad.big">Chaque post repart de zéro. Personne ne sait quoi filmer, ni quoi écrire dessous. On poste quand on y pense.</span>
+</div>
+<div class="cmp-over"><div aria-hidden="true" class="feed feed-good"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<span class="tag" data-i18n="focus.good.tag">Un lieu qui se raconte</span>
+<span class="big" data-i18n="focus.good.big">Le monde est écrit. N'importe qui en salle ouvre le manuel, prend un script et tourne. Tout se ressemble, sans se répéter.</span>
+</div>
+<div aria-label="Comparer" aria-valuemax="100" aria-valuemin="0" aria-valuenow="55" class="cmp-handle" role="slider" tabindex="0"></div>
+<span class="cmp-hint" data-i18n="cmp.hint">Glissez pour comparer</span>
+</div>
+</div>
+</section>
+<hr class="rule"/>
+<!-- ============ PILLARS ============ -->
 
-    lFinding: "Le constat",
-    findingA: "Votre cuisine est excellente. Votre salle est pleine. ",
-    findingStrong: "Et pourtant",
-    findingB: ", chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. ",
-    findingC: "Elle se raconte mieux.",
-    findingD: "Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. ",
-    findingE: "Le vôtre n'a jamais été écrit.",
+<!-- ============ STEPS ============ -->
 
-    lSprint: "Le sprint",
-    sprintH2: "Deux à trois semaines, cinq étapes.",
-    steps: [
-      {
-        n: "01",
-        title: "Je viens chez vous.",
-        body: "Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.",
-        items: ["Immersion pendant un service complet", "Entretien avec vous et deux personnes de l'équipe"],
-      },
-      {
-        n: "02",
-        title: "J'écris votre monde.",
-        body: "Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.",
-        items: ["La promesse du lieu, en une phrase qui tient", "Décor, heure, lumière, atmosphère", "Casting et rituels de la maison"],
-      },
-      {
-        n: "03",
-        title: "Je pose la ligne et les mots.",
-        body: "Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.",
-        items: ["3 à 5 rubriques récurrentes avec leur intention", "Le vocabulaire : ce qu'on dit, ce qu'on ne dit jamais", "Bio, fiche Google, menu, réponses-types aux avis"],
-      },
-      {
-        n: "04",
-        title: "Je vous laisse le manuel.",
-        body: "Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.",
-        items: ["20 à 30 scripts-types, plan par plan", "Un calendrier sur 4 semaines, reconductible", "Le protocole de captation pendant le service"],
-      },
-      {
-        n: "05",
-        title: "Et je vous le prouve.",
-        body: "Avant de partir, je produis la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.",
-        items: ["La première semaine de contenu, produite et livrée", "Une passation avec la personne qui prendra le relais"],
-      },
-    ],
+<!-- ============ STATS ============ -->
+<section class="section">
+<div class="wrap stats">
+<div class="stat card tilt reveal"><span class="num">01</span><div class="v" data-i18n="stat.1.v">2–3</div><div class="l" data-i18n="stat.1.l">Semaines, puis c'est à vous</div></div>
+<div class="stat card tilt reveal d1"><span class="num">02</span><div class="v" data-i18n="stat.2.v">20–30</div><div class="l" data-i18n="stat.2.l">Scripts prêts à tourner</div></div>
+<div class="stat card tilt reveal d2"><span class="num">03</span><div class="v" data-i18n="stat.3.v">1</div><div class="l" data-i18n="stat.3.l">Seule personne sur votre lieu</div></div>
+</div>
+</section>
 
-    lDiff: "La différence",
-    diffH2: "Publier, ou raconter.",
-    diffLead: "Le même lieu, deux réalités. Prenez la poignée et tirez : à gauche on publie sans savoir quoi dire, à droite le monde est écrit et l'équipe le tient.",
-    diffLeftTitle: "Un lieu qui publie",
-    diffLeftBody: "Chaque post repart de zéro. Personne ne sait quoi filmer, ni quoi écrire dessous. On poste quand on y pense.",
-    diffRightTitle: "Un lieu qui se raconte",
-    diffRightBody: "Le monde est écrit. N'importe qui en salle ouvre le manuel, prend un script et tourne. Tout se ressemble, sans se répéter.",
-    diffHint: "Glissez pour comparer",
+<!-- ============ PRIX / ARGUMENT CENTRAL ============ -->
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="price.eyebrow">Ce que ça coûte</span>
+<h2 class="h-sec" data-i18n="price.title">Une fois, pas tous les mois.</h2>
+<p class="lead" data-i18n="price.lead" style="margin-top:1.2rem">Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.</p>
+</div>
+<div class="grid cols-2" style="gap:1.1rem">
+<article class="card reveal">
+<span class="chip" data-i18n="price.a.tag">L'agence au mois</span>
+<h3 data-i18n="price.a.t">1 200 – 1 500 € / mois</h3>
+<p data-i18n="price.a.d">Elle exécute à votre place. Elle sait ce que votre lieu raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.</p>
+</article>
+<article class="card reveal d1">
+<span class="chip" data-i18n="price.b.tag">Le sprint</span>
+<h3 data-i18n="price.b.t">2 500 – 3 500 €, une fois</h3>
+<p data-i18n="price.b.d">Je n'exécute pas à votre place : j'écris ce que votre lieu raconte et je vous livre de quoi le tenir. Vous gardez le tout, pour toujours. Si on se quitte demain, ça continue de tourner.</p>
+</article>
+</div>
+</div>
+</section>
 
-    stats: [
-      { n: "2–3", label: "Semaines, puis c'est à vous" },
-      { n: "20–30", label: "Scripts prêts à tourner" },
-      { n: "1", label: "Seule personne sur votre lieu" },
-    ],
-
-    lPrice: "Ce que ça coûte",
-    priceH2: "Une fois, pas tous les mois.",
-    priceLead: "Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.",
-    agencyTitle: "L'agence au mois",
-    agencyPrice: "1 200 – 1 500 € / mois",
-    agencyBody: "Elle exécute à votre place. Elle sait ce que votre lieu raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.",
-    sprintTitle: "Le sprint",
-    sprintPrice: "2 500 – 3 500 €, une fois",
-    sprintBody: "Je n'exécute pas à votre place : j'écris ce que votre lieu raconte et je vous livre de quoi le tenir. Vous gardez le tout, pour toujours. Si on se quitte demain, ça continue de tourner.",
-
-    lWho: "Qui écrit",
-    whoH2: "Une seule personne sur votre lieu.",
-    whoBody: "Réalisateur et compositeur, je dirige Strawberry Production. J'ai écrit 30 Architectures — An Atlas of Narrative Patterns et l'essai Le Narratif de Marque à l'Ère de l'IA. Le même travail d'écriture que pour les marques, appliqué à un lieu — avec la contrainte que l'équipe doit pouvoir le tenir seule une fois que je suis parti.",
-
-    ctaH2: "Votre lieu mérite d'être écrit.",
-    ctaBody: "Un service pour observer, deux à trois semaines pour écrire, et le système vous appartient.",
-    tourEyebrow: "La tournée",
-    tourTitle: "Ce qu'on trouve quand un lieu est écrit.",
-    tourHint: "Continuez à défiler",
-    tourOut: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
-    tour: [
-      { k: "Restaurant", t: "L'heure dorée", line: "19h30. L'heure dorée traverse la salle — le plat du soir part en story avant le premier couvert.", facts: [["L'heure", "19h30 — le moment exact où la salle bascule et où la lumière devient l'atout du lieu"], ["La lumière", "Dorée, rasante, qui traverse la vitrine et pose une ombre sur les tables du fond"], ["Le casting", "Le chef qui ne sort jamais, la serveuse qui connaît les prénoms, le plat qu'on ne retire jamais de la carte"], ["Les rituels", "L'ardoise réécrite chaque matin, la table 6 qu'on garde toujours pour les habitués"]] },
-      { k: "Cocktail bar", t: "Après minuit", line: "23h50. Le shaker claque, les néons vibrent — le reel de la signature tourne déjà.", facts: [["L'heure", "23h50 — quand la salle a fini de se remplir et que le bar devient la scène"], ["La lumière", "Néon froid sur les bouteilles, tout le reste dans le noir, les visages qui apparaissent par intermittence"], ["Le casting", "Le barman qui ne demande jamais ce que vous voulez, le cocktail qui porte le nom de la rue"], ["Les rituels", "La carte qui change à chaque saison, le dernier verre servi toujours de la même façon"]] },
-      { k: "Club", t: "Le sous-sol", line: "2h10. La basse fait trembler le plafond — demain, la file d'attente aura vu la vidéo.", facts: [["L'heure", "2h10 — le point de bascule où la soirée cesse d'être une sortie et devient un souvenir"], ["La lumière", "Stroboscopique, rouge, jamais assez pour reconnaître un visage à trois mètres"], ["Le casting", "Le résident du samedi, le videur qui laisse passer d'un signe, la file qui fait partie du décor"], ["Les rituels", "Le morceau qu'on passe toujours en dernier, la salle du fond qu'on n'ouvre qu'à certaines heures"]] },
-      { k: "Coffee shop", t: "Lumière du matin", line: "8h05. Latte art, lumière douce — le quartier sait déjà où prendre son premier café.", facts: [["L'heure", "8h05 — le premier café du quartier, avant que la ville se réveille vraiment"], ["La lumière", "Blanche et douce, la vapeur qui monte, la buée sur la vitre en hiver"], ["Le casting", "Le barista qui commence la commande avant qu'on parle, les habitués du comptoir à heure fixe"], ["Les rituels", "Le grain qui change chaque mois, la playlist du matin qui n'est jamais celle de l'après-midi"]] },
-    ],
-    faqEyebrow: "Questions fréquentes",
-    faqTitle: "Ce que les gérants me demandent.",
-    faq: [
-      { q: "Pourquoi ne pas simplement prendre une agence au mois ?", a: "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si on se quitte demain, il continue de fonctionner sans moi." },
-      { q: "Qui publie une fois le sprint terminé ?", a: "Votre équipe — c'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, écrits plan par plan, plus un calendrier sur quatre semaines qui tourne en boucle. Personne n'a besoin de deviner quoi poster." },
-      { q: "Combien de temps ça prend, de mon côté ?", a: "Quelques heures en tout. Une immersion pendant un service, un entretien avec vous, deux points d'étape et une remise finale. Le reste du travail se fait sans vous mobiliser." },
-      { q: "Personne chez moi ne sait filmer.", a: "C'est prévu. Les scripts sont écrits pour quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit, et n'importe qui en salle peut le faire." },
-      { q: "Qu'est-ce que je garde à la fin ?", a: "Tout, et pour toujours : le document qui décrit votre monde, votre ligne éditoriale, vos textes permanents, le manuel d'exécution, et la première semaine de contenu déjà produite." },
-    ],
-    ctaBtn: "Prendre contact →",
-  },
-  en: {
-    kicker: "Writing sprint · Paris & Île-de-France",
-    h1a: "Your venue is already a story.",
-    h1b: "Nobody has written it.",
-    cta: "Get in touch →",
-    scrollHint: "How it works",
-    types: ["Restaurants", "Bars", "Clubs", "Coffee shops", "Wine bars & bistros", "Rooftops"],
-
-    lFinding: "The finding",
-    findingA: "Your cooking is excellent. Your room is full. ",
-    findingStrong: "And yet",
-    findingB: ", every post starts from nothing — because nobody on your team knows what your venue is saying. Meanwhile, three streets away, a place half as good as yours is fully booked every night. It does not cook better. ",
-    findingC: "It tells itself better.",
-    findingD: "You do not have a content problem. You have a world problem. A restaurant is already a fiction — a set, an hour, a light, a cast, rituals. ",
-    findingE: "Yours has never been written.",
-
-    lSprint: "The sprint",
-    sprintH2: "Two to three weeks, five stages.",
-    steps: [
-      { n: "01", title: "I come to you.", body: "A full service, observed. Who talks to whom, what the regulars order without looking at the menu, what your team repeats without noticing. The material is already there.", items: ["Immersion during a full service", "Interviews with you and two team members"] },
-      { n: "02", title: "I write your world.", body: "What your venue promises in one sentence. Its hour, its light, its atmosphere. Its cast — you, the bartender, the regulars, and the signature dish treated as a character. Its rituals.", items: ["The promise of the venue, in one sentence that holds", "Set, hour, light, atmosphere", "The cast and the rituals of the house"] },
-      { n: "03", title: "I set the line and the words.", body: "Three to five recurring formats, named, with what each one is meant to provoke. The vocabulary of the house: what we say, what we never say. And all your permanent copy, written once and for good.", items: ["3 to 5 recurring formats with their intent", "The vocabulary: what we say, what we never say", "Bio, Google listing, menu, standard replies to reviews"] },
-      { n: "04", title: "I leave you the manual.", body: "Twenty to thirty ready-to-use scripts, written shot by shot so anyone on the floor can film them on a phone. A four-week calendar that loops. A capture protocol for during service.", items: ["20 to 30 scripts, shot by shot", "A 4-week calendar, repeatable", "The capture protocol for during service"] },
-      { n: "05", title: "And I prove it works.", body: "Before I leave, I produce the first week of content myself. Not to make you dependent: so you see the system run once, for real, before you take it over.", items: ["The first week of content, produced and delivered", "A handover with whoever takes it on"] },
-    ],
-
-    lDiff: "The difference",
-    diffH2: "Posting, or telling.",
-    diffLead: "The same venue, two realities. Take the handle and pull: on the left, posting without knowing what to say; on the right, the world is written and the team holds it.",
-    diffLeftTitle: "A venue that posts",
-    diffLeftBody: "Every post starts from nothing. Nobody knows what to film, or what to write underneath. You post when you remember to.",
-    diffRightTitle: "A venue that tells its story",
-    diffRightBody: "The world is written. Anyone on the floor opens the manual, takes a script and films. Everything belongs together, without repeating itself.",
-    diffHint: "Drag to compare",
-
-    stats: [
-      { n: "2–3", label: "Weeks, then it is yours" },
-      { n: "20–30", label: "Scripts ready to film" },
-      { n: "1", label: "Single person on your venue" },
-    ],
-
-    lPrice: "What it costs",
-    priceH2: "Once, not every month.",
-    priceLead: "An agency charges 1,200 to 1,500 € a month, for as long as you keep them. The day you stop, you are left with nothing.",
-    agencyTitle: "The monthly agency",
-    agencyPrice: "1,200 – 1,500 € / month",
-    agencyBody: "It executes in your place. It knows what your venue is saying, you do not. After two years: roughly 30,000 € spent, and nothing that belongs to you.",
-    sprintTitle: "The sprint",
-    sprintPrice: "2,500 – 3,500 €, once",
-    sprintBody: "I do not execute in your place: I write what your venue is saying and hand you what you need to hold it. You keep all of it, forever. If we part tomorrow, it keeps running.",
-
-    lWho: "Who writes",
-    whoH2: "A single person on your venue.",
-    whoBody: "A filmmaker and composer, I run Strawberry Production. I wrote 30 Architectures — An Atlas of Narrative Patterns and the essay Brand Narrative in the Age of AI. The same writing work as for brands, applied to a venue — with the constraint that the team has to be able to hold it alone once I am gone.",
-
-    ctaH2: "Your venue deserves to be written.",
-    ctaBody: "One service to observe, two to three weeks to write, and the system is yours.",
-    tourEyebrow: "The tour",
-    tourTitle: "What you find when a venue is written.",
-    tourHint: "Keep scrolling",
-    tourOut: "All of it already exists at your venue. It just needs writing.",
-    tour: [
-      { k: "Restaurant", t: "Golden hour", line: "7:30pm. Golden hour sweeps the room — tonight's dish hits stories before the first cover.", facts: [["The hour", "7:30pm — the exact moment the room tips over and the light becomes the venue's best asset"], ["The light", "Golden, low, cutting through the window and laying a shadow across the back tables"], ["The cast", "The chef who never comes out, the server who knows first names, the dish you never take off the menu"], ["The rituals", "The board rewritten every morning, table 6 always held for the regulars"]] },
-      { k: "Cocktail bar", t: "After midnight", line: "11:50pm. The shaker snaps, the neons hum — the signature's reel is already out.", facts: [["The hour", "11:50pm — once the room has finished filling and the bar becomes the stage"], ["The light", "Cold neon on the bottles, everything else in the dark, faces surfacing now and then"], ["The cast", "The bartender who never asks what you want, the cocktail named after the street"], ["The rituals", "The menu that turns with the season, the last drink always poured the same way"]] },
-      { k: "Club", t: "The basement", line: "2:10am. Bass in the ceiling — tomorrow, the queue will have seen the video.", facts: [["The hour", "2:10am — the tipping point where the night stops being an outing and becomes a memory"], ["The light", "Strobe, red, never enough to recognise a face three metres away"], ["The cast", "The Saturday resident, the doorman who waves you through, the queue that's part of the set"], ["The rituals", "The track always played last, the back room only opened at certain hours"]] },
-      { k: "Coffee shop", t: "Morning light", line: "8:05am. Latte art, soft light — the neighbourhood already knows where its first coffee is.", facts: [["The hour", "8:05am — the neighbourhood's first coffee, before the city properly wakes"], ["The light", "White and soft, steam rising, condensation on the glass in winter"], ["The cast", "The barista who starts the order before you speak, the counter regulars on the dot"], ["The rituals", "The bean that changes each month, the morning playlist that's never the afternoon's"]] },
-    ],
-    faqEyebrow: "Frequently asked",
-    faqTitle: "What owners ask me.",
-    faq: [
-      { q: "Why not just hire a monthly agency?", a: "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay once, and you leave with the system. If we part tomorrow, it keeps working without me." },
-      { q: "Who publishes once the sprint is over?", a: "Your team — that is the point. The manual holds 20 to 30 ready-to-use scripts, written shot by shot, plus a four-week calendar that loops. Nobody has to guess what to post." },
-      { q: "How much of my time does it take?", a: "A few hours in total. One immersion during a service, one interview with you, two checkpoints and a final handover. The rest of the work happens without taking your time." },
-      { q: "Nobody here knows how to film.", a: "That is accounted for. The scripts are written for someone who has never filmed: where to stand, what to frame, how many seconds, what to say. A phone is enough, and anyone on the floor can do it." },
-      { q: "What do I keep at the end?", a: "Everything, forever: the document describing your world, your editorial line, your permanent copy, the execution manual, and the first week of content already produced." },
-    ],
-    ctaBtn: "Get in touch →",
-  },
-}
-
-/**
- * La charte NOCTA, reprise telle quelle.
- *
- * Palette nocturne (#0a0910), dégradé corail → iris, et les quatre familles
- * de l'ancien site : Bricolage Grotesque pour les titres, Instrument Serif
- * en italique pour les accroches, Hanken Grotesk pour le texte, Space Mono
- * pour les surtitres et les boutons. Les polices sont chargées par la page
- * elle-même : le reste du site ne charge que Playfair et DM Sans.
- *
- * Tout est porté par des styles inline et une feuille locale plutôt que par
- * les classes utilitaires du site — les jetons de Strawberry (fond, rouge de
- * marque, familles) ne décrivent pas cette identité, et les emprunter
- * reviendrait à repeindre NOCTA aux couleurs du studio.
- */
-const N = {
-  ink: "#0a0910",
-  ink2: "#100e1a",
-  card: "#181425",
-  line: "#2a2438",
-  lineSoft: "#211d2e",
-  coral: "#ff5d57",
-  iris: "#7b6cff",
-  irisSoft: "#a99dff",
-  cream: "#f3efe9",
-  smoke: "#a39db8",
-  smokeDim: "#6f6982",
-  grad: "linear-gradient(108deg, #ff5d57 0%, #7b6cff 100%)",
-  display: '"Bricolage Grotesque", system-ui, sans-serif',
-  serif: '"Instrument Serif", Georgia, serif',
-  body: '"Hanken Grotesk", system-ui, sans-serif',
-  mono: '"Space Mono", ui-monospace, monospace',
-}
-
-const gradText: React.CSSProperties = {
-  background: N.grad,
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  color: "transparent",
-}
-
-function Eyebrow({ children, iris }: { children: React.ReactNode; iris?: boolean }) {
-  return (
-    <div
-      style={{
-        fontFamily: N.mono,
-        fontSize: ".72rem",
-        letterSpacing: ".32em",
-        textTransform: "uppercase",
-        color: iris ? N.irisSoft : N.coral,
-        marginBottom: "1.1rem",
-      }}
-    >
-      {children}
-    </div>
-  )
-}
+<!-- ============ QUI ÉCRIT ============ -->
+<section class="section">
+<div class="wrap">
+<div class="grid cols-2" style="gap:clamp(2.5rem,6vw,5rem); align-items:start">
+<div class="reveal">
+<span class="eyebrow iris" data-i18n="who.eyebrow">Qui écrit</span>
+<h2 class="h-sec" data-i18n="who.title" style="margin-top:1rem">Une seule personne sur votre lieu.</h2>
+</div>
+<div class="reveal d1">
+<p class="lead" data-i18n="who.body">Réalisateur et compositeur, je dirige Strawberry Production. J'ai écrit <em>30 Architectures — An Atlas of Narrative Patterns</em> et l'essai <em>Le Narratif de Marque à l'Ère de l'IA</em>, et je construis l'univers transmédia Sinbury depuis 2024.</p>
+<p class="muted" data-i18n="who.body2" style="margin-top:1.4rem">Pas d'équipe, pas de sous-traitance, pas d'intermédiaire. La personne qui observe votre service est celle qui écrit, et celle qui vous répond.</p>
+</div>
+</div>
+</div>
+</section>
+<hr class="rule"/>
+<!-- ============ PRICING TEASER ============ -->
+<!-- ============ WORK TEASER ============ -->
+<section class="section" style="padding-bottom:1rem">
+<div class="wrap">
+<div class="section-head reveal" style="margin-bottom:0">
+<div class="story-head">
+<div>
+<span class="eyebrow iris" data-i18n="tour.eyebrow">La tournée</span>
+<h2 class="h-sec" data-i18n="tour.title" style="margin-top:1.1rem">Ce qu'on trouve quand un lieu est écrit.</h2>
+</div>
+<span class="story-hint"><span data-i18n="tour.hint">Continuez à défiler</span><span aria-hidden="true" class="sw" style="display:inline-block;transform:rotate(90deg)">→</span></span>
+</div>
+</div>
+</div>
+</section><section class="tour-pin">
+<div class="tour-sticky">
+<div class="tour-scene ts-1">
+<div class="ts-bg"></div>
+<div class="wrap ts-inner">
+<span class="ts-k" data-i18n="work.r1.k">Restaurant</span>
+<h3 class="ts-t" data-i18n="work.r1.t">L'heure dorée</h3>
+<p class="ts-line" data-i18n="tour.1.line">19h30. L'heure dorée traverse la salle — le plat du soir part en story avant le premier couvert.</p>
+<ul class="ts-list">
+<li><b data-i18n="tour.1.f1">L'heure</b><span data-i18n="tour.1.d1">19h30 — le moment exact où la salle bascule et où la lumière devient l'atout du lieu</span></li>
+<li><b data-i18n="tour.1.f2">La lumière</b><span data-i18n="tour.1.d2">Dorée, rasante, qui traverse la vitrine et pose une ombre sur les tables du fond</span></li>
+<li><b data-i18n="tour.1.f3">Le casting</b><span data-i18n="tour.1.d3">Le chef qui ne sort jamais, la serveuse qui connaît les prénoms, le plat qu'on ne retire jamais de la carte</span></li>
+<li><b data-i18n="tour.1.f4">Les rituels</b><span data-i18n="tour.1.d4">L'ardoise réécrite chaque matin, la table 6 qu'on garde toujours pour les habitués</span></li>
+</ul>
+<span class="ts-num">01 — 04</span>
+</div>
+</div>
+<div class="tour-scene ts-2">
+<div class="ts-bg"></div>
+<div class="wrap ts-inner">
+<span class="ts-k" data-i18n="work.r2.k">Cocktail bar</span>
+<h3 class="ts-t" data-i18n="work.r2.t">Après minuit</h3>
+<p class="ts-line" data-i18n="tour.2.line">23h50. Le shaker claque, les néons vibrent — le reel de la signature tourne déjà.</p>
+<ul class="ts-list">
+<li><b data-i18n="tour.2.f1">L'heure</b><span data-i18n="tour.2.d1">23h50 — quand la salle a fini de se remplir et que le bar devient la scène</span></li>
+<li><b data-i18n="tour.2.f2">La lumière</b><span data-i18n="tour.2.d2">Néon froid sur les bouteilles, tout le reste dans le noir, les visages qui apparaissent par intermittence</span></li>
+<li><b data-i18n="tour.2.f3">Le casting</b><span data-i18n="tour.2.d3">Le barman qui ne demande jamais ce que vous voulez, le cocktail qui porte le nom de la rue</span></li>
+<li><b data-i18n="tour.2.f4">Les rituels</b><span data-i18n="tour.2.d4">La carte qui change à chaque saison, le dernier verre servi toujours de la même façon</span></li>
+</ul>
+<span class="ts-num">02 — 04</span>
+</div>
+</div>
+<div class="tour-scene ts-3">
+<div class="ts-bg"></div>
+<div class="wrap ts-inner">
+<span class="ts-k" data-i18n="work.r3.k">Club</span>
+<h3 class="ts-t" data-i18n="work.r3.t">Le sous-sol</h3>
+<p class="ts-line" data-i18n="tour.3.line">2h10. La basse fait trembler le plafond — demain, la file d'attente aura vu la vidéo.</p>
+<ul class="ts-list">
+<li><b data-i18n="tour.3.f1">L'heure</b><span data-i18n="tour.3.d1">2h10 — le point de bascule où la soirée cesse d'être une sortie et devient un souvenir</span></li>
+<li><b data-i18n="tour.3.f2">La lumière</b><span data-i18n="tour.3.d2">Stroboscopique, rouge, jamais assez pour reconnaître un visage à trois mètres</span></li>
+<li><b data-i18n="tour.3.f3">Le casting</b><span data-i18n="tour.3.d3">Le résident du samedi, le videur qui laisse passer d'un signe, la file qui fait partie du décor</span></li>
+<li><b data-i18n="tour.3.f4">Les rituels</b><span data-i18n="tour.3.d4">Le morceau qu'on passe toujours en dernier, la salle du fond qu'on n'ouvre qu'à certaines heures</span></li>
+</ul>
+<span class="ts-num">03 — 04</span>
+</div>
+</div>
+<div class="tour-scene ts-4">
+<div class="ts-bg"></div>
+<div class="wrap ts-inner">
+<span class="ts-k" data-i18n="work.r4.k">Coffee shop</span>
+<h3 class="ts-t" data-i18n="work.r4.t">Lumière du matin</h3>
+<p class="ts-line" data-i18n="tour.4.line">8h05. Latte art, lumière douce — le quartier sait déjà où prendre son premier café.</p>
+<ul class="ts-list">
+<li><b data-i18n="tour.4.f1">L'heure</b><span data-i18n="tour.4.d1">8h05 — le premier café du quartier, avant que la ville se réveille vraiment</span></li>
+<li><b data-i18n="tour.4.f2">La lumière</b><span data-i18n="tour.4.d2">Blanche et douce, la vapeur qui monte, la buée sur la vitre en hiver</span></li>
+<li><b data-i18n="tour.4.f3">Le casting</b><span data-i18n="tour.4.d3">Le barista qui commence la commande avant qu'on parle, les habitués du comptoir à heure fixe</span></li>
+<li><b data-i18n="tour.4.f4">Les rituels</b><span data-i18n="tour.4.d4">Le grain qui change chaque mois, la playlist du matin qui n'est jamais celle de l'après-midi</span></li>
+</ul>
+<span class="ts-num">04 — 04</span>
+</div>
+</div>
+<div class="tour-progress"><span></span></div>
+</div>
+</section><section class="section" style="padding-top:2.5rem; padding-bottom:3rem">
+<div class="wrap" style="text-align:center">
+<p class="serif" data-i18n="tour.out" style="font-size:clamp(1.4rem,3.5vw,2.2rem); color:var(--coral-soft)">Tout ça existe déjà chez vous. Il faut juste l'écrire.</p>
+</div>
+</section>
+<!-- ============ CTA BAND ============ -->
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</span>
+<h2 class="h-sec" data-i18n="faq.title">Ce que les gérants me demandent.</h2>
+</div>
+<div class="faq reveal d1">
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.1.q">Pourquoi ne pas simplement prendre une agence au mois ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.1.a">Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si on se quitte demain, il continue de fonctionner sans moi.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.2.q">Qui publie une fois le sprint terminé ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.2.a">Votre équipe — c'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, écrits plan par plan, plus un calendrier sur quatre semaines qui tourne en boucle. Personne n'a besoin de deviner quoi poster.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.3.q">Combien de temps ça prend, de mon côté ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.3.a">Quelques heures en tout. Une immersion pendant un service, un entretien avec vous, deux points d'étape et une remise finale. Le reste du travail se fait sans vous mobiliser.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.4.q">Personne chez moi ne sait filmer.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.4.a">C'est prévu. Les scripts sont écrits pour quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit, et n'importe qui en salle peut le faire.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.5.q">Qu'est-ce que je garde à la fin ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.5.a">Tout, et pour toujours : le document qui décrit votre monde, votre ligne éditoriale, vos textes permanents, le manuel d'exécution, et la première semaine de contenu déjà produite.</p></div></div></div>
+</div>
+</div>
+</section><section class="section">
+<div class="wrap">
+<div class="cta-band wipe">
+<span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
+<h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
+<p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Je prends peu de lieux à la fois, et je le dis franchement si ce n'est pas le moment.</p>
+<a class="btn btn-primary" href="#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
+</div>
+</div>
+</section>
+`
 
 export default function LieuxPage() {
-  const t = useT(T)
-
-  return (
-    <main style={{ background: N.ink, color: N.cream, fontFamily: N.body, lineHeight: 1.6 }}>
-      <ViewTracker name="lieux" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Space+Mono:wght@400;700&display=swap"
-        rel="stylesheet"
-      />
-      <style>{`
-        .nocta h1, .nocta h2, .nocta h3 { font-family:${N.display}; font-weight:700; line-height:1.02; letter-spacing:-.02em; margin:0; }
-        .nocta-wrap { max-width:1180px; margin:0 auto; padding-inline:clamp(20px,5vw,64px); }
-        .nocta-sec { padding-block:clamp(72px,10vw,140px); }
-        .nocta-btn { display:inline-flex; align-items:center; gap:.6em; font-family:${N.mono};
-          font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; padding:1.05em 1.8em;
-          border-radius:100px; border:1px solid transparent; background:${N.grad}; color:#120a0a;
-          font-weight:700; text-decoration:none; transition:box-shadow .4s cubic-bezier(.22,.61,.36,1); }
-        .nocta-btn:hover { box-shadow:0 14px 50px -12px rgba(255,93,87,.55); }
-        .nocta-card { background:${N.ink2}; border:1px solid ${N.lineSoft}; border-radius:18px;
-          padding:clamp(1.6rem,2.6vw,2.3rem); }
-        .nocta-chip { border:1px solid ${N.lineSoft}; border-radius:100px; padding:.55em 1.1em;
-          font-family:${N.mono}; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:${N.smoke}; }
-        @keyframes nocta-scroll-x { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-        .nocta-mq-track { animation:nocta-scroll-x 32s linear infinite; }
-        .nocta-mq:hover .nocta-mq-track { animation-play-state:paused; }
-        @media (prefers-reduced-motion: reduce) { .nocta-mq-track { animation:none } }
-        @keyframes nocta-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-        @keyframes nocta-flick { 0%,96%,100%{opacity:1} 97%{opacity:.55} 98%{opacity:1} 98.5%{opacity:.7} }
-        .nocta-flicker { animation:nocta-flick 6s infinite steps(1); }
-        @media (prefers-reduced-motion: reduce) { .nocta-flicker { animation:none } }
-      `}</style>
-
-      <div className="nocta">
-        {/* HERO — le wordmark géant en dégradé, sur le bokeh nocturne. */}
-        <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 0,
-              background:
-                "radial-gradient(60% 50% at 30% 30%, rgba(255,93,87,.16), transparent 60%), radial-gradient(50% 60% at 80% 70%, rgba(123,108,255,.18), transparent 60%)",
-            }}
-          />
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 1,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(85% 95% at 50% 50%, rgba(10,9,16,.72) 0%, rgba(10,9,16,.42) 48%, transparent 78%)",
-            }}
-          />
-          <div className="nocta-wrap" style={{ position: "relative", zIndex: 2, width: "100%", paddingTop: 120 }}>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: ".8rem",
-                marginBottom: "1.6rem",
-                background: "rgba(10,9,16,.55)",
-                border: `1px solid ${N.lineSoft}`,
-                padding: ".5em 1em",
-                borderRadius: 100,
-                fontFamily: N.mono,
-                fontSize: ".72rem",
-                letterSpacing: ".24em",
-                textTransform: "uppercase",
-                color: N.smoke,
-              }}
-            >
-              <span
-                aria-hidden
-                style={{ width: 7, height: 7, borderRadius: "50%", background: N.coral, boxShadow: `0 0 12px ${N.coral}`, animation: "nocta-pulse 2.4s infinite" }}
-              />
-              {t.kicker}
-            </div>
-
-            <h1
-              className="nocta-flicker"
-              style={{
-                fontFamily: N.display,
-                fontWeight: 800,
-                fontSize: "clamp(4rem,15vw,12rem)",
-                lineHeight: 0.85,
-                letterSpacing: "-.04em",
-                ...gradText,
-                filter: "drop-shadow(0 0 38px rgba(255,93,87,.28))",
-              }}
-            >
-              LIEUX
-            </h1>
-
-            <p
-              style={{
-                fontFamily: N.serif,
-                fontStyle: "italic",
-                fontSize: "clamp(1.5rem,4vw,2.6rem)",
-                color: N.cream,
-                marginTop: ".6rem",
-                lineHeight: 1.15,
-                maxWidth: "20ch",
-              }}
-            >
-              {t.h1a}{" "}
-              <b style={{ fontStyle: "normal", fontFamily: N.display, fontWeight: 700, ...gradText }}>{t.h1b}</b>
-            </p>
-
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginTop: "2.6rem" }}>
-              <Link href="/#contact" className="nocta-btn">
-                {t.cta}
-              </Link>
-            </div>
-
-          </div>
-        </section>
-
-        {/* Le bandeau défilant des typologies — remplace les chips figées :
-            sur NOCTA il défile en boucle et se met en pause au survol. */}
-        <div style={{ borderBlock: `1px solid ${N.lineSoft}`, overflow: "hidden", paddingBlock: "1.4rem" }} className="nocta-mq">
-          <div className="nocta-mq-track" style={{ display: "flex", gap: "3.5rem", width: "max-content" }}>
-            {[...t.types, ...t.types].map((ty, i) => (
-              <span key={i} style={{ fontFamily: N.display, fontWeight: 600, fontSize: "clamp(1.3rem,3vw,2.2rem)", color: N.smoke, whiteSpace: "nowrap", letterSpacing: "-.01em" }}>
-                {ty} <span style={{ color: N.coral }}>·</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* LE CONSTAT */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
-          <div className="nocta-wrap" style={{ maxWidth: 820 }}>
-            <Eyebrow>{t.lFinding}</Eyebrow>
-            <p style={{ fontSize: "clamp(1.05rem,1.7vw,1.3rem)", color: N.smoke, marginBottom: "1.6rem" }}>
-              {t.findingA}
-              <b style={{ color: N.cream, fontWeight: 600 }}>{t.findingStrong}</b>
-              {t.findingB}
-              <b style={{ color: N.cream, fontWeight: 600 }}>{t.findingC}</b>
-            </p>
-            <p style={{ fontSize: "clamp(1.05rem,1.7vw,1.3rem)", color: N.smoke }}>
-              {t.findingD}
-              <b style={{ fontFamily: N.display, fontWeight: 700, ...gradText }}>{t.findingE}</b>
-            </p>
-          </div>
-        </section>
-
-        {/* LA TOURNÉE — quatre lieux types, chacun avec son heure, sa
-            lumière, son casting et ses rituels. C'est la section qui prouve
-            l'argument : le monde est déjà là, il n'a jamais été écrit. */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
-          <div className="nocta-wrap">
-            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", marginBottom: "2.6rem" }}>
-              <div>
-                <Eyebrow iris>{t.tourEyebrow}</Eyebrow>
-                <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04 }}>{t.tourTitle}</h2>
-              </div>
-              <div style={{ fontFamily: N.mono, fontSize: ".72rem", letterSpacing: ".18em", textTransform: "uppercase", color: N.smokeDim }}>
-                {t.tourHint}
-              </div>
-            </div>
-
-            <div style={{ display: "grid", gap: "1.1rem" }}>
-              {t.tour.map((v) => (
-                <div key={v.k} className="nocta-card">
-                  <div style={{ display: "flex", alignItems: "baseline", gap: ".9rem", flexWrap: "wrap", marginBottom: "1rem" }}>
-                    <span style={{ fontFamily: N.mono, fontSize: ".68rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim }}>{v.k}</span>
-                    <h3 style={{ fontSize: "clamp(1.35rem,3vw,2.1rem)", lineHeight: 1.1, ...gradText }}>{v.t}</h3>
-                  </div>
-                  <p style={{ fontFamily: N.serif, fontStyle: "italic", fontSize: "clamp(1.1rem,2.2vw,1.5rem)", color: N.cream, marginBottom: "1.6rem", lineHeight: 1.25 }}>
-                    {v.line}
-                  </p>
-                  <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
-                    {v.facts.map(([label, detail]) => (
-                      <div key={label}>
-                        <div style={{ fontFamily: N.mono, fontSize: ".64rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.coral, marginBottom: ".4rem" }}>
-                          {label}
-                        </div>
-                        <p style={{ color: N.smoke, fontSize: ".9rem", margin: 0 }}>{detail}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ fontFamily: N.serif, fontStyle: "italic", fontSize: "clamp(1.3rem,3vw,2.1rem)", textAlign: "center", marginTop: "3rem", ...gradText }}>
-              {t.tourOut}
-            </p>
-          </div>
-        </section>
-
-        {/* LE SPRINT */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
-          <div className="nocta-wrap">
-            <div style={{ marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
-              <Eyebrow>{t.lSprint}</Eyebrow>
-              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04 }}>{t.sprintH2}</h2>
-            </div>
-
-            <div style={{ display: "grid", gap: "1.1rem" }}>
-              {t.steps.map((s) => (
-                <div key={s.n} className="nocta-card" style={{ display: "grid", gap: "1.5rem", gridTemplateColumns: "auto 1fr" }}>
-                  <div style={{ fontFamily: N.mono, fontSize: "1.6rem", fontWeight: 700, ...gradText }}>{s.n}</div>
-                  <div>
-                    <h3 style={{ fontSize: "clamp(1.35rem,3vw,2.1rem)", lineHeight: 1.1, marginBottom: ".8rem" }}>{s.title}</h3>
-                    <p style={{ color: N.smoke, marginBottom: "1.2rem" }}>{s.body}</p>
-                    <ul style={{ listStyle: "none", display: "grid", gap: ".5rem", padding: 0, margin: 0 }}>
-                      {s.items.map((it) => (
-                        <li key={it} style={{ display: "flex", gap: ".7rem", fontSize: ".92rem", color: N.smokeDim }}>
-                          <span aria-hidden style={{ color: N.coral }}>
-                            ✦
-                          </span>
-                          {it}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* LA DIFFÉRENCE */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
-          <div className="nocta-wrap">
-            <div style={{ marginBottom: "2.6rem" }}>
-              <Eyebrow iris>{t.lDiff}</Eyebrow>
-              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.diffH2}</h2>
-              <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, maxWidth: "60ch" }}>{t.diffLead}</p>
-            </div>
-            <CompareSlider
-              leftTitle={t.diffLeftTitle}
-              leftBody={t.diffLeftBody}
-              rightTitle={t.diffRightTitle}
-              rightBody={t.diffRightBody}
-              hint={t.diffHint}
-            />
-
-            <div style={{ display: "grid", gap: "1.1rem", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: "3rem" }}>
-              {t.stats.map((s) => (
-                <div key={s.label} className="nocta-card" style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: N.display, fontWeight: 800, fontSize: "clamp(2.2rem,5vw,3.2rem)", lineHeight: 1, ...gradText }}>
-                    {s.n}
-                  </div>
-                  <div style={{ marginTop: ".8rem", fontFamily: N.mono, fontSize: ".68rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim }}>
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CE QUE ÇA COÛTE */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
-          <div className="nocta-wrap">
-            <div style={{ marginBottom: "2.6rem" }}>
-              <Eyebrow>{t.lPrice}</Eyebrow>
-              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.priceH2}</h2>
-              <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, maxWidth: "60ch" }}>{t.priceLead}</p>
-            </div>
-
-            <div style={{ display: "grid", gap: "1.1rem", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
-              <div className="nocta-card" style={{ filter: "grayscale(1) brightness(.85)" }}>
-                <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim, marginBottom: ".7rem" }}>
-                  {t.agencyTitle}
-                </div>
-                <div style={{ fontFamily: N.display, fontWeight: 700, fontSize: "clamp(1.3rem,2.4vw,1.8rem)", marginBottom: "1rem" }}>
-                  {t.agencyPrice}
-                </div>
-                <p style={{ color: N.smoke, fontSize: ".95rem" }}>{t.agencyBody}</p>
-              </div>
-              <div className="nocta-card" style={{ borderColor: "rgba(255,93,87,.35)", background: "rgba(255,93,87,.05)" }}>
-                <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.coral, marginBottom: ".7rem" }}>
-                  {t.sprintTitle}
-                </div>
-                <div style={{ fontFamily: N.display, fontWeight: 700, fontSize: "clamp(1.3rem,2.4vw,1.8rem)", marginBottom: "1rem", ...gradText }}>
-                  {t.sprintPrice}
-                </div>
-                <p style={{ color: N.smoke, fontSize: ".95rem" }}>{t.sprintBody}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* QUI ÉCRIT */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
-          <div className="nocta-wrap" style={{ maxWidth: 800 }}>
-            <Eyebrow iris>{t.lWho}</Eyebrow>
-            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.4rem" }}>{t.whoH2}</h2>
-            <p style={{ color: N.smoke, fontSize: "clamp(1rem,1.6vw,1.2rem)" }}>{t.whoBody}</p>
-          </div>
-        </section>
-
-        {/* FAQ — l'accordéon de NOCTA : cartes arrondies 14px, question en
-            Bricolage semi-gras, "+" corail qui pivote en croix à
-            l'ouverture, réponse dépliée par transition de grid-template-rows
-            (la seule façon d'animer une hauteur automatique en CSS pur). */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
-          <div className="nocta-wrap" style={{ maxWidth: 860 }}>
-            <Eyebrow>{t.faqEyebrow}</Eyebrow>
-            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "2.4rem" }}>{t.faqTitle}</h2>
-            <div style={{ display: "grid", gap: ".8rem" }}>
-              {t.faq.map((f, i) => (
-                <FaqItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, textAlign: "center", position: "relative", overflow: "hidden" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "radial-gradient(55% 60% at 50% 45%, rgba(123,108,255,.16), transparent 65%)",
-            }}
-          />
-          <div className="nocta-wrap" style={{ position: "relative", maxWidth: 720 }}>
-            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.ctaH2}</h2>
-            <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, margin: "0 auto 2.4rem" }}>{t.ctaBody}</p>
-            <Link href="/#contact" className="nocta-btn">
-              {t.ctaBtn}
-            </Link>
-          </div>
-        </section>
-      </div>
-    </main>
-  )
-}
-
-/**
- * Le comparateur à glisser — repris de NOCTA.
- *
- * Une seule zone, deux réalités superposées, une poignée qui découpe l'une
- * dans l'autre. Le geste porte l'argument : on ne lit pas la différence, on
- * la fait apparaître soi-même. Souris, doigt et clavier ; l'input range est
- * masqué visuellement mais conservé, pour que la valeur soit annoncée aux
- * lecteurs d'écran.
- */
-function CompareSlider({
-  leftTitle,
-  leftBody,
-  rightTitle,
-  rightBody,
-  hint,
-}: {
-  leftTitle: string
-  leftBody: string
-  rightTitle: string
-  rightBody: string
-  hint: string
-}) {
-  const [pct, setPct] = useState(50)
-  const boxRef = useRef<HTMLDivElement | null>(null)
-  const dragging = useRef(false)
-
   useEffect(() => {
-    const move = (clientX: number) => {
-      const el = boxRef.current
-      if (!el) return
-      const r = el.getBoundingClientRect()
-      setPct(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)))
+    // Les scripts d'origine, dans l'ordre du <head> de NOCTA. Ils sont
+    // chargés après l'injection du HTML : app.js accroche ses observateurs
+    // sur des noeuds qui doivent déjà exister.
+    const srcs = ["/nocta/config.js", "/nocta/i18n.js", "/nocta/app.js"]
+    const added: HTMLScriptElement[] = []
+    let cancelled = false
+
+    const loadNext = (i: number) => {
+      if (cancelled || i >= srcs.length) return
+      const s = document.createElement("script")
+      s.src = srcs[i]
+      s.defer = true
+      s.onload = () => loadNext(i + 1)
+      s.onerror = () => loadNext(i + 1)
+      document.body.appendChild(s)
+      added.push(s)
     }
-    const onMouse = (e: MouseEvent) => dragging.current && move(e.clientX)
-    const onTouch = (e: TouchEvent) => dragging.current && move(e.touches[0].clientX)
-    const stop = () => {
-      dragging.current = false
-    }
-    window.addEventListener("mousemove", onMouse)
-    window.addEventListener("touchmove", onTouch)
-    window.addEventListener("mouseup", stop)
-    window.addEventListener("touchend", stop)
+    loadNext(0)
+
     return () => {
-      window.removeEventListener("mousemove", onMouse)
-      window.removeEventListener("touchmove", onTouch)
-      window.removeEventListener("mouseup", stop)
-      window.removeEventListener("touchend", stop)
+      cancelled = true
+      added.forEach((s) => s.remove())
     }
   }, [])
 
   return (
-    <div>
-      <div
-        ref={boxRef}
-        style={{ position: "relative", overflow: "hidden", borderRadius: 18, border: `1px solid ${N.lineSoft}`, cursor: "ew-resize", userSelect: "none" }}
-        onMouseDown={() => {
-          dragging.current = true
-        }}
-        onTouchStart={() => {
-          dragging.current = true
-        }}
-      >
-        <div style={{ background: "linear-gradient(160deg, #1b1030 0%, #0a0910 100%)", padding: "clamp(2rem,5vw,4rem)" }}>
-          <div style={{ marginLeft: "auto", maxWidth: 400, textAlign: "right" }}>
-            <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.irisSoft, marginBottom: ".7rem" }}>
-              {rightTitle}
-            </div>
-            <p style={{ color: N.cream, fontSize: ".98rem" }}>{rightBody}</p>
-          </div>
-        </div>
-
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: N.card,
-            filter: "grayscale(1) brightness(.8)",
-            padding: "clamp(2rem,5vw,4rem)",
-            clipPath: `inset(0 ${100 - pct}% 0 0)`,
-          }}
-        >
-          <div style={{ maxWidth: 400 }}>
-            <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim, marginBottom: ".7rem" }}>
-              {leftTitle}
-            </div>
-            <p style={{ color: N.smoke, fontSize: ".98rem" }}>{leftBody}</p>
-          </div>
-        </div>
-
-        <div style={{ position: "absolute", top: 0, bottom: 0, width: 2, background: N.grad, left: `${pct}%`, pointerEvents: "none" }}>
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              transform: "translate(-50%,-50%)",
-              width: 40,
-              height: 40,
-              borderRadius: "50%",
-              background: N.ink,
-              border: `1px solid ${N.coral}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: N.coral,
-              fontFamily: N.mono,
-              fontSize: ".8rem",
-              boxShadow: "0 0 24px rgba(255,93,87,.35)",
-            }}
-          >
-            ⇄
-          </div>
-        </div>
-      </div>
-
-      <input type="range" min={0} max={100} value={pct} aria-label={hint} onChange={(e) => setPct(Number(e.target.value))} className="sr-only" />
-      <div style={{ marginTop: "1rem", textAlign: "center", fontFamily: N.mono, fontSize: ".66rem", letterSpacing: ".3em", textTransform: "uppercase", color: N.smokeDim }}>
-        {hint}
-      </div>
-    </div>
-  )
-}
-
-/** Une entrée de la FAQ, reprise du comportement de NOCTA. */
-function FaqItem({ q, a, defaultOpen }: { q: string; a: string; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(Boolean(defaultOpen))
-  return (
-    <div
-      style={{
-        border: `1px solid ${open ? N.line : N.lineSoft}`,
-        borderRadius: 14,
-        background: N.ink2,
-        overflow: "hidden",
-        transition: "border-color .4s",
-      }}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        style={{
-          width: "100%",
-          textAlign: "left",
-          background: "none",
-          border: 0,
-          cursor: "pointer",
-          color: N.cream,
-          fontFamily: N.display,
-          fontWeight: 600,
-          fontSize: "clamp(1.02rem,2vw,1.22rem)",
-          padding: "1.15rem 1.4rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "1rem",
-        }}
-      >
-        <span>{q}</span>
-        <span
-          aria-hidden
-          style={{
-            fontFamily: N.mono,
-            color: N.coral,
-            flex: "none",
-            fontSize: "1.2rem",
-            transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
-            transform: open ? "rotate(45deg)" : "rotate(0deg)",
-          }}
-        >
-          +
-        </span>
-      </button>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateRows: open ? "1fr" : "0fr",
-          transition: "grid-template-rows .35s cubic-bezier(.22,.61,.36,1)",
-        }}
-      >
-        <div style={{ overflow: "hidden" }}>
-          <p style={{ color: N.smoke, padding: "0 1.4rem 1.25rem", fontSize: ".97rem", margin: 0 }}>{a}</p>
-        </div>
-      </div>
-    </div>
+    <>
+      {/* Les polices de NOCTA et sa feuille de style, chargées sur cette
+          route uniquement. */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="/nocta/styles.css" />
+      <main id="main" dangerouslySetInnerHTML={{ __html: NOCTA_HTML }} />
+    </>
   )
 }

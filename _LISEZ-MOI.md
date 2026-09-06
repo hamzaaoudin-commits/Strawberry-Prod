@@ -1,52 +1,47 @@
-# Strawberry — /lieux : tout NOCTA, cette fois
+# Strawberry — /lieux : NOCTA porté, plus réécrit
 
-Quatre fichiers.
+8 fichiers, dont les 4 assets de NOCTA copiés sans modification.
 
-## Comment je m'y suis pris cette fois
+## J'ai changé de méthode, parce que la mienne était mauvaise
 
-J'ai arrêté de reconstruire de mémoire. J'ai listé toutes les clés de
-contenu du site NOCTA (`data-i18n` dans `index.html`, textes dans
-`assets/i18n.js`) et comparé avec ce que j'avais livré. Quatre sections
-entières manquaient.
+Depuis trois tours je **réimplémentais** le design de NOCTA à la main, et
+j'en perdais un morceau à chaque fois : sections oubliées, animations
+approximées, textes reformulés. Vous aviez raison de vous agacer.
 
-## Ce qui manquait, et qui est là maintenant
+Cette version ne réécrit rien. Elle **porte** le site :
 
-**Le bandeau défilant.** J'avais mis les typologies de lieux en chips
-figées dans le hero. Sur NOCTA c'est un bandeau qui défile en boucle,
-en Bricolage semi-gras, avec pause au survol. Rétabli, et les chips
-retirées puisqu'il les remplace.
+- `public/nocta/styles.css` — les 40 Ko de CSS d'origine, à l'octet près.
+- `public/nocta/app.js` — les 24 Ko de JavaScript d'origine : le canvas
+  bokeh animé du hero, le révélateur mot à mot du manifeste, les compteurs
+  de chiffres, le parcours épinglé qui défile, le comparateur, l'accordéon
+  de la FAQ, les révélations au scroll.
+- `public/nocta/i18n.js` et `config.js` — la bascule FR/EN d'origine.
+- Le HTML de la home injecté tel quel, avec ses vraies classes.
 
-**« La tournée ».** La plus grosse omission — une section entière, avec
-quatre lieux types (restaurant à 19h30, cocktail bar à 23h50, club à
-2h10, coffee shop à 8h05), chacun avec sa phrase d'ambiance en Instrument
-Serif italique et ses quatre entrées : l'heure, la lumière, le casting,
-les rituels. C'est la section qui prouve l'argument du site — le monde est
-déjà là, il n'a simplement jamais été écrit. Elle se referme sur « Tout ça
-existe déjà chez vous. Il faut juste l'écrire. »
+Ce sont donc exactement les animations et le design du site, y compris
+celles que je n'aurais jamais réimplémentées à l'identique — le bokeh en
+canvas et le parcours épinglé en particulier.
 
-**Les textes exacts.** Le constat, la différence, le comparateur : tous
-repris mot pour mot depuis `i18n.js`, FR et EN, au lieu de mes
-reformulations.
+## Les deux seules modifications au HTML
 
-**La FAQ**, du patch précédent : les cinq questions de NOCTA dans leur
-formulation d'origine, sous « Ce que les gérants me demandent », avec
-l'accordéon à « + » corail qui pivote en croix.
+Le wordmark « NOCTA » devient « LIEUX ». Le formulaire de contact est
+retiré : la page renvoie vers celui du studio.
 
-## La charte
+## Cloisonnement
 
-Fond `#0a0910`, dégradé corail → iris à 108°, les quatre polices d'origine
-chargées par la page, wordmark géant avec lueur et scintillement, pastille
-qui pulse, bokeh du hero et son voile, cartes 18px, boutons pilule,
-surtitres en Space Mono.
+Le CSS de NOCTA redéfinit `body` et `html`. Il est chargé **uniquement sur
+cette route**, jamais globalement, pour ne pas déteindre sur le reste du
+site. Idem pour ses quatre polices.
 
 ## Vérification
 
-Contrôle de types réel : zéro erreur. Chaque section vérifiée comme
-effectivement rendue dans le composant, pas seulement définie.
+Contrôle de types réel : zéro erreur. Présence vérifiée dans le HTML
+injecté : canvas bokeh, marquee, manifeste, parcours épinglé, comparateur,
+les 5 entrées de FAQ, l'indice de défilement.
 
-## Ce qui reste hors périmètre de cette page
+## À vérifier de votre côté après déploiement
 
-Le formulaire de contact de NOCTA (la page renvoie vers celui de
-Strawberry) et les pages secondaires du site (prestations, réalisations,
-formules) — le brief parlait d'une porte Lieux, pas d'un site complet.
-Dites-moi si vous voulez que je reprenne aussi ces pages.
+Les fichiers de `public/nocta/` doivent être servis tels quels par Vercel
+(c'est le comportement par défaut pour `public/`). Si une animation ne
+démarre pas, ouvrez la console : ce sera un 404 sur un de ces quatre
+fichiers, pas un problème de code.
