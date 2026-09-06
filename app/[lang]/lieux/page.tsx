@@ -3,10 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
-import { NavBar } from "@/components/strawberry/navbar"
-import { Footer } from "@/components/strawberry/footer"
-import { FaqSection } from "@/components/strawberry/faq-section"
-import { FAQ_LIEUX } from "@/lib/faqs"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
@@ -173,187 +169,327 @@ const T = {
   },
 }
 
+/**
+ * La charte NOCTA, reprise telle quelle.
+ *
+ * Palette nocturne (#0a0910), dégradé corail → iris, et les quatre familles
+ * de l'ancien site : Bricolage Grotesque pour les titres, Instrument Serif
+ * en italique pour les accroches, Hanken Grotesk pour le texte, Space Mono
+ * pour les surtitres et les boutons. Les polices sont chargées par la page
+ * elle-même : le reste du site ne charge que Playfair et DM Sans.
+ *
+ * Tout est porté par des styles inline et une feuille locale plutôt que par
+ * les classes utilitaires du site — les jetons de Strawberry (fond, rouge de
+ * marque, familles) ne décrivent pas cette identité, et les emprunter
+ * reviendrait à repeindre NOCTA aux couleurs du studio.
+ */
+const N = {
+  ink: "#0a0910",
+  ink2: "#100e1a",
+  card: "#181425",
+  line: "#2a2438",
+  lineSoft: "#211d2e",
+  coral: "#ff5d57",
+  iris: "#7b6cff",
+  irisSoft: "#a99dff",
+  cream: "#f3efe9",
+  smoke: "#a39db8",
+  smokeDim: "#6f6982",
+  grad: "linear-gradient(108deg, #ff5d57 0%, #7b6cff 100%)",
+  display: '"Bricolage Grotesque", system-ui, sans-serif',
+  serif: '"Instrument Serif", Georgia, serif',
+  body: '"Hanken Grotesk", system-ui, sans-serif',
+  mono: '"Space Mono", ui-monospace, monospace',
+}
+
+const gradText: React.CSSProperties = {
+  background: N.grad,
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+}
+
+function Eyebrow({ children, iris }: { children: React.ReactNode; iris?: boolean }) {
+  return (
+    <div
+      style={{
+        fontFamily: N.mono,
+        fontSize: ".72rem",
+        letterSpacing: ".32em",
+        textTransform: "uppercase",
+        color: iris ? N.irisSoft : N.coral,
+        marginBottom: "1.1rem",
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
 export default function LieuxPage() {
   const t = useT(T)
 
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main style={{ background: N.ink, color: N.cream, fontFamily: N.body, lineHeight: 1.6 }}>
       <ViewTracker name="lieux" />
-      <NavBar />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@1&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+      <style>{`
+        .nocta h1, .nocta h2, .nocta h3 { font-family:${N.display}; font-weight:700; line-height:1.02; letter-spacing:-.02em; margin:0; }
+        .nocta-wrap { max-width:1180px; margin:0 auto; padding-inline:clamp(20px,5vw,64px); }
+        .nocta-sec { padding-block:clamp(72px,10vw,140px); }
+        .nocta-btn { display:inline-flex; align-items:center; gap:.6em; font-family:${N.mono};
+          font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; padding:1.05em 1.8em;
+          border-radius:100px; border:1px solid transparent; background:${N.grad}; color:#120a0a;
+          font-weight:700; text-decoration:none; transition:box-shadow .4s cubic-bezier(.22,.61,.36,1); }
+        .nocta-btn:hover { box-shadow:0 14px 50px -12px rgba(255,93,87,.55); }
+        .nocta-card { background:${N.ink2}; border:1px solid ${N.lineSoft}; border-radius:18px;
+          padding:clamp(1.6rem,2.6vw,2.3rem); }
+        .nocta-chip { border:1px solid ${N.lineSoft}; border-radius:100px; padding:.55em 1.1em;
+          font-family:${N.mono}; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:${N.smoke}; }
+        @keyframes nocta-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+        @keyframes nocta-flick { 0%,96%,100%{opacity:1} 97%{opacity:.55} 98%{opacity:1} 98.5%{opacity:.7} }
+        .nocta-flicker { animation:nocta-flick 6s infinite steps(1); }
+        @media (prefers-reduced-motion: reduce) { .nocta-flicker { animation:none } }
+      `}</style>
 
-      {/* HERO */}
-      <section className="section relative overflow-hidden pt-32">
-        <div className="glow-center" aria-hidden />
-        <div className="shell relative">
-          <div className="pill mb-8">{t.kicker}</div>
-          <h1 className="mb-10 max-w-[900px] font-serif text-[clamp(2.2rem,6vw,4.6rem)] font-bold leading-[1.06] tracking-[-0.03em]">
-            {t.h1a}
-            <br />
-            <span className="text-gradient">{t.h1b}</span>
-          </h1>
-          <Link href="/#contact" className="btn-primary">
-            {t.cta}
-          </Link>
-
-          {/* Les typologies de lieux, en chips — repris tel quel de NOCTA. */}
-          <div className="mt-14 flex flex-wrap gap-2.5">
-            {t.types.map((ty) => (
-              <span
-                key={ty}
-                className="border border-hair px-4 py-2 font-sans text-[12.5px] uppercase tracking-[0.12em] text-chalk-55"
-              >
-                {ty}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LE CONSTAT */}
-      <section className="section border-t border-hair bg-ink-soft">
-        <div className="shell mx-auto max-w-[780px]">
-          <div className="kicker mb-6">{t.lFinding}</div>
-          <p className="mb-6 font-sans text-[17px] leading-[1.75] text-chalk-65">
-            {t.findingA}
-            <strong className="font-semibold text-white">{t.findingStrong}</strong>
-            {t.findingB}
-            <strong className="font-semibold text-white">{t.findingC}</strong>
-          </p>
-          <p className="font-sans text-[17px] leading-[1.75] text-chalk-65">
-            {t.findingD}
-            <strong className="font-semibold text-brand">{t.findingE}</strong>
-          </p>
-        </div>
-      </section>
-
-      {/* LE SPRINT */}
-      <section className="section border-t border-hair">
-        <div className="shell">
-          <div className="mx-auto mb-16 max-w-[720px] text-center">
-            <div className="kicker mb-6">{t.lSprint}</div>
-            <h2 className="h-section">{t.sprintH2}</h2>
-          </div>
-
-          <div className="mx-auto grid max-w-[980px] gap-px bg-white/10">
-            {t.steps.map((s) => (
-              <div
-                key={s.n}
-                className="grid gap-6 bg-ink px-6 py-10 sm:grid-cols-[auto_1fr] sm:gap-10 sm:px-10"
-              >
-                <div className="font-serif text-[clamp(1.6rem,3vw,2.4rem)] font-bold leading-none text-brand">
-                  {s.n}
-                </div>
-                <div>
-                  <h3 className="mb-3 font-serif text-[clamp(1.2rem,2vw,1.6rem)] font-semibold tracking-[-0.02em] text-white">
-                    {s.title}
-                  </h3>
-                  <p className="m-0 mb-5 font-sans text-[15.5px] leading-[1.75] text-chalk-65">{s.body}</p>
-                  <ul className="m-0 list-none space-y-2 p-0">
-                    {s.items.map((it) => (
-                      <li key={it} className="flex items-baseline gap-3 font-sans text-[13.5px] text-chalk-55">
-                        <span aria-hidden className="text-[0.8em] text-brand">
-                          ✦
-                        </span>
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LA DIFFÉRENCE — comparateur à glisser */}
-      <section className="section border-t border-hair bg-ink-soft">
-        <div className="shell">
-          <div className="mx-auto mb-12 max-w-[720px] text-center">
-            <div className="kicker mb-6">{t.lDiff}</div>
-            <h2 className="h-section mb-6">{t.diffH2}</h2>
-            <p className="lede">{t.diffLead}</p>
-          </div>
-          <CompareSlider
-            leftTitle={t.diffLeftTitle}
-            leftBody={t.diffLeftBody}
-            rightTitle={t.diffRightTitle}
-            rightBody={t.diffRightBody}
-            hint={t.diffHint}
+      <div className="nocta">
+        {/* HERO — le wordmark géant en dégradé, sur le bokeh nocturne. */}
+        <section style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 0,
+              background:
+                "radial-gradient(60% 50% at 30% 30%, rgba(255,93,87,.16), transparent 60%), radial-gradient(50% 60% at 80% 70%, rgba(123,108,255,.18), transparent 60%)",
+            }}
           />
-
-          {/* Les trois chiffres. */}
-          <div className="mx-auto mt-14 grid max-w-[880px] gap-px bg-white/10 sm:grid-cols-3">
-            {t.stats.map((s, i) => (
-              <div key={s.label} className="bg-ink px-6 py-8 text-center">
-                <div className="mb-1 font-sans text-[10px] uppercase tracking-[0.2em] text-chalk-40">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="font-serif text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none text-gradient">
-                  {s.n}
-                </div>
-                <div className="mt-3 font-sans text-[12.5px] leading-snug text-chalk-55">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CE QUE ÇA COÛTE */}
-      <section className="section border-t border-hair">
-        <div className="shell">
-          <div className="mx-auto mb-14 max-w-[720px] text-center">
-            <div className="kicker mb-6">{t.lPrice}</div>
-            <h2 className="h-section mb-6">{t.priceH2}</h2>
-            <p className="lede">{t.priceLead}</p>
-          </div>
-
-          <div className="mx-auto grid max-w-[900px] gap-px bg-white/10 sm:grid-cols-2">
-            <div className="bg-ink px-7 py-9 [filter:grayscale(1)_brightness(0.85)]">
-              <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
-                {t.agencyTitle}
-              </div>
-              <div className="mb-4 font-serif text-[clamp(1.3rem,2.4vw,1.7rem)] font-bold text-white">
-                {t.agencyPrice}
-              </div>
-              <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-55">{t.agencyBody}</p>
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(85% 95% at 50% 50%, rgba(10,9,16,.72) 0%, rgba(10,9,16,.42) 48%, transparent 78%)",
+            }}
+          />
+          <div className="nocta-wrap" style={{ position: "relative", zIndex: 2, width: "100%", paddingTop: 120 }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: ".8rem",
+                marginBottom: "1.6rem",
+                background: "rgba(10,9,16,.55)",
+                border: `1px solid ${N.lineSoft}`,
+                padding: ".5em 1em",
+                borderRadius: 100,
+                fontFamily: N.mono,
+                fontSize: ".72rem",
+                letterSpacing: ".24em",
+                textTransform: "uppercase",
+                color: N.smoke,
+              }}
+            >
+              <span
+                aria-hidden
+                style={{ width: 7, height: 7, borderRadius: "50%", background: N.coral, boxShadow: `0 0 12px ${N.coral}`, animation: "nocta-pulse 2.4s infinite" }}
+              />
+              {t.kicker}
             </div>
-            <div className="border border-brand-hair bg-brand/[0.04] px-7 py-9">
-              <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">
-                {t.sprintTitle}
-              </div>
-              <div className="mb-4 font-serif text-[clamp(1.3rem,2.4vw,1.7rem)] font-bold text-gradient">
-                {t.sprintPrice}
-              </div>
-              <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-75">{t.sprintBody}</p>
+
+            <h1
+              className="nocta-flicker"
+              style={{
+                fontFamily: N.display,
+                fontWeight: 800,
+                fontSize: "clamp(4rem,15vw,12rem)",
+                lineHeight: 0.85,
+                letterSpacing: "-.04em",
+                ...gradText,
+                filter: "drop-shadow(0 0 38px rgba(255,93,87,.28))",
+              }}
+            >
+              LIEUX
+            </h1>
+
+            <p
+              style={{
+                fontFamily: N.serif,
+                fontStyle: "italic",
+                fontSize: "clamp(1.5rem,4vw,2.6rem)",
+                color: N.cream,
+                marginTop: ".6rem",
+                lineHeight: 1.15,
+                maxWidth: "20ch",
+              }}
+            >
+              {t.h1a}{" "}
+              <b style={{ fontStyle: "normal", fontFamily: N.display, fontWeight: 700, ...gradText }}>{t.h1b}</b>
+            </p>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginTop: "2.6rem" }}>
+              <Link href="/#contact" className="nocta-btn">
+                {t.cta}
+              </Link>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: ".6rem", marginTop: "3rem" }}>
+              {t.types.map((ty) => (
+                <span key={ty} className="nocta-chip">
+                  {ty}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* QUI ÉCRIT */}
-      <section className="section border-t border-hair bg-ink-soft">
-        <div className="shell mx-auto max-w-[760px]">
-          <div className="kicker mb-6">{t.lWho}</div>
-          <h2 className="h-section mb-6">{t.whoH2}</h2>
-          <p className="font-sans text-[16.5px] leading-[1.8] text-chalk-65">{t.whoBody}</p>
-        </div>
-      </section>
+        {/* LE CONSTAT */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
+          <div className="nocta-wrap" style={{ maxWidth: 820 }}>
+            <Eyebrow>{t.lFinding}</Eyebrow>
+            <p style={{ fontSize: "clamp(1.05rem,1.7vw,1.3rem)", color: N.smoke, marginBottom: "1.6rem" }}>
+              {t.findingA}
+              <b style={{ color: N.cream, fontWeight: 600 }}>{t.findingStrong}</b>
+              {t.findingB}
+              <b style={{ color: N.cream, fontWeight: 600 }}>{t.findingC}</b>
+            </p>
+            <p style={{ fontSize: "clamp(1.05rem,1.7vw,1.3rem)", color: N.smoke }}>
+              {t.findingD}
+              <b style={{ fontFamily: N.display, fontWeight: 700, ...gradText }}>{t.findingE}</b>
+            </p>
+          </div>
+        </section>
 
-      <FaqSection faqs={FAQ_LIEUX} />
+        {/* LE SPRINT */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
+          <div className="nocta-wrap">
+            <div style={{ marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
+              <Eyebrow>{t.lSprint}</Eyebrow>
+              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04 }}>{t.sprintH2}</h2>
+            </div>
 
-      {/* CTA */}
-      <section className="section relative overflow-hidden border-t border-hair text-center">
-        <div className="glow-center" aria-hidden />
-        <div className="shell relative mx-auto max-w-[680px]">
-          <h2 className="h-section mb-6">{t.ctaH2}</h2>
-          <p className="lede mb-10">{t.ctaBody}</p>
-          <Link href="/#contact" className="btn-primary">
-            {t.ctaBtn}
-          </Link>
-        </div>
-      </section>
+            <div style={{ display: "grid", gap: "1.1rem" }}>
+              {t.steps.map((s) => (
+                <div key={s.n} className="nocta-card" style={{ display: "grid", gap: "1.5rem", gridTemplateColumns: "auto 1fr" }}>
+                  <div style={{ fontFamily: N.mono, fontSize: "1.6rem", fontWeight: 700, ...gradText }}>{s.n}</div>
+                  <div>
+                    <h3 style={{ fontSize: "clamp(1.35rem,3vw,2.1rem)", lineHeight: 1.1, marginBottom: ".8rem" }}>{s.title}</h3>
+                    <p style={{ color: N.smoke, marginBottom: "1.2rem" }}>{s.body}</p>
+                    <ul style={{ listStyle: "none", display: "grid", gap: ".5rem", padding: 0, margin: 0 }}>
+                      {s.items.map((it) => (
+                        <li key={it} style={{ display: "flex", gap: ".7rem", fontSize: ".92rem", color: N.smokeDim }}>
+                          <span aria-hidden style={{ color: N.coral }}>
+                            ✦
+                          </span>
+                          {it}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <Footer />
+        {/* LA DIFFÉRENCE */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
+          <div className="nocta-wrap">
+            <div style={{ marginBottom: "2.6rem" }}>
+              <Eyebrow iris>{t.lDiff}</Eyebrow>
+              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.diffH2}</h2>
+              <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, maxWidth: "60ch" }}>{t.diffLead}</p>
+            </div>
+            <CompareSlider
+              leftTitle={t.diffLeftTitle}
+              leftBody={t.diffLeftBody}
+              rightTitle={t.diffRightTitle}
+              rightBody={t.diffRightBody}
+              hint={t.diffHint}
+            />
+
+            <div style={{ display: "grid", gap: "1.1rem", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: "3rem" }}>
+              {t.stats.map((s) => (
+                <div key={s.label} className="nocta-card" style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: N.display, fontWeight: 800, fontSize: "clamp(2.2rem,5vw,3.2rem)", lineHeight: 1, ...gradText }}>
+                    {s.n}
+                  </div>
+                  <div style={{ marginTop: ".8rem", fontFamily: N.mono, fontSize: ".68rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CE QUE ÇA COÛTE */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
+          <div className="nocta-wrap">
+            <div style={{ marginBottom: "2.6rem" }}>
+              <Eyebrow>{t.lPrice}</Eyebrow>
+              <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.priceH2}</h2>
+              <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, maxWidth: "60ch" }}>{t.priceLead}</p>
+            </div>
+
+            <div style={{ display: "grid", gap: "1.1rem", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))" }}>
+              <div className="nocta-card" style={{ filter: "grayscale(1) brightness(.85)" }}>
+                <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim, marginBottom: ".7rem" }}>
+                  {t.agencyTitle}
+                </div>
+                <div style={{ fontFamily: N.display, fontWeight: 700, fontSize: "clamp(1.3rem,2.4vw,1.8rem)", marginBottom: "1rem" }}>
+                  {t.agencyPrice}
+                </div>
+                <p style={{ color: N.smoke, fontSize: ".95rem" }}>{t.agencyBody}</p>
+              </div>
+              <div className="nocta-card" style={{ borderColor: "rgba(255,93,87,.35)", background: "rgba(255,93,87,.05)" }}>
+                <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.coral, marginBottom: ".7rem" }}>
+                  {t.sprintTitle}
+                </div>
+                <div style={{ fontFamily: N.display, fontWeight: 700, fontSize: "clamp(1.3rem,2.4vw,1.8rem)", marginBottom: "1rem", ...gradText }}>
+                  {t.sprintPrice}
+                </div>
+                <p style={{ color: N.smoke, fontSize: ".95rem" }}>{t.sprintBody}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* QUI ÉCRIT */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
+          <div className="nocta-wrap" style={{ maxWidth: 800 }}>
+            <Eyebrow iris>{t.lWho}</Eyebrow>
+            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.4rem" }}>{t.whoH2}</h2>
+            <p style={{ color: N.smoke, fontSize: "clamp(1rem,1.6vw,1.2rem)" }}>{t.whoBody}</p>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, textAlign: "center", position: "relative", overflow: "hidden" }}>
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "radial-gradient(55% 60% at 50% 45%, rgba(123,108,255,.16), transparent 65%)",
+            }}
+          />
+          <div className="nocta-wrap" style={{ position: "relative", maxWidth: 720 }}>
+            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "1.2rem" }}>{t.ctaH2}</h2>
+            <p style={{ fontSize: "clamp(1.1rem,1.8vw,1.4rem)", color: N.smoke, margin: "0 auto 2.4rem" }}>{t.ctaBody}</p>
+            <Link href="/#contact" className="nocta-btn">
+              {t.ctaBtn}
+            </Link>
+          </div>
+        </section>
+      </div>
     </main>
   )
 }
@@ -363,11 +499,9 @@ export default function LieuxPage() {
  *
  * Une seule zone, deux réalités superposées, une poignée qui découpe l'une
  * dans l'autre. Le geste porte l'argument : on ne lit pas la différence, on
- * la fait apparaître soi-même.
- *
- * Le curseur se pilote à la souris, au doigt et au clavier (flèches gauche
- * et droite), et l'input range reste présent — masqué visuellement, pas
- * retiré — pour que la valeur soit annoncée aux lecteurs d'écran.
+ * la fait apparaître soi-même. Souris, doigt et clavier ; l'input range est
+ * masqué visuellement mais conservé, pour que la valeur soit annoncée aux
+ * lecteurs d'écran.
  */
 function CompareSlider({
   leftTitle,
@@ -391,8 +525,7 @@ function CompareSlider({
       const el = boxRef.current
       if (!el) return
       const r = el.getBoundingClientRect()
-      const next = ((clientX - r.left) / r.width) * 100
-      setPct(Math.min(100, Math.max(0, next)))
+      setPct(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)))
     }
     const onMouse = (e: MouseEvent) => dragging.current && move(e.clientX)
     const onTouch = (e: TouchEvent) => dragging.current && move(e.touches[0].clientX)
@@ -412,11 +545,10 @@ function CompareSlider({
   }, [])
 
   return (
-    <div className="mx-auto max-w-[900px]">
+    <div>
       <div
         ref={boxRef}
-        className="relative select-none overflow-hidden border border-hair"
-        style={{ cursor: "ew-resize" }}
+        style={{ position: "relative", overflow: "hidden", borderRadius: 18, border: `1px solid ${N.lineSoft}`, cursor: "ew-resize", userSelect: "none" }}
         onMouseDown={() => {
           dragging.current = true
         }}
@@ -424,43 +556,62 @@ function CompareSlider({
           dragging.current = true
         }}
       >
-        {/* Réalité de droite : le fond. */}
-        <div className="bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-7 py-12 sm:px-12 sm:py-16">
-          <div className="ml-auto max-w-[380px] text-right">
-            <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{rightTitle}</div>
-            <p className="m-0 font-sans text-[15px] leading-relaxed text-chalk-75">{rightBody}</p>
+        <div style={{ background: "linear-gradient(160deg, #1b1030 0%, #0a0910 100%)", padding: "clamp(2rem,5vw,4rem)" }}>
+          <div style={{ marginLeft: "auto", maxWidth: 400, textAlign: "right" }}>
+            <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.irisSoft, marginBottom: ".7rem" }}>
+              {rightTitle}
+            </div>
+            <p style={{ color: N.cream, fontSize: ".98rem" }}>{rightBody}</p>
           </div>
         </div>
 
-        {/* Réalité de gauche : découpée par la poignée. */}
         <div
-          className="absolute inset-0 bg-[#0d0d0d] px-7 py-12 [filter:grayscale(1)_brightness(0.8)] sm:px-12 sm:py-16"
-          style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: N.card,
+            filter: "grayscale(1) brightness(.8)",
+            padding: "clamp(2rem,5vw,4rem)",
+            clipPath: `inset(0 ${100 - pct}% 0 0)`,
+          }}
         >
-          <div className="max-w-[380px]">
-            <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">{leftTitle}</div>
-            <p className="m-0 font-sans text-[15px] leading-relaxed text-chalk-55">{leftBody}</p>
+          <div style={{ maxWidth: 400 }}>
+            <div style={{ fontFamily: N.mono, fontSize: ".7rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim, marginBottom: ".7rem" }}>
+              {leftTitle}
+            </div>
+            <p style={{ color: N.smoke, fontSize: ".98rem" }}>{leftBody}</p>
           </div>
         </div>
 
-        {/* La poignée. */}
-        <div className="pointer-events-none absolute inset-y-0 w-[2px] bg-brand" style={{ left: `${pct}%` }}>
-          <div className="absolute top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand bg-ink font-sans text-[13px] text-brand">
+        <div style={{ position: "absolute", top: 0, bottom: 0, width: 2, background: N.grad, left: `${pct}%`, pointerEvents: "none" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              transform: "translate(-50%,-50%)",
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              background: N.ink,
+              border: `1px solid ${N.coral}`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: N.coral,
+              fontFamily: N.mono,
+              fontSize: ".8rem",
+              boxShadow: "0 0 24px rgba(255,93,87,.35)",
+            }}
+          >
             ⇄
           </div>
         </div>
       </div>
 
-      <input
-        type="range"
-        min={0}
-        max={100}
-        value={pct}
-        aria-label={hint}
-        onChange={(e) => setPct(Number(e.target.value))}
-        className="sr-only"
-      />
-      <div className="mt-4 text-center font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">{hint}</div>
+      <input type="range" min={0} max={100} value={pct} aria-label={hint} onChange={(e) => setPct(Number(e.target.value))} className="sr-only" />
+      <div style={{ marginTop: "1rem", textAlign: "center", fontFamily: N.mono, fontSize: ".66rem", letterSpacing: ".3em", textTransform: "uppercase", color: N.smokeDim }}>
+        {hint}
+      </div>
     </div>
   )
 }
