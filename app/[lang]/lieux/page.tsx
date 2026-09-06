@@ -106,6 +106,15 @@ const T = {
 
     ctaH2: "Votre lieu mérite d'être écrit.",
     ctaBody: "Un service pour observer, deux à trois semaines pour écrire, et le système vous appartient.",
+    faqEyebrow: "Questions fréquentes",
+    faqTitle: "Ce que les gérants me demandent.",
+    faq: [
+      { q: "Pourquoi ne pas simplement prendre une agence au mois ?", a: "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si on se quitte demain, il continue de fonctionner sans moi." },
+      { q: "Qui publie une fois le sprint terminé ?", a: "Votre équipe — c'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, écrits plan par plan, plus un calendrier sur quatre semaines qui tourne en boucle. Personne n'a besoin de deviner quoi poster." },
+      { q: "Combien de temps ça prend, de mon côté ?", a: "Quelques heures en tout. Une immersion pendant un service, un entretien avec vous, deux points d'étape et une remise finale. Le reste du travail se fait sans vous mobiliser." },
+      { q: "Personne chez moi ne sait filmer.", a: "C'est prévu. Les scripts sont écrits pour quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit, et n'importe qui en salle peut le faire." },
+      { q: "Qu'est-ce que je garde à la fin ?", a: "Tout, et pour toujours : le document qui décrit votre monde, votre ligne éditoriale, vos textes permanents, le manuel d'exécution, et la première semaine de contenu déjà produite." },
+    ],
     ctaBtn: "Prendre contact →",
   },
   en: {
@@ -165,6 +174,15 @@ const T = {
 
     ctaH2: "Your venue deserves to be written.",
     ctaBody: "One service to observe, two to three weeks to write, and the system is yours.",
+    faqEyebrow: "Frequently asked",
+    faqTitle: "What owners ask me.",
+    faq: [
+      { q: "Why not just hire a monthly agency?", a: "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay once, and you leave with the system. If we part tomorrow, it keeps working without me." },
+      { q: "Who publishes once the sprint is over?", a: "Your team — that is the point. The manual holds 20 to 30 ready-to-use scripts, written shot by shot, plus a four-week calendar that loops. Nobody has to guess what to post." },
+      { q: "How much of my time does it take?", a: "A few hours in total. One immersion during a service, one interview with you, two checkpoints and a final handover. The rest of the work happens without taking your time." },
+      { q: "Nobody here knows how to film.", a: "That is accounted for. The scripts are written for someone who has never filmed: where to stand, what to frame, how many seconds, what to say. A phone is enough, and anyone on the floor can do it." },
+      { q: "What do I keep at the end?", a: "Everything, forever: the document describing your world, your editorial line, your permanent copy, the execution manual, and the first week of content already produced." },
+    ],
     ctaBtn: "Get in touch →",
   },
 }
@@ -471,6 +489,22 @@ export default function LieuxPage() {
           </div>
         </section>
 
+        {/* FAQ — l'accordéon de NOCTA : cartes arrondies 14px, question en
+            Bricolage semi-gras, "+" corail qui pivote en croix à
+            l'ouverture, réponse dépliée par transition de grid-template-rows
+            (la seule façon d'animer une hauteur automatique en CSS pur). */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
+          <div className="nocta-wrap" style={{ maxWidth: 860 }}>
+            <Eyebrow>{t.faqEyebrow}</Eyebrow>
+            <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04, marginBottom: "2.4rem" }}>{t.faqTitle}</h2>
+            <div style={{ display: "grid", gap: ".8rem" }}>
+              {t.faq.map((f, i) => (
+                <FaqItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, textAlign: "center", position: "relative", overflow: "hidden" }}>
           <div
@@ -611,6 +645,70 @@ function CompareSlider({
       <input type="range" min={0} max={100} value={pct} aria-label={hint} onChange={(e) => setPct(Number(e.target.value))} className="sr-only" />
       <div style={{ marginTop: "1rem", textAlign: "center", fontFamily: N.mono, fontSize: ".66rem", letterSpacing: ".3em", textTransform: "uppercase", color: N.smokeDim }}>
         {hint}
+      </div>
+    </div>
+  )
+}
+
+/** Une entrée de la FAQ, reprise du comportement de NOCTA. */
+function FaqItem({ q, a, defaultOpen }: { q: string; a: string; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(Boolean(defaultOpen))
+  return (
+    <div
+      style={{
+        border: `1px solid ${open ? N.line : N.lineSoft}`,
+        borderRadius: 14,
+        background: N.ink2,
+        overflow: "hidden",
+        transition: "border-color .4s",
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: "100%",
+          textAlign: "left",
+          background: "none",
+          border: 0,
+          cursor: "pointer",
+          color: N.cream,
+          fontFamily: N.display,
+          fontWeight: 600,
+          fontSize: "clamp(1.02rem,2vw,1.22rem)",
+          padding: "1.15rem 1.4rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        <span>{q}</span>
+        <span
+          aria-hidden
+          style={{
+            fontFamily: N.mono,
+            color: N.coral,
+            flex: "none",
+            fontSize: "1.2rem",
+            transition: "transform .35s cubic-bezier(.22,.61,.36,1)",
+            transform: open ? "rotate(45deg)" : "rotate(0deg)",
+          }}
+        >
+          +
+        </span>
+      </button>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: open ? "1fr" : "0fr",
+          transition: "grid-template-rows .35s cubic-bezier(.22,.61,.36,1)",
+        }}
+      >
+        <div style={{ overflow: "hidden" }}>
+          <p style={{ color: N.smoke, padding: "0 1.4rem 1.25rem", fontSize: ".97rem", margin: 0 }}>{a}</p>
+        </div>
       </div>
     </div>
   )

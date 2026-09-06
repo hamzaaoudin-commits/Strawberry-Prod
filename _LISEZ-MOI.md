@@ -1,49 +1,45 @@
-# Strawberry — /lieux avec la vraie identité NOCTA
+# Strawberry — /lieux : la FAQ de NOCTA, et sa charte
 
-Trois fichiers.
+Quatre fichiers.
 
-## Ce que j'avais raté
+## La FAQ
 
-Vous aviez demandé « les mêmes visuels » et j'ai livré la structure de
-NOCTA repeinte aux couleurs de Strawberry. C'était mon interprétation, pas
-votre demande.
+Vous avez raison : elle était dans le dépôt NOCTA, je ne suis pas allé la
+chercher et j'en ai réécrit une. Les cinq questions sont maintenant celles
+du site, dans leur formulation exacte, sous leur titre d'origine — « Ce
+que les gérants me demandent. »
 
-## La charte NOCTA, reprise telle quelle
+L'accordéon reprend le comportement de NOCTA : cartes arrondies 14px,
+question en Bricolage semi-gras, « + » corail qui pivote en croix à
+l'ouverture, filet qui s'éclaircit sur l'entrée ouverte, et réponse
+dépliée par transition de `grid-template-rows` — la seule façon d'animer
+une hauteur automatique en CSS pur. La première entrée est ouverte au
+chargement.
 
-- **Palette** : fond nocturne `#0a0910`, cartes `#100e1a` et `#181425`,
-  filets `#211d2e`, texte crème `#f3efe9`, gris-violet `#a39db8`.
-- **Le dégradé de marque** corail → iris (`#ff5d57` → `#7b6cff`), à 108°,
-  sur le wordmark, les chiffres, les prix et la poignée du comparateur.
-- **Les quatre polices d'origine**, chargées par la page : Bricolage
-  Grotesque (titres), Instrument Serif italique (accroche du hero),
-  Hanken Grotesk (texte), Space Mono (surtitres, boutons, libellés).
-- **Le wordmark géant** en dégradé avec sa lueur corail et son
-  scintillement, la pastille qui pulse dans le surtitre, le bokeh du hero
-  en dégradés radiaux avec son voile assombrissant, les cartes à coins
-  arrondis 18px, les boutons pilule en Space Mono.
+`FAQ_LIEUX`, la FAQ que j'avais inventée, est retirée de `lib/faqs.ts`.
 
-Tout est porté par des styles inline et une feuille locale : les jetons de
-Strawberry ne décrivent pas cette identité, et les emprunter revenait
-exactement à l'erreur précédente.
+## La charte NOCTA (rappel du patch précédent, inclus ici)
 
-**Conséquence assumée** : la page ne charge plus la barre de navigation ni
-le pied de page de Strawberry — ils auraient réintroduit la charte du
-studio en haut et en bas d'une page qui n'est pas dans cette charte. La
-FAQ Strawberry est retirée de la page pour la même raison ; `FAQ_LIEUX`
-reste dans `lib/faqs.ts`, prête si vous voulez que je la redessine dans la
-charte NOCTA.
+Fond `#0a0910`, dégradé corail → iris à 108°, les quatre polices d'origine
+chargées par la page (Bricolage Grotesque, Instrument Serif, Hanken
+Grotesk, Space Mono), wordmark géant avec lueur et scintillement, pastille
+qui pulse, bokeh du hero et son voile, cartes 18px, boutons pilule.
+
+La page ne charge ni la barre de navigation ni le pied de page de
+Strawberry : ils auraient réintroduit la charte du studio autour d'une
+page qui n'est pas dans cette charte.
 
 ## La navigation
 
-LIEUX ajouté au menu « Offres » et au pied de page (VENUES en anglais).
-C'est pour ça que vous ne voyiez pas la page : elle existait mais aucun
-lien n'y menait.
+LIEUX dans le menu « Offres » et au pied de page (VENUES en anglais) —
+c'est ce qui manquait pour que la page soit atteignable.
 
 ## Vérification
 
 Contrôle de types réel : zéro erreur.
 
-## À me dire
+## Reste à faire
 
-Si vous voulez la FAQ et un menu propres à NOCTA sur cette page, je les
-dessine dans sa charte plutôt que d'emprunter ceux du studio.
+Home à deux portes, mention de la narration du dirigeant sur la page
+Marques, page de vente des deux ouvrages (il me manque le lien Stripe du
+second, les deux prix, et le mode de remise du PDF).
