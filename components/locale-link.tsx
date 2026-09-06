@@ -23,7 +23,7 @@ export function LocaleLink({ href = "/", ...rest }: Props) {
 
   let finalHref = href
   if (!isExternal && !isBareAnchor) {
-    // "/#contact" and "/the-room" both need the locale segment.
+    // "/marques#contact" and "/the-room" both need the locale segment.
     const [path, hash] = href.split("#")
     finalHref = localePath(path || "/", lang) + (hash ? `#${hash}` : "")
   }

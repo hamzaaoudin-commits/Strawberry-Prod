@@ -34,7 +34,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <h1 class="wordmark flicker">THE ROOM</h1>
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
-<a class="btn btn-primary" href="#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="/marques#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
 <a class="btn btn-ghost" data-i18n="hero.cta2" href="#prestations">Comment ça se passe</a>
 </div>
 </div>
@@ -318,7 +318,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Je prends peu de lieux à la fois, et je le dis franchement si ce n'est pas le moment.</p>
-<a class="btn btn-primary" href="#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="/marques#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>

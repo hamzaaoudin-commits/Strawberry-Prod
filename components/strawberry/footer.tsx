@@ -15,10 +15,11 @@ const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method"]
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT", en: "BRAND NARRATIVE AUDIT" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE", en: "BRAND NARRATIVE ARCHITECTURE" } },
+  { href: "/marques", label: { fr: "MARQUES", en: "BRANDS" } },
   { href: "/the-room", label: { fr: "THE ROOM", en: "THE ROOM" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
-  { href: "/#contact" },
+  { href: "/marques#contact" },
   { href: "https://www.linkedin.com/in/strawberry-prod-84607340a/", external: true },
   { href: "https://instagram.com/strawberry_prods", external: true },
   { href: "mailto:hamza@gostrawberryprod.com" },

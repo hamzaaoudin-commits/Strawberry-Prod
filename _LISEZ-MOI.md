@@ -1,46 +1,51 @@
-# Strawberry — les portes visibles quoi qu'il arrive
+# Strawberry — les portes deviennent la page d'entrée
 
-Un fichier : `components/strawberry/doors-section.tsx`.
+8 fichiers.
 
-## Ce que j'ai vérifié
+## Ce que j'avais mal compris
 
-Le dépôt en ligne contient bien tout : `doors-section.tsx` existe,
-`DoorsSection` est importé et rendu dans `app/[lang]/page.tsx` ligne 58,
-et `app/[lang]/the-room/` est là. J'ai aussi passé tout le dépôt au
-contrôle de types : aucune erreur venant de mon code, et le gros littéral
-HTML de la page THE ROOM est intact (aucun caractère non échappé qui
-casserait la compilation).
+J'avais mis les deux portes **dans** la page d'accueil, sous le hero. Vous
+les vouliez **avant** : on entre sur le site, on voit Strawberry
+Production, on choisit sa porte, et seulement ensuite on arrive dans un
+argumentaire. C'est fait.
 
-Autrement dit : le code est là et il est valide.
+## La nouvelle structure
 
-## Le seul risque venant de moi, supprimé
+- **`/`** — la page d'entrée. Elle ne vend rien : le nom du studio, la
+  promesse en une phrase, et les deux portes. Elle tient dans un écran, pas
+  de défilement. **Pas de barre de navigation** : une page qui n'existe
+  que pour trancher entre deux directions ne doit pas offrir dix autres
+  liens. Le menu complet réapparaît dès qu'une porte est franchie.
+- **`/marques`** — l'ancienne page d'accueil, intégralement, moins le
+  sélecteur de portes qui n'a plus lieu d'être une fois le choix fait.
+- **`/the-room`** — inchangée.
 
-Les deux panneaux démarraient à `opacity: 0` et ne devenaient visibles que
-lorsque l'observateur de scroll se déclenchait. Si cet observateur ne
-part pas — script bloqué, section déjà dépassée au moment de
-l'hydratation, navigateur récalcitrant — on obtenait deux panneaux
-invisibles et un trou dans la page, exactement le symptôme décrit.
+## Les liens que ça déplaçait
 
-Corrigé : les panneaux sont visibles par défaut, et l'animation d'entrée
-n'est plus qu'un enrichissement quand elle peut jouer. Elle ne conditionne
-plus l'affichage.
+Deux pièges que le renommage aurait laissés cassés :
 
-## Si ça ne suffit pas
+1. **Le formulaire de contact** vivait sur l'ancienne page d'accueil.
+   Toutes les ancres `/#contact` pointaient donc vers une page qui ne le
+   contient plus. Redirigées vers `/marques#contact`.
+2. **Les deux CTA de THE ROOM** pointaient vers `#contact` en ancre
+   relative, alors que le formulaire a été retiré de cette page lors du
+   portage. Ils envoyaient dans le vide. Redirigés eux aussi.
 
-Alors le problème n'est pas dans le code mais dans le déploiement, et il
-n'y a qu'un endroit où le voir : **le journal de build sur Vercel**.
-Quand le build échoue, Vercel continue de servir la dernière version qui
-compilait — donc aucune de vos modifications récentes n'apparaît, ni les
-portes, ni THE ROOM, et le site a l'air figé. C'est exactement ce qui
-s'était passé la dernière fois, et le journal donnait le fichier et la
-ligne en cause.
+Le logo de la barre de navigation continue de mener à `/`, c'est-à-dire à
+l'entrée — le comportement attendu d'un logo.
 
-Deux vérifications rapides de votre côté :
+## Le reste
 
-1. Sur Vercel, le dernier déploiement est-il en vert, ou en rouge avec
-   « Failed to type check » ?
-2. Ouvrez `/fr/the-room` directement. Si cette page s'affiche, le
-   déploiement est bien passé et le souci est ailleurs. Si elle renvoie une
-   404, le build n'est pas passé.
+`/marques` ajouté au sitemap et à la liste des routes qui reçoivent le
+préfixe de langue dans `next.config.mjs` — sans cette dernière ligne,
+`/marques` sans langue aurait renvoyé une 404. Entrées MARQUES / BRANDS
+ajoutées au menu et au pied de page, à côté de THE ROOM.
 
-Si c'est rouge, envoyez-moi le journal comme la dernière fois et je corrige.
+## Vérification
+
+Contrôle de types réel : zéro erreur.
+
+## À supprimer
+
+`components/strawberry/doors-section.tsx` ne sert plus à rien : son
+contenu vit désormais directement dans la page d'entrée. Supprimable.
