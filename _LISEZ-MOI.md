@@ -1,58 +1,47 @@
-# Strawberry — /lieux aux couleurs du studio
+# Strawberry — la porte devient THE ROOM
 
-8 fichiers. Le design, les animations et le copywriting de NOCTA sont
-strictement inchangés : seules les couleurs bougent.
+13 fichiers. Le design, les animations et le copywriting sont inchangés :
+c'est un renommage de route, plus la recoloration du patch précédent.
 
-## Comment
+## Le nom
 
-Toute la charte de cette page est pilotée par les variables CSS du bloc
-`:root` de `styles.css`. Il a suffi de remplacer leurs valeurs — aucune
-règle de mise en page n'est réécrite.
+`/lieux` devient `/the-room`, une seule route pour les deux langues. Le
+brief prévoyait `/lieux` en français et `/venues` en anglais ; un nom
+bilingue rend cette dualité inutile et simplifie le référencement — une
+seule URL à indexer au lieu de deux qui disent la même chose.
 
-**Correspondances**
+Le wordmark géant du hero affiche THE ROOM. Dans le menu et le pied de
+page, l'entrée s'appelle THE ROOM dans les deux langues, avec un
+sous-titre qui précise de quoi il s'agit : « Lieux · le sprint d'écriture »
+en français, « Venues · the writing sprint » en anglais. Le nom ne se
+traduit pas, l'explication si — la même convention que BRAND NARRATIVE
+AUDIT, qui reste en anglais sur la version française.
 
-| Rôle | NOCTA | Strawberry |
-|---|---|---|
-| Fond principal | `#0a0910` | `#0a0a0a` |
-| Fond alterné | `#100e1a` | `#0d0d0d` |
-| Cartes | `#181425` | `#121212` |
-| Filets | `#2a2438` / `#211d2e` | rampe blanche du studio |
-| Accent primaire | corail `#ff5d57` | rouge de marque `#e63946` |
-| Accent secondaire | iris `#7b6cff` | rouge vif `#ff1a1a` |
-| Texte | crème `#f3efe9` | blanc |
-| Texte atténué | gris-violet | rampe d'opacité du studio |
+## Les routes
 
-Le dégradé garde son angle d'origine (108°) : seules ses deux extrémités
-changent, donc tout ce qui s'appuie dessus — wordmark, chiffres, prix,
-poignée du comparateur — conserve exactement le même rendu, en rouge.
+- `app/[lang]/the-room/page.tsx` — la page.
+- `app/[lang]/lieux/page.tsx` — redirection conservée vers `/the-room`.
+  La route a existé publiquement, autant ne pas casser un lien.
+- `next.config.mjs` — `/nocta` et `/lieux` à plat redirigent vers
+  `/fr/the-room`, et `the-room` est ajouté à la liste des routes qui
+  reçoivent automatiquement le préfixe de langue. Sans cette dernière
+  ligne, `/the-room` sans langue aurait donné une 404.
+- Sitemap, `locale-link.tsx` et le commentaire de `lib/routing.ts` mis à
+  jour.
 
-## Les couleurs cachées, aussi
+## Rappel du contenu de ce dossier
 
-Au-delà du bloc de variables, 33 couleurs étaient écrites en dur dans la
-feuille : lueurs, ombres portées, dégradés radiaux d'ambiance. Toutes
-converties. Et surtout, deux valeurs vivaient dans le **JavaScript du
-canvas bokeh 3D** — le brouillard de la scène et la palette des
-particules. Sans elles, le hero aurait continué d'afficher des particules
-corail et indigo sur un site rouge. Converties également. Les chevrons
-encodés en URL SVG dans le CSS aussi.
+`public/nocta/` contient les quatre fichiers de NOCTA portés tels quels,
+avec la palette passée aux couleurs du studio (rouge de marque, encre
+`#0a0a0a`), y compris les 33 couleurs codées en dur et la palette du
+canvas bokeh 3D dans le JavaScript.
 
-## Preuve que rien d'autre n'a bougé
+## Vérification
 
-Comparaison ligne à ligne avec les fichiers d'origine : les seules
-différences hors couleurs sont les commentaires que j'ai ajoutés. Côté
-JavaScript, 4 lignes modifiées au total — le brouillard et la palette du
-bokeh. Aucune règle de mise en page, aucune animation, aucun texte.
+Contrôle de types réel : zéro erreur. Plus aucune référence en dur à
+`/lieux` dans le code, hors la redirection volontaire.
 
-## Une note sur les noms de variables
+## À supprimer plus tard
 
-`--coral` et `--iris` gardent leurs noms alors qu'ils ne sont plus
-corail ni iris. Les renommer aurait voulu dire modifier les 40 Ko de
-règles qui les référencent — exactement ce qu'on évite. Ils désignent
-désormais un rôle, pas une teinte : accent primaire et accent secondaire.
-C'est indiqué en commentaire dans le fichier.
-
-## Les polices
-
-Inchangées : Bricolage Grotesque, Instrument Serif, Hanken Grotesk, Space
-Mono. Vous avez demandé les couleurs, et la typographie relève du design.
-Dites-moi si vous voulez aussi passer à Playfair Display et DM Sans.
+`app/[lang]/lieux/` peut disparaître une fois que plus aucun lien externe
+ne pointe dessus. Sans urgence : une redirection ne coûte rien.

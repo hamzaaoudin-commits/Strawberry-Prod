@@ -96,7 +96,7 @@ const nextConfig = {
     // Anciennes URL plates : tout ce qui vivait à la racine vit désormais sous
     // une langue. 308 pour ne perdre aucun lien indexé ni aucun signet.
     const moved = [
-      'about','brand-narrative-audit','brand-narrative-architecture',
+      'about','brand-narrative-audit','brand-narrative-architecture','the-room',
       'strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]
@@ -122,7 +122,8 @@ const nextConfig = {
       { source: '/radar', destination: '/fr', permanent: true },
       { source: '/nova', destination: '/fr', permanent: true },
       { source: '/arsenal', destination: '/fr', permanent: true },
-      { source: '/nocta', destination: '/fr/lieux', permanent: true },
+      { source: '/nocta', destination: '/fr/the-room', permanent: true },
+      { source: '/lieux', destination: '/fr/the-room', permanent: true },
       { source: '/case-studies', destination: '/fr/documents', permanent: true },
       { source: '/manifesto', destination: '/fr/manifesto', permanent: true },
 

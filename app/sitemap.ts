@@ -22,7 +22,7 @@ const ROUTES: Route[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/brand-narrative-architecture", priority: 0.95, changeFrequency: "monthly" },
   { path: "/brand-narrative-audit", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/lieux", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/the-room", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/sillage", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents/verso", priority: 0.85, changeFrequency: "monthly" },

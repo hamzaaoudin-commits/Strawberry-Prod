@@ -2,7 +2,7 @@ import { LANGS, DEFAULT_LANG, type Lang } from "@/lib/lang"
 
 export const SITE = "https://www.gostrawberryprod.com"
 
-/** Prefix an app-relative path with the active locale: ("/lieux","fr") -> "/fr/lieux" */
+/** Prefix an app-relative path with the active locale: ("/the-room","fr") -> "/fr/the-room" */
 export function localePath(path: string, lang: Lang): string {
   if (!path) return `/${lang}`
   if (!path.startsWith("/")) return path
