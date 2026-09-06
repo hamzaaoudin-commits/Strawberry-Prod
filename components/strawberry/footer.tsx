@@ -15,6 +15,7 @@ const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method"]
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
   { href: "/brand-narrative-audit", label: { fr: "BRAND NARRATIVE AUDIT", en: "BRAND NARRATIVE AUDIT" } },
   { href: "/brand-narrative-architecture", label: { fr: "BRAND NARRATIVE ARCHITECTURE", en: "BRAND NARRATIVE ARCHITECTURE" } },
+  { href: "/lieux", label: { fr: "LIEUX", en: "VENUES" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },
