@@ -106,6 +106,16 @@ const T = {
 
     ctaH2: "Votre lieu mérite d'être écrit.",
     ctaBody: "Un service pour observer, deux à trois semaines pour écrire, et le système vous appartient.",
+    tourEyebrow: "La tournée",
+    tourTitle: "Ce qu'on trouve quand un lieu est écrit.",
+    tourHint: "Continuez à défiler",
+    tourOut: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
+    tour: [
+      { k: "Restaurant", t: "L'heure dorée", line: "19h30. L'heure dorée traverse la salle — le plat du soir part en story avant le premier couvert.", facts: [["L'heure", "19h30 — le moment exact où la salle bascule et où la lumière devient l'atout du lieu"], ["La lumière", "Dorée, rasante, qui traverse la vitrine et pose une ombre sur les tables du fond"], ["Le casting", "Le chef qui ne sort jamais, la serveuse qui connaît les prénoms, le plat qu'on ne retire jamais de la carte"], ["Les rituels", "L'ardoise réécrite chaque matin, la table 6 qu'on garde toujours pour les habitués"]] },
+      { k: "Cocktail bar", t: "Après minuit", line: "23h50. Le shaker claque, les néons vibrent — le reel de la signature tourne déjà.", facts: [["L'heure", "23h50 — quand la salle a fini de se remplir et que le bar devient la scène"], ["La lumière", "Néon froid sur les bouteilles, tout le reste dans le noir, les visages qui apparaissent par intermittence"], ["Le casting", "Le barman qui ne demande jamais ce que vous voulez, le cocktail qui porte le nom de la rue"], ["Les rituels", "La carte qui change à chaque saison, le dernier verre servi toujours de la même façon"]] },
+      { k: "Club", t: "Le sous-sol", line: "2h10. La basse fait trembler le plafond — demain, la file d'attente aura vu la vidéo.", facts: [["L'heure", "2h10 — le point de bascule où la soirée cesse d'être une sortie et devient un souvenir"], ["La lumière", "Stroboscopique, rouge, jamais assez pour reconnaître un visage à trois mètres"], ["Le casting", "Le résident du samedi, le videur qui laisse passer d'un signe, la file qui fait partie du décor"], ["Les rituels", "Le morceau qu'on passe toujours en dernier, la salle du fond qu'on n'ouvre qu'à certaines heures"]] },
+      { k: "Coffee shop", t: "Lumière du matin", line: "8h05. Latte art, lumière douce — le quartier sait déjà où prendre son premier café.", facts: [["L'heure", "8h05 — le premier café du quartier, avant que la ville se réveille vraiment"], ["La lumière", "Blanche et douce, la vapeur qui monte, la buée sur la vitre en hiver"], ["Le casting", "Le barista qui commence la commande avant qu'on parle, les habitués du comptoir à heure fixe"], ["Les rituels", "Le grain qui change chaque mois, la playlist du matin qui n'est jamais celle de l'après-midi"]] },
+    ],
     faqEyebrow: "Questions fréquentes",
     faqTitle: "Ce que les gérants me demandent.",
     faq: [
@@ -174,6 +184,16 @@ const T = {
 
     ctaH2: "Your venue deserves to be written.",
     ctaBody: "One service to observe, two to three weeks to write, and the system is yours.",
+    tourEyebrow: "The tour",
+    tourTitle: "What you find when a venue is written.",
+    tourHint: "Keep scrolling",
+    tourOut: "All of it already exists at your venue. It just needs writing.",
+    tour: [
+      { k: "Restaurant", t: "Golden hour", line: "7:30pm. Golden hour sweeps the room — tonight's dish hits stories before the first cover.", facts: [["The hour", "7:30pm — the exact moment the room tips over and the light becomes the venue's best asset"], ["The light", "Golden, low, cutting through the window and laying a shadow across the back tables"], ["The cast", "The chef who never comes out, the server who knows first names, the dish you never take off the menu"], ["The rituals", "The board rewritten every morning, table 6 always held for the regulars"]] },
+      { k: "Cocktail bar", t: "After midnight", line: "11:50pm. The shaker snaps, the neons hum — the signature's reel is already out.", facts: [["The hour", "11:50pm — once the room has finished filling and the bar becomes the stage"], ["The light", "Cold neon on the bottles, everything else in the dark, faces surfacing now and then"], ["The cast", "The bartender who never asks what you want, the cocktail named after the street"], ["The rituals", "The menu that turns with the season, the last drink always poured the same way"]] },
+      { k: "Club", t: "The basement", line: "2:10am. Bass in the ceiling — tomorrow, the queue will have seen the video.", facts: [["The hour", "2:10am — the tipping point where the night stops being an outing and becomes a memory"], ["The light", "Strobe, red, never enough to recognise a face three metres away"], ["The cast", "The Saturday resident, the doorman who waves you through, the queue that's part of the set"], ["The rituals", "The track always played last, the back room only opened at certain hours"]] },
+      { k: "Coffee shop", t: "Morning light", line: "8:05am. Latte art, soft light — the neighbourhood already knows where its first coffee is.", facts: [["The hour", "8:05am — the neighbourhood's first coffee, before the city properly wakes"], ["The light", "White and soft, steam rising, condensation on the glass in winter"], ["The cast", "The barista who starts the order before you speak, the counter regulars on the dot"], ["The rituals", "The bean that changes each month, the morning playlist that's never the afternoon's"]] },
+    ],
     faqEyebrow: "Frequently asked",
     faqTitle: "What owners ask me.",
     faq: [
@@ -267,6 +287,10 @@ export default function LieuxPage() {
           padding:clamp(1.6rem,2.6vw,2.3rem); }
         .nocta-chip { border:1px solid ${N.lineSoft}; border-radius:100px; padding:.55em 1.1em;
           font-family:${N.mono}; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:${N.smoke}; }
+        @keyframes nocta-scroll-x { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        .nocta-mq-track { animation:nocta-scroll-x 32s linear infinite; }
+        .nocta-mq:hover .nocta-mq-track { animation-play-state:paused; }
+        @media (prefers-reduced-motion: reduce) { .nocta-mq-track { animation:none } }
         @keyframes nocta-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
         @keyframes nocta-flick { 0%,96%,100%{opacity:1} 97%{opacity:.55} 98%{opacity:1} 98.5%{opacity:.7} }
         .nocta-flicker { animation:nocta-flick 6s infinite steps(1); }
@@ -358,15 +382,20 @@ export default function LieuxPage() {
               </Link>
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: ".6rem", marginTop: "3rem" }}>
-              {t.types.map((ty) => (
-                <span key={ty} className="nocta-chip">
-                  {ty}
-                </span>
-              ))}
-            </div>
           </div>
         </section>
+
+        {/* Le bandeau défilant des typologies — remplace les chips figées :
+            sur NOCTA il défile en boucle et se met en pause au survol. */}
+        <div style={{ borderBlock: `1px solid ${N.lineSoft}`, overflow: "hidden", paddingBlock: "1.4rem" }} className="nocta-mq">
+          <div className="nocta-mq-track" style={{ display: "flex", gap: "3.5rem", width: "max-content" }}>
+            {[...t.types, ...t.types].map((ty, i) => (
+              <span key={i} style={{ fontFamily: N.display, fontWeight: 600, fontSize: "clamp(1.3rem,3vw,2.2rem)", color: N.smoke, whiteSpace: "nowrap", letterSpacing: "-.01em" }}>
+                {ty} <span style={{ color: N.coral }}>·</span>
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* LE CONSTAT */}
         <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}`, background: N.ink2 }}>
@@ -381,6 +410,51 @@ export default function LieuxPage() {
             <p style={{ fontSize: "clamp(1.05rem,1.7vw,1.3rem)", color: N.smoke }}>
               {t.findingD}
               <b style={{ fontFamily: N.display, fontWeight: 700, ...gradText }}>{t.findingE}</b>
+            </p>
+          </div>
+        </section>
+
+        {/* LA TOURNÉE — quatre lieux types, chacun avec son heure, sa
+            lumière, son casting et ses rituels. C'est la section qui prouve
+            l'argument : le monde est déjà là, il n'a jamais été écrit. */}
+        <section className="nocta-sec" style={{ borderTop: `1px solid ${N.lineSoft}` }}>
+          <div className="nocta-wrap">
+            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap", marginBottom: "2.6rem" }}>
+              <div>
+                <Eyebrow iris>{t.tourEyebrow}</Eyebrow>
+                <h2 style={{ fontSize: "clamp(2.1rem,5.5vw,4rem)", lineHeight: 1.04 }}>{t.tourTitle}</h2>
+              </div>
+              <div style={{ fontFamily: N.mono, fontSize: ".72rem", letterSpacing: ".18em", textTransform: "uppercase", color: N.smokeDim }}>
+                {t.tourHint}
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gap: "1.1rem" }}>
+              {t.tour.map((v) => (
+                <div key={v.k} className="nocta-card">
+                  <div style={{ display: "flex", alignItems: "baseline", gap: ".9rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+                    <span style={{ fontFamily: N.mono, fontSize: ".68rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.smokeDim }}>{v.k}</span>
+                    <h3 style={{ fontSize: "clamp(1.35rem,3vw,2.1rem)", lineHeight: 1.1, ...gradText }}>{v.t}</h3>
+                  </div>
+                  <p style={{ fontFamily: N.serif, fontStyle: "italic", fontSize: "clamp(1.1rem,2.2vw,1.5rem)", color: N.cream, marginBottom: "1.6rem", lineHeight: 1.25 }}>
+                    {v.line}
+                  </p>
+                  <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))" }}>
+                    {v.facts.map(([label, detail]) => (
+                      <div key={label}>
+                        <div style={{ fontFamily: N.mono, fontSize: ".64rem", letterSpacing: ".2em", textTransform: "uppercase", color: N.coral, marginBottom: ".4rem" }}>
+                          {label}
+                        </div>
+                        <p style={{ color: N.smoke, fontSize: ".9rem", margin: 0 }}>{detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ fontFamily: N.serif, fontStyle: "italic", fontSize: "clamp(1.3rem,3vw,2.1rem)", textAlign: "center", marginTop: "3rem", ...gradText }}>
+              {t.tourOut}
             </p>
           </div>
         </section>
