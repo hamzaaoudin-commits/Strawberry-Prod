@@ -1,23 +1,12 @@
 import { redirect } from "next/navigation"
-import { isLang } from "@/lib/lang"
 
 /**
- * Offre retirée.
- *
- * MOMENTUM ne fait plus partie des offres commerciales du studio. Cette
- * route reste comme redirection — un zip ne sait pas supprimer un fichier —
- * et renvoie vers l'offre qui reste : BRAND NARRATIVE ARCHITECTURE.
- *
- * /momentum/atelier n'est pas touché : c'est l'espace privé des maisons déjà
- * accompagnées, pas une page marketing. Le retirer couperait l'accès de
- * clients actifs à leur espace de livraison.
+ * Route retirée lors du passage du site à deux portes (Marques et Lieux).
+ * Redirection plutôt que suppression du dossier : un patch ne peut pas
+ * retirer un fichier, et les liens indexés doivent résoudre plutôt que
+ * renvoyer une 404. Le dossier peut être supprimé du dépôt à la main.
  */
-export default async function LegacyMomentumRoute({
-  params,
-}: {
-  params: Promise<{ lang: string }>
-}) {
-  const { lang: raw } = await params
-  const lang = isLang(raw) ? raw : "fr"
-  redirect(`/${lang}/brand-narrative-architecture`)
+export default async function RetiredRoute({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  redirect(`/${lang}`)
 }

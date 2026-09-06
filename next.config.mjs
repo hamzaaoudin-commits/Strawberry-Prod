@@ -96,7 +96,7 @@ const nextConfig = {
     // Anciennes URL plates : tout ce qui vivait à la racine vit désormais sous
     // une langue. 308 pour ne perdre aucun lien indexé ni aucun signet.
     const moved = [
-      'about','brand-narrative-audit','brand-narrative-architecture','momentum','radar',
+      'about','brand-narrative-audit','brand-narrative-architecture',
       'strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]
@@ -117,12 +117,14 @@ const nextConfig = {
     ]
 
     return [
-      // Offres retirées.
+      // Offres retirées (RADAR, NOVA, MOMENTUM, NOCTA).
+      { source: '/momentum', destination: '/fr', permanent: true },
+      { source: '/radar', destination: '/fr', permanent: true },
       { source: '/nova', destination: '/fr', permanent: true },
       { source: '/arsenal', destination: '/fr', permanent: true },
-      { source: '/nocta', destination: '/fr/momentum', permanent: true },
+      { source: '/nocta', destination: '/fr', permanent: true },
       { source: '/case-studies', destination: '/fr/documents', permanent: true },
-      { source: '/manifesto', destination: '/fr/radar', permanent: true },
+      { source: '/manifesto', destination: '/fr/manifesto', permanent: true },
 
       // L'audit à 490€ porte maintenant son nom dans l'URL.
       { source: '/audit', destination: '/fr/brand-narrative-audit', permanent: true },
@@ -136,9 +138,9 @@ const nextConfig = {
       { source: '/:lang(fr|en)/exemple-audit', destination: '/:lang/documents/verso', permanent: true },
 
       // Les lectures gratuites et la page d'échelle sont retirées.
-      { source: '/lectures', destination: '/fr/radar', permanent: true },
-      { source: '/lectures/:path*', destination: '/fr/radar', permanent: true },
-      { source: '/:lang(fr|en)/lectures/:path*', destination: '/:lang/radar', permanent: true },
+      { source: '/lectures', destination: '/fr', permanent: true },
+      { source: '/lectures/:path*', destination: '/fr', permanent: true },
+      { source: '/:lang(fr|en)/lectures/:path*', destination: '/:lang', permanent: true },
       { source: '/offres', destination: '/fr/brand-narrative-architecture', permanent: true },
       { source: '/:lang(fr|en)/offres', destination: '/:lang/brand-narrative-architecture', permanent: true },
 
@@ -152,7 +154,7 @@ const nextConfig = {
 
       ...manifestoFiles.map((f) => ({
         source: `/${f}`,
-        destination: '/fr/radar',
+        destination: '/fr',
         permanent: true,
       })),
 

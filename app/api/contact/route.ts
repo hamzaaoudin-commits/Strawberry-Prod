@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { LIMITS, isValidEmail, sanitize } from "@/lib/form-security"
-import { signAccess, ATLAS_COOKIE } from "@/lib/radar-access"
+import { signAccess, ATLAS_COOKIE } from "@/lib/access-token"
 
 /**
  * Server-side submission endpoint.

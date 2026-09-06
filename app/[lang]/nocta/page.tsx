@@ -1,11 +1,14 @@
 import { redirect } from "next/navigation"
 
 /**
- * NOCTA was merged into MOMENTUM.
+ * NOCTA — ancienne route, désormais sans destination.
  *
- * Redirect stub so the old URL keeps working. Safe to delete this folder;
- * next.config.mjs carries a permanent redirect for /nocta.
+ * Elle redirigeait vers /momentum, retiré lors du passage à deux portes :
+ * la chaîne aboutissait donc à une redirection vers une redirection. Elle
+ * pointe vers l'accueil en attendant que la porte Lieux existe, et devra
+ * pointer vers /lieux le jour où celle-ci sera créée.
  */
-export default function RetiredNoctaPage() {
-  redirect("/momentum")
+export default async function RetiredNoctaPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  redirect(`/${lang}`)
 }

@@ -35,24 +35,6 @@ export const FAQ_AUDIT: FaqSet = {
   ],
 }
 
-export const FAQ_MOMENTUM: FaqSet = {
-  en: [
-    { icon: "steps", q: "Do I need the architecture first?", a: "Yes. MOMENTUM executes an architecture — without one, there's nothing to keep coherent. If you haven't commissioned BRAND NARRATIVE ARCHITECTURE, start there." },
-    { icon: "price", q: "The architecture is 4,500€ and MOMENTUM is 2,500€ a month. Am I paying twice?", a: "No. BRAND NARRATIVE ARCHITECTURE is written once and owned forever: it decides. MOMENTUM applies — it turns that position into new written material every month and keeps the website aligned with it. If you never want another page written, you never need MOMENTUM." },
-    { icon: "calendar", q: "What's the commitment?", a: "Month to month after an initial three-month run. Three months is the minimum honest window to judge whether the work is compounding." },
-    { icon: "xcircle", q: "Do you produce photo, video or social content?", a: "No. MOMENTUM covers written work and the website only: scripts, narratives, pages, and writing and publishing calendars. Production and publishing stay with you or your own team." },
-    { icon: "layers", q: "Is there a cheaper tier?", a: "No. One rate, 2,500€ a month, same scope for everyone. Tiers exist to let a studio quote what a client can pay rather than what the work costs — we'd rather have one honest price." },
-    { icon: "server", q: "Who hosts the website?", a: "We do, at no separate cost, for as long as MOMENTUM runs. We also keep editing it — a new offer, a raised price, a repositioned page — week by week or month by month, so the site never lags behind what you actually sell." },
-  ],
-  fr: [
-    { icon: "steps", q: "Faut-il l'architecture d'abord ?", a: "Oui. MOMENTUM exécute une architecture — sans elle, il n'y a rien à garder cohérent. Si vous n'avez pas commandé BRAND NARRATIVE ARCHITECTURE, commencez par là." },
-    { icon: "price", q: "L'architecture est à 4 500€ et MOMENTUM à 2 500€ par mois. Je paie deux fois ?", a: "Non. BRAND NARRATIVE ARCHITECTURE s'écrit une fois et vous appartient pour toujours : elle tranche. MOMENTUM applique — elle transforme cette position en écrits nouveaux chaque mois et maintient le site aligné dessus. Si vous ne voulez plus jamais faire écrire une page, MOMENTUM ne vous sert à rien." },
-    { icon: "calendar", q: "Quel est l'engagement ?", a: "Au mois après une première période de trois mois. Trois mois, c'est la fenêtre minimale honnête pour juger si le travail produit un effet cumulé." },
-    { icon: "xcircle", q: "Produisez-vous de la photo, de la vidéo ou du contenu social ?", a: "Non. MOMENTUM couvre l'écrit et le site web uniquement : scripts, récits, pages, et plannings d'écriture et de diffusion. La production et la publication restent chez vous ou chez votre équipe." },
-    { icon: "layers", q: "Existe-t-il un palier moins cher ?", a: "Non. Un seul tarif, 2 500€ par mois, le même périmètre pour tout le monde. Les paliers servent à facturer ce qu'un client peut payer plutôt que ce que le travail coûte — nous préférons un seul prix honnête." },
-    { icon: "server", q: "Qui héberge le site web ?", a: "Nous, sans coût séparé, tant que MOMENTUM tourne. Nous continuons aussi de l'écrire — une offre nouvelle, un prix relevé, une page repositionnée — semaine après semaine ou mois après mois, pour que le site ne traîne jamais derrière ce que vous vendez." },
-  ],
-}
 
 export const FAQ_AUDIT490: FaqSet = {
   fr: [

@@ -1,15 +1,12 @@
 import { redirect } from "next/navigation"
 
 /**
- * NOVA has been retired from the offer ladder.
- *
- * This file exists as a redirect stub rather than being deleted so that the
- * build never depends on a manual file deletion, and so any existing link,
- * bookmark or indexed URL lands somewhere useful instead of a 404.
- *
- * Safe to delete this folder entirely — next.config.mjs carries a permanent
- * redirect for /nova that takes over once the route is gone.
+ * Route retirée lors du passage du site à deux portes (Marques et Lieux).
+ * Redirection plutôt que suppression du dossier : un patch ne peut pas
+ * retirer un fichier, et les liens indexés doivent résoudre plutôt que
+ * renvoyer une 404. Le dossier peut être supprimé du dépôt à la main.
  */
-export default function RetiredNovaPage() {
-  redirect("/")
+export default async function RetiredRoute({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  redirect(`/${lang}`)
 }
