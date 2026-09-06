@@ -58,3 +58,20 @@ export const FAQ_AUDIT490: FaqSet = {
     { icon: "wallet", q: "Is it refundable?", a: "The document is produced to order, so it is not refundable once delivered. Before production begins, a full refund is available." },
   ],
 }
+
+export const FAQ_LIEUX: FaqSet = {
+  en: [
+    { icon: "price", q: "Why not just hire a monthly agency?", a: "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay once and leave with the system. If we part tomorrow, it keeps working without me." },
+    { icon: "users", q: "Who publishes once the sprint is over?", a: "Your team. That is the point. The manual holds 20 to 30 ready-to-use scripts, shot by shot, filmable on a phone by anyone on the floor, plus a four-week calendar that loops." },
+    { icon: "steps", q: "How long does it take?", a: "Two to three weeks. One immersion at the start of the sprint, two checkpoints, one final handover. Your total time commitment fits in a few hours." },
+    { icon: "eye", q: "Nobody here knows how to film.", a: "That is accounted for. The scripts are written to be executed by someone who has never filmed: where to stand, what to frame, how many seconds, what to say. A phone is enough." },
+    { icon: "box", q: "What do I keep at the end?", a: "Everything, forever. The document describing your world, your editorial line, your permanent copy, the execution manual and the first week of content already produced." },
+  ],
+  fr: [
+    { icon: "price", q: "Pourquoi ne pas simplement prendre une agence au mois ?", a: "Parce qu'au bout de deux ans vous aurez payé environ 30 000 euros et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si on se quitte demain, il continue de fonctionner sans moi." },
+    { icon: "users", q: "Qui publie une fois le sprint terminé ?", a: "Votre équipe. C'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, plan par plan, tournables au téléphone par n'importe qui en salle, plus un calendrier sur quatre semaines qui tourne en boucle." },
+    { icon: "steps", q: "Combien de temps ça prend ?", a: "Deux à trois semaines. Une immersion chez vous en début de sprint, deux points d'étape, une remise finale. Votre temps de mobilisation total tient en quelques heures." },
+    { icon: "eye", q: "Personne chez moi ne sait filmer.", a: "C'est prévu. Les scripts sont écrits pour être exécutés par quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit." },
+    { icon: "box", q: "Qu'est-ce que je garde à la fin ?", a: "Tout, et pour toujours. Le document qui décrit votre monde, votre ligne éditoriale, vos textes permanents, le manuel d'exécution et la première semaine de contenu déjà produite." },
+  ],
+}

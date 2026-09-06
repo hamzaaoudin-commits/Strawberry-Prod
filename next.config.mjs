@@ -122,7 +122,7 @@ const nextConfig = {
       { source: '/radar', destination: '/fr', permanent: true },
       { source: '/nova', destination: '/fr', permanent: true },
       { source: '/arsenal', destination: '/fr', permanent: true },
-      { source: '/nocta', destination: '/fr', permanent: true },
+      { source: '/nocta', destination: '/fr/lieux', permanent: true },
       { source: '/case-studies', destination: '/fr/documents', permanent: true },
       { source: '/manifesto', destination: '/fr/manifesto', permanent: true },
 
