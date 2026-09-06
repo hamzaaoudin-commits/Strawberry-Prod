@@ -1,42 +1,46 @@
-# Strawberry — la home à deux portes
+# Strawberry — les portes visibles quoi qu'il arrive
 
-Deux fichiers : un nouveau composant et la home.
+Un fichier : `components/strawberry/doors-section.tsx`.
 
-## Le parcours
+## Ce que j'ai vérifié
 
-Hero (la promesse du studio) → **les deux portes** → tout le reste.
+Le dépôt en ligne contient bien tout : `doors-section.tsx` existe,
+`DoorsSection` est importé et rendu dans `app/[lang]/page.tsx` ligne 58,
+et `app/[lang]/the-room/` est là. J'ai aussi passé tout le dépôt au
+contrôle de types : aucune erreur venant de mon code, et le gros littéral
+HTML de la page THE ROOM est intact (aucun caractère non échappé qui
+casserait la compilation).
 
-Quelqu'un qui arrive lit d'abord ce que fait Strawberry Production, puis
-choisit : **Marques** ou **THE ROOM**. Tout ce qui suit sur la page
-concerne les marques — le problème, le diagnostic, l'offre, le livre. Ceux
-qui exploitent un lieu sont déjà partis vers `/the-room`.
+Autrement dit : le code est là et il est valide.
 
-## Les deux panneaux
+## Le seul risque venant de moi, supprimé
 
-Deux panneaux côte à côte plutôt que des cartes empilées : le choix doit
-se lire comme un embranchement, pas comme une liste d'offres.
+Les deux panneaux démarraient à `opacity: 0` et ne devenaient visibles que
+lorsque l'observateur de scroll se déclenchait. Si cet observateur ne
+part pas — script bloqué, section déjà dépassée au moment de
+l'hydratation, navigateur récalcitrant — on obtenait deux panneaux
+invisibles et un trou dans la page, exactement le symptôme décrit.
 
-- **Marques** — « Vous vendez un produit ou un service. » La mention de la
-  narration du dirigeant est explicite, comme le brief le demandait : « le
-  récit de la maison comme celui de son dirigeant ». Mène vers
-  BRAND NARRATIVE ARCHITECTURE.
-- **THE ROOM** — « Vous tenez un lieu qu'on pousse. » Restaurant, bar,
-  club, coffee shop nommés, pour que personne ne se demande si c'est pour
-  lui. Mène vers `/the-room`.
+Corrigé : les panneaux sont visibles par défaut, et l'animation d'entrée
+n'est plus qu'un enrichissement quand elle peut jouer. Elle ne conditionne
+plus l'affichage.
 
-Chaque panneau porte son cadre temporel en pied (Audit · Architecture
-d'un côté, sprint de 2 à 3 semaines de l'autre) et un liseré qui se trace
-au survol. Celui de THE ROOM reprend le dégradé de sa propre page —
-un indice qu'on va ailleurs, pas dans une sous-section.
+## Si ça ne suffit pas
 
-Entrée décalée au scroll, panneau après panneau.
+Alors le problème n'est pas dans le code mais dans le déploiement, et il
+n'y a qu'un endroit où le voir : **le journal de build sur Vercel**.
+Quand le build échoue, Vercel continue de servir la dernière version qui
+compilait — donc aucune de vos modifications récentes n'apparaît, ni les
+portes, ni THE ROOM, et le site a l'air figé. C'est exactement ce qui
+s'était passé la dernière fois, et le journal donnait le fichier et la
+ligne en cause.
 
-## Ce qui reste du brief
+Deux vérifications rapides de votre côté :
 
-La page de vente des deux ouvrages. Il me manque toujours trois choses :
-le lien Stripe du second livre, les deux prix, et comment le PDF est remis
-après paiement (page de remerciement avec lien, ou e-mail ?).
+1. Sur Vercel, le dernier déploiement est-il en vert, ou en rouge avec
+   « Failed to type check » ?
+2. Ouvrez `/fr/the-room` directement. Si cette page s'affiche, le
+   déploiement est bien passé et le souci est ailleurs. Si elle renvoie une
+   404, le build n'est pas passé.
 
-## Vérification
-
-Contrôle de types réel : zéro erreur.
+Si c'est rouge, envoyez-moi le journal comme la dernière fois et je corrige.

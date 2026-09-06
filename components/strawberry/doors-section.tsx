@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -73,7 +74,17 @@ const T = {
 
 export function DoorsSection() {
   const t = useT(T)
-  const [ref, visible] = useScrollReveal()
+  const [ref, revealed] = useScrollReveal()
+  // L'apparition au scroll est un enrichissement, jamais une condition
+  // d'affichage : les panneaux sont visibles par défaut et l'animation ne
+  // fait que retarder leur entrée quand elle peut jouer. Avec l'opacité
+  // pilotée uniquement par l'observateur, le moindre cas où il ne se
+  // déclenche pas — script bloqué, navigateur sans IntersectionObserver,
+  // section déjà passée au moment de l'hydratation — laissait deux
+  // panneaux invisibles et un trou dans la page.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const visible = !mounted || revealed
 
   return (
     <section className="section border-t border-hair bg-ink-soft">
