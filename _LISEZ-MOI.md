@@ -1,47 +1,58 @@
-# Strawberry — /lieux : NOCTA porté, plus réécrit
+# Strawberry — /lieux aux couleurs du studio
 
-8 fichiers, dont les 4 assets de NOCTA copiés sans modification.
+8 fichiers. Le design, les animations et le copywriting de NOCTA sont
+strictement inchangés : seules les couleurs bougent.
 
-## J'ai changé de méthode, parce que la mienne était mauvaise
+## Comment
 
-Depuis trois tours je **réimplémentais** le design de NOCTA à la main, et
-j'en perdais un morceau à chaque fois : sections oubliées, animations
-approximées, textes reformulés. Vous aviez raison de vous agacer.
+Toute la charte de cette page est pilotée par les variables CSS du bloc
+`:root` de `styles.css`. Il a suffi de remplacer leurs valeurs — aucune
+règle de mise en page n'est réécrite.
 
-Cette version ne réécrit rien. Elle **porte** le site :
+**Correspondances**
 
-- `public/nocta/styles.css` — les 40 Ko de CSS d'origine, à l'octet près.
-- `public/nocta/app.js` — les 24 Ko de JavaScript d'origine : le canvas
-  bokeh animé du hero, le révélateur mot à mot du manifeste, les compteurs
-  de chiffres, le parcours épinglé qui défile, le comparateur, l'accordéon
-  de la FAQ, les révélations au scroll.
-- `public/nocta/i18n.js` et `config.js` — la bascule FR/EN d'origine.
-- Le HTML de la home injecté tel quel, avec ses vraies classes.
+| Rôle | NOCTA | Strawberry |
+|---|---|---|
+| Fond principal | `#0a0910` | `#0a0a0a` |
+| Fond alterné | `#100e1a` | `#0d0d0d` |
+| Cartes | `#181425` | `#121212` |
+| Filets | `#2a2438` / `#211d2e` | rampe blanche du studio |
+| Accent primaire | corail `#ff5d57` | rouge de marque `#e63946` |
+| Accent secondaire | iris `#7b6cff` | rouge vif `#ff1a1a` |
+| Texte | crème `#f3efe9` | blanc |
+| Texte atténué | gris-violet | rampe d'opacité du studio |
 
-Ce sont donc exactement les animations et le design du site, y compris
-celles que je n'aurais jamais réimplémentées à l'identique — le bokeh en
-canvas et le parcours épinglé en particulier.
+Le dégradé garde son angle d'origine (108°) : seules ses deux extrémités
+changent, donc tout ce qui s'appuie dessus — wordmark, chiffres, prix,
+poignée du comparateur — conserve exactement le même rendu, en rouge.
 
-## Les deux seules modifications au HTML
+## Les couleurs cachées, aussi
 
-Le wordmark « NOCTA » devient « LIEUX ». Le formulaire de contact est
-retiré : la page renvoie vers celui du studio.
+Au-delà du bloc de variables, 33 couleurs étaient écrites en dur dans la
+feuille : lueurs, ombres portées, dégradés radiaux d'ambiance. Toutes
+converties. Et surtout, deux valeurs vivaient dans le **JavaScript du
+canvas bokeh 3D** — le brouillard de la scène et la palette des
+particules. Sans elles, le hero aurait continué d'afficher des particules
+corail et indigo sur un site rouge. Converties également. Les chevrons
+encodés en URL SVG dans le CSS aussi.
 
-## Cloisonnement
+## Preuve que rien d'autre n'a bougé
 
-Le CSS de NOCTA redéfinit `body` et `html`. Il est chargé **uniquement sur
-cette route**, jamais globalement, pour ne pas déteindre sur le reste du
-site. Idem pour ses quatre polices.
+Comparaison ligne à ligne avec les fichiers d'origine : les seules
+différences hors couleurs sont les commentaires que j'ai ajoutés. Côté
+JavaScript, 4 lignes modifiées au total — le brouillard et la palette du
+bokeh. Aucune règle de mise en page, aucune animation, aucun texte.
 
-## Vérification
+## Une note sur les noms de variables
 
-Contrôle de types réel : zéro erreur. Présence vérifiée dans le HTML
-injecté : canvas bokeh, marquee, manifeste, parcours épinglé, comparateur,
-les 5 entrées de FAQ, l'indice de défilement.
+`--coral` et `--iris` gardent leurs noms alors qu'ils ne sont plus
+corail ni iris. Les renommer aurait voulu dire modifier les 40 Ko de
+règles qui les référencent — exactement ce qu'on évite. Ils désignent
+désormais un rôle, pas une teinte : accent primaire et accent secondaire.
+C'est indiqué en commentaire dans le fichier.
 
-## À vérifier de votre côté après déploiement
+## Les polices
 
-Les fichiers de `public/nocta/` doivent être servis tels quels par Vercel
-(c'est le comportement par défaut pour `public/`). Si une animation ne
-démarre pas, ouvrez la console : ce sera un 404 sur un de ces quatre
-fichiers, pas un problème de code.
+Inchangées : Bricolage Grotesque, Instrument Serif, Hanken Grotesk, Space
+Mono. Vous avez demandé les couleurs, et la typographie relève du design.
+Dites-moi si vous voulez aussi passer à Playfair Display et DM Sans.

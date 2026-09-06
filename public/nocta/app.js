@@ -204,7 +204,7 @@
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 120);
     camera.position.z = 24;
-    scene.fog = new THREE.FogExp2(0x0a0910, 0.016);
+    scene.fog = new THREE.FogExp2(0x0a0a0a, 0.016);
     let scrollP = 0, scrollT = 0;
     window.NOCTA_BOKEH = { setScroll: (p) => { scrollT = Math.max(0, Math.min(1, p)); } };
 
@@ -218,7 +218,7 @@
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(64, 64, 64, 0, Math.PI * 2); ctx.fill();
     const tex = new THREE.CanvasTexture(c);
 
-    const palette = [0xff5d57, 0x7b6cff, 0xff8a85, 0xa99dff].map(h => new THREE.Color(h));
+    const palette = [0xe63946, 0xff1a1a, 0xff6b75, 0xff7a7a].map(h => new THREE.Color(h));
 
     // depth layers: count, z, point size, drift amplitude, fill factor (how far past frame edges)
     const defs = [
