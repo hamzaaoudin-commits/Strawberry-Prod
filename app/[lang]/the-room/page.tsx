@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import { useLang } from "@/lib/i18n"
 
 /**
  * THE ROOM — la porte « lieux » du site, le site NOCTA porté tel quel.
@@ -34,7 +35,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <h1 class="wordmark flicker">THE ROOM</h1>
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
-<a class="btn btn-primary" href="/marques#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
 <a class="btn btn-ghost" data-i18n="hero.cta2" href="#prestations">Comment ça se passe</a>
 </div>
 </div>
@@ -318,13 +319,20 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Je prends peu de lieux à la fois, et je le dis franchement si ce n'est pas le moment.</p>
-<a class="btn btn-primary" href="/marques#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>
 `
 
 export default function LieuxPage() {
+  // Le HTML est injecté brut : LocaleLink ne peut pas s'y appliquer, donc
+  // les liens sortants doivent porter la langue eux-mêmes. Sans ça, un
+  // visiteur anglophone qui clique sur un CTA atterrit sur la version
+  // française du formulaire.
+  const { lang } = useLang()
+  const html = NOCTA_HTML.split("__LANG__").join(`/${lang}`)
+
   useEffect(() => {
     // Les scripts d'origine, dans l'ordre du <head> de NOCTA. Ils sont
     // chargés après l'injection du HTML : app.js accroche ses observateurs
@@ -361,7 +369,7 @@ export default function LieuxPage() {
         rel="stylesheet"
       />
       <link rel="stylesheet" href="/nocta/styles.css" />
-      <main id="main" dangerouslySetInnerHTML={{ __html: NOCTA_HTML }} />
+      <main id="main" dangerouslySetInnerHTML={{ __html: html }} />
     </>
   )
 }

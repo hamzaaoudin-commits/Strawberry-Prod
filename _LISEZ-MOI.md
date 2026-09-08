@@ -1,45 +1,55 @@
-# Strawberry — les portes deviennent la page d'entrée
+# Strawberry — retour à la home Marques, THE ROOM dans le hero
 
 8 fichiers.
 
-## Ce que j'avais mal compris
+## Ce qu'on annule, et pourquoi
 
-J'avais mis les deux portes **dans** la page d'accueil, sous le hero. Vous
-les vouliez **avant** : on entre sur le site, on voit Strawberry
-Production, on choisit sa porte, et seulement ensuite on arrive dans un
-argumentaire. C'est fait.
+La page d'entrée à deux portes coûtait deux choses que je n'avais pas
+signalées avant de la construire :
 
-## La nouvelle structure
+1. **Le référencement de la racine.** `/` portait le hero, le diagnostic,
+   l'offre, les statistiques, le livre, la FAQ — tout le texte sur lequel
+   Google vous indexe. Un écran de choix de quelques lignes l'avait
+   remplacé.
+2. **Un clic imposé avant toute proposition de valeur.** Vous m'aviez dit
+   peu avant « on met trop de temps avant de présenter l'offre » ; j'avais
+   fait l'exact inverse.
 
-- **`/`** — la page d'entrée. Elle ne vend rien : le nom du studio, la
-  promesse en une phrase, et les deux portes. Elle tient dans un écran, pas
-  de défilement. **Pas de barre de navigation** : une page qui n'existe
-  que pour trancher entre deux directions ne doit pas offrir dix autres
-  liens. Le menu complet réapparaît dès qu'une porte est franchie.
-- **`/marques`** — l'ancienne page d'accueil, intégralement, moins le
-  sélecteur de portes qui n'a plus lieu d'être une fois le choix fait.
+## La structure rétablie
+
+- **`/`** — la page d'accueil telle qu'elle était : hero, diagnostic,
+  offre, tout. Elle redevient la porte Marques et récupère son
+  référencement.
+- **`/marques`** — redirection vers `/`. La route a existé publiquement le
+  temps de l'essai, autant ne casser aucun lien.
 - **`/the-room`** — inchangée.
 
-## Les liens que ça déplaçait
+## La seconde porte, sur une ligne
 
-Deux pièges que le renommage aurait laissés cassés :
+Dans le hero, juste sous le paragraphe d'accroche : « Vous tenez un lieu ?
+**THE ROOM →** ». Visible dès la première seconde, sans rien retarder pour
+les autres.
 
-1. **Le formulaire de contact** vivait sur l'ancienne page d'accueil.
-   Toutes les ancres `/#contact` pointaient donc vers une page qui ne le
-   contient plus. Redirigées vers `/marques#contact`.
-2. **Les deux CTA de THE ROOM** pointaient vers `#contact` en ancre
-   relative, alors que le formulaire a été retiré de cette page lors du
-   portage. Ils envoyaient dans le vide. Redirigés eux aussi.
+Une ligne plutôt qu'un second bouton : deux boutons de même poids dans un
+hero divisent l'attention et affaiblissent l'action principale, qui reste
+la commande.
 
-Le logo de la barre de navigation continue de mener à `/`, c'est-à-dire à
-l'entrée — le comportement attendu d'un logo.
+## Trois nettoyages qui allaient avec
 
-## Le reste
+- `/marques` retiré du sitemap — ce n'est plus une page.
+- Les ancres `/marques#contact` remises sur `/#contact` : le formulaire est
+  revenu sur la racine.
+- Entrées MARQUES / BRANDS retirées du menu et du pied de page — la racine
+  est la porte Marques, une entrée de menu vers elle ferait doublon avec le
+  logo.
 
-`/marques` ajouté au sitemap et à la liste des routes qui reçoivent le
-préfixe de langue dans `next.config.mjs` — sans cette dernière ligne,
-`/marques` sans langue aurait renvoyé une 404. Entrées MARQUES / BRANDS
-ajoutées au menu et au pied de page, à côté de THE ROOM.
+## Un défaut que j'ai corrigé au passage
+
+Les deux CTA de THE ROOM vivent dans du HTML injecté brut, où
+`LocaleLink` ne s'applique pas : ils pointaient vers `/#contact` sans
+préfixe de langue, donc un visiteur anglophone atterrissait sur la version
+française du formulaire. La langue est maintenant injectée dans ces liens
+au rendu.
 
 ## Vérification
 
@@ -47,5 +57,4 @@ Contrôle de types réel : zéro erreur.
 
 ## À supprimer
 
-`components/strawberry/doors-section.tsx` ne sert plus à rien : son
-contenu vit désormais directement dans la page d'entrée. Supprimable.
+`components/strawberry/doors-section.tsx` — plus appelé nulle part.

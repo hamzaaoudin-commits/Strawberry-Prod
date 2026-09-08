@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { AnimatedOrb } from "./animated-orb"
 import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { LocaleLink as Link } from "@/components/locale-link"
 
 /**
  * Le bandeau de logos a été retiré.
@@ -64,6 +65,8 @@ const T = {
     grounding: "Twenty pieces, written by hand. Four houses a quarter.",
     sub: "Your product stays the same. What changes is how people see it: enough to keep coming back, to defend you to a friend, to talk about you without being asked. That's the gap between a customer and someone loyal.",
     cta1: "Place your commission \u2192",
+    roomAsk: "You run a venue?",
+    roomLink: "THE ROOM \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
@@ -73,6 +76,8 @@ const T = {
     grounding: "Vingt pièces écrites à la main. Quatre maisons par trimestre.",
     sub: "Votre produit ne change pas. Ce qui change, c'est la façon dont on le perçoit : au point de revenir, de vous défendre auprès d'un ami, de parler de vous sans qu'on le lui demande. C'est ça, l'écart entre un client et quelqu'un de fidèle.",
     cta1: "Passer commande \u2192",
+    roomAsk: "Vous tenez un lieu ?",
+    roomLink: "THE ROOM \u2192",
   },
 }
 
@@ -230,9 +235,27 @@ export function HeroSection() {
             {t.grounding}
           </p>
 
-          <p className="mb-12 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
+          <p className="mb-8 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
             {t.sub}
           </p>
+
+          {/* La seconde porte, sur une ligne.
+              Cette page vend aux marques et porte le référencement du
+              domaine ; elle reste donc la racine du site. Mais quelqu'un qui
+              exploite un lieu doit pouvoir bifurquer sans lire un
+              argumentaire qui ne le concerne pas — d'où cette ligne, visible
+              dès la première seconde. Une ligne plutôt qu'un second bouton :
+              deux boutons de même poids dans un hero divisent l'attention et
+              affaiblissent l'action principale. */}
+          <div className="mb-12 flex flex-wrap items-center gap-2.5">
+            <span className="font-sans text-[13px] text-chalk-40">{t.roomAsk}</span>
+            <Link
+              href="/the-room"
+              className="group inline-flex items-center gap-1.5 border-b border-brand/40 pb-0.5 font-sans text-[13px] font-semibold tracking-[0.02em] text-brand no-underline transition-colors hover:border-brand hover:text-white"
+            >
+              {t.roomLink}
+            </Link>
+          </div>
 
         </div>
       </div>
