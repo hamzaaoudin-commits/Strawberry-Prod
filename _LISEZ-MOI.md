@@ -1,60 +1,58 @@
-# Strawberry — retour à la home Marques, THE ROOM dans le hero
+# Strawberry — le site vend l'audit, pas l'Architecture
 
-8 fichiers.
+4 fichiers. **THE ROOM n'est pas touché** : sa charte et ses animations
+sont vérifiées identiques au dépôt, à l'octet près.
 
-## Ce qu'on annule, et pourquoi
+## 1. La home vend l'audit à 490 €
 
-La page d'entrée à deux portes coûtait deux choses que je n'avais pas
-signalées avant de la construire :
+**Le hero.** Il vendait une identité de marque et affichait « Vingt pièces
+écrites à la main. Quatre maisons par trimestre. » — les termes de la
+commande à 4 500 €. Il annonce maintenant l'offre réelle :
 
-1. **Le référencement de la racine.** `/` portait le hero, le diagnostic,
-   l'offre, les statistiques, le livre, la FAQ — tout le texte sur lequel
-   Google vous indexe. Un écran de choix de quelques lignes l'avait
-   remplacé.
-2. **Un clic imposé avant toute proposition de valeur.** Vous m'aviez dit
-   peu avant « on met trop de temps avant de présenter l'offre » ; j'avais
-   fait l'exact inverse.
+> Ce que vous racontez, / et ce que le marché en entend.
+> **Audit narratif · 490 € · Livré en sept jours**
 
-## La structure rétablie
+Le paragraphe nomme les quatre terrains en une phrase : « Une marque, un
+lieu, une entreprise ou une personne : tout tient sur un récit, et
+personne ne l'a écrit. »
 
-- **`/`** — la page d'accueil telle qu'elle était : hero, diagnostic,
-  offre, tout. Elle redevient la porte Marques et récupère son
-  référencement.
-- **`/marques`** — redirection vers `/`. La route a existé publiquement le
-  temps de l'essai, autant ne casser aucun lien.
-- **`/the-room`** — inchangée.
+**Un bouton, enfin.** Le hero n'en avait aucun — on n'atteignait l'offre
+qu'en défilant. C'était défendable pour une commande à 4 500 € qu'on ne
+décide pas en dix secondes ; pour un audit à 490 €, la décision peut se
+prendre tout de suite, il lui faut un bouton. « Commander l'audit → »
+mène directement à la page audit.
 
-## La seconde porte, sur une ligne
+**La section offre** passe de 4 500 € à 490 €, ses deux CTA pointent vers
+l'audit, et la ligne qui parlait de déduire l'audit du prix de
+l'Architecture — devenue fausse — est remplacée par la promesse d'unité :
+« Une marque, un lieu, une entreprise ou une personne : même méthode,
+même prix, même délai. »
 
-Dans le hero, juste sous le paragraphe d'accroche : « Vous tenez un lieu ?
-**THE ROOM →** ». Visible dès la première seconde, sans rien retarder pour
-les autres.
+## 2. Le vocabulaire cesse de dire « brand »
 
-Une ligne plutôt qu'un second bouton : deux boutons de même poids dans un
-hero divisent l'attention et affaiblissent l'action principale, qui reste
-la commande.
+Tant que le site disait BRAND NARRATIVE, il ne s'adressait qu'à un quart
+de votre cible. Dans le menu et le pied de page :
 
-## Trois nettoyages qui allaient avec
+- BRAND NARRATIVE AUDIT → **L'AUDIT NARRATIF** (THE NARRATIVE AUDIT),
+  sous-titré « Marques, lieux, entreprises, personnes ».
+- BRAND NARRATIVE ARCHITECTURE → **L'ARCHITECTURE**, sous-titrée « Après
+  l'audit, sur commande ». Elle reste accessible, elle n'est simplement
+  plus ce vers quoi tout converge.
 
-- `/marques` retiré du sitemap — ce n'est plus une page.
-- Les ancres `/marques#contact` remises sur `/#contact` : le formulaire est
-  revenu sur la racine.
-- Entrées MARQUES / BRANDS retirées du menu et du pied de page — la racine
-  est la porte Marques, une entrée de menu vers elle ferait doublon avec le
-  logo.
+Les URL ne changent pas : `/brand-narrative-audit` reste en place. Les
+renommer aurait cassé le référencement acquis pour un gain nul — le
+visiteur lit le libellé, pas l'adresse.
 
-## Un défaut que j'ai corrigé au passage
+## 3. Ce que je n'ai pas fait, volontairement
 
-Les deux CTA de THE ROOM vivent dans du HTML injecté brut, où
-`LocaleLink` ne s'applique pas : ils pointaient vers `/#contact` sans
-préfixe de langue, donc un visiteur anglophone atterrissait sur la version
-française du formulaire. La langue est maintenant injectée dans ces liens
-au rendu.
+Pas de pages artistes ou entreprises. Vous n'avez pas encore vendu un
+audit : les terrains sont nommés dans le texte, et vous écrirez les pages
+dédiées quand vous saurez lesquels achètent.
+
+L'intérieur de la page Architecture n'est pas retouché non plus. Elle
+reste en ligne, cohérente, simplement sortie du chemin principal.
 
 ## Vérification
 
-Contrôle de types réel : zéro erreur.
-
-## À supprimer
-
-`components/strawberry/doors-section.tsx` — plus appelé nulle part.
+Contrôle de types réel : zéro erreur. Charte et animations THE ROOM :
+comparées au dépôt, identiques.

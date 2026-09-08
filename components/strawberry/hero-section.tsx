@@ -60,22 +60,24 @@ const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
-    h1a: "The identity that makes people",
-    h1b: "belong to your brand, not just buy it.",
-    grounding: "Twenty pieces, written by hand. Four houses a quarter.",
-    sub: "Your product stays the same. What changes is how people see it: enough to keep coming back, to defend you to a friend, to talk about you without being asked. That's the gap between a customer and someone loyal.",
+    h1a: "What you are saying,",
+    h1b: "and what the market actually hears.",
+    grounding: "Narrative audit · 490 € · Delivered in seven days",
+    sub: "A brand, a venue, a company or a person: it all rests on a story, and nobody has written it. We read yours in depth, state what it says today, and give you the moves that change it.",
     cta1: "Place your commission \u2192",
+    ctaMain: "Order the audit \u2192",
     roomAsk: "You run a venue?",
     roomLink: "THE ROOM \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
-    h1a: "L'identité qui fait qu'on adhère",
-    h1b: "à votre marque, pas qu'on l'achète.",
-    grounding: "Vingt pièces écrites à la main. Quatre maisons par trimestre.",
-    sub: "Votre produit ne change pas. Ce qui change, c'est la façon dont on le perçoit : au point de revenir, de vous défendre auprès d'un ami, de parler de vous sans qu'on le lui demande. C'est ça, l'écart entre un client et quelqu'un de fidèle.",
+    h1a: "Ce que vous racontez,",
+    h1b: "et ce que le marché en entend.",
+    grounding: "Audit narratif · 490 € · Livré en sept jours",
+    sub: "Une marque, un lieu, une entreprise ou une personne : tout tient sur un récit, et personne ne l'a écrit. Nous lisons le vôtre en profondeur, nous disons ce qu'il raconte aujourd'hui, et nous donnons les mouvements qui le changent.",
     cta1: "Passer commande \u2192",
+    ctaMain: "Commander l'audit \u2192",
     roomAsk: "Vous tenez un lieu ?",
     roomLink: "THE ROOM \u2192",
   },
@@ -238,6 +240,17 @@ export function HeroSection() {
           <p className="mb-8 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
             {t.sub}
           </p>
+
+          {/* L'action principale : l'audit. Le hero n'avait aucun bouton — il
+              menait au diagnostic par le seul défilement, ce qui convenait
+              quand la page vendait une commande à 4 500 € qu'on ne décide
+              pas en dix secondes. Pour un audit à 490 €, la décision peut se
+              prendre tout de suite : il lui faut un bouton. */}
+          <div className="mb-8">
+            <Link href="/brand-narrative-audit" className="btn-primary">
+              {t.ctaMain}
+            </Link>
+          </div>
 
           {/* La seconde porte, sur une ligne.
               Cette page vend aux marques et porte le référencement du

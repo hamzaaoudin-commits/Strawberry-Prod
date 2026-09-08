@@ -28,12 +28,12 @@ import { CountUp } from "@/components/strawberry/count-up"
 
 const T = {
   en: {
-    kicker: "The commission",
+    kicker: "The offer",
     h2a: "Your market stops comparing you.",
     h2b: "It starts understanding you.",
     intro:
       "What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
-    coverFoot: "Twenty parts",
+    coverFoot: "Twenty to thirty pages",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
@@ -101,23 +101,23 @@ const T = {
     scarcityCloses: (d: string) => `Applications close ${d}.`,
     daysToOpening: (n: number) => (n <= 0 ? "Opens today." : n === 1 ? "1 day left before the next opening." : `${n} days left before the next opening.`),
     investKicker: "The investment",
-    price: "4,500€",
-    priceCadence: "one commission, paid once",
+    price: "490€",
+    priceCadence: "one audit, paid once",
     justify:
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
-    clock: "Already commissioned the audit? Its 490€ comes off this price, provided you commission within the following sixty days.",
+    clock: "A brand, a venue, a company or a person: same method, same price, same turnaround.",
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
-    cta1: "Place your commission →",
-    cta2: "Read the full brief",
+    cta1: "Order the audit →",
+    cta2: "See what the audit contains",
   },
   fr: {
-    kicker: "La commande signature",
+    kicker: "L'offre",
     h2a: "Votre marché arrête de vous comparer.",
     h2b: "Il commence à vous comprendre.",
     intro:
       "Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
-    coverFoot: "Vingt pièces",
+    coverFoot: "Vingt à trente pages",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
       "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
@@ -185,15 +185,15 @@ const T = {
     scarcityCloses: (d: string) => `Clôture des candidatures le ${d}.`,
     daysToOpening: (n: number) => (n <= 0 ? "Ouverture aujourd'hui." : n === 1 ? "Plus qu'1 jour avant la prochaine ouverture." : `Plus que ${n} jours avant la prochaine ouverture.`),
     investKicker: "L'investissement",
-    price: "4 500€",
-    priceCadence: "une commande, payée une fois",
+    price: "490€",
+    priceCadence: "un audit, payé une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
-    clock: "Vous avez déjà commandé l'audit ? Ses 490€ sont déduits de ce prix, à condition de commander dans les soixante jours qui suivent.",
+    clock: "Une marque, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
-    cta1: "Passer commande →",
-    cta2: "Lire le brief complet",
+    cta1: "Commander l'audit →",
+    cta2: "Voir ce que contient l'audit",
   },
 }
 
@@ -355,14 +355,14 @@ export function OffersSection({ lang }: { lang: Lang }) {
                   Envoyer une carte bancaire à quelqu'un qui n'a pas lu la page
                   de vente, c'est parler de l'étape cinq pendant l'étape une. */}
               <TrackedLink
-                href="/brand-narrative-architecture"
+                href="/brand-narrative-audit"
                 className="btn-primary"
                 event="cta_click"
                 data={{ section: "offers", target: "architecture" }}
               >
                 {t.cta1}
               </TrackedLink>
-              <Link href="/brand-narrative-architecture" className="btn-quiet">
+              <Link href="/brand-narrative-audit" className="btn-quiet">
                 {t.cta2}
               </Link>
             </div>

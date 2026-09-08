@@ -12,8 +12,8 @@ const T = {
     cta: "Passer commande",
     menu: "Menu",
     offersMenu: [
-      { label: "BRAND NARRATIVE AUDIT", sub: "Marques · le diagnostic", href: "/brand-narrative-audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE", sub: "Marques · la commande signature", href: "/brand-narrative-architecture" },
+      { label: "L'AUDIT NARRATIF", sub: "Marques, lieux, entreprises, personnes", href: "/brand-narrative-audit" },
+      { label: "L'ARCHITECTURE", sub: "Après l'audit, sur commande", href: "/brand-narrative-architecture" },
       { label: "THE ROOM", sub: "Lieux · le sprint d'écriture", href: "/the-room" },
     ],
   },
@@ -24,8 +24,8 @@ const T = {
     cta: "Place your commission",
     menu: "Menu",
     offersMenu: [
-      { label: "BRAND NARRATIVE AUDIT", sub: "Brands · the diagnosis", href: "/brand-narrative-audit" },
-      { label: "BRAND NARRATIVE ARCHITECTURE", sub: "Brands · the signature commission", href: "/brand-narrative-architecture" },
+      { label: "THE NARRATIVE AUDIT", sub: "Brands, venues, companies, people", href: "/brand-narrative-audit" },
+      { label: "THE ARCHITECTURE", sub: "After the audit, on commission", href: "/brand-narrative-architecture" },
       { label: "THE ROOM", sub: "Venues · the writing sprint", href: "/the-room" },
     ],
   },
