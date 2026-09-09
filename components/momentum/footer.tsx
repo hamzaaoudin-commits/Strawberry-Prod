@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { CONTACT, CAPACITE } from "@/lib/config"
-import type { Lang } from "@/lib/i18n"
+import type { Lang } from "@/lib/lang"
 import type { Copy } from "@/lib/momentum/copy"
 
 export function Footer({ lang, t }: { lang: Lang; t: Copy }) {

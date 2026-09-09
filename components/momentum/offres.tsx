@@ -1,6 +1,6 @@
 import { PRIX, CAPACITE, OFFRE_PRINCIPALE } from "@/lib/config"
 import type { Copy } from "@/lib/momentum/copy"
-import type { Lang } from "@/lib/i18n"
+import type { Lang } from "@/lib/lang"
 import { Reveal } from "./reveal"
 
 export function GrilleOffres({ lang, t }: { lang: Lang; t: Copy }) {

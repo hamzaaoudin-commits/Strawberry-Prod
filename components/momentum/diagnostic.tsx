@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import type { Copy } from "@/lib/momentum/copy"
-import type { Lang } from "@/lib/i18n"
+import type { Lang } from "@/lib/lang"
 
 /**
  * LE DIAGNOSTIC.

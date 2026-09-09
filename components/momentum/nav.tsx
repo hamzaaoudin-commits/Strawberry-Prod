@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Progression, EtiquetteSection } from "./progression"
-import {LANGS,  type Lang} from "@/lib/i18n"
+import { LANGS, type Lang } from "@/lib/lang"
 import type { Copy } from "@/lib/momentum/copy"
 
 /** Libellés du sélecteur de langue — portés depuis MOMENTUM, dont le

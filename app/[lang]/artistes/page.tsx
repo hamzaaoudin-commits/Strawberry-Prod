@@ -13,7 +13,11 @@ import { Rature } from "@/components/momentum/rature"
 import { Faq } from "@/components/momentum/faq"
 import { Formulaire } from "@/components/momentum/formulaire"
 import { CONTACT, CAPACITE } from "@/lib/config"
-import { isLang, type Lang } from "@/lib/i18n"
+// Depuis lib/lang.ts et non lib/i18n.tsx : ce dernier porte "use client",
+// et cette page est un composant serveur. Importer isLang du module client
+// faisait échouer le build au prérendu ("Attempted to call isLang() from the
+// server but isLang is on the client").
+import { isLang, type Lang } from "@/lib/lang"
 import { getCopy } from "@/lib/momentum/copy"
 
 /* ===========================================================================
