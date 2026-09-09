@@ -564,3 +564,376 @@ body::before {
   @keyframes sp-check-circle { from, to { stroke-dashoffset: 0; } }
   @keyframes sp-check-mark { from, to { stroke-dashoffset: 0; } }
 }
+
+/* ===========================================================================
+   ÉCHAFAUDAGE PORTÉ DEPUIS MOMENTUM — utilisé par la page /artistes.
+
+   Ces classes (bloc, cadre, titre-1, carte, bouton, etiquette, prix...) sont
+   celles sur lesquelles reposent les quinze composants portés. Sans elles,
+   la page s'affiche sans fond, sans rythme vertical et sans mise en page :
+   je n'avais porté que les variables de couleur, pas l'échafaudage qui les
+   utilise.
+
+   Les couleurs y ont été converties aux jetons du studio, comme pour le
+   bloc de variables plus haut.
+
+   Le fond, la police et les réglages de `body` de MOMENTUM ne sont PAS
+   portés : ils s'appliqueraient à tout le site. La page /artistes pose son
+   propre fond via `.page-artistes` ci-dessous, qui ne concerne qu'elle.
+   =========================================================================== */
+
+.page-artistes {
+  background: var(--color-encre);
+  color: var(--color-craie);
+  /* Les utilitaires portés appellent var(--font-sans) et var(--font-mono).
+     Sur le reste du site ces variables valent Playfair et DM Sans ; ici
+     elles doivent valoir les polices de MOMENTUM, sans quoi toute la page
+     s'affiche dans la typographie du studio sur une mise en page qui n'a
+     pas été dessinée pour elle. */
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  font-family: var(--font-sans);
+}
+.page-artistes *,
+.page-artistes *::before,
+.page-artistes *::after {
+  border-color: var(--color-filet);
+}
+
+@utility px-marge {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+}
+
+/* Trois densités, pas une.
+   Quatorze sections au même rythme vertical, c'est un métronome : rien
+   n'accélère, rien ne s'effondre, et le lecteur ne peut pas sentir qu'il
+   approche d'un moment important. Une page qui parle à des musiciens ne peut
+   pas être entièrement en mezzo-forte.
+
+     bloc-serre  la liste des ratures — ça doit défiler vite
+     bloc        le régime normal
+     bloc-ample  le diagnostic, l'offre, la candidature — on ralentit */
+
+@utility bloc {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  position: relative;
+}
+
+@utility bloc-serre {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
+  position: relative;
+}
+
+@utility bloc-ample {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  position: relative;
+}
+
+/* Le silence : un écran, une phrase, rien d'autre.
+   Ces pauses ne coûtent qu'un peu de défilement et elles font exister ce qui
+   vient juste après. C'est la respiration entre deux mouvements. */
+@utility silence {
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .bloc { padding-top: 8.5rem; padding-bottom: 8.5rem; }
+  .bloc-serre { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .bloc-ample { padding-top: 12rem; padding-bottom: 12rem; }
+  .silence { min-height: 72vh; }
+}
+
+/* La phrase d'un silence : le plus gros corps de la page après le titre du
+   hero, et le seul endroit où une ligne peut occuper toute la largeur. */
+@utility phrase {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.85rem, 5.2vw, 4rem);
+  color: var(--color-craie);
+}
+
+@utility ancre {
+  scroll-margin-top: 68px;
+}
+
+@utility cadre     { margin-inline: auto; width: 100%; max-width: 1180px; }
+@utility cadre-md  { margin-inline: auto; width: 100%; max-width: 920px; }
+@utility cadre-sm  { margin-inline: auto; width: 100%; max-width: 700px; }
+
+/* ---------------------------------------------------------------------------
+   TYPOGRAPHIE
+   ---------------------------------------------------------------------------
+   Une seule famille de labeur — Archivo, grotesque américaine large, à axe de
+   graisse complet — et une mono technique, JetBrains Mono.
+
+   Le contraste ne vient plus de deux familles opposées (une serif élégante
+   contre une sans neutre), qui est la mise en page par défaut de presque tout
+   ce qui s'est lancé depuis deux ans. Il vient de l'écart de graisse à
+   l'intérieur d'une seule famille : 800 contre 400. C'est plus exigeant à
+   régler, et ça n'appartient qu'à ce site.
+   --------------------------------------------------------------------------- */
+
+@utility index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-cobalt-vif);
+  font-weight: 500;
+}
+
+@utility etiquette {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-craie-38);
+}
+
+/* Tous les titres en capitales.
+   Trois réglages changent avec la casse et ne sont pas négociables :
+   — l'interlignage se resserre, mais pas autant qu'on le croit : le français
+     accentue ses capitales (É, À, Ê) et ces accents montent au-dessus de la
+     hauteur de capitale. En dessous de 0.93, le É de « D'ÉLAN » percute la
+     ligne du dessus. C'est la limite basse, pas un réglage esthétique ;
+   — l'approche se relâche un peu (-0.03em au lieu de -0.045em), parce que les
+     capitales ont des flancs plus réguliers et se collent plus vite ;
+   — le corps baisse légèrement, une ligne de capitales étant nettement plus
+     large que la même ligne en bas-de-casse.
+   Le html est en lang="fr" : les accents sont donc conservés à la conversion
+   (É, À, Ê), comme le veut l'usage français. */
+
+@utility titre-1 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.3rem, 6.9vw, 5.5rem);
+}
+
+@utility titre-2 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+}
+
+@utility titre-3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  font-size: clamp(1.05rem, 1.7vw, 1.32rem);
+}
+
+@utility chapo {
+  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+  line-height: 1.58;
+  color: var(--color-craie-65);
+  font-weight: 400;
+}
+
+@utility corps {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--color-craie-65);
+  font-weight: 400;
+}
+
+/* Le verdict : la signature typographique du site.
+   Plus d'italique serif — un bloc lourd, serré, blanc plein, contre un trait
+   blanc de 3 px. Un conseiller ne murmure pas une élégance, il tranche. */
+@utility verdict {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--color-craie);
+  border-left: 3px solid var(--color-craie);
+  padding-left: clamp(1rem, 2vw, 1.6rem);
+}
+
+@utility prix {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--color-craie);
+}
+
+/* ---------------------------------------------------------------------------
+   SURFACES — plates. Aucun dégradé.
+   --------------------------------------------------------------------------- */
+
+@utility carte {
+  border: 1px solid var(--color-filet);
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  transition: border-color 350ms cubic-bezier(.2,.7,.2,1);
+  &:hover { border-color: var(--color-filet-fort); }
+}
+
+@utility carte-active {
+  border: 1px solid var(--color-cobalt);
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* L'aplat.
+   Un système à accent unique a besoin d'au moins un endroit où l'accent
+   envahit tout le champ. Sans ça, le bleu reste une couleur d'interface —
+   des numéros de 11 px et des filets — et ne devient jamais une couleur de
+   marque. Une seule fois dans la page, pas deux : c'est l'unicité qui fait
+   l'effet. */
+@utility aplat {
+  background: var(--color-cobalt-vif);
+  color: #06070a;
+  & .etiquette { color: rgba(6, 7, 10, 0.62); }
+  & .corps { color: rgba(6, 7, 10, 0.82); }
+}
+
+/* ---------------------------------------------------------------------------
+   CONTRÔLES
+   --------------------------------------------------------------------------- */
+
+@utility bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  padding: 15px 28px;
+  border-radius: 0;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+/* L'action, en blanc plein sur noir. C'est le contraste maximal disponible :
+   aucune couleur ne peut faire mieux, et rien ne le fera passer pour un
+   composant générique. */
+@utility bouton-plein {
+  color: #0a0a0a;
+  background: var(--color-craie);
+  border: 1px solid var(--color-craie);
+  &:hover { background: var(--color-cobalt-vif); border-color: var(--color-cobalt-vif); color: #fff; }
+}
+
+@utility bouton-vide {
+  color: var(--color-craie);
+  border: 1px solid var(--color-filet-fort);
+  background: transparent;
+  &:hover { border-color: var(--color-craie); }
+}
+
+@utility champ {
+  width: 100%;
+  border: 1px solid var(--color-filet-fort);
+  background: var(--color-encre);
+  padding: 14px 15px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #fff;
+  border-radius: 0;
+  transition: border-color 180ms ease;
+  &::placeholder { color: var(--color-craie-24); }
+  &:focus {
+    outline: none;
+    border-color: var(--color-cobalt-vif);
+  }
+  & option { background: #141414; color: #fff; }
+}
+
+@utility champ-label {
+  display: block;
+  margin-bottom: 9px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-craie-50);
+}
+
+@utility jauge {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-cobalt-vif);
+  transition: width 120ms linear;
+}
+
+/* ---------------------------------------------------------------------------
+   MOUVEMENT — une apparition, jamais un effet.
+   --------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+.reveal.vu {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes mo-trace {
+  from { stroke-dashoffset: var(--len); }
+  to   { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   GRAIN
+   ---------------------------------------------------------------------------
+   Monté à 0.055 : sur un noir aussi froid et des aplats aussi nets, c'est la
+   seule chose qui empêche les grandes surfaces de ressembler à du vide
+   numérique. Il doit se sentir sans se voir.
+   --------------------------------------------------------------------------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { display: none; }
+}

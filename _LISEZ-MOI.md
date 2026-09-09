@@ -1,47 +1,49 @@
-# Strawberry — l'audit à 490 € sur les quatre terrains
+# Strawberry — le design de /artistes réparé
 
-Deux fichiers.
+Deux fichiers : `app/globals.css` et `app/[lang]/artistes/page.tsx`.
 
-## Ce qui change
+## Ce que j'avais raté
 
-**Les quatre terrains mènent tous à l'audit.** Marques, Entreprises,
-Lieux et Artistes & fondateurs pointaient vers trois pages différentes
-avec trois prix différents. Ils pointent maintenant tous vers
-`/brand-narrative-audit` : c'est la même offre, le même prix, le même
-délai — c'est tout l'argument de l'unification.
+Au portage, je n'ai repris que **les variables de couleur** de MOMENTUM.
+Or son design repose aussi sur une trentaine de **classes utilitaires** —
+`bloc`, `cadre`, `titre-1`, `titre-2`, `carte`, `bouton`, `etiquette`,
+`prix`, `silence`, `chapo`… — que les quinze composants portés utilisent
+dans chaque balise.
 
-**Les deux commandes apparaissent en second plan.** Sous le bouton
-principal, séparées par un filet et en plus petit :
+Sans elles, chaque `className` de la page pointait vers du vide. D'où
+exactement ce que vous décrivez : pas de fond, pas de rythme vertical,
+pas de découpage. Les composants étaient là, leur mise en page ne
+l'était pas.
 
-> Après l'audit, si vous voulez qu'on construise
-> **L'ARCHITECTURE** · Vingt pièces, sur commande — **THE ROOM** · Lieux,
-> sprint de 2 à 3 semaines
+## Ce qui est corrigé
 
-Elles restent visibles et cliquables, mais lisibles pour ce qu'elles
-sont : ce qui vient après le diagnostic, pas quatre offres concurrentes.
-Les citer ici évite qu'un visiteur les découvre par accident dans le menu
-et croie à un catalogue.
+**L'échafaudage est porté** (10 Ko de règles), avec les couleurs
+converties aux jetons du studio comme le reste.
 
-## Ce qui reste à faire, et pourquoi je ne l'ai pas fait
+**La page a enfin un conteneur.** Elle rendait un fragment nu (`<>`),
+donc elle n'avait aucun élément sur lequel poser un fond. Elle est
+maintenant enveloppée dans `.page-artistes`, qui porte le fond et la
+couleur de texte.
 
-**La page `/artistes` vend encore un abonnement.** 299 €/mois, avec deux
-paliers à 149 et 499, des sessions mensuelles et un tableau comparatif à
-trois colonnes. Toute son architecture d'offre est bâtie autour du
-mensuel — le prix n'est pas une variable isolée, c'est la structure de la
-page.
+**Les deux polices de MOMENTUM sont chargées** — Archivo et JetBrains
+Mono — dans la page, pas dans le layout : elles ne concernent qu'elle.
+Et surtout, `--font-sans` et `--font-mono` sont **redéfinies dans le
+périmètre de `.page-artistes`**. C'était le piège : les utilitaires
+portés appellent ces variables, qui valent Playfair et DM Sans partout
+ailleurs sur le site. Sans cette redéfinition, la page se serait affichée
+dans la typographie du studio sur une mise en page qui n'a pas été
+dessinée pour elle.
 
-Changer « 299 » en « 490 » ne suffirait pas : la page continuerait de
-promettre des sessions mensuelles et de comparer trois formules. Il faut
-réécrire sa section offre pour qu'elle vende l'audit — c'est un travail
-de rédaction sur les deux fichiers de copie, FR et EN, pas un ajustement.
+## Cloisonnement
 
-En attendant, le parcours reste cohérent : depuis la home, le terrain
-« Artistes & fondateurs » mène à l'audit à 490 €, pas à la page
-d'abonnement. La page `/artistes` n'est plus dans le chemin principal,
-seulement dans le menu.
-
-Dites-moi quand vous voulez que je réécrive son offre.
+Le `body` de MOMENTUM (fond, police, débordement) n'est **pas** porté :
+il s'appliquerait à tout le site. Tout passe par `.page-artistes`, qui ne
+concerne que cette page. Le reste du site est inchangé.
 
 ## Vérification
 
 Contrôle de types : zéro erreur.
+
+Si quelque chose cloche encore visuellement, dites-moi quelle section :
+il restera probablement une classe ou deux définies ailleurs que dans le
+bloc que j'ai porté.

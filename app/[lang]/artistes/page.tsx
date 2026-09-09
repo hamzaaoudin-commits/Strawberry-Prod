@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import { Archivo, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
 import { Reveal } from "@/components/momentum/reveal"
 import { TeteSection } from "@/components/momentum/section"
@@ -44,6 +45,23 @@ import { getCopy } from "@/lib/momentum/copy"
                 objections → tri → questions → action.
    =========================================================================== */
 
+// Les deux polices de MOMENTUM. Chargées ici et non dans le layout : elles
+// ne concernent que cette page, et le reste du site tourne sur Playfair et
+// DM Sans.
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-archivo",
+  display: "swap",
+})
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
+})
+
 export default async function Accueil({ params }: { params: Promise<{ lang: string }> }) {
   const { lang: brut } = await params
   if (!isLang(brut)) notFound()
@@ -51,7 +69,12 @@ export default async function Accueil({ params }: { params: Promise<{ lang: stri
   const t = getCopy(lang)
 
   return (
-    <>
+    // Le conteneur manquait : la page rendait un fragment nu, donc sans fond
+    // ni police propres — elle héritait de ceux du site, alors que tout son
+    // échafaudage suppose le fond MOMENTUM. `page-artistes` porte le fond et
+    // la couleur de texte ; les deux polices sont chargées juste en dessous
+    // et ne s'appliquent qu'ici.
+    <div className={`page-artistes ${archivo.variable} ${jetbrains.variable}`}>
       {/* ═══════════════ HERO ═══════════════ */}
       <section
         data-section
@@ -492,6 +515,6 @@ export default async function Accueil({ params }: { params: Promise<{ lang: stri
           </Reveal>
         </div>
       </section>
-    </>
+    </div>
   )
 }
