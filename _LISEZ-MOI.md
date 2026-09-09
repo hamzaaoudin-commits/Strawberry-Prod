@@ -1,54 +1,58 @@
-# Strawberry — le questionnaire s'adapte au terrain
+# Strawberry — la page audit sert les quatre terrains
 
-Trois fichiers.
+Deux fichiers.
 
-## Le problème
+## 1. La page audit (`brand-narrative-audit`)
 
-Le questionnaire ne connaissait que deux parcours : `audit` et
-`architecture`. Ses questions supposent toutes une marque — « le nom de
-votre maison », « vos concurrents directs et leur tagline ». Depuis que
-l'audit vaut aussi pour un lieu et pour un artiste, ces formulations
-tombent à côté : un restaurateur n'a pas de tagline concurrente à copier,
-un artiste n'a pas de maison.
+Elle était écrite pour des marques : « Ce que votre marque raconte
+vraiment », un questionnaire qui parlait de site et de réseaux, une
+section « pour qui » qui ne mentionnait que des marques. Un restaurateur
+ou un artiste envoyé là depuis la home tombait sur une page qui parlait à
+quelqu'un d'autre.
 
-## Ce qui est ajouté
+**Le badge** devient « L'AUDIT NARRATIF · 490€ » — plus « BRAND
+NARRATIVE ».
 
-**Une dimension terrain**, à côté de l'offre. Une question peut désormais
-déclarer les terrains qui la concernent ; **sans mention, elle vaut pour
-tous** — et c'est le cas de la grande majorité. C'est ce qui rend
-l'unification vraie plutôt que déclarée : le parcours reste le même à
-90 %, seules quelques questions se déclinent.
+**Le titre** devient « Ce que vous racontez, et ce que le marché en
+entend. » Il vaut pour une marque comme pour un nom d'artiste.
 
-**Trois versions de la question « concurrents » :**
-- marques et entreprises — la version d'origine, inchangée ;
-- lieux — « Nommez 3 à 5 adresses concurrentes... Reprenez la phrase de
-  leur fiche Google ou de leur bio Instagram » ;
-- artistes — « Nommez 3 à 5 artistes de votre zone... Pas vos influences :
-  ceux à qui on vous compare. »
+**Une bande des quatre terrains** est ajoutée sous le hero, avant « ce
+que vous recevez » : chacun se reconnaît en une ligne, et la note qui
+suit dit l'essentiel — « Même méthode, même prix, même délai. Seul le
+questionnaire s'adapte à ce que vous êtes. » C'est le lien manquant
+entre la promesse de la home et la page qui vend.
 
-**L'URL porte le terrain :**
-`/fr/questionnaire/audit?terrain=lieux&name=...&email=...`
+**Le paragraphe du questionnaire** ne parle plus de « site, réseaux,
+contenus » mais de « site, réseaux, carte, contenus récents, presse » —
+la carte pour un lieu, la presse pour un artiste.
 
-Sans paramètre, c'est le parcours commun qui s'affiche : **tous les liens
-déjà envoyés à des clients continuent de fonctionner à l'identique.**
+## 2. La page artistes vend l'audit
 
-**La clé de sauvegarde locale inclut le terrain**, sinon deux parcours
-différents se seraient écrasés l'un l'autre dans le navigateur.
+Toute la section offre — abonnement à 299 €/mois, trois paliers, garantie
+et tableau comparatif dépliable — est remplacée par l'audit à 490 €, dans
+la charte de la page.
 
-## Ce qui reste à faire
+Nouveau titre de section : « Un audit. Un prix. Sept jours. », avec la
+phrase qui règle la question du terrain : « Le même audit que pour une
+marque, une entreprise ou un lieu. Seul le questionnaire change, parce
+que votre terrain n'est pas le leur. »
 
-Je n'ai décliné que la question des concurrents — la plus manifestement
-inadaptée. D'autres méritent le même traitement une fois que vous aurez
-tranché leur formulation :
+Le bouton mène à `/brand-narrative-audit`, comme partout ailleurs.
 
-- « le nom de votre maison » → le nom du lieu, le nom d'artiste ;
-- « votre client refusé » → la table qu'on refuse, la date qu'on refuse ;
-- « votre modèle de vente » → sans objet pour un lieu.
+Les composants `OffreUnique`, `GrilleOffres`, `Comparatif` et `Garantie`
+ne sont plus appelés : ils supposaient un modèle par paliers qui n'existe
+plus. Leurs imports ont été retirés, ainsi que celui de `Depliant`,
+devenu inutilisé. Les fichiers eux-mêmes restent dans le dépôt et peuvent
+être supprimés.
 
-Dites-moi lesquelles vous voulez décliner et dans quels termes : la
-mécanique est en place, il ne reste plus qu'à écrire.
+## Ce qui reste incohérent
+
+**THE ROOM** vend toujours un sprint à 2 500–3 500 €. C'est légitime si
+vous le tenez pour un high ticket comme l'Architecture — mais la home le
+présente aujourd'hui comme un terrain d'audit à 490 €, donc le visiteur
+qui clique voit autre chose. Il faudrait soit y ajouter l'audit comme
+porte d'entrée, soit le sortir de la grille des quatre terrains.
 
 ## Vérification
 
-Contrôle de types : zéro erreur venant de ce code. (La seule erreur
-signalée porte sur `next/server`, absent de mon environnement.)
+Contrôle de types : zéro erreur venant de ce code.

@@ -11,12 +11,20 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const T = {
   fr: {
-    badge: "BRAND NARRATIVE AUDIT · 490€",
-    h1a: "Ce que votre marque",
-    h1b: "raconte vraiment.",
-    lead: "Nous lisons votre marque comme le fait votre marché : nous relevons la phrase qui porte, celle qui vous range dans le même rayon que vos concurrents, et les mots que trois d'entre eux revendiquent déjà. Vous recevez un document écrit, avec les mouvements à faire et ceux à ne pas faire. Rien n'est réécrit à votre place — c'est un état des lieux, pas une refonte.",
+    badge: "L'AUDIT NARRATIF · 490€",
+    h1a: "Ce que vous racontez,",
+    h1b: "et ce que le marché en entend.",
+    lead: "Une marque, une entreprise, un lieu ou une personne : le travail est le même. Nous vous lisons comme le fait votre marché — la phrase qui porte, celle qui vous range dans le même rayon que les autres, les mots que trois concurrents revendiquent déjà. Vous recevez un document écrit, avec les mouvements à faire et ceux à ne pas faire. Rien n'est réécrit à votre place : c'est un état des lieux, pas une refonte.",
     cta: "Commander l'audit",
     ctaSecondary: "Voir un exemple de livrable",
+    terrainsKicker: "Le même audit, quatre terrains",
+    terrains: [
+      { k: "Marques", v: "On vous compare au prix parce que rien ne dit qui vous êtes." },
+      { k: "Entreprises", v: "Clair en interne, illisible dehors. Quatre versions selon qui parle." },
+      { k: "Lieux", v: "La salle est pleine, et chaque publication repart de zéro." },
+      { k: "Artistes & fondateurs", v: "Vos sorties ne s'additionnent pas. Votre nom porte un travail non formulé." },
+    ],
+    terrainsNote: "Même méthode, même prix, même délai. Seul le questionnaire s'adapte à ce que vous êtes.",
     previewKicker: "Un exemplaire, publié en entier",
     previewH2: "Voici exactement ce que vous recevrez.",
     previewLead: "Voici trois extraits d'un audit complet, mené sur VERSO, une maison de reliure d'art. Les cinq blocs sont lisibles en entier, gratuitement.",
@@ -27,7 +35,7 @@ const T = {
     // — What it is
     whatKicker: "Ce que vous recevez",
     whatH2: "Une analyse en profondeur. Aucune réécriture.",
-    whatLead: "Vous remplissez un questionnaire de vingt minutes et nous partagez votre site, vos réseaux, vos contenus récents — tout ce qui dit qui vous êtes aujourd'hui, pas seulement une page. Sept jours plus tard, vous recevez un PDF de vingt à trente pages qui dit ce que votre marque raconte aujourd'hui, et ce qu'elle devrait raconter.",
+    whatLead: "Vous remplissez un questionnaire adapté à votre terrain et nous partagez ce qui vous représente aujourd'hui : site, réseaux, carte, contenus récents, presse. Sept jours plus tard, vous recevez un PDF de vingt à trente pages qui dit ce que vous racontez aujourd'hui, et ce que vous devriez raconter.",
     blocks: [
       { n: "01", t: "La lecture du champ", d: "Vos trois à cinq concurrents directs, leurs phrases, ce qu'ils promettent réellement. La carte de ce qui est déjà occupé — et le terrain qui ne l'est pas." },
       { n: "02", t: "L'autopsie de votre phrase", d: "Votre phrase de positionnement actuelle, disséquée mot par mot. Ce qu'elle emprunte au champ, ce qu'elle dilue, ce qui est mort à l'arrivée parce que tout le monde l'emploie déjà." },
@@ -53,7 +61,7 @@ const T = {
     forYes: "C'est pour vous si",
     forNo: "Ce n'est pas pour vous si",
     yes: [
-      "Vous avez une marque qui tourne et vous sentez qu'elle ne se distingue pas assez",
+      "Vous avez une marque, une entreprise, un lieu ou un nom qui tourne, et vous sentez qu'on ne vous distingue pas assez",
       "Vous voulez savoir ce qui cloche avant d'engager un budget de refonte",
       "Vous avez un doute précis sur votre positionnement et vous voulez un avis extérieur documenté",
       "Vous préparez une levée, un lancement ou un repositionnement et vous voulez un état des lieux",
@@ -75,12 +83,20 @@ const T = {
     bridgeCta: "Lire l'exemple complet →",
   },
   en: {
-    badge: "BRAND NARRATIVE AUDIT · 490€",
-    h1a: "What your brand",
-    h1b: "actually says.",
+    badge: "L'AUDIT NARRATIF · 490€",
+    h1a: "What you are saying,",
+    h1b: "and what the market hears.",
     lead: "We read your brand the way your market does: the sentence that lands, the one that files you on the same shelf as your competitors, and the words three of them already claim. You receive a written document, with the moves to make and the ones not to. Nothing is rewritten for you — this is a survey, not a rebuild.",
     cta: "Commission the audit",
     ctaSecondary: "See a sample deliverable",
+    terrainsKicker: "The same audit, four grounds",
+    terrains: [
+      { k: "Brands", v: "You get compared on price because nothing says who you are." },
+      { k: "Companies", v: "Clear inside, unreadable outside. Four versions depending on who speaks." },
+      { k: "Venues", v: "The room is full, and every post starts from nothing." },
+      { k: "Artists & founders", v: "Your releases do not add up. Your name carries work nobody has put into words." },
+    ],
+    terrainsNote: "Same method, same price, same turnaround. Only the questionnaire adapts to what you are.",
     previewKicker: "One copy, published in full",
     previewH2: "This is exactly what you would receive.",
     previewLead: "Three excerpts from a complete audit, run on VERSO, an art bindery. All five blocks are readable in full, free.",
@@ -90,7 +106,7 @@ const T = {
     previewLabels: ["Block 01 — The field, read", "Block 02 — Your sentence, autopsied", "Block 05 — The verdict"],
     whatKicker: "What you receive",
     whatH2: "A deep analysis. No rewrite.",
-    whatLead: "You fill in a twenty-minute questionnaire and share your site, your social presence, your recent content — everything that says who you are today, not just one page. Seven days later you receive a twenty to thirty page PDF stating what your brand says today, and what it should be saying.",
+    whatLead: "You fill in a questionnaire matched to your ground and share what represents you today: site, social presence, menu, recent content, press. Seven days later you receive a twenty to thirty page PDF stating what you are saying today, and what you should be saying.",
     blocks: [
       { n: "01", t: "The field, read", d: "Your three to five direct competitors, their sentences, what they actually promise. A map of what is already occupied — and the ground that isn't." },
       { n: "02", t: "Your sentence, autopsied", d: "Your current positioning sentence, dissected word by word. What it borrows from the field, where it dilutes, which words are dead on arrival because everyone already uses them." },
@@ -236,7 +252,26 @@ export default async function BrandNarrativeAuditPage({
       <section className="section">
         <div className="shell-md">
           <div className="mb-12 text-center">
-            <div className="kicker mb-5">{t.whatKicker}</div>
+            {/* Les quatre terrains, sur la page qui vend.
+              La home les annonce ; sans ce rappel ici, un restaurateur ou un
+              artiste arrivait sur une page qui ne parlait qu'aux marques et
+              se demandait s'il était au bon endroit. */}
+          <div className="mb-16 border-y border-hair py-10">
+            <div className="kicker mb-6 text-center">{t.terrainsKicker}</div>
+            <div className="mx-auto grid max-w-[900px] gap-px bg-white/10 sm:grid-cols-2">
+              {t.terrains.map((x) => (
+                <div key={x.k} className="bg-ink px-6 py-5">
+                  <div className="mb-1.5 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{x.k}</div>
+                  <p className="m-0 font-sans text-[14px] leading-[1.65] text-chalk-55">{x.v}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mx-auto mt-6 max-w-[560px] text-center font-sans text-[13px] text-chalk-40">
+              {t.terrainsNote}
+            </p>
+          </div>
+
+          <div className="kicker mb-5">{t.whatKicker}</div>
             <h2 className="h-section mb-6">{t.whatH2}</h2>
             <p className="lede mx-auto max-w-[620px]">{t.whatLead}</p>
           </div>

@@ -6,9 +6,7 @@ import { TeteSection } from "@/components/momentum/section"
 import { Trajectoires } from "@/components/momentum/trajectoires"
 import { Ascension } from "@/components/momentum/ascension"
 import { Arc } from "@/components/momentum/arc"
-import { OffreUnique, Garantie, Places } from "@/components/momentum/offre-unique"
-import { GrilleOffres, Comparatif } from "@/components/momentum/offres"
-import { Depliant } from "@/components/momentum/depliant"
+import { Places } from "@/components/momentum/offre-unique"
 import { Diagnostic } from "@/components/momentum/diagnostic"
 import { Rature } from "@/components/momentum/rature"
 import { Faq } from "@/components/momentum/faq"
@@ -358,24 +356,44 @@ export default async function Accueil({ params }: { params: Promise<{ lang: stri
         </div>
       </section>
 
-      {/* ═══════════════ 09 · L'OFFRE ═══════════════ */}
+      {/* ═══════════════ 09 · L'OFFRE ═══════════════
+
+         Remplace l'abonnement mensuel de MOMENTUM (299 €/mois, trois
+         paliers, tableau comparatif) par l'audit narratif à 490 €.
+
+         C'est la même offre que sur les trois autres terrains : même
+         méthode, même prix, même délai. Deux prix différents selon la page
+         d'arrivée auraient défait l'argument que le reste du site
+         construit. Les composants OffreUnique, GrilleOffres et Comparatif
+         ne sont plus appelés — ils supposaient un modèle par paliers qui
+         n'existe plus.
+         ═══════════════════════════════════════════ */}
       <section id="offres" className="ancre bloc-ample border-t border-filet" data-section data-label="L'OFFRE">
         <div className="cadre">
-          <TeteSection index="09" etiquette={t.offre.etiquette} titre={t.offre.titre} chapo={t.offre.chapo} />
-          <OffreUnique t={t} />
-          <Reveal delay={150}>
-            <div className="mt-5">
-              <Garantie t={t} />
-            </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="mt-5">
-              <Depliant libelle={t.offre.deplier} libelleOuvert={t.offre.replier}>
-                <GrilleOffres lang={lang} t={t} />
-                <div className="mt-10">
-                  <Comparatif t={t} />
-                </div>
-              </Depliant>
+          <TeteSection
+            index="09"
+            etiquette={lang === "en" ? "THE OFFER" : "L'OFFRE"}
+            titre={lang === "en" ? "One audit. One price. Seven days." : "Un audit. Un prix. Sept jours."}
+            chapo={
+              lang === "en"
+                ? "The same audit as for a brand, a company or a venue. Only the questionnaire changes, because your ground is not theirs."
+                : "Le même audit que pour une marque, une entreprise ou un lieu. Seul le questionnaire change, parce que votre terrain n'est pas le leur."
+            }
+          />
+          <Reveal>
+            <div className="carte carte-active mt-8 text-center">
+              <div className="etiquette">{lang === "en" ? "THE NARRATIVE AUDIT" : "L'AUDIT NARRATIF"}</div>
+              <div className="prix mt-4">490 €</div>
+              <p className="corps mx-auto mt-4 max-w-[46ch]">
+                {lang === "en"
+                  ? "A twenty to thirty page document: what your name says today, what the market actually hears, and the moves that change it. Delivered in seven days, paid once."
+                  : "Un document de vingt à trente pages : ce que votre nom raconte aujourd'hui, ce que le marché en entend, et les mouvements qui changent ça. Livré en sept jours, payé une fois."}
+              </p>
+              <div className="mt-8">
+                <a href="/brand-narrative-audit" className="bouton bouton-plein">
+                  {lang === "en" ? "Order the audit" : "Commander l'audit"}
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>
