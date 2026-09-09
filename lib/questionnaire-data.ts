@@ -19,6 +19,23 @@ import type { Lang } from "@/lib/lang"
 
 export type OfferKey = "audit" | "architecture"
 
+/**
+ * Le terrain sur lequel porte l'audit.
+ *
+ * L'audit est le même métier pour les quatre, mais certaines questions ne
+ * se posent pas pareil : un restaurant n'a pas de « concurrents avec leur
+ * tagline », un artiste n'a pas de « maison ». Une question sans `terrains`
+ * vaut pour tous — c'est le cas de la grande majorité, et c'est ce qui rend
+ * l'unification vraie plutôt que déclarée.
+ */
+export type TerrainKey = "marques" | "entreprises" | "lieux" | "artistes"
+
+export const TERRAIN_KEYS: TerrainKey[] = ["marques", "entreprises", "lieux", "artistes"]
+
+export function isTerrainKey(value: string | undefined): value is TerrainKey {
+  return value !== undefined && (TERRAIN_KEYS as string[]).includes(value)
+}
+
 export type QuestionType =
   | "identity"
   | "textarea"
@@ -41,6 +58,8 @@ export interface SliderAxisSource {
 export interface QuestionSource {
   id: string
   offers: OfferKey[]
+  /** Terrains concernés. Absent = tous. */
+  terrains?: TerrainKey[]
   type: QuestionType
   label: I18nText
   help?: I18nText
@@ -65,6 +84,7 @@ export interface SliderAxis {
 export interface Question {
   id: string
   offers: OfferKey[]
+  terrains?: TerrainKey[]
   type: QuestionType
   label: string
   help?: string
@@ -164,11 +184,29 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
-    id: "competitors", offers: ["audit", "architecture"], type: "competitors",
+    id: "competitors", offers: ["audit", "architecture"], terrains: ["marques", "entreprises"], type: "competitors",
     label: t("Nommez 3 à 5 concurrents directs, et leur phrase.", "Name 3 to 5 direct competitors, and their sentence."),
     help: t(
       "Le texte exact — tiré de leur accueil, leur bio LinkedIn ou leur signature email. Copié-collé, sans analyse de votre part.",
       "The exact phrasing — from their homepage, LinkedIn headline or email signature. Just copy and paste. No analysis needed from you.",
+    ),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "competitors_lieux", offers: ["audit", "architecture"], terrains: ["lieux"], type: "competitors",
+    label: t("Nommez 3 à 5 adresses concurrentes, et ce qu'on en dit.", "Name 3 to 5 competing venues, and what people say about them."),
+    help: t(
+      "Celles qu'on vous cite, celles où vos clients vont aussi. Reprenez la phrase de leur fiche Google ou de leur bio Instagram, telle quelle.",
+      "The ones people mention to you, the ones your customers also go to. Copy the line from their Google listing or Instagram bio, as it stands.",
+    ),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "competitors_artistes", offers: ["audit", "architecture"], terrains: ["artistes"], type: "competitors",
+    label: t("Nommez 3 à 5 artistes de votre zone, et leur phrase.", "Name 3 to 5 artists in your lane, and their sentence."),
+    help: t(
+      "Pas vos influences : ceux à qui on vous compare, ou ceux dont vous partagez le public. Reprenez leur bio, telle quelle.",
+      "Not your influences: those you get compared to, or whose audience you share. Copy their bio, as it stands.",
     ),
     tag: t("Diagnostic", "Diagnosis"),
   },
@@ -492,13 +530,23 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
     options: q.options?.map((o) => pickText(o, lang)),
     multi: q.multi,
     max: q.max,
+    terrains: q.terrains,
     axes: q.axes?.map((ax) => ({ id: ax.id, l: pickText(ax.l, lang), r: pickText(ax.r, lang) })),
   }
 }
 
-/** The steps for one offer, already resolved into `lang`. */
-export function stepsForOffer(offer: OfferKey, lang: Lang): Question[] {
-  return QUESTION_SOURCES.filter((q) => q.offers.includes(offer)).map((q) => localizeQuestion(q, lang))
+/**
+ * Les étapes d'une offre, résolues dans `lang` et filtrées sur le terrain.
+ *
+ * Sans terrain, on renvoie tout ce qui n'est pas propre à un terrain : c'est
+ * le comportement d'avant, donc les liens existants continuent de marcher.
+ */
+export function stepsForOffer(offer: OfferKey, lang: Lang, terrain?: TerrainKey): Question[] {
+  return QUESTION_SOURCES.filter((q) => {
+    if (!q.offers.includes(offer)) return false
+    if (!q.terrains) return true
+    return terrain ? q.terrains.includes(terrain) : false
+  }).map((q) => localizeQuestion(q, lang))
 }
 
 /** Word bank chips, resolved. Kept separate: the UI renders them, not a question. */

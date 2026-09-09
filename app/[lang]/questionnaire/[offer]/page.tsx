@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { isOfferKey } from "@/lib/questionnaire-data"
+import { isOfferKey, isTerrainKey, type TerrainKey } from "@/lib/questionnaire-data"
 import { isLang, DEFAULT_LANG } from "@/lib/lang"
 import { QuestionnaireFlow } from "@/components/strawberry/questionnaire/questionnaire-flow"
 
@@ -22,12 +22,12 @@ import { QuestionnaireFlow } from "@/components/strawberry/questionnaire/questio
 
 interface PageProps {
   params: Promise<{ lang: string; offer: string }>
-  searchParams: Promise<{ name?: string; house?: string; email?: string }>
+  searchParams: Promise<{ name?: string; house?: string; email?: string; terrain?: string }>
 }
 
 export default async function QuestionnairePage({ params, searchParams }: PageProps) {
   const { lang, offer } = await params
-  const { name, house, email } = await searchParams
+  const { name, house, email, terrain } = await searchParams
 
   if (!isOfferKey(offer)) notFound()
   const resolvedLang = isLang(lang) ? lang : DEFAULT_LANG
@@ -35,7 +35,15 @@ export default async function QuestionnairePage({ params, searchParams }: PagePr
   return (
     <main className="min-h-screen bg-ink px-gutter py-20">
       <div className="shell-sm">
-        <QuestionnaireFlow offer={offer} lang={resolvedLang} prefill={{ name, house, email }} />
+        {/* `terrain` choisit les questions propres au terrain (lieux,
+            artistes...). Absent, on sert le parcours commun : les liens
+            envoyés avant cette évolution continuent donc de fonctionner. */}
+        <QuestionnaireFlow
+          offer={offer}
+          lang={resolvedLang}
+          terrain={isTerrainKey(terrain) ? terrain : undefined}
+          prefill={{ name, house, email }}
+        />
       </div>
     </main>
   )

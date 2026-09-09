@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import {
   wordsFor,
   stepsForOffer,
+  type TerrainKey,
   type OfferKey,
   type Question,
 } from "@/lib/questionnaire-data"
@@ -194,20 +195,24 @@ const UI_COPY = {
  */
 type Copy = (typeof UI_COPY)["fr"]
 
-function storageKey(offer: OfferKey, email: string) {
-  return `sp_questionnaire:${offer}:${email.trim().toLowerCase() || "anon"}`
+function storageKey(offer: OfferKey, email: string, terrain?: TerrainKey) {
+  // Le terrain entre dans la clé : deux parcours différents ne doivent pas
+  // se réécrire l'un l'autre dans le stockage local.
+  return `sp_questionnaire:${offer}:${terrain ?? "all"}:${email.trim().toLowerCase() || "anon"}`
 }
 
 export function QuestionnaireFlow({
   offer,
+  terrain,
   lang,
   prefill,
 }: {
   offer: OfferKey
+  terrain?: TerrainKey
   lang: Lang
   prefill?: Partial<IdentityAnswers>
 }) {
-  const steps = useMemo(() => stepsForOffer(offer, lang), [offer, lang])
+  const steps = useMemo(() => stepsForOffer(offer, lang, terrain), [offer, lang, terrain])
   const copy = UI_COPY[lang]
   const words = useMemo(() => wordsFor(lang), [lang])
   const [screen, setScreen] = useState<"cover" | "steps" | "review" | "done" | "error">("cover")
@@ -226,7 +231,7 @@ export function QuestionnaireFlow({
     const email = prefill?.email ?? ""
     if (!email) return
     try {
-      const raw = localStorage.getItem(storageKey(offer, email))
+      const raw = localStorage.getItem(storageKey(offer, email, terrain))
       if (raw) {
         const saved = JSON.parse(raw) as { answers: Answers; idx: number }
         setAnswers((prev) => ({ ...prev, ...saved.answers }))
@@ -244,7 +249,7 @@ export function QuestionnaireFlow({
     const email = answers.identity.email
     if (!email) return
     try {
-      localStorage.setItem(storageKey(offer, email), JSON.stringify({ answers, idx }))
+      localStorage.setItem(storageKey(offer, email, terrain), JSON.stringify({ answers, idx }))
     } catch {
       // best-effort only
     }
