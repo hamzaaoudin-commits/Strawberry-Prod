@@ -14,6 +14,7 @@ const T = {
     offersMenu: [
       { label: "L'AUDIT NARRATIF", sub: "Marques, lieux, entreprises, personnes", href: "/brand-narrative-audit" },
       { label: "L'ARCHITECTURE", sub: "Après l'audit, sur commande", href: "/brand-narrative-architecture" },
+      { label: "ARTISTES & FONDATEURS", sub: "L'accompagnement mensuel", href: "/artistes" },
       { label: "THE ROOM", sub: "Lieux · le sprint d'écriture", href: "/the-room" },
     ],
   },
@@ -26,6 +27,7 @@ const T = {
     offersMenu: [
       { label: "THE NARRATIVE AUDIT", sub: "Brands, venues, companies, people", href: "/brand-narrative-audit" },
       { label: "THE ARCHITECTURE", sub: "After the audit, on commission", href: "/brand-narrative-architecture" },
+      { label: "ARTISTS & FOUNDERS", sub: "The monthly work", href: "/artistes" },
       { label: "THE ROOM", sub: "Venues · the writing sprint", href: "/the-room" },
     ],
   },

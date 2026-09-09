@@ -113,3 +113,32 @@ export const HOUSES = {
     { n: "002", name: "VERSO", sector: { fr: "Reliure d'art", en: "Art bindery" }, demo: true, href: "/documents/verso" },
   ],
 } as const
+
+/**
+ * Constantes de la page /artistes, portée depuis MOMENTUM.
+ *
+ * Elles vivent ici plutôt que dans un fichier séparé pour que le site garde
+ * une seule source de vérité pour ses valeurs éditables à la main, comme le
+ * reste de ce fichier.
+ */
+export const CONTACT = {
+  email: "hamza@gostrawberryprod.com",
+  instagram: "https://instagram.com/strawberry_prods",
+  ville: "Paris",
+} as const
+
+/** Nombre d'artistes accompagnés simultanément. Chiffre réel, pas décoratif. */
+export const CAPACITE = 6
+
+/** Places ouvertes sur l'accompagnement artistes. Chiffre tenu à la main. */
+export const PLACES_OUVERTES = 2
+
+/** Prix mensuels, par identifiant d'offre. */
+export const PRIX: Record<string, number> = {
+  advisor: 149,
+  development: 299,
+  partner: 499,
+}
+
+/** L'offre unique poussée par défaut. La règle de l'Un : une offre, une action. */
+export const OFFRE_PRINCIPALE = "development"

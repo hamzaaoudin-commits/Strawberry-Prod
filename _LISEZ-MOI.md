@@ -1,58 +1,59 @@
-# Strawberry — le site vend l'audit, pas l'Architecture
+# Strawberry — la page Artistes & Fondateurs
 
-4 fichiers. **THE ROOM n'est pas touché** : sa charte et ses animations
-sont vérifiées identiques au dépôt, à l'octet près.
+27 fichiers. Contient le portage de MOMENTUM **et** les changements du
+tour précédent (le site vend l'audit, le vocabulaire cesse de dire
+« brand »), puisque je travaille sur la même base.
 
-## 1. La home vend l'audit à 490 €
+## Le portage
 
-**Le hero.** Il vendait une identité de marque et affichait « Vingt pièces
-écrites à la main. Quatre maisons par trimestre. » — les termes de la
-commande à 4 500 €. Il annonce maintenant l'offre réelle :
+MOMENTUM est en Next.js, React et Tailwind — même pile que Strawberry.
+J'ai donc **porté les fichiers** au lieu de réécrire : les quinze
+composants, les deux fichiers de copie et la page. Copywriting et mise en
+page sont identiques à l'original, y compris le diagnostic interactif en
+cinq questions, les graphiques de trajectoire, les ratures et le
+dépliant.
 
-> Ce que vous racontez, / et ce que le marché en entend.
-> **Audit narratif · 490 € · Livré en sept jours**
+Nouvelle route : `/artistes`, en français comme en anglais.
 
-Le paragraphe nomme les quatre terrains en une phrase : « Une marque, un
-lieu, une entreprise ou une personne : tout tient sur un récit, et
-personne ne l'a écrit. »
+## Les couleurs
 
-**Un bouton, enfin.** Le hero n'en avait aucun — on n'atteignait l'offre
-qu'en défilant. C'était défendable pour une commande à 4 500 € qu'on ne
-décide pas en dix secondes ; pour un audit à 490 €, la décision peut se
-prendre tout de suite, il lui faut un bouton. « Commander l'audit → »
-mène directement à la page audit.
+Comme NOCTA, toute la charte de MOMENTUM est pilotée par des variables
+CSS. J'ai ajouté leur équivalent dans `app/globals.css` avec les valeurs
+du studio : le cobalt `#2f5bff` devient le rouge de marque `#e63946`, le
+fond `#08090b` devient `#0a0a0a`, et la rampe de gris s'aligne. Les noms
+d'origine sont conservés (`cobalt`, `craie`, `encre`) parce qu'ils sont
+référencés dans les composants portés ; les renommer aurait voulu dire
+réécrire ces composants. « cobalt » désigne désormais un rôle, pas une
+teinte.
 
-**La section offre** passe de 4 500 € à 490 €, ses deux CTA pointent vers
-l'audit, et la ligne qui parlait de déduire l'audit du prix de
-l'Architecture — devenue fausse — est remplacée par la promesse d'unité :
-« Une marque, un lieu, une entreprise ou une personne : même méthode,
-même prix, même délai. »
+Les couleurs codées en dur dans les composants ont aussi été converties,
+y compris les dégradés du graphique d'ascension.
 
-## 2. Le vocabulaire cesse de dire « brand »
+Détail savoureux : le fichier de style de MOMENTUM proposait le rouge
+signal comme variante en notant « attention, c'est le territoire de
+Strawberry Production ».
 
-Tant que le site disait BRAND NARRATIVE, il ne s'adressait qu'à un quart
-de votre cible. Dans le menu et le pied de page :
+## Les constantes portées
 
-- BRAND NARRATIVE AUDIT → **L'AUDIT NARRATIF** (THE NARRATIVE AUDIT),
-  sous-titré « Marques, lieux, entreprises, personnes ».
-- BRAND NARRATIVE ARCHITECTURE → **L'ARCHITECTURE**, sous-titrée « Après
-  l'audit, sur commande ». Elle reste accessible, elle n'est simplement
-  plus ce vers quoi tout converge.
+`CONTACT`, `CAPACITE`, `PRIX`, `PLACES_OUVERTES` et `OFFRE_PRINCIPALE`
+vivaient dans le `config.ts` de MOMENTUM. Ajoutées à celui de Strawberry
+pour garder une seule source de vérité. L'e-mail et l'Instagram pointent
+sur ceux du studio, plus sur `contact@momentum.studio`.
 
-Les URL ne changent pas : `/brand-narrative-audit` reste en place. Les
-renommer aurait cassé le référencement acquis pour un gain nul — le
-visiteur lit le libellé, pas l'adresse.
+Le contrôle de types a attrapé ces manques — sans lui, le build aurait
+échoué sur cinq imports fantômes.
 
-## 3. Ce que je n'ai pas fait, volontairement
+## À vérifier de votre côté
 
-Pas de pages artistes ou entreprises. Vous n'avez pas encore vendu un
-audit : les terrains sont nommés dans le texte, et vous écrirez les pages
-dédiées quand vous saurez lesquels achètent.
-
-L'intérieur de la page Architecture n'est pas retouché non plus. Elle
-reste en ligne, cohérente, simplement sortie du chemin principal.
+- **Le prix.** La page affiche l'offre mensuelle de MOMENTUM à 299 €/mois
+  (149 et 499 pour les deux autres paliers). C'est le modèle d'origine, pas
+  la décision d'unification à 490 € dont on a parlé. Dites-moi si vous
+  voulez que je l'aligne.
+- **Le formulaire** de candidature poste vers une route `/api/candidature`
+  qui n'existe pas côté Strawberry. Il faut soit la créer, soit le
+  rebrancher sur le formulaire de contact existant. Dites-moi lequel.
 
 ## Vérification
 
-Contrôle de types réel : zéro erreur. Charte et animations THE ROOM :
-comparées au dépôt, identiques.
+Contrôle de types réel sur les 19 fichiers portés plus les 4 modifiés :
+zéro erreur.

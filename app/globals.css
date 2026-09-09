@@ -61,6 +61,48 @@
   --color-ink: #0a0a0a;
   --color-ink-soft: #0d0d0d;
 
+  /* ============================================================
+     Palette portée depuis MOMENTUM, passée aux couleurs du studio.
+
+     La page /artistes reprend le site MOMENTUM tel quel — copie,
+     mise en page, composants. Toute sa charte étant pilotée par ces
+     variables, il suffit de remplacer les valeurs : aucune règle de
+     mise en page n'est réécrite, aucune animation n'est touchée.
+
+     Les noms d'origine sont conservés (cobalt, craie, encre) parce
+     qu'ils sont référencés dans les composants portés ; les renommer
+     aurait voulu dire réécrire ces composants, exactement ce qu'on
+     évite. « cobalt » désigne désormais un rôle — l'accent — pas une
+     teinte. Le commentaire du dépôt MOMENTUM disait d'ailleurs du
+     rouge signal : « c'est le territoire de Strawberry Production ».
+     ============================================================ */
+
+  /* Matière : trois plans, alignés sur les fonds du studio. */
+  --color-encre: #0a0a0a;
+  --color-encre-haute: #0d0d0d;
+  --color-encre-basse: #060606;
+  --color-surface: #141414;
+
+  /* L'accent : le rouge de marque, là où MOMENTUM mettait du cobalt. */
+  --color-cobalt: #e63946;
+  --color-cobalt-vif: #ff1a1a;
+  --color-cobalt-sourd: #dc2626;
+
+  /* Rampe de texte : gris opaques, comme chez MOMENTUM — la rampe
+     translucide du studio ne convient pas à des cartes empilées. */
+  --color-craie: #ffffff;
+  --color-craie-80: #cfcfcf;
+  --color-craie-65: #a3a3a3;
+  --color-craie-50: #808080;
+  --color-craie-38: #5e5e5e;
+  --color-craie-24: #3c3c3c;
+
+  /* Filets : des traits, pas des voiles. */
+  --color-filet: #232323;
+  --color-filet-fort: #363636;
+  --color-filet-cobalt: #7a1f27;
+
+
   /* Text-on-dark opacity ramp */
   --color-chalk-90: rgba(255,255,255,0.9);
   --color-chalk-75: rgba(255,255,255,0.75);
