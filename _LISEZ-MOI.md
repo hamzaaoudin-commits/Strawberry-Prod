@@ -1,48 +1,52 @@
-# Strawberry — correctif du build : /artistes
+# Strawberry — les quatre terrains sur la home
 
-5 fichiers. Ce patch corrige uniquement l'erreur de build ; il vient
-par-dessus le patch précédent, qu'il ne remplace pas.
+Deux fichiers : un nouveau composant et la home.
 
-## L'erreur
+## La section
 
-```
-Attempted to call isLang() from the server but isLang is on the client.
-Export encountered an error on /[lang]/artistes/page
-```
+Juste sous le hero, avant tout le reste. Elle pose les quatre terrains
+côte à côte :
 
-La page `/artistes` est un composant **serveur**, et elle importait
-`isLang` depuis `@/lib/i18n` — un module qui porte `"use client"`. Le
-prérendu échouait donc sur cette page et faisait tomber tout le build.
+- **Marques** — on vous compare au prix parce que rien ne dit qui vous êtes.
+- **Entreprises** — clair en interne, illisible dehors.
+- **Lieux** — la salle est pleine, chaque publication repart de zéro.
+- **Artistes & fondateurs** — vos sorties ne s'additionnent pas.
 
-C'est une différence entre les deux dépôts : chez MOMENTUM, `isLang`
-vivait dans un module neutre. Chez Strawberry, elle vit dans
-`lib/lang.ts`, dont l'en-tête dit d'ailleurs explicitement qu'il est
-« deliberately kept out of any "use client" module » — exactement pour ce
-cas. Mon portage n'avait pas ajusté l'import.
+Chacun mène vers sa page : audit, audit, THE ROOM, artistes.
 
-## Le correctif
+## Le prix, affiché une seule fois
 
-`app/[lang]/artistes/page.tsx` importe désormais `isLang` et `Lang`
-depuis `@/lib/lang`.
+**490 €, au-dessus de la grille et non dans chaque carte.** C'est
+délibéré : répété quatre fois, un prix invite à comparer quatre offres ;
+posé une fois au-dessus des quatre, il dit ce qu'il est — un tarif unique
+quel que soit le terrain. C'est exactement l'argument que vous vouliez
+faire passer, rendu par la mise en page plutôt qu'affirmé par une phrase.
 
-J'ai aussi aligné quatre composants portés (`diagnostic`, `footer`,
-`offres`, `nav`) sur `@/lib/lang`. Leurs imports étaient des imports de
-**type**, donc effacés à la compilation et sans risque réel — mais autant
-ne laisser aucune ambiguïté entre modules client et serveur dans du code
-qui vient d'ailleurs.
+Sous le prix : « Livré en sept jours · Payé une fois ».
 
-Vérifié au passage : aucun autre composant porté n'utilise de hook React
-sans porter `"use client"`.
+## Une incohérence que ce patch crée, et que je ne peux pas régler seul
 
-## Pourquoi mon contrôle ne l'avait pas vu
+La home annonce maintenant 490 € pour les quatre terrains. Mais les deux
+pages portées affichent encore leurs prix d'origine :
 
-`tsc` vérifie les types, pas la frontière client/serveur de Next.js —
-c'est une règle du framework, pas du langage. Seul un vrai `next build`
-l'attrape, et je ne peux pas l'exécuter ici (les dépendances du projet ne
-s'installent pas dans mon environnement, à cause d'un conflit de version
-sur postcss présent dans le dépôt).
+- **THE ROOM** : 2 500 – 3 500 €, sprint de 2 à 3 semaines.
+- **Artistes & fondateurs** : 299 €/mois, avec deux autres paliers à 149
+  et 499.
+
+Un visiteur qui clique depuis la home tombe donc sur un autre prix et un
+autre modèle. C'est la contradiction la plus visible du site en l'état.
+
+Trois issues possibles, et c'est votre décision :
+
+1. **Aligner les deux pages sur l'audit à 490 €** — cohérent avec
+   l'unification, mais ça veut dire réécrire l'offre de ces deux pages
+   (elles vendent aujourd'hui un sprint et un abonnement, pas un audit).
+2. **Garder ces prix et présenter ces deux terrains comme des suites**
+   possibles après l'audit, pas comme l'audit lui-même.
+3. **Retirer ces deux pages du parcours** en attendant d'avoir tranché.
+
+Dites-moi laquelle et je l'applique.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Plus aucune référence à `@/lib/i18n`
-dans les fichiers portés.
+Contrôle de types : zéro erreur.
