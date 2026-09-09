@@ -44,16 +44,21 @@ const T = {
         key: "lieux",
         label: "Lieux",
         body: "Restaurant, bar, club, coffee shop. La salle est pleine et pourtant chaque publication repart de zéro.",
-        href: "/the-room",
+        href: "/brand-narrative-audit",
       },
       {
         key: "artistes",
         label: "Artistes & fondateurs",
         body: "Vos sorties ne s'additionnent pas. Votre nom porte un travail que personne n'a encore formulé.",
-        href: "/artistes",
+        href: "/brand-narrative-audit",
       },
     ],
     cta: "Commander l'audit →",
+    afterLabel: "Après l'audit, si vous voulez qu'on construise",
+    after: [
+      { name: "L'ARCHITECTURE", meta: "Vingt pièces · sur commande", href: "/brand-narrative-architecture" },
+      { name: "THE ROOM", meta: "Lieux · sprint de 2 à 3 semaines", href: "/the-room" },
+    ],
   },
   en: {
     kicker: "One craft, four grounds",
@@ -80,16 +85,21 @@ const T = {
         key: "lieux",
         label: "Venues",
         body: "Restaurant, bar, club, coffee shop. The room is full, yet every post starts from nothing.",
-        href: "/the-room",
+        href: "/brand-narrative-audit",
       },
       {
         key: "artistes",
         label: "Artists & founders",
         body: "Your releases do not add up. Your name carries work nobody has put into words yet.",
-        href: "/artistes",
+        href: "/brand-narrative-audit",
       },
     ],
     cta: "Order the audit →",
+    afterLabel: "After the audit, if you want it built",
+    after: [
+      { name: "THE ARCHITECTURE", meta: "Twenty parts · on commission", href: "/brand-narrative-architecture" },
+      { name: "THE ROOM", meta: "Venues · two to three week sprint", href: "/the-room" },
+    ],
   },
 }
 
@@ -138,6 +148,25 @@ export function TerrainsSection() {
           <Link href="/brand-narrative-audit" className="btn-primary">
             {t.cta}
           </Link>
+        </div>
+
+        {/* Les deux commandes, après l'audit et clairement en second plan.
+            L'audit est le même pour les quatre terrains ; ces deux-là sont
+            ce qu'on construit ensuite, quand le diagnostic a été posé. Les
+            citer ici évite qu'un visiteur les découvre par accident dans le
+            menu et croie à quatre offres concurrentes. */}
+        <div className="mx-auto mt-14 max-w-[720px] border-t border-hair pt-8 text-center">
+          <div className="mb-5 font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">{t.afterLabel}</div>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            {t.after.map((a) => (
+              <Link key={a.name} href={a.href} className="group no-underline">
+                <span className="font-sans text-[13px] font-semibold tracking-[0.06em] text-brand transition-colors group-hover:text-white">
+                  {a.name}
+                </span>
+                <span className="ml-2 font-sans text-[12px] text-chalk-40">{a.meta}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,51 +1,46 @@
-# Strawberry — les quatre terrains sur la home
+# Strawberry — l'audit à 490 € sur les quatre terrains
 
-Deux fichiers : un nouveau composant et la home.
+Deux fichiers.
 
-## La section
+## Ce qui change
 
-Juste sous le hero, avant tout le reste. Elle pose les quatre terrains
-côte à côte :
+**Les quatre terrains mènent tous à l'audit.** Marques, Entreprises,
+Lieux et Artistes & fondateurs pointaient vers trois pages différentes
+avec trois prix différents. Ils pointent maintenant tous vers
+`/brand-narrative-audit` : c'est la même offre, le même prix, le même
+délai — c'est tout l'argument de l'unification.
 
-- **Marques** — on vous compare au prix parce que rien ne dit qui vous êtes.
-- **Entreprises** — clair en interne, illisible dehors.
-- **Lieux** — la salle est pleine, chaque publication repart de zéro.
-- **Artistes & fondateurs** — vos sorties ne s'additionnent pas.
+**Les deux commandes apparaissent en second plan.** Sous le bouton
+principal, séparées par un filet et en plus petit :
 
-Chacun mène vers sa page : audit, audit, THE ROOM, artistes.
+> Après l'audit, si vous voulez qu'on construise
+> **L'ARCHITECTURE** · Vingt pièces, sur commande — **THE ROOM** · Lieux,
+> sprint de 2 à 3 semaines
 
-## Le prix, affiché une seule fois
+Elles restent visibles et cliquables, mais lisibles pour ce qu'elles
+sont : ce qui vient après le diagnostic, pas quatre offres concurrentes.
+Les citer ici évite qu'un visiteur les découvre par accident dans le menu
+et croie à un catalogue.
 
-**490 €, au-dessus de la grille et non dans chaque carte.** C'est
-délibéré : répété quatre fois, un prix invite à comparer quatre offres ;
-posé une fois au-dessus des quatre, il dit ce qu'il est — un tarif unique
-quel que soit le terrain. C'est exactement l'argument que vous vouliez
-faire passer, rendu par la mise en page plutôt qu'affirmé par une phrase.
+## Ce qui reste à faire, et pourquoi je ne l'ai pas fait
 
-Sous le prix : « Livré en sept jours · Payé une fois ».
+**La page `/artistes` vend encore un abonnement.** 299 €/mois, avec deux
+paliers à 149 et 499, des sessions mensuelles et un tableau comparatif à
+trois colonnes. Toute son architecture d'offre est bâtie autour du
+mensuel — le prix n'est pas une variable isolée, c'est la structure de la
+page.
 
-## Une incohérence que ce patch crée, et que je ne peux pas régler seul
+Changer « 299 » en « 490 » ne suffirait pas : la page continuerait de
+promettre des sessions mensuelles et de comparer trois formules. Il faut
+réécrire sa section offre pour qu'elle vende l'audit — c'est un travail
+de rédaction sur les deux fichiers de copie, FR et EN, pas un ajustement.
 
-La home annonce maintenant 490 € pour les quatre terrains. Mais les deux
-pages portées affichent encore leurs prix d'origine :
+En attendant, le parcours reste cohérent : depuis la home, le terrain
+« Artistes & fondateurs » mène à l'audit à 490 €, pas à la page
+d'abonnement. La page `/artistes` n'est plus dans le chemin principal,
+seulement dans le menu.
 
-- **THE ROOM** : 2 500 – 3 500 €, sprint de 2 à 3 semaines.
-- **Artistes & fondateurs** : 299 €/mois, avec deux autres paliers à 149
-  et 499.
-
-Un visiteur qui clique depuis la home tombe donc sur un autre prix et un
-autre modèle. C'est la contradiction la plus visible du site en l'état.
-
-Trois issues possibles, et c'est votre décision :
-
-1. **Aligner les deux pages sur l'audit à 490 €** — cohérent avec
-   l'unification, mais ça veut dire réécrire l'offre de ces deux pages
-   (elles vendent aujourd'hui un sprint et un abonnement, pas un audit).
-2. **Garder ces prix et présenter ces deux terrains comme des suites**
-   possibles après l'audit, pas comme l'audit lui-même.
-3. **Retirer ces deux pages du parcours** en attendant d'avoir tranché.
-
-Dites-moi laquelle et je l'applique.
+Dites-moi quand vous voulez que je réécrive son offre.
 
 ## Vérification
 
