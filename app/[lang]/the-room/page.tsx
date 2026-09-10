@@ -181,7 +181,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <div class="wrap">
 <div class="section-head reveal">
 <span class="eyebrow" data-i18n="price.eyebrow">Ce que ça coûte</span>
-<h2 class="h-sec" data-i18n="price.title">Une fois, pas tous les mois.</h2>
+<h2 class="h-sec" data-i18n="price.title">Le même prix que pour tout le monde.</h2>
 <p class="lead" data-i18n="price.lead" style="margin-top:1.2rem">Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.</p>
 </div>
 <div class="grid cols-2" style="gap:1.1rem">
@@ -191,11 +191,13 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <p data-i18n="price.a.d">Elle exécute à votre place. Elle sait ce que votre lieu raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.</p>
 </article>
 <article class="card reveal d1">
-<span class="chip" data-i18n="price.b.tag">Le sprint</span>
-<h3 data-i18n="price.b.t">2 500 – 3 500 €, une fois</h3>
-<p data-i18n="price.b.d">Je n'exécute pas à votre place : j'écris ce que votre lieu raconte et je vous livre de quoi le tenir. Vous gardez le tout, pour toujours. Si on se quitte demain, ça continue de tourner.</p>
+<span class="chip" data-i18n="price.b.tag">L'audit narratif</span>
+<h3 data-i18n="price.b.t">490 €, une fois</h3>
+<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
+<p style="margin-top:1.4rem"><a href="__LANG__/brand-narrative-audit" class="btn btn-primary" data-i18n="price.b.cta">Commander l'audit →</a></p>
 </article>
 </div>
+<p class="lead reveal" data-i18n="price.after" style="margin-top:2.4rem; text-align:center">Ensuite, si vous voulez qu'on écrive le monde du lieu et qu'on livre le système qui permet à votre équipe de le tenir seule : le sprint, 2 500 à 3 500 €, deux à trois semaines.</p>
 </div>
 </section>
 

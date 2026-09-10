@@ -1,58 +1,48 @@
-# Strawberry — la page audit sert les quatre terrains
+# Strawberry — THE ROOM vend l'audit à 490 €
 
 Deux fichiers.
 
-## 1. La page audit (`brand-narrative-audit`)
+## Ce qui change
 
-Elle était écrite pour des marques : « Ce que votre marque raconte
-vraiment », un questionnaire qui parlait de site et de réseaux, une
-section « pour qui » qui ne mentionnait que des marques. Un restaurateur
-ou un artiste envoyé là depuis la home tombait sur une page qui parlait à
-quelqu'un d'autre.
+La section prix comparait « l'agence au mois » et « le sprint à
+2 500–3 500 € ». La seconde carte devient **l'audit narratif à 490 €** :
 
-**Le badge** devient « L'AUDIT NARRATIF · 490€ » — plus « BRAND
-NARRATIVE ».
+> **L'audit narratif** — 490 €, une fois
+> On lit votre lieu comme le fait votre quartier : ce qu'il raconte
+> aujourd'hui, ce que les gens en retiennent, et les mouvements qui
+> changent ça. Un document de vingt à trente pages, livré en sept jours.
+> **Le même audit que pour une marque, une entreprise ou une personne.**
 
-**Le titre** devient « Ce que vous racontez, et ce que le marché en
-entend. » Il vaut pour une marque comme pour un nom d'artiste.
+Avec un bouton qui mène à `/brand-narrative-audit`, comme partout
+ailleurs.
 
-**Une bande des quatre terrains** est ajoutée sous le hero, avant « ce
-que vous recevez » : chacun se reconnaît en une ligne, et la note qui
-suit dit l'essentiel — « Même méthode, même prix, même délai. Seul le
-questionnaire s'adapte à ce que vous êtes. » C'est le lien manquant
-entre la promesse de la home et la page qui vend.
+**Le sprint n'est pas supprimé, il devient la suite.** Une ligne sous les
+deux cartes : « Ensuite, si vous voulez qu'on écrive le monde du lieu et
+qu'on livre le système qui permet à votre équipe de le tenir seule : le
+sprint, 2 500 à 3 500 €, deux à trois semaines. » Même logique que
+l'Architecture après l'audit sur le volet marques.
 
-**Le paragraphe du questionnaire** ne parle plus de « site, réseaux,
-contenus » mais de « site, réseaux, carte, contenus récents, presse » —
-la carte pour un lieu, la presse pour un artiste.
+**Le titre de section** disait « Une fois, pas tous les mois » — un
+argument construit contre l'abonnement d'agence, qui portait sur le
+sprint. Il devient « Le même prix que pour tout le monde », qui sert
+l'unification. La carte agence reste : le contraste avec l'abonnement
+mensuel garde toute sa valeur.
 
-## 2. La page artistes vend l'audit
+## Le site est cohérent
 
-Toute la section offre — abonnement à 299 €/mois, trois paliers, garantie
-et tableau comparatif dépliable — est remplacée par l'audit à 490 €, dans
-la charte de la page.
+Les quatre terrains mènent maintenant au même audit à 490 €, sur la home
+comme sur chaque page d'atterrissage. Les deux high tickets —
+l'Architecture et le sprint THE ROOM — apparaissent partout comme des
+suites après l'audit, jamais comme des offres concurrentes.
 
-Nouveau titre de section : « Un audit. Un prix. Sept jours. », avec la
-phrase qui règle la question du terrain : « Le même audit que pour une
-marque, une entreprise ou un lieu. Seul le questionnaire change, parce
-que votre terrain n'est pas le leur. »
+## Détail technique
 
-Le bouton mène à `/brand-narrative-audit`, comme partout ailleurs.
-
-Les composants `OffreUnique`, `GrilleOffres`, `Comparatif` et `Garantie`
-ne sont plus appelés : ils supposaient un modèle par paliers qui n'existe
-plus. Leurs imports ont été retirés, ainsi que celui de `Depliant`,
-devenu inutilisé. Les fichiers eux-mêmes restent dans le dépôt et peuvent
-être supprimés.
-
-## Ce qui reste incohérent
-
-**THE ROOM** vend toujours un sprint à 2 500–3 500 €. C'est légitime si
-vous le tenez pour un high ticket comme l'Architecture — mais la home le
-présente aujourd'hui comme un terrain d'audit à 490 €, donc le visiteur
-qui clique voit autre chose. Il faudrait soit y ajouter l'audit comme
-porte d'entrée, soit le sortir de la grille des quatre terrains.
+Le lien du bouton utilise le jeton `__LANG__`, déjà en place sur cette
+page : le HTML est injecté brut, donc les liens doivent porter la langue
+eux-mêmes. Un visiteur anglophone reste en anglais.
 
 ## Vérification
 
-Contrôle de types : zéro erreur venant de ce code.
+Contrôle de types : zéro erreur. Le fichier de traductions a aussi été
+passé au contrôle syntaxique — c'est du JavaScript brut servi tel quel,
+donc une virgule oubliée aurait cassé la page sans que TypeScript le voie.
