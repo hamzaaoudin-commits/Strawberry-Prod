@@ -1,62 +1,47 @@
-# Strawberry — la home vend l'audit, et rien d'autre
+# Strawberry — « La tournée » épinglée, la vraie
 
-6 fichiers.
+3 fichiers. Remplace `terrains-section.tsx`, que vous pouvez supprimer.
 
-## Le logo
+## Ce que j'avais raté
 
-« Strawberry » en dégradé + « Prod. » en blanc → **tout en rouge**, dans
-la barre de navigation et le pied de page.
+J'ai livré trois cartes empilées en disant que je reprenais « La
+tournée ». Ce n'en était pas. La vraie section de THE ROOM est
+**épinglée** : elle mesure 460vh de haut, son contenu reste collé à
+l'écran sur 100vh, et les scènes se relaient en fondu-zoom pendant que
+vous défilez. Une jauge verticale à droite suit la progression.
 
-## L'accroche
+C'est ce mécanisme qui fait tout l'effet. Des cartes empilées, c'est lire
+trois blocs ; l'épinglage, c'est traverser trois scènes.
 
-Avant : « Ce que vous racontez, et ce que le marché en entend. » —
-symétrique, élégante, sans tension.
+## Ce qui est porté
 
-Après : **« Votre marché ne vous entend pas comme vous croyez vous
-raconter. »** Elle accuse au lieu de constater, et elle met le lecteur en
-défaut dès la première ligne, ce que la précédente évitait poliment.
+**Le CSS d'origine**, repris tel quel depuis `public/nocta/styles.css` :
+`.tour-pin`, `.tour-sticky`, `.tour-scene`, les fonds radiaux par scène
+(`.ts-1` à `.ts-4`), les titres géants en dégradé (`.ts-t`, jusqu'à
+7,5rem), la liste en mono, la jauge.
 
-## Le paragraphe
+**Le mécanisme de défilement**, repris de `app.js` : on calcule une
+position continue entre 0 et n-1, chaque scène reçoit une opacité qui
+décroît avec sa distance à cette position, plus un déplacement vertical
+et un zoom. D'où le fondu croisé au lieu d'une bascule sèche.
 
-Il énumérait quatre cibles puis décrivait la méthode en trois verbes
-plats. Réécrit :
+**Le fond qui dérive à contre-sens** de sa scène (`.ts-bg`). C'est le
+détail qu'on ne remarque jamais et dont l'absence rend l'effet plat.
 
-> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit — et
-> personne ne l'a jamais écrit. Nous lisons le vôtre comme le fait votre
-> marché, **sans complaisance**. Vous recevez ce qu'il raconte
-> aujourd'hui, ce qui vous range avec les autres, et les mouvements exacts
-> qui vous en sortent.
+## Les trois scènes
 
-## Les trois terrains, dans le design de « La tournée »
+Marques & entreprises → **Le rayon**. Lieux → **La salle**. Artistes &
+fondateurs → **Le nom**. Chacune avec sa phrase d'ambiance en italique et
+ses quatre entrées : le symptôme, la racine, ce qu'on lit, ce qui change.
+Le numéro en bas de scène est cliquable et mène à la page du terrain.
 
-La section reprend la forme de la plus belle page de THE ROOM : par
-terrain, un surtitre, un titre en dégradé (**Le rayon**, **La salle**,
-**Le nom**), une phrase d'ambiance en italique, puis quatre entrées
-courtes — le symptôme, la racine, ce qu'on lit, ce qui change. C'est ce
-qui fait qu'on se reconnaît dans une scène plutôt que dans une case.
+Fermée par « Tout ça existe déjà chez vous. Il faut juste l'écrire. »
 
-Fermée par « Tout ça existe déjà chez vous. Il faut juste l'écrire. »,
-comme sur THE ROOM.
+## Le repli
 
-**Entreprises est supprimé** : marques le couvrait déjà, et la case en
-plus imposait une frontière que personne n'a besoin de trancher pour
-acheter. Trois terrains, trois cartes.
-
-## L'Architecture a disparu de la home
-
-- La couverture de la section offre montrait « Brand Narrative
-  Architecture » → **L'Audit narratif**.
-- Le bandeau final menait vers l'Architecture → vers l'audit.
-- Son libellé disait « Devenez impossible à confondre / Passer commande »
-  → **« Commencez par savoir ce que vous racontez. L'audit narratif.
-  490 €, livré en sept jours. »**
-
-La home ne propose plus qu'une seule action, du hero au pied de page.
-
-## Un défaut attrapé au passage
-
-Mes deux remplacements de paragraphe avaient supprimé la virgule de fin
-de propriété — le build aurait échoué. Relu et corrigé avant livraison.
+Sous `prefers-reduced-motion`, la classe `tour-on` n'est pas posée :
+les scènes s'empilent normalement et restent toutes lisibles. Rien ne
+disparaît pour qui a demandé moins de mouvement.
 
 ## Vérification
 

@@ -1062,3 +1062,59 @@ footer {
   body::after { display: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ===========================================================================
+   « LA TOURNÉE » — la section épinglée de THE ROOM, portée telle quelle.
+
+   Ce n'est pas une grille de cartes : la section fait 460vh de haut, son
+   contenu est collé en position sticky sur 100vh, et les scènes se
+   succèdent en fondu-zoom au fil du défilement, avec une jauge verticale
+   à droite. C'est ce mécanisme qui fait l'effet — des cartes empilées ne
+   le reproduisent pas.
+
+   Le JS qui pilote tout ça est dans components/strawberry/tour-pin.tsx.
+   Les couleurs sont déjà celles du studio dans le fichier source.
+   =========================================================================== */
+
+.tour-pin{ position:relative; }
+.tour-scene{ position:relative; min-height:72vh; display:flex; align-items:center; overflow:hidden; }
+.ts-bg{ position:absolute; inset:-12%; pointer-events:none; will-change:transform; }
+.ts-1 .ts-bg{ background:radial-gradient(60% 55% at 25% 30%, rgba(230,57,70,.32), transparent 62%),
+              radial-gradient(50% 50% at 82% 80%, rgba(255,138,133,.16), transparent 60%); }
+.ts-2 .ts-bg{ background:radial-gradient(55% 55% at 72% 24%, rgba(255,26,26,.34), transparent 62%),
+              radial-gradient(45% 50% at 18% 85%, rgba(230,57,70,.18), transparent 60%); }
+.ts-3 .ts-bg{ background:radial-gradient(70% 60% at 50% 92%, rgba(88,66,224,.38), transparent 66%),
+              radial-gradient(40% 40% at 50% 8%, rgba(230,57,70,.10), transparent 60%); }
+.ts-4 .ts-bg{ background:radial-gradient(55% 50% at 28% 24%, rgba(243,239,233,.11), transparent 60%),
+              radial-gradient(50% 55% at 76% 76%, rgba(169,157,255,.24), transparent 62%); }
+.ts-inner{ position:relative; z-index:1; }
+.ts-k{ font-family:var(--mono); font-size:.74rem; letter-spacing:.3em; text-transform:uppercase; color:var(--coral); }
+.ts-2 .ts-k, .ts-4 .ts-k{ color:var(--iris-soft); }
+.ts-t{ font-family:var(--display); font-weight:800; letter-spacing:-.03em;
+  font-size:clamp(3rem,11vw,7.5rem); line-height:.95; margin:.6rem 0 1.2rem;
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.ts-line{ font-family:var(--serif); font-style:italic; font-size:clamp(1.15rem,2.6vw,1.7rem);
+  color:var(--cream); max-width:44ch; line-height:1.4; }
+.ts-list{ margin-top:1.6rem; display:grid; gap:.9rem; max-width:52ch; }
+.ts-list li{ display:grid; gap:.15rem; padding-left:1.1rem; position:relative; line-height:1.45; }
+.ts-list li::before{ content:""; position:absolute; left:0; top:.5em; width:5px; height:5px; border-radius:50%;
+  background:var(--coral); }
+.ts-2 .ts-list li::before, .ts-4 .ts-list li::before{ background:var(--iris-soft); }
+.ts-list b{ font-family:var(--mono); font-size:.8rem; letter-spacing:.06em; text-transform:uppercase;
+  color:#fff; font-weight:700; }
+.ts-list span{ font-family:var(--body); font-size:.94rem; color:rgba(255,255,255,.82); }
+.ts-num{ display:block; margin-top:2rem; font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.3em; color:rgba(255,255,255,.6); }
+
+/* pinned mode (JS adds .tour-on) */
+.tour-pin.tour-on{ height:460vh; }
+.tour-pin.tour-on .tour-sticky{ position:sticky; top:0; height:100vh; overflow:hidden; }
+.tour-pin.tour-on .tour-scene{ position:absolute; inset:0; min-height:0; opacity:0;
+  will-change:transform, opacity; }
+.tour-progress{ display:none; }
+.tour-pin.tour-on .tour-progress{ display:block; position:absolute; right:clamp(14px,3vw,30px);
+  top:50%; transform:translateY(-50%); height:36vh; width:2px; background:var(--line-soft);
+  border-radius:2px; z-index:5; }
+.tour-pin.tour-on .tour-progress span{ display:block; width:100%; height:0; background:var(--grad);
+  border-radius:2px; box-shadow:0 0 12px rgba(230,57,70,.5); }
+
