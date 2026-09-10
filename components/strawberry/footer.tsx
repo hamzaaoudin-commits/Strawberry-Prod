@@ -17,7 +17,7 @@ const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
   { href: "/brand-narrative-architecture", label: { fr: "L'ARCHITECTURE", en: "THE ARCHITECTURE" } },
   { href: "/marques-entreprises", label: { fr: "MARQUES & ENTREPRISES", en: "BRANDS & COMPANIES" } },
   { href: "/the-room", label: { fr: "THE ROOM", en: "THE ROOM" } },
-  { href: "/artistes", label: { fr: "ARTISTES & FONDATEURS", en: "ARTISTS & FOUNDERS" } },
+  { href: "/the-name", label: { fr: "ARTISTES & FONDATEURS", en: "ARTISTS & FOUNDERS" } },
 ]
 const REACH_HREFS: { href: string; external?: boolean }[] = [
   { href: "/#contact" },

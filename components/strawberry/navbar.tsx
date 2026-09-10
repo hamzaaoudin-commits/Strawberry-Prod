@@ -14,7 +14,7 @@ const T = {
     offersMenu: [
       { label: "BRAND", sub: "Marques & entreprises", href: "/marques-entreprises" },
       { label: "THE ROOM", sub: "Lieux", href: "/the-room" },
-      { label: "THE NAME", sub: "Artistes & fondateurs", href: "/artistes" },
+      { label: "THE NAME", sub: "Artistes & fondateurs", href: "/the-name" },
       { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture" },
     ],
   },
@@ -27,7 +27,7 @@ const T = {
     offersMenu: [
       { label: "BRAND", sub: "Brands & companies", href: "/marques-entreprises" },
       { label: "THE ROOM", sub: "Venues", href: "/the-room" },
-      { label: "THE NAME", sub: "Artists & founders", href: "/artistes" },
+      { label: "THE NAME", sub: "Artists & founders", href: "/the-name" },
       { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture" },
     ],
   },
