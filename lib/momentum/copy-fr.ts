@@ -248,8 +248,8 @@ export const FR = {
     titre: "Un artiste comprend votre art. Un stratège comprend votre marché.",
     chapo:
       "Il vous en faut un qui fasse les deux. C'est la seule raison valable de me confier un regard sur votre carrière, et c'est la seule que je revendique.",
-    p1: "Je m'appelle Hamza El Jaouahiry. Réalisateur et compositeur depuis 2019, formé au cinéma à l'Université Gustave Eiffel puis à la Sorbonne Nouvelle, passé par le studio comme ingénieur du son. Je produis et compose mon propre projet musical, MORI, chroniqué en Espagne, au Royaume-Uni et au Brésil.",
-    p2: "Le reste de mon temps, je construis des identités de marque : je dirige Strawberry Production, studio de narration de marque pour fondateurs, et j'ai publié en 2026 deux ouvrages sur le récit de marque, dont un atlas de trente architectures narratives. Je bâtis aussi depuis 2024 un univers transmédia, Sinbury.",
+    p1: "Je m'appelle Hamza El Jaouahiry. Réalisateur et compositeur depuis 2019, formé au cinéma à l'Université Gustave Eiffel puis à la Sorbonne Nouvelle, passé par le studio comme ingénieur du son. Nous produisons et compose mon propre projet musical, MORI, chroniqué en Espagne, au Royaume-Uni et au Brésil.",
+    p2: "Le reste de mon temps, je construis des identités de marque : nous dirigeons Strawberry Production, studio de narration de marque pour fondateurs, et j'ai publié en 2026 deux ouvrages sur le récit de marque, dont un atlas de trente architectures narratives. Je bâtis aussi depuis 2024 un univers transmédia, Sinbury.",
     p3: "Autrement dit : je connais votre problème de l'intérieur parce que je le vis, et sa solution de l'extérieur parce que c'est mon métier.",
     reperes: [
       { annee: "2019", texte: "Premiers projets comme réalisateur et compositeur." },

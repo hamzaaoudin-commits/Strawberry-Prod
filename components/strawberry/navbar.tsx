@@ -14,6 +14,7 @@ const T = {
     offersMenu: [
       { label: "L'AUDIT NARRATIF", sub: "L'offre · 490 €", href: "/brand-narrative-audit" },
       { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture" },
+      { label: "MARQUES & ENTREPRISES", sub: "Terrain · produits et services", href: "/marques-entreprises" },
       { label: "THE ROOM", sub: "Terrain · lieux", href: "/the-room" },
       { label: "ARTISTES & FONDATEURS", sub: "Terrain · noms propres", href: "/artistes" },
     ],
@@ -27,6 +28,7 @@ const T = {
     offersMenu: [
       { label: "THE NARRATIVE AUDIT", sub: "The offer · 490 €", href: "/brand-narrative-audit" },
       { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture" },
+      { label: "BRANDS & COMPANIES", sub: "Ground · products and services", href: "/marques-entreprises" },
       { label: "THE ROOM", sub: "Ground · venues", href: "/the-room" },
       { label: "ARTISTS & FOUNDERS", sub: "Ground · names", href: "/artistes" },
     ],

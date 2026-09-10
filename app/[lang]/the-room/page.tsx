@@ -77,7 +77,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <path class="st2" d="M40 52 h24 M52 40 v24" opacity=".45"></path>
 <circle class="fl2" cx="98" cy="30" r="3.5"></circle>
 <circle class="fl" cx="22" cy="88" r="3"></circle>
-</svg><span class="idx" data-i18n="st.1.i">01</span><h3 data-i18n="st.1.t">Je viens chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
+</svg><span class="idx" data-i18n="st.1.i">01</span><h3 data-i18n="st.1.t">Nous venons chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
 <ul class="ch-list">
 <li data-i18n="st.1.b1">Immersion pendant un service complet</li>
 <li data-i18n="st.1.b2">Entretien avec vous et deux personnes de l'équipe</li>
@@ -89,7 +89,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <line class="st2" opacity=".35" x1="34" x2="58" y1="64" y2="64"></line>
 <path class="st" d="M78 78 l18 -18 a5 5 0 0 0 -7 -7 l-18 18 z"></path>
 <path class="fl" d="M71 71 l-4 11 11 -4 z"></path>
-</svg><span class="idx" data-i18n="st.2.i">02</span><h3 data-i18n="st.2.t">J'écris votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
+</svg><span class="idx" data-i18n="st.2.i">02</span><h3 data-i18n="st.2.t">Nous écrivons votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
 <ul class="ch-list">
 <li data-i18n="st.2.b1">La promesse du lieu, en une phrase qui tient</li>
 <li data-i18n="st.2.b2">Décor, heure, lumière, atmosphère</li>
@@ -101,7 +101,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <line class="st2" opacity=".5" x1="46" x2="46" y1="46" y2="94"></line>
 <circle class="fl" cx="36" cy="36" r="3"></circle>
 <path class="st" d="M56 62 h28 M56 74 h20" opacity=".7"></path>
-</svg><span class="idx" data-i18n="st.3.i">03</span><h3 data-i18n="st.3.t">Je pose la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
+</svg><span class="idx" data-i18n="st.3.i">03</span><h3 data-i18n="st.3.t">Nous posons la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
 <ul class="ch-list">
 <li data-i18n="st.3.b1">3 à 5 rubriques récurrentes avec leur intention</li>
 <li data-i18n="st.3.b2">Le vocabulaire : ce qu'on dit, ce qu'on ne dit jamais</li>
@@ -113,7 +113,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <path class="st2" d="M22 34 l60 -10 4 14 -60 10 z"></path>
 <path class="fl" d="M38 27 l4 13 M54 24 l4 13 M70 21 l4 13" opacity=".7"></path>
 <circle class="fl2" cx="96" cy="74" r="4"></circle>
-</svg><span class="idx" data-i18n="st.4.i">04</span><h3 data-i18n="st.4.t">Je vous laisse le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
+</svg><span class="idx" data-i18n="st.4.i">04</span><h3 data-i18n="st.4.t">Nous vous laissons le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
 <ul class="ch-list">
 <li data-i18n="st.4.b1">20 à 30 scripts-types, plan par plan</li>
 <li data-i18n="st.4.b2">Un calendrier sur 4 semaines, reconductible</li>
@@ -125,7 +125,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <path class="fl2" d="M81 48 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 z"></path>
 <line class="st2" opacity=".5" x1="28" x2="50" y1="50" y2="50"></line>
 <line class="st2" opacity=".35" x1="28" x2="44" y1="60" y2="60"></line>
-</svg><span class="idx" data-i18n="st.5.i">05</span><h3 data-i18n="st.5.t">Et je vous le prouve.</h3><p data-i18n="st.5.d">Avant de partir, je produis la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
+</svg><span class="idx" data-i18n="st.5.i">05</span><h3 data-i18n="st.5.t">Et nous vous le prouvons.</h3><p data-i18n="st.5.d">Avant de partir, nous produisons la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
 <ul class="ch-list">
 <li data-i18n="st.5.b1">La première semaine de contenu, produite et livrée</li>
 <li data-i18n="st.5.b2">Une passation avec la personne qui prendra le relais</li>
@@ -206,11 +206,11 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <div class="wrap">
 <div class="grid cols-2" style="gap:clamp(2.5rem,6vw,5rem); align-items:start">
 <div class="reveal">
-<span class="eyebrow iris" data-i18n="who.eyebrow">Qui écrit</span>
-<h2 class="h-sec" data-i18n="who.title" style="margin-top:1rem">Une seule personne sur votre lieu.</h2>
+<span class="eyebrow iris" data-i18n="who.eyebrow">Strawberry Production</span>
+<h2 class="h-sec" data-i18n="who.title" style="margin-top:1rem">Le studio qui écrit votre lieu.</h2>
 </div>
 <div class="reveal d1">
-<p class="lead" data-i18n="who.body">Réalisateur et compositeur, je dirige Strawberry Production. J'ai écrit <em>30 Architectures — An Atlas of Narrative Patterns</em> et l'essai <em>Le Narratif de Marque à l'Ère de l'IA</em>, et je construis l'univers transmédia Sinbury depuis 2024.</p>
+<p class="lead" data-i18n="who.body">Réalisateur et compositeur, nous dirigeons Strawberry Production. Nous avons écrit <em>30 Architectures — An Atlas of Narrative Patterns</em> et l'essai <em>Le Narratif de Marque à l'Ère de l'IA</em>, et nous construisons l'univers transmédia Sinbury depuis 2024.</p>
 <p class="muted" data-i18n="who.body2" style="margin-top:1.4rem">Pas d'équipe, pas de sous-traitance, pas d'intermédiaire. La personne qui observe votre service est celle qui écrit, et celle qui vous répond.</p>
 </div>
 </div>
@@ -305,10 +305,10 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <div class="wrap">
 <div class="section-head reveal">
 <span class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</span>
-<h2 class="h-sec" data-i18n="faq.title">Ce que les gérants me demandent.</h2>
+<h2 class="h-sec" data-i18n="faq.title">Ce que les gérants nous demandent.</h2>
 </div>
 <div class="faq reveal d1">
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.1.q">Pourquoi ne pas simplement prendre une agence au mois ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.1.a">Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si on se quitte demain, il continue de fonctionner sans moi.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.1.q">Pourquoi ne pas simplement prendre une agence au mois ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.1.a">Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si nous nous quittons demain, il continue de fonctionner sans nous.</p></div></div></div>
 <div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.2.q">Qui publie une fois le sprint terminé ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.2.a">Votre équipe — c'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, écrits plan par plan, plus un calendrier sur quatre semaines qui tourne en boucle. Personne n'a besoin de deviner quoi poster.</p></div></div></div>
 <div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.3.q">Combien de temps ça prend, de mon côté ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.3.a">Quelques heures en tout. Une immersion pendant un service, un entretien avec vous, deux points d'étape et une remise finale. Le reste du travail se fait sans vous mobiliser.</p></div></div></div>
 <div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.4.q">Personne chez moi ne sait filmer.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.4.a">C'est prévu. Les scripts sont écrits pour quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit, et n'importe qui en salle peut le faire.</p></div></div></div>
@@ -320,7 +320,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <div class="cta-band wipe">
 <span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
-<p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Je prends peu de lieux à la fois, et je le dis franchement si ce n'est pas le moment.</p>
+<p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Nous prenons peu de lieux à la fois, et nous le dis franchement si ce n'est pas le moment.</p>
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
 </div>
 </div>

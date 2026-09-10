@@ -1,59 +1,57 @@
-# Strawberry — une page d'offre, des pages de terrain
+# Strawberry — le troisième terrain, et un seul studio partout
 
-4 fichiers.
+8 fichiers.
 
-## La structure retenue
+## La page manquante
 
-- **`/brand-narrative-audit`** — la page d'offre. La seule qui vend
-  l'audit à 490 €.
-- **`/brand-narrative-architecture`** — la page d'offre haute, à 4 500 €.
-- **`/the-room`** et **`/artistes`** — des pages de **terrain**. Elles
-  parlent au restaurateur et à l'artiste dans leur langue, avec leurs
-  exemples et leur argumentaire, puis renvoient vers la page d'offre.
+**`/marques-entreprises`** — le troisième terrain. Comme les deux autres :
+elle convainc que c'est pour vous, elle ne vend pas, elle renvoie vers la
+page d'offre.
 
-## Ce qui change concrètement
+Les deux cibles tiennent sur une page parce que leur problème est le même
+vu de deux côtés, et la page le dit explicitement : une marque est
+illisible de l'extérieur ; une entreprise l'est aussi, **et** incohérente
+de l'intérieur parce que personne n'a tranché la version qui fait foi.
+Les séparer aurait dupliqué tout l'argumentaire pour une nuance qui tient
+en deux blocs.
 
-**Les deux pages de terrain cessent de vendre.** Leur bouton ne dit plus
-« Commander l'audit » mais **« Voir l'offre → »**, et mène à
-`/brand-narrative-audit`. Elles gardent leur prix affiché — c'est une
-information utile pour se décider — mais l'achat se fait à un seul
-endroit.
+Elle utilise les classes de la charte THE ROOM portées au tour précédent
+— `carte-room`, `ambiance`, `accroche`, `reveal` — ce qui la rend
+cohérente avec le reste sans rien réécrire.
 
-C'est ce qui distingue une page de terrain d'une page d'offre : l'une
-convainc que c'est pour vous, l'autre vend. Les mélanger, c'était
-maintenir le même argumentaire de vente à quatre endroits.
+## Le « je » a disparu
 
-**Le menu porte la hiérarchie.** Les sous-titres la disent explicitement :
+THE ROOM parlait entièrement à la première personne : « Je viens chez
+vous », « J'écris votre monde », « Je réponds sous 48 heures ». C'était la
+voix d'un indépendant, pas d'un studio.
 
-- L'AUDIT NARRATIF — *L'offre · 490 €*
-- L'ARCHITECTURE — *Après l'audit · 4 500 €*
-- THE ROOM — *Terrain · lieux*
-- ARTISTES & FONDATEURS — *Terrain · noms propres*
+Tout est passé au « nous », sur les deux pages de terrain et dans le
+fichier de traductions FR/EN. Vérifié : **zéro « je » restant** sur THE
+ROOM.
 
-Deux entrées d'offre, deux entrées de terrain, plus aucune ambiguïté sur
-ce qu'on achète et où.
+Une exception assumée : « Qu'est-ce que je garde à la fin ? » dans la
+FAQ. C'est le client qui parle, le « je » y est correct.
 
-**Un doublon corrigé au passage :** THE ROOM apparaissait deux fois dans
-le menu, hérité d'un patch précédent.
+## Le studio est nommé
 
-## Le troisième terrain
+La section « Qui écrit » de THE ROOM devient **« Strawberry Production —
+Le studio qui écrit votre lieu. »** Le nom apparaît maintenant sur les
+trois terrains.
 
-Vous avez dit trois pages de terrain ; il en existe deux (lieux,
-artistes). La troisième — marques et entreprises — n'existe pas encore.
-Ces deux terrains sont aujourd'hui servis par la home et par la page
-d'offre elle-même, ce qui fonctionne mais n'est pas symétrique.
+## La structure, complète
 
-Dites-moi si vous la voulez, et si marques et entreprises tiennent sur
-une seule page ou méritent d'être séparées.
+- `/brand-narrative-audit` — l'offre, 490 €. La seule qui vend.
+- `/brand-narrative-architecture` — l'offre haute, 4 500 €.
+- `/marques-entreprises`, `/the-room`, `/artistes` — les trois terrains.
 
-## Ce qui reste dans ces deux pages
+Menu, pied de page, sitemap et préfixe de langue mis à jour.
 
-Leur argumentaire amont parle encore comme une marque autonome : THE ROOM
-garde son wordmark géant et le « je » du fondateur de NOCTA, la page
-artistes garde les sections écrites pour vendre un abonnement MOMENTUM.
-Ce n'est plus faux — ce sont des pages de terrain, elles ont le droit
-d'avoir leur voix — mais elles ne mentionnent jamais Strawberry
-Production. À reprendre si vous voulez qu'on sente le même studio partout.
+## Ce qui reste
+
+La page `/artistes` garde des sections écrites pour vendre un abonnement
+MOMENTUM (le cycle, la preuve, les objections). Son « je » est traité,
+mais son argumentaire amont reste celui d'une autre offre. C'est le
+dernier morceau qui n'a pas suivi la direction.
 
 ## Vérification
 
