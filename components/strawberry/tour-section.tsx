@@ -133,33 +133,49 @@ export function TourSection() {
     // section reste une pile de scènes lisibles — c'est le repli.
     pin.classList.add("tour-on")
     const scenes = Array.from(pin.querySelectorAll<HTMLElement>(".tour-scene"))
+    const backdrops = scenes.map((sc) => sc.querySelector<HTMLElement>(".ts-bg"))
     const fill = fillRef.current
     let ticking = false
+
+    // La géométrie est mesurée une fois, puis relue seulement au
+    // redimensionnement — exactement comme app.js sur THE ROOM.
+    //
+    // C'est toute la différence de fluidité : appeler getBoundingClientRect()
+    // à chaque image force le navigateur à recalculer la mise en page 60 fois
+    // par seconde, en plein défilement, ce qui produit les à-coups. En
+    // mesurant une fois, la boucle ne lit plus que window.scrollY — une
+    // valeur déjà connue, qui ne coûte rien — et n'écrit que des transforms
+    // et des opacités, deux propriétés que le navigateur traite sans
+    // recalculer la page.
+    let geo = { top: 0, height: 0, vh: 0 }
+    const measure = () => {
+      const r = pin.getBoundingClientRect()
+      geo = { top: r.top + window.scrollY, height: r.height, vh: window.innerHeight }
+    }
 
     const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v)
 
     const run = () => {
       ticking = false
-      const vh = window.innerHeight
-      const rect = pin.getBoundingClientRect()
-      const span = Math.max(1, rect.height - vh)
-      const p = clamp01(-rect.top / span)
-      // Position continue entre 0 et n-1 : la scène « courante » peut être
-      // à mi-chemin entre deux, d'où le fondu croisé.
+      const span = Math.max(1, geo.height - geo.vh)
+      const p = clamp01((window.scrollY - geo.top) / span)
+      // Position continue entre 0 et n-1 : la scène « courante » peut se
+      // trouver à mi-chemin entre deux, d'où le fondu croisé.
       const f = p * (scenes.length - 1)
 
-      scenes.forEach((sc, i) => {
+      for (let i = 0; i < scenes.length; i++) {
         const d = f - i
-        const ad = Math.abs(d)
-        sc.style.opacity = Math.max(0, 1 - ad * 1.35).toFixed(3)
-        sc.style.transform = `translate3d(0,${(-d * 7).toFixed(2)}vh,0) scale(${(1 + Math.max(0, 0.055 - ad * 0.11)).toFixed(3)})`
+        const ad = d < 0 ? -d : d
+        const sc = scenes[i]
+        sc.style.opacity = String(Math.max(0, 1 - ad * 1.35))
+        sc.style.transform = `translate3d(0,${-d * 7}vh,0) scale(${1 + Math.max(0, 0.055 - ad * 0.11)})`
         sc.style.zIndex = String(20 - Math.round(ad * 10))
-        const bg = sc.querySelector<HTMLElement>(".ts-bg")
-        // Le fond dérive à contre-sens de la scène : c'est ce décalage qui
-        // donne la profondeur.
-        if (bg) bg.style.transform = `scale(${(1.06 + d * 0.05).toFixed(3)})`
-      })
-      if (fill) fill.style.height = `${(p * 100).toFixed(1)}%`
+        const bg = backdrops[i]
+        // Le fond dérive à contre-sens de sa scène : c'est ce décalage qui
+        // donne la profondeur, et son absence rend l'effet plat.
+        if (bg) bg.style.transform = `scale(${1.06 + d * 0.05})`
+      }
+      if (fill) fill.style.height = `${p * 100}%`
     }
 
     const onScroll = () => {
@@ -168,13 +184,29 @@ export function TourSection() {
         requestAnimationFrame(run)
       }
     }
+    const onResize = () => {
+      measure()
+      onScroll()
+    }
 
+    // Les scènes sont préparées pour l'accélération matérielle avant la
+    // première image : sans ça, le premier défilement paie la promotion en
+    // couche et saccade une fois.
+    scenes.forEach((sc) => {
+      sc.style.willChange = "transform, opacity"
+    })
+
+    measure()
     run()
     window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
+    window.addEventListener("resize", onResize)
+    // Les polices arrivent après le premier rendu et changent la hauteur des
+    // titres, donc la géométrie mesurée. On remesure quand elles sont prêtes.
+    document.fonts?.ready.then(onResize).catch(() => {})
+
     return () => {
       window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
+      window.removeEventListener("resize", onResize)
       pin.classList.remove("tour-on")
     }
   }, [])

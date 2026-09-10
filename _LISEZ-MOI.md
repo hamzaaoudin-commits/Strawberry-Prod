@@ -1,43 +1,39 @@
-# Strawberry — correctif : la tournée s'affichait cassée
+# Strawberry — la tournée redevient fluide
 
-2 fichiers.
+1 fichier.
 
-## La cause, et elle est entièrement de moi
+## Pourquoi c'était saccadé
 
-J'ai porté le CSS de « La tournée » depuis `public/nocta/styles.css` sans
-vérifier ce qu'il appelait. Ce bloc référence **neuf variables propres à
-NOCTA** — `--grad`, `--display`, `--serif`, `--body`, `--mono`,
-`--coral`, `--iris-soft`, `--cream`, `--line-soft` — qui n'existent pas
-dans les globals du studio.
+J'avais réimplémenté la logique de défilement au lieu de reprendre celle
+de `app.js`. La différence tient en une ligne :
 
-Résultat, exactement ce que montre votre capture : les titres perdaient
-leur dégradé, les polices retombaient en valeur par défaut, et la mise en
-page s'effondrait.
+**Ce que je faisais** : appeler `getBoundingClientRect()` à chaque image.
+Cette fonction force le navigateur à **recalculer la mise en page de la
+page entière** avant de répondre. Soixante fois par seconde, en plein
+défilement, avec une section de 460vh — d'où les à-coups.
 
-Ces variables vivent dans `nocta/styles.css`, qui n'est chargé que sur
-`/the-room`. Le bloc marchait là-bas et nulle part ailleurs — je ne l'ai
-pas vérifié avant de livrer.
+**Ce que fait `app.js`** : mesurer **une seule fois**, au chargement et au
+redimensionnement, puis ne lire que `window.scrollY` — une valeur déjà
+connue, qui ne coûte rien. La boucle n'écrit ensuite que des `transform`
+et des `opacity`, deux propriétés que le navigateur applique sans
+recalculer la page.
 
-## Le correctif
+C'est exactement la technique de leur `updateGeo()` / `run()`, et c'est ce
+qui sépare une animation fluide d'une animation qui accroche.
 
-**Les neuf variables sont définies dans le périmètre de `.tour-pin`**,
-traduites en jetons du studio : le dégradé à 108°, les polices de la
-charte, le rouge de marque. Elles ne sortent pas de la section.
+## Deux corrections en plus
 
-**Le débordement à gauche**, second bug visible sur la capture : chez
-NOCTA, `.wrap` porte `width:100%` **et** une marge interne. La classe
-`.shell` du studio n'a pas de marge interne — le texte se collait donc
-aux bords et débordait. `.ts-inner` porte maintenant les deux.
+**`will-change` posé avant la première image.** Sans ça, le tout premier
+défilement paie la promotion des scènes en couche graphique et saccade
+une fois, au pire moment — juste quand on découvre la section.
 
-## Ce que j'aurais dû faire
-
-Vérifier les dépendances d'un bloc CSS avant de le déplacer d'un fichier
-à un autre. C'est la même erreur que pour l'échafaudage de MOMENTUM : je
-déplace du style sans déplacer ce dont il dépend. Je liste désormais les
-`var(--…)` d'un bloc avant de le porter — c'est fait pour celui-ci, et
-plus aucune variable n'y est orpheline.
+**Remesure quand les polices sont chargées.** Elles arrivent après le
+premier rendu et changent la hauteur des titres géants, donc la hauteur
+de la section. Sans remesure, le calcul de progression était faussé dès
+le départ.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Toutes les variables appelées par le
-bloc porté sont désormais définies.
+Contrôle de types : zéro erreur. Plus aucune lecture de mise en page dans
+la boucle de défilement — vérifié, le seul appel restant est dans la
+fonction de mesure.
