@@ -1,59 +1,59 @@
-# Strawberry — le troisième terrain, et un seul studio partout
+# Strawberry — la page artistes parle au nom du studio
 
-8 fichiers.
-
-## La page manquante
-
-**`/marques-entreprises`** — le troisième terrain. Comme les deux autres :
-elle convainc que c'est pour vous, elle ne vend pas, elle renvoie vers la
-page d'offre.
-
-Les deux cibles tiennent sur une page parce que leur problème est le même
-vu de deux côtés, et la page le dit explicitement : une marque est
-illisible de l'extérieur ; une entreprise l'est aussi, **et** incohérente
-de l'intérieur parce que personne n'a tranché la version qui fait foi.
-Les séparer aurait dupliqué tout l'argumentaire pour une nuance qui tient
-en deux blocs.
-
-Elle utilise les classes de la charte THE ROOM portées au tour précédent
-— `carte-room`, `ambiance`, `accroche`, `reveal` — ce qui la rend
-cohérente avec le reste sans rien réécrire.
+Deux fichiers : les copies FR et EN de la page `/artistes`.
 
 ## Le « je » a disparu
 
-THE ROOM parlait entièrement à la première personne : « Je viens chez
-vous », « J'écris votre monde », « Je réponds sous 48 heures ». C'était la
-voix d'un indépendant, pas d'un studio.
+C'était la page la plus personnelle du site : 45 formulations à la
+première personne en français, 57 en anglais. « Je m'appelle Hamza »,
+« Je n'accompagne que six artistes », « Mon propre travail ».
 
-Tout est passé au « nous », sur les deux pages de terrain et dans le
-fichier de traductions FR/EN. Vérifié : **zéro « je » restant** sur THE
-ROOM.
+Tout est passé au « nous », dans les deux langues. Vérifié : **zéro
+occurrence restante**.
 
-Une exception assumée : « Qu'est-ce que je garde à la fin ? » dans la
-FAQ. C'est le client qui parle, le « je » y est correct.
+## Trois pièges que la conversion a créés, et que j'ai corrigés
 
-## Le studio est nommé
+Une substitution mécanique casse les accords. J'ai relu ce que ma propre
+conversion produisait et trouvé :
 
-La section « Qui écrit » de THE ROOM devient **« Strawberry Production —
-Le studio qui écrit votre lieu. »** Le nom apparaît maintenant sur les
-trois terrains.
+- **« Nous ne revendique aucun droit »** — le verbe était resté au
+  singulier. Cinq cas de ce type au total (« ne sais », « ne saurais »,
+  « ne peux »), tous corrigés.
+- **« Puis-je arrêter quand nous voulons ? »** — une question de FAQ, donc
+  posée *par le client*. Ma conversion l'avait transformée en absurdité.
+  Restaurée en « Puis-je arrêter quand je veux ? » : dans une FAQ, le
+  « je » du client est correct et doit rester.
+- **« Mon propre travail »** → « Notre propre travail », que le premier
+  passage avait manqué.
 
-## La structure, complète
+C'est le genre d'erreur qu'un remplacement automatique produit
+silencieusement, et qui se lit très mal en ligne.
 
-- `/brand-narrative-audit` — l'offre, 490 €. La seule qui vend.
-- `/brand-narrative-architecture` — l'offre haute, 4 500 €.
-- `/marques-entreprises`, `/the-room`, `/artistes` — les trois terrains.
+## La signature
 
-Menu, pied de page, sitemap et préfixe de langue mis à jour.
+« Je m'appelle Hamza El Jaouahiry » devient **« Strawberry Production est
+dirigé par Hamza El Jaouahiry »** (et son équivalent anglais). Le studio
+est nommé, le fondateur reste visible — mais c'est le studio qui parle.
 
-## Ce qui reste
+## L'état du site
 
-La page `/artistes` garde des sections écrites pour vendre un abonnement
-MOMENTUM (le cycle, la preuve, les objections). Son « je » est traité,
-mais son argumentaire amont reste celui d'une autre offre. C'est le
-dernier morceau qui n'a pas suivi la direction.
+Les trois terrains parlent maintenant d'une seule voix, au nom d'un seul
+studio :
+
+- `/marques-entreprises` — écrite au « nous » dès l'origine.
+- `/the-room` — convertie au tour précédent.
+- `/artistes` — convertie ici.
+
+## Ce qui reste, et que je ne peux pas décider
+
+L'argumentaire amont de `/artistes` (le cycle, la preuve, les objections)
+a été écrit pour vendre un abonnement mensuel. La voix est bonne
+maintenant, mais certaines sections argumentent encore pour une offre qui
+n'existe plus — par exemple les objections sur l'engagement au mois.
+
+Ça demande une réécriture éditoriale, pas une substitution. Dites-moi si
+vous voulez que je m'y attaque, et sur quelles sections.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Fichier de traductions passé au contrôle
-syntaxique.
+Contrôle de types : zéro erreur.

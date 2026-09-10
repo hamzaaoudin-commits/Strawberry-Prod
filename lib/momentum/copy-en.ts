@@ -16,7 +16,7 @@ import type { Copy } from "./copy-fr"
  *
  * — Le vouvoiement disparaît. L'anglais n'a qu'un « you », mais il a un
  *   registre : les contractions restent (you're, don't), le vocabulaire évite
- *   le jargon d'agence. On garde le même ton direct sans jamais devenir
+ *   le jargon d'agence. On garde le mêus ton direct sans jamais devenir
  *   familier.
  *
  * — Les prix restent en euros et les repères français gardent leurs noms
@@ -101,9 +101,9 @@ export const EN: Copy = {
       {
         texte: "Can you describe your project in one sentence you'd say out loud without flinching?",
         options: [
-          { label: "Yes, it's written down and I know it by heart", points: 3 },
+          { label: "Yes, it's written down and we know it by heart", points: 3 },
           { label: "Roughly, but it changes depending on the day", points: 1 },
-          { label: "No, I've never managed to put it into words", points: 0 },
+          { label: "No, We've never managed to put it into words", points: 0 },
         ],
       },
       {
@@ -111,7 +111,7 @@ export const EN: Copy = {
         options: [
           { label: "Yes, the next three, and why in that order", points: 3 },
           { label: "Just the next one", points: 2 },
-          { label: "No, I decide when the time comes", points: 0 },
+          { label: "No, we decide when the time comes", points: 0 },
         ],
       },
       {
@@ -125,8 +125,8 @@ export const EN: Copy = {
       {
         texte: "Did your last track do better than the one before it?",
         options: [
-          { label: "Yes, and I know why", points: 3 },
-          { label: "Yes, but I don't know why", points: 2 },
+          { label: "Yes, and we know why", points: 3 },
+          { label: "Yes, but We don't know why", points: 2 },
           { label: "No, or no idea", points: 0 },
         ],
       },
@@ -134,7 +134,7 @@ export const EN: Copy = {
         texte: "Who tells you honestly what's wrong with your work?",
         options: [
           { label: "Someone in the industry, regularly", points: 3 },
-          { label: "Friends and family, when I push them", points: 1 },
+          { label: "Friends and family, when we push them", points: 1 },
           { label: "Nobody", points: 0 },
         ],
       },
@@ -261,10 +261,10 @@ export const EN: Copy = {
     etiquette: "WHY LISTEN TO ME",
     titre: "An artist understands your art. A strategist understands your market.",
     chapo:
-      "You need one who does both. It's the only valid reason to trust me with a read on your career, and it's the only one I claim.",
-    p1: "My name is Hamza El Jaouahiry. Director and composer since 2019, trained in film at Université Gustave Eiffel then Sorbonne Nouvelle, with time in the studio as a sound engineer. I produce and compose my own music project, MORI, covered by press in Spain, the UK and Brazil.",
-    p2: "The rest of my time I build brand identities: I run Strawberry Production, a brand narrative studio for founders, and in 2026 I published two books on brand storytelling, including an atlas of thirty narrative architectures. Since 2024 I've also been building a transmedia universe, Sinbury.",
-    p3: "Put differently: I know your problem from the inside because I live it, and its solution from the outside because it's my job.",
+      "You need one who does both. It's the only valid reason to trust us with a read on your career, and it's the only one we claim.",
+    p1: "Strawberry Production is run by Hamza El Jaouahiry. Director and composer since 2019, trained in film at Université Gustave Eiffel then Sorbonne Nouvelle, with time in the studio as a sound engineer. we produce and compose our own music project, MORI, covered by press in Spain, the UK and Brazil.",
+    p2: "The rest of our time we build brand identities: we run Strawberry Production, a brand narrative studio for founders, and in 2026 we published two books on brand storytelling, including an atlas of thirty narrative architectures. Since 2024 We've also been building a transmedia universe, Sinbury.",
+    p3: "Put differently: we know your problem from the inside because we live it, and its solution from the outside because it's our job.",
     reperes: [
       { annee: "2019", texte: "First projects as a director and composer." },
       { annee: "2021", texte: "Film & Audiovisual degrees — Université Gustave Eiffel, then Sorbonne Nouvelle." },
@@ -275,10 +275,10 @@ export const EN: Copy = {
     ],
     pasMontrerTitre: "WHAT I CAN'T SHOW YOU",
     pasMontrer:
-      "Client testimonials: MOMENTUM is young and I'd rather have an empty section than manufactured reviews. When the first arcs are a year old, they'll be here, with verifiable numbers and real names.",
+      "Client testimonials: MOMENTUM is young and We'd rather have an empty section than manufactured reviews. When the first arcs are a year old, they'll be here, with verifiable numbers and real names.",
     montrerTitre: "WHAT I CAN SHOW YOU",
     montrer:
-      "My own work — a music project that crossed borders without a label, a brand studio, two books. And, if you apply, written feedback on one of your tracks before you pay anything at all. You'll judge the quality of the advice on the evidence.",
+      "Our own work — a music project that crossed borders without a label, a brand studio, two books. And, if you apply, written feedback on one of your tracks before you pay anything at all. You'll judge the quality of the advice on the evidence.",
     verdict: "Very few artist advisors have ever been afraid to hit \u201cpublish\u201d.",
   },
 
@@ -286,7 +286,7 @@ export const EN: Copy = {
     etiquette: "THE OFFER",
     titre: "A manager costs €2,000 a month. And won't take artists at your stage.",
     chapo:
-      "Between \u201cI do everything myself\u201d and \u201cI have a full team\u201d, there's a level in between. This is it.",
+      "Between \u201cI do everything ourselves\u201d and \u201cWe have a full team\u201d, there's a level in between. This is it.",
     enTete: "THE PROGRAMME",
     coutLabel: "WHAT IT COSTS",
     parMois: "/ month",
@@ -302,7 +302,7 @@ export const EN: Copy = {
     comparatifTitre: "What you get",
     comparatifNote1: "Most artists should start with ",
     comparatifNote2:
-      ". It's the level where the work produces visible results without requiring the budget of a full team. I only work with ",
+      ". It's the level where the work produces visible results without requiring the budget of a full team. we only work with ",
     comparatifNote3: " artists at a time — when the places are taken, applications stay on the list.",
   },
 
@@ -311,7 +311,7 @@ export const EN: Copy = {
     risqueValeur: "NONE",
     titre: "The first-cycle guarantee",
     texte:
-      "If after the first month you feel the programme taught you nothing about your project, you tell me and I refund you in full. No argument, and no need to justify yourself.",
+      "If after the first month you feel the programme taught you nothing about your project, you tell us and we refund you in full. No argument, and no need to justify yourself.",
   },
 
   places: {
@@ -323,7 +323,7 @@ export const EN: Copy = {
     titre: "The five objections, in the order they arrive.",
     items: [
       {
-        q: "\u201c€299 a month is a lot for me.\u201d",
+        q: "\u201c€299 a month is a lot for us.\u201d",
         r: "That's the price of one studio day, or two promo campaigns that will do nothing. The difference: a studio day produces a file, a cycle produces a direction — which makes every studio day after it useful. If the budget genuinely isn't there, start at €149: a level you hold for six months beats a level you abandon in month two.",
       },
       {
@@ -331,8 +331,8 @@ export const EN: Copy = {
         r: "You can get general advice about the industry, and some of it is excellent. What you can't get is someone who listens to your fourteen tracks, looks at your visuals, knows your exact stage and tells you which one to release. General advice applies to everyone; that's precisely why it changes nobody's trajectory.",
       },
       {
-        q: "\u201cWhat if you don't get my style?\u201d",
-        r: "Tell me so in your application. I'd rather turn down a project I couldn't serve than take three months of payment before we both notice. What transfers between styles isn't taste — it's architecture: positioning, coherence, release sequencing.",
+        q: "\u201cWhat if you don't get our style?\u201d",
+        r: "Tell us so in your application. We'd rather turn down a project we couldn't serve than take three months of payment before we both notice. What transfers between styles isn't taste — it's architecture: positioning, coherence, release sequencing.",
       },
       {
         q: "\u201cI haven't come far enough to deserve this.\u201d",
@@ -340,7 +340,7 @@ export const EN: Copy = {
       },
       {
         q: "\u201cWhat if it doesn't work?\u201d",
-        r: "I can't guarantee streams, playlists or a deal — nobody can, and anyone promising you otherwise is selling you something else. What I do guarantee is the first cycle: if it teaches you nothing about your project, you're refunded in full.",
+        r: "We can't guarantee streams, playlists or a deal — nobody can, and anyone promising you otherwise is selling you something else. What we do guarantee is the first cycle: if it teaches you nothing about your project, you're refunded in full.",
       },
     ],
   },
@@ -364,7 +364,7 @@ export const EN: Copy = {
       "You want to be told your project is already perfect.",
       "You're looking for contacts to buy rather than a trajectory to build.",
     ],
-    note: "I can't guarantee your success. Nobody can, and anyone who tells you otherwise is selling you something. What I can do: help you make better decisions, present your work better, and raise the quality of your trajectory.",
+    note: "We can't guarantee your success. Nobody can, and anyone who tells you otherwise is selling you something. What we can do: help you make better decisions, present your work better, and raise the quality of your trajectory.",
   },
 
   faq: {
@@ -373,41 +373,41 @@ export const EN: Copy = {
     items: [
       {
         q: "What does a month actually look like?",
-        r: "A sixty-minute call at the start of the month to set the direction, your tracks and visuals sent over across the weeks with my written feedback, a second call to settle the decisions in play, and a written review at month's end that sets the direction for the next.",
+        r: "A sixty-minute call at the start of the month to set the direction, your tracks and visuals sent over across the weeks with our written feedback, a second call to settle the decisions in play, and a written review at month's end that sets the direction for the next.",
       },
       {
-        q: "Do you take a percentage of my career?",
-        r: "Never. Fixed monthly subscription, you keep 100% of your rights, your revenue and your decisions. It's also what guarantees my advice serves your project and not my interests: I have nothing to gain from pushing you toward a deal.",
+        q: "Do you take a percentage of our career?",
+        r: "Never. Fixed monthly subscription, you keep 100% of your rights, your revenue and your decisions. It's also what guarantees our advice serves your project and not our interests: We have nothing to gain from pushing you toward a deal.",
       },
       {
-        q: "Do you produce or compose for me?",
-        r: "No. I advise, you create. It's a line I hold: an advisor who puts his hands on the sound ends up making his own music through you, and your identity disappears.",
+        q: "Do you produce or compose for us?",
+        r: "No. we advise, you create. It's a line we hold: an advisor who puts his hands on the sound ends up making his own music through you, and your identity disappears.",
       },
       {
-        q: "Are my unreleased tracks protected?",
-        r: "Everything you send is confidential and shared with nobody. I claim no rights, no publishing share and no credit on anything you produce during the programme.",
+        q: "Are our unreleased tracks protected?",
+        r: "Everything you send is confidential and shared with nobody. we claim no rights, no publishing share and no credit on anything you produce during the programme.",
       },
       {
-        q: "Can I stop whenever I want?",
+        q: "Can we stop whenever we want?",
         r: "Yes, month to month, no justification needed. Be clear-eyed though: one month gives you a diagnostic, not a trajectory. The gap shows up over three cycles.",
       },
       {
         q: "Why only six artists?",
-        r: "Because beyond that I can no longer listen to each project in depth — and advice given without real listening is worth nothing. It's a limit of attention, not a sales device.",
+        r: "Because beyond that we can no longer listen to each project in depth — and advice given without real listening is worth nothing. It's a limit of attention, not a sales device.",
       },
     ],
   },
 
   candidature: {
     index: "13 — APPLICATION",
-    titre: "Send me a track. I'll tell you what I think.",
+    titre: "Send us a track. We'll tell you what we think.",
     p1: "Free, before any question of money. It's the only honest way to judge an advisor: on the quality of the advice, not the quality of the sales page.",
-    p2a: "I only work with ",
+    p2a: "We only work with ",
     p2b: " artists at a time. This form isn't a formality — it's already the start of the diagnostic, and the quality of your answers determines the quality of mine.",
     etapes: [
       ["01", "You apply", "A few honest questions. Budget eight minutes if you answer them seriously."],
-      ["02", "You get written feedback", "I listen to the track you send, in full, and write you what I think. Free, whether or not anything follows."],
-      ["03", "We decide", "If the fit is there, a call to set your arc and the direction for month one. If not, I tell you why."],
+      ["02", "You get written feedback", "We listen to the track you send, in full, and write you what we think. Free, whether or not anything follows."],
+      ["03", "We decide", "If the fit is there, a call to set your arc and the direction for month one. If not, we tell you why."],
     ] as [string, string, string][],
     question: "A question before applying?",
   },
@@ -416,30 +416,30 @@ export const EN: Copy = {
     nom: "Artist name",
     nomAide: "The name you release under",
     email: "Email",
-    lien: "The track you want my feedback on (Spotify, SoundCloud, YouTube, Drive…)",
+    lien: "The track you want our feedback on (Spotify, SoundCloud, YouTube, Drive…)",
     niveau: "Where you're at",
     offre: "Level you have in mind",
-    indecis: "I don't know yet",
+    indecis: "We don't know yet",
     projet: "Your project in a few lines",
     projetAide: "What you do, how long you've been at it, what you want to build.",
     blocage: "What's blocking you right now?",
-    blocageAide: "Be specific. It's the field I read first.",
-    envoyer: "Send and get my feedback →",
+    blocageAide: "Be specific. It's the field we read first.",
+    envoyer: "Send and get our feedback →",
     envoi: "Sending…",
     sousBouton: "Written feedback within 72h · Free · No automatic signup",
     niveaux: [
-      { valeur: "debut", label: "I'm just starting to release tracks" },
-      { valeur: "regulier", label: "I release regularly, audience still small" },
-      { valeur: "audience", label: "I have an audience that's starting to respond" },
-      { valeur: "pro", label: "I make part of my living from music" },
+      { valeur: "debut", label: "We're just starting to release tracks" },
+      { valeur: "regulier", label: "We release regularly, audience still small" },
+      { valeur: "audience", label: "We have an audience that's starting to respond" },
+      { valeur: "pro", label: "We make part of our living from music" },
     ],
-    erreurNiveau: "Tell me where you're at: it's what determines the right level of support.",
+    erreurNiveau: "Tell us where you're at: it's what determines the right level of support.",
     erreurLimite: "Too many attempts from this connection. Try again in a few minutes.",
-    erreurEnvoi: "That didn't go through. Try again, or email me directly.",
+    erreurEnvoi: "That didn't go through. Try again, or email us directly.",
     recuLabel: "APPLICATION RECEIVED",
     recuTitre: "You'll get your written feedback within 72 hours.",
     recuTexte:
-      "I listen to your track in full, several times, and write you what I think — whether or not anything follows. If the fit is there, we'll set up a call to lay out your arc. If it isn't the right moment, I'll say so plainly, and tell you why.",
+      "We listen to your track in full, several times, and write you what we think — whether or not anything follows. If the fit is there, we'll set up a call to lay out your arc. If it isn't the right moment, We'll say so plainly, and tell you why.",
     nePasRemplir: "Do not fill in",
     chargement: "Loading the form…",
   },

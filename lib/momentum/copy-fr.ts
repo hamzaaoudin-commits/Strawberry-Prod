@@ -87,9 +87,9 @@ export const FR = {
       {
         texte: "Pouvez-vous décrire votre projet en une phrase que vous assumez à voix haute ?",
         options: [
-          { label: "Oui, elle est écrite et je la connais par cœur", points: 3 },
+          { label: "Oui, elle est écrite et nous la connais par cœur", points: 3 },
           { label: "À peu près, mais elle change selon les jours", points: 1 },
-          { label: "Non, je n'ai jamais réussi à la formuler", points: 0 },
+          { label: "Non, nous n'avons jamais réussi à la formuler", points: 0 },
         ],
       },
       {
@@ -97,7 +97,7 @@ export const FR = {
         options: [
           { label: "Oui, les trois prochains, et pourquoi dans cet ordre", points: 3 },
           { label: "Le suivant seulement", points: 2 },
-          { label: "Non, je décide au moment venu", points: 0 },
+          { label: "Non, nous décidons au moment venu", points: 0 },
         ],
       },
       {
@@ -111,8 +111,8 @@ export const FR = {
       {
         texte: "Votre dernier titre a-t-il fait mieux que le précédent ?",
         options: [
-          { label: "Oui, et je sais pourquoi", points: 3 },
-          { label: "Oui, mais je ne sais pas pourquoi", points: 2 },
+          { label: "Oui, et nous savons pourquoi", points: 3 },
+          { label: "Oui, mais nous ne savons pas pourquoi", points: 2 },
           { label: "Non, ou aucune idée", points: 0 },
         ],
       },
@@ -120,7 +120,7 @@ export const FR = {
         texte: "Qui vous dit honnêtement ce qui ne va pas dans votre travail ?",
         options: [
           { label: "Quelqu'un du métier, régulièrement", points: 3 },
-          { label: "Des proches, quand j'insiste", points: 1 },
+          { label: "Des proches, quand nous insistons", points: 1 },
           { label: "Personne", points: 0 },
         ],
       },
@@ -247,10 +247,10 @@ export const FR = {
     etiquette: "POURQUOI M'ÉCOUTER, MOI",
     titre: "Un artiste comprend votre art. Un stratège comprend votre marché.",
     chapo:
-      "Il vous en faut un qui fasse les deux. C'est la seule raison valable de me confier un regard sur votre carrière, et c'est la seule que je revendique.",
-    p1: "Je m'appelle Hamza El Jaouahiry. Réalisateur et compositeur depuis 2019, formé au cinéma à l'Université Gustave Eiffel puis à la Sorbonne Nouvelle, passé par le studio comme ingénieur du son. Nous produisons et compose mon propre projet musical, MORI, chroniqué en Espagne, au Royaume-Uni et au Brésil.",
-    p2: "Le reste de mon temps, je construis des identités de marque : nous dirigeons Strawberry Production, studio de narration de marque pour fondateurs, et j'ai publié en 2026 deux ouvrages sur le récit de marque, dont un atlas de trente architectures narratives. Je bâtis aussi depuis 2024 un univers transmédia, Sinbury.",
-    p3: "Autrement dit : je connais votre problème de l'intérieur parce que je le vis, et sa solution de l'extérieur parce que c'est mon métier.",
+      "Il vous en faut un qui fasse les deux. C'est la seule raison valable de me confier un regard sur votre carrière, et c'est la seule que nous revendiquons.",
+    p1: "Strawberry Production est dirigé par Hamza El Jaouahiry. Réalisateur et compositeur depuis 2019, formé au cinéma à l'Université Gustave Eiffel puis à la Sorbonne Nouvelle, passé par le studio comme ingénieur du son. Nous produisons et compose mon propre projet musical, MORI, chroniqué en Espagne, au Royaume-Uni et au Brésil.",
+    p2: "Le reste de mon temps, nous construisons des identités de marque : nous dirigeons Strawberry Production, studio de narration de marque pour fondateurs, et nous avons publié en 2026 deux ouvrages sur le récit de marque, dont un atlas de trente architectures narratives. Nous bâtissons aussi depuis 2024 un univers transmédia, Sinbury.",
+    p3: "Autrement dit : nous connaissons votre problème de l'intérieur parce que nous le vis, et sa solution de l'extérieur parce que c'est mon métier.",
     reperes: [
       { annee: "2019", texte: "Premiers projets comme réalisateur et compositeur." },
       { annee: "2021", texte: "Licences Cinéma & Audiovisuel — Université Gustave Eiffel, puis Sorbonne Nouvelle." },
@@ -261,10 +261,10 @@ export const FR = {
     ],
     pasMontrerTitre: "CE QUE JE NE PEUX PAS VOUS MONTRER",
     pasMontrer:
-      "Des témoignages clients : MOMENTUM est jeune et je préfère une page vide à des avis fabriqués. Quand les premiers arcs auront un an, ils seront ici, avec des chiffres vérifiables et des noms.",
+      "Des témoignages clients : MOMENTUM est jeune et nous préférons une page vide à des avis fabriqués. Quand les premiers arcs auront un an, ils seront ici, avec des chiffres vérifiables et des noms.",
     montrerTitre: "CE QUE JE PEUX VOUS MONTRER",
     montrer:
-      "Mon propre travail — un projet musical qui a passé les frontières sans label, un studio de marque, deux ouvrages. Et, si vous candidatez, un retour écrit sur l'un de vos morceaux avant que vous payiez quoi que ce soit. Vous jugerez la qualité du conseil sur pièce.",
+      "Notre propre travail — un projet musical qui a passé les frontières sans label, un studio de marque, deux ouvrages. Et, si vous candidatez, un retour écrit sur l'un de vos morceaux avant que vous payiez quoi que ce soit. Vous jugerez la qualité du conseil sur pièce.",
     verdict: "Très peu de conseillers artistiques ont déjà eu peur d'appuyer sur « publier ».",
   },
 
@@ -272,7 +272,7 @@ export const FR = {
     etiquette: "L'OFFRE",
     titre: "Un manager coûte 2 000 € par mois. Et il ne prend pas les artistes à votre stade.",
     chapo:
-      "Entre « je fais tout tout seul » et « j'ai une équipe complète », il existe un niveau intermédiaire. C'est celui-là.",
+      "Entre « nous faisons tout tout seul » et « nous avons une équipe complète », il existe un niveau intermédiaire. C'est celui-là.",
     enTete: "L'ACCOMPAGNEMENT",
     coutLabel: "CE QUE ÇA COÛTE",
     parMois: "/ mois",
@@ -288,7 +288,7 @@ export const FR = {
     comparatifTitre: "Ce que vous obtenez",
     comparatifNote1: "La plupart des artistes devraient commencer par ",
     comparatifNote2:
-      ". C'est le niveau où l'accompagnement produit des résultats visibles sans exiger le budget d'une équipe. Je n'accompagne que ",
+      ". C'est le niveau où l'accompagnement produit des résultats visibles sans exiger le budget d'une équipe. Nous n'accompagnons que ",
     comparatifNote3: " artistes à la fois — quand les places sont prises, la candidature reste en liste.",
   },
 
@@ -297,7 +297,7 @@ export const FR = {
     risqueValeur: "AUCUN",
     titre: "La garantie du premier cycle",
     texte:
-      "Si au bout du premier mois vous estimez que l'accompagnement ne vous a rien appris sur votre projet, vous me le dites et je vous rembourse intégralement. Sans discussion et sans que vous ayez à vous justifier.",
+      "Si au bout du premier mois vous estimez que l'accompagnement ne vous a rien appris sur votre projet, vous me le dites et nous vous rembourse intégralement. Sans discussion et sans que vous ayez à vous justifier.",
   },
 
   /* Un gabarit, pas une fonction : le dictionnaire traverse la frontière
@@ -317,20 +317,20 @@ export const FR = {
         r: "C'est le prix d'une journée de studio, ou de deux campagnes de promo qui ne donneront rien. La différence : une journée de studio produit un fichier, un cycle produit une direction — qui rend utiles toutes les journées de studio suivantes. Si le budget n'y est vraiment pas, commencez à 149 € : mieux vaut un niveau tenu six mois qu'un niveau abandonné au deuxième.",
       },
       {
-        q: "« Je peux avoir ces conseils gratuitement sur YouTube. »",
+        q: "« Nous pouvons avoir ces conseils gratuitement sur YouTube. »",
         r: "Vous pouvez avoir des conseils généraux sur l'industrie, et certains sont excellents. Ce que vous ne pouvez pas avoir, c'est quelqu'un qui écoute vos quatorze morceaux, regarde vos visuels, connaît votre stade exact et vous dit lequel sortir. Un conseil général s'applique à tout le monde ; c'est précisément pour ça qu'il ne change la trajectoire de personne.",
       },
       {
         q: "« Et si vous ne comprenez pas mon style ? »",
-        r: "Dites-le-moi dans votre candidature. Je préfère refuser un projet que je ne saurais pas servir plutôt que d'encaisser trois mois avant qu'on s'en aperçoive tous les deux. Ce qui se transpose d'un style à l'autre, ce n'est pas le goût — c'est l'architecture : positionnement, cohérence, séquence de sorties.",
+        r: "Dites-le-moi dans votre candidature. Nous préférons refuser un projet que nous ne saurions pas servir plutôt que d'encaisser trois mois avant qu'on s'en aperçoive tous les deux. Ce qui se transpose d'un style à l'autre, ce n'est pas le goût — c'est l'architecture : positionnement, cohérence, séquence de sorties.",
       },
       {
-        q: "« Je n'ai pas assez avancé pour mériter ça. »",
+        q: "« Nous n'avons pas assez avancé pour mériter ça. »",
         r: "C'est l'objection la plus fréquente et la plus coûteuse. Attendre d'avoir « réussi » pour agir en professionnel, c'est exactement ce qui fait perdre des années. Il vous faut un projet déjà commencé et une vraie envie de construire. Pas un contrat, pas cent mille abonnés.",
       },
       {
         q: "« Et si ça ne marche pas ? »",
-        r: "Je ne peux garantir ni streams, ni playlist, ni signature — personne ne le peut, et quiconque vous le promet vous vend autre chose. Ce que je garantis, c'est le premier cycle : s'il ne vous apprend rien sur votre projet, vous êtes remboursé intégralement.",
+        r: "Nous ne pouvons garantir ni streams, ni playlist, ni signature — personne ne le peut, et quiconque vous le promet vous vend autre chose. Ce que nous garantissons, c'est le premier cycle : s'il ne vous apprend rien sur votre projet, vous êtes remboursé intégralement.",
       },
     ],
   },
@@ -354,7 +354,7 @@ export const FR = {
       "Vous voulez qu'on vous dise que votre projet est déjà parfait.",
       "Vous cherchez des contacts à acheter plutôt qu'une trajectoire à construire.",
     ],
-    note: "Je ne peux pas garantir votre succès. Personne ne le peut, et quiconque vous dit le contraire vous vend quelque chose. Ce que je peux faire : vous aider à prendre de meilleures décisions, à mieux présenter votre travail, et à augmenter la qualité de votre trajectoire.",
+    note: "Nous ne pouvons pas garantir votre succès. Personne ne le peut, et quiconque vous dit le contraire vous vend quelque chose. Ce que nous pouvons faire : vous aider à prendre de meilleures décisions, à mieux présenter votre travail, et à augmenter la qualité de votre trajectoire.",
   },
 
   faq: {
@@ -367,15 +367,15 @@ export const FR = {
       },
       {
         q: "Est-ce que vous prenez un pourcentage sur ma carrière ?",
-        r: "Jamais. Abonnement mensuel fixe, vous gardez 100 % de vos droits, de vos revenus et de vos décisions. C'est aussi la garantie que mes conseils servent votre projet et pas mes intérêts : je n'ai rien à gagner à vous pousser vers une signature.",
+        r: "Jamais. Abonnement mensuel fixe, vous gardez 100 % de vos droits, de vos revenus et de vos décisions. C'est aussi la garantie que mes conseils servent votre projet et pas mes intérêts : nous n'avons rien à gagner à vous pousser vers une signature.",
       },
       {
         q: "Est-ce que vous produisez ou composez pour moi ?",
-        r: "Non. Je conseille, vous créez. C'est une frontière que je tiens : un conseiller qui met les mains dans le son finit par vous fabriquer sa musique à lui, et votre identité disparaît.",
+        r: "Non. Nous conseillons, vous créez. C'est une frontière que nous tenons : un conseiller qui met les mains dans le son finit par vous fabriquer sa musique à lui, et votre identité disparaît.",
       },
       {
         q: "Mes morceaux inédits sont-ils protégés ?",
-        r: "Tout ce que vous envoyez est confidentiel et n'est partagé avec personne. Je ne revendique aucun droit, aucune part d'édition et aucun crédit sur ce que vous produisez pendant l'accompagnement.",
+        r: "Tout ce que vous envoyez est confidentiel et n'est partagé avec personne. Nous ne revendiquons aucun droit, aucune part d'édition et aucun crédit sur ce que vous produisez pendant l'accompagnement.",
       },
       {
         q: "Puis-je arrêter quand je veux ?",
@@ -383,21 +383,21 @@ export const FR = {
       },
       {
         q: "Pourquoi seulement six artistes ?",
-        r: "Parce qu'au-delà, je ne peux plus écouter chaque projet en profondeur — et un conseil donné sans écoute réelle ne vaut rien. C'est une limite d'attention, pas une mise en scène commerciale.",
+        r: "Parce qu'au-delà, nous ne pouvons plus écouter chaque projet en profondeur — et un conseil donné sans écoute réelle ne vaut rien. C'est une limite d'attention, pas une mise en scène commerciale.",
       },
     ],
   },
 
   candidature: {
     index: "13 — CANDIDATURE",
-    titre: "Envoyez-moi un morceau. Je vous dis ce que j'en pense.",
+    titre: "Envoyez-moi un morceau. Nous vous dis ce que nous en pense.",
     p1: "Gratuitement, avant toute question d'argent. C'est la seule façon honnête de juger un conseiller : sur la qualité de son conseil, pas sur celle de sa page de vente.",
-    p2a: "Je n'accompagne que ",
+    p2a: "Nous n'accompagnons que ",
     p2b: " artistes à la fois. Ce formulaire n'est pas une formalité — c'est déjà le début du diagnostic, et la qualité de vos réponses détermine celle de la mienne.",
     etapes: [
       ["01", "Vous candidatez", "Quelques questions honnêtes. Comptez huit minutes si vous répondez sérieusement."],
-      ["02", "Vous recevez un retour écrit", "J'écoute le morceau que vous m'envoyez, en entier, et je vous écris ce que j'en pense. Gratuitement, que la suite se fasse ou non."],
-      ["03", "On décide", "Si le profil correspond, un appel pour poser votre arc et le cap du premier mois. Sinon, je vous dis pourquoi."],
+      ["02", "Vous recevez un retour écrit", "J'écoute le morceau que vous m'envoyez, en entier, et nous vous écris ce que nous en pense. Gratuitement, que la suite se fasse ou non."],
+      ["03", "On décide", "Si le profil correspond, un appel pour poser votre arc et le cap du premier mois. Sinon, nous vous dis pourquoi."],
     ] as [string, string, string][],
     question: "Une question avant de candidater ?",
   },
@@ -409,19 +409,19 @@ export const FR = {
     lien: "Le morceau sur lequel vous voulez mon retour (Spotify, SoundCloud, YouTube, Drive…)",
     niveau: "Où vous en êtes",
     offre: "Formule envisagée",
-    indecis: "Je ne sais pas encore",
+    indecis: "Nous ne savons pas encore",
     projet: "Votre projet en quelques lignes",
     projetAide: "Ce que vous faites, depuis quand, ce que vous voulez construire.",
     blocage: "Qu'est-ce qui vous bloque en ce moment ?",
-    blocageAide: "Soyez précis. C'est le champ que je lis en premier.",
+    blocageAide: "Soyez précis. C'est le champ que nous lisons en premier.",
     envoyer: "Envoyer et recevoir mon retour →",
     envoi: "Envoi…",
     sousBouton: "Retour écrit sous 72 h · Gratuit · Aucune inscription automatique",
     niveaux: [
-      { valeur: "debut", label: "Je commence à peine à sortir des morceaux" },
-      { valeur: "regulier", label: "Je sors régulièrement, audience encore petite" },
-      { valeur: "audience", label: "J'ai une audience qui commence à répondre" },
-      { valeur: "pro", label: "Je vis en partie de ma musique" },
+      { valeur: "debut", label: "Nous commençons à peine à sortir des morceaux" },
+      { valeur: "regulier", label: "Nous sortons régulièrement, audience encore petite" },
+      { valeur: "audience", label: "Nous avons une audience qui commence à répondre" },
+      { valeur: "pro", label: "Nous vivons en partie de ma musique" },
     ],
     erreurNiveau: "Indiquez où vous en êtes : c'est ce qui détermine le niveau d'accompagnement adapté.",
     erreurLimite: "Trop de tentatives depuis cette connexion. Réessayez dans quelques minutes.",
@@ -429,7 +429,7 @@ export const FR = {
     recuLabel: "CANDIDATURE REÇUE",
     recuTitre: "Vous recevez votre retour écrit sous 72 heures.",
     recuTexte:
-      "J'écoute votre morceau en entier, plusieurs fois, et je vous écris ce que j'en pense — que la suite se fasse ou non. Si votre profil correspond, on cale ensuite un appel pour poser votre arc. Si ce n'est pas le bon moment, je vous le dis franchement, et je vous dis pourquoi.",
+      "J'écoute votre morceau en entier, plusieurs fois, et nous vous écris ce que nous en pense — que la suite se fasse ou non. Si votre profil correspond, on cale ensuite un appel pour poser votre arc. Si ce n'est pas le bon moment, nous vous le dis franchement, et nous vous dis pourquoi.",
     nePasRemplir: "Ne pas remplir",
     chargement: "Chargement du formulaire…",
   },
