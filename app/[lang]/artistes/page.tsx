@@ -373,7 +373,7 @@ export default async function Accueil({ params }: { params: Promise<{ lang: stri
               </p>
               <div className="mt-8">
                 <a href="/brand-narrative-audit" className="bouton bouton-plein">
-                  {lang === "en" ? "Order the audit" : "Commander l'audit"}
+                  {lang === "en" ? "See the offer" : "Voir l'offre"}
                 </a>
               </div>
             </div>

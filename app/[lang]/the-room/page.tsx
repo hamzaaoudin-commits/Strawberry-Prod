@@ -194,7 +194,7 @@ const NOCTA_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-hi
 <span class="chip" data-i18n="price.b.tag">L'audit narratif</span>
 <h3 data-i18n="price.b.t">490 €, une fois</h3>
 <p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
-<p style="margin-top:1.4rem"><a href="__LANG__/brand-narrative-audit" class="btn btn-primary" data-i18n="price.b.cta">Commander l'audit →</a></p>
+<p style="margin-top:1.4rem"><a href="__LANG__/brand-narrative-audit" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
 </div>
 <p class="lead reveal" data-i18n="price.after" style="margin-top:2.4rem; text-align:center">Ensuite, si vous voulez qu'on écrive le monde du lieu et qu'on livre le système qui permet à votre équipe de le tenir seule : le sprint, 2 500 à 3 500 €, deux à trois semaines.</p>

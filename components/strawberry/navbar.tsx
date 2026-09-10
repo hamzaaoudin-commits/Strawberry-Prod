@@ -12,10 +12,10 @@ const T = {
     cta: "Passer commande",
     menu: "Menu",
     offersMenu: [
-      { label: "L'AUDIT NARRATIF", sub: "Marques, lieux, entreprises, personnes", href: "/brand-narrative-audit" },
-      { label: "L'ARCHITECTURE", sub: "Après l'audit, sur commande", href: "/brand-narrative-architecture" },
-      { label: "ARTISTES & FONDATEURS", sub: "L'accompagnement mensuel", href: "/artistes" },
-      { label: "THE ROOM", sub: "Lieux · le sprint d'écriture", href: "/the-room" },
+      { label: "L'AUDIT NARRATIF", sub: "L'offre · 490 €", href: "/brand-narrative-audit" },
+      { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture" },
+      { label: "THE ROOM", sub: "Terrain · lieux", href: "/the-room" },
+      { label: "ARTISTES & FONDATEURS", sub: "Terrain · noms propres", href: "/artistes" },
     ],
   },
   en: {
@@ -25,10 +25,10 @@ const T = {
     cta: "Place your commission",
     menu: "Menu",
     offersMenu: [
-      { label: "THE NARRATIVE AUDIT", sub: "Brands, venues, companies, people", href: "/brand-narrative-audit" },
-      { label: "THE ARCHITECTURE", sub: "After the audit, on commission", href: "/brand-narrative-architecture" },
-      { label: "ARTISTS & FOUNDERS", sub: "The monthly work", href: "/artistes" },
-      { label: "THE ROOM", sub: "Venues · the writing sprint", href: "/the-room" },
+      { label: "THE NARRATIVE AUDIT", sub: "The offer · 490 €", href: "/brand-narrative-audit" },
+      { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture" },
+      { label: "THE ROOM", sub: "Ground · venues", href: "/the-room" },
+      { label: "ARTISTS & FOUNDERS", sub: "Ground · names", href: "/artistes" },
     ],
   },
 }

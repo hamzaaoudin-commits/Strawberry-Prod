@@ -1,87 +1,61 @@
-# Strawberry — l'Architecture vaut pour les quatre terrains
+# Strawberry — une page d'offre, des pages de terrain
 
-Un fichier. Plus, ci-dessous, l'audit page par page que vous demandez.
+4 fichiers.
 
-## Ce qui change sur l'Architecture
+## La structure retenue
 
-**Le nom.** « Brand Narrative Architecture » → « L'Architecture
-narrative ». Le mot « brand » excluait trois terrains sur quatre.
+- **`/brand-narrative-audit`** — la page d'offre. La seule qui vend
+  l'audit à 490 €.
+- **`/brand-narrative-architecture`** — la page d'offre haute, à 4 500 €.
+- **`/the-room`** et **`/artistes`** — des pages de **terrain**. Elles
+  parlent au restaurateur et à l'artiste dans leur langue, avec leurs
+  exemples et leur argumentaire, puis renvoient vers la page d'offre.
 
-**Le titre.** « Le récit *de marque* qui vous rend impossible à
-confondre » → « Le récit qui vous rend impossible à confondre ». Vaut
-pour un lieu comme pour un nom d'artiste.
+## Ce qui change concrètement
 
-**Le chapô** dit maintenant l'articulation avec l'audit : « Une marque,
-une entreprise, un lieu ou une personne : l'audit dit ce qui cloche,
-l'architecture le répare. »
+**Les deux pages de terrain cessent de vendre.** Leur bouton ne dit plus
+« Commander l'audit » mais **« Voir l'offre → »**, et mène à
+`/brand-narrative-audit`. Elles gardent leur prix affiché — c'est une
+information utile pour se décider — mais l'achat se fait à un seul
+endroit.
 
-**Une bande des quatre terrains** est ajoutée en haut, avec ce que
-l'architecture produit pour chacun :
+C'est ce qui distingue une page de terrain d'une page d'offre : l'une
+convainc que c'est pour vous, l'autre vend. Les mélanger, c'était
+maintenir le même argumentaire de vente à quatre endroits.
 
-- Marques — le récit qui vous sort du rayon où l'on vous compare au prix.
-- Entreprises — une seule version de votre métier, tenable par toutes vos équipes.
-- Lieux — le monde du lieu écrit, et le système pour le tenir sans vous.
-- Artistes & fondateurs — le récit sous votre nom, pour que vos sorties s'additionnent.
+**Le menu porte la hiérarchie.** Les sous-titres la disent explicitement :
 
-Fermée par : « L'audit dit ce qui cloche. L'architecture le répare — sur
-n'importe lequel des quatre. »
+- L'AUDIT NARRATIF — *L'offre · 490 €*
+- L'ARCHITECTURE — *Après l'audit · 4 500 €*
+- THE ROOM — *Terrain · lieux*
+- ARTISTES & FONDATEURS — *Terrain · noms propres*
 
----
+Deux entrées d'offre, deux entrées de terrain, plus aucune ambiguïté sur
+ce qu'on achète et où.
 
-# L'audit du site, page par page
+**Un doublon corrigé au passage :** THE ROOM apparaissait deux fois dans
+le menu, hérité d'un patch précédent.
 
-Sur votre question — « pourquoi une page l'audit narratif si c'est la
-même offre pour tous » — voici l'état réel, et je pense que le problème
-est plus profond que cette page.
+## Le troisième terrain
 
-## Le vrai désordre : quatre pages vendent la même offre
+Vous avez dit trois pages de terrain ; il en existe deux (lieux,
+artistes). La troisième — marques et entreprises — n'existe pas encore.
+Ces deux terrains sont aujourd'hui servis par la home et par la page
+d'offre elle-même, ce qui fonctionne mais n'est pas symétrique.
 
-`/brand-narrative-audit`, `/the-room` et `/artistes` vendent maintenant
-**le même audit à 490 €**, chacune avec sa propre mise en page, sa propre
-charte et son propre argumentaire. Plus la home qui le vend aussi. Un
-visiteur peut acheter le même produit depuis quatre endroits différents
-qui ne se ressemblent pas.
+Dites-moi si vous la voulez, et si marques et entreprises tiennent sur
+une seule page ou méritent d'être séparées.
 
-C'est le résultat mécanique de la trajectoire : ces pages étaient trois
-marques séparées, elles ont été fusionnées offre par offre sans que la
-structure du site soit repensée.
+## Ce qui reste dans ces deux pages
 
-**Deux structures possibles, et il faut trancher :**
-
-1. **Une page d'offre, quatre pages de terrain.**
-   `/brand-narrative-audit` devient *la* page qui vend, seule. `/the-room`
-   et `/artistes` deviennent des pages de terrain : elles parlent au
-   restaurateur et à l'artiste dans leur langue, montrent leurs exemples,
-   et renvoient vers l'unique page d'achat. C'est ce que je recommande —
-   c'est la structure qui rend l'unification lisible sans perdre les
-   contenus que vous aimez.
-
-2. **Quatre pages complètes, une par terrain.** Chacune vend l'audit de
-   bout en bout. Plus de travail, plus de maintenance, et quatre fois le
-   même argumentaire à tenir à jour.
-
-## Le reste, page par page
-
-- **Home** — à jour. Vend l'audit, présente les quatre terrains.
-- **`/brand-narrative-audit`** — à jour. Bande des terrains ajoutée.
-- **`/brand-narrative-architecture`** — à jour avec ce patch.
-- **`/the-room`** — audit à 490 € en place, sprint en suite. Mais la page
-  entière parle encore comme une marque autonome : wordmark géant, « je »
-  du fondateur de NOCTA. À reprendre si elle devient une page de terrain.
-- **`/artistes`** — vend l'audit. Même remarque : son argumentaire est
-  celui de MOMENTUM, écrit pour vendre un abonnement. Les sections
-  amont (problème, cycle, preuve) tiennent encore ce discours.
-- **`/about`** — parle du studio comme d'un studio de marques. Le mot
-  « maison » y désigne encore une marque uniquement.
-- **`/strawberry-method`** — la méthode S.T.R.A.W. est décrite pour des
-  marques. C'est pourtant la page qui devrait le mieux porter
-  l'unification : une méthode, quatre terrains.
-- **Le questionnaire** — mécanique de terrain en place, une seule
-  question déclinée sur quatre à faire.
-
-Dites-moi quelle structure vous voulez (1 ou 2) et j'enchaîne dans cet
-ordre.
+Leur argumentaire amont parle encore comme une marque autonome : THE ROOM
+garde son wordmark géant et le « je » du fondateur de NOCTA, la page
+artistes garde les sections écrites pour vendre un abonnement MOMENTUM.
+Ce n'est plus faux — ce sont des pages de terrain, elles ont le droit
+d'avoir leur voix — mais elles ne mentionnent jamais Strawberry
+Production. À reprendre si vous voulez qu'on sente le même studio partout.
 
 ## Vérification
 
-Contrôle de types : zéro erreur venant de ce code.
+Contrôle de types : zéro erreur. Fichier de traductions passé au contrôle
+syntaxique.
