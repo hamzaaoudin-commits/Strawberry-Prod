@@ -1,58 +1,86 @@
-# Strawberry — l'ambiance THE ROOM sur tout le site
+# Strawberry — l'Architecture vaut pour les quatre terrains
 
-Trois fichiers. Ce patch vient après celui des polices, qui était
-insuffisant.
+Un fichier. Plus, ci-dessous, l'audit page par page que vous demandez.
 
-## Ce que j'avais raté
+## Ce qui change sur l'Architecture
 
-J'ai changé les polices et l'angle du dégradé, et j'ai appelé ça une
-refonte. Ce n'en était pas une. Ce qui fait THE ROOM, ce ne sont pas ses
-polices — ce sont ses **calques et ses animations**, et rien de tout ça
-n'existait ailleurs sur le site.
+**Le nom.** « Brand Narrative Architecture » → « L'Architecture
+narrative ». Le mot « brand » excluait trois terrains sur quatre.
 
-## Ce qui est porté maintenant
+**Le titre.** « Le récit *de marque* qui vous rend impossible à
+confondre » → « Le récit qui vous rend impossible à confondre ». Vaut
+pour un lieu comme pour un nom d'artiste.
 
-**La lueur haute et le champ de couleur.** Deux dégradés radiaux fixes en
-fond de page — rouge en haut, plus profond en bas à droite. C'est ce qui
-donne sa profondeur au noir de THE ROOM, là où le fond de Strawberry
-était un aplat.
+**Le chapô** dit maintenant l'articulation avec l'audit : « Une marque,
+une entreprise, un lieu ou une personne : l'audit dit ce qui cloche,
+l'architecture le répare. »
 
-**Le grain.** 3,5% d'opacité, invisible consciemment, mais c'est lui qui
-empêche les grandes surfaces sombres de paraître plates. C'est un des
-deux ou trois détails qui séparent un fond travaillé d'un fond noir.
+**Une bande des quatre terrains** est ajoutée en haut, avec ce que
+l'architecture produit pour chacun :
 
-**Les cartes** (`carte-room`) : coins à 18px, filet fin, et le halo rouge
-qui monte au survol depuis le haut de la carte.
+- Marques — le récit qui vous sort du rayon où l'on vous compare au prix.
+- Entreprises — une seule version de votre métier, tenable par toutes vos équipes.
+- Lieux — le monde du lieu écrit, et le système pour le tenir sans vous.
+- Artistes & fondateurs — le récit sous votre nom, pour que vos sorties s'additionnent.
 
-**Le champ d'ambiance** (`ambiance`) : la nappe de couleur à poser sur une
-section qui doit respirer.
+Fermée par : « L'audit dit ce qui cloche. L'architecture le répare — sur
+n'importe lequel des quatre. »
 
-**Les révélations au scroll** — le CSS *et* le mécanisme. Une classe
-`.reveal` seule ne fait rien : il faut l'observateur qui pose `.shown`.
-C'est ce que fait `app.js` sur THE ROOM ; le composant
-`RevealOnScroll` en est l'équivalent, monté une fois dans le layout, avec
-les mêmes réglages (seuil 14%, marge basse 8%) et les trois décalages
-`d1`/`d2`/`d3`.
+---
 
-La sélection de texte passe aussi au rouge de marque.
+# L'audit du site, page par page
 
-## Le canvas bokeh : volontairement pas porté
+Sur votre question — « pourquoi une page l'audit narratif si c'est la
+même offre pour tous » — voici l'état réel, et je pense que le problème
+est plus profond que cette page.
 
-Il tourne en boucle sur une scène 3D. Le faire tourner sur chaque page du
-site coûterait de la batterie sur mobile pour un effet qui n'est vraiment
-lisible que sur un fond très sombre et peu chargé. Il reste sur
-`/the-room`. Dites-moi si vous le voulez partout malgré ce coût.
+## Le vrai désordre : quatre pages vendent la même offre
 
-## Comment vous en servir
+`/brand-narrative-audit`, `/the-room` et `/artistes` vendent maintenant
+**le même audit à 490 €**, chacune avec sa propre mise en page, sa propre
+charte et son propre argumentaire. Plus la home qui le vend aussi. Un
+visiteur peut acheter le même produit depuis quatre endroits différents
+qui ne se ressemblent pas.
 
-Les calques de fond et la sélection s'appliquent **automatiquement**.
-Les trois autres sont des classes à poser : `carte-room` sur une carte,
-`ambiance` sur un fond de section, `reveal` (avec `d1`/`d2`/`d3`) sur ce
-qui doit entrer au scroll.
+C'est le résultat mécanique de la trajectoire : ces pages étaient trois
+marques séparées, elles ont été fusionnées offre par offre sans que la
+structure du site soit repensée.
 
-Dites-moi sur quelles sections vous voulez que je les applique — je ne
-l'ai pas fait d'office pour ne pas modifier vingt composants d'un coup
-sans que vous ayez vu le rendu.
+**Deux structures possibles, et il faut trancher :**
+
+1. **Une page d'offre, quatre pages de terrain.**
+   `/brand-narrative-audit` devient *la* page qui vend, seule. `/the-room`
+   et `/artistes` deviennent des pages de terrain : elles parlent au
+   restaurateur et à l'artiste dans leur langue, montrent leurs exemples,
+   et renvoient vers l'unique page d'achat. C'est ce que je recommande —
+   c'est la structure qui rend l'unification lisible sans perdre les
+   contenus que vous aimez.
+
+2. **Quatre pages complètes, une par terrain.** Chacune vend l'audit de
+   bout en bout. Plus de travail, plus de maintenance, et quatre fois le
+   même argumentaire à tenir à jour.
+
+## Le reste, page par page
+
+- **Home** — à jour. Vend l'audit, présente les quatre terrains.
+- **`/brand-narrative-audit`** — à jour. Bande des terrains ajoutée.
+- **`/brand-narrative-architecture`** — à jour avec ce patch.
+- **`/the-room`** — audit à 490 € en place, sprint en suite. Mais la page
+  entière parle encore comme une marque autonome : wordmark géant, « je »
+  du fondateur de NOCTA. À reprendre si elle devient une page de terrain.
+- **`/artistes`** — vend l'audit. Même remarque : son argumentaire est
+  celui de MOMENTUM, écrit pour vendre un abonnement. Les sections
+  amont (problème, cycle, preuve) tiennent encore ce discours.
+- **`/about`** — parle du studio comme d'un studio de marques. Le mot
+  « maison » y désigne encore une marque uniquement.
+- **`/strawberry-method`** — la méthode S.T.R.A.W. est décrite pour des
+  marques. C'est pourtant la page qui devrait le mieux porter
+  l'unification : une méthode, quatre terrains.
+- **Le questionnaire** — mécanique de terrain en place, une seule
+  question déclinée sur quatre à faire.
+
+Dites-moi quelle structure vous voulez (1 ou 2) et j'enchaîne dans cet
+ordre.
 
 ## Vérification
 

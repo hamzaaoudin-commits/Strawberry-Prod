@@ -36,14 +36,22 @@ const ORDER_URL = STRIPE_LINKS.architecture
 
 const T = {
   en: {
-    badge: "Brand Narrative Architecture \u00b7 4,500\u20ac",
-    h1a: "The brand story that makes you",
+    badge: "The Narrative Architecture \u00b7 4,500\u20ac",
+    h1a: "The story that makes you",
     h1b: "impossible to confuse \u2014",
     h1c: "and impossible to generate.",
     heroLead: "The identity, position, and language that make you recognizable at first glance \u2014 and impossible to confuse with your competitors, even when they arm themselves with AI.",
     heroCta: "Place your commission \u2192",
     ctxP1: "AI is saturating your market faster than you see it. Your competitors now produce in one click what took weeks: articles, visuals, pages, campaigns. Content becomes free, infinite, and perfectly interchangeable. In that noise, quality is no longer enough to set you apart \u2014 everyone has become good.",
     ctxP2: "What cannot be generated is an identity. Differentiation is no longer a marketing luxury \u2014 it is your condition for survival.",
+    terrainsLabel: "One craft, four grounds",
+    terrains: [
+      { k: "Brands", v: "The story that pulls you out of the aisle where you get compared on price." },
+      { k: "Companies", v: "One version of your work, one every team can actually hold." },
+      { k: "Venues", v: "The world of the venue written, and the system to hold it without you." },
+      { k: "Artists & founders", v: "The story under your name, so your releases finally add up." },
+    ],
+    terrainsNote: "The audit says what is wrong. The architecture repairs it — on any of the four.",
     lWhy: "Why now",
     lBuild: "What we build",
     lHow: "How it happens",
@@ -148,14 +156,22 @@ const T = {
     },
   },
   fr: {
-    badge: "Brand Narrative Architecture \u00b7 4 500\u20ac",
-    h1a: "Le r\u00e9cit de marque qui vous rend",
+    badge: "L'Architecture narrative \u00b7 4 500\u20ac",
+    h1a: "Le r\u00e9cit qui vous rend",
     h1b: "impossible \u00e0 confondre \u2014",
     h1c: "et impossible \u00e0 g\u00e9n\u00e9rer.",
-    heroLead: "L'identit\u00e9, la position et le langage qui vous rendent reconnaissable au premier regard \u2014 et impossible \u00e0 confondre avec vos concurrents, m\u00eame arm\u00e9s d'IA.",
+    heroLead: "Une marque, une entreprise, un lieu ou une personne : l'audit dit ce qui cloche, l'architecture le r\u00e9pare. L'identit\u00e9, la position et le langage qui vous rendent reconnaissable au premier regard \u2014 et impossible \u00e0 confondre, m\u00eame face \u00e0 des concurrents arm\u00e9s d'IA.",
     heroCta: "Passer commande \u2192",
     ctxP1: "L'IA sature votre march\u00e9 plus vite que vous ne le voyez. Vos concurrents produisent d\u00e9sormais en un clic ce qui demandait des semaines : articles, visuels, pages, campagnes. Le contenu devient gratuit, infini et parfaitement interchangeable. Dans ce bruit, la qualit\u00e9 ne suffit plus \u00e0 vous distinguer : tout le monde est devenu bon.",
     ctxP2: "Ce qui ne peut pas \u00eatre g\u00e9n\u00e9r\u00e9, c'est une identit\u00e9. La diff\u00e9renciation n'est plus un luxe marketing \u2014 c'est votre condition de survie.",
+    terrainsLabel: "Un métier, quatre terrains",
+    terrains: [
+      { k: "Marques", v: "Le récit qui vous sort du rayon où l'on vous compare au prix." },
+      { k: "Entreprises", v: "Une seule version de votre métier, tenable par toutes vos équipes." },
+      { k: "Lieux", v: "Le monde du lieu écrit, et le système qui permet de le tenir sans vous." },
+      { k: "Artistes & fondateurs", v: "Le récit sous votre nom, pour que vos sorties s'additionnent." },
+    ],
+    terrainsNote: "L'audit dit ce qui cloche. L'architecture le répare — sur n'importe lequel des quatre.",
     lWhy: "Pourquoi maintenant",
     lBuild: "Ce que nous bâtissons",
     lHow: "Comment cela se passe",
@@ -1315,6 +1331,25 @@ export default function BrandNarrativeArchitecturePage() {
 
       <section id="sec-why" ref={why.ref as any} style={{ padding: "120px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
+          {/* Les quatre terrains, ici aussi.
+              L'architecture n'était écrite que pour des marques ; depuis que
+              l'audit vaut pour quatre terrains, la commande qui le prolonge
+              doit valoir pour les quatre elle aussi. */}
+          <div style={{ marginBottom: 56 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
+              {t.terrainsLabel}
+            </div>
+            <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.1)", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
+              {t.terrains.map((x) => (
+                <div key={x.k} style={{ background: "#0a0a0a", padding: "20px 22px" }}>
+                  <div style={{ fontSize: 10.5, letterSpacing: "0.18em", textTransform: "uppercase", color: COLOR, marginBottom: 8 }}>{x.k}</div>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>{x.v}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: 22, fontSize: 13.5, color: "rgba(255,255,255,0.4)" }}>{t.terrainsNote}</p>
+          </div>
+
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>{t.lWhy}</div>
           <p style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem,3vw,2.25rem)", fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.02em", color: "rgba(255,255,255,0.92)" }}>
             {t.ctxP1}
