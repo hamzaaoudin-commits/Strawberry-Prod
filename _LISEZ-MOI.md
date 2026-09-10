@@ -1,48 +1,43 @@
-# Strawberry — « La tournée » épinglée, la vraie
+# Strawberry — correctif : la tournée s'affichait cassée
 
-3 fichiers. Remplace `terrains-section.tsx`, que vous pouvez supprimer.
+2 fichiers.
 
-## Ce que j'avais raté
+## La cause, et elle est entièrement de moi
 
-J'ai livré trois cartes empilées en disant que je reprenais « La
-tournée ». Ce n'en était pas. La vraie section de THE ROOM est
-**épinglée** : elle mesure 460vh de haut, son contenu reste collé à
-l'écran sur 100vh, et les scènes se relaient en fondu-zoom pendant que
-vous défilez. Une jauge verticale à droite suit la progression.
+J'ai porté le CSS de « La tournée » depuis `public/nocta/styles.css` sans
+vérifier ce qu'il appelait. Ce bloc référence **neuf variables propres à
+NOCTA** — `--grad`, `--display`, `--serif`, `--body`, `--mono`,
+`--coral`, `--iris-soft`, `--cream`, `--line-soft` — qui n'existent pas
+dans les globals du studio.
 
-C'est ce mécanisme qui fait tout l'effet. Des cartes empilées, c'est lire
-trois blocs ; l'épinglage, c'est traverser trois scènes.
+Résultat, exactement ce que montre votre capture : les titres perdaient
+leur dégradé, les polices retombaient en valeur par défaut, et la mise en
+page s'effondrait.
 
-## Ce qui est porté
+Ces variables vivent dans `nocta/styles.css`, qui n'est chargé que sur
+`/the-room`. Le bloc marchait là-bas et nulle part ailleurs — je ne l'ai
+pas vérifié avant de livrer.
 
-**Le CSS d'origine**, repris tel quel depuis `public/nocta/styles.css` :
-`.tour-pin`, `.tour-sticky`, `.tour-scene`, les fonds radiaux par scène
-(`.ts-1` à `.ts-4`), les titres géants en dégradé (`.ts-t`, jusqu'à
-7,5rem), la liste en mono, la jauge.
+## Le correctif
 
-**Le mécanisme de défilement**, repris de `app.js` : on calcule une
-position continue entre 0 et n-1, chaque scène reçoit une opacité qui
-décroît avec sa distance à cette position, plus un déplacement vertical
-et un zoom. D'où le fondu croisé au lieu d'une bascule sèche.
+**Les neuf variables sont définies dans le périmètre de `.tour-pin`**,
+traduites en jetons du studio : le dégradé à 108°, les polices de la
+charte, le rouge de marque. Elles ne sortent pas de la section.
 
-**Le fond qui dérive à contre-sens** de sa scène (`.ts-bg`). C'est le
-détail qu'on ne remarque jamais et dont l'absence rend l'effet plat.
+**Le débordement à gauche**, second bug visible sur la capture : chez
+NOCTA, `.wrap` porte `width:100%` **et** une marge interne. La classe
+`.shell` du studio n'a pas de marge interne — le texte se collait donc
+aux bords et débordait. `.ts-inner` porte maintenant les deux.
 
-## Les trois scènes
+## Ce que j'aurais dû faire
 
-Marques & entreprises → **Le rayon**. Lieux → **La salle**. Artistes &
-fondateurs → **Le nom**. Chacune avec sa phrase d'ambiance en italique et
-ses quatre entrées : le symptôme, la racine, ce qu'on lit, ce qui change.
-Le numéro en bas de scène est cliquable et mène à la page du terrain.
-
-Fermée par « Tout ça existe déjà chez vous. Il faut juste l'écrire. »
-
-## Le repli
-
-Sous `prefers-reduced-motion`, la classe `tour-on` n'est pas posée :
-les scènes s'empilent normalement et restent toutes lisibles. Rien ne
-disparaît pour qui a demandé moins de mouvement.
+Vérifier les dépendances d'un bloc CSS avant de le déplacer d'un fichier
+à un autre. C'est la même erreur que pour l'échafaudage de MOMENTUM : je
+déplace du style sans déplacer ce dont il dépend. Je liste désormais les
+`var(--…)` d'un bloc avant de le porter — c'est fait pour celui-ci, et
+plus aucune variable n'y est orpheline.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Toutes les variables appelées par le
+bloc porté sont désormais définies.

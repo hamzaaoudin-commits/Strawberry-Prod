@@ -1076,7 +1076,30 @@ footer {
    Les couleurs sont déjà celles du studio dans le fichier source.
    =========================================================================== */
 
-.tour-pin{ position:relative; }
+.tour-pin{
+  position:relative;
+
+  /* Les variables de NOCTA, traduites en jetons du studio.
+     Le bloc ci-dessous a été porté tel quel depuis son CSS : il appelle
+     --grad, --mono, --display, --coral... qui n'existent pas ici. Sans
+     ces définitions, les titres perdaient leur dégradé, les polices
+     retombaient en valeur par défaut et la mise en page s'effondrait.
+     Elles sont posées dans le périmètre de la section : rien n'en sort. */
+  --grad: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
+  --display: var(--font-serif);
+  --serif: var(--font-accent);
+  --body: var(--font-sans);
+  --mono: var(--font-mono);
+  --coral: var(--color-brand);
+  --iris-soft: var(--color-brand-bright);
+  --cream: #fff;
+  --line-soft: rgba(255,255,255,0.12);
+}
+
+/* La scène est un conteneur flex : sans largeur pleine ni marge interne,
+   son contenu se tasse et déborde sur les bords. .wrap portait ça chez
+   NOCTA ; .shell côté studio n'a pas de marge interne. */
+.ts-inner{ width:100%; padding-inline: clamp(20px, 5vw, 64px); }
 .tour-scene{ position:relative; min-height:72vh; display:flex; align-items:center; overflow:hidden; }
 .ts-bg{ position:absolute; inset:-12%; pointer-events:none; will-change:transform; }
 .ts-1 .ts-bg{ background:radial-gradient(60% 55% at 25% 30%, rgba(230,57,70,.32), transparent 62%),
@@ -1088,6 +1111,7 @@ footer {
 .ts-4 .ts-bg{ background:radial-gradient(55% 50% at 28% 24%, rgba(243,239,233,.11), transparent 60%),
               radial-gradient(50% 55% at 76% 76%, rgba(169,157,255,.24), transparent 62%); }
 .ts-inner{ position:relative; z-index:1; }
+
 .ts-k{ font-family:var(--mono); font-size:.74rem; letter-spacing:.3em; text-transform:uppercase; color:var(--coral); }
 .ts-2 .ts-k, .ts-4 .ts-k{ color:var(--iris-soft); }
 .ts-t{ font-family:var(--display); font-weight:800; letter-spacing:-.03em;

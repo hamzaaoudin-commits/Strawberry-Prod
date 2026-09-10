@@ -194,7 +194,7 @@ export function TourSection() {
           {t.scenes.map((s, i) => (
             <article key={s.k} className={`tour-scene ts-${i + 1}`}>
               <div className="ts-bg" aria-hidden />
-              <div className="shell ts-inner">
+              <div className="ts-inner mx-auto max-w-[1180px]">
                 <div className="ts-k">{s.k}</div>
                 <h3 className="ts-t">{s.t}</h3>
                 <p className="ts-line">{s.line}</p>
