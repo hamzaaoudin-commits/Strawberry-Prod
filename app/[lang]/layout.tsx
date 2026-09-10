@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Bricolage_Grotesque, Hanken_Grotesk, Instrument_Serif, Space_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { notFound } from 'next/navigation'
 import { LanguageProvider } from '@/lib/i18n'
@@ -8,15 +8,42 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import '../globals.css'
 import { LoadingIntro } from '@/components/strawberry/loading-intro'
 
-const playfair = Playfair_Display({
+/**
+ * Les polices de THE ROOM, adoptées pour tout le site.
+ *
+ * Les noms de variables restent `--font-playfair` et `--font-dm-sans` : ils
+ * sont référencés par les jetons de globals.css et par une centaine de
+ * classes dans les composants. Les renommer aurait voulu dire réécrire tout
+ * ça pour un gain nul — ils désignent désormais un rôle, serif de titre et
+ * sans de texte, pas une fonte précise.
+ */
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-playfair',
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-dm-sans',
+  display: 'swap',
+})
+
+/** L'italique d'accroche et le mono des surtitres, propres à cette charte. */
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'italic',
+  variable: '--font-instrument',
+  display: 'swap',
+})
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
   display: 'swap',
 })
 
@@ -128,7 +155,7 @@ export default async function LocaleLayout({
   const lang: Lang = raw
 
   return (
-    <html lang={lang} className={`${playfair.variable} ${dmSans.variable}`}>
+    <html lang={lang} className={`${bricolage.variable} ${hanken.variable} ${instrument.variable} ${spaceMono.variable}`}>
       <body className="font-sans antialiased bg-[#0a0a0a] text-white overflow-x-hidden">
         <LoadingIntro />
         <LanguageProvider lang={lang}>{children}</LanguageProvider>

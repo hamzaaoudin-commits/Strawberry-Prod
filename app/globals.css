@@ -27,8 +27,11 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display', serif;
+  /* Charte THE ROOM. Les variables gardent leurs noms — voir layout.tsx. */
+  --font-sans: var(--font-dm-sans), 'Hanken Grotesk', system-ui, sans-serif;
+  --font-serif: var(--font-playfair), 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-accent: var(--font-instrument), 'Instrument Serif', Georgia, serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
   --font-mono: 'Geist Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -191,10 +194,12 @@
 /* --- Typography --- */
 
 @utility kicker {
-  font-family: var(--font-sans);
+  /* En mono, comme sur THE ROOM : c'est le marqueur le plus reconnaissable
+     de cette charte, avec le dégradé. Le sans y était neutre. */
+  font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   color: var(--color-brand);
 }
 
@@ -245,7 +250,7 @@
 }
 
 @utility text-gradient {
-  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-bright));
+  background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -332,7 +337,7 @@
   text-decoration: none;
   padding: 15px 32px;
   color: #fff;
-  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-bright));
+  background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
   box-shadow: 0 0 0 rgba(230, 57, 70, 0);
   transition: transform 300ms cubic-bezier(.22,.68,0,1.2), box-shadow 300ms cubic-bezier(.22,.68,0,1.2), opacity 300ms cubic-bezier(.22,.68,0,1.2);
 }
@@ -380,7 +385,7 @@
   border-radius: 9999px;
   border: 1px solid var(--color-brand);
   padding: 8px 20px;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -585,13 +590,11 @@ body::before {
 .page-artistes {
   background: var(--color-encre);
   color: var(--color-craie);
-  /* Les utilitaires portés appellent var(--font-sans) et var(--font-mono).
-     Sur le reste du site ces variables valent Playfair et DM Sans ; ici
-     elles doivent valoir les polices de MOMENTUM, sans quoi toute la page
-     s'affiche dans la typographie du studio sur une mise en page qui n'a
-     pas été dessinée pour elle. */
-  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  /* Plus de redéfinition de police ici : depuis la refonte, tout le site
+     porte la charte THE ROOM, et cette page n'a plus de raison de garder
+     la typographie de MOMENTUM. Les utilitaires portés continuent
+     d'appeler var(--font-sans) et var(--font-mono) — ils héritent
+     simplement des valeurs du site. */
   font-family: var(--font-sans);
 }
 .page-artistes *,
@@ -936,4 +939,15 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   body::after { display: none; }
+}
+
+/* L'accroche en italique — la voix de THE ROOM sous les grands titres.
+   Disponible partout sur le site, à poser là où une phrase doit sonner
+   plutôt qu'informer. */
+@utility accroche {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.88);
 }
