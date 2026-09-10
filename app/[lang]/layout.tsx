@@ -7,6 +7,7 @@ import { LANGS, isLang, type Lang } from '@/lib/lang'
 import { alternatesFor, SITE } from '@/lib/routing'
 import '../globals.css'
 import { LoadingIntro } from '@/components/strawberry/loading-intro'
+import { RevealOnScroll } from '@/components/strawberry/reveal-on-scroll'
 
 /**
  * Les polices de THE ROOM, adoptées pour tout le site.
@@ -158,6 +159,7 @@ export default async function LocaleLayout({
     <html lang={lang} className={`${bricolage.variable} ${hanken.variable} ${instrument.variable} ${spaceMono.variable}`}>
       <body className="font-sans antialiased bg-[#0a0a0a] text-white overflow-x-hidden">
         <LoadingIntro />
+        <RevealOnScroll />
         <LanguageProvider lang={lang}>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
         <script

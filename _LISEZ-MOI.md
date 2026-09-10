@@ -1,58 +1,58 @@
-# Strawberry — refonte complète à la charte THE ROOM
+# Strawberry — l'ambiance THE ROOM sur tout le site
 
-Trois fichiers, et pourtant tout le site change : la charte est pilotée
-par deux variables de police et un dégradé, donc les remplacer suffit.
-Aucune mise en page n'est réécrite.
+Trois fichiers. Ce patch vient après celui des polices, qui était
+insuffisant.
 
-## Les polices
+## Ce que j'avais raté
 
-Playfair Display et DM Sans laissent la place aux quatre familles de
-THE ROOM :
+J'ai changé les polices et l'angle du dégradé, et j'ai appelé ça une
+refonte. Ce n'en était pas une. Ce qui fait THE ROOM, ce ne sont pas ses
+polices — ce sont ses **calques et ses animations**, et rien de tout ça
+n'existait ailleurs sur le site.
 
-- **Bricolage Grotesque** pour les titres (remplace Playfair)
-- **Hanken Grotesk** pour le texte (remplace DM Sans)
-- **Instrument Serif** en italique, pour les accroches
-- **Space Mono** pour les surtitres et les libellés
+## Ce qui est porté maintenant
 
-Les variables gardent leurs noms — `--font-playfair`, `--font-dm-sans`.
-Elles sont référencées par les jetons de `globals.css` et par une
-centaine de classes dans les composants ; les renommer aurait voulu dire
-tout réécrire pour un gain nul. Elles désignent désormais un rôle, serif
-de titre et sans de texte, pas une fonte précise.
+**La lueur haute et le champ de couleur.** Deux dégradés radiaux fixes en
+fond de page — rouge en haut, plus profond en bas à droite. C'est ce qui
+donne sa profondeur au noir de THE ROOM, là où le fond de Strawberry
+était un aplat.
 
-## Les marqueurs de la charte
+**Le grain.** 3,5% d'opacité, invisible consciemment, mais c'est lui qui
+empêche les grandes surfaces sombres de paraître plates. C'est un des
+deux ou trois détails qui séparent un fond travaillé d'un fond noir.
 
-**Le dégradé** passe de 135° à **108°**, l'angle de THE ROOM. Tout ce qui
-s'appuie dessus — titres en dégradé, boutons pleins — bascule d'un coup.
+**Les cartes** (`carte-room`) : coins à 18px, filet fin, et le halo rouge
+qui monte au survol depuis le haut de la carte.
 
-**Les surtitres et pastilles passent en mono.** C'est le marqueur le plus
-reconnaissable de cette charte après le dégradé ; en sans, ils étaient
-neutres.
+**Le champ d'ambiance** (`ambiance`) : la nappe de couleur à poser sur une
+section qui doit respirer.
 
-**Une classe `accroche`** est ajoutée : l'italique Instrument Serif de
-THE ROOM, disponible partout, à poser là où une phrase doit sonner plutôt
-qu'informer.
+**Les révélations au scroll** — le CSS *et* le mécanisme. Une classe
+`.reveal` seule ne fait rien : il faut l'observateur qui pose `.shown`.
+C'est ce que fait `app.js` sur THE ROOM ; le composant
+`RevealOnScroll` en est l'équivalent, monté une fois dans le layout, avec
+les mêmes réglages (seuil 14%, marge basse 8%) et les trois décalages
+`d1`/`d2`/`d3`.
 
-Les boutons étaient déjà en pilule avec le bon dégradé : rien à changer.
+La sélection de texte passe aussi au rouge de marque.
 
-## La page artistes rentre dans le rang
+## Le canvas bokeh : volontairement pas porté
 
-Elle gardait la typographie de MOMENTUM (Archivo, JetBrains Mono) via une
-redéfinition locale. Dans une refonte complète, cette exception n'a plus
-lieu d'être : la redéfinition et le chargement des deux polices sont
-retirés, et ses utilitaires portés héritent simplement des valeurs du
-site. Sa mise en page, elle, est intacte.
+Il tourne en boucle sur une scène 3D. Le faire tourner sur chaque page du
+site coûterait de la batterie sur mobile pour un effet qui n'est vraiment
+lisible que sur un fond très sombre et peu chargé. Il reste sur
+`/the-room`. Dites-moi si vous le voulez partout malgré ce coût.
 
-## À vérifier après déploiement
+## Comment vous en servir
 
-**Bricolage Grotesque est une police à taille optique.** Elle est plus
-large et plus dense que Playfair : les titres longs peuvent se comporter
-autrement, notamment sur mobile. C'est le point à regarder en premier.
+Les calques de fond et la sélection s'appliquent **automatiquement**.
+Les trois autres sont des classes à poser : `carte-room` sur une carte,
+`ambiance` sur un fond de section, `reveal` (avec `d1`/`d2`/`d3`) sur ce
+qui doit entrer au scroll.
 
-`/the-room` charge encore ses polices par un lien Google Fonts, devenu
-redondant puisqu'elles sont maintenant chargées globalement. Sans
-conséquence visuelle, mais deux requêtes évitables — je peux le retirer
-si vous voulez.
+Dites-moi sur quelles sections vous voulez que je les applique — je ne
+l'ai pas fait d'office pour ne pas modifier vingt composants d'un coup
+sans que vous ayez vu le rendu.
 
 ## Vérification
 

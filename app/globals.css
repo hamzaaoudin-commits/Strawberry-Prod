@@ -951,3 +951,114 @@ body::after {
   line-height: 1.25;
   color: rgba(255, 255, 255, 0.88);
 }
+
+/* ===========================================================================
+   L'AMBIANCE THE ROOM, PORTÉE SUR TOUT LE SITE.
+
+   Changer les polices et l'angle du dégradé ne suffisait pas : ce qui fait
+   cette charte, ce sont les calques — le champ de couleur qui dérive, le
+   grain, la lueur haute, les cartes arrondies avec leur halo au survol, et
+   les révélations au scroll. Repris ici depuis public/nocta/styles.css,
+   dans les jetons du studio.
+
+   Le canvas bokeh n'est pas porté globalement : il tourne en boucle sur
+   une scène 3D, et le faire tourner sur chaque page du site coûterait de
+   la batterie sur mobile pour un effet qui n'est vraiment lisible que sur
+   un fond très sombre et peu chargé. Il reste sur /the-room.
+   =========================================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(255, 26, 26, 0.10), transparent 55%),
+    radial-gradient(90% 60% at 90% 110%, rgba(230, 57, 70, 0.08), transparent 60%);
+}
+
+/* Le grain : 3,5% d'opacité, invisible consciemment, mais c'est lui qui
+   empêche les aplats sombres de paraître plats. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-ink);
+}
+
+/* Le champ de couleur d'ambiance, à poser sur une section qui doit
+   respirer — l'équivalent du .ambient de THE ROOM. */
+@utility ambiance {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(60% 45% at 18% 22%, rgba(230, 57, 70, 0.13), transparent 60%),
+    radial-gradient(55% 50% at 84% 78%, rgba(255, 26, 26, 0.15), transparent 60%);
+}
+
+/* Les cartes de THE ROOM : coins à 18px et halo au survol. */
+@utility carte-room {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: #0d0d0d;
+  padding: clamp(1.6rem, 2.6vw, 2.3rem);
+  transition: border-color 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 400ms ease;
+    background: radial-gradient(40% 60% at 50% 0%, rgba(230, 57, 70, 0.10), transparent 70%);
+  }
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Les révélations au scroll de THE ROOM, avec leurs trois décalages. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.shown {
+  opacity: 1;
+  transform: none;
+}
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { display: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
