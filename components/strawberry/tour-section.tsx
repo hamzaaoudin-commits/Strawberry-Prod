@@ -36,7 +36,7 @@ const T = {
     scenes: [
       {
         k: "Marques & entreprises",
-        t: "Le rayon",
+        t: "BRAND",
         line: "On vous demande un devis comparatif avant même de vous avoir écouté.",
         facts: [
           ["Le symptôme", "Votre meilleur argument, un concurrent pourrait le signer sans mentir."],
@@ -48,7 +48,7 @@ const T = {
       },
       {
         k: "Lieux",
-        t: "La salle",
+        t: "THE ROOM",
         line: "La salle est pleine, et pourtant chaque publication repart de zéro.",
         facts: [
           ["Le symptôme", "Personne dans l'équipe ne sait quoi filmer, ni quoi écrire dessous."],
@@ -60,7 +60,7 @@ const T = {
       },
       {
         k: "Artistes & fondateurs",
-        t: "Le nom",
+        t: "THE NAME",
         line: "Vos sorties ne s'additionnent pas. Chacune repart de zéro.",
         facts: [
           ["Le symptôme", "On aime ce que vous faites sans savoir dire ce que vous êtes."],
@@ -81,7 +81,7 @@ const T = {
     scenes: [
       {
         k: "Brands & companies",
-        t: "The aisle",
+        t: "BRAND",
         line: "You get asked for a comparative quote before anyone has listened to you.",
         facts: [
           ["The symptom", "Your best argument could be signed by a competitor without lying."],
@@ -93,7 +93,7 @@ const T = {
       },
       {
         k: "Venues",
-        t: "The room",
+        t: "THE ROOM",
         line: "The room is full, and yet every post starts from nothing.",
         facts: [
           ["The symptom", "Nobody on the team knows what to film, or what to write underneath."],
@@ -105,7 +105,7 @@ const T = {
       },
       {
         k: "Artists & founders",
-        t: "The name",
+        t: "THE NAME",
         line: "Your releases do not add up. Each one starts from zero.",
         facts: [
           ["The symptom", "People like what you do without being able to say what you are."],

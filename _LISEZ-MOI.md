@@ -1,39 +1,33 @@
-# Strawberry — la tournée redevient fluide
+# Strawberry — les trois scènes portent des noms
 
 1 fichier.
 
-## Pourquoi c'était saccadé
+Les titres géants de la tournée deviennent :
 
-J'avais réimplémenté la logique de défilement au lieu de reprendre celle
-de `app.js`. La différence tient en une ligne :
+- **BRAND** (au lieu de « Le rayon ») — marques & entreprises
+- **THE ROOM** — lieux
+- **THE NAME** — artistes & fondateurs
 
-**Ce que je faisais** : appeler `getBoundingClientRect()` à chaque image.
-Cette fonction force le navigateur à **recalculer la mise en page de la
-page entière** avant de répondre. Soixante fois par seconde, en plein
-défilement, avec une section de 460vh — d'où les à-coups.
+Identiques en français et en anglais : ce sont des noms, pas des mots
+traduisibles. Même logique que BRAND NARRATIVE AUDIT, qui reste en
+anglais sur la version française.
 
-**Ce que fait `app.js`** : mesurer **une seule fois**, au chargement et au
-redimensionnement, puis ne lire que `window.scrollY` — une valeur déjà
-connue, qui ne coûte rien. La boucle n'écrit ensuite que des `transform`
-et des `opacity`, deux propriétés que le navigateur applique sans
-recalculer la page.
+Les surtitres au-dessus gardent leur libellé descriptif (« Marques &
+entreprises », « Lieux », « Artistes & fondateurs ») : le nom frappe, le
+surtitre situe.
 
-C'est exactement la technique de leur `updateGeo()` / `run()`, et c'est ce
-qui sépare une animation fluide d'une animation qui accroche.
+## Un choix que j'ai fait pour vous
 
-## Deux corrections en plus
+Vous avez nommé BRAND et THE ROOM. Pour la troisième, j'ai mis **THE
+NAME** — c'est ce que vend cet audit (le récit qui tient sous un nom
+propre) et ça garde le registre des deux autres. Si vous préférez autre
+chose, c'est une ligne à changer.
 
-**`will-change` posé avant la première image.** Sans ça, le tout premier
-défilement paie la promotion des scènes en couche graphique et saccade
-une fois, au pire moment — juste quand on découvre la section.
-
-**Remesure quand les polices sont chargées.** Elles arrivent après le
-premier rendu et changent la hauteur des titres géants, donc la hauteur
-de la section. Sans remesure, le calcul de progression était faussé dès
-le départ.
+À noter : THE ROOM devient à la fois le nom d'une scène et celui de la
+page `/the-room`. C'est cohérent, mais ça veut dire que BRAND et THE NAME
+devraient sans doute devenir les noms de leurs pages aussi, sinon la
+correspondance est boiteuse. Dites-moi si vous voulez que je renomme.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Plus aucune lecture de mise en page dans
-la boucle de défilement — vérifié, le seul appel restant est dans la
-fonction de mesure.
+Contrôle de types : zéro erreur.
