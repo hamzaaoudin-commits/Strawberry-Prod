@@ -6,31 +6,29 @@ import { useT } from "@/lib/i18n"
 
 const T = {
   fr: {
-    offers: "Offres",
+    offers: "Pour qui",
     about: "Le Studio",
     method: "La Méthode",
-    cta: "Passer commande",
+    cta: "Commander l'audit",
     menu: "Menu",
     offersMenu: [
-      { label: "L'AUDIT NARRATIF", sub: "L'offre · 490 €", href: "/brand-narrative-audit" },
+      { label: "BRAND", sub: "Marques & entreprises", href: "/marques-entreprises" },
+      { label: "THE ROOM", sub: "Lieux", href: "/the-room" },
+      { label: "THE NAME", sub: "Artistes & fondateurs", href: "/artistes" },
       { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture" },
-      { label: "MARQUES & ENTREPRISES", sub: "Terrain · produits et services", href: "/marques-entreprises" },
-      { label: "THE ROOM", sub: "Terrain · lieux", href: "/the-room" },
-      { label: "ARTISTES & FONDATEURS", sub: "Terrain · noms propres", href: "/artistes" },
     ],
   },
   en: {
-    offers: "Offers",
+    offers: "Who for",
     about: "The Studio",
     method: "The Method",
-    cta: "Place your commission",
+    cta: "Order the audit",
     menu: "Menu",
     offersMenu: [
-      { label: "THE NARRATIVE AUDIT", sub: "The offer · 490 €", href: "/brand-narrative-audit" },
+      { label: "BRAND", sub: "Brands & companies", href: "/marques-entreprises" },
+      { label: "THE ROOM", sub: "Venues", href: "/the-room" },
+      { label: "THE NAME", sub: "Artists & founders", href: "/artistes" },
       { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture" },
-      { label: "BRANDS & COMPANIES", sub: "Ground · products and services", href: "/marques-entreprises" },
-      { label: "THE ROOM", sub: "Ground · venues", href: "/the-room" },
-      { label: "ARTISTS & FOUNDERS", sub: "Ground · names", href: "/artistes" },
     ],
   },
 }
@@ -145,7 +143,7 @@ export function NavBar() {
               style={{ animation: "sp-navpulse 2.4s ease-out infinite" }}
             />
             <Link
-              href="/brand-narrative-architecture"
+              href="/brand-narrative-audit"
               className="relative rounded-full px-5 py-2.5 font-sans text-[13px] font-semibold tracking-[0.04em] text-white no-underline"
               style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
             >
@@ -182,7 +180,7 @@ export function NavBar() {
               </Link>
             ))}
             <Link
-              href="/brand-narrative-architecture"
+              href="/brand-narrative-audit"
               onClick={() => setMobileOpen(false)}
               className="rounded-full px-6 py-3 text-center font-sans text-sm font-semibold text-white no-underline"
               style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}

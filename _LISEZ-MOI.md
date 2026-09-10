@@ -1,32 +1,44 @@
-# Strawberry — les trois scènes portent des noms
+# Strawberry — une seule offre, et le menu le dit
 
-1 fichier.
+1 fichier : la barre de navigation.
 
-Les titres géants de la tournée deviennent :
+## Un vrai bug attrapé au passage
 
-- **BRAND** (au lieu de « Le rayon ») — marques & entreprises
-- **THE ROOM** — lieux
-- **THE NAME** — artistes & fondateurs
+**Le bouton « Passer commande » menait encore à l'Architecture**, aux deux
+endroits où il apparaît (desktop et mobile). Il vendait donc la commande à
+4 500 € depuis toutes les pages du site, alors que l'offre est l'audit
+depuis la bascule. C'est le lien le plus cliqué du site, et il pointait au
+mauvais endroit — ça méritait d'être vu plus tôt.
 
-Identiques en français et en anglais : ce sont des noms, pas des mots
-traduisibles. Même logique que BRAND NARRATIVE AUDIT, qui reste en
-anglais sur la version française.
+Corrigé : il mène à `/brand-narrative-audit`, et son libellé devient
+**« Commander l'audit »** (« Order the audit »), qui dit ce qu'on va
+trouver.
 
-Les surtitres au-dessus gardent leur libellé descriptif (« Marques &
-entreprises », « Lieux », « Artistes & fondateurs ») : le nom frappe, le
-surtitre situe.
+## Le menu
 
-## Un choix que j'ai fait pour vous
+**L'audit sort du menu.** Le bouton y mène déjà ; l'y laisser en plus le
+faisait passer pour une option parmi cinq, exactement ce que
+l'unification voulait supprimer.
 
-Vous avez nommé BRAND et THE ROOM. Pour la troisième, j'ai mis **THE
-NAME** — c'est ce que vend cet audit (le récit qui tient sous un nom
-propre) et ça garde le registre des deux autres. Si vous préférez autre
-chose, c'est une ligne à changer.
+**Le menu ne s'appelle plus « Offres »** mais **« Pour qui »** (« Who
+for »), puisqu'il ne contient plus l'offre. Il contient les terrains :
 
-À noter : THE ROOM devient à la fois le nom d'une scène et celui de la
-page `/the-room`. C'est cohérent, mais ça veut dire que BRAND et THE NAME
-devraient sans doute devenir les noms de leurs pages aussi, sinon la
-correspondance est boiteuse. Dites-moi si vous voulez que je renomme.
+- **BRAND** — Marques & entreprises
+- **THE ROOM** — Lieux
+- **THE NAME** — Artistes & fondateurs
+- L'ARCHITECTURE — Après l'audit · 4 500 €
+
+Les trois terrains portent maintenant les noms des scènes de la tournée,
+donc un visiteur qui a vu la home reconnaît les mêmes mots dans le menu.
+
+**L'Architecture passe en dernier**, sous les terrains : elle vient après
+l'audit, elle n'ouvre pas la liste.
+
+## Le résultat
+
+Une seule action visible en permanence — le bouton — et un menu qui ne
+propose plus que des portes d'entrée. Plus rien ne suggère un catalogue
+d'offres.
 
 ## Vérification
 
