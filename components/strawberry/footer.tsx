@@ -107,7 +107,7 @@ export function Footer() {
         <div className="mb-16 mt-10 grid gap-8 md:gap-20 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
           <div>
             <Link href="/" className="mb-5 inline-block font-serif text-[22px] font-bold tracking-[-0.02em] text-white no-underline">
-              <span className="text-gradient">Strawberry</span> Prod.
+              <span className="text-brand">Strawberry Prod.</span>
             </Link>
             <p className="mb-5 max-w-[240px] text-[13px] leading-relaxed text-chalk-55">{t.tagline}</p>
             <div className="text-[11px] uppercase tracking-[0.1em] text-chalk-40">{t.location}</div>

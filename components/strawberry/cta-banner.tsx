@@ -5,8 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Become impossible to confuse.", sub: "Most houses wait. Yours shouldn't have to.", cta1: "Place your commission" },
-  fr: { h2: "Devenez impossible à confondre.", sub: "La plupart des maisons attendent. La vôtre n'a pas à le faire.", cta1: "Passer commande" },
+  en: { h2: "Start by knowing what you are saying.", sub: "The narrative audit. 490 €, delivered in seven days.", cta1: "Order the audit" },
+  fr: { h2: "Commencez par savoir ce que vous racontez.", sub: "L'audit narratif. 490 €, livré en sept jours.", cta1: "Commander l'audit" },
 }
 
 export function CTABanner() {
@@ -43,7 +43,7 @@ export function CTABanner() {
               offre a déjà sa propre page depuis le pied de page. */}
           <div className="relative flex flex-col items-center gap-5">
             <Link
-              href="/brand-narrative-architecture"
+              href="/brand-narrative-audit"
               className="btn-primary max-w-full px-11 py-[18px] text-center leading-snug"
             >
               {t.cta1}

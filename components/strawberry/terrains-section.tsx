@@ -5,101 +5,122 @@ import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 /**
- * Les quatre terrains de l'audit narratif.
+ * Les trois terrains de l'audit — dans la forme de « La tournée » de
+ * THE ROOM.
  *
- * Un seul métier — le narratif — appliqué à quatre objets. La grille pose
- * les quatre côte à côte avec le même prix, le même délai et la même
- * méthode : c'est la démonstration visuelle de l'argument, bien plus que
- * ne le ferait un paragraphe qui l'affirme.
+ * Sur THE ROOM, chaque type de lieu reçoit une carte large : un surtitre,
+ * un titre en dégradé, une phrase d'ambiance en italique, puis quatre
+ * entrées courtes qui donnent la matière. C'est la section la plus forte
+ * de cette page, parce qu'elle montre au lieu d'affirmer. La même forme
+ * appliquée aux terrains fait la même chose : chacun se reconnaît dans sa
+ * propre scène plutôt que dans une case.
  *
- * Le prix est affiché une fois, au-dessus de la grille, et non répété dans
- * chaque carte. Répété quatre fois il se lit comme quatre offres à
- * comparer ; affiché une fois il se lit comme ce qu'il est — un tarif
- * unique, quel que soit le terrain.
+ * Trois terrains et non quatre : « entreprises » a été retiré — marques le
+ * couvre déjà, et une case de plus ne faisait qu'ajouter une frontière que
+ * personne n'a besoin de trancher pour acheter.
+ *
+ * L'Architecture n'apparaît pas ici : la home vend l'audit, et rien
+ * d'autre.
  */
 
 const T = {
   fr: {
-    kicker: "Un métier, quatre terrains",
+    kicker: "Un métier, trois terrains",
     h2a: "Tout tient sur un récit.",
     h2b: "Personne ne l'a écrit.",
-    lead: "Une marque, une entreprise, un lieu ou une personne : le travail est le même. On lit ce que vous racontez aujourd'hui, on dit ce que le marché en entend, et on donne les mouvements qui changent ça.",
-    priceLabel: "Le même audit, quel que soit le terrain",
+    lead: "Le même audit, le même prix, le même délai. Seul le questionnaire change, parce que votre terrain n'est pas celui du voisin.",
+    priceLabel: "L'audit narratif",
     price: "490 €",
     priceMeta: "Livré en sept jours · Payé une fois",
     terrains: [
       {
-        key: "marques",
-        label: "Marques",
-        body: "Vous vendez un produit ou un service, et on vous compare au prix parce que rien ne dit qui vous êtes.",
-        href: "/brand-narrative-audit",
+        k: "Marques & entreprises",
+        t: "Le rayon",
+        line: "On vous demande un devis comparatif avant même de vous avoir écouté.",
+        facts: [
+          ["Le symptôme", "Votre meilleur argument, un concurrent pourrait le signer sans mentir"],
+          ["La racine", "Le marché ne sait pas ce que vous refusez, donc il vous range par défaut"],
+          ["Ce qu'on lit", "Site, discours commercial, ce que vos équipes racontent chacune de leur côté"],
+          ["Ce qui change", "Une position que personne d'autre ne peut revendiquer sans mentir"],
+        ],
+        href: "/marques-entreprises",
       },
       {
-        key: "entreprises",
-        label: "Entreprises",
-        body: "Votre métier est clair en interne, illisible dehors. Vos équipes racontent quatre versions différentes.",
-        href: "/brand-narrative-audit",
+        k: "Lieux",
+        t: "La salle",
+        line: "La salle est pleine, et pourtant chaque publication repart de zéro.",
+        facts: [
+          ["Le symptôme", "Personne dans l'équipe ne sait quoi filmer ni quoi écrire dessous"],
+          ["La racine", "Le monde du lieu existe déjà — il n'a jamais été écrit"],
+          ["Ce qu'on lit", "La salle, la carte, les avis, ce que les habitués répètent"],
+          ["Ce qui change", "Un lieu qu'on reconnaît avant d'en avoir lu le nom"],
+        ],
+        href: "/the-room",
       },
       {
-        key: "lieux",
-        label: "Lieux",
-        body: "Restaurant, bar, club, coffee shop. La salle est pleine et pourtant chaque publication repart de zéro.",
-        href: "/brand-narrative-audit",
-      },
-      {
-        key: "artistes",
-        label: "Artistes & fondateurs",
-        body: "Vos sorties ne s'additionnent pas. Votre nom porte un travail que personne n'a encore formulé.",
-        href: "/brand-narrative-audit",
+        k: "Artistes & fondateurs",
+        t: "Le nom",
+        line: "Vos sorties ne s'additionnent pas. Chacune repart à zéro.",
+        facts: [
+          ["Le symptôme", "On aime ce que vous faites sans savoir dire ce que vous êtes"],
+          ["La racine", "Votre nom porte un travail que personne n'a encore formulé"],
+          ["Ce qu'on lit", "Vos sorties, vos textes, ce que la presse retient de vous"],
+          ["Ce qui change", "Un fil que le public reconnaît d'une sortie à l'autre"],
+        ],
+        href: "/artistes",
       },
     ],
+    outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
     cta: "Commander l'audit →",
-    afterLabel: "Après l'audit, si vous voulez qu'on construise",
-    after: [
-      { name: "L'ARCHITECTURE", meta: "Vingt pièces · sur commande", href: "/brand-narrative-architecture" },
-      { name: "THE ROOM", meta: "Lieux · sprint de 2 à 3 semaines", href: "/the-room" },
-    ],
   },
   en: {
-    kicker: "One craft, four grounds",
+    kicker: "One craft, three grounds",
     h2a: "It all rests on a story.",
     h2b: "Nobody has written it.",
-    lead: "A brand, a company, a venue or a person: the work is the same. We read what you are saying today, state what the market actually hears, and give you the moves that change it.",
-    priceLabel: "The same audit, whatever the ground",
+    lead: "The same audit, the same price, the same turnaround. Only the questionnaire changes, because your ground is not your neighbour's.",
+    priceLabel: "The narrative audit",
     price: "490 €",
     priceMeta: "Delivered in seven days · Paid once",
     terrains: [
       {
-        key: "marques",
-        label: "Brands",
-        body: "You sell a product or a service, and you get compared on price because nothing says who you are.",
-        href: "/brand-narrative-audit",
+        k: "Brands & companies",
+        t: "The aisle",
+        line: "You get asked for a comparative quote before anyone has listened to you.",
+        facts: [
+          ["The symptom", "Your best argument could be signed by a competitor without lying"],
+          ["The root", "The market does not know what you refuse, so it files you by default"],
+          ["What we read", "Site, sales pitch, and what each of your teams says on its own"],
+          ["What changes", "A position nobody else can claim without lying"],
+        ],
+        href: "/marques-entreprises",
       },
       {
-        key: "entreprises",
-        label: "Companies",
-        body: "Your work is clear inside, unreadable outside. Your teams tell four different versions of it.",
-        href: "/brand-narrative-audit",
+        k: "Venues",
+        t: "The room",
+        line: "The room is full, and yet every post starts from nothing.",
+        facts: [
+          ["The symptom", "Nobody on the team knows what to film, or what to write underneath"],
+          ["The root", "The world of the venue already exists — it has never been written"],
+          ["What we read", "The room, the menu, the reviews, what the regulars repeat"],
+          ["What changes", "A venue people recognise before reading its name"],
+        ],
+        href: "/the-room",
       },
       {
-        key: "lieux",
-        label: "Venues",
-        body: "Restaurant, bar, club, coffee shop. The room is full, yet every post starts from nothing.",
-        href: "/brand-narrative-audit",
-      },
-      {
-        key: "artistes",
-        label: "Artists & founders",
-        body: "Your releases do not add up. Your name carries work nobody has put into words yet.",
-        href: "/brand-narrative-audit",
+        k: "Artists & founders",
+        t: "The name",
+        line: "Your releases do not add up. Each one starts from zero.",
+        facts: [
+          ["The symptom", "People like what you do without being able to say what you are"],
+          ["The root", "Your name carries work nobody has put into words yet"],
+          ["What we read", "Your releases, your writing, what the press keeps of you"],
+          ["What changes", "A thread the audience recognises from one release to the next"],
+        ],
+        href: "/artistes",
       },
     ],
+    outro: "All of it already exists. It just needs writing.",
     cta: "Order the audit →",
-    afterLabel: "After the audit, if you want it built",
-    after: [
-      { name: "THE ARCHITECTURE", meta: "Twenty parts · on commission", href: "/brand-narrative-architecture" },
-      { name: "THE ROOM", meta: "Venues · two to three week sprint", href: "/the-room" },
-    ],
   },
 }
 
@@ -118,55 +139,45 @@ export function TerrainsSection() {
           <p className="lede">{t.lead}</p>
         </div>
 
-        {/* Le prix, une fois. Répété dans chaque carte, il inviterait à
-            comparer quatre offres ; posé une fois au-dessus des quatre, il
-            dit ce qu'il est — un tarif unique. */}
-        <div className="mx-auto mb-10 max-w-[520px] border border-brand-hair bg-brand/[0.04] px-6 py-6 text-center">
+        {/* Le prix, une fois, au-dessus des trois : répété dans chaque carte
+            il inviterait à comparer trois offres. */}
+        <div className="mx-auto mb-12 max-w-[520px] border border-brand-hair bg-brand/[0.04] px-6 py-6 text-center">
           <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.18em] text-brand">{t.priceLabel}</div>
           <div className="font-serif text-[clamp(2.2rem,5vw,3rem)] font-bold leading-none text-gradient">{t.price}</div>
           <div className="mt-3 font-sans text-[12.5px] text-chalk-55">{t.priceMeta}</div>
         </div>
 
-        <div className="mx-auto grid max-w-[1000px] gap-px bg-white/10 sm:grid-cols-2">
-          {t.terrains.map((x) => (
-            <Link
-              key={x.key}
-              href={x.href}
-              className="group relative flex flex-col bg-ink px-7 py-8 no-underline transition-colors duration-500 hover:bg-white/[0.02]"
-            >
-              <span
-                aria-hidden
-                className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-brand transition-transform duration-500 group-hover:scale-x-100"
-              />
-              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.2em] text-brand">{x.label}</div>
-              <p className="m-0 font-sans text-[14.5px] leading-[1.7] text-chalk-65">{x.body}</p>
+        {/* Les trois cartes, dans la forme de « La tournée ». */}
+        <div className="mx-auto grid max-w-[1000px] gap-5">
+          {t.terrains.map((x, i) => (
+            <Link key={x.k} href={x.href} className={`carte-room reveal d${Math.min(i + 1, 3)} block no-underline`}>
+              <div className="mb-4 flex flex-wrap items-baseline gap-3">
+                <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-chalk-40">{x.k}</span>
+                <h3 className="m-0 font-serif text-[clamp(1.35rem,3vw,2.1rem)] font-bold leading-[1.1] text-gradient">
+                  {x.t}
+                </h3>
+              </div>
+
+              <p className="accroche m-0 mb-7">{x.line}</p>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                {x.facts.map(([label, detail]) => (
+                  <div key={label}>
+                    <div className="mb-1.5 font-sans text-[10px] uppercase tracking-[0.2em] text-brand">{label}</div>
+                    <p className="m-0 font-sans text-[13.5px] leading-[1.6] text-chalk-55">{detail}</p>
+                  </div>
+                ))}
+              </div>
             </Link>
           ))}
         </div>
+
+        <p className="accroche mx-auto mt-12 max-w-[620px] text-center text-gradient">{t.outro}</p>
 
         <div className="mt-10 text-center">
           <Link href="/brand-narrative-audit" className="btn-primary">
             {t.cta}
           </Link>
-        </div>
-
-        {/* Les deux commandes, après l'audit et clairement en second plan.
-            L'audit est le même pour les quatre terrains ; ces deux-là sont
-            ce qu'on construit ensuite, quand le diagnostic a été posé. Les
-            citer ici évite qu'un visiteur les découvre par accident dans le
-            menu et croie à quatre offres concurrentes. */}
-        <div className="mx-auto mt-14 max-w-[720px] border-t border-hair pt-8 text-center">
-          <div className="mb-5 font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">{t.afterLabel}</div>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            {t.after.map((a) => (
-              <Link key={a.name} href={a.href} className="group no-underline">
-                <span className="font-sans text-[13px] font-semibold tracking-[0.06em] text-brand transition-colors group-hover:text-white">
-                  {a.name}
-                </span>
-                <span className="ml-2 font-sans text-[12px] text-chalk-40">{a.meta}</span>
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </section>

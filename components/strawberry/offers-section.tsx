@@ -225,14 +225,12 @@ export function OffersSection({ lang }: { lang: Lang }) {
           <div className="relative grid gap-10 md:grid-cols-[190px_minmax(0,1fr)] md:gap-12">
             <div className="mx-auto w-[180px] max-w-full md:mx-0 md:w-full">
               <OfferCover
-                k="architecture"
+                k="audit"
                 name={
                   <>
-                    Brand
+                    L&apos;Audit
                     <br />
-                    Narrative
-                    <br />
-                    Architecture
+                    narratif
                   </>
                 }
                 featured
@@ -243,7 +241,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
 
             <div>
-              <div className="pill mb-3">BRAND NARRATIVE ARCHITECTURE</div>
+              <div className="pill mb-3">L&apos;AUDIT NARRATIF</div>
 
               <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
                 {t.h3}
@@ -358,7 +356,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 href="/brand-narrative-audit"
                 className="btn-primary"
                 event="cta_click"
-                data={{ section: "offers", target: "architecture" }}
+                data={{ section: "offers", target: "audit" }}
               >
                 {t.cta1}
               </TrackedLink>

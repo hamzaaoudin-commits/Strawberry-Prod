@@ -1,58 +1,62 @@
-# Strawberry — la page artistes parle au nom du studio
+# Strawberry — la home vend l'audit, et rien d'autre
 
-Deux fichiers : les copies FR et EN de la page `/artistes`.
+6 fichiers.
 
-## Le « je » a disparu
+## Le logo
 
-C'était la page la plus personnelle du site : 45 formulations à la
-première personne en français, 57 en anglais. « Je m'appelle Hamza »,
-« Je n'accompagne que six artistes », « Mon propre travail ».
+« Strawberry » en dégradé + « Prod. » en blanc → **tout en rouge**, dans
+la barre de navigation et le pied de page.
 
-Tout est passé au « nous », dans les deux langues. Vérifié : **zéro
-occurrence restante**.
+## L'accroche
 
-## Trois pièges que la conversion a créés, et que j'ai corrigés
+Avant : « Ce que vous racontez, et ce que le marché en entend. » —
+symétrique, élégante, sans tension.
 
-Une substitution mécanique casse les accords. J'ai relu ce que ma propre
-conversion produisait et trouvé :
+Après : **« Votre marché ne vous entend pas comme vous croyez vous
+raconter. »** Elle accuse au lieu de constater, et elle met le lecteur en
+défaut dès la première ligne, ce que la précédente évitait poliment.
 
-- **« Nous ne revendique aucun droit »** — le verbe était resté au
-  singulier. Cinq cas de ce type au total (« ne sais », « ne saurais »,
-  « ne peux »), tous corrigés.
-- **« Puis-je arrêter quand nous voulons ? »** — une question de FAQ, donc
-  posée *par le client*. Ma conversion l'avait transformée en absurdité.
-  Restaurée en « Puis-je arrêter quand je veux ? » : dans une FAQ, le
-  « je » du client est correct et doit rester.
-- **« Mon propre travail »** → « Notre propre travail », que le premier
-  passage avait manqué.
+## Le paragraphe
 
-C'est le genre d'erreur qu'un remplacement automatique produit
-silencieusement, et qui se lit très mal en ligne.
+Il énumérait quatre cibles puis décrivait la méthode en trois verbes
+plats. Réécrit :
 
-## La signature
+> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit — et
+> personne ne l'a jamais écrit. Nous lisons le vôtre comme le fait votre
+> marché, **sans complaisance**. Vous recevez ce qu'il raconte
+> aujourd'hui, ce qui vous range avec les autres, et les mouvements exacts
+> qui vous en sortent.
 
-« Je m'appelle Hamza El Jaouahiry » devient **« Strawberry Production est
-dirigé par Hamza El Jaouahiry »** (et son équivalent anglais). Le studio
-est nommé, le fondateur reste visible — mais c'est le studio qui parle.
+## Les trois terrains, dans le design de « La tournée »
 
-## L'état du site
+La section reprend la forme de la plus belle page de THE ROOM : par
+terrain, un surtitre, un titre en dégradé (**Le rayon**, **La salle**,
+**Le nom**), une phrase d'ambiance en italique, puis quatre entrées
+courtes — le symptôme, la racine, ce qu'on lit, ce qui change. C'est ce
+qui fait qu'on se reconnaît dans une scène plutôt que dans une case.
 
-Les trois terrains parlent maintenant d'une seule voix, au nom d'un seul
-studio :
+Fermée par « Tout ça existe déjà chez vous. Il faut juste l'écrire. »,
+comme sur THE ROOM.
 
-- `/marques-entreprises` — écrite au « nous » dès l'origine.
-- `/the-room` — convertie au tour précédent.
-- `/artistes` — convertie ici.
+**Entreprises est supprimé** : marques le couvrait déjà, et la case en
+plus imposait une frontière que personne n'a besoin de trancher pour
+acheter. Trois terrains, trois cartes.
 
-## Ce qui reste, et que je ne peux pas décider
+## L'Architecture a disparu de la home
 
-L'argumentaire amont de `/artistes` (le cycle, la preuve, les objections)
-a été écrit pour vendre un abonnement mensuel. La voix est bonne
-maintenant, mais certaines sections argumentent encore pour une offre qui
-n'existe plus — par exemple les objections sur l'engagement au mois.
+- La couverture de la section offre montrait « Brand Narrative
+  Architecture » → **L'Audit narratif**.
+- Le bandeau final menait vers l'Architecture → vers l'audit.
+- Son libellé disait « Devenez impossible à confondre / Passer commande »
+  → **« Commencez par savoir ce que vous racontez. L'audit narratif.
+  490 €, livré en sept jours. »**
 
-Ça demande une réécriture éditoriale, pas une substitution. Dites-moi si
-vous voulez que je m'y attaque, et sur quelles sections.
+La home ne propose plus qu'une seule action, du hero au pied de page.
+
+## Un défaut attrapé au passage
+
+Mes deux remplacements de paragraphe avaient supprimé la virgule de fin
+de propriété — le build aurait échoué. Relu et corrigé avant livraison.
 
 ## Vérification
 
