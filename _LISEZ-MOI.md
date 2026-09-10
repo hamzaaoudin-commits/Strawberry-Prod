@@ -1,58 +1,44 @@
-# Strawberry — les trois terrains partagent la page THE ROOM
+# Strawberry — BRAND et THE NAME ne parlent plus de restaurants
 
-9 fichiers.
+2 fichiers. Ils remplacent ceux du patch précédent.
 
-## Comment j'ai fait, cette fois
+## Ce que j'avais raté
 
-Je n'ai rien réimplémenté. Le HTML de THE ROOM, son CSS
-(`public/nocta/styles.css`) et son JavaScript (`public/nocta/app.js`) sont
-**partagés tels quels** par les trois pages, via un gabarit unique :
-`components/terrain/terrain-page.tsx`.
+Le site NOCTA porte **175 clés de texte**. J'en avais surchargé 25. Tout
+le reste héritait donc du texte d'origine — c'est-à-dire des restaurants,
+des bars, des clubs, du service en salle et du barman. Sur une page qui
+s'appelle BRAND.
 
-Canvas bokeh, tournée épinglée, comparateur à glisser, accordéon,
-révélations au scroll, bandes cinéma : identiques au caractère près, parce
-que c'est littéralement le même code. Il n'y a plus rien à perdre en
-route — c'est l'erreur que j'ai commise trois fois en réécrivant à la main.
+## Ce qui est corrigé
 
-## Comment le texte change
+J'ai identifié par recherche **les 58 clés dont le contenu parle de
+lieux** — restaurant, salle, service, carte, habitués, couvert, néon,
+shaker — et je les ai toutes réécrites, dans les deux langues, pour
+chacun des deux terrains.
 
-Le site NOCTA porte déjà tout son texte sur des attributs `data-i18n`, et
-`i18n.js` expose son dictionnaire sur `window.NOCTA_I18N.DICT`. Chaque
-page de terrain n'a donc qu'à fournir **les clés qu'elle remplace** — le
-reste est hérité.
+Vérification automatique après coup : **zéro clé à contenu « lieux »
+non surchargée** sur les deux pages.
 
-Conséquence utile : les clés non surchargées sont celles qui parlent du
-studio, du prix, du délai, de la méthode. Elles sont vraies quel que soit
-le terrain, et elles restent donc rigoureusement identiques sur les trois
-pages. C'est l'unification garantie par la structure, pas par la
-discipline.
+Ce qui est réécrit, section par section :
 
-Autre conséquence : une correction de mise en page faite une fois corrige
-les trois pages.
+- **Le constat** — le devis comparatif pour BRAND, les sorties qui ne
+  s'additionnent pas pour THE NAME.
+- **Les cinq blocs de l'audit** — le champ concurrentiel et ce que le prix
+  dit avant vous ; la zone artistique et ce que la bio dit avant vous.
+- **La tournée** — les quatre scènes entièrement réécrites : studio de
+  création, cabinet, éditeur, atelier d'un côté ; musicien, réalisateur,
+  fondateur, auteur de l'autre. Avec leur moment, leur preuve, leur
+  casting et leurs rituels.
+- **Le comparateur** — « une marque qui communique / qui tient une
+  position », « un nom qui publie / qui se raconte ».
+- **Le prix, la FAQ, le formulaire, le pied de page, le CTA** — y compris
+  les libellés de champs et les options du menu déroulant.
 
-## Les deux nouvelles pages
+## Ce qui reste volontairement hérité
 
-**`/marques-entreprises` — BRAND.** « Votre offre tient. Votre récit,
-personne ne l'a écrit. » Le constat sur le devis comparatif, les cinq
-blocs de l'audit adaptés (le champ concurrentiel, la phrase qui range, ce
-que le prix dit avant vous).
-
-**`/the-name` — THE NAME.** « On aime ce que vous faites sans savoir dire
-ce que vous êtes. » Le constat sur les sorties qui ne s'additionnent pas,
-les blocs adaptés à une pratique (la zone plutôt que le marché, la bio
-plutôt que la page d'accueil).
-
-`/artistes` redirige vers `/the-name` : l'ancienne page portait la mise en
-page de MOMENTUM, soit une charte de plus à maintenir pour un terrain qui
-n'avait aucune raison d'avoir la sienne.
-
-Menu, pied de page, tournée, sitemap et préfixes de langue mis à jour.
-
-## À supprimer
-
-`components/momentum/` et `lib/momentum/` ne servent plus. La palette et
-l'échafaudage MOMENTUM dans `globals.css` non plus — je ne les ai pas
-retirés pour ne pas risquer de casser autre chose dans le même patch.
+Les clés qui parlent du studio, du délai, de la méthode et de
+l'engagement. Elles sont vraies quel que soit le terrain, et les laisser
+partagées garantit qu'elles resteront identiques sur les trois pages.
 
 ## Vérification
 
