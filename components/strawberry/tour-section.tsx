@@ -39,48 +39,32 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "On vous demande un devis comparatif avant même de vous avoir écouté.",
-        facts: [
-          ["Le symptôme", "Votre meilleur argument, un concurrent pourrait le signer sans mentir."],
-          ["La racine", "Le marché ne sait pas ce que vous refusez, alors il vous range par défaut."],
-          ["Ce qu'on lit", "Site, discours commercial, et ce que chaque équipe raconte de son côté."],
-          ["Ce qui change", "Une position que personne d'autre ne peut revendiquer sans mentir."],
-        ],
+        body: "Vous vendez un produit ou un service qui tient, et pourtant le marché vous range avec six autres. Nous lisons votre site, votre discours commercial et ce que chaque équipe raconte de son côté, nous cartographions la phrase exacte de vos concurrents, et nous nommons la position que personne n'occupe.",
+        out: "Vous repartez avec ce qui vous rend impossible à confondre — et les mouvements pour y aller.",
         href: "/marques-entreprises",
       },
       {
         k: "Produits",
         t: "THE PRODUCT",
         line: "En rayon, votre produit devient une ligne de caractéristiques à côté d'une autre.",
-        facts: [
-          ["Le symptôme", "On vous compare sur des chiffres, jamais sur une intention."],
-          ["La racine", "Personne n'a écrit pourquoi il a été fait comme ça."],
-          ["Ce qu'on lit", "La page produit, l'emballage, la notice, et les avis des acheteurs."],
-          ["Ce qui change", "Chaque choix de conception devient un argument."],
-        ],
+        body: "Votre produit est bien fait, ceux qui l'utilisent le gardent. Mais rien ne dit pourquoi il a été fait comme ça. Nous lisons la page produit, l'emballage, la notice et les avis, nous cartographions la promesse de vos concurrents, et nous nommons l'intention qui tient derrière vos choix de conception.",
+        out: "Chaque arbitrage devient un argument, au lieu d'une ligne de spec.",
         href: "/the-product",
       },
       {
         k: "Lieux",
         t: "THE ROOM",
         line: "La salle est pleine, et pourtant chaque publication repart de zéro.",
-        facts: [
-          ["Le symptôme", "Personne dans l'équipe ne sait quoi filmer, ni quoi écrire dessous."],
-          ["La racine", "Le monde du lieu existe déjà — il n'a simplement jamais été écrit."],
-          ["Ce qu'on lit", "La salle, la carte, les avis, ce que les habitués répètent sans y penser."],
-          ["Ce qui change", "Un lieu qu'on reconnaît avant même d'en avoir lu le nom."],
-        ],
+        body: "Restaurant, bar, club, coffee shop. Le monde de votre lieu existe déjà — une heure, une lumière, un casting, des rituels — mais personne ne l'a écrit, donc personne dans l'équipe ne sait quoi montrer. Nous lisons la salle, la carte, les avis et ce que les habitués répètent.",
+        out: "Un lieu qu'on reconnaît avant d'en avoir lu le nom.",
         href: "/the-room",
       },
       {
         k: "Artistes & fondateurs",
         t: "THE NAME",
-        line: "Vos sorties ne s'additionnent pas. Chacune repart de zéro.",
-        facts: [
-          ["Le symptôme", "On aime ce que vous faites sans savoir dire ce que vous êtes."],
-          ["La racine", "Votre nom porte un travail que personne n'a encore formulé."],
-          ["Ce qu'on lit", "Vos sorties, vos textes, et ce que la presse retient de vous."],
-          ["Ce qui change", "Un fil que le public reconnaît d'une sortie à la suivante."],
-        ],
+        line: "On aime ce que vous faites sans savoir dire ce que vous êtes.",
+        body: "Vos sorties sont bonnes, les retours aussi, mais chacune repart de zéro dans la tête de ceux qui vous suivent. Nous lisons vos projets, vos textes, vos interviews et ce que la presse retient de vous, et nous nommons le fil qui traverse déjà tout ça.",
+        out: "Un fil que le public reconnaît d'une sortie à la suivante.",
         href: "/the-name",
       },
     ],
@@ -97,48 +81,32 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "You get asked for a comparative quote before anyone has listened to you.",
-        facts: [
-          ["The symptom", "Your best argument could be signed by a competitor without lying."],
-          ["The root", "The market does not know what you refuse, so it files you by default."],
-          ["What we read", "Site, sales pitch, and what each team says on its own."],
-          ["What changes", "A position nobody else can claim without lying."],
-        ],
+        body: "You sell a product or a service that holds, and yet the market files you with six others. We read your site, your sales pitch and what each team says on its own, we map your competitors' exact sentence, and we name the position nobody occupies.",
+        out: "You leave with what makes you impossible to mistake — and the moves to get there.",
         href: "/marques-entreprises",
       },
       {
         k: "Products",
         t: "THE PRODUCT",
         line: "On a shelf, your product becomes one line of specs next to another.",
-        facts: [
-          ["The symptom", "You get compared on numbers, never on intent."],
-          ["The root", "Nobody has written why it was made this way."],
-          ["What we read", "The product page, the packaging, the manual, and the reviews."],
-          ["What changes", "Every design choice becomes an argument."],
-        ],
+        body: "Your product is well made, the people who use it keep it. But nothing says why it was made this way. We read the product page, the packaging, the manual and the reviews, we map your competitors' promise, and we name the intent behind your design choices.",
+        out: "Every trade-off becomes an argument instead of a spec line.",
         href: "/the-product",
       },
       {
         k: "Venues",
         t: "THE ROOM",
         line: "The room is full, and yet every post starts from nothing.",
-        facts: [
-          ["The symptom", "Nobody on the team knows what to film, or what to write underneath."],
-          ["The root", "The world of the venue already exists — it has simply never been written."],
-          ["What we read", "The room, the menu, the reviews, what the regulars repeat without thinking."],
-          ["What changes", "A venue people recognise before they have read its name."],
-        ],
+        body: "Restaurant, bar, club, coffee shop. The world of your venue already exists — an hour, a light, a cast, rituals — but nobody has written it, so nobody on the team knows what to show. We read the room, the menu, the reviews and what the regulars repeat.",
+        out: "A venue people recognise before reading its name.",
         href: "/the-room",
       },
       {
         k: "Artists & founders",
         t: "THE NAME",
-        line: "Your releases do not add up. Each one starts from zero.",
-        facts: [
-          ["The symptom", "People like what you do without being able to say what you are."],
-          ["The root", "Your name carries work nobody has put into words yet."],
-          ["What we read", "Your releases, your writing, and what the press keeps of you."],
-          ["What changes", "A thread the audience recognises from one release to the next."],
-        ],
+        line: "People like what you do without being able to say what you are.",
+        body: "Your releases are good, so is the feedback, but each one starts from zero in the minds of the people who follow you. We read your projects, your writing, your interviews and what the press keeps of you, and we name the thread already running through all of it.",
+        out: "A thread the audience recognises from one release to the next.",
         href: "/the-name",
       },
     ],
@@ -256,14 +224,13 @@ export function TourSection() {
                 <div className="ts-k">{s.k}</div>
                 <h3 className="ts-t">{s.t}</h3>
                 <p className="ts-line">{s.line}</p>
-                <ul className="ts-list list-none p-0">
-                  {s.facts.map(([label, detail]) => (
-                    <li key={label}>
-                      <b>{label}</b>
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* De la prose, pas quatre étiquettes.
+                    Le découpage symptôme / racine / ce qu'on lit / ce qui
+                    change était un gabarit : il forçait chaque terrain dans
+                    la même grille et empêchait de dire ce que l'offre a de
+                    particulier. Un paragraphe, puis ce qu'on emporte. */}
+                <p className="ts-body">{s.body}</p>
+                <p className="ts-out">{s.out}</p>
                 <Link href={s.href} className="ts-num no-underline text-brand">
                   {String(i + 1).padStart(2, "0")} / {String(t.scenes.length).padStart(2, "0")} — {t.sceneCta} {s.t} →
                 </Link>

@@ -1142,3 +1142,27 @@ footer {
 .tour-pin.tour-on .tour-progress span{ display:block; width:100%; height:0; background:var(--grad);
   border-radius:2px; box-shadow:0 0 12px rgba(230,57,70,.5); }
 
+
+/* La prose des scènes de la tournée — remplace la liste à quatre étiquettes.
+   `.ts-out` reprend le dégradé de marque : c'est la ligne qui dit ce qu'on
+   emporte, elle doit se détacher du paragraphe qui la précède. */
+.ts-body {
+  margin-top: 1.6rem;
+  max-width: 56ch;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+}
+.ts-out {
+  margin-top: 1.3rem;
+  max-width: 52ch;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
