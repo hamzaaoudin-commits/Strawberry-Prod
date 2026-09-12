@@ -1192,6 +1192,11 @@ footer {
 
    À employer avec parcimonie : l'effet tient parce qu'il est rare. */
 @utility surligne {
+  /* Forcé en inline : posé par erreur sur un élément de bloc, le
+     fond prendrait toute la largeur de la ligne au lieu du seul
+     texte — c'est ce qui s'était produit sur les surtitres des
+     pages d'offres, qui sont des blocs. */
+  display: inline;
   background: var(--color-highlight);
   color: var(--color-ink);
   padding: 0.08em 0.3em;
@@ -1202,6 +1207,11 @@ footer {
 
 /* La variante en dégradé, pour les blocs plus larges. */
 @utility surligne-grad {
+  /* Forcé en inline : posé par erreur sur un élément de bloc, le
+     fond prendrait toute la largeur de la ligne au lieu du seul
+     texte — c'est ce qui s'était produit sur les surtitres des
+     pages d'offres, qui sont des blocs. */
+  display: inline;
   background: linear-gradient(108deg, var(--color-highlight) 0%, #ff2233 100%);
   color: var(--color-ink);
   padding: 0.08em 0.28em;

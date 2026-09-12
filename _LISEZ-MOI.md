@@ -1,48 +1,43 @@
-# Strawberry — deux surlignages retirés
+# Strawberry — le surlignage qui débordait
 
-2 fichiers.
+3 fichiers.
 
-« UN AUDIT, QUATRE TERRAINS » et « L'OFFRE » redeviennent des surtitres
-normaux. Je les avais ajoutés de moi-même.
+## La cause
 
-## L'inventaire de ce qui reste surligné
+Sur les pages d'offres, `.eyebrow` est un élément de **bloc**. En posant
+le surlignage sur cet élément, le fond prenait toute la largeur
+disponible au lieu du seul texte — d'où la barre rouge qui traverse la
+page derrière « QUESTIONS FRÉQUENTES ».
 
-Pour que vous puissiez trancher d'un coup d'œil :
+Sur la home, les surlignages sont posés sur des `<span>`, qui sont
+inline : ils épousent le texte. C'est pourquoi le défaut n'apparaissait
+que d'un côté.
 
-**Ce que vos captures montraient**
-- Le titre de la tournée — « Ce qu'on trouve quand un récit est écrit »
+## Ce qui est fait
+
+**Les six surtitres des pages d'offres ne sont plus surlignés.** Ils
+redeviennent des surtitres rouges classiques.
+
+**Une garde est posée dans les deux feuilles de style** : les classes
+`surligne` et `surligne-grad` forcent désormais `display: inline`. Même
+appliquées par erreur à un élément de bloc, elles ne pourront plus
+s'étendre au-delà du texte. Le cas ne peut plus se reproduire, y compris
+sur des éléments que je n'ai pas encore touchés.
+
+## Ce qui reste surligné
+
+Uniquement sur la home, et uniquement sur des `<span>` :
+
+- Le titre de la tournée, en dégradé
+- La ligne d'ancrage du hero — « Audit narratif · 490 € »
 - Le surtitre « LE PROBLÈME »
-- Les trois lignes de la triade — « Rien à quoi appartenir », etc.
-- Les quatre fausses causes — « Un logo refait », etc.
+- Les trois lignes de la triade
+- Les quatre fausses causes
+- Le titre du diagnostic, en dégradé
 
-**Ce que j'ai ajouté, et que vous pouvez me faire retirer**
-- La ligne d'ancrage du hero — « Audit narratif · 490 € · Livré en sept
-  jours »
-- Le titre du diagnostic — « Ça a manqué de la bonne cause », en dégradé
-- Les six surtitres des pages de terrain — le constat, le sprint, la
-  différence, ce que ça coûte, questions fréquentes, on commence par un
-  appel
-
-## Une incohérence que ce retrait crée
-
-Sur la home, le surtitre « LE PROBLÈME » est surligné, mais ceux de la
-tournée et de l'offre ne le sont plus. Sur les pages de terrain, **tous**
-les surtitres le sont.
-
-Trois façons de rendre ça cohérent :
-
-1. Surligner tous les surtitres partout — mais vous venez d'en refuser
-   deux, donc ce n'est sans doute pas ça.
-2. N'en surligner aucun, y compris « LE PROBLÈME » et les six des pages de
-   terrain. L'effet resterait sur les listes et les deux titres.
-3. Garder la règle actuelle en l'assumant : le surtitre est surligné quand
-   il annonce un problème (« le problème », « le constat »), pas quand il
-   annonce une offre.
-
-La 3 est celle qui a le plus de sens à mes yeux — le surlignage sert alors
-à désigner ce qui ne va pas — mais il faudrait retirer l'effet sur « ce
-que ça coûte », « questions fréquentes » et « on commence par un appel »,
-qui n'annoncent aucun problème. Dites-moi.
+Les pages d'offres n'en ont plus du tout. Si vous en voulez malgré tout —
+sur un mot dans une phrase, plutôt que sur un surtitre — dites-moi
+lequel : avec la garde en place, ce sera propre.
 
 ## Vérification
 

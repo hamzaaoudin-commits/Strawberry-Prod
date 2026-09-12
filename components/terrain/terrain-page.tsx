@@ -52,7 +52,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <!-- ============ MANIFESTO ============ -->
 <section class="section manifesto">
 <div class="wrap">
-<span class="eyebrow reveal surligne" data-i18n="man.eyebrow">Le constat</span>
+<span class="eyebrow reveal" data-i18n="man.eyebrow">Le constat</span>
 <p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
 <p class="reveal d2" data-i18n="man.body2" style="margin-top:1.6rem">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
 </div>
@@ -61,7 +61,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="section-head reveal" style="margin-bottom:0">
 <div class="story-head">
 <div>
-<span class="eyebrow surligne" data-i18n="st.eyebrow">Le sprint</span>
+<span class="eyebrow" data-i18n="st.eyebrow">Le sprint</span>
 <h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">Deux à trois semaines, cinq étapes.</h2>
 </div>
 <div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
@@ -141,7 +141,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <section class="section">
 <div class="wrap">
 <div class="section-head reveal">
-<span class="eyebrow surligne" data-i18n="focus.eyebrow">La différence</span>
+<span class="eyebrow" data-i18n="focus.eyebrow">La différence</span>
 <h2 class="h-sec" data-i18n="focus.title">Publier, ou raconter.</h2>
 <p class="lead" data-i18n="focus.lead" style="margin-top:1.2rem">Le même lieu, deux réalités. Prenez la poignée et tirez : à gauche on publie sans savoir quoi dire, à droite le monde est écrit et l'équipe le tient.</p>
 </div>
@@ -177,7 +177,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <section class="section">
 <div class="wrap">
 <div class="section-head reveal">
-<span class="eyebrow surligne" data-i18n="price.eyebrow">Ce que ça coûte</span>
+<span class="eyebrow" data-i18n="price.eyebrow">Ce que ça coûte</span>
 <h2 class="h-sec" data-i18n="price.title">Le même prix que pour tout le monde.</h2>
 <p class="lead" data-i18n="price.lead" style="margin-top:1.2rem">Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.</p>
 </div>
@@ -212,7 +212,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <section class="section">
 <div class="wrap">
 <div class="section-head reveal">
-<span class="eyebrow surligne" data-i18n="faq.eyebrow">Questions fréquentes</span>
+<span class="eyebrow" data-i18n="faq.eyebrow">Questions fréquentes</span>
 <h2 class="h-sec" data-i18n="faq.title">Ce que les gérants nous demandent.</h2>
 </div>
 <div class="faq reveal d1">
@@ -226,7 +226,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><section class="section">
 <div class="wrap">
 <div class="cta-band wipe">
-<span class="eyebrow surligne" data-i18n="cta.eyebrow">On commence par un appel</span>
+<span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Nous prenons peu de lieux à la fois, et nous le dis franchement si ce n'est pas le moment.</p>
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>

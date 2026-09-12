@@ -699,9 +699,9 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
    feuille et pas l'autre. */
 /* Le rouge du surlignage est un peu plus profond que celui de marque, mais
    le texte reste en encre : c'est le noir sur rouge qui fait l'effet. */
-.surligne{ background:#d4121f; color:var(--ink); padding:.08em .3em;
+.surligne{ display:inline; background:#d4121f; color:var(--ink); padding:.08em .3em;
   margin-inline:-.3em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
-.surligne-grad{ background:linear-gradient(108deg,#d4121f 0%,#ff2233 100%); color:var(--ink);
+.surligne-grad{ display:inline; background:linear-gradient(108deg,#d4121f 0%,#ff2233 100%); color:var(--ink);
   padding:.08em .3em; margin-inline:-.3em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 /* Le surtitre de chaque section des pages de terrain. */
 .eyebrow .hl, .sec-eyebrow .hl{ background:var(--coral); color:var(--ink); padding:.1em .4em; }
