@@ -1,71 +1,55 @@
-# Strawberry — lot 1 : ce qui est corrigé
+# Strawberry — les trois terrains, entièrement réécrits
 
-5 fichiers. Sept points sur douze. Les cinq autres sont listés en bas,
-avec la raison.
+4 fichiers.
 
-## Les chiffres et le délai
+## Le chevauchement des illustrations
 
-Ils venaient de l'ancienne offre. Corrigés **à la source**, donc sur les
-quatre pages d'un coup :
+Votre capture montrait le dessin passant sous « Nous posons la ligne et
+les mots ». Le SVG est posé en absolu dans le coin de la carte — ça
+marchait sur les titres courts de NOCTA, pas sur ceux des terrains, plus
+longs.
 
-- « 2–3 semaines, puis c'est à vous » → **« 7–14 jours, et le document est
-  à vous »**
-- « 20–30 scripts prêts à tourner » → **« 20–30 pages, écrites à la main »**
-- « 1 seule personne sur votre lieu » → **« 490 €, payé une fois, quel que
-  soit le terrain »**
+Corrigé dans le CSS : le dessin est réduit, son opacité baisse, une
+gouttière lui est réservée à droite du texte, et le contenu passe
+au-dessus en profondeur. Sur mobile la gouttière disparaît et le dessin
+s'efface davantage — sinon il ne resterait plus de place pour le texte.
 
-## L'offre premium
+## Le délai dans « le sprint »
 
-> L'audit dit quoi changer. Si vous voulez qu'on le fasse — la position
-> écrite, le langage, les vingt pièces que vos équipes appliquent sans
-> vous : **l'Architecture narrative, 4 500 €**.
+« Deux à trois semaines, cinq étapes » → **« Sept à quatorze jours, cinq
+blocs »**, sur les trois pages.
 
-Elle dit ce qu'on obtient, et son rapport à l'audit.
+## Tout le reste des trois pages est réécrit
 
-## Le second CTA mène à l'achat
+54 clés par terrain, en français :
 
-« Comment ça se passe » (une ancre interne) devient **« Commander l'audit
-· 490 € »** et pointe vers la page d'offre. Chaque page de terrain a donc
-maintenant ses deux boutons : contact et achat.
+- **Les puces défilantes** — Marques / Entreprises / Studios / Cabinets
+  pour BRAND, Objets / Applications / Collections pour THE PRODUCT,
+  Musiciens / Réalisateurs / Fondateurs pour THE NAME. Plus de caves ni de
+  rooftops.
+- **Le constat**, raccourci de moitié : deux phrases au lieu de quatre. Il
+  posait le problème, puis le reformulait, puis l'illustrait. Il se lit
+  maintenant d'un trait.
+- **Les cinq blocs de l'audit** — titres, descriptions et puces, adaptés à
+  chaque terrain. Le cinquième bloc dit enfin ce qu'on emporte.
+- **La différence** — « Communiquer, ou tenir une position », « Lister, ou
+  raconter », « Publier, ou se raconter », avec les deux états du
+  comparateur écrits pour chaque cas.
+- **La FAQ** — cinq questions propres à chaque public. Un fabricant demande
+  si ça marche pour une gamme ; un artiste demande si c'est trop tôt, et
+  si ça va formater son travail.
 
-## La section « qui écrit », retirée
+## Un piège évité
 
-Elle décrivait le studio au « nous » sur chaque page de terrain. Supprimée
-du gabarit, donc des quatre pages.
+Mes surcharges s'inséraient **avant** les anciennes clés. En JavaScript,
+la dernière définition l'emporte : les anciens textes auraient donc gagné,
+et rien n'aurait changé à l'écran malgré un patch qui a l'air correct. Les
+dictionnaires sont dédoublonnés, nouvelle version conservée.
 
-## Le rose
+## Ce qui reste
 
-Il venait d'un conflit que j'avais créé : la classe `accroche` pose une
-couleur de texte, `text-gradient` pose un dégradé en fond découpé — les
-deux sur le même élément donnaient ce rose délavé. `text-gradient` retiré
-sur les deux phrases concernées.
-
-## Le menu
-
-L'Architecture est séparée des trois terrains par un **filet rouge**, avec
-une respiration au-dessus.
-
-## La bulle de section sur /about
-
-Retirée, avec son import.
-
----
-
-# Les cinq points restants, et pourquoi
-
-**Les puces défilantes** (Cabinets, Caves & bistrots…), **le constat trop
-long**, **la partie « la différence »** et **la FAQ** : ce sont les mêmes
-clés à réécrire, quatre fois chacune, dans deux langues. J'ai les listes
-exactes, c'est un travail de rédaction que je peux enchaîner au tour
-suivant sans rien chercher.
-
-**Les logos qui passent sous le texte dans « le sprint »** : c'est un
-problème de superposition CSS, pas de contenu. Il me faut la capture pour
-viser juste — sur quelle page et à quelle taille d'écran ?
-
-**Les pages Studio et Méthode** : elles parlent encore de la commande à
-4 500 € comme offre principale. C'est de la réécriture éditoriale, pas des
-substitutions.
+La version **anglaise** de ces 54 clés par terrain, et les pages **Studio**
+et **Méthode**. Dites-moi par laquelle je continue.
 
 ## Vérification
 

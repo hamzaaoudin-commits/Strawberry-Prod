@@ -539,8 +539,19 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 @media (prefers-reduced-motion: reduce){ .tl-step{ opacity:1; transform:none; } .tl-fill{ height:100% !important; } }
 
 /* ---------- chapter SVG art ---------- */
+/* Le dessin est posé en absolu dans le coin de la carte. Sur des titres
+   longs — et ceux des terrains le sont plus que ceux de NOCTA — il passait
+   par-dessus le texte. On lui réserve donc une gouttière : le contenu de la
+   carte ne s'étend plus sous lui, et l'opacité baisse pour qu'un
+   chevauchement résiduel reste lisible. */
 .chapter .art{ position:absolute; right:clamp(.8rem,3vw,2rem); top:clamp(.8rem,3vw,1.8rem);
-  width:clamp(84px,17vw,150px); height:auto; opacity:.9; pointer-events:none; }
+  width:clamp(72px,13vw,120px); height:auto; opacity:.55; pointer-events:none; z-index:0; }
+.chapter > *:not(.art){ position:relative; z-index:1; }
+.chapter h3, .chapter p, .chapter ul{ padding-right:clamp(84px,15vw,140px); }
+@media (max-width:640px){
+  .chapter .art{ opacity:.35; }
+  .chapter h3, .chapter p, .chapter ul{ padding-right:0; }
+}
 .chapter .art .st{ stroke:var(--coral); stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
 .chapter .art .st2{ stroke:var(--iris-soft); stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
 .chapter .art .fl{ fill:var(--coral); } .chapter .art .fl2{ fill:var(--iris-soft); }
