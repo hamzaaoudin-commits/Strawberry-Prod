@@ -1,49 +1,37 @@
-# Strawberry — THE PRODUCT, le quatrième terrain
+# Strawberry — la tournée sort des pages de terrain
 
-7 fichiers.
+5 fichiers.
 
-## La page
+## Ce qui change
 
-**`/the-product` — THE PRODUCT.** Même gabarit que les trois autres :
-même HTML, même CSS, même JavaScript. Canvas bokeh, tournée épinglée,
-comparateur, accordéon — identiques, parce que c'est le même code.
+La section « La tournée » — son intro et le bloc épinglé de 460vh — est
+retirée des **quatre** pages de terrain. Elle ne vit plus que sur la home.
 
-76 clés de texte réécrites, FR et EN : toutes celles qui parlaient de
-lieux, plus celles propres au terrain.
+Vous aviez raison sur le fond : c'est le dispositif le plus
+reconnaissable du site. Le voir deux fois en deux clics, avec la même
+mécanique de défilement épinglé, le transformait en tic de mise en page
+plutôt qu'en moment fort. Un effet de ce calibre ne supporte pas la
+répétition.
 
-**L'accroche** : « Votre produit est bon. Ce qu'il raconte, personne ne
-l'a écrit. »
+Le retrait est fait en un seul endroit pour THE ROOM et dans le gabarit
+partagé pour les trois autres — donc les quatre pages sont traitées, sans
+risque d'en oublier une.
 
-**Le constat** : en rayon ou sur une page de comparaison, un bon produit
-devient une ligne de caractéristiques à côté d'une autre — parce que rien
-ne dit pourquoi il a été fait comme ça.
+## Nettoyage qui allait avec
 
-**La tournée** de la page : l'objet, l'application, la collection,
-l'édition. Avec leur moment, leur preuve, leur casting, leurs rituels.
+Les 38 clés de texte par page qui alimentaient la tournée (`tour.*`,
+`work.*`) ne servaient plus à rien : plus aucun nœud ne les porte. Elles
+sont retirées des trois pages qui les surchargeaient — 114 lignes de code
+mort en moins, et surtout plus de piège pour le futur : personne n'ira
+modifier un texte qui ne s'affiche nulle part.
 
-**Le comparateur** : « un produit qui liste » contre « un produit qui se
-raconte ».
+## Ce que gardent les pages de terrain
 
-## Pourquoi c'est distinct de BRAND, et pas un doublon
-
-La distinction tient, et la page la porte : une marque se juge sur ce
-qu'elle **refuse**, un produit sur ce qu'il a fallu **accepter** pour le
-faire ainsi. Le premier vend une position, le second une intention de
-conception. C'est ce qui donne à la page son angle propre — l'arbitrage
-expliqué plutôt que la caractéristique affichée.
-
-## Le reste du site suit
-
-- **La tournée de la home** passe à quatre scènes, THE PRODUCT insérée
-  entre BRAND et THE ROOM. Le surtitre devient « Un métier, quatre
-  terrains ».
-- **La bande des terrains de la page audit** : « Entreprises » cède sa
-  place à « Produits », et « Marques » devient « Marques & entreprises »
-  — puisque BRAND couvre déjà les deux.
-- Menu, pied de page, sitemap et préfixes de langue mis à jour.
+Le canvas bokeh, le manifeste, les cinq blocs de l'audit, le comparateur
+à glisser, les chiffres, le prix, la FAQ, le CTA. Elles restent denses ;
+elles ne redisent simplement plus ce que la home vient de montrer.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Vérifié aussi que `.ts-4` existe dans le
-CSS porté — sans ça, la quatrième scène de la tournée n'aurait pas eu de
-fond.
+Contrôle de types : zéro erreur. Vérifié qu'aucune trace de `tour-pin` ou
+`tour-scene` ne subsiste dans les pages de terrain.
