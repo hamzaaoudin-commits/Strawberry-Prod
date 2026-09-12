@@ -113,7 +113,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
               passer comme une deuxième ligne de titre. */}
           <span
             ref={h2Ref}
-            className="text-gradient inline-block font-bold"
+            className="surligne-grad inline-block font-bold"
             style={{
               transform: h2Visible ? "scale(1)" : "scale(1)",
               animation: h2Visible ? "diagnosis-swell 1400ms cubic-bezier(.22,.68,0,1) 200ms both" : undefined,
@@ -156,14 +156,10 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                 {/* Temps 1 puis 2 : le mot apparaît, puis se barre. Le trait
                     se dessine de gauche à droite plutôt que d'apparaître
                     d'un coup — on voit la rature se faire. */}
-                {/* La première fausse cause est surlignée en plus d'être
-                    barrée : elle donne le ton de la liste, les suivantes
-                    n'ont plus besoin de l'appui. */}
-                <span
-                  className={`relative inline-block font-serif text-[1.05rem] italic ${
-                    i === 0 ? "surligne" : "text-white/50"
-                  }`}
-                >
+                {/* Toutes les fausses causes sont surlignées et barrées :
+                    c'est ce que le surlignage désigne ici — la liste de ce
+                    qui a été essayé pour rien. */}
+                <span className="surligne relative inline-block font-serif text-[1.05rem] italic">
                   {fc.label}
                   <span
                     aria-hidden

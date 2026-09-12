@@ -83,10 +83,10 @@ export function ProblemSection({ lang }: { lang: Lang }) {
                   <span aria-hidden className="text-[0.7em] text-brand">
                     ✦
                   </span>
-                  {/* Seule la première ligne est surlignée : c'est le
-                      contraste avec les deux suivantes qui fait l'effet.
-                      Les trois surlignées, ce serait un bloc rouge. */}
-                  {i === 0 ? <span className="surligne">{item}</span> : item}
+                  {/* Les trois lignes sont surlignées : une liste dont un
+                      seul élément l'est se lit comme une erreur, pas comme
+                      un parti pris. */}
+                  <span className="surligne">{item}</span>
                 </li>
               ))}
             </ul>

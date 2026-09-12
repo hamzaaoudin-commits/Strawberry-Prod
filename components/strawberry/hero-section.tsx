@@ -229,8 +229,8 @@ export function HeroSection() {
             </span>
           </h1>
 
-          <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em] text-brand/80">
-            {t.grounding}
+          <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em]">
+            <span className="surligne">{t.grounding}</span>
           </p>
 
           <p className="mb-8 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">

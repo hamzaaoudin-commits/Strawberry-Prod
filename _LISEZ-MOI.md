@@ -1,48 +1,52 @@
-# Strawberry — le surlignage devient un élément de design
+# Strawberry — le surlignage, corrigé et étendu
 
-6 fichiers.
+9 fichiers. Vos trois reproches étaient justes, voici ce que j'en ai fait.
 
-## L'effet
+## 1. Le rouge était trop clair
 
-Deux classes, `surligne` (rouge plein) et `surligne-grad` (le dégradé),
-qui reprennent exactement ce que fait `::selection` : fond rouge, texte en
-encre. Définies dans `globals.css` **et** dans `nocta/styles.css`, parce
-que les pages de terrain portent l'une et pas l'autre.
+Une nouvelle variable, `--color-highlight: #a80f1e`, distincte du rouge de
+marque.
 
-## Trois détails qui font la différence
+La raison est structurelle : **un fond doit être plus sombre qu'un trait.**
+`#ff2233` est juste en accent — sur un mot, un filet, une icône — mais en
+aplat derrière du texte il éblouit et fait bon marché. Le nouveau garde la
+même teinte et descend la luminosité, ce qui laisse un texte clair
+(`#fff5f2`, un blanc légèrement chaud) parfaitement lisible par-dessus.
 
-**Le texte passe en encre, pas en blanc.** Sur ce rouge saturé, du blanc
-tombe sous le seuil de lisibilité alors que le noir le dépasse largement.
-C'est d'ailleurs ce que fait votre `::selection` — je n'ai fait que le
-reprendre.
+J'ai aussi aligné `::selection` dessus : deux rouges différents, l'un posé
+dans la page et l'autre au glissement de souris, auraient juré côte à côte.
 
-**`box-decoration-break: clone`.** Sans lui, un surlignage qui passe à la
-ligne perd sa marge interne sur le second fragment : le fond se colle au
-texte et l'effet se casse au milieu d'une phrase.
+## 2. Les listes sont surlignées en entier
 
-**Une marge négative compense la marge interne**, pour que le mot surligné
-reste aligné avec le texte autour au lieu de décaler la ligne.
+Vous avez raison et mon raisonnement était faux. Je disais que surligner
+une seule ligne créait un contraste ; en réalité, dans une liste, un seul
+élément traité différemment se lit comme une **erreur**, pas comme un
+parti pris. Les trois lignes de la triade et les quatre fausses causes
+sont désormais toutes surlignées.
 
-## Où je l'ai posé
+Sur les fausses causes, le surlignage se cumule avec la rature — c'est
+cohérent avec ce que l'effet désigne à cet endroit : la liste de ce qui a
+été essayé pour rien.
 
-- **Le titre de la tournée** — « Ce qu'on trouve quand un récit est
-  écrit », en dégradé, comme sur votre capture.
-- **Le surtitre « LE PROBLÈME »** sur la home, et **« LE CONSTAT »** sur
-  les pages de terrain.
-- **La première ligne de la triade** (« Rien à quoi appartenir »).
-- **La première fausse cause** (« Un logo refait »), qui cumule le
-  surlignage et la rature.
+## 3. Étendu là où ça avait du sens
 
-## Un choix que j'ai fait
+Au-delà de vos quatre emplacements :
 
-Dans les deux listes, **seule la première ligne est surlignée**. Les trois
-surlignées donneraient un bloc rouge, et l'effet disparaîtrait — c'est le
-contraste avec les lignes suivantes qui le fait exister. La première donne
-le ton, les autres n'ont plus besoin de l'appui.
+- **La ligne d'ancrage du hero** — « Audit narratif · 490 € · Livré en
+  sept jours ». C'est l'information la plus importante de la page, elle
+  était en rouge sur noir à 80% d'opacité, donc discrète.
+- **Le surtitre de la section offre** sur la home.
+- **Le titre du diagnostic** — « Ça a manqué de la bonne cause », en
+  dégradé.
+- **Tous les surtitres des pages de terrain**, pas seulement « le
+  constat » : six occurrences.
 
-Même logique pour le reste du site : l'effet tient parce qu'il est rare.
-Si vous voulez l'étendre, dites-moi où précisément plutôt que de
-généraliser.
+## Où je ne l'ai pas mis, et pourquoi
+
+Pas sur les titres principaux — un h1 surligné en entier devient une
+bannière et écrase tout le reste. Pas sur les corps de texte, où le fond
+haché à chaque ligne devient illisible. Pas dans le pied de page ni la
+navigation, où rien ne mérite qu'on s'arrête.
 
 ## Vérification
 

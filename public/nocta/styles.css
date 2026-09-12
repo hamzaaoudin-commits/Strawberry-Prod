@@ -697,9 +697,11 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 /* Le surlignage — même effet que ::selection, posé dans la page.
    Défini ici en plus de globals.css : les pages de terrain portent cette
    feuille et pas l'autre. */
-.surligne{ background:var(--coral); color:var(--ink); padding:.08em .28em;
-  margin-inline:-.28em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
-.surligne-grad{ background:var(--grad); color:var(--ink); padding:.08em .28em;
-  margin-inline:-.28em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+/* Le rouge du surlignage est plus profond que celui de marque : un fond
+   doit être plus sombre qu'un trait, sinon le texte posé dessus éblouit. */
+.surligne{ background:#a80f1e; color:#fff5f2; padding:.08em .3em;
+  margin-inline:-.3em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+.surligne-grad{ background:linear-gradient(108deg,#a80f1e 0%,#c4121f 100%); color:#fff5f2;
+  padding:.08em .3em; margin-inline:-.3em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 /* Le surtitre de chaque section des pages de terrain. */
 .eyebrow .hl, .sec-eyebrow .hl{ background:var(--coral); color:var(--ink); padding:.1em .4em; }

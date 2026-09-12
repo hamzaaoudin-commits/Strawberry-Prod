@@ -210,7 +210,7 @@ export function TourSection() {
       <ViewTracker name="tour" />
 
       <div className="shell pt-24 text-center">
-        <div className="kicker mb-5">{t.kicker}</div>
+        <div className="mb-5"><span className="kicker surligne">{t.kicker}</span></div>
         <h2 className="h-section mx-auto max-w-[760px]">
             <span className="surligne-grad">{t.title}</span>
           </h2>
