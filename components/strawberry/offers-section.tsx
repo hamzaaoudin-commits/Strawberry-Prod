@@ -194,7 +194,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
       <div className="shell relative">
         <div className="mx-auto mb-16 max-w-[720px] text-center">
-          <div className="mb-6"><span className="kicker surligne">{t.kicker}</span></div>
+          <div className="kicker mb-6">{t.kicker}</div>
           <h2 className="h-section mb-7">
             {t.h2a}
             <br />
