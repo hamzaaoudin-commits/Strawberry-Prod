@@ -2,6 +2,9 @@
 
 import { useEffect } from "react"
 import { useLang } from "@/lib/i18n"
+import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { NavBar } from "@/components/strawberry/navbar"
+import { Footer } from "@/components/strawberry/footer"
 
 /**
  * Le gabarit de page de terrain — la page THE ROOM, réutilisée telle quelle.
@@ -315,7 +318,22 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
         rel="stylesheet"
       />
       <link rel="stylesheet" href="/nocta/styles.css" />
+
+      {/* Le retour à l'accueil, comme sur les autres pages intérieures.
+          Il vit hors du HTML injecté : celui-ci vient du site NOCTA, qui
+          n'avait pas de page mère. Posé ici, il bénéficie de LocaleLink,
+          donc il garde la langue — ce qu'un lien écrit dans le HTML brut
+          ne ferait pas. */}
+      {/* La navigation du site.
+          Le HTML injecté vient de NOCTA, qui était un site autonome : son
+          en-tête et son pied de page ont été retirés au portage, et rien ne
+          les remplaçait. Ces pages n'avaient donc ni logo, ni menu, ni
+          bouton d'achat — on y entrait sans pouvoir en sortir autrement
+          qu'avec le bouton du navigateur. */}
+      <NavBar />
+      <BackHomeButton />
       <main id="main" dangerouslySetInnerHTML={{ __html: html }} />
+      <Footer />
 
       {/* Les autres terrains.
           Chaque page était un cul-de-sac : on y arrivait, on lisait, on

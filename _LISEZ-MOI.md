@@ -1,46 +1,35 @@
-# Strawberry — le rose remplacé par du noir sur rouge
+# Strawberry — les pages d'offres retrouvent leur navigation
 
-4 fichiers.
+1 fichier : le gabarit partagé, donc les quatre pages d'un coup.
 
-## D'où venait le rose
+## Le bouton demandé
 
-Deux variables de la charte portaient des valeurs franchement roses :
-`--coral-soft: #ff6b75` et `--iris-soft: #ff7a7a`. Quand j'ai éclairci le
-rouge de marque, elles sont restées — et c'est elles qui coloraient les
-phrases d'accroche, pas le dégradé comme je l'avais supposé la première
-fois.
+**« ← Accueil »** est ajouté, le même composant que sur la page audit et
+la page de remerciement. Il vit hors du HTML injecté : celui-ci vient de
+NOCTA et n'a pas de page mère. Posé dans le composant React, il passe par
+`LocaleLink` et garde donc la langue — un lien écrit dans le HTML brut ne
+le ferait pas.
 
-Elles reviennent dans la famille du rouge, côté orangé : `#ff6a4a` et
-`#ff8352`. Elles servent encore aux traits fins et aux icônes, où elles ne
-posent pas de problème.
+## Ce que j'ai trouvé en cherchant
 
-## Les phrases passent en noir surligné
+Les pages d'offres n'avaient **aucune navigation du tout**. Pas de logo,
+pas de menu, pas de bouton « Commander l'audit ».
 
-Comme vous l'avez montré. Sur les pages d'offres :
+La cause est mécanique : le HTML vient du site NOCTA, qui était autonome.
+Son en-tête et son pied de page ont été retirés au moment du portage — et
+rien ne les a remplacés, parce que le gabarit se contentait d'injecter le
+`<main>`. On entrait donc sur ces pages sans pouvoir en sortir autrement
+qu'avec le bouton du navigateur.
 
-- **« Tout ça existe déjà chez vous. Il faut juste l'écrire. »**
-- Les phrases fortes du constat (`.manifesto .serif`)
-- La phrase du bandeau final (`.cta-band .serif`)
+**La barre de navigation et le pied de page du site sont ajoutés.** Les
+quatre pages de terrain sont maintenant des pages du site, pas des
+impasses.
 
-Sur la home :
+## Un effet secondaire utile
 
-- La même phrase de clôture de la tournée
-- **`.ts-out`**, la ligne de bénéfice de chaque scène — « Un lieu qu'on
-  reconnaît avant d'en avoir lu le nom », etc. Elle était en dégradé
-  découpé, donc rose elle aussi.
-
-## Pourquoi c'est meilleur, au-delà du rose
-
-Une phrase en rouge clair sur fond sombre reste du texte coloré : elle se
-distingue à peine du corps autour. Surlignée, elle devient un objet. Sur
-ces lignes-là — qui disent toutes ce que le client emporte — c'est
-exactement ce qu'il faut.
-
-## La garde tient
-
-Toutes ces règles portent `display: inline` et `box-decoration-break:
-clone`, donc aucune ne peut déborder sur la largeur de la ligne ni casser
-son fond en passant à la ligne suivante.
+Le bouton « Commander l'audit » de la barre est présent sur ces pages.
+C'était le seul endroit du site où l'action principale n'était pas
+accessible en permanence.
 
 ## Vérification
 
