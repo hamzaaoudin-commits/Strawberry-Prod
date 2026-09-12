@@ -41,7 +41,12 @@
   --body:    "Hanken Grotesk", system-ui, sans-serif;
   --mono:    "Space Mono", ui-monospace, monospace;
 
-  --maxw: 1180px;
+  /* La largeur utile suit l'écran au lieu d'être figée.
+     À 1180px, une page ouverte en plein écran sur 1920 laissait plus de
+     700px de vide : le site avait été dessiné pour une fenêtre à moitié
+     ouverte. Le plancher garde la mise en page d'origine sur les écrans
+     courants, le plafond évite les lignes trop longues au-delà. */
+  --maxw: clamp(1180px, 82vw, 1560px);
   --pad: clamp(20px, 5vw, 64px);
 
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -167,8 +172,11 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   filter:drop-shadow(0 0 38px rgba(255,34,51,.28)); }
 .flicker{ animation:flick 6s infinite steps(1); }
 @keyframes flick{ 0%,96%,100%{opacity:1} 97%{opacity:.55} 98%{opacity:1} 98.5%{opacity:.7} }
-.hero-tag{ font-family:var(--serif); font-style:italic; font-size:clamp(1.5rem,4vw,2.6rem);
-  color:var(--cream); margin-top:.6rem; line-height:1.15; max-width:18ch; }
+/* 18ch cassait la phrase en quatre lignes très courtes sous le wordmark,
+   ce qui laissait une colonne maigre au milieu d'un grand vide. 24ch la
+   tient en deux ou trois lignes pleines. */
+.hero-tag{ font-family:var(--serif); font-style:italic; font-size:clamp(1.5rem,3.2vw,2.6rem);
+  color:var(--cream); margin-top:.6rem; line-height:1.15; max-width:24ch; }
 .hero-tag b{ font-style:normal; font-family:var(--display); font-weight:700;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .hero-cta{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:2.6rem; }
@@ -189,8 +197,12 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
 
 /* ---------- manifesto ---------- */
-.manifesto p{ font-family:var(--display); font-weight:500; font-size:clamp(1.6rem,4.2vw,3rem);
-  line-height:1.18; letter-spacing:-.02em; max-width:20ch; }
+/* 20ch était une colonne de vingt caractères : sur un grand écran, le
+   constat devenait une bande verticale étroite au milieu du vide. 26ch
+   garde une ligne confortable à lire tout en occupant la page. */
+.manifesto p{ font-family:var(--display); font-weight:500;
+  font-size:clamp(1.6rem,3.4vw,2.9rem);
+  line-height:1.18; letter-spacing:-.02em; max-width:26ch; }
 /* Les phrases fortes du constat : noir sur rouge, pas rouge clair sur noir.
    En rouge clair elles viraient au rose sur ce fond, et elles se
    confondaient avec le corps de texte. */
@@ -712,3 +724,18 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   padding:.08em .3em; margin-inline:-.3em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 /* Le surtitre de chaque section des pages de terrain. */
 .eyebrow .hl, .sec-eyebrow .hl{ background:var(--coral); color:var(--ink); padding:.1em .4em; }
+
+/* ---------------------------------------------------------------------------
+   GRANDS ÉCRANS
+
+   Au-delà de 1600px, la mise en page d'origine laissait le contenu tassé
+   dans sa colonne. On augmente la respiration verticale et la taille des
+   corps de texte plutôt que d'élargir davantage les lignes, qui
+   deviendraient pénibles à lire.
+   --------------------------------------------------------------------------- */
+@media (min-width: 1600px) {
+  .section { padding-block: clamp(110px, 8vw, 170px); }
+  .lead { font-size: 1.28rem; }
+  .chapter p { font-size: 1.05rem; }
+  .card p { font-size: 1.05rem; }
+}
