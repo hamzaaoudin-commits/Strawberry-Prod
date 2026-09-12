@@ -319,19 +319,23 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
       {/* Le nom du studio, seul et cliquable.
           La barre complète du site ne tient pas ici : ces pages ont leur
           propre grille, et le menu débordait en poussant le bouton d'achat
-          hors de l'écran. Un logo qui ramène à l'accueil suffit — le reste
-          de la navigation est en pied de page. */}
+          hors de l'écran. Un logo qui ramène à l'accueil suffit : ces pages
+          mènent déjà vers l'audit par les deux boutons du hero et par la
+          carte de prix. */}
       <a
         href={`/${lang}`}
         style={{
           position: "fixed",
-          top: "clamp(18px,3vw,28px)",
+          top: "25px",
           left: "clamp(20px,5vw,64px)",
           zIndex: 130,
           fontFamily: "var(--display)",
           fontWeight: 700,
-          fontSize: "clamp(15px,2vw,19px)",
-          letterSpacing: "-0.01em",
+          // 22px et -0.02em : les valeurs exactes du logo de la barre
+          // de navigation du site. Un même nom affiché à deux tailles
+          // selon la page se remarque immédiatement.
+          fontSize: "22px",
+          letterSpacing: "-0.02em",
           color: "#ff2233",
           textDecoration: "none",
         }}
