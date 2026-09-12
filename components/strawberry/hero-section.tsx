@@ -111,9 +111,9 @@ export function HeroSection() {
   return (
     <section id="home" ref={heroRef as any} className="relative flex min-h-[82vh] items-center overflow-hidden bg-ink">
       <ViewTracker name="hero" />
-      <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
-      <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
-      <AnimatedOrb color="radial-gradient(circle,#dc2626,transparent)" size={300} x="80%" y="80%" opacity={0.1} />
+      <AnimatedOrb color="radial-gradient(circle,#ff2233,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
+      <AnimatedOrb color="radial-gradient(circle,#ff4d2e,transparent)" size={500} x="60%" y="30%" opacity={0.14} />
+      <AnimatedOrb color="radial-gradient(circle,#e0102a,transparent)" size={300} x="80%" y="80%" opacity={0.1} />
 
       {/* Grid mesh */}
       <div
@@ -148,7 +148,7 @@ export function HeroSection() {
         <style>{`
           @keyframes hero-twinkle {
             0%, 80%, 100% { opacity: var(--twinkle-base); transform: scale(1); filter: none; }
-            90% { opacity: 1; transform: scale(2); filter: drop-shadow(0 0 6px #e63946) drop-shadow(0 0 2px #fff); }
+            90% { opacity: 1; transform: scale(2); filter: drop-shadow(0 0 6px #ff2233) drop-shadow(0 0 2px #fff); }
           }
         `}</style>
         {EXTRACTION_POINTS.map((p, i) => (
@@ -158,7 +158,7 @@ export function HeroSection() {
             y1={p.y}
             x2="760"
             y2="360"
-            stroke="#e63946"
+            stroke="#ff2233"
             strokeWidth="0.6"
             opacity={p.near ? 0.55 : 0.18}
             pathLength={1}
@@ -181,7 +181,7 @@ export function HeroSection() {
               cx={p.x}
               cy={p.y}
               r={radius}
-              fill="#e63946"
+              fill="#ff2233"
               opacity={mounted ? base : 0}
               style={
                 {
@@ -196,8 +196,8 @@ export function HeroSection() {
             />
           )
         })}
-        <circle cx="760" cy="360" r="4" fill="#e63946" />
-        <circle cx="760" cy="360" r="14" fill="none" stroke="#e63946" strokeWidth="1" opacity="0.4" />
+        <circle cx="760" cy="360" r="4" fill="#ff2233" />
+        <circle cx="760" cy="360" r="14" fill="none" stroke="#ff2233" strokeWidth="1" opacity="0.4" />
       </svg>
 
       <div className="relative z-[1] w-full shell px-gutter pt-32">
@@ -208,7 +208,7 @@ export function HeroSection() {
           ].join(" ")}
         >
           <div className="mb-8 inline-flex max-w-full items-center gap-2 overflow-hidden rounded-full border border-brand/35 bg-brand/[0.12] px-4 py-1.5">
-            <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full bg-brand shadow-[0_0_8px_#e63946]" />
+            <span aria-hidden className="h-[7px] w-[7px] shrink-0 rounded-full bg-brand shadow-[0_0_8px_#ff2233]" />
             <span className="whitespace-nowrap font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">
               {t.badge}
             </span>
@@ -224,7 +224,7 @@ export function HeroSection() {
           <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.5rem,4.8vw,4.8rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white">
             {t.h1a}
             <br />
-            <span className="block bg-[linear-gradient(135deg,#e63946_20%,#ff1a1a_60%,#dc2626)] bg-clip-text pb-[0.14em] text-transparent">
+            <span className="block bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text pb-[0.14em] text-transparent">
               {t.h1b}
             </span>
           </h1>

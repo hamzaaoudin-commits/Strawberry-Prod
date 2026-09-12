@@ -335,7 +335,7 @@ export function ContactSection() {
                     "mt-2 rounded-full border-none px-8 py-[18px] font-sans text-sm font-semibold tracking-[0.05em] text-white transition-opacity",
                     status === "sending"
                       ? "cursor-not-allowed bg-brand/40"
-                      : "cursor-pointer bg-[linear-gradient(135deg,#e63946,#ff1a1a)] shadow-[0_15px_40px_rgba(230,57,70,0.35)] hover:opacity-90",
+                      : "cursor-pointer bg-[linear-gradient(135deg,#ff2233,#ff4d2e)] shadow-[0_15px_40px_rgba(255,34,51,0.35)] hover:opacity-90",
                   ].join(" ")}
                 >
                   {status === "sending" ? t.sending : t.send}

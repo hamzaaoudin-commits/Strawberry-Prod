@@ -3,7 +3,7 @@ import { GlassCard } from "./glass-card"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 
-const BELIEF_COLORS = ["#e63946", "#ff1a1a", "#dc2626"]
+const BELIEF_COLORS = ["#ff2233", "#ff4d2e", "#e0102a"]
 
 const T = {
   en: {
@@ -44,7 +44,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
 
   return (
     <section id="about" className="relative overflow-hidden bg-ink px-gutter py-20">
-      <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="70%" y="10%" opacity={0.12} />
+      <AnimatedOrb color="radial-gradient(circle,#ff2233,transparent)" size={600} x="70%" y="10%" opacity={0.12} />
 
       <div
         className={[

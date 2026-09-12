@@ -149,7 +149,7 @@ export function NavBar() {
             <Link
               href="/brand-narrative-audit"
               className="relative rounded-full px-5 py-2.5 font-sans text-[13px] font-semibold tracking-[0.04em] text-white no-underline"
-              style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
+              style={{ background: "linear-gradient(135deg,#ff2233,#ff4d2e)" }}
             >
               {t.cta}
             </Link>
@@ -187,7 +187,7 @@ export function NavBar() {
               href="/brand-narrative-audit"
               onClick={() => setMobileOpen(false)}
               className="rounded-full px-6 py-3 text-center font-sans text-sm font-semibold text-white no-underline"
-              style={{ background: "linear-gradient(135deg,#e63946,#ff1a1a)" }}
+              style={{ background: "linear-gradient(135deg,#ff2233,#ff4d2e)" }}
             >
               {t.cta}
             </Link>

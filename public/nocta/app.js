@@ -218,7 +218,7 @@
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(64, 64, 64, 0, Math.PI * 2); ctx.fill();
     const tex = new THREE.CanvasTexture(c);
 
-    const palette = [0xe63946, 0xff1a1a, 0xff6b75, 0xff7a7a].map(h => new THREE.Color(h));
+    const palette = [0xff2233, 0xff4d2e, 0xff7a5e, 0xff9a7a].map(h => new THREE.Color(h));
 
     // depth layers: count, z, point size, drift amplitude, fill factor (how far past frame edges)
     const defs = [

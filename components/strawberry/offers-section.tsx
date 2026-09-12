@@ -276,14 +276,14 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 complet reste en dessous pour qui veut le lire en entier. */}
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:gap-6">
               <div className="flex items-center gap-2.5">
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#e63946" strokeWidth="1.6">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#ff2233" strokeWidth="1.6">
                   <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
                   <path d="M9 12l2 2 4-4" />
                 </svg>
                 <span className="font-sans text-[12.5px] text-chalk-65">{t.guaranteeShort}</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#e63946" strokeWidth="1.6">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden fill="none" stroke="#ff2233" strokeWidth="1.6">
                   <rect x="3" y="6" width="18" height="13" rx="1.5" />
                   <path d="M3 10h18" />
                 </svg>

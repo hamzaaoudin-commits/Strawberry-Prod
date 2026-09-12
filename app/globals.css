@@ -10,19 +10,19 @@
   --card-foreground: #ffffff;
   --popover: #0d0d0d;
   --popover-foreground: #ffffff;
-  --primary: #e63946;
+  --primary: #ff2233;
   --primary-foreground: #ffffff;
-  --secondary: #ff1a1a;
+  --secondary: #ff4d2e;
   --secondary-foreground: #ffffff;
   --muted: rgba(255,255,255,0.05);
   --muted-foreground: rgba(255,255,255,0.5);
-  --accent: #dc2626;
+  --accent: #e0102a;
   --accent-foreground: #ffffff;
-  --destructive: #ff1a1a;
+  --destructive: #ff4d2e;
   --destructive-foreground: #ffffff;
   --border: rgba(255,255,255,0.12);
   --input: rgba(255,255,255,0.06);
-  --ring: #e63946;
+  --ring: #ff2233;
   --radius: 0.625rem;
 }
 
@@ -58,9 +58,9 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   /* Brand tokens — use these instead of hardcoding hex values in components. */
-  --color-brand: #e63946;
-  --color-brand-bright: #ff1a1a;
-  --color-brand-deep: #dc2626;
+  --color-brand: #ff2233;
+  --color-brand-bright: #ff4d2e;
+  --color-brand-deep: #e0102a;
   --color-ink: #0a0a0a;
   --color-ink-soft: #0d0d0d;
 
@@ -87,9 +87,9 @@
   --color-surface: #141414;
 
   /* L'accent : le rouge de marque, là où MOMENTUM mettait du cobalt. */
-  --color-cobalt: #e63946;
-  --color-cobalt-vif: #ff1a1a;
-  --color-cobalt-sourd: #dc2626;
+  --color-cobalt: #ff2233;
+  --color-cobalt-vif: #ff4d2e;
+  --color-cobalt-sourd: #e0102a;
 
   /* Rampe de texte : gris opaques, comme chez MOMENTUM — la rampe
      translucide du studio ne convient pas à des cartes empilées. */
@@ -116,7 +116,7 @@
   /* Hairline borders */
   --color-hair: rgba(255,255,255,0.07);
   --color-hair-strong: rgba(255,255,255,0.12);
-  --color-brand-hair: rgba(230,57,70,0.25);
+  --color-brand-hair: rgba(255,34,51,0.25);
 }
 
 @layer base {
@@ -130,7 +130,7 @@
     scroll-behavior: smooth;
   }
   ::selection {
-    background: rgba(230,57,70,0.35);
+    background: rgba(255,34,51,0.35);
     color: #fff;
   }
   ::-webkit-scrollbar {
@@ -140,7 +140,7 @@
     background: #0a0a0a;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(230,57,70,0.4);
+    background: rgba(255,34,51,0.4);
     border-radius: 100px;
   }
 }
@@ -269,9 +269,9 @@
 
 @utility card-featured {
   position: relative;
-  border: 1px solid rgba(230, 57, 70, 0.4);
+  border: 1px solid rgba(255, 34, 51, 0.4);
   padding: 2rem;
-  background: linear-gradient(180deg, rgba(230, 57, 70, 0.08) 0%, rgba(10, 10, 10, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(255, 34, 51, 0.08) 0%, rgba(10, 10, 10, 0.6) 100%);
 }
 
 /* Corner brackets used on featured cards and document blocks. */
@@ -301,7 +301,7 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(230, 57, 70, 0.35) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 34, 51, 0.35) 0%, transparent 60%);
   opacity: 0.3;
 }
 
@@ -309,7 +309,7 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.35) 0%, transparent 62%);
+  background: radial-gradient(ellipse at center, rgba(255, 34, 51, 0.35) 0%, transparent 62%);
   opacity: 0.25;
 }
 
@@ -338,13 +338,13 @@
   padding: 15px 32px;
   color: #fff;
   background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
-  box-shadow: 0 0 0 rgba(230, 57, 70, 0);
+  box-shadow: 0 0 0 rgba(255, 34, 51, 0);
   transition: transform 300ms cubic-bezier(.22,.68,0,1.2), box-shadow 300ms cubic-bezier(.22,.68,0,1.2), opacity 300ms cubic-bezier(.22,.68,0,1.2);
 }
 @utility btn-primary {
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 34px rgba(230, 57, 70, 0.38);
+    box-shadow: 0 14px 34px rgba(255, 34, 51, 0.38);
   }
   &:active { transform: translateY(0); }
 }
@@ -364,8 +364,8 @@
 }
 @utility btn-ghost {
   &:hover {
-    border-color: rgba(230, 57, 70, 0.5);
-    background-color: rgba(230, 57, 70, 0.06);
+    border-color: rgba(255, 34, 51, 0.5);
+    background-color: rgba(255, 34, 51, 0.06);
     transform: translateY(-2px);
   }
   &:active { transform: translateY(0); }
@@ -434,7 +434,7 @@
   &:focus {
     outline: none;
     border-color: var(--color-brand);
-    box-shadow: 0 0 0 1px rgba(230, 57, 70, 0.4);
+    box-shadow: 0 0 0 1px rgba(255, 34, 51, 0.4);
   }
 }
 
@@ -974,8 +974,8 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(120% 80% at 50% -10%, rgba(255, 26, 26, 0.10), transparent 55%),
-    radial-gradient(90% 60% at 90% 110%, rgba(230, 57, 70, 0.08), transparent 60%);
+    radial-gradient(120% 80% at 50% -10%, rgba(255, 77, 46, 0.10), transparent 55%),
+    radial-gradient(90% 60% at 90% 110%, rgba(255, 34, 51, 0.08), transparent 60%);
 }
 
 /* Le grain : 3,5% d'opacité, invisible consciemment, mais c'est lui qui
@@ -1011,8 +1011,8 @@ footer {
   pointer-events: none;
   opacity: 0.55;
   background:
-    radial-gradient(60% 45% at 18% 22%, rgba(230, 57, 70, 0.13), transparent 60%),
-    radial-gradient(55% 50% at 84% 78%, rgba(255, 26, 26, 0.15), transparent 60%);
+    radial-gradient(60% 45% at 18% 22%, rgba(255, 34, 51, 0.13), transparent 60%),
+    radial-gradient(55% 50% at 84% 78%, rgba(255, 77, 46, 0.15), transparent 60%);
 }
 
 /* Les cartes de THE ROOM : coins à 18px et halo au survol. */
@@ -1032,7 +1032,7 @@ footer {
     opacity: 0;
     pointer-events: none;
     transition: opacity 400ms ease;
-    background: radial-gradient(40% 60% at 50% 0%, rgba(230, 57, 70, 0.10), transparent 70%);
+    background: radial-gradient(40% 60% at 50% 0%, rgba(255, 34, 51, 0.10), transparent 70%);
   }
   &:hover {
     border-color: rgba(255, 255, 255, 0.14);
@@ -1102,12 +1102,12 @@ footer {
 .ts-inner{ width:100%; padding-inline: clamp(20px, 5vw, 64px); }
 .tour-scene{ position:relative; min-height:72vh; display:flex; align-items:center; overflow:hidden; }
 .ts-bg{ position:absolute; inset:-12%; pointer-events:none; will-change:transform; }
-.ts-1 .ts-bg{ background:radial-gradient(60% 55% at 25% 30%, rgba(230,57,70,.32), transparent 62%),
+.ts-1 .ts-bg{ background:radial-gradient(60% 55% at 25% 30%, rgba(255,34,51,.32), transparent 62%),
               radial-gradient(50% 50% at 82% 80%, rgba(255,138,133,.16), transparent 60%); }
-.ts-2 .ts-bg{ background:radial-gradient(55% 55% at 72% 24%, rgba(255,26,26,.34), transparent 62%),
-              radial-gradient(45% 50% at 18% 85%, rgba(230,57,70,.18), transparent 60%); }
+.ts-2 .ts-bg{ background:radial-gradient(55% 55% at 72% 24%, rgba(255,77,46,.34), transparent 62%),
+              radial-gradient(45% 50% at 18% 85%, rgba(255,34,51,.18), transparent 60%); }
 .ts-3 .ts-bg{ background:radial-gradient(70% 60% at 50% 92%, rgba(88,66,224,.38), transparent 66%),
-              radial-gradient(40% 40% at 50% 8%, rgba(230,57,70,.10), transparent 60%); }
+              radial-gradient(40% 40% at 50% 8%, rgba(255,34,51,.10), transparent 60%); }
 .ts-4 .ts-bg{ background:radial-gradient(55% 50% at 28% 24%, rgba(243,239,233,.11), transparent 60%),
               radial-gradient(50% 55% at 76% 76%, rgba(169,157,255,.24), transparent 62%); }
 .ts-inner{ position:relative; z-index:1; }
@@ -1140,7 +1140,7 @@ footer {
   top:50%; transform:translateY(-50%); height:36vh; width:2px; background:var(--line-soft);
   border-radius:2px; z-index:5; }
 .tour-pin.tour-on .tour-progress span{ display:block; width:100%; height:0; background:var(--grad);
-  border-radius:2px; box-shadow:0 0 12px rgba(230,57,70,.5); }
+  border-radius:2px; box-shadow:0 0 12px rgba(255,34,51,.5); }
 
 
 /* La prose des scènes de la tournée — remplace la liste à quatre étiquettes.
