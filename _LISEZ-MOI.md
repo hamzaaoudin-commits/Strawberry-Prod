@@ -1,35 +1,36 @@
-# Strawberry — les pages d'offres retrouvent leur navigation
+# Strawberry — juste le logo, cliquable
 
-1 fichier : le gabarit partagé, donc les quatre pages d'un coup.
+1 fichier. Remplace le patch précédent.
 
-## Le bouton demandé
+## Ce que j'ai retiré
 
-**« ← Accueil »** est ajouté, le même composant que sur la page audit et
-la page de remerciement. Il vit hors du HTML injecté : celui-ci vient de
-NOCTA et n'a pas de page mère. Posé dans le composant React, il passe par
-`LocaleLink` et garde donc la langue — un lien écrit dans le HTML brut ne
-le ferait pas.
+La barre de navigation, le pied de page et le bouton « ← Accueil » que
+j'avais ajoutés. C'était cassé et je n'aurais pas dû livrer sans le voir :
+la barre débordait sur la droite en poussant « Commander l'audit » hors
+de l'écran, et le bouton Accueil se superposait au hero.
 
-## Ce que j'ai trouvé en cherchant
+La cause : ces pages ont leur propre grille, héritée du site NOCTA. La
+barre du site suppose la mise en page de Strawberry — largeurs, marges,
+points de rupture. Poser l'une sur l'autre ne pouvait pas tenir.
 
-Les pages d'offres n'avaient **aucune navigation du tout**. Pas de logo,
-pas de menu, pas de bouton « Commander l'audit ».
+## Ce qu'il y a à la place
 
-La cause est mécanique : le HTML vient du site NOCTA, qui était autonome.
-Son en-tête et son pied de page ont été retirés au moment du portage — et
-rien ne les a remplacés, parce que le gabarit se contentait d'injecter le
-`<main>`. On entrait donc sur ces pages sans pouvoir en sortir autrement
-qu'avec le bouton du navigateur.
+**STRAWBERRY PROD.**, seul, en haut à gauche, cliquable, qui ramène à
+l'accueil dans la bonne langue.
 
-**La barre de navigation et le pied de page du site sont ajoutés.** Les
-quatre pages de terrain sont maintenant des pages du site, pas des
-impasses.
+Écrit dans la charte de la page — police Bricolage, rouge de marque — et
+non avec les classes du site, pour la même raison que ci-dessus. Position
+fixe au-dessus de tout le reste, y compris des bandes cinéma de la tournée.
 
-## Un effet secondaire utile
+## Ce que ça laisse
 
-Le bouton « Commander l'audit » de la barre est présent sur ces pages.
-C'était le seul endroit du site où l'action principale n'était pas
-accessible en permanence.
+Ces pages n'ont toujours pas de menu. C'est acceptable : ce sont des pages
+d'atterrissage, elles mènent vers l'audit par leurs deux boutons de hero
+et par la carte de prix. Le logo suffit à revenir en arrière.
+
+Si vous voulez un menu dessus, il faudra le dessiner dans la charte de ces
+pages plutôt que d'y importer celui du site — c'est l'erreur que je viens
+de faire.
 
 ## Vérification
 
