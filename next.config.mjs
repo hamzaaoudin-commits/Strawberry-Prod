@@ -96,7 +96,7 @@ const nextConfig = {
     // Anciennes URL plates : tout ce qui vivait à la racine vit désormais sous
     // une langue. 308 pour ne perdre aucun lien indexé ni aucun signet.
     const moved = [
-      'about','brand-narrative-audit','brand-narrative-architecture','the-room','the-name','marques-entreprises','marques',
+      'about','brand-narrative-audit','brand-narrative-architecture','the-room','the-name','the-product','marques-entreprises','marques',
       'strawberry-method','thank-you','cgv','mentions-legales',
       'politique-confidentialite',
     ]

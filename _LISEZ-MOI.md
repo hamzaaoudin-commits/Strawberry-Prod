@@ -1,45 +1,49 @@
-# Strawberry — BRAND et THE NAME ne parlent plus de restaurants
+# Strawberry — THE PRODUCT, le quatrième terrain
 
-2 fichiers. Ils remplacent ceux du patch précédent.
+7 fichiers.
 
-## Ce que j'avais raté
+## La page
 
-Le site NOCTA porte **175 clés de texte**. J'en avais surchargé 25. Tout
-le reste héritait donc du texte d'origine — c'est-à-dire des restaurants,
-des bars, des clubs, du service en salle et du barman. Sur une page qui
-s'appelle BRAND.
+**`/the-product` — THE PRODUCT.** Même gabarit que les trois autres :
+même HTML, même CSS, même JavaScript. Canvas bokeh, tournée épinglée,
+comparateur, accordéon — identiques, parce que c'est le même code.
 
-## Ce qui est corrigé
+76 clés de texte réécrites, FR et EN : toutes celles qui parlaient de
+lieux, plus celles propres au terrain.
 
-J'ai identifié par recherche **les 58 clés dont le contenu parle de
-lieux** — restaurant, salle, service, carte, habitués, couvert, néon,
-shaker — et je les ai toutes réécrites, dans les deux langues, pour
-chacun des deux terrains.
+**L'accroche** : « Votre produit est bon. Ce qu'il raconte, personne ne
+l'a écrit. »
 
-Vérification automatique après coup : **zéro clé à contenu « lieux »
-non surchargée** sur les deux pages.
+**Le constat** : en rayon ou sur une page de comparaison, un bon produit
+devient une ligne de caractéristiques à côté d'une autre — parce que rien
+ne dit pourquoi il a été fait comme ça.
 
-Ce qui est réécrit, section par section :
+**La tournée** de la page : l'objet, l'application, la collection,
+l'édition. Avec leur moment, leur preuve, leur casting, leurs rituels.
 
-- **Le constat** — le devis comparatif pour BRAND, les sorties qui ne
-  s'additionnent pas pour THE NAME.
-- **Les cinq blocs de l'audit** — le champ concurrentiel et ce que le prix
-  dit avant vous ; la zone artistique et ce que la bio dit avant vous.
-- **La tournée** — les quatre scènes entièrement réécrites : studio de
-  création, cabinet, éditeur, atelier d'un côté ; musicien, réalisateur,
-  fondateur, auteur de l'autre. Avec leur moment, leur preuve, leur
-  casting et leurs rituels.
-- **Le comparateur** — « une marque qui communique / qui tient une
-  position », « un nom qui publie / qui se raconte ».
-- **Le prix, la FAQ, le formulaire, le pied de page, le CTA** — y compris
-  les libellés de champs et les options du menu déroulant.
+**Le comparateur** : « un produit qui liste » contre « un produit qui se
+raconte ».
 
-## Ce qui reste volontairement hérité
+## Pourquoi c'est distinct de BRAND, et pas un doublon
 
-Les clés qui parlent du studio, du délai, de la méthode et de
-l'engagement. Elles sont vraies quel que soit le terrain, et les laisser
-partagées garantit qu'elles resteront identiques sur les trois pages.
+La distinction tient, et la page la porte : une marque se juge sur ce
+qu'elle **refuse**, un produit sur ce qu'il a fallu **accepter** pour le
+faire ainsi. Le premier vend une position, le second une intention de
+conception. C'est ce qui donne à la page son angle propre — l'arbitrage
+expliqué plutôt que la caractéristique affichée.
+
+## Le reste du site suit
+
+- **La tournée de la home** passe à quatre scènes, THE PRODUCT insérée
+  entre BRAND et THE ROOM. Le surtitre devient « Un métier, quatre
+  terrains ».
+- **La bande des terrains de la page audit** : « Entreprises » cède sa
+  place à « Produits », et « Marques » devient « Marques & entreprises »
+  — puisque BRAND couvre déjà les deux.
+- Menu, pied de page, sitemap et préfixes de langue mis à jour.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Vérifié aussi que `.ts-4` existe dans le
+CSS porté — sans ça, la quatrième scène de la tournée n'aurait pas eu de
+fond.

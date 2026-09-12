@@ -23,6 +23,7 @@ const ROUTES: Route[] = [
   { path: "/brand-narrative-architecture", priority: 0.95, changeFrequency: "monthly" },
   { path: "/brand-narrative-audit", priority: 0.9, changeFrequency: "monthly" },
   { path: "/marques-entreprises", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/the-product", priority: 0.9, changeFrequency: "monthly" },
   { path: "/the-room", priority: 0.9, changeFrequency: "monthly" },
   { path: "/the-name", priority: 0.9, changeFrequency: "monthly" },
   { path: "/documents", priority: 0.9, changeFrequency: "monthly" },

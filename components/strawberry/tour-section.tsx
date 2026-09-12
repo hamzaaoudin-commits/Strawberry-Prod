@@ -28,7 +28,7 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   fr: {
-    kicker: "Un métier, trois terrains",
+    kicker: "Un métier, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
     hint: "Continuez à défiler",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
@@ -45,6 +45,18 @@ const T = {
           ["Ce qui change", "Une position que personne d'autre ne peut revendiquer sans mentir."],
         ],
         href: "/marques-entreprises",
+      },
+      {
+        k: "Produits",
+        t: "THE PRODUCT",
+        line: "En rayon, votre produit devient une ligne de caractéristiques à côté d'une autre.",
+        facts: [
+          ["Le symptôme", "On vous compare sur des chiffres, jamais sur une intention."],
+          ["La racine", "Personne n'a écrit pourquoi il a été fait comme ça."],
+          ["Ce qu'on lit", "La page produit, l'emballage, la notice, et les avis des acheteurs."],
+          ["Ce qui change", "Chaque choix de conception devient un argument."],
+        ],
+        href: "/the-product",
       },
       {
         k: "Lieux",
@@ -73,7 +85,7 @@ const T = {
     ],
   },
   en: {
-    kicker: "One craft, three grounds",
+    kicker: "One craft, four grounds",
     title: "What you find when a story is written.",
     hint: "Keep scrolling",
     outro: "All of it already exists. It just needs writing.",
@@ -90,6 +102,18 @@ const T = {
           ["What changes", "A position nobody else can claim without lying."],
         ],
         href: "/marques-entreprises",
+      },
+      {
+        k: "Products",
+        t: "THE PRODUCT",
+        line: "On a shelf, your product becomes one line of specs next to another.",
+        facts: [
+          ["The symptom", "You get compared on numbers, never on intent."],
+          ["The root", "Nobody has written why it was made this way."],
+          ["What we read", "The product page, the packaging, the manual, and the reviews."],
+          ["What changes", "Every design choice becomes an argument."],
+        ],
+        href: "/the-product",
       },
       {
         k: "Venues",

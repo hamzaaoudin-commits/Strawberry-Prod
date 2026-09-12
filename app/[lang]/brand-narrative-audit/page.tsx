@@ -19,8 +19,8 @@ const T = {
     ctaSecondary: "Voir un exemple de livrable",
     terrainsKicker: "Le même audit, quatre terrains",
     terrains: [
-      { k: "Marques", v: "On vous compare au prix parce que rien ne dit qui vous êtes." },
-      { k: "Entreprises", v: "Clair en interne, illisible dehors. Quatre versions selon qui parle." },
+      { k: "Marques & entreprises", v: "On vous compare au prix parce que rien ne dit qui vous êtes." },
+      { k: "Produits", v: "En rayon, votre produit devient une ligne de caractéristiques." },
       { k: "Lieux", v: "La salle est pleine, et chaque publication repart de zéro." },
       { k: "Artistes & fondateurs", v: "Vos sorties ne s'additionnent pas. Votre nom porte un travail non formulé." },
     ],
@@ -91,8 +91,8 @@ const T = {
     ctaSecondary: "See a sample deliverable",
     terrainsKicker: "The same audit, four grounds",
     terrains: [
-      { k: "Brands", v: "You get compared on price because nothing says who you are." },
-      { k: "Companies", v: "Clear inside, unreadable outside. Four versions depending on who speaks." },
+      { k: "Brands & companies", v: "You get compared on price because nothing says who you are." },
+      { k: "Products", v: "On a shelf, your product becomes one line of specs." },
       { k: "Venues", v: "The room is full, and every post starts from nothing." },
       { k: "Artists & founders", v: "Your releases do not add up. Your name carries work nobody has put into words." },
     ],
