@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 }
 
 const COPY: TerrainCopy = {
+  slug: "marques-entreprises",
   wordmark: "BRAND",
   fr: {
     "mq.1": "Marques",

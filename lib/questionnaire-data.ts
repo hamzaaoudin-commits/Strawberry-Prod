@@ -28,9 +28,9 @@ export type OfferKey = "audit" | "architecture"
  * vaut pour tous — c'est le cas de la grande majorité, et c'est ce qui rend
  * l'unification vraie plutôt que déclarée.
  */
-export type TerrainKey = "marques" | "entreprises" | "lieux" | "artistes"
+export type TerrainKey = "marques" | "produits" | "lieux" | "artistes"
 
-export const TERRAIN_KEYS: TerrainKey[] = ["marques", "entreprises", "lieux", "artistes"]
+export const TERRAIN_KEYS: TerrainKey[] = ["marques", "produits", "lieux", "artistes"]
 
 export function isTerrainKey(value: string | undefined): value is TerrainKey {
   return value !== undefined && (TERRAIN_KEYS as string[]).includes(value)
@@ -150,13 +150,43 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Identité", "Identity"),
   },
   {
-    id: "positioning", offers: ["audit", "architecture"], type: "textarea",
+    id: "positioning", offers: ["audit", "architecture"], terrains: ["marques"], type: "textarea",
     label: t("Quelle phrase décrit votre maison aujourd'hui ?", "What sentence describes your house today?"),
     help: t(
       "Celle qui est sur votre accueil ou votre bio LinkedIn. Collez-la telle quelle — y compris la version dont vous n'êtes pas fier.",
       "The one currently on your homepage or LinkedIn bio. Paste it exactly as it is — including the version you are not proud of.",
     ),
     ph: t("Nous aidons les fondateurs à...", "We help founders to..."),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "positioning_produits", offers: ["audit", "architecture"], terrains: ["produits"], type: "textarea",
+    label: t("Quelle phrase décrit votre produit aujourd'hui ?", "What sentence describes your product today?"),
+    help: t(
+      "Celle qui est sur la page produit ou sur l'emballage. Collez-la telle quelle — y compris si ce n'est qu'une liste de caractéristiques.",
+      "The one on the product page or the packaging. Paste it exactly as it is — including if it is just a list of specs.",
+    ),
+    ph: t("Conçu pour...", "Designed for..."),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "positioning_lieux", offers: ["audit", "architecture"], terrains: ["lieux"], type: "textarea",
+    label: t("Quelle phrase décrit votre lieu aujourd'hui ?", "What sentence describes your venue today?"),
+    help: t(
+      "Celle de votre fiche Google ou de votre bio Instagram. Collez-la telle quelle — c'est celle que lisent ceux qui hésitent à pousser la porte.",
+      "The one from your Google listing or Instagram bio. Paste it exactly as it is — it is what people read before deciding to walk in.",
+    ),
+    ph: t("Cuisine de saison au cœur de...", "Seasonal cooking in the heart of..."),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "positioning_artistes", offers: ["audit", "architecture"], terrains: ["artistes"], type: "textarea",
+    label: t("Quelle phrase vous décrit aujourd'hui ?", "What sentence describes you today?"),
+    help: t(
+      "Votre bio, celle que vous utilisez partout. Collez-la telle quelle — y compris si elle date de trois projets.",
+      "Your bio, the one you use everywhere. Paste it exactly as it is — including if it dates back three projects.",
+    ),
+    ph: t("Artiste et producteur basé à...", "Artist and producer based in..."),
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
@@ -184,7 +214,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
-    id: "competitors", offers: ["audit", "architecture"], terrains: ["marques", "entreprises"], type: "competitors",
+    id: "competitors", offers: ["audit", "architecture"], terrains: ["marques"], type: "competitors",
     label: t("Nommez 3 à 5 concurrents directs, et leur phrase.", "Name 3 to 5 direct competitors, and their sentence."),
     help: t(
       "Le texte exact — tiré de leur accueil, leur bio LinkedIn ou leur signature email. Copié-collé, sans analyse de votre part.",
@@ -207,6 +237,15 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     help: t(
       "Pas vos influences : ceux à qui on vous compare, ou ceux dont vous partagez le public. Reprenez leur bio, telle quelle.",
       "Not your influences: those you get compared to, or whose audience you share. Copy their bio, as it stands.",
+    ),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "competitors_produits", offers: ["audit", "architecture"], terrains: ["produits"], type: "competitors",
+    label: t("Nommez 3 à 5 produits concurrents, et leur promesse.", "Name 3 to 5 competing products, and their promise."),
+    help: t(
+      "Ceux avec qui on vous compare en rayon ou sur une page de comparaison. Reprenez l'argument qu'ils mettent en avant, tel quel — pas votre analyse.",
+      "The ones you get compared to on a shelf or a comparison page. Copy the argument they lead with, as it stands — not your analysis.",
     ),
     tag: t("Diagnostic", "Diagnosis"),
   },
@@ -542,10 +581,20 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
  * le comportement d'avant, donc les liens existants continuent de marcher.
  */
 export function stepsForOffer(offer: OfferKey, lang: Lang, terrain?: TerrainKey): Question[] {
+  // Sans terrain, on retombe sur « marques ».
+  //
+  // C'est un garde-fou, pas un détail : une question déclinée n'existe que
+  // pour les terrains qu'elle nomme. Si un lien arrive sans `?terrain=` et
+  // qu'on ne choisit rien, le positionnement et les concurrents
+  // disparaissent purement et simplement du parcours — un client qui vient
+  // de payer recevrait un questionnaire amputé, sans que rien ne le
+  // signale. Le repli garantit qu'il y a toujours une version de chaque
+  // question.
+  const t: TerrainKey = terrain ?? "marques"
   return QUESTION_SOURCES.filter((q) => {
     if (!q.offers.includes(offer)) return false
     if (!q.terrains) return true
-    return terrain ? q.terrains.includes(terrain) : false
+    return q.terrains.includes(t)
   }).map((q) => localizeQuestion(q, lang))
 }
 

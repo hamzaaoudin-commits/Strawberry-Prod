@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 }
 
 const COPY: TerrainCopy = {
+  slug: "the-product",
   wordmark: "THE PRODUCT",
   fr: {
     "hero.kicker": "Audit narratif · Produits",

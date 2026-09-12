@@ -662,3 +662,23 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 .feed-good span:nth-child(4){ background:linear-gradient(160deg,var(--coral-soft),var(--iris-soft)); }
 .feed-good span:nth-child(6){ background:linear-gradient(120deg,var(--iris-soft),var(--coral)); }
 @media (max-width:640px){ .cmp .feed{ width:52%; gap:6px; } }
+
+/* ---------------------------------------------------------------------------
+   LES AUTRES TERRAINS — bloc de liens croisés en pied de page de terrain.
+
+   Ajouté par Strawberry : chaque page de terrain était un cul-de-sac. Le
+   style vit ici et non dans globals.css parce qu'il n'existe que sur ces
+   pages, qui portent cette feuille et pas l'autre.
+   --------------------------------------------------------------------------- */
+.terrain-cross{ border-top:1px solid var(--line-soft); padding-block:clamp(48px,7vw,88px); }
+.terrain-cross-label{ font-family:var(--mono); font-size:.68rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--smoke-dim); margin-bottom:1.8rem; }
+.terrain-cross-links{ display:grid; gap:1px; background:var(--line-soft);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
+.terrain-cross-links a{ display:block; background:var(--ink); padding:1.3rem 1.5rem;
+  text-decoration:none; transition:background .35s var(--ease); }
+.terrain-cross-links a:hover{ background:var(--ink-2); }
+.terrain-cross-links b{ display:block; font-family:var(--display); font-weight:700;
+  font-size:1.05rem; letter-spacing:-.01em; background:var(--grad);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.terrain-cross-links span{ display:block; margin-top:.35rem; font-size:.82rem; color:var(--smoke); }

@@ -1,37 +1,63 @@
-# Strawberry — la tournée sort des pages de terrain
+# Strawberry — questionnaire fini, terrains reliés
 
-5 fichiers.
+8 fichiers. Deux des trois chantiers demandés ; le troisième est expliqué
+plus bas.
 
-## Ce qui change
+## 1. Le questionnaire connaît les quatre terrains
 
-La section « La tournée » — son intro et le bloc épinglé de 460vh — est
-retirée des **quatre** pages de terrain. Elle ne vit plus que sur la home.
+**Les terrains sont alignés sur le site** : `entreprises` disparaît,
+`produits` arrive. Le questionnaire et les pages parlent enfin des mêmes
+quatre choses.
 
-Vous aviez raison sur le fond : c'est le dispositif le plus
-reconnaissable du site. Le voir deux fois en deux clics, avec la même
-mécanique de défilement épinglé, le transformait en tic de mise en page
-plutôt qu'en moment fort. Un effet de ce calibre ne supporte pas la
-répétition.
+**Deux questions sont déclinées** au lieu d'une :
 
-Le retrait est fait en un seul endroit pour THE ROOM et dans le gabarit
-partagé pour les trois autres — donc les quatre pages sont traitées, sans
-risque d'en oublier une.
+- *Les concurrents* — version produits ajoutée (« l'argument qu'ils
+  mettent en avant en rayon, tel quel »).
+- *La phrase qui vous décrit* — quatre versions. « Votre maison » pour les
+  marques, « votre produit » et son emballage, « votre lieu » et sa fiche
+  Google, et pour un artiste « votre bio, y compris si elle date de trois
+  projets ».
 
-## Nettoyage qui allait avec
+**Un bug que je venais d'introduire, corrigé.** Une question déclinée
+n'existe que pour les terrains qu'elle nomme. Sans `?terrain=` dans
+l'URL, le positionnement **et** les concurrents disparaissaient du
+parcours : un client qui vient de payer aurait reçu un questionnaire
+amputé, sans que rien ne le signale. Le filtre retombe désormais sur
+« marques » par défaut.
 
-Les 38 clés de texte par page qui alimentaient la tournée (`tour.*`,
-`work.*`) ne servaient plus à rien : plus aucun nœud ne les porte. Elles
-sont retirées des trois pages qui les surchargeaient — 114 lignes de code
-mort en moins, et surtout plus de piège pour le futur : personne n'ira
-modifier un texte qui ne s'affiche nulle part.
+Vérifié : les quatre parcours comptent exactement le même nombre de
+questions.
 
-## Ce que gardent les pages de terrain
+## 2. Les pages de terrain se répondent
 
-Le canvas bokeh, le manifeste, les cinq blocs de l'audit, le comparateur
-à glisser, les chiffres, le prix, la FAQ, le CTA. Elles restent denses ;
-elles ne redisent simplement plus ce que la home vient de montrer.
+Un bloc en pied de page propose les trois autres terrains, avec leur nom
+et leur libellé. Volontairement discret : il sert celui qui hésite entre
+une marque et un produit — le cas le plus courant — sans détourner celui
+qui est déjà au bon endroit. La page courante est exclue automatiquement.
+
+Le style vit dans `public/nocta/styles.css`, pas dans les globals :
+il n'existe que sur ces pages.
+
+## 3. Une duplication supprimée au passage
+
+`the-room` avait sa **propre copie du HTML**, indépendante du gabarit. Les
+deux devaient être modifiés en parallèle à chaque changement — c'est
+pourquoi le retrait de la tournée a dû être fait deux fois. Elle passe
+désormais par le gabarit, sans surcharge de texte : le dictionnaire
+d'origine parle déjà des lieux. 300 lignes dupliquées en moins, et plus
+aucun risque de divergence.
+
+## Ce que je n'ai pas fait : un exemple par terrain
+
+C'est un travail de **rédaction**, pas de code : il faut écrire trois
+audits fictifs complets, comme VERSO l'est pour les marques — une maison
+inventée, ses concurrents, son diagnostic, ses mouvements. VERSO fait
+plusieurs milliers de mots.
+
+Je peux les écrire, mais un par tour, et il me faut votre accord sur le
+type de maison à inventer pour chacun : un restaurant ? un objet
+manufacturé ? un musicien ? Dites-moi lequel vous voulez en premier.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Vérifié qu'aucune trace de `tour-pin` ou
-`tour-scene` ne subsiste dans les pages de terrain.
+Contrôle de types : zéro erreur.

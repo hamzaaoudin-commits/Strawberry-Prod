@@ -248,7 +248,20 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section>
 `
 
+/**
+ * Les quatre terrains, dans l'ordre où ils apparaissent partout ailleurs.
+ * La page courante est exclue au rendu — on ne se propose pas à soi-même.
+ */
+export const TERRAINS = [
+  { slug: "marques-entreprises", name: "BRAND", fr: "Marques & entreprises", en: "Brands & companies" },
+  { slug: "the-product", name: "THE PRODUCT", fr: "Produits", en: "Products" },
+  { slug: "the-room", name: "THE ROOM", fr: "Lieux", en: "Venues" },
+  { slug: "the-name", name: "THE NAME", fr: "Artistes & fondateurs", en: "Artists & founders" },
+] as const
+
 export type TerrainCopy = {
+  /** Le terrain courant, pour l'exclure des liens croisés en bas de page. */
+  slug: string
   /** Le nom géant du hero. */
   wordmark: string
   /** Surcharges de texte, par clé data-i18n, et par langue. */
@@ -316,6 +329,28 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
       />
       <link rel="stylesheet" href="/nocta/styles.css" />
       <main id="main" dangerouslySetInnerHTML={{ __html: html }} />
+
+      {/* Les autres terrains.
+          Chaque page était un cul-de-sac : on y arrivait, on lisait, on
+          partait vers l'audit. Quelqu'un qui a une marque *et* un produit —
+          le cas le plus courant — n'avait aucun moyen de passer de l'une à
+          l'autre. Ces liens sont volontairement discrets : ils servent
+          celui qui hésite, sans détourner celui qui est au bon endroit. */}
+      <section className="terrain-cross">
+        <div className="wrap">
+          <div className="terrain-cross-label">
+            {lang === "en" ? "The same audit, on another ground" : "Le même audit, sur un autre terrain"}
+          </div>
+          <div className="terrain-cross-links">
+            {TERRAINS.filter((x) => x.slug !== copy.slug).map((x) => (
+              <a key={x.slug} href={`/${lang}/${x.slug}`}>
+                <b>{x.name}</b>
+                <span>{lang === "en" ? x.en : x.fr}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   )
 }

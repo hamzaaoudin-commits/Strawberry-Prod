@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 }
 
 const COPY: TerrainCopy = {
+  slug: "the-name",
   wordmark: "THE NAME",
   fr: {
     "mq.1": "Musiciens",
