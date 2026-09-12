@@ -1,61 +1,49 @@
-# Strawberry — un rouge plus vif
+# Strawberry — le surlignage devient un élément de design
 
-Les fichiers les plus visibles sont joints, mais **le remplacement a touché
-51 fichiers** : voir la liste de commandes en bas pour l'appliquer d'un
-coup sur le dépôt entier.
+6 fichiers.
 
-## Le changement
+## L'effet
 
-| | Avant | Après |
-|---|---|---|
-| Rouge de marque | `#e63946` | **`#ff2233`** |
-| Extrémité claire | `#ff1a1a` | **`#ff4d2e`** |
-| Variante sombre | `#dc2626` | **`#e0102a`** |
+Deux classes, `surligne` (rouge plein) et `surligne-grad` (le dégradé),
+qui reprennent exactement ce que fait `::selection` : fond rouge, texte en
+encre. Définies dans `globals.css` **et** dans `nocta/styles.css`, parce
+que les pages de terrain portent l'une et pas l'autre.
 
-L'ancien `#e63946` avait un canal bleu à 70 sur 255 : c'est ce qui le
-tirait vers le brique et lui donnait cet air poussiéreux. Le nouveau monte
-le rouge au maximum et écrase le bleu à 51.
+## Trois détails qui font la différence
 
-Pour l'extrémité claire du dégradé, je suis parti vers l'**orangé** plutôt
-que de rester sur un rouge pur. C'est ce qui produit l'effet éclairant —
-un dégradé rouge → rouge reste plat, un dégradé rouge → orange semble
-émettre de la lumière. Et ça évite le rose, qui est le risque quand on
-éclaircit un rouge en restant dans le même ton.
+**Le texte passe en encre, pas en blanc.** Sur ce rouge saturé, du blanc
+tombe sous le seuil de lisibilité alors que le noir le dépasse largement.
+C'est d'ailleurs ce que fait votre `::selection` — je n'ai fait que le
+reprendre.
 
-## Ce qui est couvert
+**`box-decoration-break: clone`.** Sans lui, un surlignage qui passe à la
+ligne perd sa marge interne sur le second fragment : le fond se colle au
+texte et l'effet se casse au milieu d'une phrase.
 
-Le remplacement a suivi la couleur partout où elle était écrite en dur,
-pas seulement dans les variables :
+**Une marge négative compense la marge interne**, pour que le mot surligné
+reste aligné avec le texte autour au lieu de décaler la ligne.
 
-- les jetons de `globals.css` et la palette de `nocta/styles.css` ;
-- les dégradés inline des composants (bouton de la navbar, liserés,
-  `ts-out`) ;
-- les valeurs `rgba()` des lueurs, ombres et fonds radiaux ;
-- les couleurs encodées en URL dans les SVG (`%23e63946`) ;
-- **la palette du canvas bokeh 3D** dans `app.js`, en hexadécimal
-  JavaScript — sans ça les particules du hero seraient restées à
-  l'ancienne teinte sur un site entier au nouveau rouge ;
-- les documents statiques du dossier `public/`.
+## Où je l'ai posé
 
-## Pour l'appliquer partout
+- **Le titre de la tournée** — « Ce qu'on trouve quand un récit est
+  écrit », en dégradé, comme sur votre capture.
+- **Le surtitre « LE PROBLÈME »** sur la home, et **« LE CONSTAT »** sur
+  les pages de terrain.
+- **La première ligne de la triade** (« Rien à quoi appartenir »).
+- **La première fausse cause** (« Un logo refait »), qui cumule le
+  surlignage et la rature.
 
-Le zip ne contient que les fichiers principaux. Pour couvrir les 51, à la
-racine du dépôt :
+## Un choix que j'ai fait
 
-```
-grep -rl -e e63946 -e ff1a1a -e dc2626 -e "230,57,70" -e "255,26,26" \
-  --include=*.tsx --include=*.ts --include=*.css --include=*.js \
-  --include=*.html . | xargs sed -i '' \
-  -e 's/e63946/ff2233/g' -e 's/E63946/ff2233/g' \
-  -e 's/ff1a1a/ff4d2e/g' -e 's/FF1A1A/ff4d2e/g' \
-  -e 's/dc2626/e0102a/g' \
-  -e 's/230,57,70/255,34,51/g' -e 's/230, 57, 70/255, 34, 51/g' \
-  -e 's/255,26,26/255,77,46/g' -e 's/255, 26, 26/255, 77, 46/g'
-```
+Dans les deux listes, **seule la première ligne est surlignée**. Les trois
+surlignées donneraient un bloc rouge, et l'effet disparaîtrait — c'est le
+contraste avec les lignes suivantes qui le fait exister. La première donne
+le ton, les autres n'ont plus besoin de l'appui.
 
-(`sed -i ''` est la forme macOS ; sous Linux, `sed -i` sans les quotes.)
+Même logique pour le reste du site : l'effet tient parce qu'il est rare.
+Si vous voulez l'étendre, dites-moi où précisément plutôt que de
+généraliser.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. `app.js` passé au contrôle syntaxique.
-Plus aucune occurrence de l'ancien rouge dans le dépôt.
+Contrôle de types : zéro erreur.

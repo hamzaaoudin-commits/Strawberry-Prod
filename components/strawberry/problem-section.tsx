@@ -53,8 +53,8 @@ export function ProblemSection({ lang }: { lang: Lang }) {
       <ViewTracker name="problem" />
       <div className="shell">
         <div className="mx-auto max-w-[760px]">
-          <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em] text-brand">
-            {t.kicker}
+          <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em]">
+            <span className="surligne">{t.kicker}</span>
           </div>
           <h2 className="mb-7 font-serif text-[clamp(1.8rem,3.6vw,3.1rem)] font-bold leading-[1.14] tracking-[-0.02em] text-white">
             {t.h2}
@@ -83,7 +83,10 @@ export function ProblemSection({ lang }: { lang: Lang }) {
                   <span aria-hidden className="text-[0.7em] text-brand">
                     ✦
                   </span>
-                  {item}
+                  {/* Seule la première ligne est surlignée : c'est le
+                      contraste avec les deux suivantes qui fait l'effet.
+                      Les trois surlignées, ce serait un bloc rouge. */}
+                  {i === 0 ? <span className="surligne">{item}</span> : item}
                 </li>
               ))}
             </ul>

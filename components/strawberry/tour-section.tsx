@@ -211,7 +211,9 @@ export function TourSection() {
 
       <div className="shell pt-24 text-center">
         <div className="kicker mb-5">{t.kicker}</div>
-        <h2 className="h-section mx-auto max-w-[760px]">{t.title}</h2>
+        <h2 className="h-section mx-auto max-w-[760px]">
+            <span className="surligne-grad">{t.title}</span>
+          </h2>
         <div className="mt-6 font-sans text-[11px] uppercase tracking-[0.22em] text-chalk-40">{t.hint}</div>
       </div>
 

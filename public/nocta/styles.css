@@ -693,3 +693,13 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   font-size:1.05rem; letter-spacing:-.01em; background:var(--grad);
   -webkit-background-clip:text; background-clip:text; color:transparent; }
 .terrain-cross-links span{ display:block; margin-top:.35rem; font-size:.82rem; color:var(--smoke); }
+
+/* Le surlignage — même effet que ::selection, posé dans la page.
+   Défini ici en plus de globals.css : les pages de terrain portent cette
+   feuille et pas l'autre. */
+.surligne{ background:var(--coral); color:var(--ink); padding:.08em .28em;
+  margin-inline:-.28em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+.surligne-grad{ background:var(--grad); color:var(--ink); padding:.08em .28em;
+  margin-inline:-.28em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+/* Le surtitre de chaque section des pages de terrain. */
+.eyebrow .hl, .sec-eyebrow .hl{ background:var(--coral); color:var(--ink); padding:.1em .4em; }

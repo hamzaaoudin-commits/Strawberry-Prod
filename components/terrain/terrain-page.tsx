@@ -52,7 +52,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <!-- ============ MANIFESTO ============ -->
 <section class="section manifesto">
 <div class="wrap">
-<span class="eyebrow reveal" data-i18n="man.eyebrow">Le constat</span>
+<span class="eyebrow reveal surligne" data-i18n="man.eyebrow">Le constat</span>
 <p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
 <p class="reveal d2" data-i18n="man.body2" style="margin-top:1.6rem">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
 </div>

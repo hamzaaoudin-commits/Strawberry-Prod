@@ -156,7 +156,14 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                 {/* Temps 1 puis 2 : le mot apparaît, puis se barre. Le trait
                     se dessine de gauche à droite plutôt que d'apparaître
                     d'un coup — on voit la rature se faire. */}
-                <span className="relative inline-block font-serif text-[1.05rem] italic text-white/50">
+                {/* La première fausse cause est surlignée en plus d'être
+                    barrée : elle donne le ton de la liste, les suivantes
+                    n'ont plus besoin de l'appui. */}
+                <span
+                  className={`relative inline-block font-serif text-[1.05rem] italic ${
+                    i === 0 ? "surligne" : "text-white/50"
+                  }`}
+                >
                   {fc.label}
                   <span
                     aria-hidden

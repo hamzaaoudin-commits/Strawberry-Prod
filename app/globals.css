@@ -1166,3 +1166,39 @@ footer {
   background-clip: text;
   color: transparent;
 }
+
+/* ---------------------------------------------------------------------------
+   LE SURLIGNAGE
+
+   Reprend l'effet de ::selection — fond rouge, texte sombre — mais posé
+   dans la page au lieu d'attendre un glissement de souris.
+
+   Trois précautions :
+   - Le texte passe en encre, pas en blanc : sur ce rouge saturé, du blanc
+     descend sous le seuil de lisibilité, alors que le noir le dépasse
+     largement.
+   - `box-decoration-break: clone` : sans lui, un surlignage qui passe à la
+     ligne perd sa marge interne sur le second fragment et le fond se colle
+     au texte.
+   - Une marge négative compense la marge interne, pour que le mot reste
+     aligné avec le texte qui l'entoure plutôt que de décaler la ligne.
+
+   À employer avec parcimonie : l'effet tient parce qu'il est rare. */
+@utility surligne {
+  background: var(--color-brand);
+  color: var(--color-ink);
+  padding: 0.08em 0.28em;
+  margin-inline: -0.28em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* La variante en dégradé, pour les blocs plus larges. */
+@utility surligne-grad {
+  background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
+  color: var(--color-ink);
+  padding: 0.08em 0.28em;
+  margin-inline: -0.28em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
