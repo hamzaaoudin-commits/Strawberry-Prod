@@ -61,12 +61,13 @@
   --color-brand: #ff2233;
   --color-brand-bright: #ff4d2e;
   --color-brand-deep: #e0102a;
-  /* Le rouge du surlignage : plus profond que celui de marque.
-     Un fond doit être plus sombre qu'un trait — #ff2233 en aplat derrière
-     du texte éblouit et fait bon marché, alors qu'il est juste en accent.
-     Celui-ci garde la teinte et descend la luminosité, ce qui laisse le
-     texte clair lisible par-dessus. */
-  --color-highlight: #a80f1e;
+  /* Le rouge du surlignage : plus profond que celui de marque, mais le
+     texte reste en encre — c'est le noir sur rouge qui fait l'effet, pas
+     l'inverse.
+     Il ne peut donc pas descendre trop bas : sous cette valeur, du noir
+     par-dessus devient illisible. #d4121f garde du noir lisible tout en
+     évitant l'éblouissement du #ff2233 en aplat. */
+  --color-highlight: #d4121f;
   --color-ink: #0a0a0a;
   --color-ink-soft: #0d0d0d;
 
@@ -1005,7 +1006,7 @@ footer {
 
 ::selection {
   background: var(--color-highlight);
-  color: #fff5f2;
+  color: var(--color-ink);
 }
 
 /* Le champ de couleur d'ambiance, à poser sur une section qui doit
@@ -1192,7 +1193,7 @@ footer {
    À employer avec parcimonie : l'effet tient parce qu'il est rare. */
 @utility surligne {
   background: var(--color-highlight);
-  color: #fff5f2;
+  color: var(--color-ink);
   padding: 0.08em 0.3em;
   margin-inline: -0.3em;
   box-decoration-break: clone;
@@ -1201,8 +1202,8 @@ footer {
 
 /* La variante en dégradé, pour les blocs plus larges. */
 @utility surligne-grad {
-  background: linear-gradient(108deg, var(--color-highlight) 0%, #c4121f 100%);
-  color: #fff5f2;
+  background: linear-gradient(108deg, var(--color-highlight) 0%, #ff2233 100%);
+  color: var(--color-ink);
   padding: 0.08em 0.28em;
   margin-inline: -0.28em;
   box-decoration-break: clone;
