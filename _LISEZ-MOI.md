@@ -1,43 +1,46 @@
-# Strawberry — le surlignage qui débordait
+# Strawberry — le rose remplacé par du noir sur rouge
 
-3 fichiers.
+4 fichiers.
 
-## La cause
+## D'où venait le rose
 
-Sur les pages d'offres, `.eyebrow` est un élément de **bloc**. En posant
-le surlignage sur cet élément, le fond prenait toute la largeur
-disponible au lieu du seul texte — d'où la barre rouge qui traverse la
-page derrière « QUESTIONS FRÉQUENTES ».
+Deux variables de la charte portaient des valeurs franchement roses :
+`--coral-soft: #ff6b75` et `--iris-soft: #ff7a7a`. Quand j'ai éclairci le
+rouge de marque, elles sont restées — et c'est elles qui coloraient les
+phrases d'accroche, pas le dégradé comme je l'avais supposé la première
+fois.
 
-Sur la home, les surlignages sont posés sur des `<span>`, qui sont
-inline : ils épousent le texte. C'est pourquoi le défaut n'apparaissait
-que d'un côté.
+Elles reviennent dans la famille du rouge, côté orangé : `#ff6a4a` et
+`#ff8352`. Elles servent encore aux traits fins et aux icônes, où elles ne
+posent pas de problème.
 
-## Ce qui est fait
+## Les phrases passent en noir surligné
 
-**Les six surtitres des pages d'offres ne sont plus surlignés.** Ils
-redeviennent des surtitres rouges classiques.
+Comme vous l'avez montré. Sur les pages d'offres :
 
-**Une garde est posée dans les deux feuilles de style** : les classes
-`surligne` et `surligne-grad` forcent désormais `display: inline`. Même
-appliquées par erreur à un élément de bloc, elles ne pourront plus
-s'étendre au-delà du texte. Le cas ne peut plus se reproduire, y compris
-sur des éléments que je n'ai pas encore touchés.
+- **« Tout ça existe déjà chez vous. Il faut juste l'écrire. »**
+- Les phrases fortes du constat (`.manifesto .serif`)
+- La phrase du bandeau final (`.cta-band .serif`)
 
-## Ce qui reste surligné
+Sur la home :
 
-Uniquement sur la home, et uniquement sur des `<span>` :
+- La même phrase de clôture de la tournée
+- **`.ts-out`**, la ligne de bénéfice de chaque scène — « Un lieu qu'on
+  reconnaît avant d'en avoir lu le nom », etc. Elle était en dégradé
+  découpé, donc rose elle aussi.
 
-- Le titre de la tournée, en dégradé
-- La ligne d'ancrage du hero — « Audit narratif · 490 € »
-- Le surtitre « LE PROBLÈME »
-- Les trois lignes de la triade
-- Les quatre fausses causes
-- Le titre du diagnostic, en dégradé
+## Pourquoi c'est meilleur, au-delà du rose
 
-Les pages d'offres n'en ont plus du tout. Si vous en voulez malgré tout —
-sur un mot dans une phrase, plutôt que sur un surtitre — dites-moi
-lequel : avec la garde en place, ce sera propre.
+Une phrase en rouge clair sur fond sombre reste du texte coloré : elle se
+distingue à peine du corps autour. Surlignée, elle devient un objet. Sur
+ces lignes-là — qui disent toutes ce que le client emporte — c'est
+exactement ce qu'il faut.
+
+## La garde tient
+
+Toutes ces règles portent `display: inline` et `box-decoration-break:
+clone`, donc aucune ne peut déborder sur la largeur de la ligne ni casser
+son fond en passant à la ligne suivante.
 
 ## Vérification
 

@@ -1151,8 +1151,8 @@ footer {
 
 
 /* La prose des scènes de la tournée — remplace la liste à quatre étiquettes.
-   `.ts-out` reprend le dégradé de marque : c'est la ligne qui dit ce qu'on
-   emporte, elle doit se détacher du paragraphe qui la précède. */
+   `.ts-out` est surlignée : c'est la ligne qui dit ce qu'on emporte, elle
+   doit se détacher du paragraphe qui la précède. */
 .ts-body {
   margin-top: 1.6rem;
   max-width: 56ch;
@@ -1162,16 +1162,19 @@ footer {
   color: rgba(255, 255, 255, 0.62);
 }
 .ts-out {
+  /* Noir sur rouge, comme les autres phrases de bénéfice du site. En
+     dégradé découpé, cette ligne virait au rose sur le fond sombre. */
+  display: inline;
   margin-top: 1.3rem;
-  max-width: 52ch;
   font-family: var(--font-accent);
   font-style: italic;
   font-size: clamp(1.05rem, 2vw, 1.4rem);
   line-height: 1.35;
-  background: linear-gradient(108deg, var(--color-brand) 0%, var(--color-brand-bright) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background: var(--color-highlight);
+  color: var(--color-ink);
+  padding: 0.04em 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* ---------------------------------------------------------------------------

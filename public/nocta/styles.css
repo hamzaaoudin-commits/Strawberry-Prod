@@ -23,9 +23,9 @@
   --line-soft:  rgba(255,255,255,0.07);   /* filet de Strawberry */
 
   --coral:      #ff2233;   /* accent primaire — rouge de marque */
-  --coral-soft: #ff6b75;
+  --coral-soft: #ff6a4a;
   --iris:       #ff4d2e;   /* accent secondaire — rouge vif du dégradé */
-  --iris-soft:  #ff7a7a;
+  --iris-soft:  #ff8352;
 
   --cream:      #ffffff;
   --smoke:      rgba(255,255,255,0.55);   /* rampe d'opacité du studio */
@@ -191,7 +191,12 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 /* ---------- manifesto ---------- */
 .manifesto p{ font-family:var(--display); font-weight:500; font-size:clamp(1.6rem,4.2vw,3rem);
   line-height:1.18; letter-spacing:-.02em; max-width:20ch; }
-.manifesto .serif{ color:var(--coral-soft); }
+/* Les phrases fortes du constat : noir sur rouge, pas rouge clair sur noir.
+   En rouge clair elles viraient au rose sur ce fond, et elles se
+   confondaient avec le corps de texte. */
+.manifesto .serif{ display:inline; background:#d4121f; color:var(--ink);
+  padding:.02em .28em; margin-inline:-.28em;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 .manifesto em{ font-family:var(--serif); font-style:italic; color:var(--iris-soft); }
 
 /* ---------- rack-focus signature ---------- */
@@ -293,7 +298,9 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   padding:clamp(2.5rem,7vw,5.5rem); text-align:center;
   background:radial-gradient(80% 120% at 50% 0%, rgba(255,77,46,.16), transparent 60%), var(--ink-2); }
 .cta-band h2{ font-size:clamp(2rem,6vw,4rem); margin-bottom:1rem; }
-.cta-band .serif{ color:var(--coral-soft); }
+.cta-band .serif{ display:inline; background:#d4121f; color:var(--ink);
+  padding:.02em .28em; margin-inline:-.28em;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 .cta-band .lead{ margin:0 auto 2.2rem; }
 
 /* ---------- contact / form ---------- */
