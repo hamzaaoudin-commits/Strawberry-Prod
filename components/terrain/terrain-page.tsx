@@ -33,7 +33,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
-<a class="btn btn-ghost" data-i18n="hero.cta2" href="#prestations">Comment ça se passe</a>
+<a class="btn btn-ghost" data-i18n="hero.cta2" href="__LANG__/brand-narrative-audit">Commander l\'audit</a>
 </div>
 </div>
 <span class="scroll-hint" data-i18n="hero.scroll">Défiler</span>
@@ -199,20 +199,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section>
 
 <!-- ============ QUI ÉCRIT ============ -->
-<section class="section">
-<div class="wrap">
-<div class="grid cols-2" style="gap:clamp(2.5rem,6vw,5rem); align-items:start">
-<div class="reveal">
-<span class="eyebrow iris" data-i18n="who.eyebrow">Strawberry Production</span>
-<h2 class="h-sec" data-i18n="who.title" style="margin-top:1rem">Le studio qui écrit votre lieu.</h2>
-</div>
-<div class="reveal d1">
-<p class="lead" data-i18n="who.body">Réalisateur et compositeur, nous dirigeons Strawberry Production. Nous avons écrit <em>30 Architectures — An Atlas of Narrative Patterns</em> et l'essai <em>Le Narratif de Marque à l'Ère de l'IA</em>, et nous construisons l'univers transmédia Sinbury depuis 2024.</p>
-<p class="muted" data-i18n="who.body2" style="margin-top:1.4rem">Pas d'équipe, pas de sous-traitance, pas d'intermédiaire. La personne qui observe votre service est celle qui écrit, et celle qui vous répond.</p>
-</div>
-</div>
-</div>
-</section>
+
 <hr class="rule"/>
 <!-- ============ PRICING TEASER ============ -->
 <!-- ============ WORK TEASER ============ -->

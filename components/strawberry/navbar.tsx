@@ -16,7 +16,7 @@ const T = {
       { label: "THE PRODUCT", sub: "Produits", href: "/the-product" },
       { label: "THE ROOM", sub: "Lieux", href: "/the-room" },
       { label: "THE NAME", sub: "Artistes & fondateurs", href: "/the-name" },
-      { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture" },
+      { label: "L'ARCHITECTURE", sub: "Après l'audit · 4 500 €", href: "/brand-narrative-architecture", sep: true },
     ],
   },
   en: {
@@ -30,7 +30,7 @@ const T = {
       { label: "THE PRODUCT", sub: "Products", href: "/the-product" },
       { label: "THE ROOM", sub: "Venues", href: "/the-room" },
       { label: "THE NAME", sub: "Artists & founders", href: "/the-name" },
-      { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture" },
+      { label: "THE ARCHITECTURE", sub: "After the audit · 4,500 €", href: "/brand-narrative-architecture", sep: true },
     ],
   },
 }
@@ -115,7 +115,9 @@ export function NavBar() {
                       key={o.href}
                       href={o.href}
                       onClick={() => setOffersOpen(false)}
-                      className="block rounded-lg px-3.5 py-2.5 no-underline transition-colors hover:bg-brand/10"
+                      className={`block rounded-lg px-3.5 py-2.5 no-underline transition-colors hover:bg-brand/10 ${
+                        "sep" in o && o.sep ? "mt-2 border-t border-brand/40 pt-3.5" : ""
+                      }`}
                     >
                       <div className="font-sans text-[13px] text-chalk-90">{o.label}</div>
                       <div className="mt-0.5 font-sans text-[11px] text-chalk-40">{o.sub}</div>

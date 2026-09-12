@@ -1,67 +1,73 @@
-# Strawberry — finalisation
+# Strawberry — lot 1 : ce qui est corrigé
 
-7 fichiers.
+5 fichiers. Sept points sur douze. Les cinq autres sont listés en bas,
+avec la raison.
 
-## Le logo
+## Les chiffres et le délai
 
-« Strawberry Prod. » → **STRAWBERRY PROD.**, dans la barre et le pied de
-page, aligné sur les titres du site.
+Ils venaient de l'ancienne offre. Corrigés **à la source**, donc sur les
+quatre pages d'un coup :
 
-## L'accroche
+- « 2–3 semaines, puis c'est à vous » → **« 7–14 jours, et le document est
+  à vous »**
+- « 20–30 scripts prêts à tourner » → **« 20–30 pages, écrites à la main »**
+- « 1 seule personne sur votre lieu » → **« 490 €, payé une fois, quel que
+  soit le terrain »**
 
-L'ancienne — « Votre marché ne vous entend pas comme vous croyez vous
-raconter » — était un jeu de miroir : elle décrivait un écart sans dire
-ce qu'on y gagne. La nouvelle promet le livrable :
+## L'offre premium
 
-> **Sept jours pour savoir ce que votre marché retient de vous.**
+> L'audit dit quoi changer. Si vous voulez qu'on le fasse — la position
+> écrite, le langage, les vingt pièces que vos équipes appliquent sans
+> vous : **l'Architecture narrative, 4 500 €**.
 
-Le délai, l'objet et le bénéfice en une ligne.
+Elle dit ce qu'on obtient, et son rapport à l'audit.
 
-**La ligne « Vous tenez un lieu ? THE ROOM → » est retirée.** Elle ne
-proposait qu'un terrain sur quatre — un arbitraire hérité de l'époque où
-il n'y en avait que deux. Les quatre sont présentés juste en dessous,
-dans la tournée.
+## Le second CTA mène à l'achat
 
-## La tournée
+« Comment ça se passe » (une ancre interne) devient **« Commander l'audit
+· 490 € »** et pointe vers la page d'offre. Chaque page de terrain a donc
+maintenant ses deux boutons : contact et achat.
 
-« Un métier, quatre terrains » → **« Un audit, quatre terrains »**. Plus
-juste : ce n'est pas le métier qui se décline, c'est l'offre.
+## La section « qui écrit », retirée
 
-Le lien en pied de scène devient explicite — « Voir BRAND → » au lieu
-d'un numéro — donc on sait qu'on va vers une page dédiée.
+Elle décrivait le studio au « nous » sur chaque page de terrain. Supprimée
+du gabarit, donc des quatre pages.
 
-## L'offre
+## Le rose
 
-**La description** ne dit plus ce qu'une IA ne sait pas faire, elle dit ce
-qu'on reçoit : un document de vingt à trente pages, ce qu'il contient
-(votre discours actuel, ce que le marché en retient, ce qui vous range,
-les trois à cinq mouvements dans l'ordre avec leur coût), et ce qu'il
-n'est pas — « rien n'est réécrit à votre place ».
+Il venait d'un conflit que j'avais créé : la classe `accroche` pose une
+couleur de texte, `text-gradient` pose un dégradé en fond découpé — les
+deux sur le même élément donnaient ce rose délavé. `text-gradient` retiré
+sur les deux phrases concernées.
 
-**Le délai** passe de 3-4 semaines à **7 à 14 jours**, FR et EN.
+## Le menu
 
-**« Une marque, un lieu, une entreprise ou une personne »** devient
-« Une marque, **un produit**, un lieu, une entreprise ou une personne ».
+L'Architecture est séparée des trois terrains par un **filet rouge**, avec
+une respiration au-dessus.
 
-**Le paragraphe sur les playbooks collables dans un outil IA** est retiré.
+## La bulle de section sur /about
 
-**La jauge de disponibilité T3 2026** est retirée, avec ses cinq clés de
-texte, le calcul de jours restants et l'import de `LIVE` devenu inutile.
+Retirée, avec son import.
 
-## L'argument des quatre commandes
+---
 
-Remplacé par un argument qui ne dépend pas d'un chiffre à tenir à jour :
+# Les cinq points restants, et pourquoi
 
-> **Le refus fait partie du travail.** Quand une maison serait mieux
-> servie ailleurs, nous le disons plutôt que de prendre le travail. Un
-> audit qui conclut « ne changez rien » est un audit réussi, et il arrive.
+**Les puces défilantes** (Cabinets, Caves & bistrots…), **le constat trop
+long**, **la partie « la différence »** et **la FAQ** : ce sont les mêmes
+clés à réécrire, quatre fois chacune, dans deux langues. J'ai les listes
+exactes, c'est un travail de rédaction que je peux enchaîner au tour
+suivant sans rien chercher.
 
-## Le CTA final
+**Les logos qui passent sous le texte dans « le sprint »** : c'est un
+problème de superposition CSS, pas de contenu. Il me faut la capture pour
+viser juste — sur quelle page et à quelle taille d'écran ?
 
-> **Sept jours, et vous saurez quoi changer.**
-> L'audit narratif : ce que vous racontez, ce que le marché en retient, et
-> les mouvements qui vous en sortent. 490 €, payé une fois.
+**Les pages Studio et Méthode** : elles parlent encore de la commande à
+4 500 € comme offre principale. C'est de la réécriture éditoriale, pas des
+substitutions.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Fichier de traductions passé au contrôle
+syntaxique.

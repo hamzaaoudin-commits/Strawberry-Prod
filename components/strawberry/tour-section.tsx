@@ -277,7 +277,7 @@ export function TourSection() {
       </div>
 
       <div className="shell pb-24 text-center">
-        <p className="accroche mx-auto mb-10 max-w-[620px] text-gradient">{t.outro}</p>
+        <p className="accroche mx-auto mb-10 max-w-[620px]">{t.outro}</p>
         <Link href="/brand-narrative-audit" className="btn-primary">
           {t.cta}
         </Link>

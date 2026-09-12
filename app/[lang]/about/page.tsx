@@ -8,7 +8,6 @@ import { AnimatedOrb } from "@/components/strawberry/animated-orb"
 import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
-import { FloatingSectionPill } from "@/components/strawberry/floating-section-pill"
 import { AboutSection } from "@/components/strawberry/about-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -597,13 +596,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <FloatingSectionPill
-        sections={[
-          { id: "sec-why", label: t.whyKicker },
-          { id: "sec-refuse", label: t.refuseKicker },
-          { id: "sec-founder", label: t.founderKicker },
-        ]}
-      />
 
       <Footer />
     </main>
