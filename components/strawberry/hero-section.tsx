@@ -60,26 +60,22 @@ const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
-    h1a: "Your market does not hear you",
-    h1b: "the way you think you speak.",
+    h1a: "Seven days to learn",
+    h1b: "what your market actually keeps of you.",
     grounding: "Narrative audit · 490 € · Delivered in seven days",
     sub: "A brand, a venue, a name: what you sell rests on a story — and nobody has ever written it. We read yours the way your market does, without flattery. You get what it says today, what files you with everyone else, and the exact moves that pull you out.",
     cta1: "Place your commission \u2192",
     ctaMain: "Order the audit \u2192",
-    roomAsk: "You run a venue?",
-    roomLink: "THE ROOM \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
-    h1a: "Votre marché ne vous entend pas",
-    h1b: "comme vous croyez vous raconter.",
+    h1a: "Sept jours pour savoir",
+    h1b: "ce que votre marché retient de vous.",
     grounding: "Audit narratif · 490 € · Livré en sept jours",
     sub: "Une marque, un lieu, un nom : ce que vous vendez tient sur un récit — et personne ne l'a jamais écrit. Nous lisons le vôtre comme le fait votre marché, sans complaisance. Vous recevez ce qu'il raconte aujourd'hui, ce qui vous range avec les autres, et les mouvements exacts qui vous en sortent.",
     cta1: "Passer commande \u2192",
     ctaMain: "Commander l'audit \u2192",
-    roomAsk: "Vous tenez un lieu ?",
-    roomLink: "THE ROOM \u2192",
   },
 }
 
@@ -252,23 +248,6 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* La seconde porte, sur une ligne.
-              Cette page vend aux marques et porte le référencement du
-              domaine ; elle reste donc la racine du site. Mais quelqu'un qui
-              exploite un lieu doit pouvoir bifurquer sans lire un
-              argumentaire qui ne le concerne pas — d'où cette ligne, visible
-              dès la première seconde. Une ligne plutôt qu'un second bouton :
-              deux boutons de même poids dans un hero divisent l'attention et
-              affaiblissent l'action principale. */}
-          <div className="mb-12 flex flex-wrap items-center gap-2.5">
-            <span className="font-sans text-[13px] text-chalk-40">{t.roomAsk}</span>
-            <Link
-              href="/the-room"
-              className="group inline-flex items-center gap-1.5 border-b border-brand/40 pb-0.5 font-sans text-[13px] font-semibold tracking-[0.02em] text-brand no-underline transition-colors hover:border-brand hover:text-white"
-            >
-              {t.roomLink}
-            </Link>
-          </div>
 
         </div>
       </div>

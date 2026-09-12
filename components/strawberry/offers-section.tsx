@@ -2,7 +2,6 @@ import { LocaleLink as Link } from "@/components/locale-link"
 import { TrackedLink } from "@/components/strawberry/tracked-link"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
-import { LIVE } from "@/lib/config"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
 import { OfferCover } from "@/components/strawberry/offer-covers"
 import { DeliverablesTabs } from "@/components/strawberry/deliverables-tabs"
@@ -90,22 +89,16 @@ const T = {
       },
     ],
     specs: [
-      { k: "Lead time", v: "3 to 4 weeks" },
+      { k: "Lead time", v: "7 to 14 days" },
       { k: "Format", v: "One editorial document" },
       { k: "Scarcity", v: "4 commissions per quarter" },
     ],
-    aiCompat: "Every written piece, including the six playbooks, is written to be understood and pasted directly into whatever AI tool your teams already use \u2014 nothing to configure, nothing we maintain on your behalf.",
-    scarcityLabel: "Availability",
-    scarcityLine: (p: string, r: number) => `${p}: ${r} place${r > 1 ? "s" : ""} left.`,
-    scarcityNext: (d: string) => `Next opening ${d}.`,
-    scarcityCloses: (d: string) => `Applications close ${d}.`,
-    daysToOpening: (n: number) => (n <= 0 ? "Opens today." : n === 1 ? "1 day left before the next opening." : `${n} days left before the next opening.`),
     investKicker: "The investment",
     price: "490€",
     priceCadence: "one audit, paid once",
     justify:
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
-    clock: "A brand, a venue, a company or a person: same method, same price, same turnaround.",
+    clock: "A brand, a product, a venue, a company or a person: same method, same price, same turnaround.",
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
     cta1: "Order the audit →",
@@ -120,7 +113,7 @@ const T = {
     coverFoot: "Vingt à trente pages",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
-      "Tout commence par une extraction qu'aucune IA n'automatise : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
+      "Un document de vingt à trente pages, écrit à la main. Il dit ce que vous racontez aujourd'hui, ce que votre marché en retient réellement, ce qui vous range avec vos concurrents, et les trois à cinq mouvements qui vous en sortent — dans l'ordre, avec ce que chacun coûte. Rien n'est réécrit à votre place : vous repartez avec un état des lieux et un plan, pas une refonte.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     groups: [
       {
@@ -174,22 +167,16 @@ const T = {
       },
     ],
     specs: [
-      { k: "Délai", v: "3 à 4 semaines" },
+      { k: "Délai", v: "7 à 14 jours" },
       { k: "Format", v: "Un document éditorial" },
       { k: "Rareté", v: "4 commandes par trimestre" },
     ],
-    aiCompat: "Chaque pièce écrite, y compris les six playbooks, est rédigée pour être comprise et collée directement dans l’outil IA que vos équipes utilisent déjà \u2014 rien à configurer, rien que nous maintenions à votre place.",
-    scarcityLabel: "Disponibilité",
-    scarcityLine: (p: string, r: number) => `${p} : ${r} place${r > 1 ? "s" : ""} restante${r > 1 ? "s" : ""}.`,
-    scarcityNext: (d: string) => `Prochaine ouverture le ${d}.`,
-    scarcityCloses: (d: string) => `Clôture des candidatures le ${d}.`,
-    daysToOpening: (n: number) => (n <= 0 ? "Ouverture aujourd'hui." : n === 1 ? "Plus qu'1 jour avant la prochaine ouverture." : `Plus que ${n} jours avant la prochaine ouverture.`),
     investKicker: "L'investissement",
     price: "490€",
     priceCadence: "un audit, payé une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
-    clock: "Une marque, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
+    clock: "Une marque, un produit, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
     cta1: "Commander l'audit →",
@@ -199,8 +186,6 @@ const T = {
 
 export function OffersSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
-  const sc = LIVE.scarcity
-  const daysToOpening = Math.max(0, Math.ceil((new Date(sc.nextOpeningDate).getTime() - Date.now()) / 86400000))
 
   return (
     <section id="offers" className="section relative overflow-hidden bg-ink text-white">
@@ -272,9 +257,6 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <DeliverablesTabs groups={t.groups} />
 
-            <p className="mt-7 max-w-[620px] font-sans text-[13.5px] leading-relaxed text-chalk-40">
-              {t.aiCompat}
-            </p>
           </div>
 
           {/* L'INVESTISSEMENT — prix, justification, retour, garanties, rareté. */}
@@ -313,40 +295,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
 
             <p className="mt-6 font-sans text-[13.5px] text-chalk-40">{t.clock}</p>
 
-            {/* Rareté vérifiable : une constante tenue à la main dans config.ts.
-                Le nombre de places lui-même n'est jamais recalculé — un
-                fondateur qui commande à ce niveau repère une jauge qui
-                bouge toute seule, et ça coûterait toute la crédibilité que
-                l'honnêteté du reste du site a construite. Le compte à
-                rebours ci-dessous, en revanche, change réellement chaque
-                jour sans rien inventer : c'est un vrai calcul de date. */}
-            <div className="mt-8 border border-hair px-5 py-4">
-              <div className="mb-3 flex flex-wrap items-center gap-3">
-                <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-chalk-40">
-                  {t.scarcityLabel}
-                </span>
-                <span className="font-serif text-[15px] text-white">
-                  {t.scarcityLine(sc.period, sc.remaining)}
-                </span>
-                <span className="font-sans text-[13.5px] text-chalk-55">{t.scarcityNext(sc.nextOpening[lang])}</span>
-                {sc.closesOn[lang] && (
-                  <span className="font-sans text-[13.5px] text-brand">{t.scarcityCloses(sc.closesOn[lang])}</span>
-                )}
-              </div>
-
-              {/* La jauge : autant de segments que de commandes possibles ce
-                  trimestre, remplis selon ce qui est déjà pris. */}
-              <div className="flex gap-1.5" aria-hidden>
-                {Array.from({ length: sc.total }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-[7px] flex-1 ${i < sc.total - sc.remaining ? "bg-brand" : "bg-white/10"}`}
-                  />
-                ))}
-              </div>
-
-              <p className="m-0 mt-3 font-sans text-[12.5px] text-chalk-40">{t.daysToOpening(daysToOpening)}</p>
-            </div>
+            
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
               {/* Le paiement ne s'ouvre plus depuis la page d'accueil.

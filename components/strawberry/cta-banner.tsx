@@ -5,8 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Start by knowing what you are saying.", sub: "The narrative audit. 490 €, delivered in seven days.", cta1: "Order the audit" },
-  fr: { h2: "Commencez par savoir ce que vous racontez.", sub: "L'audit narratif. 490 €, livré en sept jours.", cta1: "Commander l'audit" },
+  en: { h2: "Seven days, and you will know what to change.", sub: "The narrative audit: what you say, what the market keeps of it, and the moves that pull you out. 490 €, paid once.", cta1: "Order the audit" },
+  fr: { h2: "Sept jours, et vous saurez quoi changer.", sub: "L'audit narratif : ce que vous racontez, ce que le marché en retient, et les mouvements qui vous en sortent. 490 €, payé une fois.", cta1: "Commander l'audit" },
 }
 
 export function CTABanner() {

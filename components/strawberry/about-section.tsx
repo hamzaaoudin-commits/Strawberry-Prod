@@ -25,7 +25,7 @@ const T = {
     kicker: "LE STUDIO",
     h2a: "Ce qu'est ce studio.",
     h2b: "Et ce qu'il n'est pas.",
-    p1: "Strawberry Production est un studio d'architecture narrative basé à Paris. Un fondateur. Quatre commandes par trimestre. Une seule offre, affinée commande après commande. Un travail éditorial dans sa forme, discipliné par l'héritage.",
+    p1: "Strawberry Production est un studio d'architecture narrative basé à Paris. Un fondateur. Une seule offre, affinée commande après commande. Un travail éditorial dans sa forme, discipliné par l'héritage.",
     p2a: "Nous concevons l'",
     p2strong: "identité, la position et le langage",
     p2b: " qui rendent un fondateur impossible à confondre avec le champ — et impossible à générer par une machine.",
@@ -33,7 +33,7 @@ const T = {
     beliefs: [
       { t: "Pas une agence de marque. Un studio de doctrine.", d: "On ne livre pas des assets marketing. On écrit le document qui déclare ce qu'est une maison, ce qu'elle refuse, et comment elle sonne quand elle parle. L'artefact est une constitution, pas un deck." },
       { t: "L'architecture avant le contenu.", d: "Le contenu, c'est ce qu'une maison produit. L'architecture, c'est ce qui le fait tenir à travers les années, les surfaces et les mains. Nous bâtissons l'architecture d'abord — et une fois qu'elle existe, nous pouvons aussi porter le contenu." },
-      { t: "Quatre commandes par trimestre.", d: "Chaque maison est bâtie de zéro, et le travail ne tient qu'à ce rythme. Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre le travail." },
+      { t: "Le refus fait partie du travail.", d: "Quand une maison serait mieux servie ailleurs, nous le disons plutôt que de prendre le travail. Un audit qui conclut « ne changez rien » est un audit réussi, et il arrive." },
     ],
   },
 }

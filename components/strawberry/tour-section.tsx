@@ -28,9 +28,10 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   fr: {
-    kicker: "Un métier, quatre terrains",
+    kicker: "Un audit, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
     hint: "Continuez à défiler",
+    sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
     cta: "Commander l'audit →",
     scenes: [
@@ -85,9 +86,10 @@ const T = {
     ],
   },
   en: {
-    kicker: "One craft, four grounds",
+    kicker: "One audit, four grounds",
     title: "What you find when a story is written.",
     hint: "Keep scrolling",
+    sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
     cta: "Order the audit →",
     scenes: [
@@ -263,7 +265,7 @@ export function TourSection() {
                   ))}
                 </ul>
                 <Link href={s.href} className="ts-num no-underline text-brand">
-                  {String(i + 1).padStart(2, "0")} / {String(t.scenes.length).padStart(2, "0")} — {s.k} →
+                  {String(i + 1).padStart(2, "0")} / {String(t.scenes.length).padStart(2, "0")} — {t.sceneCta} {s.t} →
                 </Link>
               </div>
             </article>

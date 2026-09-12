@@ -1,62 +1,66 @@
-# Strawberry — questionnaire fini, terrains reliés
+# Strawberry — finalisation
 
-8 fichiers. Deux des trois chantiers demandés ; le troisième est expliqué
-plus bas.
+7 fichiers.
 
-## 1. Le questionnaire connaît les quatre terrains
+## Le logo
 
-**Les terrains sont alignés sur le site** : `entreprises` disparaît,
-`produits` arrive. Le questionnaire et les pages parlent enfin des mêmes
-quatre choses.
+« Strawberry Prod. » → **STRAWBERRY PROD.**, dans la barre et le pied de
+page, aligné sur les titres du site.
 
-**Deux questions sont déclinées** au lieu d'une :
+## L'accroche
 
-- *Les concurrents* — version produits ajoutée (« l'argument qu'ils
-  mettent en avant en rayon, tel quel »).
-- *La phrase qui vous décrit* — quatre versions. « Votre maison » pour les
-  marques, « votre produit » et son emballage, « votre lieu » et sa fiche
-  Google, et pour un artiste « votre bio, y compris si elle date de trois
-  projets ».
+L'ancienne — « Votre marché ne vous entend pas comme vous croyez vous
+raconter » — était un jeu de miroir : elle décrivait un écart sans dire
+ce qu'on y gagne. La nouvelle promet le livrable :
 
-**Un bug que je venais d'introduire, corrigé.** Une question déclinée
-n'existe que pour les terrains qu'elle nomme. Sans `?terrain=` dans
-l'URL, le positionnement **et** les concurrents disparaissaient du
-parcours : un client qui vient de payer aurait reçu un questionnaire
-amputé, sans que rien ne le signale. Le filtre retombe désormais sur
-« marques » par défaut.
+> **Sept jours pour savoir ce que votre marché retient de vous.**
 
-Vérifié : les quatre parcours comptent exactement le même nombre de
-questions.
+Le délai, l'objet et le bénéfice en une ligne.
 
-## 2. Les pages de terrain se répondent
+**La ligne « Vous tenez un lieu ? THE ROOM → » est retirée.** Elle ne
+proposait qu'un terrain sur quatre — un arbitraire hérité de l'époque où
+il n'y en avait que deux. Les quatre sont présentés juste en dessous,
+dans la tournée.
 
-Un bloc en pied de page propose les trois autres terrains, avec leur nom
-et leur libellé. Volontairement discret : il sert celui qui hésite entre
-une marque et un produit — le cas le plus courant — sans détourner celui
-qui est déjà au bon endroit. La page courante est exclue automatiquement.
+## La tournée
 
-Le style vit dans `public/nocta/styles.css`, pas dans les globals :
-il n'existe que sur ces pages.
+« Un métier, quatre terrains » → **« Un audit, quatre terrains »**. Plus
+juste : ce n'est pas le métier qui se décline, c'est l'offre.
 
-## 3. Une duplication supprimée au passage
+Le lien en pied de scène devient explicite — « Voir BRAND → » au lieu
+d'un numéro — donc on sait qu'on va vers une page dédiée.
 
-`the-room` avait sa **propre copie du HTML**, indépendante du gabarit. Les
-deux devaient être modifiés en parallèle à chaque changement — c'est
-pourquoi le retrait de la tournée a dû être fait deux fois. Elle passe
-désormais par le gabarit, sans surcharge de texte : le dictionnaire
-d'origine parle déjà des lieux. 300 lignes dupliquées en moins, et plus
-aucun risque de divergence.
+## L'offre
 
-## Ce que je n'ai pas fait : un exemple par terrain
+**La description** ne dit plus ce qu'une IA ne sait pas faire, elle dit ce
+qu'on reçoit : un document de vingt à trente pages, ce qu'il contient
+(votre discours actuel, ce que le marché en retient, ce qui vous range,
+les trois à cinq mouvements dans l'ordre avec leur coût), et ce qu'il
+n'est pas — « rien n'est réécrit à votre place ».
 
-C'est un travail de **rédaction**, pas de code : il faut écrire trois
-audits fictifs complets, comme VERSO l'est pour les marques — une maison
-inventée, ses concurrents, son diagnostic, ses mouvements. VERSO fait
-plusieurs milliers de mots.
+**Le délai** passe de 3-4 semaines à **7 à 14 jours**, FR et EN.
 
-Je peux les écrire, mais un par tour, et il me faut votre accord sur le
-type de maison à inventer pour chacun : un restaurant ? un objet
-manufacturé ? un musicien ? Dites-moi lequel vous voulez en premier.
+**« Une marque, un lieu, une entreprise ou une personne »** devient
+« Une marque, **un produit**, un lieu, une entreprise ou une personne ».
+
+**Le paragraphe sur les playbooks collables dans un outil IA** est retiré.
+
+**La jauge de disponibilité T3 2026** est retirée, avec ses cinq clés de
+texte, le calcul de jours restants et l'import de `LIVE` devenu inutile.
+
+## L'argument des quatre commandes
+
+Remplacé par un argument qui ne dépend pas d'un chiffre à tenir à jour :
+
+> **Le refus fait partie du travail.** Quand une maison serait mieux
+> servie ailleurs, nous le disons plutôt que de prendre le travail. Un
+> audit qui conclut « ne changez rien » est un audit réussi, et il arrive.
+
+## Le CTA final
+
+> **Sept jours, et vous saurez quoi changer.**
+> L'audit narratif : ce que vous racontez, ce que le marché en retient, et
+> les mouvements qui vous en sortent. 490 €, payé une fois.
 
 ## Vérification
 
