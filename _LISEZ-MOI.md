@@ -1,49 +1,39 @@
-# Strawberry — les extraits montrent leurs preuves
+# Strawberry — « Un cas réel, avec ses preuves. »
 
 6 fichiers.
 
-## Ce qui manquait
+## Le titre
 
-Mes extraits donnaient des **conclusions** sans la matière qui les
-soutient. « Votre site dit sur mesure onze fois » — le lecteur doit me
-croire sur parole. Or c'est précisément ce qu'un audit ne doit pas
-demander : il montre ce qu'il a compté.
+**Un cas réel, avec ses preuves.** — et en anglais « A real case, with its
+evidence. »
 
-## Un bloc de relevé sous chaque analyse
+## La contradiction que ça créait, réglée
 
-Encadré, en mono, sous le passage :
+Le chapô disait « une maison inventée pour l'exercice », ce qui contredit
+frontalement « réel ». Il dit maintenant :
 
-> **RELEVÉ**
-> « sur mesure » : 11 occurrences site + 4 plaquette · Kessel : « mobilier
-> sur mesure, fabrication française » · Norbert Frères : « le sur-mesure
-> accessible » · Atelier 9 : « sur mesure, sans compromis » · Mentions
-> d'un refus assumé : 0
+> Trois passages d'un audit sur LOAM, mobilier de bureau sur mesure, douze
+> ans, quatorze personnes. **Le nom est changé, les relevés ne le sont
+> pas.** Mise en page d'origine.
 
-Le visiteur voit **les phrases exactes des concurrents**, les comptages,
-les tailles de panel. L'analyse cesse d'être une opinion : elle devient la
-lecture d'un relevé qu'on peut contester.
+C'est plus honnête et plus fort : on ne prétend pas que la maison est
+inventée, on dit ce qu'on a anonymisé. Un client comprend
+immédiatement — c'est la formule d'usage quand on publie un cas.
 
-Sur le troisième bloc, le relevé devient **coût et effet** — ce que le
-mouvement coûte, ce qu'il risque, ce qu'il débloque, et son rang de
-priorité. Y compris le risque : « perte estimée de 25% des demandes
-entrantes ». Un audit qui ne chiffre que les gains n'est pas un audit.
+## Les trois numéros qui ne s'accordaient pas
 
-## Les analyses sont trois fois plus longues
+Le bloc affichait **14** en folio, **02 / 05 / 11** dans la marge, et
+annonçait **les pages 4, 9 et 21** en pied. Trois séries de nombres,
+aucune cohérente entre elles. Sur un fac-similé censé montrer un vrai
+document, c'est le détail qui décrédibilise tout le reste.
 
-Et elles raisonnent au lieu d'affirmer. Exemple sur les lieux :
+- Le folio est retiré : il n'apportait rien que les autres numéros ne
+  disent déjà, et le pied se réaligne à gauche.
+- Les numéros de marge deviennent **p. 04 / p. 09 / p. 21**, accordés au
+  pied de bloc.
 
-> Quatre adresses concurrentes sur cinq revendiquent le produit ou le
-> circuit court, la cinquième le prix. Aucune ne revendique le service —
-> toutes le subissent aux heures de pointe, et deux s'en excusent dans
-> leurs réponses aux avis. C'est le terrain libre, et il est déjà le vôtre
-> sans que vous le disiez : vous servez vingt-huit couverts avec deux
-> personnes en salle, et c'est ce que décrivent les avis qui parlent de
-> vous plutôt que de votre carte.
-
-Chaque passage suit la même mécanique : le constat chiffré, ce qu'il
-révèle, et pourquoi c'est exploitable.
+Les trois passages sont donc situés une seule fois, de manière cohérente.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées. Les trois pages ont
-exactement le même jeu de clés dans les deux langues.
+Contrôle de types : zéro erreur. Traductions validées.

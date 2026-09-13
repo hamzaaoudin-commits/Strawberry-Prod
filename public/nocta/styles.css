@@ -815,7 +815,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   color:var(--smoke-dim); }
 .ex-note::before{ content:"— "; color:var(--coral); }
 
-.ex-page-foot{ display:flex; justify-content:space-between; align-items:center; gap:1rem;
+.ex-page-foot{ display:flex; justify-content:flex-start; align-items:center; gap:1rem;
   padding:1rem clamp(1.4rem,3.5vw,3rem); border-top:1px solid var(--line-soft);
   font-family:var(--mono); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase;
   color:var(--smoke-dim); }

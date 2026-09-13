@@ -168,7 +168,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <section class="section extrait">
 <div class="wrap">
 <span class="eyebrow reveal" data-i18n="ex.eyebrow">Un extrait</span>
-<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Ce que vous lisez, page 14.</h2>
+<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Un cas réel, avec ses preuves.</h2>
 <p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Trois passages d'un audit réel.</p>
 
 <div class="ex-page reveal d1">
@@ -179,7 +179,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 
   <div class="ex-body">
     <div class="ex-block">
-      <div class="ex-num">02</div>
+      <div class="ex-num">p. 04</div>
       <div class="ex-text">
         <h3 data-i18n="ex.1.k">Le diagnostic</h3>
         <p data-i18n="ex.1.b">Extrait.</p>
@@ -192,7 +192,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
     </div>
 
     <div class="ex-block">
-      <div class="ex-num">05</div>
+      <div class="ex-num">p. 09</div>
       <div class="ex-text">
         <h3 data-i18n="ex.2.k">La carte du champ</h3>
         <p data-i18n="ex.2.b">Extrait.</p>
@@ -205,7 +205,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
     </div>
 
     <div class="ex-block">
-      <div class="ex-num">11</div>
+      <div class="ex-num">p. 21</div>
       <div class="ex-text">
         <h3 data-i18n="ex.3.k">Le mouvement</h3>
         <p data-i18n="ex.3.b">Extrait.</p>
@@ -220,7 +220,6 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 
   <div class="ex-page-foot">
     <span data-i18n="ex.foot">Extrait des pages 4, 9 et 21 — le document en compte 24.</span>
-    <span class="ex-folio">14</span>
   </div>
 </div>
 </div>
