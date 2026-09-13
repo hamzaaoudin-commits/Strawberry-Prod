@@ -174,8 +174,13 @@ export function ContactSection() {
         <div className="mb-16 text-center">
           <div className="kicker mb-6">{t.kicker}</div>
           <h2 className="h-section mb-7">
+            {/* Tout en blanc.
+                La seconde moitié était en dégradé rouge, ce qui coupait le
+                mot en deux au milieu d'un trait d'union — « Parlons- » en
+                blanc, « en. » en rouge. Le rouge est gardé pour le surtitre
+                et pour les actions du formulaire, en dessous. */}
             {t.h2a}
-            <span className="text-gradient">{t.h2b}</span>
+            {t.h2b}
           </h2>
           <p className="lede mx-auto max-w-[600px]">{t.intro}</p>
         </div>
