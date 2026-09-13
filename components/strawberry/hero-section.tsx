@@ -109,7 +109,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="home" ref={heroRef as any} className="relative flex min-h-[68vh] items-center overflow-hidden bg-ink pb-8 pt-28">
+    <section id="home" ref={heroRef as any} className="relative flex min-h-[62vh] items-center overflow-hidden bg-ink pb-0 pt-28">
       {/* Le bas du hero se fond dans la section suivante.
           La lueur rouge du hero s'arrêtait net à sa dernière ligne, ce qui
           dessinait la frontière la plus visible de la page. Ce voile la

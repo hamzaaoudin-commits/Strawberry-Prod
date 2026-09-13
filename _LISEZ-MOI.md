@@ -1,31 +1,36 @@
-# Strawberry — le vide venait du hero
+# Strawberry — le dernier vide entre le hero et la tournée
 
-1 fichier.
+2 fichiers.
 
-## Ce que j'avais raté
+## Ce qui restait
 
-Je cherchais l'espace du mauvais côté de la frontière. J'ai réduit la
-marge de la section suivante, alors que **le vide appartenait au hero**.
+Deux marges se cumulaient de part et d'autre de la frontière, et comme
+elles vivent dans deux composants différents, on ne les voyait jamais
+ensemble :
 
-Il était en `min-h-[82vh]` avec son contenu centré verticalement. Le
-contenu ne remplit pas 82 % de l'écran : le reste se répartit donc
-au-dessus et en dessous. Tout l'espace sous le bouton était du hero, pas
-de la section d'après — d'où le fait que mes deux corrections précédentes
-n'y aient presque rien changé.
+- le bas du hero : 8 unités, soit 32 pixels
+- le haut de la tournée : 10 unités, soit 40 pixels
+
+Plus l'espace que le hero laissait encore sous son contenu, à 68vh.
 
 ## Le réglage
 
-- `min-h-[82vh]` → **`min-h-[68vh]`**
-- Marges explicites : `pt-28` pour dégager la barre de navigation,
-  `pb-8` en bas
+| | Avant | Après |
+|---|---|---|
+| Hauteur du hero | `68vh` | **`62vh`** |
+| Marge basse du hero | `pb-8` | **`pb-0`** |
+| Marge haute de la tournée | `pt-10` | **`pt-2`** |
 
-Le contenu occupe donc une hauteur proche de la sienne, au lieu de flotter
-au milieu d'un bloc trop grand. Le surtitre de la tournée remonte
-d'environ 14 % de la hauteur d'écran, soit 130 pixels de plus sur un
-portable et 190 sur un grand écran.
+Le surtitre remonte d'environ 140 pixels de plus, après les 660 du patch
+précédent.
 
-Le hero garde sa présence — il occupe encore les deux tiers de l'écran à
-l'ouverture, et la mention « défiler » reste sous la ligne de flottaison.
+## Pourquoi ça a pris trois passes
+
+J'ai corrigé une marge à la fois sans regarder les autres. Le vide était
+la somme de quatre valeurs réparties dans trois fichiers — le dégradé en
+pourcentage, la marge de la tournée, la hauteur du hero, sa marge basse —
+et chaque correction isolée n'en retirait qu'un quart. Il fallait les
+additionner d'abord.
 
 ## Vérification
 

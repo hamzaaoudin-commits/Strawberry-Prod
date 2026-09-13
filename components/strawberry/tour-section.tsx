@@ -208,7 +208,7 @@ export function TourSection() {
       {/* 24 unités de marge haute s'ajoutaient à l'espace que le hero
           laisse déjà sous son bouton : le surtitre se retrouvait à un écran
           du contenu précédent. */}
-      <div className="shell pt-10 text-center">
+      <div className="shell pt-2 text-center">
         <div className="kicker mb-5">{t.kicker}</div>
         <h2 className="h-section mx-auto max-w-[760px]">
             <span className="surligne-grad">{t.title}</span>
