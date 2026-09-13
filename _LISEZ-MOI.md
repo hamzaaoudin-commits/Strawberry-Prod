@@ -1,35 +1,20 @@
-# Strawberry — l'italique retiré là où je l'avais mis
+# Strawberry — la phrase de clôture descend
 
-3 fichiers.
+1 fichier.
 
-## Ce qui change
+## Le réglage
 
-Trois endroits que j'avais passés en Instrument Serif italique repassent
-en Bricolage, la police de titre, en demi-gras :
+Le bloc de clôture n'avait **aucune marge haute**. Il suivait donc
+immédiatement la section épinglée de 460vh, ce qui collait la phrase au
+bas du dernier panneau de la tournée — sur son fond sombre, d'où
+l'impression qu'elle y était encastrée.
 
-- **La projection de chaque scène** — « Le devis part sans une ligne de
-  justification. »
-- **La phrase de clôture** de la tournée et des pages d'offres — « Tout ça
-  existe déjà chez vous. »
-- **La classe `accroche`** en général, qui servait à ces deux usages.
+La place existait, elle n'était simplement pas prise. Ajouté :
 
-## Pourquoi c'était faux
-
-L'italique fait lire une phrase comme un **aparté ou une citation** —
-quelque chose qui vient d'ailleurs, qu'on rapporte. Or ces lignes-là
-affirment ce que le client obtient : ce sont les phrases les plus
-assertives de la page. Le poids du display les porte, l'italique les
-affaiblissait.
-
-Et ça évitait d'introduire une quatrième voix typographique là où trois
-suffisent : Bricolage pour ce qui affirme, Hanken pour ce qui explique,
-Space Mono pour ce qui étiquette.
-
-## Ce que je n'ai pas touché
-
-Les italiques d'origine de la charte : la phrase sous le wordmark des
-pages d'offres, et les `em` du constat. Elles font partie du design de
-NOCTA, pas de mes ajouts. Dites-moi si vous voulez qu'elles partent aussi.
+- `pt-28` sur mobile, `pt-36` au-dessus — la phrase se détache nettement
+  du dernier panneau
+- `mb-12` au lieu de `mb-10` entre la phrase et le bouton, pour que la
+  respiration soit cohérente de part et d'autre
 
 ## Vérification
 
