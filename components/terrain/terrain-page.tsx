@@ -205,7 +205,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <!-- ============ WORK TEASER ============ -->
 <section class="section" style="padding-top:2.5rem; padding-bottom:3rem">
 <div class="wrap" style="text-align:center">
-<p style="font-size:clamp(1.4rem,3.5vw,2.2rem)"><span class="serif surligne" data-i18n="tour.out">Tout ça existe déjà chez vous. Il faut juste l'écrire.</span></p>
+<p class="serif" data-i18n="tour.out" style="font-size:clamp(1.4rem,3.5vw,2.2rem); color:var(--cream)">Tout ça existe déjà chez vous. Il faut juste l'écrire.</p>
 </div>
 </section>
 <!-- ============ CTA BAND ============ -->

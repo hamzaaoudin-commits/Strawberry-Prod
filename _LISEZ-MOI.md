@@ -1,25 +1,30 @@
-# Strawberry — le lien de scène, sans le compteur
+# Strawberry — la phrase de clôture sans surlignage
 
 2 fichiers.
 
 ## Ce qui change
 
-`02 / 04 — VOIR THE ROOM →` devient **`VOIR THE ROOM →`**.
+« Tout ça existe déjà chez vous. Il faut juste l'écrire. » redevient une
+ligne en italique simple, en crème.
 
-Le numéro faisait doublon : la jauge verticale à droite de la section dit
-déjà où l'on en est dans les quatre scènes. Et en gris, il passait devant
-la seule action de la scène — l'œil lisait un compteur avant de voir un
-lien.
+## Pourquoi c'était moche, concrètement
 
-## Le lien devient une action
+Le surlignage tient sur quelques mots : le fond rouge découpe une forme
+autour d'un groupe court, et c'est ce contour irrégulier qui fait l'effet.
+Sur une phrase entière, le fond devient un **rectangle plein** — plus un
+surlignage, une barre. Et placée juste au-dessus du bouton « Commander
+l'audit », cette barre rouge entrait en concurrence avec lui : deux blocs
+rouges empilés, dont un seul est cliquable.
 
-Il était traité comme une légende. Il a maintenant les attributs d'un
-bouton textuel : filet rouge sous le texte, flèche séparée qui avance de
-quatre pixels au survol, et le tout qui passe en blanc.
+Le rouge est donc gardé pour la seule action de la section.
 
-C'est le seul endroit de la scène où l'on peut cliquer — autant que ça se
-voie.
+## Corrigé aussi sur les pages d'offres
+
+La même phrase, avec le même traitement, fermait la section « le travail »
+des quatre pages de terrain. Elle est alignée : italique, crème, sans
+fond.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Plus aucun surlignage sur les pages de
+terrain.

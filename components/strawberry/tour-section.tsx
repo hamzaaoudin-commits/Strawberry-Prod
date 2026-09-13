@@ -257,9 +257,11 @@ export function TourSection() {
       </div>
 
       <div className="shell pb-24 text-center">
-        <p className="mx-auto mb-10 max-w-[620px]">
-          <span className="accroche surligne">{t.outro}</span>
-        </p>
+        {/* Plus de surlignage ici : l'effet tient sur quelques mots, pas sur une
+            phrase entière — une ligne complète en fond rouge devient une barre
+            et écrase le bouton qui la suit. Italique seul, et le rouge est
+            gardé pour la seule action de la section. */}
+        <p className="accroche mx-auto mb-10 max-w-[620px] text-center">{t.outro}</p>
         <Link href="/brand-narrative-audit" className="btn-primary">
           {t.cta}
         </Link>
