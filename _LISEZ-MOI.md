@@ -1,21 +1,36 @@
-# Strawberry — la phrase descend, le bloc ne grandit pas
+# Strawberry — le bandeau final allégé
 
-1 fichier. Remplace le patch précédent.
+1 fichier.
 
-## Ce que j'avais mal fait
+## Le paragraphe est supprimé
 
-Vous demandiez de descendre la phrase. J'ai ajouté de la marge en haut,
-ce qui la descend mais **allonge la section** d'autant — donc plus de
-défilement pour arriver au bouton, et un vide en plus dans la page.
+Il redisait ce que la section offre vient d'expliquer trois écrans plus
+haut : le contenu de l'audit, son prix, son délai. Quelqu'un qui arrive
+ici a déjà tout lu — ou a décidé de ne pas lire, et un paragraphe de plus
+n'y change rien.
 
-## Le réglage
+Il reste la phrase et le bouton.
 
-L'espace est redistribué à hauteur constante. Le bloc faisait 24 unités
-de marge, toutes en bas ; il en fait toujours 24, mais **14 au-dessus de
-la phrase et 10 en dessous**.
+## Le titre n'est plus en dégradé
 
-La phrase descend donc dans la hauteur déjà occupée. La page ne s'allonge
-pas d'un pixel.
+Le rouge est gardé pour le bouton, qui est la seule chose à cliquer dans
+ce bloc. Un titre rouge au-dessus d'un bouton rouge, ce sont deux éléments
+qui se disputent l'attention au moment précis où il ne doit y en avoir
+qu'un.
+
+Le titre passe donc en blanc, et sa taille descend de `clamp(2rem, 5vw,
+4rem)` à `clamp(1.6rem, 3.4vw, 2.6rem)`.
+
+## L'encadré est réduit
+
+- Rayon de **36px → 12px** : à 36, le bloc ressemblait à une carte
+  promotionnelle posée sur la page plutôt qu'à une section.
+- Marges verticales de **20 → 12 unités**, et section de 20 → 16.
+- **Le dégradé de fond et l'ombre portée de 120px sont retirés.** Ils
+  faisaient de ce rappel le bloc le plus imposant de la page, alors qu'il
+  ne fait que répéter une action déjà proposée plus haut.
+
+Reste un filet fin, comme les autres sections du site.
 
 ## Vérification
 
