@@ -178,7 +178,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="wrap">
 <div class="section-head reveal">
 <span class="eyebrow" data-i18n="price.eyebrow">Ce que ça coûte</span>
-<h2 class="h-sec" data-i18n="price.title">Le même prix que pour tout le monde.</h2>
+<h2 class="h-sec" data-i18n="price.title">Payé une fois. Gardé pour toujours.</h2>
 <p class="lead" data-i18n="price.lead" style="margin-top:1.2rem">Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.</p>
 </div>
 <div class="grid cols-2" style="gap:1.1rem">
@@ -226,10 +226,10 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><section class="section">
 <div class="wrap">
 <div class="cta-band wipe">
-<span class="eyebrow" data-i18n="cta.eyebrow">On commence par un appel</span>
+<span class="eyebrow" data-i18n="cta.eyebrow">L'audit narratif</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
-<p class="lead" data-i18n="cta.lead">Vingt minutes suffisent pour savoir si votre lieu a de quoi être écrit. Nous prenons peu de lieux à la fois, et nous le dis franchement si ce n'est pas le moment.</p>
-<a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="cta.btn">Prendre contact</span><span class="arr">→</span></a>
+<p class="lead" data-i18n="cta.lead">490 €, livré sous sept à quatorze jours. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
+<a class="btn btn-primary" href="__LANG__/brand-narrative-audit"><span data-i18n="cta.btn">Commander l'audit</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>

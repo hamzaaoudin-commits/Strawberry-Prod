@@ -1,34 +1,54 @@
-# Strawberry — « On lit, on compare, on tranche. »
+# Strawberry — prix, FAQ, et le CTA qui vend
 
 5 fichiers.
 
-## Le titre du sprint
+## 1. Le titre de la section prix
 
-« Sept à quatorze jours, cinq blocs. » devient **« On lit, on compare, on
-tranche. »** — et en anglais, **« We read, we compare, we settle. »**
+**« Payé une fois. Gardé pour toujours. »** — et en anglais « Paid once.
+Kept for good. »
 
-Les trois verbes annoncent exactement les cinq cartes qui suivent : nous
-lisons, nous cartographions, nous nommons, nous donnons, nous laissons. Et
-le dernier porte l'argument central du site : ce qui manque au client,
-c'est une décision, pas du contenu.
+Elle fait le travail des deux cartes en six mots : une dépense qui se
+répète d'un côté, une acquisition qui reste de l'autre. Le contraste est
+posé avant même qu'on lise la comparaison.
 
-Avantage pratique : elle ne promet ni délai ni volume, donc rien à tenir à
-jour le jour où l'un des deux change. Le cadre reste visible ailleurs —
-le « 01 / 05 » juste en dessous, et le délai dans la première carte.
+## 2. La FAQ « et si ça ne m'apprend rien »
 
-## Sur la traduction anglaise
+L'ancienne réponse parlait d'autre chose — elle expliquait que le document
+est applicable par un tiers, ce qui ne répond pas à la question.
 
-*Settle* plutôt que *decide* : « trancher » suppose de clore un débat, pas
-seulement de choisir. *Settle* porte ça, *decide* non.
+La nouvelle répond, et retourne l'objection :
 
-## Quatre endroits, pas trois
+> Alors nous vous le disons, et c'est une réponse en soi : votre position
+> tient, ne la touchez pas. Ça arrive rarement — ce qu'un fondateur trouve
+> évident sur son métier n'apparaît presque jamais dans ce qu'il publie,
+> et c'est cet écart que le document mesure. Dans ce cas, vous aurez
+> économisé la refonte que vous envisagiez, ce qui coûte bien plus que
+> 490 €.
 
-Le texte était écrit dans les trois pages de terrain **et** en dur dans le
-HTML du gabarit, qui sert de valeur par défaut avant que le dictionnaire
-ne s'applique. Sans le corriger là aussi, THE ROOM aurait gardé l'ancien
-titre, et les trois autres l'auraient affiché brièvement au chargement.
+Trois choses en une : le cas est admis franchement, la raison pour
+laquelle il est rare est donnée — et elle est crédible parce qu'elle
+décrit le mécanisme —, et même ce cas a une valeur chiffrable.
+
+Déclinée par terrain : pour un produit c'est la refonte d'emballage
+évitée, pour un artiste c'est savoir que le problème est ailleurs et où le
+chercher.
+
+## 3. Le CTA final
+
+**Plus aucune mention d'appel**, nulle part. Vérifié : zéro occurrence.
+
+- Surtitre : « On commence par un appel » → **« L'audit narratif »**
+- Titre : « Racontez-moi votre lieu » → **« Vous savez déjà ce que vous
+  valez. »**
+- Texte : les vingt minutes au téléphone → **« 490 €, livré sous sept à
+  quatorze jours. Vingt à trente pages écrites à la main, à vous pour
+  toujours. »**
+- Bouton : « Prendre contact » → **« Commander l'audit »**, et il mène
+  désormais à `/brand-narrative-audit` au lieu du formulaire.
+
+Le bouton « Prendre contact » du hero reste, lui : c'est la porte pour qui
+a une question avant d'acheter.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Fichier de traductions validé. Aucune
-trace des anciens titres dans les cinq fichiers.
+Contrôle de types : zéro erreur. Fichier de traductions validé.
