@@ -1,62 +1,60 @@
-# Strawberry — des objets, pas des notions
+# Strawberry — le décorticage, la précision, le dossier exploitable
 
-1 fichier.
+3 fichiers.
 
-## Ce qui était superficiel
+## Ce que j'avais retiré, et qui revient
 
-« L'intention derrière vos choix de conception, mise en mots. » « La
-position que personne d'autre ne peut revendiquer. » Ce sont des notions.
-On ne peut ni les tenir dans la main, ni savoir ce qu'on en fait le
-lendemain — et à 490 €, c'est précisément ce que le lecteur cherche à
-savoir.
+Le paragraphe sur les pièces « comprises et collées directement dans
+l'outil IA que vos équipes utilisent déjà » était sur le site. Je l'ai
+supprimé quand vous m'avez demandé d'alléger, sans voir que c'était un
+argument et pas du remplissage. C'était une faute de lecture de ma part.
 
-## La règle que j'ai appliquée
+## Le bloc commun de la tournée, réécrit
 
-Chaque puce nomme **soit une chose écrite qu'on peut coller quelque part
-dès le lendemain, soit un fait relevé chez le client qu'on lui rend**.
-Jamais une abstraction.
+Il portait trois lignes de volume et de délai — le genre d'information
+qu'on compare à la concurrence. Il porte maintenant les trois choses qui
+distinguent réellement l'audit :
 
-**BRAND**
-> Votre phrase d'accueil réécrite, et les quatre versions qu'elle
-> remplace : site, commerciaux, plaquette, signature mail
+> **DANS LES QUATRE CAS**
 >
-> Le mot que trois de vos concurrents revendiquent déjà, et celui que vous
-> êtes seul à pouvoir tenir
-
-**THE PRODUCT**
-> Votre fiche technique retournée : chaque caractéristique devient
-> l'arbitrage qui l'explique
+> Un relevé, pas un avis : concurrents lus phrase par phrase, votre
+> discours compté sur quatre supports
 >
-> Ce que votre emballage promet aujourd'hui, et ce que vos avis clients
-> démentent
-
-**THE ROOM**
-> Quoi filmer, à quelle heure, et les phrases à écrire dessous —
-> utilisables par n'importe qui en salle
+> Des mouvements au scalpel : quelle phrase, sur quelle page, remplacée
+> par quoi, et ce que ça coûte
 >
-> Les mots que vos habitués emploient dans leurs avis et que vous n'avez
-> jamais publiés
+> Un dossier applicable sans vous — par un nouveau commercial, une agence,
+> ou l'outil IA de vos équipes
 
-**THE NAME**
-> Votre bio réécrite en trois longueurs : plateforme, dossier de presse,
-> présentation scène
->
-> Le geste que la presse décrit déjà sans savoir le nommer, et la phrase
-> qui le nomme
+Le décorticage, la précision chirurgicale, le dossier exploitable. Les
+trois arguments que personne d'autre ne peut tenir : une agence livre un
+moodboard, une IA produit du texte probable.
 
-## Pourquoi c'est mieux
+## Un chapô, qui manquait
 
-Chaque ligne répond à « qu'est-ce que je reçois exactement ». Une phrase
-d'accueil réécrite, une bio en trois longueurs, un plan de tournage
-utilisable par l'équipe : ce sont des livrables qu'on peut vérifier à la
-réception.
+La section enchaînait le titre et les quatre scènes sans dire comment les
+lire :
 
-Et la seconde puce de chaque terrain rend au client **quelque chose qu'il
-possède déjà sans le savoir** — le mot que ses concurrents ont pris, ce
-que ses avis démentent, ce que ses habitués disent, ce que la presse
-décrit. C'est plus convaincant qu'une promesse : ça prouve qu'on est allé
-regarder.
+> Le même travail dans les quatre cas : on relève, on compare, on tranche.
+> Ce qui change, c'est la matière qu'on lit et ce qu'on vous rend.
+
+Sans cette phrase, on ne sait pas si les terrains sont quatre offres ou
+quatre variantes d'une seule. Elle reprend au passage les trois verbes du
+titre de section des pages d'offres.
+
+## Le troisième chiffre, sur les pages d'offres
+
+Il annonçait **0 — Abonnement, aucune dépendance**. C'est un argument
+défensif : il dit ce qu'on ne fait pas.
+
+Il annonce désormais **∞ — Réutilisable par vos équipes comme par votre
+outil IA**. C'est le même fond — le document vous appartient — mais dit
+par ce qu'il permet.
+
+Et ça règle une contradiction de fond : le site se positionnait contre
+l'IA tout en livrant précisément ce qui la rend utilisable. Autant le
+revendiquer.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Traductions validées.

@@ -28,15 +28,16 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   fr: {
+    lead: "Le même travail dans les quatre cas : on relève, on compare, on tranche. Ce qui change, c'est la matière qu'on lit et ce qu'on vous rend.",
     kicker: "Un audit, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
     afterLabel: "Après l'audit",
     ptsLabel: "En plus, sur votre terrain",
     commonLabel: "Dans les quatre cas",
     common: [
-      "20 à 30 pages écrites à la main, livrées en PDF sous 7 à 14 jours",
-      "3 à 5 concurrents décortiqués, phrase par phrase, avec le terrain qu'ils laissent libre",
-      "3 à 5 mouvements hiérarchisés, avec ce que chacun coûte et ce qu'il débloque",
+      "Un relevé, pas un avis : concurrents lus phrase par phrase, votre discours compté sur quatre supports",
+      "Des mouvements au scalpel : quelle phrase, sur quelle page, remplacée par quoi, et ce que ça coûte",
+      "Un dossier applicable sans vous — par un nouveau commercial, une agence, ou l'outil IA de vos équipes",
     ],
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
@@ -73,15 +74,16 @@ const T = {
     ],
   },
   en: {
+    lead: "The same work in all four cases: we record, we compare, we settle. What changes is the material we read and what we hand back.",
     kicker: "One audit, four grounds",
     title: "What you find when a story is written.",
     afterLabel: "After the audit",
     ptsLabel: "On top, for your ground",
     commonLabel: "In all four cases",
     common: [
-      "20 to 30 pages written by hand, delivered as a PDF within 7 to 14 days",
-      "3 to 5 competitors taken apart, sentence by sentence, with the ground they leave open",
-      "3 to 5 ranked moves, with what each one costs and unlocks",
+      "A record, not an opinion: competitors read sentence by sentence, your own words counted across four supports",
+      "Moves made with a scalpel: which sentence, on which page, replaced by what, and what it costs",
+      "A file anyone can apply without you — a new salesperson, an agency, or your team's AI tool",
     ],
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
@@ -273,6 +275,11 @@ export function TourSection() {
         <h2 className="h-section mx-auto max-w-[760px]">
           <span className="surligne-grad">{t.title}</span>
         </h2>
+
+        {/* Le chapô : il dit ce qui est identique et ce qui change, donc
+            comment lire les quatre scènes qui suivent. Sans lui, on ne sait
+            pas si les terrains sont quatre offres ou quatre variantes. */}
+        <p className="lede mx-auto mt-6 max-w-[640px]">{t.lead}</p>
 
         {/* Ce que les quatre terrains partagent, dit une seule fois.
             Ces trois lignes étaient répétées dans chacune des quatre
