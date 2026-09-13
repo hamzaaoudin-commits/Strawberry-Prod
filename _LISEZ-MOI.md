@@ -1,20 +1,21 @@
-# Strawberry — la phrase de clôture descend
+# Strawberry — la phrase descend, le bloc ne grandit pas
 
-1 fichier.
+1 fichier. Remplace le patch précédent.
+
+## Ce que j'avais mal fait
+
+Vous demandiez de descendre la phrase. J'ai ajouté de la marge en haut,
+ce qui la descend mais **allonge la section** d'autant — donc plus de
+défilement pour arriver au bouton, et un vide en plus dans la page.
 
 ## Le réglage
 
-Le bloc de clôture n'avait **aucune marge haute**. Il suivait donc
-immédiatement la section épinglée de 460vh, ce qui collait la phrase au
-bas du dernier panneau de la tournée — sur son fond sombre, d'où
-l'impression qu'elle y était encastrée.
+L'espace est redistribué à hauteur constante. Le bloc faisait 24 unités
+de marge, toutes en bas ; il en fait toujours 24, mais **14 au-dessus de
+la phrase et 10 en dessous**.
 
-La place existait, elle n'était simplement pas prise. Ajouté :
-
-- `pt-28` sur mobile, `pt-36` au-dessus — la phrase se détache nettement
-  du dernier panneau
-- `mb-12` au lieu de `mb-10` entre la phrase et le bouton, pour que la
-  respiration soit cohérente de part et d'autre
+La phrase descend donc dans la hauteur déjà occupée. La page ne s'allonge
+pas d'un pixel.
 
 ## Vérification
 

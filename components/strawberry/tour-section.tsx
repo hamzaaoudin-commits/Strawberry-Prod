@@ -256,16 +256,16 @@ export function TourSection() {
         </div>
       </div>
 
-      {/* La marge haute manquait : ce bloc suivait immédiatement la section
-          épinglée, donc la phrase se retrouvait collée au bas du dernier
-          panneau, sur son fond sombre. Il y avait la place, elle n'était
-          simplement pas prise. */}
-      <div className="shell pt-28 pb-24 text-center sm:pt-36">
+      {/* L'espace du bloc est redistribué, pas augmenté : le total reste de
+          24 unités comme avant, mais 14 passent au-dessus de la phrase et 10
+          en dessous. Elle descend donc dans la hauteur déjà occupée, au lieu
+          d'allonger la page. */}
+      <div className="shell pt-14 pb-10 text-center">
         {/* Plus de surlignage ici : l'effet tient sur quelques mots, pas sur une
             phrase entière — une ligne complète en fond rouge devient une barre
             et écrase le bouton qui la suit. Italique seul, et le rouge est
             gardé pour la seule action de la section. */}
-        <p className="accroche mx-auto mb-12 max-w-[620px] text-center">{t.outro}</p>
+        <p className="accroche mx-auto mb-10 max-w-[620px] text-center">{t.outro}</p>
         <Link href="/brand-narrative-audit" className="btn-primary">
           {t.cta}
         </Link>
