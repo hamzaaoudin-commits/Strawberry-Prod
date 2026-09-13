@@ -33,7 +33,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
-<a class="btn btn-ghost" data-i18n="hero.cta2" href="__LANG__/brand-narrative-audit">Commander l\'audit</a>
+<a class="btn btn-ghost" data-i18n="hero.cta2" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener">Commander l\'audit</a>
 </div>
 </div>
 <span class="scroll-hint" data-i18n="hero.scroll">Défiler</span>
@@ -164,6 +164,28 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 
 <!-- ============ STEPS ============ -->
 
+<!-- ============ EXTRAIT ============ -->
+<section class="section extrait">
+<div class="wrap">
+<span class="eyebrow reveal" data-i18n="ex.eyebrow">Un extrait</span>
+<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Ce que vous lisez, page 14.</h2>
+<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Trois passages d'un audit réel, sur une maison inventée pour l'exercice. C'est le niveau de détail que vous recevez.</p>
+<div class="extrait-grid">
+<article class="extrait-card reveal d1">
+<span class="extrait-k" data-i18n="ex.1.k">Le diagnostic</span>
+<p data-i18n="ex.1.b">Extrait un.</p>
+</article>
+<article class="extrait-card reveal d2">
+<span class="extrait-k" data-i18n="ex.2.k">La carte du champ</span>
+<p data-i18n="ex.2.b">Extrait deux.</p>
+</article>
+<article class="extrait-card reveal d3">
+<span class="extrait-k" data-i18n="ex.3.k">Le mouvement</span>
+<p data-i18n="ex.3.b">Extrait trois.</p>
+</article>
+</div>
+</div>
+</section>
 <!-- ============ STATS ============ -->
 <section class="section">
 <div class="wrap stats">
@@ -191,7 +213,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span class="chip" data-i18n="price.b.tag">L'audit narratif</span>
 <h3 data-i18n="price.b.t">490 €, une fois</h3>
 <p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
-<p style="margin-top:1.4rem"><a href="__LANG__/brand-narrative-audit" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
+<p style="margin-top:1.4rem"><a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
 </div>
 <p class="lead reveal" data-i18n="price.after" style="margin-top:2.4rem; text-align:center">Ensuite, si vous voulez qu'on écrive le monde du lieu et qu'on livre le système qui permet à votre équipe de le tenir seule : le sprint, 2 500 à 3 500 €, deux à trois semaines.</p>
@@ -229,7 +251,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span class="eyebrow" data-i18n="cta.eyebrow">L'audit narratif</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">490 €, livré sous sept à quatorze jours. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
-<a class="btn btn-primary" href="__LANG__/brand-narrative-audit"><span data-i18n="cta.btn">Commander l'audit</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'audit</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>

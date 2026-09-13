@@ -772,3 +772,18 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   .chapter p { font-size: 1.05rem; }
   .card p { font-size: 1.05rem; }
 }
+
+/* ---------------------------------------------------------------------------
+   L'EXTRAIT — trois passages d'un audit, dans chaque page de terrain.
+
+   Remplace l'exemplaire VERSO qui vivait sur la page d'audit : un seul
+   exemple, et c'était celui d'une marque. Ici chaque terrain montre le
+   sien, donc le visiteur lit un extrait qui parle de son cas.
+   --------------------------------------------------------------------------- */
+.extrait-grid{ margin-top:2.6rem; display:grid; gap:1px; background:var(--line-soft);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.extrait-card{ background:var(--ink-2); padding:clamp(1.5rem,2.6vw,2.1rem); }
+.extrait-k{ display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--coral); margin-bottom:1rem; }
+.extrait-card p{ margin:0; font-size:.98rem; line-height:1.65; color:var(--cream);
+  border-left:2px solid var(--coral); padding-left:1.1rem; }

@@ -40,12 +40,14 @@ export function CTABanner() {
           </h2>
 
           <div className="relative flex flex-col items-center">
-            <Link
-              href="/brand-narrative-audit"
+            <a
+              href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+              target="_blank"
+              rel="noopener"
               className="btn-primary max-w-full px-12 py-[20px] text-[16px]"
             >
               {t.cta1}
-            </Link>
+            </a>
           </div>
         </div>
       </div>

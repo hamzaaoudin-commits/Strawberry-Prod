@@ -4,6 +4,16 @@
 (function () {
   const DICT = {
     fr: {
+      "ex.eyebrow": "Un extrait",
+      "ex.title": "Ce que vous lisez, page 14.",
+      "ex.lead": "Trois passages d'un audit, sur un lieu inventé pour l'exercice : une table de quartier, vingt-huit couverts, ouverte depuis quatre ans.",
+      "ex.1.k": "Le diagnostic",
+      "ex.1.b": "« Votre fiche Google dit \u201ecuisine de saison\u201c. Quarante et un restaurants du même arrondissement le disent aussi. Ce que vos habitués racontent, eux, c'est la table six — celle près du passe, où l'on entend la cuisine. Elle n'apparaît nulle part dans ce que vous publiez. »",
+      "ex.2.k": "La carte du quartier",
+      "ex.2.b": "« Quatre adresses concurrentes sur cinq revendiquent le produit ou le circuit court. Aucune ne revendique le service — toutes le subissent aux heures de pointe. C'est le terrain libre, et c'est le vôtre : vous servez vingt-huit couverts avec deux personnes en salle, et ça se voit. »",
+      "ex.3.k": "Le mouvement",
+      "ex.3.b": "« Mouvement 1 : filmer le passe, pas l'assiette. Coût : rien, un téléphone posé. Ce que ça débloque : votre équipe sait enfin quoi montrer, et le quartier reconnaît le bruit de votre cuisine avant d'avoir lu votre nom. »",
+
       "nav.cta": "Prendre contact",
       "hero.kicker": "Audit narratif · Lieux",
       "hero.tag": "Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b>",
@@ -181,6 +191,16 @@
       "f.required": "Merci de remplir votre nom, le nom du lieu et votre email.",
     },
     en: {
+      "ex.eyebrow": "An excerpt",
+      "ex.title": "What you read, page 14.",
+      "ex.lead": "Three passages from an audit, on a venue invented for the exercise: a neighbourhood table, twenty-eight covers, open for four years.",
+      "ex.1.k": "The diagnosis",
+      "ex.1.b": "\u201cYour Google listing says \u2018seasonal cooking\u2019. Forty-one restaurants in the same district say it too. What your regulars actually talk about is table six — the one by the pass, where you can hear the kitchen. It appears nowhere in what you publish.\u201d",
+      "ex.2.k": "The map of the district",
+      "ex.2.b": "\u201cFour competing venues out of five claim produce or short supply chains. None claims the service — they all endure it at peak hours. That is the open ground, and it is yours: you serve twenty-eight covers with two people on the floor, and it shows.\u201d",
+      "ex.3.k": "The move",
+      "ex.3.b": "\u201cMove 1: film the pass, not the plate. Cost: nothing, a phone propped up. What it unlocks: your team finally knows what to show, and the district recognises the sound of your kitchen before reading your name.\u201d",
+
       "nav.home": "Home",
       "nav.services": "The sprint",
       "nav.contact": "Contact",

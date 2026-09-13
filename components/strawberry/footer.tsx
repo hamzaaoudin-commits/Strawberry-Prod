@@ -13,7 +13,6 @@ const EXPLORE_HREFS = ["/", "/about", "/le-livre", "/strawberry-method"]
  * eu la même longueur, tous les liens français ont glissé d'un cran.
  */
 const WORK_LINKS: { href: string; label: Record<string, string> }[] = [
-  { href: "/brand-narrative-audit", label: { fr: "L'AUDIT NARRATIF", en: "THE NARRATIVE AUDIT" } },
   { href: "/brand-narrative-architecture", label: { fr: "L'ARCHITECTURE", en: "THE ARCHITECTURE" } },
   { href: "/marques-entreprises", label: { fr: "MARQUES & ENTREPRISES", en: "BRANDS & COMPANIES" } },
   { href: "/the-product", label: { fr: "THE PRODUCT", en: "THE PRODUCT" } },

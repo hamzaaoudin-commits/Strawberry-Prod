@@ -309,9 +309,9 @@ export function OffersSection({ lang }: { lang: Lang }) {
               >
                 {t.cta1}
               </TrackedLink>
-              <Link href="/brand-narrative-audit" className="btn-quiet">
+              <a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" className="btn-quiet">
                 {t.cta2}
-              </Link>
+              </a>
             </div>
           </div>
         </div>

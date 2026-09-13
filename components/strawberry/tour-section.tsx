@@ -317,9 +317,9 @@ export function TourSection() {
             et écrase le bouton qui la suit. Italique seul, et le rouge est
             gardé pour la seule action de la section. */}
         <p className="accroche mx-auto mb-10 max-w-[620px] text-center">{t.outro}</p>
-        <Link href="/brand-narrative-audit" className="btn-primary">
+        <a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" className="btn-primary">
           {t.cta}
-        </Link>
+        </a>
       </div>
     </section>
   )
