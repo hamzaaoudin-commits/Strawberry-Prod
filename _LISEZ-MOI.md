@@ -1,36 +1,14 @@
-# Strawberry — le dernier vide entre le hero et la tournée
+# Strawberry — « Continuez à défiler » retiré
 
-2 fichiers.
+1 fichier.
 
-## Ce qui restait
+La mention sous le titre de la tournée est supprimée, ainsi que sa clé de
+texte dans les deux langues — inutile de laisser du contenu que plus rien
+n'affiche.
 
-Deux marges se cumulaient de part et d'autre de la frontière, et comme
-elles vivent dans deux composants différents, on ne les voyait jamais
-ensemble :
-
-- le bas du hero : 8 unités, soit 32 pixels
-- le haut de la tournée : 10 unités, soit 40 pixels
-
-Plus l'espace que le hero laissait encore sous son contenu, à 68vh.
-
-## Le réglage
-
-| | Avant | Après |
-|---|---|---|
-| Hauteur du hero | `68vh` | **`62vh`** |
-| Marge basse du hero | `pb-8` | **`pb-0`** |
-| Marge haute de la tournée | `pt-10` | **`pt-2`** |
-
-Le surtitre remonte d'environ 140 pixels de plus, après les 660 du patch
-précédent.
-
-## Pourquoi ça a pris trois passes
-
-J'ai corrigé une marge à la fois sans regarder les autres. Le vide était
-la somme de quatre valeurs réparties dans trois fichiers — le dégradé en
-pourcentage, la marge de la tournée, la hauteur du hero, sa marge basse —
-et chaque correction isolée n'en retirait qu'un quart. Il fallait les
-additionner d'abord.
+Effet secondaire utile : elle occupait une ligne plus 24 pixels de marge
+haute, soit une quarantaine de pixels entre le titre et la première scène.
+Le bloc se resserre d'autant.
 
 ## Vérification
 

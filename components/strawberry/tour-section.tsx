@@ -30,7 +30,6 @@ const T = {
   fr: {
     kicker: "Un audit, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
-    hint: "Continuez à défiler",
     afterLabel: "Après l'audit",
     ptsLabel: "Ce que vous recevez",
     sceneCta: "Voir",
@@ -70,7 +69,6 @@ const T = {
   en: {
     kicker: "One audit, four grounds",
     title: "What you find when a story is written.",
-    hint: "Keep scrolling",
     afterLabel: "After the audit",
     ptsLabel: "What you receive",
     sceneCta: "See",
@@ -213,7 +211,7 @@ export function TourSection() {
         <h2 className="h-section mx-auto max-w-[760px]">
             <span className="surligne-grad">{t.title}</span>
           </h2>
-        <div className="mt-6 font-sans text-[11px] uppercase tracking-[0.22em] text-chalk-40">{t.hint}</div>
+        
       </div>
 
       <div ref={pinRef} className="tour-pin">
