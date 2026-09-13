@@ -1,38 +1,33 @@
-# Strawberry — les pages d'offres en plein écran
+# Strawberry — « jours » remonte sur sa ligne
 
-1 fichier : `public/nocta/styles.css`, donc les quatre pages d'un coup.
+4 fichiers.
 
-## Le diagnostic
+## Le titre
 
-Vous avez raison sur la cause, et je n'aurais pas dû m'en contenter : le
-site NOCTA a été dessiné en regardant une fenêtre à moitié ouverte. Trois
-valeurs figées le trahissent en plein écran.
+Le navigateur coupait après « quatorze », ce qui séparait le nombre de son
+unité — on lisait « Sept à quatorze » puis « jours, cinq blocs ».
 
-**`--maxw: 1180px`.** Sur un écran de 1920, la page laissait plus de
-700 pixels de vide de chaque côté du contenu.
-→ Devient `clamp(1180px, 82vw, 1560px)` : le plancher conserve la mise en
-page d'origine sur les écrans courants, le plafond empêche les lignes de
-devenir trop longues au-delà.
+La coupure est maintenant imposée dans le texte, après la virgule :
 
-**`.manifesto p { max-width: 20ch }`.** Vingt caractères de large — d'où
-la bande verticale étroite de votre seconde capture, où le constat tombe
-sur dix lignes au milieu du vide.
-→ 26ch, avec une taille de police qui monte moins vite (`3.4vw` au lieu de
-`4.2vw`), pour que le texte s'étale au lieu de s'allonger.
+> Sept à quatorze jours,
+> cinq blocs.
 
-**`.hero-tag { max-width: 18ch }`.** La phrase sous le wordmark se
-brisait en quatre lignes maigres.
-→ 24ch : deux ou trois lignes pleines.
+C'est plus sûr qu'élargir le bloc de titre : la largeur dépend de l'écran
+et de la police, donc la coupure serait retombée au mauvais endroit sur
+d'autres tailles. Là, elle est écrite.
 
-## Un palier pour les grands écrans
+## Deux valeurs anciennes trouvées au passage
 
-Au-delà de 1600px, j'augmente la respiration verticale et la taille des
-corps de texte plutôt que d'élargir encore les lignes — passé une
-certaine longueur, une ligne devient pénible à suivre et l'œil perd le
-début de la suivante. La page occupe donc l'écran en hauteur et en
-présence, pas en largeur de ligne.
+En corrigeant, je suis tombé sur deux titres restés à l'ancienne offre :
+
+- `the-product`, version française : « Sept jours, cinq blocs » — le délai
+  n'avait pas été mis à jour lors du passage à sept-quatorze.
+- `i18n.js`, version anglaise : « Two to three weeks, five steps » — le
+  délai du sprint NOCTA d'origine.
+
+Les huit titres — quatre pages, deux langues — sont désormais identiques.
 
 ## Vérification
 
-Feuille de style validée. Les quatre pages de terrain partagent ce
-fichier, donc elles sont toutes corrigées.
+Contrôle de types : zéro erreur. Fichier de traductions passé au contrôle
+syntaxique.
