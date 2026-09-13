@@ -1,51 +1,61 @@
-# Strawberry — les quatre offres cessent de se ressembler
+# Strawberry — des objets, pas des notions
 
-2 fichiers.
+1 fichier.
 
-## Le vrai problème
+## Ce qui était superficiel
 
-Chaque terrain portait deux puces, et les deux commençaient par la même
-formule avec un nom changé :
+« L'intention derrière vos choix de conception, mise en mots. » « La
+position que personne d'autre ne peut revendiquer. » Ce sont des notions.
+On ne peut ni les tenir dans la main, ni savoir ce qu'on en fait le
+lendemain — et à 490 €, c'est précisément ce que le lecteur cherche à
+savoir.
 
-> **BRAND** — 3 à 5 **concurrents** décortiqués…
-> **THE PRODUCT** — 3 à 5 **produits concurrents** décortiqués…
-> **THE ROOM** — 3 à 5 **adresses concurrentes** décortiquées…
-> **THE NAME** — 3 à 5 **artistes de votre zone** décortiqués…
+## La règle que j'ai appliquée
 
-Ce n'était pas du spécifique : c'était du commun déguisé. Et comme
-l'exercice consiste à décortiquer des concurrents **dans les quatre cas**,
-c'est exactement le genre de ligne qui devait remonter dans le bloc
-partagé.
+Chaque puce nomme **soit une chose écrite qu'on peut coller quelque part
+dès le lendemain, soit un fait relevé chez le client qu'on lui rend**.
+Jamais une abstraction.
 
-## Ce qui est fait
+**BRAND**
+> Votre phrase d'accueil réécrite, et les quatre versions qu'elle
+> remplace : site, commerciaux, plaquette, signature mail
+>
+> Le mot que trois de vos concurrents revendiquent déjà, et celui que vous
+> êtes seul à pouvoir tenir
 
-**Le décorticage remonte en commun**, avec une précision qui manquait :
-« 3 à 5 concurrents décortiqués, phrase par phrase, **avec le terrain
-qu'ils laissent libre** ». C'est l'information utile, et elle est vraie
-partout.
+**THE PRODUCT**
+> Votre fiche technique retournée : chaque caractéristique devient
+> l'arbitrage qui l'explique
+>
+> Ce que votre emballage promet aujourd'hui, et ce que vos avis clients
+> démentent
 
-**Les puces de terrain deviennent uniques.** Chacune nomme quelque chose
-qu'aucun autre terrain ne reçoit :
+**THE ROOM**
+> Quoi filmer, à quelle heure, et les phrases à écrire dessous —
+> utilisables par n'importe qui en salle
+>
+> Les mots que vos habitués emploient dans leurs avis et que vous n'avez
+> jamais publiés
 
-- **BRAND** — vos quatre discours mis face à face (le site, les
-  commerciaux, les équipes, la plaquette) · la position que personne
-  d'autre ne peut revendiquer sans mentir
-- **THE PRODUCT** — l'intention derrière vos choix de conception · ce que
-  votre emballage dit avant vous
-- **THE ROOM** — le monde de votre lieu : son heure, sa lumière, son
-  casting, ses rituels · ce que vos habitués répètent sans y penser
-- **THE NAME** — le fil qui traverse déjà vos sorties · la phrase que la
-  presse devrait reprendre à la place des siennes
+**THE NAME**
+> Votre bio réécrite en trois longueurs : plateforme, dossier de presse,
+> présentation scène
+>
+> Le geste que la presse décrit déjà sans savoir le nommer, et la phrase
+> qui le nomme
 
-Plus aucun mot ne se répète d'un terrain à l'autre. Les quatre scènes
-racontent quatre travaux différents.
+## Pourquoi c'est mieux
 
-## Un nettoyage qui suit
+Chaque ligne répond à « qu'est-ce que je reçois exactement ». Une phrase
+d'accueil réécrite, une bio en trois longueurs, un plan de tournage
+utilisable par l'équipe : ce sont des livrables qu'on peut vérifier à la
+réception.
 
-Les puces étaient écrites « **libellé** : précision », avec un mécanisme
-de gras pour détacher le libellé. Ce sont maintenant des phrases entières :
-il n'y a plus rien à isoler. Le mécanisme et le style associé sont
-retirés — pas de code mort.
+Et la seconde puce de chaque terrain rend au client **quelque chose qu'il
+possède déjà sans le savoir** — le mot que ses concurrents ont pris, ce
+que ses avis démentent, ce que ses habitués disent, ce que la presse
+décrit. C'est plus convaincant qu'une promesse : ça prouve qu'on est allé
+regarder.
 
 ## Vérification
 
