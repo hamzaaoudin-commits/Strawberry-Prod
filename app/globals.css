@@ -1153,13 +1153,32 @@ footer {
 /* La prose des scènes de la tournée — remplace la liste à quatre étiquettes.
    `.ts-out` est surlignée : c'est la ligne qui dit ce qu'on emporte, elle
    doit se détacher du paragraphe qui la précède. */
-.ts-body {
+/* Les points de chaque scène. Le paragraphe d'avant obligeait à tout lire
+   pour trouver ce qui concerne le lecteur ; trois lignes courtes se
+   balaient. Le tiret rouge remplace la puce ronde : il est plus net à
+   cette taille et reprend le trait du reste du site. */
+.ts-points {
   margin-top: 1.6rem;
-  max-width: 56ch;
+  display: grid;
+  gap: 0.85rem;
+  max-width: 54ch;
+}
+.ts-points li {
+  position: relative;
+  padding-left: 1.5rem;
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+.ts-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.85rem;
+  height: 2px;
+  background: var(--color-brand);
 }
 .ts-out {
   /* Noir sur rouge, comme les autres phrases de bénéfice du site. En

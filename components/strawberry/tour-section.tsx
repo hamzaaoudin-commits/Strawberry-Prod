@@ -39,23 +39,23 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "On vous demande un devis comparatif avant même de vous avoir écouté.",
-        body: "Vous vendez un produit ou un service qui tient, et pourtant le marché vous range avec six autres. Nous lisons votre site, votre discours commercial et ce que chaque équipe raconte de son côté, nous cartographions la phrase exacte de vos concurrents, et nous nommons la position que personne n'occupe.",
-        out: "Vous repartez avec ce qui vous rend impossible à confondre — et les mouvements pour y aller.",
+        points: ["Votre meilleur argument, un concurrent pourrait le signer sans mentir", "Vos équipes racontent quatre versions différentes de votre métier", "Vous baissez vos prix pour des raisons que vous n'assumez pas"],
+        out: "Une position que personne d'autre ne peut revendiquer.",
         href: "/marques-entreprises",
       },
       {
         k: "Produits",
         t: "THE PRODUCT",
-        line: "En rayon, votre produit devient une ligne de caractéristiques à côté d'une autre.",
-        body: "Votre produit est bien fait, ceux qui l'utilisent le gardent. Mais rien ne dit pourquoi il a été fait comme ça. Nous lisons la page produit, l'emballage, la notice et les avis, nous cartographions la promesse de vos concurrents, et nous nommons l'intention qui tient derrière vos choix de conception.",
-        out: "Chaque arbitrage devient un argument, au lieu d'une ligne de spec.",
+        line: "En rayon, votre produit devient une ligne de caractéristiques.",
+        points: ["On vous compare sur des chiffres, jamais sur une intention", "Rien ne dit pourquoi il a été fait comme ça", "Un produit moins bon se vend deux fois plus cher"],
+        out: "Chaque arbitrage devient un argument.",
         href: "/the-product",
       },
       {
         k: "Lieux",
         t: "THE ROOM",
-        line: "La salle est pleine, et pourtant chaque publication repart de zéro.",
-        body: "Restaurant, bar, club, coffee shop. Le monde de votre lieu existe déjà — une heure, une lumière, un casting, des rituels — mais personne ne l'a écrit, donc personne dans l'équipe ne sait quoi montrer. Nous lisons la salle, la carte, les avis et ce que les habitués répètent.",
+        line: "La salle est pleine, et chaque publication repart de zéro.",
+        points: ["Personne dans l'équipe ne sait quoi filmer ni quoi écrire dessous", "Le monde du lieu existe déjà : une heure, une lumière, des rituels", "À trois rues, une adresse moins bonne affiche complet"],
         out: "Un lieu qu'on reconnaît avant d'en avoir lu le nom.",
         href: "/the-room",
       },
@@ -63,8 +63,8 @@ const T = {
         k: "Artistes & fondateurs",
         t: "THE NAME",
         line: "On aime ce que vous faites sans savoir dire ce que vous êtes.",
-        body: "Vos sorties sont bonnes, les retours aussi, mais chacune repart de zéro dans la tête de ceux qui vous suivent. Nous lisons vos projets, vos textes, vos interviews et ce que la presse retient de vous, et nous nommons le fil qui traverse déjà tout ça.",
-        out: "Un fil que le public reconnaît d'une sortie à la suivante.",
+        points: ["Chaque sortie repart de zéro dans la tête de ceux qui vous suivent", "La presse vous résume avec ses mots, pas les vôtres", "Quelqu'un de moins doué construit une audience qui l'attend"],
+        out: "Un fil que le public reconnaît d'une sortie à l'autre.",
         href: "/the-name",
       },
     ],
@@ -81,23 +81,23 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "You get asked for a comparative quote before anyone has listened to you.",
-        body: "You sell a product or a service that holds, and yet the market files you with six others. We read your site, your sales pitch and what each team says on its own, we map your competitors' exact sentence, and we name the position nobody occupies.",
-        out: "You leave with what makes you impossible to mistake — and the moves to get there.",
+        points: ["Your best argument could be signed by a competitor without lying", "Your teams tell four different versions of what you do", "You drop your prices for reasons you would not defend out loud"],
+        out: "A position nobody else can claim.",
         href: "/marques-entreprises",
       },
       {
         k: "Products",
         t: "THE PRODUCT",
-        line: "On a shelf, your product becomes one line of specs next to another.",
-        body: "Your product is well made, the people who use it keep it. But nothing says why it was made this way. We read the product page, the packaging, the manual and the reviews, we map your competitors' promise, and we name the intent behind your design choices.",
-        out: "Every trade-off becomes an argument instead of a spec line.",
+        line: "On a shelf, your product becomes one line of specs.",
+        points: ["You get compared on numbers, never on intent", "Nothing says why it was made this way", "A worse product sells for twice the price"],
+        out: "Every trade-off becomes an argument.",
         href: "/the-product",
       },
       {
         k: "Venues",
         t: "THE ROOM",
-        line: "The room is full, and yet every post starts from nothing.",
-        body: "Restaurant, bar, club, coffee shop. The world of your venue already exists — an hour, a light, a cast, rituals — but nobody has written it, so nobody on the team knows what to show. We read the room, the menu, the reviews and what the regulars repeat.",
+        line: "The room is full, and every post starts from nothing.",
+        points: ["Nobody on the team knows what to film, or what to write underneath", "The world of the venue already exists: an hour, a light, rituals", "Three streets away, a worse place is fully booked"],
         out: "A venue people recognise before reading its name.",
         href: "/the-room",
       },
@@ -105,7 +105,7 @@ const T = {
         k: "Artists & founders",
         t: "THE NAME",
         line: "People like what you do without being able to say what you are.",
-        body: "Your releases are good, so is the feedback, but each one starts from zero in the minds of the people who follow you. We read your projects, your writing, your interviews and what the press keeps of you, and we name the thread already running through all of it.",
+        points: ["Every release starts from zero in the minds of those who follow you", "The press sums you up in its words, not yours", "Someone less gifted is building an audience that waits for them"],
         out: "A thread the audience recognises from one release to the next.",
         href: "/the-name",
       },
@@ -231,7 +231,11 @@ export function TourSection() {
                     change était un gabarit : il forçait chaque terrain dans
                     la même grille et empêchait de dire ce que l'offre a de
                     particulier. Un paragraphe, puis ce qu'on emporte. */}
-                <p className="ts-body">{s.body}</p>
+                <ul className="ts-points list-none p-0">
+                  {s.points.map((x) => (
+                    <li key={x}>{x}</li>
+                  ))}
+                </ul>
                 <p className="ts-out">{s.out}</p>
                 <Link href={s.href} className="ts-num no-underline text-brand">
                   {String(i + 1).padStart(2, "0")} / {String(t.scenes.length).padStart(2, "0")} — {t.sceneCta} {s.t} →

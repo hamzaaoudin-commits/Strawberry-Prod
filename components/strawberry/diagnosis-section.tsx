@@ -142,7 +142,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             lieu de le livrer tout fait. */}
         <div ref={listRef} className="mb-8 flex flex-col gap-5">
           {t.falseCauses.map((fc, i) => {
-            const base = i * 1100
+            const base = i * 260
             return (
               <div
                 key={fc.label}
@@ -167,7 +167,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                     style={{
                       width: listVisible ? "100%" : "0%",
                       transition: "width 480ms cubic-bezier(.22,.68,0,1)",
-                      transitionDelay: `${base + 520}ms`,
+                      transitionDelay: `${base + 160}ms`,
                     }}
                   />
                 </span>
@@ -177,7 +177,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                   style={{
                     opacity: listVisible ? 1 : 0,
                     transform: listVisible ? "translateY(0)" : "translateY(4px)",
-                    transitionDelay: `${base + 760}ms`,
+                    transitionDelay: `${base + 260}ms`,
                   }}
                 >
                   {fc.impact}
@@ -190,7 +190,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                   style={{
                     opacity: listVisible ? 1 : 0,
                     transform: listVisible ? "translateX(0)" : "translateX(-6px)",
-                    transitionDelay: `${base + 1020}ms`,
+                    transitionDelay: `${base + 360}ms`,
                   }}
                 >
                   <span className="text-brand">→</span> {fc.choice}

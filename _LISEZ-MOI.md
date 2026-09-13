@@ -1,33 +1,42 @@
-# Strawberry — « jours » remonte sur sa ligne
+# Strawberry — la tournée en listes, et une cadence tenable
 
-4 fichiers.
+3 fichiers.
 
-## Le titre
+## Les descriptions deviennent des listes
 
-Le navigateur coupait après « quatorze », ce qui séparait le nombre de son
-unité — on lisait « Sept à quatorze » puis « jours, cinq blocs ».
+Le paragraphe obligeait à tout lire pour savoir si ça vous concerne.
+Chaque scène porte maintenant **trois lignes courtes** — des symptômes
+qu'on reconnaît ou non en un coup d'œil :
 
-La coupure est maintenant imposée dans le texte, après la virgule :
+> **BRAND**
+> Votre meilleur argument, un concurrent pourrait le signer sans mentir
+> Vos équipes racontent quatre versions différentes de votre métier
+> Vous baissez vos prix pour des raisons que vous n'assumez pas
+>
+> *Une position que personne d'autre ne peut revendiquer.*
 
-> Sept à quatorze jours,
-> cinq blocs.
+Les lignes sont écrites comme des faits vécus, pas comme des descriptions
+d'offre : « on vous compare sur des chiffres, jamais sur une intention »,
+« à trois rues, une adresse moins bonne affiche complet ». Le client se
+reconnaît ou passe — c'est ce qu'une liste permet et qu'un paragraphe
+empêche.
 
-C'est plus sûr qu'élargir le bloc de titre : la largeur dépend de l'écran
-et de la police, donc la coupure serait retombée au mauvais endroit sur
-d'autres tailles. Là, elle est écrite.
+La ligne de bénéfice en italique surligné reste en dessous, raccourcie.
 
-## Deux valeurs anciennes trouvées au passage
+**Le tiret rouge remplace la puce ronde** : plus net à cette taille, et il
+reprend le trait qu'on retrouve ailleurs sur le site.
 
-En corrigeant, je suis tombé sur deux titres restés à l'ancienne offre :
+## La cadence des fausses causes
 
-- `the-product`, version française : « Sept jours, cinq blocs » — le délai
-  n'avait pas été mis à jour lors du passage à sept-quatorze.
-- `i18n.js`, version anglaise : « Two to three weeks, five steps » — le
-  délai du sprint NOCTA d'origine.
+Elles arrivaient à **1 100 ms d'écart**, soit 4,4 secondes pour les
+quatre — le lecteur avait déjà défilé plus bas quand la dernière
+apparaissait, et l'animation se jouait dans le vide.
 
-Les huit titres — quatre pages, deux langues — sont désormais identiques.
+Passées à **260 ms**, et les trois temps internes de chaque bloc
+(le mot, la rature, la solution) resserrés de 520/760/1020 ms à
+160/260/360 ms. L'ensemble tient maintenant en 1,4 seconde : on voit
+encore le raisonnement se dérouler, mais au rythme du défilement.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Fichier de traductions passé au contrôle
-syntaxique.
+Contrôle de types : zéro erreur.
