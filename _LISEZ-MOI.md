@@ -1,52 +1,46 @@
-# Strawberry — les trois autres cas au niveau de LOAM
+# Strawberry — la tournée cesse de se répéter
 
-3 fichiers. Les quatre terrains suivent maintenant la même mécanique.
+1 fichier.
 
-## La contradiction, par terrain
+## Le calcul
 
-Chaque cas s'ouvre sur un écart que le client **ne peut pas voir seul**,
-parce qu'il faudrait lire deux de ses propres supports côte à côte :
+Quatre scènes × cinq puces = vingt lignes de livrables, dont **quinze
+identiques** d'un terrain à l'autre : « 20 à 30 pages », « 3 à 5
+mouvements hiérarchisés », « la liste de ce qu'il faut cesser de dire ».
 
-- **THE PRODUCT** — la page produit promet « infusion en 4 minutes », la
-  notice page 2 recommande d'attendre sept minutes. La page a été écrite
-  pour tenir la comparaison en rayon, la notice pour que le café soit bon.
-- **THE NAME** — la bio annonce « des textures organiques », les quatre EP
-  ouvrent tous sur un enregistrement de terrain. Un style contre une
-  méthode : quatorze artistes sur vingt revendiquent le style, personne la
-  méthode.
-- **THE ROOM** — la fiche Google vend « cuisine de saison », et dix-sept
-  avis sur quarante et un décrivent la salle, pas la carte. Vous vendez un
-  produit, vos clients reviennent pour un lieu.
+Le lecteur devait donc traverser quatre fois la même liste pour trouver
+les deux lignes qui le concernent — et sur un défilement épinglé, où
+chaque scène s'efface pour laisser place à la suivante, il ne pouvait même
+pas les comparer.
 
-## L'enchaînement
+## Ce que ça devient
 
-Le deuxième passage n'est plus une observation à côté : il **chiffre ce
-que la contradiction coûte** sur le panel, et montre pourquoi le terrain
-vide l'est resté.
+**Le commun remonte sous le titre de section**, dit une seule fois :
 
-Le cas du produit en est l'exemple le plus net : quatre concurrents sur
-cinq ont un corps plastique qui chauffe vite, vous êtes le seul en inox —
-donc vous avez adopté leur argument alors que votre matériau vous en
-interdit la promesse. Le terrain libre n'est pas la vitesse, c'est le
-café.
+> **DANS LES QUATRE CAS**
+> 20 à 30 pages écrites à la main, livrées en PDF sous 7 à 14 jours ·
+> 3 à 5 mouvements hiérarchisés, avec ce que chacun coûte et ce qu'il
+> débloque · La liste de ce qu'il faut cesser de dire, et pourquoi
 
-## Le mouvement engage
+Sur trois colonnes au-delà du mobile, encadré de deux filets — ça se lit
+en un coup d'œil et ça n'a pas à être relu.
 
-Chacun nomme ce qu'on abandonne, chiffré :
+**Chaque scène ne garde que ses deux lignes propres**, et l'intitulé
+change de sens : « CE QUE VOUS RECEVEZ » devient **« EN PLUS, SUR VOTRE
+TERRAIN »**. C'est le mot « en plus » qui fait le travail : il renvoie au
+bandeau du dessus et dit que ces deux lignes s'ajoutent au socle commun.
 
-- **THE PRODUCT** — renoncer au référencement par vitesse d'infusion,
-  environ un tiers du trafic entrant. En échange, les douze avis négatifs
-  sur le café léger disparaissent : ils venaient d'un mauvais appariement.
-- **THE NAME** — renoncer aux mots-clés d'ambiance, où l'artiste figure
-  par défaut.
-- **THE ROOM** — renoncer aux vues faciles de l'assiette, « qui font des
-  vues et n'amènent personne ».
+Les scènes conservent donc : les concurrents décortiqués pour une marque,
+le produit relu comme un acheteur, le monde du lieu écrit, le fil nommé
+projet par projet. Uniquement ce qui distingue un terrain d'un autre.
 
-Et chacun pose une condition de séquence : avant la refonte d'emballage,
-avant la sortie du cinquième EP, avant toute refonte de carte.
+## Le gain
+
+Douze lignes de moins dans la section, et surtout : quand une scène
+s'affiche, tout ce qu'on y lit lui appartient. C'est ce qui permet de
+comparer les quatre terrains en trois secondes au lieu de relire quatre
+fois le même socle.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Guillemets équilibrés sur les quatre
-terrains, aucune séquence d'échappement non convertie, traductions
-validées.
+Contrôle de types : zéro erreur.

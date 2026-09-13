@@ -31,7 +31,13 @@ const T = {
     kicker: "Un audit, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
     afterLabel: "Après l'audit",
-    ptsLabel: "Ce que vous recevez",
+    ptsLabel: "En plus, sur votre terrain",
+    commonLabel: "Dans les quatre cas",
+    common: [
+      "20 à 30 pages écrites à la main, livrées en PDF sous 7 à 14 jours",
+      "3 à 5 mouvements hiérarchisés, avec ce que chacun coûte et ce qu'il débloque",
+      "La liste de ce qu'il faut cesser de dire, et pourquoi",
+    ],
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
     cta: "Commander l'audit →",
@@ -40,28 +46,28 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "Le devis part sans une ligne de justification. Le prix n'est plus ce qu'on discute.",
-        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas", "**Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois", "**3 à 5 mouvements de repositionnement**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**La liste de ce qu'il faut cesser de dire**, et pourquoi"],
+        points: ["**3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas", "**Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois"],
         href: "/marques-entreprises",
       },
       {
         k: "Produits",
         t: "THE PRODUCT",
         line: "On le prend en main et on comprend pourquoi il a été fait comme ça.",
-        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**3 à 5 produits concurrents décortiqués** : leur promesse exacte, l'argument mis en avant, l'angle laissé libre", "**Votre produit relu comme un acheteur** : page produit, emballage, notice, et ce que disent vos avis", "**3 à 5 mouvements**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**Ce que votre emballage dit avant vous**, et ce qu'il faut cesser de dire"],
+        points: ["**3 à 5 produits concurrents décortiqués** : leur promesse exacte, l'argument mis en avant, l'angle laissé libre", "**Votre produit relu comme un acheteur** : page produit, emballage, notice, et ce que disent vos avis"],
         href: "/the-product",
       },
       {
         k: "Lieux",
         t: "THE ROOM",
         line: "N'importe qui en salle sait quoi filmer, et le quartier reconnaît le lieu avant d'en lire le nom.",
-        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**Le monde de votre lieu écrit** : son heure, sa lumière, son casting, ses rituels", "**3 à 5 adresses concurrentes décortiquées** : ce qu'on dit d'elles, ce qu'elles revendiquent", "**3 à 5 mouvements**, hiérarchisés, tenables par votre équipe sans vous", "**Ce qu'il faut cesser de publier**, et pourquoi"],
+        points: ["**3 à 5 adresses concurrentes décortiquées** : ce qu'elles revendiquent, et ce que vos clients en disent", "**Le monde de votre lieu écrit** : son heure, sa lumière, son casting, ses rituels"],
         href: "/the-room",
       },
       {
         k: "Artistes & fondateurs",
         t: "THE NAME",
         line: "La sortie tombe et le public sait déjà où elle se range — parce que la précédente l'avait annoncée.",
-        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**Le fil qui traverse vos sorties**, nommé et documenté projet par projet", "**3 à 5 artistes de votre zone décortiqués** : leur bio, ce qu'ils occupent, la place qu'ils laissent", "**3 à 5 mouvements**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**Ce que la presse retient de vous**, et la phrase qu'elle devrait reprendre"],
+        points: ["**3 à 5 artistes de votre zone décortiqués** : leur bio, ce qu'ils occupent, la place qu'ils laissent", "**Le fil qui traverse vos sorties**, nommé et documenté projet par projet"],
         href: "/the-name",
       },
     ],
@@ -70,7 +76,13 @@ const T = {
     kicker: "One audit, four grounds",
     title: "What you find when a story is written.",
     afterLabel: "After the audit",
-    ptsLabel: "What you receive",
+    ptsLabel: "On top, for your ground",
+    commonLabel: "In all four cases",
+    common: [
+      "20 to 30 pages written by hand, delivered as a PDF within 7 to 14 days",
+      "3 to 5 ranked moves, with what each one costs and unlocks",
+      "The list of what to stop saying, and why",
+    ],
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
     cta: "Order the audit →",
@@ -79,28 +91,28 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "The quote goes out without a line of justification. Price is no longer what gets discussed.",
-        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**3 to 5 competitors taken apart**: their exact sentence, the argument they carry, the one they avoid", "**Your own words laid out**: your site, your sales pitch, your teams — and the gap between the three", "**3 to 5 repositioning moves**, ranked, with what each one costs and unlocks", "**The list of what to stop saying**, and why"],
+        points: ["**3 to 5 competitors taken apart**: their exact sentence, the argument they carry, the one they avoid", "**Your own words laid out**: your site, your sales pitch, your teams — and the gap between the three"],
         href: "/marques-entreprises",
       },
       {
         k: "Products",
         t: "THE PRODUCT",
         line: "You pick it up and you understand why it was made this way.",
-        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**3 to 5 competing products taken apart**: their exact promise, the argument they lead with, the angle left open", "**Your product read as a buyer would**: product page, packaging, manual, and what your reviews say", "**3 to 5 moves**, ranked, with what each one costs and unlocks", "**What your packaging says before you do**, and what to stop saying"],
+        points: ["**3 to 5 competing products taken apart**: their exact promise, the argument they lead with, the angle left open", "**Your product read as a buyer would**: product page, packaging, manual, and what your reviews say"],
         href: "/the-product",
       },
       {
         k: "Venues",
         t: "THE ROOM",
         line: "Anyone on the floor knows what to film, and the neighbourhood recognises the place before reading its name.",
-        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**The world of your venue written**: its hour, its light, its cast, its rituals", "**3 to 5 competing venues taken apart**: what people say about them, what they claim", "**3 to 5 moves**, ranked, and holdable by your team without you", "**What to stop posting**, and why"],
+        points: ["**3 to 5 competing venues taken apart**: what they claim, and what your customers say about them", "**The world of your venue written**: its hour, its light, its cast, its rituals"],
         href: "/the-room",
       },
       {
         k: "Artists & founders",
         t: "THE NAME",
         line: "The release lands and the audience already knows where it sits — because the last one announced it.",
-        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**The thread running through your releases**, named and documented project by project", "**3 to 5 artists in your lane taken apart**: their bio, what they hold, the place they leave open", "**3 to 5 moves**, ranked, with what each one costs and unlocks", "**What the press keeps of you**, and the sentence it should be quoting"],
+        points: ["**3 to 5 artists in your lane taken apart**: their bio, what they hold, the place they leave open", "**The thread running through your releases**, named and documented project by project"],
         href: "/the-name",
       },
     ],
@@ -259,9 +271,27 @@ export function TourSection() {
       <div className="shell pt-6 pb-20 text-center">
         <div className="kicker mb-5">{t.kicker}</div>
         <h2 className="h-section mx-auto max-w-[760px]">
-            <span className="surligne-grad">{t.title}</span>
-          </h2>
-        
+          <span className="surligne-grad">{t.title}</span>
+        </h2>
+
+        {/* Ce que les quatre terrains partagent, dit une seule fois.
+            Ces trois lignes étaient répétées dans chacune des quatre
+            scènes : quinze puces sur vingt disaient la même chose, et il
+            fallait les traverser quatre fois pour trouver les deux qui
+            vous concernent. Remontées ici, elles libèrent les scènes pour
+            ce qu'elles ont de particulier. */}
+        <div className="mx-auto mt-10 max-w-[880px] border-y border-hair py-6 text-left">
+          <div className="mb-4 text-center font-mono text-[10.5px] uppercase tracking-[0.22em] text-brand">
+            {t.commonLabel}
+          </div>
+          <ul className="m-0 grid list-none gap-3 p-0 sm:grid-cols-3 sm:gap-7">
+            {t.common.map((x) => (
+              <li key={x} className="font-sans text-[13.5px] leading-[1.55] text-chalk-55">
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div ref={pinRef} className="tour-pin">
