@@ -61,7 +61,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="section-head reveal" style="margin-bottom:0">
 <div class="story-head">
 <div>
-<span class="eyebrow" data-i18n="st.eyebrow">Le sprint</span>
+<span class="eyebrow" data-i18n="st.eyebrow">L'audit · la méthode S.T.R.A.W. · la méthode S.T.R.A.W.</span>
 <h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">On lit, on compare, on tranche.</h2>
 </div>
 <div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
@@ -74,7 +74,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <path class="st2" d="M40 52 h24 M52 40 v24" opacity=".45"></path>
 <circle class="fl2" cx="98" cy="30" r="3.5"></circle>
 <circle class="fl" cx="22" cy="88" r="3"></circle>
-</svg><span class="idx" data-i18n="st.1.i">01</span><h3 data-i18n="st.1.t">Nous venons chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
+</svg><span class="idx" data-i18n="st.1.i">S</span><h3 data-i18n="st.1.t">Nous venons chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
 <ul class="ch-list">
 <li data-i18n="st.1.b1">Immersion pendant un service complet</li>
 <li data-i18n="st.1.b2">Entretien avec vous et deux personnes de l'équipe</li>
@@ -86,7 +86,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <line class="st2" opacity=".35" x1="34" x2="58" y1="64" y2="64"></line>
 <path class="st" d="M78 78 l18 -18 a5 5 0 0 0 -7 -7 l-18 18 z"></path>
 <path class="fl" d="M71 71 l-4 11 11 -4 z"></path>
-</svg><span class="idx" data-i18n="st.2.i">02</span><h3 data-i18n="st.2.t">Nous écrivons votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
+</svg><span class="idx" data-i18n="st.2.i">T</span><h3 data-i18n="st.2.t">Nous écrivons votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
 <ul class="ch-list">
 <li data-i18n="st.2.b1">La promesse du lieu, en une phrase qui tient</li>
 <li data-i18n="st.2.b2">Décor, heure, lumière, atmosphère</li>
@@ -98,7 +98,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <line class="st2" opacity=".5" x1="46" x2="46" y1="46" y2="94"></line>
 <circle class="fl" cx="36" cy="36" r="3"></circle>
 <path class="st" d="M56 62 h28 M56 74 h20" opacity=".7"></path>
-</svg><span class="idx" data-i18n="st.3.i">03</span><h3 data-i18n="st.3.t">Nous posons la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
+</svg><span class="idx" data-i18n="st.3.i">R</span><h3 data-i18n="st.3.t">Nous posons la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
 <ul class="ch-list">
 <li data-i18n="st.3.b1">3 à 5 rubriques récurrentes avec leur intention</li>
 <li data-i18n="st.3.b2">Le vocabulaire : ce qu'on dit, ce qu'on ne dit jamais</li>
@@ -110,7 +110,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <path class="st2" d="M22 34 l60 -10 4 14 -60 10 z"></path>
 <path class="fl" d="M38 27 l4 13 M54 24 l4 13 M70 21 l4 13" opacity=".7"></path>
 <circle class="fl2" cx="96" cy="74" r="4"></circle>
-</svg><span class="idx" data-i18n="st.4.i">04</span><h3 data-i18n="st.4.t">Nous vous laissons le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
+</svg><span class="idx" data-i18n="st.4.i">A</span><h3 data-i18n="st.4.t">Nous vous laissons le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
 <ul class="ch-list">
 <li data-i18n="st.4.b1">20 à 30 scripts-types, plan par plan</li>
 <li data-i18n="st.4.b2">Un calendrier sur 4 semaines, reconductible</li>
@@ -122,7 +122,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <path class="fl2" d="M81 48 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 z"></path>
 <line class="st2" opacity=".5" x1="28" x2="50" y1="50" y2="50"></line>
 <line class="st2" opacity=".35" x1="28" x2="44" y1="60" y2="60"></line>
-</svg><span class="idx" data-i18n="st.5.i">05</span><h3 data-i18n="st.5.t">Et nous vous le prouvons.</h3><p data-i18n="st.5.d">Avant de partir, nous produisons la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
+</svg><span class="idx" data-i18n="st.5.i">W</span><h3 data-i18n="st.5.t">Et nous vous le prouvons.</h3><p data-i18n="st.5.d">Avant de partir, nous produisons la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
 <ul class="ch-list">
 <li data-i18n="st.5.b1">La première semaine de contenu, produite et livrée</li>
 <li data-i18n="st.5.b2">Une passation avec la personne qui prendra le relais</li>

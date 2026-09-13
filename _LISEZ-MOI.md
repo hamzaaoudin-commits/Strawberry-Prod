@@ -1,46 +1,53 @@
-# Strawberry — la tournée cesse de se répéter
+# Strawberry — l'audit couvre les cinq étapes
 
-1 fichier.
+6 fichiers.
 
-## Le calcul
+## La correction
 
-Quatre scènes × cinq puces = vingt lignes de livrables, dont **quinze
-identiques** d'un terrain à l'autre : « 20 à 30 pages », « 3 à 5
-mouvements hiérarchisés », « la liste de ce qu'il faut cesser de dire ».
+J'avais écrit que « l'audit applique les trois premières lettres,
+l'Architecture va jusqu'au bout des cinq ». C'était faux, et ça rabaissait
+l'offre principale au passage.
 
-Le lecteur devait donc traverser quatre fois la même liste pour trouver
-les deux lignes qui le concernent — et sur un défilement épinglé, où
-chaque scène s'efface pour laisser place à la suivante, il ne pouvait même
-pas les comparer.
+La page Méthode dit maintenant :
 
-## Ce que ça devient
+> L'audit narratif parcourt les cinq lettres : il trouve l'âme,
+> cartographie le territoire, recadre le champ, dessine l'architecture et
+> dit comment l'incarner. Sept à quatorze jours, et vous repartez avec ce
+> que chaque étape a donné. **L'Architecture, elle, construit ce que
+> l'audit prescrit** — les mêmes cinq étapes, menées jusqu'aux pièces
+> livrables.
 
-**Le commun remonte sous le titre de section**, dit une seule fois :
+La distinction ne porte plus sur le **nombre** d'étapes mais sur ce qu'on
+en fait : l'audit les parcourt et rend le diagnostic, l'Architecture les
+exécute et livre les pièces. C'est plus juste, et ça justifie mieux
+l'écart de prix qu'un décompte d'étapes.
 
-> **DANS LES QUATRE CAS**
-> 20 à 30 pages écrites à la main, livrées en PDF sous 7 à 14 jours ·
-> 3 à 5 mouvements hiérarchisés, avec ce que chacun coûte et ce qu'il
-> débloque · La liste de ce qu'il faut cesser de dire, et pourquoi
+## La correspondance devient visible
 
-Sur trois colonnes au-delà du mobile, encadré de deux filets — ça se lit
-en un coup d'œil et ça n'a pas à être relu.
+Les cinq blocs de l'audit, sur les quatre pages de terrain, portaient
+01 à 05. Ils portent désormais **S · T · R · A · W**, et le surtitre
+annonce « L'audit · la méthode S.T.R.A.W. ».
 
-**Chaque scène ne garde que ses deux lignes propres**, et l'intitulé
-change de sens : « CE QUE VOUS RECEVEZ » devient **« EN PLUS, SUR VOTRE
-TERRAIN »**. C'est le mot « en plus » qui fait le travail : il renvoie au
-bandeau du dessus et dit que ces deux lignes s'ajoutent au socle commun.
+La correspondance se lit alors d'elle-même, sans qu'on ait à l'écrire :
 
-Les scènes conservent donc : les concurrents décortiqués pour une marque,
-le produit relu comme un acheteur, le monde du lieu écrit, le fil nommé
-projet par projet. Uniquement ce qui distingue un terrain d'un autre.
+| | | |
+|---|---|---|
+| **S** | Nous lisons ce que le marché lit | Trouver l'âme |
+| **T** | Nous cartographions le champ | Cartographier le territoire |
+| **R** | Nous nommons ce que vous racontez | Recadrer le champ |
+| **A** | Nous donnons les mouvements | Bâtir l'architecture |
+| **W** | Nous vous laissons le document | Incarner l'univers |
 
-## Le gain
+Le visiteur qui passe de la page Méthode à une page de terrain retrouve
+les mêmes cinq lettres. C'est ce qui fait qu'une méthode a l'air d'une
+méthode plutôt que d'un acronyme décoratif.
 
-Douze lignes de moins dans la section, et surtout : quand une scène
-s'affiche, tout ce qu'on y lit lui appartient. C'est ce qui permet de
-comparer les quatre terrains en trois secondes au lieu de relire quatre
-fois le même socle.
+## Un défaut attrapé
+
+Le dictionnaire par défaut portait encore « Le sprint » comme surtitre :
+THE ROOM, qui hérite de ce dictionnaire, aurait affiché l'ancien libellé
+là où les trois autres annonçaient la méthode. Corrigé.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Traductions validées.
