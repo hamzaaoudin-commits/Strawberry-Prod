@@ -1,47 +1,57 @@
-# Strawberry — tous les titres en capitales
+# Strawberry — le client choisit son terrain
 
-Le zip contient les fichiers modifiés. **18 fichiers touchés au total.**
+2 fichiers.
 
-## Cette fois, c'est toute la charte
+## Ce que ça règle
 
-Quand vous me l'aviez demandé la première fois, je ne l'avais appliqué
-qu'au bandeau final — et vous m'aviez dit, à juste titre, que ça dénotait.
-C'était vrai : un seul titre en capitales au milieu de titres en casse
-normale, c'est celui-là qui devient l'exception.
+Le questionnaire savait s'adapter au terrain, mais rien ne le lui disait :
+il retombait donc sur « marques » par défaut, et un restaurateur se
+voyait demander la tagline exacte de ses concurrents.
 
-Le changement est donc posé **au niveau des règles partagées** :
+Et depuis que les quatre pages mènent au même lien de paiement, vous ne
+saviez pas non plus ce qui avait été acheté — il aurait fallu écrire au
+client pour le lui demander avant de pouvoir lui envoyer son
+questionnaire.
 
-- `h-section` dans `globals.css` — la classe qu'utilisent la plupart des
-  sections du site
-- `h1, h2, h3` dans `nocta/styles.css` — les quatre pages de terrain
+**Les deux problèmes n'en font qu'un, et il se règle au même endroit :**
+la personne qui a payé sait ce qu'elle a acheté. Autant le lui demander.
 
-Plus les titres écrits en dur dans 18 composants, qui n'utilisaient pas
-ces classes et seraient restés en casse normale.
+## Le choix, sur l'écran d'accueil
 
-## Trois réglages qui accompagnent la casse
+Avant la première question :
 
-Passer en capitales sans toucher au reste donne toujours un résultat sale.
-Trois valeurs bougent :
+> **VOUS AVEZ COMMANDÉ L'AUDIT POUR**
+> Le questionnaire s'adapte : certaines questions ne se posent pas de la
+> même façon selon ce que vous vendez.
+>
+> — Une marque ou une entreprise · *Vous vendez un produit ou un service*
+> — Un produit · *Un objet, une application, une gamme*
+> — Un lieu · *Restaurant, bar, club, coffee shop*
+> — Un nom propre · *Artiste, auteur, fondateur*
 
-**Le crénage passe de -0.02em à -0.005em.** La valeur serrée avait été
-pensée pour le bas-de-casse, où les lettres se rapprochent naturellement ;
-en capitales, elle les colle.
+Chaque option porte une ligne d'explication : « un produit » seul prête à
+confusion pour quelqu'un qui vend des produits sous une marque.
 
-**L'interlignage se resserre** — de 1.12 à 1.06. Sans jambages
-descendants, les lignes peuvent se rapprocher sans se toucher, et le bloc
-gagne en densité.
+**Le choix est bloquant** — le bouton reste inactif tant qu'on n'a pas
+répondu. Un mauvais parcours ne se rattrape pas en cours de route, autant
+l'empêcher que le corriger.
 
-**La taille baisse d'environ 10 %.** À casse égale, des capitales occupent
-nettement plus de largeur : sans ça, plusieurs titres passaient sur une
-ligne de plus.
+## Deux détails qui comptent
 
-## Une exception, assumée
+**L'URL garde la priorité.** Si le lien envoyé porte déjà `?terrain=`, le
+choix est pré-rempli — vous pouvez donc continuer à envoyer des liens
+préparés sans que le client ait à répondre.
 
-Le wordmark des pages de terrain — BRAND, THE ROOM — garde son crénage à
--0.04em. À cette taille, les capitales supportent un serrage bien plus
-fort sans se toucher, et c'est précisément ce qui fait sa densité.
+**Le terrain part avec la réponse**, et remonte dans l'objet du message :
+
+> `Lieux · Questionnaire Audit — La Table du Passe (Marc D.)`
+
+C'est la première chose à savoir en ouvrant une réponse, avant même de
+lire les réponses.
+
+**La sauvegarde locale suit le terrain choisi**, donc quelqu'un qui
+changerait d'avis ne récupère pas les réponses de l'autre parcours.
 
 ## Vérification
 
-Contrôle de types : aucune erreur nouvelle. Les seules remontées sont
-préexistantes et propres à mon environnement.
+Contrôle de types : zéro erreur.

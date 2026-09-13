@@ -82,6 +82,14 @@ const UI_COPY = {
   fr: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     coverTitle: "C'est parti.",
+    terrainLabel: "Vous avez commandé l'audit pour",
+    terrainHelp: "Le questionnaire s'adapte : certaines questions ne se posent pas de la même façon selon ce que vous vendez.",
+    terrains: [
+      { k: "marques", t: "Une marque ou une entreprise", d: "Vous vendez un produit ou un service" },
+      { k: "produits", t: "Un produit", d: "Un objet, une application, une gamme" },
+      { k: "lieux", t: "Un lieu", d: "Restaurant, bar, club, coffee shop" },
+      { k: "artistes", t: "Un nom propre", d: "Artiste, auteur, fondateur" },
+    ],
     coverLede:
       "Ceci est le fondement de votre maison. Prenez votre temps. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
     minutesArchitecture: "45 à 70",
@@ -136,6 +144,14 @@ const UI_COPY = {
   en: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     coverTitle: "Let's begin.",
+    terrainLabel: "You commissioned the audit for",
+    terrainHelp: "The questionnaire adapts: some questions are not asked the same way depending on what you sell.",
+    terrains: [
+      { k: "marques", t: "A brand or a company", d: "You sell a product or a service" },
+      { k: "produits", t: "A product", d: "An object, an app, a range" },
+      { k: "lieux", t: "A venue", d: "Restaurant, bar, club, coffee shop" },
+      { k: "artistes", t: "A name", d: "Artist, author, founder" },
+    ],
     coverLede:
       "This is the foundation of your house. Take your time. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
     minutesArchitecture: "45 to 70",
@@ -212,7 +228,15 @@ export function QuestionnaireFlow({
   lang: Lang
   prefill?: Partial<IdentityAnswers>
 }) {
-  const steps = useMemo(() => stepsForOffer(offer, lang, terrain), [offer, lang, terrain])
+  // Le terrain vient de l'URL quand elle le porte, sinon le client le
+  // choisit lui-même sur l'écran d'accueil. C'est plus fiable qu'un
+  // paramètre : la personne qui a payé sait ce qu'elle a acheté, et on
+  // évite d'avoir à le lui demander par mail après coup.
+  const [chosenTerrain, setChosenTerrain] = useState<TerrainKey | undefined>(terrain)
+  const steps = useMemo(
+    () => stepsForOffer(offer, lang, chosenTerrain),
+    [offer, lang, chosenTerrain],
+  )
   const copy = UI_COPY[lang]
   const words = useMemo(() => wordsFor(lang), [lang])
   const [screen, setScreen] = useState<"cover" | "steps" | "review" | "done" | "error">("cover")
@@ -231,7 +255,7 @@ export function QuestionnaireFlow({
     const email = prefill?.email ?? ""
     if (!email) return
     try {
-      const raw = localStorage.getItem(storageKey(offer, email, terrain))
+      const raw = localStorage.getItem(storageKey(offer, email, chosenTerrain))
       if (raw) {
         const saved = JSON.parse(raw) as { answers: Answers; idx: number }
         setAnswers((prev) => ({ ...prev, ...saved.answers }))
@@ -249,7 +273,7 @@ export function QuestionnaireFlow({
     const email = answers.identity.email
     if (!email) return
     try {
-      localStorage.setItem(storageKey(offer, email, terrain), JSON.stringify({ answers, idx }))
+      localStorage.setItem(storageKey(offer, email, chosenTerrain), JSON.stringify({ answers, idx }))
     } catch {
       // best-effort only
     }
@@ -290,6 +314,10 @@ export function QuestionnaireFlow({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           offer,
+          // Le terrain part avec la réponse : sans lui, vous recevriez un
+          // questionnaire rempli sans savoir s'il concerne une marque, un
+          // produit, un lieu ou un nom.
+          terrain: chosenTerrain,
           lang,
           answers,
           company_website: honeypot,
@@ -330,6 +358,8 @@ export function QuestionnaireFlow({
             copy={copy}
             stepCount={steps.length}
             identity={answers.identity}
+            chosenTerrain={chosenTerrain}
+            onChooseTerrain={setChosenTerrain}
             onStart={() => setScreen("steps")}
           />
         )}
@@ -382,12 +412,16 @@ function CoverScreen({
   copy,
   stepCount,
   identity,
+  chosenTerrain,
+  onChooseTerrain,
   onStart,
 }: {
   offer: OfferKey
   copy: Copy
   stepCount: number
   identity: IdentityAnswers
+  chosenTerrain?: TerrainKey
+  onChooseTerrain: (t: TerrainKey) => void
   onStart: () => void
 }) {
   const isArchitecture = offer === "architecture"
@@ -407,7 +441,42 @@ function CoverScreen({
           </div>
         </div>
       )}
-      <button type="button" className="btn-primary mt-6" onClick={onStart}>
+      {/* Le choix du terrain, avant les questions.
+          Sans lui, le parcours retombait sur « marques » par défaut et un
+          restaurateur se voyait demander la tagline de ses concurrents.
+          Le choix est bloquant : le bouton reste inactif tant qu'on n'a
+          pas répondu, parce qu'un mauvais parcours ne se rattrape pas en
+          cours de route. */}
+      <div className="mx-auto mt-9 max-w-lg text-left">
+        <div className="field-label mb-1.5">{copy.terrainLabel}</div>
+        <p className="body-sm mb-4 text-chalk-40">{copy.terrainHelp}</p>
+        <div className="grid gap-2">
+          {copy.terrains.map((t) => {
+            const on = chosenTerrain === t.k
+            return (
+              <button
+                key={t.k}
+                type="button"
+                onClick={() => onChooseTerrain(t.k as TerrainKey)}
+                aria-pressed={on}
+                className={`border px-4 py-3 text-left transition-colors ${
+                  on ? "border-brand bg-brand/[0.07]" : "border-hair-strong bg-white/[0.02] hover:border-hair"
+                }`}
+              >
+                <div className={`text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</div>
+                <div className="mt-0.5 text-[12.5px] text-chalk-40">{t.d}</div>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className="btn-primary mt-8 disabled:cursor-not-allowed disabled:opacity-40"
+        onClick={onStart}
+        disabled={!chosenTerrain}
+      >
         {copy.start}
       </button>
     </div>

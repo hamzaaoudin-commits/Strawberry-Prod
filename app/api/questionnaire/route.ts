@@ -116,6 +116,18 @@ export async function POST(req: NextRequest) {
   }
   const offer = offerRaw as OfferKey
 
+  // Le terrain choisi par le client sur l'écran d'accueil. Il part dans
+  // l'objet du message : c'est la première chose à savoir en ouvrant une
+  // réponse, avant même de lire les réponses.
+  const terrainRaw = str(body.terrain)
+  const TERRAIN_LABEL: Record<string, string> = {
+    marques: "Marques",
+    produits: "Produits",
+    lieux: "Lieux",
+    artistes: "Noms propres",
+  }
+  const terrainLabel = TERRAIN_LABEL[terrainRaw] ?? "Terrain non précisé"
+
   const answers = (body.answers ?? {}) as Record<string, unknown>
   const identity = (answers.identity ?? {}) as Record<string, unknown>
   const name = sanitize(str(identity.name), LIMITS.name)
@@ -151,7 +163,7 @@ export async function POST(req: NextRequest) {
         offer,
         lang,
         answers: formatted,
-        _subject: `Questionnaire ${offer === "architecture" ? "Architecture" : "Audit"} — ${house} (${name})`,
+        _subject: `${terrainLabel} · Questionnaire ${offer === "architecture" ? "Architecture" : "Audit"} — ${house} (${name})`,
       }),
     })
     clearTimeout(timeout)
