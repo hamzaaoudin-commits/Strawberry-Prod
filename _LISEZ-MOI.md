@@ -1,41 +1,42 @@
-# Strawberry — la tournée en listes, et une cadence tenable
+# Strawberry — les puces disent ce qu'on livre
 
-3 fichiers.
+2 fichiers.
 
-## Les descriptions deviennent des listes
+## Ce que j'avais mal fait
 
-Le paragraphe obligeait à tout lire pour savoir si ça vous concerne.
-Chaque scène porte maintenant **trois lignes courtes** — des symptômes
-qu'on reconnaît ou non en un coup d'œil :
+J'ai transformé le paragraphe en liste, mais j'ai gardé du problème dans
+les puces. La section répétait donc trois fois le même constat — la phrase
+d'accroche, les trois puces, et rien sur ce qu'on apporte.
 
-> **BRAND**
-> Votre meilleur argument, un concurrent pourrait le signer sans mentir
-> Vos équipes racontent quatre versions différentes de votre métier
-> Vous baissez vos prix pour des raisons que vous n'assumez pas
+## La structure maintenant
+
+Chaque scène tient en trois temps, et chacun a un rôle distinct :
+
+**La phrase d'accroche** pose le problème. Elle seule.
+**Les puces** disent ce que l'audit livre sur ce terrain.
+**La ligne surlignée** dit ce que ça change.
+
+Pour BRAND :
+
+> *On vous demande un devis comparatif avant même de vous avoir écouté.*
+>
+> **CE QUE L'AUDIT VOUS DONNE**
+> — La phrase exacte de vos concurrents, et celle que personne n'ose dire
+> — La position que vous pouvez tenir sans mentir, et ce qu'elle vous fait refuser
+> — Les trois à cinq mouvements pour y aller, dans l'ordre, avec leur coût
 >
 > *Une position que personne d'autre ne peut revendiquer.*
 
-Les lignes sont écrites comme des faits vécus, pas comme des descriptions
-d'offre : « on vous compare sur des chiffres, jamais sur une intention »,
-« à trois rues, une adresse moins bonne affiche complet ». Le client se
-reconnaît ou passe — c'est ce qu'une liste permet et qu'un paragraphe
-empêche.
+Pour THE ROOM, les puces disent le monde du lieu écrit, ce que les
+habitués répètent sans y penser, et les mouvements que l'équipe peut tenir
+sans vous. Pour THE NAME, le fil qui traverse déjà les sorties, ce que la
+presse retient, ce qui rend confondable.
 
-La ligne de bénéfice en italique surligné reste en dessous, raccourcie.
+## L'intitulé au-dessus de la liste
 
-**Le tiret rouge remplace la puce ronde** : plus net à cette taille, et il
-reprend le trait qu'on retrouve ailleurs sur le site.
-
-## La cadence des fausses causes
-
-Elles arrivaient à **1 100 ms d'écart**, soit 4,4 secondes pour les
-quatre — le lecteur avait déjà défilé plus bas quand la dernière
-apparaissait, et l'animation se jouait dans le vide.
-
-Passées à **260 ms**, et les trois temps internes de chaque bloc
-(le mot, la rature, la solution) resserrés de 520/760/1020 ms à
-160/260/360 ms. L'ensemble tient maintenant en 1,4 seconde : on voit
-encore le raisonnement se dérouler, mais au rythme du défilement.
+**CE QUE L'AUDIT VOUS DONNE**, en mono rouge. Sans lui, trois lignes
+posées sous une phrase de problème se lisent comme la suite du problème —
+c'est exactement l'ambiguïté qui rendait la version précédente illisible.
 
 ## Vérification
 

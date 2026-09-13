@@ -1157,8 +1157,19 @@ footer {
    pour trouver ce qui concerne le lecteur ; trois lignes courtes se
    balaient. Le tiret rouge remplace la puce ronde : il est plus net à
    cette taille et reprend le trait du reste du site. */
+/* L'intitulé qui annonce la liste : sans lui, trois lignes posées sous une
+   phrase de problème se lisent comme la suite du problème. */
+.ts-points-label {
+  margin-top: 1.8rem;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
 .ts-points {
-  margin-top: 1.6rem;
+  margin-top: 0;
   display: grid;
   gap: 0.85rem;
   max-width: 54ch;
