@@ -117,6 +117,20 @@ export function TourSection() {
     if (!pin) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
+    // Pas d'épinglage sous 900px.
+    //
+    // La scène épinglée tient dans 100vh avec `overflow:hidden`. Sur un
+    // téléphone, une scène contient le surtitre, un titre de 48px, la
+    // projection, l'intitulé et cinq puces : ça dépasse largement la
+    // hauteur d'écran, et tout ce qui dépasse est coupé sans barre de
+    // défilement pour aller le chercher.
+    //
+    // Sans `tour-on`, les scènes s'empilent et se lisent normalement.
+    // L'effet est perdu, mais il l'était déjà : sur un écran haut et
+    // étroit, un fondu entre quatre plans superposés se voit mal, alors
+    // qu'une page qui coupe son texte se voit tout de suite.
+    if (window.innerWidth < 900) return
+
     // `tour-on` déclenche le mode épinglé côté CSS : sans cette classe, la
     // section reste une pile de scènes lisibles — c'est le repli.
     pin.classList.add("tour-on")

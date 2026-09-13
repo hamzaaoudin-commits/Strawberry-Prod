@@ -1358,3 +1358,36 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
     transparent 100%
   );
 }
+
+/* ---------------------------------------------------------------------------
+   LA TOURNÉE SUR MOBILE
+
+   Sous 900px, l'épinglage est désactivé (voir tour-section.tsx) : les
+   scènes s'empilent et se lisent à la suite. Ces règles leur donnent la
+   mise en page d'une liste verticale plutôt que celle de plans
+   superposés.
+   --------------------------------------------------------------------------- */
+@media (max-width: 899px) {
+  .tour-pin .tour-scene {
+    position: relative;
+    inset: auto;
+    min-height: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    padding-block: clamp(3rem, 9vw, 4.5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .tour-pin .tour-scene:first-child { border-top: 0; }
+  /* Les fonds radiaux se superposeraient les uns aux autres en pile. */
+  .tour-pin .ts-bg { opacity: 0.5; }
+  .tour-pin .tour-progress { display: none; }
+
+  /* « THE PRODUCT » à 48px déborde d'un écran de 375px : onze caractères
+     larges, sans césure possible. On descend, et on laisse le mot se
+     couper plutôt que de sortir de l'écran. */
+  .ts-t {
+    font-size: clamp(2rem, 13vw, 3.2rem);
+    overflow-wrap: anywhere;
+  }
+  .ts-points li { font-size: 0.95rem; }
+}

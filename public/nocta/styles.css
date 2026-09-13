@@ -166,8 +166,14 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 .hero-kicker{ display:inline-flex; align-items:center; gap:.8rem; margin-bottom:1.6rem; }
 .hero-kicker .dot{ width:7px; height:7px; border-radius:50%; background:var(--coral); box-shadow:0 0 12px var(--coral); animation:pulse 2.4s infinite; }
 @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
-.wordmark{ font-family:var(--display); font-weight:800; font-size:clamp(4.5rem,18vw,15rem);
-  line-height:.85; letter-spacing:-.04em;
+/* Le plancher est passé de 4,5rem à 2,6rem.
+   NOCTA tenait en cinq lettres ; « THE PRODUCT » en fait onze. À 72px sur
+   un écran de 375, le mot sortait de l'écran par la droite — et comme la
+   valeur était un plancher de clamp, aucune largeur ne le ramenait.
+   `overflow-wrap` autorise en dernier recours une césure plutôt qu'un
+   débordement. */
+.wordmark{ font-family:var(--display); font-weight:800; font-size:clamp(2.6rem,15vw,15rem);
+  line-height:.85; letter-spacing:-.04em; overflow-wrap:anywhere;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
   filter:drop-shadow(0 0 38px rgba(255,34,51,.28)); }
 .flicker{ animation:flick 6s infinite steps(1); }
