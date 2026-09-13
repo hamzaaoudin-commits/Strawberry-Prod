@@ -28,26 +28,14 @@ export function CTABanner() {
       <div ref={ref} className="shell relative">
         <div
           className={[
-            "relative overflow-hidden rounded-2xl border border-brand-hair bg-ink-soft px-8 py-20 text-center md:px-20",
+            "relative overflow-hidden rounded-2xl border border-hair bg-ink-soft px-8 py-20 text-center md:px-20",
             "shadow-[0_0_90px_-20px_rgba(255,34,51,0.35)]",
             "transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
             vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
           ].join(" ")}
         >
-          {/* Un filet rouge en haut du bloc : il marque l'entrée dans le
-              dernier moment de la page sans mettre de couleur dans le
-              titre, qui resterait alors en concurrence avec le bouton. */}
-          <span
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(108deg,#ff2233,#ff4d2e)]"
-          />
 
-          {/* En capitales.
-              Le crénage serré (-0.03em) venait du bas-de-casse, où les
-              lettres se resserrent naturellement. En capitales il colle les
-              lettres : il passe donc à -0.01em, et l'interlignage se
-              resserre un peu puisqu'il n'y a plus de jambages. */}
-          <h2 className="relative mb-10 font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] font-bold uppercase leading-[1.04] tracking-[-0.01em] text-white">
+          <h2 className="relative mb-10 font-serif text-[clamp(2rem,4.6vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
             {t.h2}
           </h2>
 

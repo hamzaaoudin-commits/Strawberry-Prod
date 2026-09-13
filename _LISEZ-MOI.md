@@ -1,33 +1,40 @@
-# Strawberry — le titre du CTA en capitales
+# Strawberry — le CTA rentre dans la charte
 
 1 fichier.
 
-## Le changement
+## Pourquoi il dénotait
 
-**SEPT JOURS, ET VOUS SAUREZ QUOI CHANGER.**
+Trois éléments de ce bloc n'existaient nulle part ailleurs sur le site :
 
-## Deux réglages qui vont avec
+**Le cadre rouge sur tout le pourtour.** Aucune autre section n'en porte.
+Les blocs du site sont cernés d'un filet blanc à 7 % — quasi invisible.
+Un contour rouge vif transforme la section en encart publicitaire.
+→ Filet standard.
 
-Passer un titre en capitales n'est pas qu'une question de casse :
+**Le trait rouge de 3px en haut.** Ajouté par moi au tour précédent, et
+tout aussi isolé.
+→ Retiré.
 
-**Le crénage.** Il était à `-0.03em`, une valeur pensée pour le
-bas-de-casse où les lettres se resserrent naturellement. En capitales,
-elle les colle. Il passe à `-0.01em`.
+**Les capitales.** C'est la raison principale. Tous les titres de section
+du site sont en casse normale — « Ce qu'on trouve quand un récit est
+écrit », « Un atelier, pas une agence ». Un seul titre en capitales, c'est
+celui-là qui devient l'exception.
+→ Retour à la casse normale, crénage et interlignage rétablis avec.
 
-**L'interlignage.** Il descend de 1.08 à 1.04 : sans jambages
-descendants, les lignes peuvent se rapprocher sans se toucher, et le bloc
-gagne en compacité — ce qui sert justement l'effet de masse recherché ici.
+## Ce que le bloc garde
 
-**La taille** descend légèrement (de `5vw` à `4.4vw` au maximum) : à casse
-égale, des capitales occupent nettement plus de largeur, et le titre
-serait passé sur trois lignes.
+La lueur rouge derrière la section, l'ombre portée serrée, les 20 unités
+de marge, le titre en blanc à sa grande taille, et le bouton agrandi.
 
-## Si vous vouliez le bouton
+C'est ce qui lui donne du poids — de la masse et de la lumière, pas des
+traits de couleur. Le seul rouge plein reste le bouton.
 
-Le libellé du bouton reste en casse normale, comme celui de la barre de
-navigation. Dites-moi si c'est lui que vous vouliez en capitales — sur les
-pages d'offres, les boutons le sont déjà, donc les deux conventions
-coexistent aujourd'hui sur le site.
+## Sur les capitales en général
+
+Vous les aviez demandées, et j'aurais dû signaler à ce moment-là qu'aucun
+autre titre du site n'en portait. Si vous voulez des titres en capitales,
+ça se décide pour toute la charte, pas pour un bloc — sinon c'est
+exactement l'effet que vous venez de voir.
 
 ## Vérification
 
