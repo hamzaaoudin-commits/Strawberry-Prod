@@ -139,7 +139,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
           <div className="eyebrow text-brand">{t.free}</div>
         </div>
 
-        <h2 className="mb-3 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+        <h2 className="mb-3 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold leading-tight tracking-[-0.005em] text-white uppercase">
           {t.h2}
         </h2>
 
@@ -279,7 +279,7 @@ export function AtlasSection() {
                 <span className="font-sans text-[11px] font-semibold tracking-[0.1em] text-brand">{t.badge}</span>
               </div>
 
-              <h2 className="m-0 mb-3 font-serif text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+              <h2 className="m-0 mb-3 font-serif text-[clamp(1.4rem,2.8vw,1.9rem)] font-bold leading-tight tracking-[-0.005em] text-white uppercase">
                 {t.h2}
               </h2>
 

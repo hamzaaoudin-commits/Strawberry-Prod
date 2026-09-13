@@ -56,7 +56,7 @@ export function ProblemSection({ lang }: { lang: Lang }) {
           <div className="mb-5 font-sans text-[11px] font-semibold tracking-[0.14em]">
             <span className="surligne">{t.kicker}</span>
           </div>
-          <h2 className="mb-7 font-serif text-[clamp(1.8rem,3.6vw,3.1rem)] font-bold leading-[1.14] tracking-[-0.02em] text-white">
+          <h2 className="mb-7 font-serif text-[clamp(1.8rem,3.6vw,3.1rem)] font-bold leading-[1.14] tracking-[-0.005em] text-white uppercase">
             {t.h2}
           </h2>
           <p className="mb-5 font-sans text-[16.5px] leading-[1.75] text-white/60">{t.p1}</p>

@@ -54,7 +54,7 @@ export default async function DocumentsIndex({
       <section className="section-hero pb-14 pt-36">
         <div className="shell">
           <div className="kicker mb-6">{t.kicker}</div>
-          <h1 className="mb-7 font-serif text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[1.08] tracking-[-0.02em]">
+          <h1 className="mb-7 font-serif text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[1.08] tracking-[-0.005em] uppercase">
             {t.h1a}
             <br />
             <span className="text-gradient">{t.h1b}</span>
@@ -105,22 +105,22 @@ function DocCover({ motif, name }: { motif: string; name: string }) {
         {motif === "sillage" ? (
           <>
             {[32, 64, 96, 128, 160].map((y) => (
-              <line key={y} x1="0" y1={y} x2="140" y2={y} stroke="#e63946" strokeWidth="0.5" />
+              <line key={y} x1="0" y1={y} x2="140" y2={y} stroke="#ff2233" strokeWidth="0.5" />
             ))}
             {[28, 56, 84, 112].map((x) => (
-              <line key={x} x1={x} y1="0" x2={x} y2="187" stroke="#e63946" strokeWidth="0.5" />
+              <line key={x} x1={x} y1="0" x2={x} y2="187" stroke="#ff2233" strokeWidth="0.5" />
             ))}
-            <circle cx="70" cy="93" r="17" fill="none" stroke="#e63946" strokeWidth="0.6" />
+            <circle cx="70" cy="93" r="17" fill="none" stroke="#ff2233" strokeWidth="0.6" />
           </>
         ) : (
           <>
             {/* VERSO : tranches de dos de livre — des bandes verticales de
                 largeur inégale, comme une reliure cousue à la main. */}
             {[10, 24, 40, 58, 78, 100, 124].map((x, i) => (
-              <line key={x} x1={x} y1="8" x2={x} y2="179" stroke="#e63946" strokeWidth={i % 2 === 0 ? 1.1 : 0.5} />
+              <line key={x} x1={x} y1="8" x2={x} y2="179" stroke="#ff2233" strokeWidth={i % 2 === 0 ? 1.1 : 0.5} />
             ))}
-            <line x1="0" y1="18" x2="140" y2="18" stroke="#e63946" strokeWidth="0.5" />
-            <line x1="0" y1="169" x2="140" y2="169" stroke="#e63946" strokeWidth="0.5" />
+            <line x1="0" y1="18" x2="140" y2="18" stroke="#ff2233" strokeWidth="0.5" />
+            <line x1="0" y1="169" x2="140" y2="169" stroke="#ff2233" strokeWidth="0.5" />
           </>
         )}
       </svg>

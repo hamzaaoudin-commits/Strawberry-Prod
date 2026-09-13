@@ -35,7 +35,7 @@ export function CTABanner() {
           ].join(" ")}
         >
 
-          <h2 className="relative mb-10 font-serif text-[clamp(2rem,4.6vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
+          <h2 className="relative mb-10 font-serif text-[clamp(2rem,4.6vw,3.4rem)] font-bold leading-[1.1] tracking-[-0.005em] text-white uppercase">
             {t.h2}
           </h2>
 

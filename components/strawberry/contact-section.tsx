@@ -234,7 +234,7 @@ export function ContactSection() {
             {status === "sent" ? (
               <div className="border border-brand bg-brand/[0.06] px-9 py-12 text-center" role="status" aria-live="polite">
                 <div className="mb-5 text-4xl" aria-hidden>🍓</div>
-                <h3 className="mb-4 font-serif text-[1.6rem] font-semibold tracking-[-0.02em]">
+                <h3 className="mb-4 font-serif text-[1.6rem] font-semibold tracking-[-0.005em] uppercase">
                   {t.sentTitle}
                 </h3>
                 <p className="font-sans text-sm leading-relaxed text-chalk-75">{t.sentBody}</p>

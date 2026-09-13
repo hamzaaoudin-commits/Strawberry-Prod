@@ -95,7 +95,13 @@ img{ max-width:100%; display:block; }
   letter-spacing:.32em; text-transform:uppercase; color:var(--coral);
 }
 .eyebrow.iris{ color:var(--iris-soft); }
-h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-spacing:-.02em; }
+/* Capitales sur tous les titres, comme sur le reste du site. Le crénage
+   se desserre et l'interlignage se resserre : voir globals.css. */
+h1,h2,h3{ font-family:var(--display); font-weight:700; text-transform:uppercase;
+  line-height:1.0; letter-spacing:-.005em; }
+/* Le wordmark garde son crénage très serré : à cette taille, les capitales
+   supportent -0.04em sans se toucher, et c'est ce qui fait sa densité. */
+.wordmark{ letter-spacing:-.04em; }
 .serif{ font-family:var(--display); font-style:normal; font-weight:600; letter-spacing:-.015em; }
 
 .h-hero{ font-size:clamp(3.4rem, 12vw, 9rem); }

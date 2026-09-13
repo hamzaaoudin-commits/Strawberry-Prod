@@ -95,12 +95,12 @@ export function SillageSection({ lang }: { lang: Lang }) {
                     lieu de rester un simple rectangle de texte. */}
                 <svg viewBox="0 0 170 226" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.14]">
                   {[38, 76, 114, 152, 190].map((y) => (
-                    <line key={y} x1="0" y1={y} x2="170" y2={y} stroke="#e63946" strokeWidth="0.5" />
+                    <line key={y} x1="0" y1={y} x2="170" y2={y} stroke="#ff2233" strokeWidth="0.5" />
                   ))}
                   {[34, 68, 102, 136].map((x) => (
-                    <line key={x} x1={x} y1="0" x2={x} y2="226" stroke="#e63946" strokeWidth="0.5" />
+                    <line key={x} x1={x} y1="0" x2={x} y2="226" stroke="#ff2233" strokeWidth="0.5" />
                   ))}
-                  <circle cx="85" cy="113" r="20" fill="none" stroke="#e63946" strokeWidth="0.6" />
+                  <circle cx="85" cy="113" r="20" fill="none" stroke="#ff2233" strokeWidth="0.6" />
                 </svg>
 
                 <div className="relative font-serif text-[clamp(1.3rem,3vw,1.7rem)] font-bold tracking-[0.06em] text-brand">
@@ -122,7 +122,7 @@ export function SillageSection({ lang }: { lang: Lang }) {
                 ))}
               </div>
 
-              <h3 className="mb-7 font-serif text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.2] tracking-[-0.02em]">
+              <h3 className="mb-7 font-serif text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.2] tracking-[-0.005em] uppercase">
                 {t.docSub}
               </h3>
 

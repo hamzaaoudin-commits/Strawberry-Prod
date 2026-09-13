@@ -1421,7 +1421,7 @@ export default function BrandNarrativeArchitecturePage() {
               échantillon de pages : un prospect qui engage 4 500€ doit voir
               l'intégralité de ce qu'il reçoit, pas un aperçu. */}
           <div className="mt-24">
-            <h3 className="mb-4 text-center font-serif text-[clamp(1.4rem,2.6vw,2rem)] font-bold tracking-[-0.02em]">
+            <h3 className="mb-4 text-center font-serif text-[clamp(1.4rem,2.6vw,2rem)] font-bold tracking-[-0.005em] uppercase">
               {t.sommaireH3}
             </h3>
             <p className="mx-auto mb-10 max-w-[620px] text-center font-sans text-[15px] leading-relaxed text-chalk-55">

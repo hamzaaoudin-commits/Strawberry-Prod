@@ -229,7 +229,7 @@ export function HeroSection() {
             {t.slogan}
           </p>
 
-          <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.5rem,4.8vw,4.8rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white">
+          <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.5rem,4.8vw,4.8rem)] font-bold leading-[1.12] tracking-[-0.005em] text-white uppercase">
             {t.h1a}
             <br />
             <span className="block bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text pb-[0.14em] text-transparent">

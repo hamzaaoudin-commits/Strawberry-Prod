@@ -102,7 +102,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
 
       <div className="shell relative mx-auto max-w-[780px]">
         <p className="mb-4 font-sans text-[15px] text-chalk-40">{t.lead}</p>
-        <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.16] tracking-[-0.02em]">
+        <h2 className="mb-7 font-serif text-[clamp(1.7rem,3.4vw,2.8rem)] leading-[1.16] tracking-[-0.005em] uppercase">
           <ScrollFillText text={t.h2a} />
           <br />
           {/* La bascule du diagnostic : elle enfle brièvement au moment où

@@ -137,7 +137,7 @@ export default async function BookPage({
                   <h2 className="mb-3 font-serif text-[clamp(1.3rem,2.6vw,1.75rem)] font-bold uppercase leading-[1.1] tracking-[0.02em]">
                     {t.title}
                   </h2>
-                  <p className="m-0 font-serif text-[12px] italic leading-snug text-chalk-55">{t.sub}</p>
+                  <p className="m-0 font-serif text-[12px] leading-snug text-chalk-55">{t.sub}</p>
                 </div>
                 <div className="text-center font-sans text-[8px] uppercase tracking-[0.25em] text-chalk-55">
                   {t.author}
@@ -147,10 +147,10 @@ export default async function BookPage({
 
             <div>
               <div className="kicker mb-6">{t.kicker}</div>
-              <h1 className="mb-5 font-serif text-[clamp(2.1rem,5vw,3.8rem)] font-bold leading-[1.08] tracking-[-0.02em]">
+              <h1 className="mb-5 font-serif text-[clamp(2.1rem,5vw,3.8rem)] font-bold leading-[1.08] tracking-[-0.005em] uppercase">
                 {t.title}
               </h1>
-              <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.4rem)] italic text-chalk-75">{t.sub}</p>
+              <p className="mb-8 font-serif text-[clamp(1.05rem,2vw,1.4rem)] text-chalk-75">{t.sub}</p>
 
               <div className="mb-9 flex flex-wrap gap-2">
                 {t.meta.map((m) => (
@@ -161,7 +161,7 @@ export default async function BookPage({
               </div>
 
               <blockquote className="border-l-2 border-brand py-1 pl-6">
-                <p className="m-0 font-serif text-[clamp(1.1rem,2.2vw,1.55rem)] italic leading-snug text-chalk-90">
+                <p className="m-0 font-serif text-[clamp(1.1rem,2.2vw,1.55rem)] leading-snug text-chalk-90">
                   {t.epigraph}
                 </p>
               </blockquote>
@@ -172,7 +172,7 @@ export default async function BookPage({
 
       <section className="section bg-ink-soft">
         <div className="shell">
-          <h2 className="mb-7 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight">{t.whyH}</h2>
+          <h2 className="mb-7 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight uppercase">{t.whyH}</h2>
           <p className="drop-cap mb-5 max-w-[720px] font-sans text-base leading-[1.85] text-chalk-65">{t.whyP1}</p>
           <p className="max-w-[720px] font-sans text-base leading-[1.85] text-chalk-65">{t.whyP2}</p>
         </div>
@@ -180,12 +180,12 @@ export default async function BookPage({
 
       <section className="section">
         <div className="shell">
-          <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight">{t.partsH}</h2>
+          <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight uppercase">{t.partsH}</h2>
           <div className="grid gap-px border border-white/[0.09] bg-white/[0.09] sm:grid-cols-2">
             {t.parts.map((p) => (
               <div key={p.n} className="bg-ink px-6 py-7">
                 <div className="mb-2.5 font-serif text-xl font-bold text-brand">{p.n}</div>
-                <h3 className="mb-2 font-serif text-[1.15rem] font-bold text-white">{p.t}</h3>
+                <h3 className="mb-2 font-serif text-[1.15rem] font-bold text-white uppercase">{p.t}</h3>
                 <p className="m-0 font-sans text-[14px] leading-relaxed text-chalk-65">{p.d}</p>
               </div>
             ))}
@@ -195,7 +195,7 @@ export default async function BookPage({
 
       <section className="section bg-ink-soft">
         <div className="shell">
-          <h2 className="mb-8 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight">{t.forH}</h2>
+          <h2 className="mb-8 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight uppercase">{t.forH}</h2>
           <ul className="mb-12 list-none border-t border-hair p-0">
             {t.forList.map((l, i) => (
               <li
@@ -207,7 +207,7 @@ export default async function BookPage({
               </li>
             ))}
           </ul>
-          <p className="font-serif text-[clamp(1.15rem,2.4vw,1.6rem)] italic text-chalk-90">{t.close}</p>
+          <p className="font-serif text-[clamp(1.15rem,2.4vw,1.6rem)] text-chalk-90">{t.close}</p>
         </div>
       </section>
 
@@ -216,7 +216,7 @@ export default async function BookPage({
           <div className="card-featured p-8 md:p-12">
             <span className="bracket-tl" aria-hidden />
             <span className="bracket-br" aria-hidden />
-            <h2 className="mb-4 font-serif text-[clamp(1.5rem,3vw,2.1rem)] font-bold leading-tight">{t.buyH}</h2>
+            <h2 className="mb-4 font-serif text-[clamp(1.5rem,3vw,2.1rem)] font-bold leading-tight uppercase">{t.buyH}</h2>
             <p className="mb-7 max-w-[560px] body-sm">{t.buyP}</p>
             <Link href={BUY_URL} className="btn-primary">
               {t.buyCta}
@@ -224,7 +224,7 @@ export default async function BookPage({
           </div>
 
           <div className="mt-6 border border-hair p-8 md:p-12">
-            <h2 className="mb-4 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-tight">{t.bridgeH}</h2>
+            <h2 className="mb-4 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-tight uppercase">{t.bridgeH}</h2>
             <p className="mb-7 max-w-[620px] body-sm">{t.bridgeP}</p>
             <div className="flex flex-wrap gap-4">
               <Link href="/brand-narrative-architecture" className="btn-primary">

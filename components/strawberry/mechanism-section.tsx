@@ -226,7 +226,7 @@ export function MechanismSection({ lang }: { lang: Lang }) {
         {/* Le contre-positionnement. */}
         <div className="mx-auto mt-8 max-w-[820px] border-t border-hair pt-14">
           <div className="kicker mb-5">{t.enemyKicker}</div>
-          <h3 className="mb-5 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-tight tracking-[-0.02em] text-white">
+          <h3 className="mb-5 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-tight tracking-[-0.005em] text-white uppercase">
             {t.enemyH3}
           </h3>
           <p className="mb-9 max-w-[660px] font-sans text-[16px] leading-[1.8] text-chalk-65">{t.enemyLead}</p>

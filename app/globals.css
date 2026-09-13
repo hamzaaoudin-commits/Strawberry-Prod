@@ -227,11 +227,19 @@
 }
 
 @utility h-section {
+  /* Titres en capitales sur tout le site.
+     Deux réglages vont avec, et sans eux les capitales font sale :
+     - le crénage remonte de -0.02 à -0.005em, la valeur serrée ayant été
+       pensée pour le bas-de-casse où les lettres se rapprochent
+       naturellement ; en capitales elle les colle ;
+     - l'interlignage descend, puisqu'il n'y a plus de jambages
+       descendants et que les lignes peuvent se resserrer sans se toucher. */
   font-family: var(--font-serif);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  line-height: 1.06;
+  letter-spacing: -0.005em;
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
 }
 
 @utility h-card {

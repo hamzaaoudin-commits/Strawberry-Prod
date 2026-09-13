@@ -1,53 +1,47 @@
-# Strawberry — l'audit couvre les cinq étapes
+# Strawberry — tous les titres en capitales
 
-6 fichiers.
+Le zip contient les fichiers modifiés. **18 fichiers touchés au total.**
 
-## La correction
+## Cette fois, c'est toute la charte
 
-J'avais écrit que « l'audit applique les trois premières lettres,
-l'Architecture va jusqu'au bout des cinq ». C'était faux, et ça rabaissait
-l'offre principale au passage.
+Quand vous me l'aviez demandé la première fois, je ne l'avais appliqué
+qu'au bandeau final — et vous m'aviez dit, à juste titre, que ça dénotait.
+C'était vrai : un seul titre en capitales au milieu de titres en casse
+normale, c'est celui-là qui devient l'exception.
 
-La page Méthode dit maintenant :
+Le changement est donc posé **au niveau des règles partagées** :
 
-> L'audit narratif parcourt les cinq lettres : il trouve l'âme,
-> cartographie le territoire, recadre le champ, dessine l'architecture et
-> dit comment l'incarner. Sept à quatorze jours, et vous repartez avec ce
-> que chaque étape a donné. **L'Architecture, elle, construit ce que
-> l'audit prescrit** — les mêmes cinq étapes, menées jusqu'aux pièces
-> livrables.
+- `h-section` dans `globals.css` — la classe qu'utilisent la plupart des
+  sections du site
+- `h1, h2, h3` dans `nocta/styles.css` — les quatre pages de terrain
 
-La distinction ne porte plus sur le **nombre** d'étapes mais sur ce qu'on
-en fait : l'audit les parcourt et rend le diagnostic, l'Architecture les
-exécute et livre les pièces. C'est plus juste, et ça justifie mieux
-l'écart de prix qu'un décompte d'étapes.
+Plus les titres écrits en dur dans 18 composants, qui n'utilisaient pas
+ces classes et seraient restés en casse normale.
 
-## La correspondance devient visible
+## Trois réglages qui accompagnent la casse
 
-Les cinq blocs de l'audit, sur les quatre pages de terrain, portaient
-01 à 05. Ils portent désormais **S · T · R · A · W**, et le surtitre
-annonce « L'audit · la méthode S.T.R.A.W. ».
+Passer en capitales sans toucher au reste donne toujours un résultat sale.
+Trois valeurs bougent :
 
-La correspondance se lit alors d'elle-même, sans qu'on ait à l'écrire :
+**Le crénage passe de -0.02em à -0.005em.** La valeur serrée avait été
+pensée pour le bas-de-casse, où les lettres se rapprochent naturellement ;
+en capitales, elle les colle.
 
-| | | |
-|---|---|---|
-| **S** | Nous lisons ce que le marché lit | Trouver l'âme |
-| **T** | Nous cartographions le champ | Cartographier le territoire |
-| **R** | Nous nommons ce que vous racontez | Recadrer le champ |
-| **A** | Nous donnons les mouvements | Bâtir l'architecture |
-| **W** | Nous vous laissons le document | Incarner l'univers |
+**L'interlignage se resserre** — de 1.12 à 1.06. Sans jambages
+descendants, les lignes peuvent se rapprocher sans se toucher, et le bloc
+gagne en densité.
 
-Le visiteur qui passe de la page Méthode à une page de terrain retrouve
-les mêmes cinq lettres. C'est ce qui fait qu'une méthode a l'air d'une
-méthode plutôt que d'un acronyme décoratif.
+**La taille baisse d'environ 10 %.** À casse égale, des capitales occupent
+nettement plus de largeur : sans ça, plusieurs titres passaient sur une
+ligne de plus.
 
-## Un défaut attrapé
+## Une exception, assumée
 
-Le dictionnaire par défaut portait encore « Le sprint » comme surtitre :
-THE ROOM, qui hérite de ce dictionnaire, aurait affiché l'ancien libellé
-là où les trois autres annonçaient la méthode. Corrigé.
+Le wordmark des pages de terrain — BRAND, THE ROOM — garde son crénage à
+-0.04em. À cette taille, les capitales supportent un serrage bien plus
+fort sans se toucher, et c'est précisément ce qui fait sa densité.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées.
+Contrôle de types : aucune erreur nouvelle. Les seules remontées sont
+préexistantes et propres à mon environnement.

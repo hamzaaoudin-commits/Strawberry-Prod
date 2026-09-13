@@ -57,7 +57,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
               {t.kicker}
             </div>
 
-            <h2 className="mb-7 font-serif text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white">
+            <h2 className="mb-7 font-serif text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.005em] text-white uppercase">
               {t.h2a}
               <br />
               {t.h2b}
@@ -85,7 +85,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
                   {b.n}
                 </span>
                 <div>
-                  <h3 className="mb-2 font-serif text-[1.2rem] font-semibold tracking-[-0.01em] text-white">
+                  <h3 className="mb-2 font-serif text-[1.2rem] font-semibold tracking-[-0.01em] text-white uppercase">
                     {b.t}
                   </h3>
                   <p className="m-0 font-sans text-[14.5px] leading-relaxed text-chalk-65">{b.d}</p>

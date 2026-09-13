@@ -37,7 +37,7 @@ function RenderBlock({ b }: { b: ReaderBlock }) {
   switch (b.kind) {
     case "h":
       return (
-        <h3 className="mb-4 mt-10 font-serif text-[clamp(1.15rem,2vw,1.5rem)] font-bold tracking-[-0.01em] text-white first:mt-0">
+        <h3 className="mb-4 mt-10 font-serif text-[clamp(1.15rem,2vw,1.5rem)] font-bold tracking-[-0.01em] text-white first:mt-0 uppercase">
           {b.text}
         </h3>
       )
@@ -283,7 +283,7 @@ export function DocumentReader({
               {part.subtitle && <span className="eyebrow">{part.subtitle}</span>}
             </div>
 
-            <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.02em]">
+            <h2 className="mb-9 font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold leading-tight tracking-[-0.005em] uppercase">
               {part.title}
             </h2>
 

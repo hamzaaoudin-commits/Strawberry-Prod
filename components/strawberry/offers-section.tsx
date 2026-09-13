@@ -228,7 +228,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
             <div>
               <div className="pill mb-3">L&apos;AUDIT NARRATIF</div>
 
-              <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.02em]">
+              <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.005em] uppercase">
                 {t.h3}
               </h3>
 
