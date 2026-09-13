@@ -51,7 +51,6 @@ const T = {
     diagramArchitecture: "The strategy",
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
-    enemy: "A branding, marketing or storytelling agency sells you assets and a moodboard. We write the constitution a market learns to recognise you by — and then we make you refuse things, not approve them.",
   },
   fr: {
     h2a: "Rien de tout ça n'a manqué de bonne volonté.",
@@ -87,7 +86,6 @@ const T = {
     diagramArchitecture: "La stratégie",
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
-    enemy: "Une agence de branding, de marketing ou de storytelling vous vend des assets et un moodboard. Nous écrivons la constitution à laquelle un marché apprend à vous reconnaître — puis nous vous faisons refuser des choses, pas les valider.",
   },
 }
 
@@ -252,7 +250,6 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <p className="mt-10 font-sans text-[15px] leading-relaxed text-chalk-55">{t.enemy}</p>
       </div>
     </section>
   )

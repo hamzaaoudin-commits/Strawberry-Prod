@@ -1,45 +1,45 @@
-# Strawberry — l'affichage sur téléphone
+# Strawberry — deux paragraphes en moins
 
-3 fichiers. Trois défauts trouvés, tous invisibles sur ordinateur.
+2 fichiers.
 
-## 1. La tournée coupait son texte — le plus grave
+## Le paragraphe « agence de branding »
 
-La scène épinglée tient dans **100vh avec `overflow:hidden`**. Sur un
-téléphone, une scène contient le surtitre, un titre de 48 pixels, la
-projection, l'intitulé et **cinq puces**. Ça dépasse largement la hauteur
-d'écran, et tout ce qui dépasse était coupé — sans barre de défilement
-pour aller le chercher.
+Supprimé, avec sa clé de texte dans les deux langues.
 
-C'est le contenu le plus travaillé de la page, et une partie n'était
-simplement pas lisible sur mobile.
+Il arrivait juste après les quatre fausses causes, dont l'une est
+précisément « une agence de branding » — il redisait donc en trois lignes
+ce que la liste venait de dire en une, et il revenait sur le refus, déjà
+posé deux fois plus haut.
 
-**L'épinglage est désactivé sous 900px.** Les scènes s'empilent et se
-lisent à la suite, séparées par un filet. L'effet est perdu, mais il
-l'était déjà : sur un écran haut et étroit, un fondu entre quatre plans
-superposés se remarque à peine, alors qu'une page qui coupe son texte se
-voit immédiatement.
+## Le paragraphe du hero
 
-## 2. « THE PRODUCT » sortait de l'écran
+**Avant** (52 mots) :
 
-Le wordmark des pages d'offres était en `clamp(4.5rem, 18vw, 15rem)` —
-donc **jamais moins de 72 pixels**. NOCTA tenait en cinq lettres ; THE
-PRODUCT en fait onze. Le mot débordait par la droite, et comme 4,5rem
-était un plancher, aucune largeur d'écran ne le ramenait.
+> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit — et
+> personne ne l'a jamais écrit. Nous lisons le vôtre comme le fait votre
+> marché, sans complaisance. Vous recevez ce qu'il raconte aujourd'hui, ce
+> qui vous range avec les autres, et les mouvements exacts qui vous en
+> sortent.
 
-Plancher abaissé à 2,6rem, et `overflow-wrap: anywhere` en dernier
-recours. Sur un iPhone de 375 pixels, le titre passe de 72 à 56 pixels et
-tient dans la largeur.
+**Après** (34 mots) :
 
-## 3. Les titres de scène débordaient aussi
+> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit que
+> personne n'a écrit. Nous le lisons comme le fait votre marché, et nous
+> vous rendons les mouvements qui vous sortent du lot.
 
-Même cause, même correctif : `.ts-t` descend à 2rem sous 900px.
+Ce que j'ai retiré et pourquoi :
 
-## Ce que j'ai vérifié et qui allait déjà
+- **La troisième phrase entière.** Elle détaillait le contenu du document
+  — ce qu'il raconte, ce qui vous range, les mouvements — alors que le
+  lecteur ne sait pas encore si ça le concerne. Ce détail est répété deux
+  fois plus bas, dans la tournée et dans la section offre.
+- **« sans complaisance ».** S'affirmer franc est toujours plus faible que
+  de l'être : la page le prouve ensuite en nommant les fausses causes.
+- **Le tiret et la reprise « et personne ne l'a jamais écrit ».** La
+  subordonnée dit la même chose en trois mots de moins.
 
-Les colonnes du constat (activées seulement au-delà de 1100px), les liens
-croisés en pied de page (grille auto-adaptative), le logo fixe des pages
-d'offres, et le bloc CTA de la home.
+Un tiers de moins, sans rien perdre de l'argument.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Feuille de style validée.
+Contrôle de types : zéro erreur.
