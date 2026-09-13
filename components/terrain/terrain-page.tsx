@@ -62,7 +62,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="story-head">
 <div>
 <span class="eyebrow" data-i18n="st.eyebrow">Le sprint</span>
-<h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">Deux à trois semaines, cinq étapes.</h2>
+<h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">On lit, on compare, on tranche.</h2>
 </div>
 <div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
 </div>

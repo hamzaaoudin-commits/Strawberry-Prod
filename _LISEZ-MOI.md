@@ -1,31 +1,34 @@
-# Strawberry — le titre du sprint sur deux lignes
+# Strawberry — « On lit, on compare, on tranche. »
 
 5 fichiers.
 
-## Pourquoi il y en avait trois
+## Le titre du sprint
 
-Deux coupures se cumulaient :
+« Sept à quatorze jours, cinq blocs. » devient **« On lit, on compare, on
+tranche. »** — et en anglais, **« We read, we compare, we settle. »**
 
-**Celle du navigateur.** Le bloc de titre est dans un conteneur flex qui
-se rétrécissait à son contenu le plus étroit, au lieu de prendre la
-largeur disponible. Le titre se cassait donc après « quatorze », bien
-avant d'avoir rempli sa ligne.
+Les trois verbes annoncent exactement les cinq cartes qui suivent : nous
+lisons, nous cartographions, nous nommons, nous donnons, nous laissons. Et
+le dernier porte l'argument central du site : ce qui manque au client,
+c'est une décision, pas du contenu.
 
-**La mienne.** J'avais ajouté un `<br/>` après « jours, » pour forcer une
-coupure au bon endroit — sans voir que le navigateur en faisait déjà une
-avant. Résultat : trois lignes au lieu de deux.
+Avantage pratique : elle ne promet ni délai ni volume, donc rien à tenir à
+jour le jour où l'un des deux change. Le cadre reste visible ailleurs —
+le « 01 / 05 » juste en dessous, et le délai dans la première carte.
 
-## Le correctif
+## Sur la traduction anglaise
 
-**Le conteneur du titre prend la largeur disponible** (`flex: 1 1 auto`,
-avec un minimum de 24 caractères). La coupure naturelle tombe maintenant
-au bon endroit toute seule.
+*Settle* plutôt que *decide* : « trancher » suppose de clore un débat, pas
+seulement de choisir. *Settle* porte ça, *decide* non.
 
-**La coupure forcée est retirée** des quatre pages et des deux langues.
+## Quatre endroits, pas trois
 
-C'est le bon ordre des choses : régler la largeur d'abord, et ne forcer
-une coupure que si elle reste fausse après. J'avais fait l'inverse.
+Le texte était écrit dans les trois pages de terrain **et** en dur dans le
+HTML du gabarit, qui sert de valeur par défaut avant que le dictionnaire
+ne s'applique. Sans le corriger là aussi, THE ROOM aurait gardé l'ancien
+titre, et les trois autres l'auraient affiché brièvement au chargement.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Fichier de traductions validé.
+Contrôle de types : zéro erreur. Fichier de traductions validé. Aucune
+trace des anciens titres dans les cinq fichiers.
