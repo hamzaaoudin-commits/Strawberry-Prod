@@ -461,6 +461,11 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
    Swipeable narrative ("le parcours")
    ============================================================ */
 .story-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+/* Le bloc de titre se rétrécissait à son contenu le plus étroit : le titre
+   se cassait donc bien avant d'avoir rempli la ligne, et une coupure
+   forcée ajoutait une troisième ligne par-dessus. On lui donne la largeur
+   disponible, et la coupure redevient naturelle. */
+.story-head > div:first-child{ flex:1 1 auto; min-width:min(100%, 24ch); }
 .story-hint{ font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
   color:var(--smoke-dim); display:inline-flex; align-items:center; gap:.5rem; }
 .story-hint .sw{ display:inline-block; animation:swish 1.8s var(--ease) infinite; }

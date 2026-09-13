@@ -1,31 +1,31 @@
-# Strawberry — chaque paragraphe reste entier
+# Strawberry — le titre du sprint sur deux lignes
 
-1 fichier.
+5 fichiers.
 
-## Le défaut
+## Pourquoi il y en avait trois
 
-Les colonnes typographiques équilibraient bien les hauteurs, mais au prix
-d'une coupure en plein milieu de phrase : « les vôtres » ouvrait la
-seconde colonne alors que c'est la fin de la première. Les deux
-paragraphes n'en formaient plus qu'un seul, découpé au mauvais endroit.
+Deux coupures se cumulaient :
 
-C'est un mauvais compromis : un bloc parfaitement équilibré mais qu'on ne
-peut pas lire.
+**Celle du navigateur.** Le bloc de titre est dans un conteneur flex qui
+se rétrécissait à son contenu le plus étroit, au lieu de prendre la
+largeur disponible. Le titre se cassait donc après « quatorze », bien
+avant d'avoir rempli sa ligne.
+
+**La mienne.** J'avais ajouté un `<br/>` après « jours, » pour forcer une
+coupure au bon endroit — sans voir que le navigateur en faisait déjà une
+avant. Résultat : trois lignes au lieu de deux.
 
 ## Le correctif
 
-Retour à une grille — donc **chaque paragraphe reste entier dans sa
-colonne** — mais avec des colonnes **proportionnées au texte** :
-`1.5fr / 1fr`.
+**Le conteneur du titre prend la largeur disponible** (`flex: 1 1 auto`,
+avec un minimum de 24 caractères). La coupure naturelle tombe maintenant
+au bon endroit toute seule.
 
-Le premier paragraphe porte à peu près deux fois plus de texte que le
-second. En lui donnant une fois et demie la largeur, il tient sur moins de
-lignes, et les deux colonnes se terminent à peu près à la même hauteur.
-L'équilibre vient de la mise en page, pas d'un découpage du texte.
+**La coupure forcée est retirée** des quatre pages et des deux langues.
 
-`align-items: start` garde les deux colonnes alignées par le haut, sans
-étirement.
+C'est le bon ordre des choses : régler la largeur d'abord, et ne forcer
+une coupure que si elle reste fausse après. J'avais fait l'inverse.
 
 ## Vérification
 
-Feuille de style validée.
+Contrôle de types : zéro erreur. Fichier de traductions validé.
