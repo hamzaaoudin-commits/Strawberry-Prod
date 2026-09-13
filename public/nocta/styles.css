@@ -197,12 +197,25 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
 
 /* ---------- manifesto ---------- */
-/* 20ch était une colonne de vingt caractères : sur un grand écran, le
-   constat devenait une bande verticale étroite au milieu du vide. 26ch
-   garde une ligne confortable à lire tout en occupant la page. */
+/* Le constat occupe la largeur au lieu de couler en colonne étroite.
+   À 26ch dans un bloc de 1560px, le texte tenait sur un tiers de l'écran
+   et laissait deux tiers de vide à droite. Les deux paragraphes passent
+   donc côte à côte dès qu'il y a la place, et la mesure monte à 30ch —
+   plus horizontal, moins haut, sans que la ligne devienne pénible. */
 .manifesto p{ font-family:var(--display); font-weight:500;
-  font-size:clamp(1.6rem,3.4vw,2.9rem);
-  line-height:1.18; letter-spacing:-.02em; max-width:26ch; }
+  font-size:clamp(1.5rem,2.6vw,2.3rem);
+  line-height:1.2; letter-spacing:-.02em; max-width:30ch; }
+
+/* La marge du second paragraphe, sortie de son attribut style pour que la
+   grille puisse la neutraliser. */
+.man-second{ margin-top:1.6rem; }
+
+@media (min-width: 1100px){
+  .manifesto .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,5vw,5rem); }
+  /* Le surtitre reste seul sur sa ligne, au-dessus des deux colonnes. */
+  .manifesto .eyebrow{ grid-column:1 / -1; }
+  .manifesto p, .man-second{ margin-top:0; max-width:none; }
+}
 /* Les phrases fortes du constat : noir sur rouge, pas rouge clair sur noir.
    En rouge clair elles viraient au rose sur ce fond, et elles se
    confondaient avec le corps de texte. */

@@ -1,40 +1,37 @@
-# Strawberry — le CTA rentre dans la charte
+# Strawberry — le constat occupe la page
 
-1 fichier.
+2 fichiers, donc les quatre pages d'offres.
 
-## Pourquoi il dénotait
+## Le choix
 
-Trois éléments de ce bloc n'existaient nulle part ailleurs sur le site :
+Entre vos deux options — recentrer en paragraphes plus horizontaux, ou
+ajouter du visuel à côté — j'ai pris la première.
 
-**Le cadre rouge sur tout le pourtour.** Aucune autre section n'en porte.
-Les blocs du site sont cernés d'un filet blanc à 7 % — quasi invisible.
-Un contour rouge vif transforme la section en encart publicitaire.
-→ Filet standard.
+La seconde aurait demandé de dessiner une illustration par terrain, donc
+quatre visuels à produire et à maintenir. Et sur cette section
+précisément, une image se serait mise en concurrence avec le texte alors
+que c'est lui l'argument.
 
-**Le trait rouge de 3px en haut.** Ajouté par moi au tour précédent, et
-tout aussi isolé.
-→ Retiré.
+## Ce qui change
 
-**Les capitales.** C'est la raison principale. Tous les titres de section
-du site sont en casse normale — « Ce qu'on trouve quand un récit est
-écrit », « Un atelier, pas une agence ». Un seul titre en capitales, c'est
-celui-là qui devient l'exception.
-→ Retour à la casse normale, crénage et interlignage rétablis avec.
+**Les deux paragraphes passent côte à côte** dès 1100px de large. Le
+surtitre « LE CONSTAT » reste seul au-dessus, sur toute la largeur.
 
-## Ce que le bloc garde
+Le bloc occupe donc la page au lieu de couler en colonne, et le constat
+tient en deux fois moins de hauteur — c'est aussi moins fatigant à lire
+qu'une phrase de dix lignes empilées.
 
-La lueur rouge derrière la section, l'ombre portée serrée, les 20 unités
-de marge, le titre en blanc à sa grande taille, et le bouton agrandi.
+**La mesure passe de 26 à 30 caractères**, et la taille de police monte
+moins vite (`2.6vw` au lieu de `3.4vw`). Sur les écrans étroits, où les
+colonnes restent superposées, le texte s'étale au lieu de s'allonger.
 
-C'est ce qui lui donne du poids — de la masse et de la lumière, pas des
-traits de couleur. Le seul rouge plein reste le bouton.
+## Un piège technique
 
-## Sur les capitales en général
-
-Vous les aviez demandées, et j'aurais dû signaler à ce moment-là qu'aucun
-autre titre du site n'en portait. Si vous voulez des titres en capitales,
-ça se décide pour toute la charte, pas pour un bloc — sinon c'est
-exactement l'effet que vous venez de voir.
+Le second paragraphe portait sa marge haute dans un attribut `style`. Un
+style en ligne l'emporte sur toute règle de feuille : la grille aurait
+donc laissé un décalage de 1,6 rem entre les deux colonnes, sans qu'on
+comprenne pourquoi. La marge est déplacée dans la feuille, où la mise en
+page peut la neutraliser.
 
 ## Vérification
 
