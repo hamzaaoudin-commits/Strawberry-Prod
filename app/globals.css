@@ -1180,7 +1180,13 @@ footer {
   font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.55);
+}
+/* Le livrable en blanc, sa précision en gris : l'œil descend la liste en
+   ne lisant que les gras, puis revient sur ce qui l'intéresse. */
+.ts-points li b {
+  font-weight: 600;
+  color: #fff;
 }
 .ts-points li::before {
   content: "";

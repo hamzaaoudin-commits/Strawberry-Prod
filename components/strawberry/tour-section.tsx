@@ -40,7 +40,7 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "On vous demande un devis comparatif avant même de vous avoir écouté.",
-        points: ["La phrase exacte de vos concurrents, et celle que personne n'ose dire", "La position que vous pouvez tenir sans mentir, et ce qu'elle vous fait refuser", "Les trois à cinq mouvements pour y aller, dans l'ordre, avec leur coût"],
+        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas", "**Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois", "**3 à 5 mouvements de repositionnement**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**La liste de ce qu'il faut cesser de dire**, et pourquoi"],
         out: "Une position que personne d'autre ne peut revendiquer.",
         href: "/marques-entreprises",
       },
@@ -48,7 +48,7 @@ const T = {
         k: "Produits",
         t: "THE PRODUCT",
         line: "En rayon, votre produit devient une ligne de caractéristiques.",
-        points: ["L'intention qui tient derrière vos choix de conception", "L'argument que vos concurrents revendiquent déjà, et l'angle qu'ils laissent libre", "Ce que votre emballage dit avant vous, et ce qu'il faut cesser de dire"],
+        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**3 à 5 produits concurrents décortiqués** : leur promesse exacte, l'argument mis en avant, l'angle laissé libre", "**Votre produit relu comme un acheteur** : page produit, emballage, notice, et ce que disent vos avis", "**3 à 5 mouvements**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**Ce que votre emballage dit avant vous**, et ce qu'il faut cesser de dire"],
         out: "Chaque arbitrage devient un argument.",
         href: "/the-product",
       },
@@ -56,7 +56,7 @@ const T = {
         k: "Lieux",
         t: "THE ROOM",
         line: "La salle est pleine, et chaque publication repart de zéro.",
-        points: ["Le monde de votre lieu écrit : son heure, sa lumière, son casting, ses rituels", "Ce que vos habitués répètent sans y penser, et ce qu'il faut en faire", "Les mouvements que votre équipe peut tenir sans vous"],
+        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**Le monde de votre lieu écrit** : son heure, sa lumière, son casting, ses rituels", "**3 à 5 adresses concurrentes décortiquées** : ce qu'on dit d'elles, ce qu'elles revendiquent", "**3 à 5 mouvements**, hiérarchisés, tenables par votre équipe sans vous", "**Ce qu'il faut cesser de publier**, et pourquoi"],
         out: "Un lieu qu'on reconnaît avant d'en avoir lu le nom.",
         href: "/the-room",
       },
@@ -64,7 +64,7 @@ const T = {
         k: "Artistes & fondateurs",
         t: "THE NAME",
         line: "On aime ce que vous faites sans savoir dire ce que vous êtes.",
-        points: ["Le fil qui traverse déjà vos sorties, nommé", "Ce que la presse retient de vous, et la phrase qu'elle devrait reprendre", "Ce qui vous rend confondable, et les mouvements pour en sortir"],
+        points: ["**20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours", "**Le fil qui traverse vos sorties**, nommé et documenté projet par projet", "**3 à 5 artistes de votre zone décortiqués** : leur bio, ce qu'ils occupent, la place qu'ils laissent", "**3 à 5 mouvements**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque", "**Ce que la presse retient de vous**, et la phrase qu'elle devrait reprendre"],
         out: "Un fil que le public reconnaît d'une sortie à l'autre.",
         href: "/the-name",
       },
@@ -83,7 +83,7 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "You get asked for a comparative quote before anyone has listened to you.",
-        points: ["Your competitors' exact sentence, and the one nobody dares to say", "The position you can hold without lying, and what it makes you refuse", "The three to five moves to get there, in order, with their cost"],
+        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**3 to 5 competitors taken apart**: their exact sentence, the argument they carry, the one they avoid", "**Your own words laid out**: your site, your sales pitch, your teams — and the gap between the three", "**3 to 5 repositioning moves**, ranked, with what each one costs and unlocks", "**The list of what to stop saying**, and why"],
         out: "A position nobody else can claim.",
         href: "/marques-entreprises",
       },
@@ -91,7 +91,7 @@ const T = {
         k: "Products",
         t: "THE PRODUCT",
         line: "On a shelf, your product becomes one line of specs.",
-        points: ["The intent behind your design choices, put into words", "The argument your competitors already claim, and the angle they leave open", "What your packaging says before you do, and what to stop saying"],
+        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**3 to 5 competing products taken apart**: their exact promise, the argument they lead with, the angle left open", "**Your product read as a buyer would**: product page, packaging, manual, and what your reviews say", "**3 to 5 moves**, ranked, with what each one costs and unlocks", "**What your packaging says before you do**, and what to stop saying"],
         out: "Every trade-off becomes an argument.",
         href: "/the-product",
       },
@@ -99,7 +99,7 @@ const T = {
         k: "Venues",
         t: "THE ROOM",
         line: "The room is full, and every post starts from nothing.",
-        points: ["The world of your venue written: its hour, its light, its cast, its rituals", "What your regulars repeat without thinking, and what to do with it", "The moves your team can hold without you"],
+        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**The world of your venue written**: its hour, its light, its cast, its rituals", "**3 to 5 competing venues taken apart**: what people say about them, what they claim", "**3 to 5 moves**, ranked, and holdable by your team without you", "**What to stop posting**, and why"],
         out: "A venue people recognise before reading its name.",
         href: "/the-room",
       },
@@ -107,7 +107,7 @@ const T = {
         k: "Artists & founders",
         t: "THE NAME",
         line: "People like what you do without being able to say what you are.",
-        points: ["The thread already running through your releases, named", "What the press keeps of you, and the sentence it should be quoting", "What makes you mistakable, and the moves out of it"],
+        points: ["**20 to 30 pages** written by hand, delivered as a PDF within 7 to 14 days", "**The thread running through your releases**, named and documented project by project", "**3 to 5 artists in your lane taken apart**: their bio, what they hold, the place they leave open", "**3 to 5 moves**, ranked, with what each one costs and unlocks", "**What the press keeps of you**, and the sentence it should be quoting"],
         out: "A thread the audience recognises from one release to the next.",
         href: "/the-name",
       },
@@ -236,7 +236,13 @@ export function TourSection() {
                 <div className="ts-points-label">{t.ptsLabel}</div>
                 <ul className="ts-points list-none p-0">
                   {s.points.map((x) => (
-                    <li key={x}>{x}</li>
+                    <li key={x}>
+                      {/* Le segment entre ** passe en gras : c'est le
+                          livrable lui-même, le reste le précise. */}
+                      {x.split("**").map((part, j) =>
+                        j % 2 === 1 ? <b key={j}>{part}</b> : <span key={j}>{part}</span>,
+                      )}
+                    </li>
                   ))}
                 </ul>
                 <p className="ts-out">{s.out}</p>

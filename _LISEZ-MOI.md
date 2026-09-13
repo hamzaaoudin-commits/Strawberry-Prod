@@ -1,42 +1,37 @@
-# Strawberry — les puces disent ce qu'on livre
+# Strawberry — des livrables qu'on peut compter
 
 2 fichiers.
 
-## Ce que j'avais mal fait
+## Le problème de fond
 
-J'ai transformé le paragraphe en liste, mais j'ai gardé du problème dans
-les puces. La section répétait donc trois fois le même constat — la phrase
-d'accroche, les trois puces, et rien sur ce qu'on apporte.
+« Une position que vous pouvez tenir sans mentir » ne se vérifie pas. Le
+client ne peut pas savoir ce qu'il recevra, donc il ne peut pas juger si
+490 € est cher ou pas. Une promesse abstraite, à n'importe quel prix,
+sonne creux.
 
-## La structure maintenant
+## Ce que les puces disent maintenant
 
-Chaque scène tient en trois temps, et chacun a un rôle distinct :
+Cinq livrables par terrain, chacun **comptable** :
 
-**La phrase d'accroche** pose le problème. Elle seule.
-**Les puces** disent ce que l'audit livre sur ce terrain.
-**La ligne surlignée** dit ce que ça change.
+> **20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours
+> **3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas
+> **Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois
+> **3 à 5 mouvements de repositionnement**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque
+> **La liste de ce qu'il faut cesser de dire**, et pourquoi
 
-Pour BRAND :
+Chaque ligne porte un nombre ou un objet nommé. Le client peut ouvrir le
+document et vérifier qu'il y est.
 
-> *On vous demande un devis comparatif avant même de vous avoir écouté.*
->
-> **CE QUE L'AUDIT VOUS DONNE**
-> — La phrase exacte de vos concurrents, et celle que personne n'ose dire
-> — La position que vous pouvez tenir sans mentir, et ce qu'elle vous fait refuser
-> — Les trois à cinq mouvements pour y aller, dans l'ordre, avec leur coût
->
-> *Une position que personne d'autre ne peut revendiquer.*
+**Le volume est annoncé en premier**, délibérément : 20 à 30 pages en 7 à
+14 jours, c'est ce qui situe l'ordre de grandeur avant même de lire le
+reste. Sans ça, le prix flotte.
 
-Pour THE ROOM, les puces disent le monde du lieu écrit, ce que les
-habitués répètent sans y penser, et les mouvements que l'équipe peut tenir
-sans vous. Pour THE NAME, le fil qui traverse déjà les sorties, ce que la
-presse retient, ce qui rend confondable.
+## La hiérarchie visuelle
 
-## L'intitulé au-dessus de la liste
-
-**CE QUE L'AUDIT VOUS DONNE**, en mono rouge. Sans lui, trois lignes
-posées sous une phrase de problème se lisent comme la suite du problème —
-c'est exactement l'ambiguïté qui rendait la version précédente illisible.
+Le livrable est en blanc et en gras, sa précision en gris. L'œil descend
+la liste en ne lisant que les gras — cinq objets en trois secondes — puis
+revient sur celui qui l'intéresse. C'est ce qui permet d'avoir cinq lignes
+denses sans que ça fasse mal aux yeux.
 
 ## Vérification
 
