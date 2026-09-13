@@ -131,8 +131,8 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         <div className="mb-6 flex items-center gap-5">
           <div className="relative flex aspect-[3/4] w-[68px] shrink-0 flex-col items-center justify-center overflow-hidden border border-brand/25 bg-[linear-gradient(155deg,#120d0e_0%,#0a0a0a_65%)] shadow-[0_14px_30px_rgba(0,0,0,0.5)]">
             <svg viewBox="0 0 68 90" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.16]">
-              <circle cx="34" cy="45" r="24" fill="none" stroke="#e63946" strokeWidth="0.6" />
-              <circle cx="34" cy="45" r="15" fill="none" stroke="#e63946" strokeWidth="0.5" />
+              <circle cx="34" cy="45" r="24" fill="none" stroke="#ff2233" strokeWidth="0.6" />
+              <circle cx="34" cy="45" r="15" fill="none" stroke="#ff2233" strokeWidth="0.5" />
             </svg>
             <div className="relative font-serif text-[1.5rem] font-bold leading-none text-brand">30</div>
           </div>
@@ -148,7 +148,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
         {status === "done" ? (
           <div role="status" aria-live="polite" className="py-4 text-center">
             <SuccessCheck />
-            <p className="m-0 font-serif text-base italic text-brand">{t.opening}</p>
+            <p className="m-0 font-serif text-base text-brand">{t.opening}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate>
@@ -167,7 +167,7 @@ function AtlasModal({ onClose }: { onClose: () => void }) {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="cursor-pointer rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3.5 font-sans text-sm font-bold tracking-[0.06em] text-white shadow-[0_8px_30px_rgba(230,57,70,0.35)] disabled:opacity-60"
+              className="cursor-pointer rounded-full border-none bg-[linear-gradient(135deg,#ff2233,#ff4d2e)] px-7 py-3.5 font-sans text-sm font-bold tracking-[0.06em] text-white shadow-[0_8px_30px_rgba(255,34,51,0.35)] disabled:opacity-60"
             >
               {status === "loading" ? t.loading : t.read}
             </button>
@@ -253,7 +253,7 @@ export function AtlasSection() {
         }`}
         style={{ transitionTimingFunction: revealed && !dismissing ? "cubic-bezier(.22,.68,0,1.2)" : undefined }}
       >
-        <div className="relative border border-brand/30 bg-[#0d0a0b] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.55),0_0_0_1px_rgba(230,57,70,0.06)] md:p-10">
+        <div className="relative border border-brand/30 bg-[#0d0a0b] p-7 shadow-[0_30px_80px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,34,51,0.06)] md:p-10">
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
 
@@ -292,7 +292,7 @@ export function AtlasSection() {
                     track("atlas_click", { from: "home" })
                     setShowModal(true)
                   }}
-                  className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#e63946,#ff1a1a)] px-7 py-3 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(230,57,70,0.35)]"
+                  className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border-none bg-[linear-gradient(135deg,#ff2233,#ff4d2e)] px-7 py-3 font-sans text-sm font-bold tracking-[0.04em] text-white shadow-[0_8px_32px_rgba(255,34,51,0.35)]"
                 >
                   {t.read}
                 </button>

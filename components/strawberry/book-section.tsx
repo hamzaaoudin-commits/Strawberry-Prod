@@ -69,7 +69,7 @@ export function BookSection({ lang }: { lang: Lang }) {
                 <h3 className="mb-3 font-serif text-[clamp(1.3rem,2.6vw,1.75rem)] font-bold uppercase leading-[1.1] tracking-[0.02em]">
                   {t.title}
                 </h3>
-                <p className="m-0 font-serif text-[12px] italic leading-snug text-chalk-55">{t.sub}</p>
+                <p className="m-0 font-serif text-[12px] leading-snug text-chalk-55">{t.sub}</p>
               </div>
 
               <div className="text-center font-sans text-[8px] uppercase tracking-[0.25em] text-chalk-55">
@@ -82,7 +82,7 @@ export function BookSection({ lang }: { lang: Lang }) {
             <div className="kicker mb-6">{t.kicker}</div>
 
             <blockquote className="mb-7 border-l-2 border-brand py-1 pl-6">
-              <p className="m-0 font-serif text-[clamp(1.1rem,2vw,1.4rem)] italic leading-snug text-chalk-90">
+              <p className="m-0 font-serif text-[clamp(1.1rem,2vw,1.4rem)] leading-snug text-chalk-90">
                 {t.epigraph}
               </p>
             </blockquote>

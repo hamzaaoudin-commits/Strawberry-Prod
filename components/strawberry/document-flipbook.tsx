@@ -35,7 +35,7 @@ export type FlipbookAct = {
   title: string
 }
 
-const COLOR = "#e63946"
+const COLOR = "#ff2233"
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
 const DURATION = 700
@@ -152,7 +152,7 @@ export function DocumentFlipbook({
         <div
           style={{
             fontFamily: SERIF,
-            fontStyle: "italic",
+            
             fontSize: "0.95rem",
             color: COLOR,
             marginBottom: 4,
@@ -302,7 +302,7 @@ export function DocumentFlipbook({
         <p
           style={{
             fontFamily: SERIF,
-            fontStyle: "italic",
+            
             fontSize: "0.95rem",
             color: "rgba(255,255,255,0.7)",
             lineHeight: 1.55,

@@ -16,8 +16,8 @@ import { STRIPE_LINKS } from "@/lib/config"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 /**
  * Le paiement passe désormais par la page de commande : récapitulatif, suite
@@ -298,14 +298,14 @@ function MockupCover() {
     <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto", display: "block" }}>
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
-      <rect x="40" y="60" width="40" height="2" fill="#e63946" />
-      <text x="40" y="88" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">N° 001</text>
+      <rect x="40" y="60" width="40" height="2" fill="#ff2233" />
+      <text x="40" y="88" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">N° 001</text>
       <text x="40" y="236" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">La Constitution</text>
       <text x="40" y="272" fill="#fff" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="700">Narrative</text>
-      <text x="40" y="308" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="30" fontStyle="italic" fontWeight="400">de la Maison.</text>
+      <text x="40" y="308" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="30" fontWeight="400">de la Maison.</text>
       <line x1="40" y1="430" x2="360" y2="430" stroke="#2a2a2a" strokeWidth="1" />
       <text x="40" y="455" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2">COMMANDÉ POUR</text>
-      <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic">La Maison</text>
+      <text x="40" y="472" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14">La Maison</text>
       <text x="360" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" textAnchor="end">STRAWBERRY PROD.</text>
     </svg>
   )
@@ -317,15 +317,15 @@ function MockupDedication() {
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— DEDICATION —</text>
-      <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="200" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Aux fondateurs</text>
-      <text x="200" y="230" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">qui refusent</text>
-      <text x="200" y="260" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">de parler comme</text>
-      <text x="200" y="290" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">tout le monde.</text>
+      <line x1="170" y1="80" x2="230" y2="80" stroke="#ff2233" strokeWidth="1" />
+      <text x="200" y="200" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">Aux fondateurs</text>
+      <text x="200" y="230" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">qui refusent</text>
+      <text x="200" y="260" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">de parler comme</text>
+      <text x="200" y="290" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">tout le monde.</text>
       <line x1="180" y1="330" x2="220" y2="330" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-      <text x="200" y="360" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Ce document est</text>
-      <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">votre constitution.</text>
-      <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic" textAnchor="middle">Traitez-la comme telle.</text>
+      <text x="200" y="360" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">Ce document est</text>
+      <text x="200" y="378" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">votre constitution.</text>
+      <text x="200" y="396" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" textAnchor="middle">Traitez-la comme telle.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 02 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -342,19 +342,19 @@ function MockupIndex() {
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="100" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Sommaire.</text>
       <g transform="translate(30, 150)">
-        <text x="0" y="0" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">01.</text>
+        <text x="0" y="0" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="10">01.</text>
         <text x="34" y="0" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Diagnostic de différenciation</text>
         <text x="340" y="0" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">04</text>
-        <text x="0" y="36" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">02.</text>
+        <text x="0" y="36" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="10">02.</text>
         <text x="34" y="36" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">La plateforme narrative</text>
         <text x="340" y="36" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">10</text>
-        <text x="0" y="72" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">03.</text>
+        <text x="0" y="72" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="10">03.</text>
         <text x="34" y="72" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le système de langage</text>
         <text x="340" y="72" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">16</text>
-        <text x="0" y="108" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">04.</text>
+        <text x="0" y="108" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="10">04.</text>
         <text x="34" y="108" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le kit de déploiement</text>
         <text x="340" y="108" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">22</text>
-        <text x="0" y="144" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">05.</text>
+        <text x="0" y="144" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="10">05.</text>
         <text x="34" y="144" fill="#fff" fontFamily="Playfair Display, serif" fontSize="12">Le guide de cohérence</text>
         <text x="340" y="144" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9" textAnchor="end">28</text>
         <line x1="0" y1="180" x2="340" y2="180" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
@@ -376,10 +376,10 @@ function MockupSpine() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 10</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PLATEFORME NARRATIVE</text>
+      <text x="30" y="100" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PLATEFORME NARRATIVE</text>
       <text x="30" y="140" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">Une maison n'est pas</text>
       <text x="30" y="166" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="700">un positionnement.</text>
-      <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" fontWeight="400">C'est une mythologie.</text>
+      <text x="30" y="192" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontWeight="400">C'est une mythologie.</text>
       <BodyLines
         lines={[
           "SILLAGE ne vend pas un logiciel de suivi de chantier. Elle vend ce qui reste quand le",
@@ -393,10 +393,10 @@ function MockupSpine() {
         y={232}
         seed={2}
       />
-      <line x1="30" y1="320" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
-      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">La conviction que la</text>
-      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">fondatrice garde quand</text>
-      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">personne ne regarde.</text>
+      <line x1="30" y1="320" x2="32" y2="380" stroke="#ff2233" strokeWidth="2" />
+      <text x="48" y="338" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">La conviction que la</text>
+      <text x="48" y="356" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">fondatrice garde quand</text>
+      <text x="48" y="374" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">personne ne regarde.</text>
       <BodyLines
         lines={[
           "Ce que cette conviction interdit : parler de gain de temps, promettre une meilleure",
@@ -422,25 +422,25 @@ function MockupOrigin() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · PLATFORM</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 12</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="100" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE RÉCIT D'ORIGINE</text>
+      <text x="30" y="100" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE RÉCIT D'ORIGINE</text>
       <text x="30" y="130" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Le moment où</text>
-      <text x="30" y="154" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" fontWeight="400">tout a basculé.</text>
+      <text x="30" y="154" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="400">tout a basculé.</text>
       <g transform="translate(30, 200)">
         <line x1="0" y1="20" x2="340" y2="20" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-        <circle cx="20" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
+        <circle cx="20" cy="20" r="8" fill="#0d0d0d" stroke="#ff2233" strokeWidth="1.5" />
         <text x="20" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">AVANT</text>
-        <circle cx="130" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
+        <circle cx="130" cy="20" r="8" fill="#0d0d0d" stroke="#ff2233" strokeWidth="1.5" />
         <text x="130" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">RUPTURE</text>
-        <circle cx="240" cy="20" r="10" fill="#e63946" />
-        <text x="240" y="50" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle" fontWeight="700">THE MOMENT</text>
-        <circle cx="330" cy="20" r="8" fill="#0d0d0d" stroke="#e63946" strokeWidth="1.5" />
+        <circle cx="240" cy="20" r="10" fill="#ff2233" />
+        <text x="240" y="50" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle" fontWeight="700">THE MOMENT</text>
+        <circle cx="330" cy="20" r="8" fill="#0d0d0d" stroke="#ff2233" strokeWidth="1.5" />
         <text x="330" y="50" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8" textAnchor="middle">APRÈS</text>
       </g>
-      <line x1="30" y1="290" x2="32" y2="380" stroke="#e63946" strokeWidth="2" />
-      <text x="48" y="310" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Il y a toujours une date.</text>
-      <text x="48" y="332" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">A conversation. A failure.</text>
-      <text x="48" y="354" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Un refus. Nous le nommons,</text>
-      <text x="48" y="376" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">et la maison commence.</text>
+      <line x1="30" y1="290" x2="32" y2="380" stroke="#ff2233" strokeWidth="2" />
+      <text x="48" y="310" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">Il y a toujours une date.</text>
+      <text x="48" y="332" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">A conversation. A failure.</text>
+      <text x="48" y="354" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">Un refus. Nous le nommons,</text>
+      <text x="48" y="376" fill="rgba(255,255,255,0.85)" fontFamily="Playfair Display, serif" fontSize="13">et la maison commence.</text>
       <BodyLines
         lines={[
           "Ce que le récit d'origine ne dit pas : que SILLAGE a été fondée pour révolutionner le",
@@ -464,10 +464,10 @@ function MockupManifesto() {
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— MANIFESTO —</text>
-      <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="150" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Nous ne chuchotons pas.</text>
-      <text x="200" y="180" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">Nous ne crions pas.</text>
-      <text x="200" y="220" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="20" fontStyle="italic" textAnchor="middle">On nous entend.</text>
+      <line x1="170" y1="80" x2="230" y2="80" stroke="#ff2233" strokeWidth="1" />
+      <text x="200" y="150" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">Nous ne chuchotons pas.</text>
+      <text x="200" y="180" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">Nous ne crions pas.</text>
+      <text x="200" y="220" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="20" textAnchor="middle">On nous entend.</text>
       <line x1="160" y1="250" x2="240" y2="250" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
       <text x="200" y="290" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">Nous refusons le consensus.</text>
       <text x="200" y="312" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="13" textAnchor="middle">Nous refusons l'algorithme.</text>
@@ -489,9 +489,9 @@ function MockupPerceptionMap() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">01 · DIAGNOSTIC</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 06</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DIAGNOSTIC DE DIFFÉRENCIATION</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">DIAGNOSTIC DE DIFFÉRENCIATION</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Où se tient le champ.</text>
-      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13" fontStyle="italic">Et le terrain que personne n'occupe.</text>
+      <text x="30" y="142" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="13">Et le terrain que personne n'occupe.</text>
       <g transform="translate(60, 180)">
         <line x1="140" y1="0" x2="140" y2="280" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
         <line x1="0" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
@@ -508,11 +508,11 @@ function MockupPerceptionMap() {
         <text x="188" y="223" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. C</text>
         <circle cx="100" cy="180" r="4" fill="rgba(255,255,255,0.3)" />
         <text x="108" y="183" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="8">Comp. D</text>
-        <circle cx="70" cy="70" r="14" fill="#e63946" opacity="0.2" />
-        <circle cx="70" cy="70" r="7" fill="#e63946" />
-        <text x="70" y="55" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" textAnchor="middle" fontWeight="700">THE HOUSE</text>
+        <circle cx="70" cy="70" r="14" fill="#ff2233" opacity="0.2" />
+        <circle cx="70" cy="70" r="7" fill="#ff2233" />
+        <text x="70" y="55" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="1" textAnchor="middle" fontWeight="700">THE HOUSE</text>
       </g>
-      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Quatre concurrents, un seul quadrant. Vous n'y êtes pas.</text>
+      <text x="30" y="475" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">Quatre concurrents, un seul quadrant. Vous n'y êtes pas.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -527,10 +527,10 @@ function MockupArchetype() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">03 · LANGUAGE</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 16</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE SYSTÈME DE LANGAGE</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE SYSTÈME DE LANGAGE</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="18" fontWeight="700">Les mots qui vous appartiennent.</text>
       <g transform="translate(30, 150)">
-        <text x="0" y="0" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">MOTS QUE NOUS UTILISONS</text>
+        <text x="0" y="0" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">MOTS QUE NOUS UTILISONS</text>
         <text x="0" y="22" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">chantier · trace · réception · refuser</text>
         <text x="0" y="42" fill="rgba(255,255,255,0.8)" fontFamily="Playfair Display, serif" fontSize="12">contestation · preuve</text>
         <text x="0" y="78" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">WORDS WE NEVER USE</text>
@@ -539,10 +539,10 @@ function MockupArchetype() {
       </g>
       <line x1="30" y1="300" x2="370" y2="300" stroke="#1a1a1a" strokeWidth="1" />
       <text x="30" y="326" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">AVANT</text>
-      <text x="30" y="346" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Un logiciel complet pour piloter</text>
-      <text x="30" y="364" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">vos chantiers au quotidien.</text>
-      <text x="30" y="396" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">APRÈS</text>
-      <text x="30" y="416" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Ce qui reste quand le chantier n'existe plus.</text>
+      <text x="30" y="346" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">Un logiciel complet pour piloter</text>
+      <text x="30" y="364" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="11">vos chantiers au quotidien.</text>
+      <text x="30" y="396" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">APRÈS</text>
+      <text x="30" y="416" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">Ce qui reste quand le chantier n'existe plus.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -557,7 +557,7 @@ function MockupHomepageRewrite() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 20</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA HOME RÉÉCRITE</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA HOME RÉÉCRITE</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Prêt à coller. Pas une suggestion.</text>
       <g transform="translate(30, 155)">
         <rect x="0" y="0" width="340" height="130" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
@@ -568,14 +568,14 @@ function MockupHomepageRewrite() {
         <text x="14" y="124" fill="rgba(255,255,255,0.28)" fontFamily="Inter, sans-serif" fontSize="9">cette phrase sans mentir.</text>
       </g>
       <g transform="translate(30, 300)">
-        <rect x="0" y="0" width="340" height="130" fill="rgba(230,57,70,0.05)" stroke="rgba(230,57,70,0.3)" strokeWidth="1" />
-        <text x="14" y="24" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">APRÈS</text>
-        <text x="14" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">Ce qui vous reste quand</text>
-        <text x="14" y="80" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15" fontStyle="italic">le chantier n'existe plus.</text>
+        <rect x="0" y="0" width="340" height="130" fill="rgba(255,34,51,0.05)" stroke="rgba(255,34,51,0.3)" strokeWidth="1" />
+        <text x="14" y="24" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">APRÈS</text>
+        <text x="14" y="58" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15">Ce qui vous reste quand</text>
+        <text x="14" y="80" fill="#fff" fontFamily="Playfair Display, serif" fontSize="15">le chantier n'existe plus.</text>
         <text x="14" y="112" fill="rgba(255,255,255,0.5)" fontFamily="Inter, sans-serif" fontSize="9">Titre, sous-titre, sections clés — réécrits.</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Du texte qu'on colle lundi, pas une slide qu'on archive.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">Du texte qu'on colle lundi, pas une slide qu'on archive.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -595,7 +595,7 @@ function MockupTagline() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 21</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PHRASE DE PRÉSENTATION · TROIS FORMATS</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LA PHRASE DE PRÉSENTATION · TROIS FORMATS</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Dites-le court. Dites-le long. Dites-le une fois.</text>
       <g transform="translate(30, 155)">
         {(() => {
@@ -603,9 +603,9 @@ function MockupTagline() {
           return rows.map(([tag, line, h], i) => {
             const g = (
               <g key={i} transform={`translate(0, ${y})`}>
-                <rect x="0" y="0" width="340" height={h} fill={i === 0 ? "rgba(230,57,70,0.05)" : "rgba(255,255,255,0.02)"} stroke={i === 0 ? "rgba(230,57,70,0.3)" : "rgba(255,255,255,0.1)"} strokeWidth="1" />
-                <text x="14" y="22" fill={i === 0 ? "#e63946" : "rgba(255,255,255,0.5)"} fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">{tag}</text>
-                <text x="14" y="46" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">
+                <rect x="0" y="0" width="340" height={h} fill={i === 0 ? "rgba(255,34,51,0.05)" : "rgba(255,255,255,0.02)"} stroke={i === 0 ? "rgba(255,34,51,0.3)" : "rgba(255,255,255,0.1)"} strokeWidth="1" />
+                <text x="14" y="22" fill={i === 0 ? "#ff2233" : "rgba(255,255,255,0.5)"} fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">{tag}</text>
+                <text x="14" y="46" fill="#fff" fontFamily="Playfair Display, serif" fontSize="11">
                   <tspan x="14" dy="0">{line.length > 42 ? line.slice(0, 42) : line}</tspan>
                   {line.length > 42 && <tspan x="14" dy="18">{line.slice(42)}</tspan>}
                 </text>
@@ -617,7 +617,7 @@ function MockupTagline() {
         })()}
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Une idée, calibrée pour une bio, un pitch ou une scène.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">Une idée, calibrée pour une bio, un pitch ou une scène.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -632,28 +632,28 @@ function MockupContentIdeas() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">04 · DEPLOYMENT</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 24</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">ANGLES DE PRISE DE PAROLE · PAR PILIER</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">ANGLES DE PRISE DE PAROLE · PAR PILIER</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Prêts dès lundi.</text>
       <g transform="translate(30, 160)">
-        <rect x="0" y="0" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
-        <text x="12" y="22" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILIER I · AUTORITÉ</text>
-        <text x="12" y="40" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Ce que coûte vraiment une reprise contestée.</text>
-        <text x="12" y="54" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Pourquoi le classeur de chantier meurt en trois semaines.</text>
+        <rect x="0" y="0" width="340" height="58" fill="rgba(255,34,51,0.04)" stroke="rgba(255,34,51,0.2)" strokeWidth="1" />
+        <text x="12" y="22" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILIER I · AUTORITÉ</text>
+        <text x="12" y="40" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">Ce que coûte vraiment une reprise contestée.</text>
+        <text x="12" y="54" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">Pourquoi le classeur de chantier meurt en trois semaines.</text>
         <rect x="0" y="68" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="90" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR II · CONTRARIAN</text>
-        <text x="12" y="108" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Le coût réel d'une reprise contestée.</text>
-        <text x="12" y="122" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Pourquoi le classeur meurt en trois semaines.</text>
+        <text x="12" y="108" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">Le coût réel d'une reprise contestée.</text>
+        <text x="12" y="122" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">Pourquoi le classeur meurt en trois semaines.</text>
         <rect x="0" y="136" width="340" height="58" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
         <text x="12" y="158" fill="#fff" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR III · TRANSFORMATION</text>
-        <text x="12" y="176" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">De l'outil de suivi à la preuve opposable.</text>
-        <text x="12" y="190" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">L'échéance que personne ne prépare.</text>
-        <rect x="0" y="204" width="340" height="58" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.2)" strokeWidth="1" />
-        <text x="12" y="226" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR IV · PROOF</text>
-        <text x="12" y="244" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">L'avant et l'après d'un chantier réel.</text>
-        <text x="12" y="258" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">Ce qui change quand les mots changent.</text>
+        <text x="12" y="176" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">De l'outil de suivi à la preuve opposable.</text>
+        <text x="12" y="190" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">L'échéance que personne ne prépare.</text>
+        <rect x="0" y="204" width="340" height="58" fill="rgba(255,34,51,0.04)" stroke="rgba(255,34,51,0.2)" strokeWidth="1" />
+        <text x="12" y="226" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">PILLAR IV · PROOF</text>
+        <text x="12" y="244" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">L'avant et l'après d'un chantier réel.</text>
+        <text x="12" y="258" fill="rgba(255,255,255,0.6)" fontFamily="Playfair Display, serif" fontSize="10">Ce qui change quand les mots changent.</text>
       </g>
       <line x1="30" y1="440" x2="370" y2="440" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="466" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">10 à 15 angles, chacun rattaché à un pilier. Posts, articles, newsletters.</text>
+      <text x="30" y="466" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">10 à 15 angles, chacun rattaché à un pilier. Posts, articles, newsletters.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -668,11 +668,11 @@ function MockupDistribution() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">05 · COHERENCE</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 28</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE GUIDE DE COHÉRENCE</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">LE GUIDE DE COHÉRENCE</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="20" fontWeight="700">Une voix. N'importe quelle main.</text>
       <g transform="translate(30, 160)">
-        <rect x="0" y="0" width="162" height="120" fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="1" />
-        <text x="14" y="26" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO</text>
+        <rect x="0" y="0" width="162" height="120" fill="rgba(255,34,51,0.04)" stroke="rgba(255,34,51,0.25)" strokeWidth="1" />
+        <text x="14" y="26" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="2" fontWeight="700">DO</text>
         <text x="14" y="50" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Ouvrir sur le refus</text>
         <text x="14" y="72" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Nommer le moment</text>
         <text x="14" y="94" fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="11">✦ Short. Declarative.</text>
@@ -698,7 +698,7 @@ function MockupDistribution() {
         seed={7}
       />
       <line x1="30" y1="410" x2="370" y2="410" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Votre identité tient, même quand ce n'est pas vous qui écrivez.</text>
+      <text x="30" y="436" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">Votre identité tient, même quand ce n'est pas vous qui écrivez.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -711,16 +711,16 @@ function MockupSignature() {
       <rect width="400" height="520" fill="#0d0d0d" />
       <rect x="1" y="1" width="398" height="518" fill="none" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="60" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">— THE END —</text>
-      <line x1="170" y1="80" x2="230" y2="80" stroke="#e63946" strokeWidth="1" />
-      <text x="200" y="170" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">C'était votre maison.</text>
-      <text x="200" y="200" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="22" fontStyle="italic" textAnchor="middle" fontWeight="400">Construisez-la.</text>
+      <line x1="170" y1="80" x2="230" y2="80" stroke="#ff2233" strokeWidth="1" />
+      <text x="200" y="170" fill="#fff" fontFamily="Playfair Display, serif" fontSize="22" textAnchor="middle" fontWeight="400">C'était votre maison.</text>
+      <text x="200" y="200" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="22" textAnchor="middle" fontWeight="400">Construisez-la.</text>
       <line x1="100" y1="260" x2="300" y2="260" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
       <text x="200" y="290" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">COMMANDE</text>
-      <text x="200" y="312" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">N° 001</text>
+      <text x="200" y="312" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" textAnchor="middle">N° 001</text>
       <text x="200" y="350" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">LIVRÉE</text>
-      <text x="200" y="372" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" fontStyle="italic" textAnchor="middle">Date de livraison</text>
+      <text x="200" y="372" fill="#fff" fontFamily="Playfair Display, serif" fontSize="14" textAnchor="middle">Date de livraison</text>
       <text x="200" y="410" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="3" textAnchor="middle">SIGNED</text>
-      <text x="200" y="438" fill="#e63946" fontFamily="Playfair Display, serif" fontSize="18" fontStyle="italic" textAnchor="middle">Strawberry Production</text>
+      <text x="200" y="438" fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="18" textAnchor="middle">Strawberry Production</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">P. 32 · BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -868,7 +868,7 @@ function MockupGeneric({
       <line x1="30" y1="36" x2="370" y2="36" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" />
 
       <text x="30" y="58" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">{page}</text>
-      <text x="30" y="82" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">{kicker}</text>
+      <text x="30" y="82" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">{kicker}</text>
       {title.map((line, i) => (
         <text key={i} x="30" y={110 + i * 24} fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">
           {line}
@@ -887,7 +887,7 @@ function MockupGeneric({
           de ses pages intérieures. */}
       {hasDropCap ? (
         <>
-          <text x="30" y={110 + title.length * 24 + 30} fill="#e63946" fontFamily="Playfair Display, serif" fontSize="26" fontWeight="700">
+          <text x="30" y={110 + title.length * 24 + 30} fill="#ff2233" fontFamily="Playfair Display, serif" fontSize="26" fontWeight="700">
             {body[0]?.charAt(0) ?? ""}
           </text>
           <BodyLines
@@ -906,8 +906,8 @@ function MockupGeneric({
           qu'elle commente, pas à un taquet fixe répété page après page. */}
       {marginNote && seed % 3 !== 1 && (
         <>
-          <line x1="288" y1={110 + title.length * 24 + 14 + (seed % 4) * 9} x2="288" y2={110 + title.length * 24 + 40 + (seed % 4) * 9} stroke="#e63946" strokeWidth="1" />
-          <text x="294" y={110 + title.length * 24 + 20 + (seed % 4) * 9} fill="rgba(255,255,255,0.34)" fontFamily="Georgia, serif" fontSize="5" fontStyle="italic">
+          <line x1="288" y1={110 + title.length * 24 + 14 + (seed % 4) * 9} x2="288" y2={110 + title.length * 24 + 40 + (seed % 4) * 9} stroke="#ff2233" strokeWidth="1" />
+          <text x="294" y={110 + title.length * 24 + 20 + (seed % 4) * 9} fill="rgba(255,255,255,0.34)" fontFamily="Georgia, serif" fontSize="5">
             {marginNote.split("|").map((l, i) => (
               <tspan key={i} x="294" dy={i === 0 ? 0 : 7}>
                 {l}
@@ -926,8 +926,8 @@ function MockupGeneric({
               <g key={bi} transform={`translate(0, ${y})`}>
                 {b.items.map((line, i) => (
                   <g key={i} transform={`translate(0, ${i * 21})`}>
-                    <circle cx="3" cy="-3" r="1.6" fill="#e63946" />
-                    <text x="14" y="0" fill="rgba(255,255,255,0.72)" fontFamily="Playfair Display, serif" fontSize="10" fontStyle="italic">
+                    <circle cx="3" cy="-3" r="1.6" fill="#ff2233" />
+                    <text x="14" y="0" fill="rgba(255,255,255,0.72)" fontFamily="Playfair Display, serif" fontSize="10">
                       {line}
                     </text>
                   </g>
@@ -941,9 +941,9 @@ function MockupGeneric({
             const h = b.text.length * 21 + 24
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <line x1="0" y1="-9" x2="0" y2={b.text.length * 21 - 8} stroke="#e63946" strokeWidth="1.6" />
+                <line x1="0" y1="-9" x2="0" y2={b.text.length * 21 - 8} stroke="#ff2233" strokeWidth="1.6" />
                 {b.text.map((line, i) => (
-                  <text key={i} x="14" y={i * 21} fill="#fff" fontFamily="Playfair Display, serif" fontSize="11.5" fontStyle="italic">
+                  <text key={i} x="14" y={i * 21} fill="#fff" fontFamily="Playfair Display, serif" fontSize="11.5">
                     {line}
                   </text>
                 ))}
@@ -957,8 +957,8 @@ function MockupGeneric({
             const h = 26 + rowsN * 17
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <rect x="0" y="0" width="162" height={h} fill="rgba(230,57,70,0.04)" stroke="rgba(230,57,70,0.25)" strokeWidth="0.8" />
-                <text x="12" y="18" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.4" fontWeight="700">{b.leftTitle}</text>
+                <rect x="0" y="0" width="162" height={h} fill="rgba(255,34,51,0.04)" stroke="rgba(255,34,51,0.25)" strokeWidth="0.8" />
+                <text x="12" y="18" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.4" fontWeight="700">{b.leftTitle}</text>
                 {b.leftItems.map((line, i) => (
                   <text key={i} x="12" y={36 + i * 17} fill="rgba(255,255,255,0.7)" fontFamily="Playfair Display, serif" fontSize="9">{line}</text>
                 ))}
@@ -976,10 +976,10 @@ function MockupGeneric({
             const h = 104
             const g = (
               <g key={bi} transform={`translate(0, ${y})`}>
-                <line x1="0" y1="0" x2="0" y2="78" stroke="#e63946" strokeWidth="1.6" />
+                <line x1="0" y1="0" x2="0" y2="78" stroke="#ff2233" strokeWidth="1.6" />
                 <text x="14" y="48" fill="#fff" fontFamily="Playfair Display, serif" fontSize="34" fontWeight="700">{b.value}</text>
-                <text x="14" y="66" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.8">{b.label}</text>
-                <text x="14" y="88" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic">{b.note}</text>
+                <text x="14" y="66" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="1.8">{b.label}</text>
+                <text x="14" y="88" fill="rgba(255,255,255,0.55)" fontFamily="Playfair Display, serif" fontSize="9.5">{b.note}</text>
               </g>
             )
             y += h
@@ -994,8 +994,8 @@ function MockupGeneric({
                   <g key={i} transform={`translate(0, ${i * rowH})`}>
                     <text x="0" y="0" fill="rgba(255,255,255,0.7)" fontFamily="Inter, sans-serif" fontSize="7.5" letterSpacing="0.8" fontWeight="700">{label}</text>
                     <rect x="0" y="6" width="340" height="3" fill="rgba(255,255,255,0.1)" />
-                    <rect x="0" y="6" width={Math.max(5, (pct / 100) * 340)} height="3" fill="#e63946" />
-                    <text x="0" y="25" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="9" fontStyle="italic">{note}</text>
+                    <rect x="0" y="6" width={Math.max(5, (pct / 100) * 340)} height="3" fill="#ff2233" />
+                    <text x="0" y="25" fill="rgba(255,255,255,0.45)" fontFamily="Playfair Display, serif" fontSize="9">{note}</text>
                   </g>
                 ))}
               </g>
@@ -1011,7 +1011,7 @@ function MockupGeneric({
                 <g key={i} transform={`translate(0, ${i * 24})`}>
                   <line x1="0" y1="14" x2="340" y2="14" stroke="rgba(255,255,255,0.08)" strokeWidth="0.7" />
                   <text x="0" y="8" fill="rgba(255,255,255,0.45)" fontFamily="Inter, sans-serif" fontSize="7.5" letterSpacing="0.8">{row[0]}</text>
-                  <text x="340" y="8" fill="#fff" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic" textAnchor="end">{row[1]}</text>
+                  <text x="340" y="8" fill="#fff" fontFamily="Playfair Display, serif" fontSize="9.5" textAnchor="end">{row[1]}</text>
                 </g>
               ))}
             </g>
@@ -1024,7 +1024,7 @@ function MockupGeneric({
       {/* Pied de page : la note en italique, puis le folio et le nom court
           du document, séparés par un filet — l'anatomie d'une page reliée. */}
       <line x1="30" y1="452" x2="370" y2="452" stroke="rgba(255,255,255,0.1)" strokeWidth="0.7" />
-      <text x="30" y="470" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="9.5" fontStyle="italic">{footnote}</text>
+      <text x="30" y="470" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="9.5">{footnote}</text>
       <line x1="30" y1="492" x2="370" y2="492" stroke="#1a1a1a" strokeWidth="0.7" />
       <text x="30" y="504" fill="rgba(255,255,255,0.25)" fontFamily="Inter, sans-serif" fontSize="5.5" letterSpacing="1.4">SILLAGE · ÉDITION N° 000</text>
       <text x="370" y="504" fill="rgba(255,255,255,0.35)" fontFamily="Georgia, serif" fontSize="7" textAnchor="end">{folio ?? piece}</text>
@@ -1041,7 +1041,7 @@ function MockupPositioningMap() {
       <text x="30" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2">02 · IDENTITY</text>
       <text x="370" y="40" fill="rgba(255,255,255,0.4)" fontFamily="Inter, sans-serif" fontSize="8" letterSpacing="2" textAnchor="end">P. 15</text>
       <line x1="30" y1="52" x2="370" y2="52" stroke="#1a1a1a" strokeWidth="1" />
-      <text x="30" y="90" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">CARTE DE POSITIONNEMENT</text>
+      <text x="30" y="90" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="9" letterSpacing="3">CARTE DE POSITIONNEMENT</text>
       <text x="30" y="120" fill="#fff" fontFamily="Playfair Display, serif" fontSize="19" fontWeight="700">Deux axes que la catégorie masque.</text>
       <g transform="translate(60, 160)">
         <line x1="0" y1="130" x2="280" y2="130" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
@@ -1054,11 +1054,11 @@ function MockupPositioningMap() {
         <circle cx="60" cy="90" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="100" cy="40" r="5" fill="rgba(255,255,255,0.3)" />
         <circle cx="70" cy="70" r="5" fill="rgba(255,255,255,0.3)" />
-        <circle cx="220" cy="200" r="9" fill="#e63946" />
-        <text x="220" y="222" fill="#e63946" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="700" textAnchor="middle">VOTRE MAISON</text>
+        <circle cx="220" cy="200" r="9" fill="#ff2233" />
+        <text x="220" y="222" fill="#ff2233" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="700" textAnchor="middle">VOTRE MAISON</text>
       </g>
       <line x1="30" y1="450" x2="370" y2="450" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11" fontStyle="italic">Le quadrant vide n'est pas un hasard. C'est le plan.</text>
+      <text x="30" y="472" fill="rgba(255,255,255,0.5)" fontFamily="Playfair Display, serif" fontSize="11">Le quadrant vide n'est pas un hasard. C'est le plan.</text>
       <line x1="30" y1="490" x2="370" y2="490" stroke="#1a1a1a" strokeWidth="1" />
       <text x="200" y="505" fill="rgba(255,255,255,0.3)" fontFamily="Inter, sans-serif" fontSize="7" letterSpacing="2" textAnchor="middle">BRAND NARRATIVE ARCHITECTURE</text>
     </svg>
@@ -1313,7 +1313,7 @@ export default function BrandNarrativeArchitecturePage() {
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,6vw,4.75rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 32 }}>
             {t.h1a}<br />
-            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}<br />{t.h1c}</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}<br />{t.h1c}</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto 56px", lineHeight: 1.6 }}>
             {t.heroLead}
@@ -1322,7 +1322,7 @@ export default function BrandNarrativeArchitecturePage() {
             href={ORDER_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_hero" })}
-            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
+            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)", color: "#fff", padding: "18px 44px", borderRadius: 100, fontSize: 15, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
           >
             {t.heroCta}
           </Link>
@@ -1384,7 +1384,7 @@ export default function BrandNarrativeArchitecturePage() {
       <section ref={method.ref as any} style={{ padding: "60px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", background: "#0d0d0d" }}>
         <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center", opacity: method.visible ? 1 : 0, transform: method.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 10, letterSpacing: "0.3em", color: COLOR, marginBottom: 16, textTransform: "uppercase", fontFamily: SANS }}>The Method</div>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", maxWidth: 700, margin: "0 auto 24px" }}>
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem,1.6vw,1.35rem)",  color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em", maxWidth: 700, margin: "0 auto 24px" }}>
             {t.offerP3a}<span style={{ color: "#fff", fontWeight: 600, fontStyle: "normal" }}>S.T.R.A.W.</span>{t.offerP3b}
           </p>
           <Link
@@ -1471,7 +1471,7 @@ export default function BrandNarrativeArchitecturePage() {
             {SUCCESS_SIGNALS.map((s, i) => (
               <div key={i} style={{ padding: "28px 28px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", display: "flex", gap: 16, alignItems: "flex-start" }}>
                 <span style={{ color: COLOR, fontSize: 18, lineHeight: 1.4 }}>✦</span>
-                <p style={{ fontFamily: SERIF, fontSize: "1.05rem", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: 0 }}>{s}</p>
+                <p style={{ fontFamily: SERIF, fontSize: "1.05rem",  color: "rgba(255,255,255,0.85)", lineHeight: 1.5, margin: 0 }}>{s}</p>
               </div>
             ))}
           </div>
@@ -1482,10 +1482,10 @@ export default function BrandNarrativeArchitecturePage() {
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", opacity: invest.visible ? 1 : 0, transform: invest.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>{t.lInvest}</div>
           <div style={{ fontFamily: SERIF, fontSize: "clamp(4rem,8vw,6rem)", fontWeight: 700, lineHeight: 1, marginBottom: 16, letterSpacing: "-0.04em" }}>
-            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.price}</span>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.price}</span>
           </div>
           <div style={{ fontSize: 13, letterSpacing: "0.2em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", marginBottom: 48 }}>{lang === "fr" ? "Un repositionnement complet · Livré et exploitable" : "A complete repositioning · Delivered and exploitable"}</div>
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)",  color: "rgba(255,255,255,0.75)", lineHeight: 1.6, maxWidth: 640, margin: "0 auto" }}>
             {t.investLead}
           </p>
         </div>
@@ -1501,7 +1501,7 @@ export default function BrandNarrativeArchitecturePage() {
             href={ORDER_URL}
             target="_blank"
             onClick={() => track("commission_click", { from: "commission_final_cta" })}
-            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
+            style={{ display: "inline-block", background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)", color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", boxShadow: "0 20px 60px " + GLOW }}
           >
             {t.cta}
           </Link>

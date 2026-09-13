@@ -72,7 +72,7 @@ export function AboutSection({ lang }: { lang: Lang }) {
             </p>
 
             <blockquote className="mt-10 border-l-[3px] border-brand py-2 pl-6">
-              <p className="m-0 font-serif text-[clamp(1.05rem,1.6vw,1.35rem)] italic leading-snug text-white/70">
+              <p className="m-0 font-serif text-[clamp(1.05rem,1.6vw,1.35rem)] leading-snug text-white/70">
                 {t.quote}
               </p>
             </blockquote>

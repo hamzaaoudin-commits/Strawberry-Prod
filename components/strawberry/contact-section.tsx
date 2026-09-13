@@ -226,7 +226,7 @@ export function ContactSection() {
             </div>
 
             <div className="border-l-2 border-brand bg-white/[0.02] px-7 py-6">
-              <p className="m-0 font-serif text-[1.05rem] italic leading-snug text-chalk-75">{t.note}</p>
+              <p className="m-0 font-serif text-[1.05rem] leading-snug text-chalk-75">{t.note}</p>
             </div>
           </div>
 

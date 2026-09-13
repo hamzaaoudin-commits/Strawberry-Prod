@@ -157,7 +157,7 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
                 {/* Toutes les fausses causes sont surlignées et barrées :
                     c'est ce que le surlignage désigne ici — la liste de ce
                     qui a été essayé pour rien. */}
-                <span className="surligne relative inline-block font-serif text-[1.05rem] italic">
+                <span className="surligne relative inline-block font-serif text-[1.05rem] ">
                   {fc.label}
                   <span
                     aria-hidden

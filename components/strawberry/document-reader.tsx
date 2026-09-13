@@ -43,7 +43,7 @@ function RenderBlock({ b }: { b: ReaderBlock }) {
       )
 
     case "lead":
-      return <p className="mb-5 font-serif text-[1.15rem] italic leading-relaxed text-chalk-90">{b.text}</p>
+      return <p className="mb-5 font-serif text-[1.15rem] leading-relaxed text-chalk-90">{b.text}</p>
 
     case "p":
       return <p className="mb-5 font-sans text-[15.5px] leading-[1.75] text-chalk-75">{b.text}</p>
@@ -51,7 +51,7 @@ function RenderBlock({ b }: { b: ReaderBlock }) {
     case "quote":
       return (
         <blockquote className="my-7 border-l-2 border-brand bg-white/[0.02] py-5 pl-6 pr-5">
-          <p className="m-0 font-serif text-[clamp(1rem,1.6vw,1.2rem)] italic leading-[1.6] text-chalk-90">
+          <p className="m-0 font-serif text-[clamp(1rem,1.6vw,1.2rem)] leading-[1.6] text-chalk-90">
             {b.text}
           </p>
         </blockquote>

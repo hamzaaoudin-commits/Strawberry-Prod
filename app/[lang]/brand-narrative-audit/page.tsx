@@ -199,7 +199,7 @@ export default async function BrandNarrativeAuditPage({
       {/* THE PUBLISHED SAMPLE — real excerpts, placed high on purpose.
           A prospect deciding on 490€ should see the artefact before the argument. */}
       <section className="section">
-        <div className="relative mx-auto max-w-[900px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.06)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-12">
+        <div className="relative mx-auto max-w-[900px] border border-brand-hair bg-[linear-gradient(180deg,rgba(255,34,51,0.06)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-12">
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
 
@@ -229,7 +229,7 @@ export default async function BrandNarrativeAuditPage({
                   <div className="mb-2.5 font-sans text-[10px] uppercase tracking-[0.2em] text-brand">
                     {t.previewLabels[i]}
                   </div>
-                  <p className="m-0 border-l-2 border-white/12 pl-5 font-serif text-[clamp(0.98rem,1.5vw,1.12rem)] italic leading-[1.65] text-chalk-90">
+                  <p className="m-0 border-l-2 border-white/12 pl-5 font-serif text-[clamp(0.98rem,1.5vw,1.12rem)] leading-[1.65] text-chalk-90">
                     {ex.text}
                   </p>
                 </div>
@@ -309,7 +309,7 @@ export default async function BrandNarrativeAuditPage({
           </ul>
 
           <div className="border-t border-white/10 pt-6">
-            <p className="mb-3 font-serif text-[1.1rem] italic text-chalk-75">{t.limitClose}</p>
+            <p className="mb-3 font-serif text-[1.1rem] text-chalk-75">{t.limitClose}</p>
             <Link href="/brand-narrative-architecture" className="btn-quiet">{t.limitCta}</Link>
           </div>
         </div>

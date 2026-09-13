@@ -72,7 +72,7 @@ export function MechanismStrip({ lang }: { lang: Lang }) {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-[560px] text-center font-serif text-[clamp(1.05rem,2vw,1.3rem)] italic leading-[1.55] text-white/80">
+        <p className="mx-auto mt-10 max-w-[560px] text-center font-serif text-[clamp(1.05rem,2vw,1.3rem)] leading-[1.55] text-white/80">
           {t.closing}
         </p>
 

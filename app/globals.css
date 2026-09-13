@@ -1220,8 +1220,9 @@ footer {
      dégradé découpé, cette ligne virait au rose sur le fond sombre. */
   display: inline;
   margin-top: 1.3rem;
-  font-family: var(--font-accent);
-  font-style: italic;
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-weight: 600;
   font-size: clamp(1.05rem, 2vw, 1.4rem);
   line-height: 1.35;
   background: var(--color-highlight);

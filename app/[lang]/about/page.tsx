@@ -12,8 +12,8 @@ import { AboutSection } from "@/components/strawberry/about-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 const T = {
   en: {
@@ -149,8 +149,8 @@ export default function AboutPage() {
           transition: "all 1s ease",
         }}
       >
-        <AnimatedOrb color="radial-gradient(circle,#e63946,transparent)" size={600} x="-5%" y="20%" opacity={0.15} />
-        <AnimatedOrb color="radial-gradient(circle,#ff1a1a,transparent)" size={400} x="70%" y="60%" opacity={0.08} />
+        <AnimatedOrb color="radial-gradient(circle,#ff2233,transparent)" size={600} x="-5%" y="20%" opacity={0.15} />
+        <AnimatedOrb color="radial-gradient(circle,#ff4d2e,transparent)" size={400} x="70%" y="60%" opacity={0.08} />
 
         {/* Le repère du studio : une ligne, quatre marques. Un fondateur,
             quatre commandes par trimestre — l'idée qui gouverne toute cette
@@ -187,8 +187,8 @@ export default function AboutPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              background: "rgba(230,57,70,0.12)",
-              border: "1px solid rgba(230,57,70,0.35)",
+              background: "rgba(255,34,51,0.12)",
+              border: "1px solid rgba(255,34,51,0.35)",
               borderRadius: 100,
               padding: "6px 16px",
               marginBottom: 40,
@@ -212,7 +212,7 @@ export default function AboutPage() {
             }}
           >
             {t.h1a}<br />
-            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               {t.h1b}
             </span>
           </h1>
@@ -281,7 +281,7 @@ export default function AboutPage() {
               lineHeight: 1.6,
               letterSpacing: "-0.01em",
               color: COLOR,
-              fontStyle: "italic",
+              
               marginTop: 32,
             }}
           >
@@ -410,14 +410,14 @@ export default function AboutPage() {
                   {p.name}
                 </div>
                 <div style={{ width: 24, height: 1, background: COLOR, margin: "0 auto 14px" }} />
-                <p style={{ fontFamily: SERIF, fontSize: "0.92rem", fontStyle: "italic", color: "rgba(255,255,255,0.65)", lineHeight: 1.55, margin: 0 }}>
+                <p style={{ fontFamily: SERIF, fontSize: "0.92rem",  color: "rgba(255,255,255,0.65)", lineHeight: 1.55, margin: 0 }}>
                   {p.note}
                 </p>
               </div>
             ))}
           </div>
 
-          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", textAlign: "center", maxWidth: 720, margin: "60px auto 0", lineHeight: 1.6, letterSpacing: "-0.01em" }}>
+          <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem,1.6vw,1.35rem)",  color: "rgba(255,255,255,0.75)", textAlign: "center", maxWidth: 720, margin: "60px auto 0", lineHeight: 1.6, letterSpacing: "-0.01em" }}>
             {t.inheritFoot}
           </p>
         </div>
@@ -447,7 +447,7 @@ export default function AboutPage() {
                   <h3 className="mb-4 font-serif text-[clamp(1.5rem,3vw,2rem)] font-bold uppercase leading-[1.1] tracking-[0.02em]">
                     {t.bookTitle}
                   </h3>
-                  <p className="m-0 font-serif text-[13px] italic leading-snug text-chalk-55">{t.bookSub}</p>
+                  <p className="m-0 font-serif text-[13px] leading-snug text-chalk-55">{t.bookSub}</p>
                 </div>
 
                 <div className="text-center font-sans text-[9px] uppercase tracking-[0.25em] text-chalk-55">
@@ -459,7 +459,7 @@ export default function AboutPage() {
             {/* Text */}
             <div>
               <blockquote className="mb-8 border-l-2 border-brand py-1 pl-6">
-                <p className="m-0 font-serif text-[clamp(1.05rem,1.8vw,1.3rem)] italic leading-snug text-chalk-90">
+                <p className="m-0 font-serif text-[clamp(1.05rem,1.8vw,1.3rem)] leading-snug text-chalk-90">
                   {t.bookEpigraph}
                 </p>
               </blockquote>
@@ -467,7 +467,7 @@ export default function AboutPage() {
               <p className="mb-5 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.bookP1}</p>
               <p className="mb-8 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.bookP2}</p>
 
-              <p className="mb-6 font-serif text-[1.05rem] italic text-chalk-75">{t.bookQuote}</p>
+              <p className="mb-6 font-serif text-[1.05rem] text-chalk-75">{t.bookQuote}</p>
 
               <div className="border-t border-white/10 pt-6">
                 <div className="mb-1.5 font-sans text-[13px] text-chalk-75">{t.bookAuthor}</div>
@@ -533,8 +533,8 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div style={{ marginTop: 48, padding: "32px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(230,57,70,0.25)", background: "rgba(230,57,70,0.04)" }}>
-                <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: "clamp(1.05rem,1.5vw,1.25rem)", color: "#fff", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
+              <div style={{ marginTop: 48, padding: "32px clamp(1.5rem,3vw,2.5rem)", border: "1px solid rgba(255,34,51,0.25)", background: "rgba(255,34,51,0.04)" }}>
+                <div style={{ fontFamily: SERIF,  fontSize: "clamp(1.05rem,1.5vw,1.25rem)", color: "#fff", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
                   {t.founderQuote}
                 </div>
                 <div style={{ marginTop: 20, fontSize: 10, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase", fontFamily: SANS }}>
@@ -581,7 +581,7 @@ export default function AboutPage() {
             href="/brand-narrative-architecture"
             style={{
               display: "inline-block",
-              background: "linear-gradient(135deg," + COLOR + ",#ff1a1a)",
+              background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)",
               color: "#fff", padding: "20px 52px", borderRadius: 100,
               fontSize: 16, fontWeight: 600, textDecoration: "none",
               letterSpacing: "0.04em", fontFamily: SANS,

@@ -10,8 +10,8 @@ import { AtlasSection } from "@/components/strawberry/atlas-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 /**
  * Le paiement passe désormais par la page de commande : récapitulatif, suite
@@ -214,7 +214,7 @@ export default function StrawberryMethodPage() {
           </div>
           <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
             {t.h1a}<br />
-            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
+            <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
           </h1>
           <p style={{ fontSize: "clamp(1rem,1.5vw,1.25rem)", color: "rgba(255,255,255,0.7)", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
             {t.lead}
@@ -247,7 +247,7 @@ export default function StrawberryMethodPage() {
                   transitionDelay: reveal.visible ? `${i * 90}ms` : "0ms",
                 }}
               >
-                <div style={{ border: `2px solid ${COLOR}`, padding: "clamp(20px, 4vw, 48px) 0", fontFamily: SERIF, fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 20, background: "rgba(230,57,70,0.06)", boxShadow: `0 20px 60px ${GLOW}` }}>
+                <div style={{ border: `2px solid ${COLOR}`, padding: "clamp(20px, 4vw, 48px) 0", fontFamily: SERIF, fontSize: "clamp(2.5rem, 6vw, 5rem)", fontWeight: 700, color: COLOR, lineHeight: 1, marginBottom: 20, background: "rgba(255,34,51,0.06)", boxShadow: `0 20px 60px ${GLOW}` }}>
                   {l.letter}
                 </div>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: COLOR, margin: "0 auto 12px" }} />
@@ -273,7 +273,7 @@ export default function StrawberryMethodPage() {
           </div>
 
           <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto" }}>
-            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem, 1.7vw, 1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
+            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem, 1.7vw, 1.4rem)",  color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
               {t.fiveItalic}
             </p>
           </div>
@@ -320,7 +320,7 @@ export default function StrawberryMethodPage() {
             {STAGES.map((s) => (
               <article key={s.letter} style={{ position: "relative", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)", padding: "clamp(2rem, 4vw, 3.5rem)", overflow: "hidden" }}>
 
-                <div style={{ position: "absolute", bottom: -40, right: -20, fontFamily: SERIF, fontSize: "clamp(8rem, 18vw, 14rem)", fontWeight: 700, color: "rgba(230,57,70,0.05)", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
+                <div style={{ position: "absolute", bottom: -40, right: -20, fontFamily: SERIF, fontSize: "clamp(8rem, 18vw, 14rem)", fontWeight: 700, color: "rgba(255,34,51,0.05)", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
                   {s.letter}
                 </div>
 
@@ -334,7 +334,7 @@ export default function StrawberryMethodPage() {
                     </div>
                   </div>
 
-                  <div style={{ fontFamily: SERIF, fontSize: "clamp(1.15rem, 1.8vw, 1.5rem)", fontStyle: "italic", color: COLOR, marginBottom: 32, letterSpacing: "-0.01em" }}>
+                  <div style={{ fontFamily: SERIF, fontSize: "clamp(1.15rem, 1.8vw, 1.5rem)",  color: COLOR, marginBottom: 32, letterSpacing: "-0.01em" }}>
                     {s.verb}
                   </div>
 
@@ -356,11 +356,11 @@ export default function StrawberryMethodPage() {
                     </ul>
                   </div>
 
-                  <div style={{ borderLeft: `2px solid ${COLOR}`, padding: "20px 24px", background: "rgba(230,57,70,0.04)", maxWidth: 720 }}>
+                  <div style={{ borderLeft: `2px solid ${COLOR}`, padding: "20px 24px", background: "rgba(255,34,51,0.04)", maxWidth: 720 }}>
                     <div style={{ fontSize: 10, letterSpacing: "0.25em", color: COLOR, marginBottom: 10, textTransform: "uppercase", fontFamily: SANS }}>
                       {t.outputLabel}
                     </div>
-                    <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.4vw, 1.15rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
+                    <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.4vw, 1.15rem)",  color: "rgba(255,255,255,0.9)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
                       {s.output}
                     </p>
                   </div>
@@ -387,10 +387,10 @@ export default function StrawberryMethodPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {CONSEQUENCES.map((c) => (
               <div key={c.letter} style={{ display: "flex", alignItems: "center", gap: 24, padding: "20px 24px", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)" }}>
-                <div style={{ flexShrink: 0, width: 56, height: 56, border: `2px solid ${COLOR}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontSize: "1.6rem", fontWeight: 700, color: COLOR, background: "rgba(230,57,70,0.06)" }}>
+                <div style={{ flexShrink: 0, width: 56, height: 56, border: `2px solid ${COLOR}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontSize: "1.6rem", fontWeight: 700, color: COLOR, background: "rgba(255,34,51,0.06)" }}>
                   {c.letter}
                 </div>
-                <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.4vw, 1.2rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.5, fontStyle: "italic", letterSpacing: "-0.01em" }}>
+                <p style={{ fontFamily: SERIF, fontSize: "clamp(1rem, 1.4vw, 1.2rem)", color: "rgba(255,255,255,0.85)", lineHeight: 1.5,  letterSpacing: "-0.01em" }}>
                   {c.text}
                 </p>
               </div>
@@ -441,7 +441,7 @@ export default function StrawberryMethodPage() {
                   <div style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.6vw, 1.3rem)", color: COLOR, fontWeight: 700, lineHeight: 1.2, marginBottom: 4, letterSpacing: "-0.01em" }}>
                     {row.deliverable}
                   </div>
-                  <div style={{ fontFamily: SANS, fontSize: "clamp(0.82rem, 1vw, 0.9rem)", color: "rgba(255,255,255,0.55)", fontStyle: "italic", lineHeight: 1.4 }}>
+                  <div style={{ fontFamily: SANS, fontSize: "clamp(0.82rem, 1vw, 0.9rem)", color: "rgba(255,255,255,0.55)",  lineHeight: 1.4 }}>
                     {row.note}
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export default function StrawberryMethodPage() {
           </div>
 
           <div style={{ textAlign: "center", maxWidth: 680, margin: "0 auto" }}>
-            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
+            <p style={{ fontFamily: SERIF, fontSize: "clamp(1.05rem, 1.5vw, 1.3rem)",  color: "rgba(255,255,255,0.8)", lineHeight: 1.55, letterSpacing: "-0.01em" }}>
               {t.bridgeItalic}
             </p>
           </div>
@@ -475,7 +475,7 @@ export default function StrawberryMethodPage() {
             {t.ctaLead}
           </p>
 
-          <div style={{ marginBottom: 32, padding: "24px 32px", border: `1px solid rgba(230,57,70,0.3)`, background: "rgba(230,57,70,0.04)", maxWidth: 520, margin: "0 auto 48px" }}>
+          <div style={{ marginBottom: 32, padding: "24px 32px", border: `1px solid rgba(255,34,51,0.3)`, background: "rgba(255,34,51,0.04)", maxWidth: 520, margin: "0 auto 48px" }}>
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 12, textTransform: "uppercase" }}>{t.lCommission}</div>
             <div style={{ fontFamily: SERIF, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 700, marginBottom: 8, letterSpacing: "-0.02em" }}>
               {t.ctaProduct}
@@ -485,7 +485,7 @@ export default function StrawberryMethodPage() {
             </div>
           </div>
 
-          <Link href={ORDER_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}`, marginBottom: 24 }}>
+          <Link href={ORDER_URL} target="_blank" style={{ display: "inline-block", background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, color: "#fff", padding: "20px 52px", borderRadius: 100, fontSize: 16, fontWeight: 600, textDecoration: "none", letterSpacing: "0.04em", fontFamily: SANS, boxShadow: `0 20px 60px ${GLOW}`, marginBottom: 24 }}>
             {t.cta}
           </Link>
 

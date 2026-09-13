@@ -95,8 +95,8 @@ export function ArchitectureBlueprint({ lang }: { lang: Lang }) {
             </text>
 
             {/* Le fronton. */}
-            <polygon points="480,60 520,60 560,110 440,110" fill="none" stroke="#e63946" strokeWidth="1.4" opacity="0.75" />
-            <rect x="494" y="70" width="12" height="12" fill="#e63946" />
+            <polygon points="480,60 520,60 560,110 440,110" fill="none" stroke="#ff2233" strokeWidth="1.4" opacity="0.75" />
+            <rect x="494" y="70" width="12" height="12" fill="#ff2233" />
 
             {/* Les quatre actes, en colonnes de façade. */}
             {(() => {
@@ -113,7 +113,7 @@ export function ArchitectureBlueprint({ lang }: { lang: Lang }) {
                     <rect x={x} y="120" width={w} height="300" fill="rgba(255,255,255,0.015)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
 
                     {/* Chapiteau de colonne, écho du motif de couverture. */}
-                    <line x1={x} y1="120" x2={x + w} y2="120" stroke="#e63946" strokeWidth={ai === 1 ? 2.2 : 1} opacity={ai === 1 ? 0.9 : 0.4} />
+                    <line x1={x} y1="120" x2={x + w} y2="120" stroke="#ff2233" strokeWidth={ai === 1 ? 2.2 : 1} opacity={ai === 1 ? 0.9 : 0.4} />
 
                     {/* Les fenêtres : une par pièce, réparties par étage. */}
                     {floors.map((countOnFloor, fi) => {
@@ -129,12 +129,12 @@ export function ArchitectureBlueprint({ lang }: { lang: Lang }) {
                               y={fy + floorH / 2 - 13}
                               width="18"
                               height="26"
-                              fill="rgba(230,57,70,0.08)"
-                              stroke="#e63946"
+                              fill="rgba(255,34,51,0.08)"
+                              stroke="#ff2233"
                               strokeWidth="0.8"
                               opacity="0.85"
                             />
-                            <line x1={wx} y1={fy + floorH / 2 - 13} x2={wx} y2={fy + floorH / 2 + 13} stroke="#e63946" strokeWidth="0.6" opacity="0.5" />
+                            <line x1={wx} y1={fy + floorH / 2 - 13} x2={wx} y2={fy + floorH / 2 + 13} stroke="#ff2233" strokeWidth="0.6" opacity="0.5" />
                             <text
                               x={wx}
                               y={fy + floorH / 2 + 34}
@@ -152,7 +152,7 @@ export function ArchitectureBlueprint({ lang }: { lang: Lang }) {
 
                     {/* Socle + numéro d'acte + libellé. */}
                     <line x1={x - 4} y1="420" x2={x + w + 4} y2="420" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
-                    <text x={x + w / 2} y="444" textAnchor="middle" fontFamily="var(--font-playfair), serif" fontStyle="italic" fontSize="15" fill="#e63946">
+                    <text x={x + w / 2} y="444" textAnchor="middle" fontFamily="var(--font-playfair), serif" fontSize="15" fill="#ff2233">
                       {act.roman}
                     </text>
                     <text

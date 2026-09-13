@@ -96,7 +96,7 @@ img{ max-width:100%; display:block; }
 }
 .eyebrow.iris{ color:var(--iris-soft); }
 h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-spacing:-.02em; }
-.serif{ font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:0; }
+.serif{ font-family:var(--display); font-style:normal; font-weight:600; letter-spacing:-.015em; }
 
 .h-hero{ font-size:clamp(3.4rem, 12vw, 9rem); }
 .h-sec{ font-size:clamp(2.1rem, 5.5vw, 4rem); line-height:1.04; }
@@ -181,7 +181,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 /* 18ch cassait la phrase en quatre lignes très courtes sous le wordmark,
    ce qui laissait une colonne maigre au milieu d'un grand vide. 24ch la
    tient en deux ou trois lignes pleines. */
-.hero-tag{ font-family:var(--serif); font-style:italic; font-size:clamp(1.5rem,3.2vw,2.6rem);
+.hero-tag{ font-family:var(--display); font-style:normal; font-weight:600; font-size:clamp(1.5rem,3.2vw,2.6rem);
   color:var(--cream); margin-top:.6rem; line-height:1.15; max-width:24ch; }
 .hero-tag b{ font-style:normal; font-family:var(--display); font-weight:700;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
@@ -237,7 +237,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 .manifesto .serif{ display:inline; background:#d4121f; color:var(--ink);
   padding:.02em .28em; margin-inline:-.28em;
   -webkit-box-decoration-break:clone; box-decoration-break:clone; }
-.manifesto em{ font-family:var(--serif); font-style:italic; color:var(--iris-soft); }
+.manifesto em{ font-family:var(--display); font-style:normal; font-weight:700; color:var(--coral); }
 
 /* ---------- rack-focus signature ---------- */
 .rack{ filter:blur(7px) saturate(.55) brightness(.85); opacity:.55;

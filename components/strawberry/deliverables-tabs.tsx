@@ -63,7 +63,7 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
                 className="group/cover relative aspect-[3/4] overflow-hidden border border-brand/25"
               >
                 {/* Face avant : icône + nom de la pièce. */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,rgba(230,57,70,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center transition-opacity duration-300 group-hover/cover:opacity-0">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[linear-gradient(160deg,rgba(255,34,51,0.08)_0%,rgba(10,10,10,0.4)_100%)] px-2 text-center transition-opacity duration-300 group-hover/cover:opacity-0">
                   <PlaybookIcon index={i} />
                   <span className="font-sans text-[10px] font-semibold uppercase leading-tight tracking-[0.06em] text-white">
                     {label}
@@ -82,7 +82,7 @@ export function DeliverablesTabs({ groups }: { groups: Group[] }) {
         )}
 
         {isPlaybooks && group.playbooksNote && (
-          <p className="m-0 mt-5 border-t border-hair pt-5 font-sans text-[13px] italic leading-relaxed text-chalk-55">
+          <p className="m-0 mt-5 border-t border-hair pt-5 font-sans text-[13px] leading-relaxed text-chalk-55">
             {group.playbooksNote}
           </p>
         )}
@@ -145,7 +145,7 @@ function GroupIcon({ kind }: { kind: string }) {
 function PlaybookIcon({ index }: { index: number }) {
   const props = { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": true as const }
   const stroke = { stroke: "currentColor", strokeWidth: 1.4, fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
-  const color = "#e63946"
+  const color = "#ff2233"
   const fine = { stroke: color, strokeWidth: 0.5, opacity: 0.5, strokeLinecap: "round" as const }
 
   switch (index) {
