@@ -22,6 +22,7 @@ const COPY: TerrainCopy = {
   slug: "the-name",
   wordmark: "THE NAME",
   fr: {
+    "hero.kicker": "Audit narratif · Artistes & fondateurs",
     "mq.1": "Musiciens",
     "mq.2": "Réalisateurs",
     "mq.3": "Fondateurs",
@@ -96,6 +97,7 @@ const COPY: TerrainCopy = {
     "nav.services": "L'audit",
   },
   en: {
+    "hero.kicker": "Narrative audit · Artists & founders",
     "mq.1": "Musicians",
     "mq.2": "Directors",
     "mq.3": "Founders",

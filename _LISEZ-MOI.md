@@ -1,40 +1,34 @@
-# Strawberry — plus aucune italique sur le site
+# Strawberry — les surtitres de THE NAME et BRAND
 
-Le zip contient tous les fichiers modifiés.
+2 fichiers.
 
-## Ce que j'avais mal compris
+## Ce qui s'était passé
 
-Quand vous m'avez dit ne pas aimer mon usage de l'italique, j'ai retiré
-**uniquement les endroits que j'avais introduits**, et je vous ai même
-écrit que je laissais « les italiques d'origine de la charte ». C'était
-la mauvaise lecture : vous parliez de l'italique sur le site, pas de mes
-ajouts.
+THE NAME et BRAND avaient **perdu leur surcharge `hero.kicker`** au cours
+des manipulations précédentes. Sans surcharge, une page de terrain hérite
+du dictionnaire par défaut — celui de THE ROOM. D'où « AUDIT NARRATIF ·
+LIEUX » affiché sur la page des artistes.
 
-D'où « Votre offre tient. Votre récit, personne ne l'a écrit. » resté en
-italique — c'est `.hero-tag`, une règle de NOCTA que j'avais délibérément
-épargnée.
+THE PRODUCT avait gardé la sienne, ce qui explique que le défaut ne se
+voyait que sur deux pages sur trois.
 
-## Ce qui est fait
+## Restauré
 
-**109 occurrences retirées**, dans toute la base : les classes `italic`
-des composants React, les attributs `fontStyle` des SVG, et les trois
-règles CSS de la charte NOCTA.
+- THE NAME → **« Audit narratif · Artistes & fondateurs »**
+- BRAND → **« Audit narratif · Marques & entreprises »**
 
-Les trois règles de charte passent sur la police de titre en demi-gras
-plutôt que d'être simplement redressées :
+Dans les deux langues.
 
-- `.hero-tag` — la phrase sous le wordmark
-- `.serif` — la classe d'accroche générique
-- `.manifesto em` — les mots en emphase du constat, qui passent aussi du
-  rouge clair au rouge de marque
+## Un contrôle que j'ajoute
 
-C'est le **poids** qui porte l'emphase maintenant, pas l'inclinaison.
+J'ai comparé les jeux de clés des trois pages, langue par langue : toute
+clé présente sur deux pages et absente de la troisième signale une perte
+du même type. Résultat après correction : **les trois pages ont exactement
+le même jeu de clés**, en français comme en anglais.
+
+C'est le contrôle qui manquait — il aurait attrapé ce défaut avant que
+vous ne le voyiez, et il attrapera les prochains.
 
 ## Vérification
 
-Contrôle de types : aucune erreur nouvelle. Les seules remontées sont
-préexistantes et propres à mon environnement (`style jsx`, modules non
-installés).
-
-Zéro occurrence d'`italic` restante dans les composants et les feuilles de
-style.
+Contrôle de types : zéro erreur.

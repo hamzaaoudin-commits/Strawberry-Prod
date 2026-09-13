@@ -24,6 +24,7 @@ const COPY: TerrainCopy = {
   slug: "marques-entreprises",
   wordmark: "BRAND",
   fr: {
+    "hero.kicker": "Audit narratif · Marques & entreprises",
     "mq.1": "Marques",
     "mq.2": "Entreprises",
     "mq.3": "Studios",
@@ -98,6 +99,7 @@ const COPY: TerrainCopy = {
     "nav.services": "L'audit",
   },
   en: {
+    "hero.kicker": "Narrative audit · Brands & companies",
     "mq.1": "Brands",
     "mq.2": "Companies",
     "mq.3": "Studios",
