@@ -1,60 +1,59 @@
-# Strawberry — le décorticage, la précision, le dossier exploitable
+# Strawberry — la tournée dit enfin ce qu'il y a dans le document
 
-3 fichiers.
+1 fichier.
 
-## Ce que j'avais retiré, et qui revient
+## Ce qui n'allait pas
 
-Le paragraphe sur les pièces « comprises et collées directement dans
-l'outil IA que vos équipes utilisent déjà » était sur le site. Je l'ai
-supprimé quand vous m'avez demandé d'alléger, sans voir que c'était un
-argument et pas du remplissage. C'était une faute de lecture de ma part.
+J'écrivais des qualités : « un relevé, pas un avis », « des mouvements au
+scalpel », « un dossier applicable sans vous ». Ce sont des affirmations
+sur la nature du travail. À aucun moment le lecteur ne savait **ce qu'il y
+a dans les vingt à trente pages**.
 
-## Le bloc commun de la tournée, réécrit
+C'est ce que vous me disiez depuis le début, et je le contournais à chaque
+fois en changeant de formulation au lieu de changer de contenu.
 
-Il portait trois lignes de volume et de délai — le genre d'information
-qu'on compare à la concurrence. Il porte maintenant les trois choses qui
-distinguent réellement l'audit :
+## Le bloc commun liste les six pièces
 
-> **DANS LES QUATRE CAS**
+> **CE QUE CONTIENT LE DOCUMENT, DANS LES QUATRE CAS**
 >
-> Un relevé, pas un avis : concurrents lus phrase par phrase, votre
-> discours compté sur quatre supports
+> — Le diagnostic écrit : ce que vous racontez aujourd'hui, support par
+> support, avec les occurrences comptées
+> — La carte du champ : 3 à 5 concurrents, leur phrase exacte, ce qu'ils
+> revendiquent, le terrain qu'ils laissent libre
+> — La position nommée en une phrase, avec ce qu'elle vous oblige à
+> refuser
+> — 3 à 5 mouvements : la formulation exacte à employer, où la mettre, ce
+> qu'elle coûte, ce qu'elle fait perdre
+> — Le lexique : les mots à employer, ceux à cesser d'employer, et pourquoi
+> — Les textes réécrits, prêts à coller — et applicables par vos équipes
+> comme par votre outil IA
+
+Six pièces nommées. C'est un sommaire, pas une promesse. Et le lexique,
+qui n'apparaissait nulle part, est une pièce que personne ne pense à
+demander mais que tout le monde utilise ensuite.
+
+## Chaque terrain dit ce qu'on dépouille et ce qu'il reçoit en plus
+
+> **SUR CE TERRAIN PRÉCISÉMENT**
 >
-> Des mouvements au scalpel : quelle phrase, sur quelle page, remplacée
-> par quoi, et ce que ça coûte
+> **BRAND** — On dépouille : site, plaquette, discours commercial,
+> signatures mail, et ce que disent vos équipes en rendez-vous · Pièce en
+> plus : vos quatre versions du même métier mises face à face
 >
-> Un dossier applicable sans vous — par un nouveau commercial, une agence,
-> ou l'outil IA de vos équipes
+> **THE ROOM** — On dépouille : fiche Google, carte, avis clients,
+> publications, et ce que vos habitués répètent · Pièce en plus : le plan
+> de tournage — quoi filmer, à quelle heure, et les phrases à écrire
+> dessous
 
-Le décorticage, la précision chirurgicale, le dossier exploitable. Les
-trois arguments que personne d'autre ne peut tenir : une agence livre un
-moodboard, une IA produit du texte probable.
+« On dépouille » nomme la matière réelle, support par support. « Pièce en
+plus » nomme un objet supplémentaire que ce terrain seul reçoit.
 
-## Un chapô, qui manquait
+## Mise en page
 
-La section enchaînait le titre et les quatre scènes sans dire comment les
-lire :
-
-> Le même travail dans les quatre cas : on relève, on compare, on tranche.
-> Ce qui change, c'est la matière qu'on lit et ce qu'on vous rend.
-
-Sans cette phrase, on ne sait pas si les terrains sont quatre offres ou
-quatre variantes d'une seule. Elle reprend au passage les trois verbes du
-titre de section des pages d'offres.
-
-## Le troisième chiffre, sur les pages d'offres
-
-Il annonçait **0 — Abonnement, aucune dépendance**. C'est un argument
-défensif : il dit ce qu'on ne fait pas.
-
-Il annonce désormais **∞ — Réutilisable par vos équipes comme par votre
-outil IA**. C'est le même fond — le document vous appartient — mais dit
-par ce qu'il permet.
-
-Et ça règle une contradiction de fond : le site se positionnait contre
-l'IA tout en livrant précisément ce qui la rend utilisable. Autant le
-revendiquer.
+Six lignes sur trois colonnes font deux rangées pleines. Chacune s'ouvre
+sur un tiret rouge : sans lui, six phrases denses côte à côte se lisent
+comme un paragraphe.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées.
+Contrôle de types : zéro erreur.

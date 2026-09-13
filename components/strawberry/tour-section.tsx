@@ -32,12 +32,15 @@ const T = {
     kicker: "Un audit, quatre terrains",
     title: "Ce qu'on trouve quand un récit est écrit.",
     afterLabel: "Après l'audit",
-    ptsLabel: "En plus, sur votre terrain",
-    commonLabel: "Dans les quatre cas",
+    ptsLabel: "Sur ce terrain précisément",
+    commonLabel: "Ce que contient le document, dans les quatre cas",
     common: [
-      "Un relevé, pas un avis : concurrents lus phrase par phrase, votre discours compté sur quatre supports",
-      "Des mouvements au scalpel : quelle phrase, sur quelle page, remplacée par quoi, et ce que ça coûte",
-      "Un dossier applicable sans vous — par un nouveau commercial, une agence, ou l'outil IA de vos équipes",
+      "Le diagnostic écrit : ce que vous racontez aujourd'hui, support par support, avec les occurrences comptées",
+      "La carte du champ : 3 à 5 concurrents, leur phrase exacte, ce qu'ils revendiquent, le terrain qu'ils laissent libre",
+      "La position nommée en une phrase, avec ce qu'elle vous oblige à refuser",
+      "3 à 5 mouvements : la formulation exacte à employer, où la mettre, ce qu'elle coûte, ce qu'elle fait perdre",
+      "Le lexique : les mots à employer, ceux à cesser d'employer, et pourquoi",
+      "Les textes réécrits, prêts à coller — et applicables par vos équipes comme par votre outil IA",
     ],
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
@@ -47,28 +50,28 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "Le devis part sans une ligne de justification. Le prix n'est plus ce qu'on discute.",
-        points: ["Votre phrase d'accueil réécrite, et les quatre versions qu'elle remplace : site, commerciaux, plaquette, signature mail", "Le mot que trois de vos concurrents revendiquent déjà, et celui que vous êtes seul à pouvoir tenir"],
+        points: ["On dépouille : site, plaquette, discours commercial, signatures mail, et ce que disent vos équipes en rendez-vous", "Pièce en plus : vos quatre versions du même métier mises face à face, et celle qui devient la seule"],
         href: "/marques-entreprises",
       },
       {
         k: "Produits",
         t: "THE PRODUCT",
         line: "On le prend en main et on comprend pourquoi il a été fait comme ça.",
-        points: ["Votre fiche technique retournée : chaque caractéristique devient l'arbitrage qui l'explique", "Ce que votre emballage promet aujourd'hui, et ce que vos avis clients démentent"],
+        points: ["On dépouille : page produit, fiche technique, emballage, notice, et vos avis clients", "Pièce en plus : chaque caractéristique réécrite en arbitrage — pourquoi ce poids, ce matériau, ce prix"],
         href: "/the-product",
       },
       {
         k: "Lieux",
         t: "THE ROOM",
         line: "N'importe qui en salle sait quoi filmer, et le quartier reconnaît le lieu avant d'en lire le nom.",
-        points: ["Quoi filmer, à quelle heure, et les phrases à écrire dessous — utilisables par n'importe qui en salle", "Les mots que vos habitués emploient dans leurs avis et que vous n'avez jamais publiés"],
+        points: ["On dépouille : fiche Google, carte, avis clients, publications, et ce que vos habitués répètent", "Pièce en plus : le plan de tournage — quoi filmer, à quelle heure, et les phrases à écrire dessous"],
         href: "/the-room",
       },
       {
         k: "Artistes & fondateurs",
         t: "THE NAME",
         line: "La sortie tombe et le public sait déjà où elle se range — parce que la précédente l'avait annoncée.",
-        points: ["Votre bio réécrite en trois longueurs : plateforme, dossier de presse, présentation scène", "Le geste que la presse décrit déjà sans savoir le nommer, et la phrase qui le nomme"],
+        points: ["On dépouille : vos sorties, vos textes, vos visuels, vos interviews, et ce que la presse retient", "Pièce en plus : votre bio en trois longueurs — plateforme, dossier de presse, présentation scène"],
         href: "/the-name",
       },
     ],
@@ -78,12 +81,15 @@ const T = {
     kicker: "One audit, four grounds",
     title: "What you find when a story is written.",
     afterLabel: "After the audit",
-    ptsLabel: "On top, for your ground",
-    commonLabel: "In all four cases",
+    ptsLabel: "On this ground specifically",
+    commonLabel: "What the document contains, in all four cases",
     common: [
-      "A record, not an opinion: competitors read sentence by sentence, your own words counted across four supports",
-      "Moves made with a scalpel: which sentence, on which page, replaced by what, and what it costs",
-      "A file anyone can apply without you — a new salesperson, an agency, or your team's AI tool",
+      "The written diagnosis: what you say today, support by support, with occurrences counted",
+      "The map of the field: 3 to 5 competitors, their exact sentence, what they claim, the ground they leave open",
+      "The position named in one sentence, with what it forces you to refuse",
+      "3 to 5 moves: the exact wording to use, where to put it, what it costs, what it loses you",
+      "The lexicon: words to use, words to stop using, and why",
+      "The rewritten copy, ready to paste — usable by your teams and by your AI tool",
     ],
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
@@ -93,28 +99,28 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "The quote goes out without a line of justification. Price is no longer what gets discussed.",
-        points: ["Your homepage line rewritten, and the four versions it replaces: site, salespeople, brochure, email signature", "The word three of your competitors already claim, and the one only you can hold"],
+        points: ["We go through: site, brochure, sales pitch, email signatures, and what your teams say in meetings", "Extra piece: your four versions of the same work put side by side, and the one that becomes the only one"],
         href: "/marques-entreprises",
       },
       {
         k: "Products",
         t: "THE PRODUCT",
         line: "You pick it up and you understand why it was made this way.",
-        points: ["Your spec sheet turned around: each feature becomes the trade-off that explains it", "What your packaging promises today, and what your reviews contradict"],
+        points: ["We go through: product page, spec sheet, packaging, manual, and your customer reviews", "Extra piece: every feature rewritten as a trade-off — why this weight, this material, this price"],
         href: "/the-product",
       },
       {
         k: "Venues",
         t: "THE ROOM",
         line: "Anyone on the floor knows what to film, and the neighbourhood recognises the place before reading its name.",
-        points: ["What to film, at what hour, and the lines to write underneath — usable by anyone on the floor", "The words your regulars use in their reviews and that you have never published"],
+        points: ["We go through: Google listing, menu, reviews, posts, and what your regulars repeat", "Extra piece: the shooting plan — what to film, at what hour, and the lines to write underneath"],
         href: "/the-room",
       },
       {
         k: "Artists & founders",
         t: "THE NAME",
         line: "The release lands and the audience already knows where it sits — because the last one announced it.",
-        points: ["Your bio rewritten at three lengths: platform, press kit, stage introduction", "The gesture the press already describes without naming it, and the sentence that names it"],
+        points: ["We go through: your releases, your writing, your visuals, your interviews, and what the press keeps", "Extra piece: your bio at three lengths — platform, press kit, stage introduction"],
         href: "/the-name",
       },
     ],
@@ -291,9 +297,15 @@ export function TourSection() {
           <div className="mb-4 text-center font-mono text-[10.5px] uppercase tracking-[0.22em] text-brand">
             {t.commonLabel}
           </div>
-          <ul className="m-0 grid list-none gap-3 p-0 sm:grid-cols-3 sm:gap-7">
+          {/* Six pièces sur trois colonnes : deux rangées pleines. Un tiret
+              rouge ouvre chaque ligne — sans lui, six phrases denses
+              collées les unes aux autres se lisent comme un paragraphe. */}
+          <ul className="m-0 grid list-none gap-x-7 gap-y-4 p-0 sm:grid-cols-3">
             {t.common.map((x) => (
-              <li key={x} className="font-sans text-[13.5px] leading-[1.55] text-chalk-55">
+              <li
+                key={x}
+                className="relative pl-5 font-sans text-[13px] leading-[1.5] text-chalk-55 before:absolute before:left-0 before:top-[0.62em] before:h-px before:w-3 before:bg-brand"
+              >
                 {x}
               </li>
             ))}
