@@ -110,6 +110,14 @@ export function HeroSection() {
 
   return (
     <section id="home" ref={heroRef as any} className="relative flex min-h-[82vh] items-center overflow-hidden bg-ink">
+      {/* Le bas du hero se fond dans la section suivante.
+          La lueur rouge du hero s'arrêtait net à sa dernière ligne, ce qui
+          dessinait la frontière la plus visible de la page. Ce voile la
+          dissout sur 160 pixels. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-[linear-gradient(180deg,transparent,var(--color-ink))]"
+      />
       <ViewTracker name="hero" />
       <AnimatedOrb color="radial-gradient(circle,#ff2233,transparent)" size={700} x="-10%" y="-20%" opacity={0.18} />
       <AnimatedOrb color="radial-gradient(circle,#ff4d2e,transparent)" size={500} x="60%" y="30%" opacity={0.14} />

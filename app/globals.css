@@ -1304,3 +1304,51 @@ footer {
 .ts-link:hover span {
   transform: translateX(4px);
 }
+
+/* ---------------------------------------------------------------------------
+   FONDUS ENTRE SECTIONS
+
+   Les sections alternent deux fonds proches (#0a0a0a et #0d0d0d) séparés
+   par un filet. À trois pour cent d'écart, l'œil ne voit pas deux teintes :
+   il voit une ligne. Et comme la page en enchaîne cinq ou six, on a
+   l'impression de traverser plusieurs maquettes collées bout à bout.
+
+   Le correctif : chaque section à fond alterné dégrade ses douze premiers
+   et derniers pour cent vers la couleur de sa voisine. La transition se
+   fait donc sur une centaine de pixels au lieu d'un pixel, et la frontière
+   disparaît sans qu'aucune section ne perde son fond.
+   --------------------------------------------------------------------------- */
+section[class*="bg-ink-soft"] {
+  background: linear-gradient(
+    180deg,
+    var(--color-ink) 0%,
+    var(--color-ink-soft) 14%,
+    var(--color-ink-soft) 86%,
+    var(--color-ink) 100%
+  ) !important;
+  /* Le filet devient inutile : c'est lui qui dessinait la ligne. */
+  border-top-color: transparent !important;
+}
+
+/* Même traitement pour les sections à fond encre encadrées de filets :
+   on garde le filet mais on l'estompe sur les bords, pour qu'il suggère
+   la séparation au lieu de la trancher. */
+section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"]) {
+  border-top-color: transparent;
+  position: relative;
+}
+section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 25%,
+    rgba(255, 255, 255, 0.07) 75%,
+    transparent 100%
+  );
+}
