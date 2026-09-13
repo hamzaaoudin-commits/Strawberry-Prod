@@ -155,13 +155,27 @@ export function TourSection() {
         const d = f - i
         const ad = d < 0 ? -d : d
         const sc = scenes[i]
-        sc.style.opacity = String(Math.max(0, 1 - ad * 1.35))
-        sc.style.transform = `translate3d(0,${-d * 7}vh,0) scale(${1 + Math.max(0, 0.055 - ad * 0.11)})`
+        // Fondu à plateau, au lieu d'une décroissance linéaire.
+        //
+        // Avec `1 - ad * 1.35`, deux scènes voisines se retrouvaient toutes
+        // deux à 32 % d'opacité à mi-chemin : on lisait deux textes
+        // superposés pendant la moitié du parcours. Ici la scène reste
+        // pleine tant qu'elle est proche, puis s'efface vite — et la courbe
+        // en S (`t*t*(3-2t)`) supprime les deux cassures qu'une chute
+        // linéaire laisse au départ et à l'arrivée.
+        const t = ad >= 0.52 ? 0 : 1 - ad / 0.52
+        const eased = t * t * (3 - 2 * t)
+        sc.style.opacity = String(eased)
+        // Moins de déplacement et de zoom : à 7vh, le texte glissait encore
+        // pendant qu'on le lisait.
+        sc.style.transform = `translate3d(0,${-d * 3.5}vh,0) scale(${1 + Math.max(0, 0.03 - ad * 0.06)})`
         sc.style.zIndex = String(20 - Math.round(ad * 10))
+        // Une scène effacée ne doit plus capter le survol ni les clics.
+        sc.style.pointerEvents = eased < 0.05 ? "none" : "auto"
         const bg = backdrops[i]
         // Le fond dérive à contre-sens de sa scène : c'est ce décalage qui
         // donne la profondeur, et son absence rend l'effet plat.
-        if (bg) bg.style.transform = `scale(${1.06 + d * 0.05})`
+        if (bg) bg.style.transform = `scale(${1.04 + d * 0.03})`
       }
       if (fill) fill.style.height = `${p * 100}%`
     }
