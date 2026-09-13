@@ -1159,6 +1159,18 @@ footer {
    cette taille et reprend le trait du reste du site. */
 /* L'intitulé qui annonce la liste : sans lui, trois lignes posées sous une
    phrase de problème se lisent comme la suite du problème. */
+/* « Après l'audit » : annonce la projection qui suit. Sans lui, une scène
+   écrite au présent se lit comme un constat sur la situation actuelle —
+   soit l'inverse de ce qu'elle dit. */
+.ts-after-label {
+  margin-top: 1.4rem;
+  margin-bottom: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
 .ts-points-label {
   margin-top: 1.8rem;
   margin-bottom: 0.9rem;

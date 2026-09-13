@@ -1,37 +1,41 @@
-# Strawberry — des livrables qu'on peut compter
+# Strawberry — la phrase projette l'après
 
 2 fichiers.
 
-## Le problème de fond
+## Ce qui n'allait pas
 
-« Une position que vous pouvez tenir sans mentir » ne se vérifie pas. Le
-client ne peut pas savoir ce qu'il recevra, donc il ne peut pas juger si
-490 € est cher ou pas. Une promesse abstraite, à n'importe quel prix,
-sonne creux.
+La phrase en gros caractères, la plus visible de chaque scène, décrivait
+le problème. Posée au milieu d'une section qui vend, elle se lisait comme
+une caractéristique de l'offre : « On vous demande un devis comparatif »
+juste au-dessus de « ce que vous recevez ».
 
-## Ce que les puces disent maintenant
+## Ce qu'elle dit maintenant
 
-Cinq livrables par terrain, chacun **comptable** :
+L'état d'après, écrit au présent et en scène concrète :
 
-> **20 à 30 pages** écrites à la main, livrées en PDF sous 7 à 14 jours
-> **3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas
-> **Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois
-> **3 à 5 mouvements de repositionnement**, hiérarchisés, avec ce que chacun coûte et ce qu'il débloque
-> **La liste de ce qu'il faut cesser de dire**, et pourquoi
+| | |
+|---|---|
+| **BRAND** | Le devis part sans une ligne de justification. Le prix n'est plus ce qu'on discute. |
+| **THE PRODUCT** | On le prend en main et on comprend pourquoi il a été fait comme ça. |
+| **THE ROOM** | N'importe qui en salle sait quoi filmer, et le quartier reconnaît le lieu avant d'en lire le nom. |
+| **THE NAME** | La sortie tombe et le public sait déjà où elle se range — parce que la précédente l'avait annoncée. |
 
-Chaque ligne porte un nombre ou un objet nommé. Le client peut ouvrir le
-document et vérifier qu'il y est.
+Ce sont des scènes qu'on peut se représenter, pas des promesses. « Le prix
+n'est plus ce qu'on discute » se visualise ; « une position que vous
+pouvez tenir » ne se visualise pas.
 
-**Le volume est annoncé en premier**, délibérément : 20 à 30 pages en 7 à
-14 jours, c'est ce qui situe l'ordre de grandeur avant même de lire le
-reste. Sans ça, le prix flotte.
+## L'intitulé qui rend la lecture possible
 
-## La hiérarchie visuelle
+**APRÈS L'AUDIT**, en mono rouge, au-dessus de la phrase. Sans lui, une
+scène écrite au présent se lit comme un constat sur la situation
+actuelle — soit exactement l'inverse de ce qu'elle raconte. C'est le même
+piège que pour les puces au tour précédent.
 
-Le livrable est en blanc et en gras, sa précision en gris. L'œil descend
-la liste en ne lisant que les gras — cinq objets en trois secondes — puis
-revient sur celui qui l'intéresse. C'est ce qui permet d'avoir cinq lignes
-denses sans que ça fasse mal aux yeux.
+## Une redondance supprimée
+
+La ligne surlignée en bas de scène disait déjà un bénéfice. Avec la
+projection en haut, la scène en contenait deux. Elle est retirée : la
+structure est maintenant projection → livrables, sans répétition.
 
 ## Vérification
 
