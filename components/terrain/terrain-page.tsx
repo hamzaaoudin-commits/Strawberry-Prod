@@ -182,7 +182,11 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
       <div class="ex-num">02</div>
       <div class="ex-text">
         <h3 data-i18n="ex.1.k">Le diagnostic</h3>
-        <p data-i18n="ex.1.b">Extrait un.</p>
+        <p data-i18n="ex.1.b">Extrait.</p>
+        <div class="ex-proof">
+          <span class="ex-proof-k" data-i18n="ex.1.pk">Relevé</span>
+          <span class="ex-proof-v" data-i18n="ex.1.pv">Données.</span>
+        </div>
         <aside class="ex-note" data-i18n="ex.1.n">Note de marge.</aside>
       </div>
     </div>
@@ -191,7 +195,11 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
       <div class="ex-num">05</div>
       <div class="ex-text">
         <h3 data-i18n="ex.2.k">La carte du champ</h3>
-        <p data-i18n="ex.2.b">Extrait deux.</p>
+        <p data-i18n="ex.2.b">Extrait.</p>
+        <div class="ex-proof">
+          <span class="ex-proof-k" data-i18n="ex.2.pk">Relevé</span>
+          <span class="ex-proof-v" data-i18n="ex.2.pv">Données.</span>
+        </div>
         <aside class="ex-note" data-i18n="ex.2.n">Note de marge.</aside>
       </div>
     </div>
@@ -200,7 +208,11 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
       <div class="ex-num">11</div>
       <div class="ex-text">
         <h3 data-i18n="ex.3.k">Le mouvement</h3>
-        <p data-i18n="ex.3.b">Extrait trois.</p>
+        <p data-i18n="ex.3.b">Extrait.</p>
+        <div class="ex-proof">
+          <span class="ex-proof-k" data-i18n="ex.3.pk">Relevé</span>
+          <span class="ex-proof-v" data-i18n="ex.3.pv">Données.</span>
+        </div>
         <aside class="ex-note" data-i18n="ex.3.n">Note de marge.</aside>
       </div>
     </div>

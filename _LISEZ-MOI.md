@@ -1,48 +1,49 @@
-# Strawberry — l'extrait devient un fac-similé de page
+# Strawberry — les extraits montrent leurs preuves
 
 6 fichiers.
 
-## Ce qui n'allait pas
+## Ce qui manquait
 
-Trois cartes de citation ne montraient pas un document : elles montraient
-trois phrases posées sur un fond. Le visiteur lisait notre discours sur
-l'audit, pas l'audit.
+Mes extraits donnaient des **conclusions** sans la matière qui les
+soutient. « Votre site dit sur mesure onze fois » — le lecteur doit me
+croire sur parole. Or c'est précisément ce qu'un audit ne doit pas
+demander : il montre ce qu'il a compté.
 
-## Ce que ça devient
+## Un bloc de relevé sous chaque analyse
 
-La section prend **l'anatomie d'une page imprimée** :
+Encadré, en mono, sous le passage :
 
-**Un en-tête courant**, comme en haut de chaque page d'un document relié :
-« AUDIT NARRATIF · MARQUES » à gauche, « MAISON LOAM » à droite.
+> **RELEVÉ**
+> « sur mesure » : 11 occurrences site + 4 plaquette · Kessel : « mobilier
+> sur mesure, fabrication française » · Norbert Frères : « le sur-mesure
+> accessible » · Atelier 9 : « sur mesure, sans compromis » · Mentions
+> d'un refus assumé : 0
 
-**Les numéros de pièce dans la marge** — 02, 05, 11. Ce ne sont pas des
-numéros d'ordre : ce sont les références des pièces dont proviennent les
-passages, ce qui dit au passage que le document en compte bien d'autres.
+Le visiteur voit **les phrases exactes des concurrents**, les comptages,
+les tailles de panel. L'analyse cesse d'être une opinion : elle devient la
+lecture d'un relevé qu'on peut contester.
 
-**Une note de marge sous chaque extrait**, en mono, introduite par un
-tiret rouge. C'est ce qui fait la différence entre une citation et un
-document de travail :
+Sur le troisième bloc, le relevé devient **coût et effet** — ce que le
+mouvement coûte, ce qu'il risque, ce qu'il débloque, et son rang de
+priorité. Y compris le risque : « perte estimée de 25% des demandes
+entrantes ». Un audit qui ne chiffre que les gains n'est pas un audit.
 
-> — Relevé sur la page d'accueil, la plaquette PDF et six fiches produit.
-> — Concurrents retenus : ceux que vos commerciaux citent en rendez-vous.
-> — Priorité 1 sur 4. Les trois autres mouvements suivent en pages 22 et 23.
+## Les analyses sont trois fois plus longues
 
-Ces notes disent **la méthode** sans qu'on ait à l'affirmer : d'où vient
-la matière, comment les concurrents ont été choisis, combien de mouvements
-il y a en tout.
+Et elles raisonnent au lieu d'affirmer. Exemple sur les lieux :
 
-**Un pied de page avec le folio** : « Extrait des pages 4, 9 et 21 — le
-document en compte 24 », et le numéro de page en rouge à droite.
+> Quatre adresses concurrentes sur cinq revendiquent le produit ou le
+> circuit court, la cinquième le prix. Aucune ne revendique le service —
+> toutes le subissent aux heures de pointe, et deux s'en excusent dans
+> leurs réponses aux avis. C'est le terrain libre, et il est déjà le vôtre
+> sans que vous le disiez : vous servez vingt-huit couverts avec deux
+> personnes en salle, et c'est ce que décrivent les avis qui parlent de
+> vous plutôt que de votre carte.
 
-**Une ombre portée basse** sous le bloc, qui le décolle de la page comme
-une feuille posée.
-
-## Les quatre maisons ont un nom
-
-LOAM pour les marques, la cafetière M-01 pour les produits, La Table du
-Passe pour les lieux, ORVAL pour les noms propres. Un exemple sans nom
-reste un exemple ; avec un nom, ça devient un cas.
+Chaque passage suit la même mécanique : le constat chiffré, ce qu'il
+révèle, et pourquoi c'est exploitable.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées.
+Contrôle de types : zéro erreur. Traductions validées. Les trois pages ont
+exactement le même jeu de clés dans les deux langues.

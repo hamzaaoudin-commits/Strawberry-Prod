@@ -825,3 +825,13 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
   .ex-block{ grid-template-columns:1fr; gap:.6rem; }
   .ex-num{ padding-top:0; }
 }
+
+/* Le relevé : la matière brute sur laquelle l'analyse s'appuie. Posé sous
+   chaque passage, en mono, il montre ce qui a été compté plutôt que de
+   demander qu'on croie la conclusion. */
+.ex-proof{ margin-top:1rem; margin-left:1.15rem; padding:.75rem .95rem;
+  background:rgba(255,255,255,.03); border:1px solid var(--line-soft); border-radius:3px; }
+.ex-proof-k{ display:block; font-family:var(--mono); font-size:.6rem; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--coral); margin-bottom:.45rem; }
+.ex-proof-v{ display:block; font-family:var(--mono); font-size:.74rem; line-height:1.7;
+  color:rgba(255,255,255,.66); }
