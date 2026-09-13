@@ -42,7 +42,12 @@ export function CTABanner() {
             className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(108deg,#ff2233,#ff4d2e)]"
           />
 
-          <h2 className="relative mb-10 font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
+          {/* En capitales.
+              Le crénage serré (-0.03em) venait du bas-de-casse, où les
+              lettres se resserrent naturellement. En capitales il colle les
+              lettres : il passe donc à -0.01em, et l'interlignage se
+              resserre un peu puisqu'il n'y a plus de jambages. */}
+          <h2 className="relative mb-10 font-serif text-[clamp(1.9rem,4.4vw,3.2rem)] font-bold uppercase leading-[1.04] tracking-[-0.01em] text-white">
             {t.h2}
           </h2>
 

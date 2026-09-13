@@ -1,41 +1,33 @@
-# Strawberry — le CTA final reprend du poids
+# Strawberry — le titre du CTA en capitales
 
 1 fichier.
 
-## J'avais trop coupé
+## Le changement
 
-En retirant le dégradé, l'ombre et la moitié des marges, j'en ai fait un
-encadré quelconque. C'est le dernier moment de la page : il doit peser.
+**SEPT JOURS, ET VOUS SAUREZ QUOI CHANGER.**
 
-## Ce qui lui donne du poids maintenant
+## Deux réglages qui vont avec
 
-**La lueur passe derrière le bloc**, sur la section elle-même, au lieu
-d'être dans l'encadré. C'est le vrai changement. Dans l'encadré, elle
-éclairait un fond déjà rouge et le rendait laiteux ; posée dessous, elle
-fait **monter le bloc de l'obscurité** — il gagne en présence sans qu'on
-ajoute de couleur au premier plan.
+Passer un titre en capitales n'est pas qu'une question de casse :
 
-**Le fond de section passe de `ink-soft` à `ink`**, plus sombre, pour que
-le bloc s'en détache au lieu de s'y fondre.
+**Le crénage.** Il était à `-0.03em`, une valeur pensée pour le
+bas-de-casse où les lettres se resserrent naturellement. En capitales,
+elle les colle. Il passe à `-0.01em`.
 
-**Un filet rouge de 3px en haut du bloc**, dans le dégradé de marque. Il
-signale l'entrée dans le dernier moment de la page sans mettre du rouge
-dans le titre — qui redeviendrait alors concurrent du bouton.
+**L'interlignage.** Il descend de 1.08 à 1.04 : sans jambages
+descendants, les lignes peuvent se rapprocher sans se toucher, et le bloc
+gagne en compacité — ce qui sert justement l'effet de masse recherché ici.
 
-**Le titre remonte** à `clamp(2.1rem, 5vw, 3.6rem)`, presque sa taille
-d'origine, mais **en blanc**. Les marges reviennent à 20 unités, et
-l'ombre portée est rétablie en plus serrée et plus dense
-(`0 0 90px -20px` au lieu de `0 0 120px`) : elle cerne le bloc au lieu de
-diffuser autour.
+**La taille** descend légèrement (de `5vw` à `4.4vw` au maximum) : à casse
+égale, des capitales occupent nettement plus de largeur, et le titre
+serait passé sur trois lignes.
 
-**Le bouton est agrandi** — 12 unités de marge horizontale, 20 verticales,
-16px de texte.
+## Si vous vouliez le bouton
 
-## Le principe que j'applique
-
-Le bloc est imposant par sa **masse et sa lumière**, pas par sa couleur.
-Le seul élément rouge plein reste le bouton, donc l'œil sait où cliquer
-même en voyant grand.
+Le libellé du bouton reste en casse normale, comme celui de la barre de
+navigation. Dites-moi si c'est lui que vous vouliez en capitales — sur les
+pages d'offres, les boutons le sont déjà, donc les deux conventions
+coexistent aujourd'hui sur le site.
 
 ## Vérification
 
