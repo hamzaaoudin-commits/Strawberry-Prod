@@ -7,8 +7,8 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 function useReveal() {
   const ref = useRef<HTMLElement | null>(null)
@@ -159,27 +159,25 @@ export default function ThankYouPage() {
           </div>
 
           {/* Headline */}
-          <h1 style={{
-            fontFamily: SERIF,
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF,
             fontSize: "clamp(2.5rem,6vw,5rem)",
             fontWeight: 700,
             lineHeight: 1.05,
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.005em",
             marginBottom: 16,
           }}>
             {t.h1a}
           </h1>
-          <h1 style={{
-            fontFamily: SERIF,
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF,
             fontSize: "clamp(2.5rem,6vw,5rem)",
             fontWeight: 700,
             lineHeight: 1.05,
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.005em",
             marginBottom: 40,
-            background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
+            background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            fontStyle: "italic",
+            
           }}>
             {t.h1b}
           </h1>
@@ -187,7 +185,7 @@ export default function ThankYouPage() {
           <p style={{
             fontFamily: SERIF,
             fontSize: "clamp(1.1rem,1.8vw,1.4rem)",
-            fontStyle: "italic",
+            
             color: "rgba(255,255,255,0.72)",
             maxWidth: 680,
             margin: "0 auto 24px",
@@ -236,7 +234,7 @@ export default function ThankYouPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
               {t.stepsKicker}
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", lineHeight: 1.15 }}>
               {t.stepsH2}
             </h2>
           </div>
@@ -255,7 +253,7 @@ export default function ThankYouPage() {
                   {s.n}
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.6rem)", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>
+                  <h3 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(1.25rem,2vw,1.6rem)", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.005em" }}>
                     {s.title}
                   </h3>
                   <p style={{ fontSize: "clamp(0.95rem,1.2vw,1.05rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, margin: 0 }}>
@@ -284,7 +282,7 @@ export default function ThankYouPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase", fontFamily: SANS }}>
               {t.comingKicker}
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", lineHeight: 1.15 }}>
               {t.comingH2}
             </h2>
           </div>
@@ -303,7 +301,7 @@ export default function ThankYouPage() {
                 <p style={{
                   fontFamily: SERIF,
                   fontSize: "clamp(0.95rem,1.3vw,1.1rem)",
-                  fontStyle: "italic",
+                  
                   color: "rgba(255,255,255,0.82)",
                   lineHeight: 1.6,
                   margin: 0,
@@ -343,7 +341,7 @@ export default function ThankYouPage() {
           <p style={{
             fontFamily: SERIF,
             fontSize: "clamp(1.3rem,2.2vw,1.75rem)",
-            fontStyle: "italic",
+            
             color: "rgba(255,255,255,0.9)",
             lineHeight: 1.55,
             letterSpacing: "-0.01em",
@@ -354,7 +352,7 @@ export default function ThankYouPage() {
           <p style={{
             fontFamily: SERIF,
             fontSize: "clamp(1.3rem,2.2vw,1.75rem)",
-            fontStyle: "italic",
+            
             color: "rgba(255,255,255,0.9)",
             lineHeight: 1.55,
             letterSpacing: "-0.01em",
@@ -392,12 +390,11 @@ export default function ThankYouPage() {
           transform: cta.visible ? "translateY(0)" : "translateY(20px)",
           transition: "all 0.8s ease",
         }}>
-          <h2 style={{
-            fontFamily: SERIF,
+          <h2 style={{ textTransform: "uppercase", fontFamily: SERIF,
             fontSize: "clamp(2rem,4.5vw,3.25rem)",
             fontWeight: 700,
             lineHeight: 1.1,
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.005em",
             marginBottom: 24,
           }}>
             {t.waitH2}
@@ -405,7 +402,7 @@ export default function ThankYouPage() {
           <p style={{
             fontFamily: SERIF,
             fontSize: "clamp(1rem,1.5vw,1.2rem)",
-            fontStyle: "italic",
+            
             color: "rgba(255,255,255,0.65)",
             lineHeight: 1.6,
             maxWidth: 560,
@@ -417,7 +414,7 @@ export default function ThankYouPage() {
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/strawberry-method" style={{
               display: "inline-block",
-              background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`,
+              background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`,
               color: "#fff",
               padding: "16px 36px",
               borderRadius: 100,
@@ -450,7 +447,7 @@ export default function ThankYouPage() {
             <p style={{ fontFamily: SANS, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 8px" }}>
               {t.contact}
             </p>
-            <a href="mailto:hamza@gostrawberryprod.com" style={{ fontFamily: SERIF, fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>
+            <a href="mailto:hamza@gostrawberryprod.com" style={{ fontFamily: SERIF, fontSize: "1rem",  color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>
               hamza@gostrawberryprod.com
             </a>
           </div>

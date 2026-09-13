@@ -34,7 +34,7 @@ export default async function AuditSamplePage({
         <div className="shell-sm relative">
           <div className="pill mb-8">{d.eyebrow}</div>
           <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.3em] text-chalk-55">{d.title}</div>
-          <h1 className="mb-5 font-serif text-[clamp(3rem,12vw,7rem)] font-bold leading-[0.95] tracking-[-0.04em]">
+          <h1 className="mb-5 font-serif text-[clamp(3rem,12vw,7rem)] font-bold leading-[0.95] tracking-[-0.005em] uppercase">
             <span className="text-gradient">{d.house}</span>
           </h1>
           <div className="font-sans text-[13px] uppercase tracking-[0.15em] text-chalk-40">{d.edition}</div>
@@ -72,7 +72,7 @@ export default async function AuditSamplePage({
       {/* SCOPE — the boundary against the 4,500€ commission, stated inside the sample */}
       <section className="px-gutter py-14">
         <div className="relative mx-auto max-w-[820px] border border-hair-strong bg-white/[0.02] p-8 md:p-12">
-          <h2 className="mb-4 font-serif text-[clamp(1.35rem,2.6vw,1.95rem)] font-bold tracking-[-0.02em]">
+          <h2 className="mb-4 font-serif text-[clamp(1.35rem,2.6vw,1.95rem)] font-bold tracking-[-0.005em] uppercase">
             {d.scopeTitle}
           </h2>
           <p className="mb-7 font-sans text-[15.5px] leading-relaxed text-chalk-75">{d.scopeBody}</p>
@@ -89,7 +89,7 @@ export default async function AuditSamplePage({
 
       <section className="section pb-28 text-center">
         <div className="mx-auto max-w-[720px]">
-          <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">{d.ctaTitle}</h2>
+          <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.005em] uppercase">{d.ctaTitle}</h2>
           <p className="lede mx-auto mb-9 max-w-[620px]">{d.ctaBody}</p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.audit490} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>

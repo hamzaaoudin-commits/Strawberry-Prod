@@ -212,7 +212,7 @@ export default function StrawberryMethodPage() {
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 40, textTransform: "uppercase" }}>
             {t.badge}
           </div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 32 }}>
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2.5rem,7vw,5.5rem)", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.005em", marginBottom: 32 }}>
             {t.h1a}<br />
             <span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{t.h1b}</span>
           </h1>
@@ -229,7 +229,7 @@ export default function StrawberryMethodPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", opacity: reveal.visible ? 1 : 0, transform: reveal.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 80 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lAcronym}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em" }}>
               {t.fiveH2}
             </h2>
           </div>
@@ -284,7 +284,7 @@ export default function StrawberryMethodPage() {
         <div style={{ maxWidth: 1100, margin: "0 auto", opacity: why.visible ? 1 : 0, transform: why.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lFramework}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", marginBottom: 24, lineHeight: 1.15 }}>
               {t.whyH2a}<br />{t.whyH2b}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(1rem, 1.3vw, 1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
@@ -297,7 +297,7 @@ export default function StrawberryMethodPage() {
                 <div style={{ fontFamily: SERIF, fontSize: "2rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 24 }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "1.35rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.02em" }}>{p.title}</h3>
+                <h3 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "1.35rem", fontWeight: 600, marginBottom: 16, letterSpacing: "-0.005em" }}>{p.title}</h3>
                 <p style={{ fontFamily: SANS, fontSize: "0.95rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>{p.body}</p>
               </div>
             ))}
@@ -311,7 +311,7 @@ export default function StrawberryMethodPage() {
 
           <div style={{ textAlign: "center", marginBottom: 96 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lStages}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em" }}>
               {t.stagesH2}
             </h2>
           </div>
@@ -376,7 +376,7 @@ export default function StrawberryMethodPage() {
         <div style={{ maxWidth: 900, margin: "0 auto", opacity: dependency.visible ? 1 : 0, transform: dependency.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.lWorks}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", marginBottom: 24, lineHeight: 1.15 }}>
               {t.consH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "1rem", color: "rgba(255,255,255,0.6)", maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
@@ -406,7 +406,7 @@ export default function StrawberryMethodPage() {
 
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>{t.kickerArtifact}</div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", marginBottom: 28, lineHeight: 1.15 }}>
               {t.bridgeH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.65)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
@@ -468,7 +468,7 @@ export default function StrawberryMethodPage() {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${GLOW} 0%, transparent 60%)`, opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", opacity: cta.visible ? 1 : 0, transform: cta.visible ? "translateY(0)" : "translateY(20px)", transition: "all 0.8s ease" }}>
           <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>{t.kickerApplied}</div>
-          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
+          <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.005em", marginBottom: 32 }}>
             {t.ctaH2a}<br />{t.ctaH2b}
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>

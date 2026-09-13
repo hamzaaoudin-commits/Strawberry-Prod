@@ -3,8 +3,8 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 const ARTICLES = [
   {
@@ -78,7 +78,7 @@ const ARTICLES = [
       <>
         <p><strong>Important:</strong> In accordance with article L.221-28 of the French Consumer Code, the Client is informed that the Service, highly personalized and designed bespoke for their business, cannot be subject to the standard 14-day withdrawal right once its execution has begun with their express agreement.</p>
         <p style={{ marginTop: 16 }}>The Provider nevertheless offers an adapted three-stage refund policy:</p>
-        <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(230,57,70,0.2)", background: "rgba(230,57,70,0.04)" }}>
+        <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(255,34,51,0.2)", background: "rgba(255,34,51,0.04)" }}>
           <p><strong>A. Before the service starts:</strong></p>
           <p style={{ marginTop: 8 }}>Within seven (7) days of payment, and as long as the extraction interview has not taken place, the Client may request order cancellation and obtain a <strong>full refund (100%)</strong> within fifteen (15) days.</p>
         </div>
@@ -218,8 +218,8 @@ export default function TermsPage() {
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>
             Contract Document
           </div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 24 }}>
-            Terms of <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Sale.</span>
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.005em", marginBottom: 24 }}>
+            Terms of <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Sale.</span>
           </h1>
           <p style={{ fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.6 }}>
             Conditions applicable to any service ordered from Strawberry Production (Hamza El Jaouahiry, French sole proprietorship).
@@ -246,7 +246,7 @@ export default function TermsPage() {
               <div style={{ fontFamily: SERIF, fontSize: "1.3rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.02em" }}>
                 Article {String(i + 1).padStart(2, "0")}.
               </div>
-              <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.2 }}>
+              <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.005em", marginBottom: 24, lineHeight: 1.2 }}>
                 {s.title}
               </h2>
               <div style={{ fontFamily: SANS, fontSize: "0.98rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.75 }}>
@@ -259,7 +259,7 @@ export default function TermsPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 12, textTransform: "uppercase" }}>
               Last updated
             </div>
-            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontStyle: "italic", margin: 0 }}>
+            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)",  margin: 0 }}>
               May 30, 2026
             </p>
           </div>

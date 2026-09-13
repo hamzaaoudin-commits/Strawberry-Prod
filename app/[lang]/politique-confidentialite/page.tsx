@@ -3,8 +3,8 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 const SECTIONS = [
   {
@@ -42,7 +42,7 @@ const SECTIONS = [
       <>
         <p>Strawberry Production collecte uniquement les données strictement nécessaires aux finalités décrites ci-dessous.</p>
 
-        <div style={{ marginTop: 20, padding: 20, border: "1px solid rgba(230,57,70,0.2)", background: "rgba(230,57,70,0.04)" }}>
+        <div style={{ marginTop: 20, padding: 20, border: "1px solid rgba(255,34,51,0.2)", background: "rgba(255,34,51,0.04)" }}>
           <p><strong>A. Formulaire de contact</strong></p>
           <p style={{ marginTop: 8 }}>Données collectées : nom, adresse email, objectif principal (sélection), message libre.</p>
           <p style={{ marginTop: 8 }}><strong>Finalité :</strong> répondre à votre demande de contact et engager une éventuelle conversation commerciale.</p>
@@ -204,8 +204,8 @@ export default function PolitiqueConfidentialitePage() {
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>
             Protection des données — RGPD
           </div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5.5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 24 }}>
-            Politique de <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>confidentialité.</span>
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2.25rem,5.5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.005em", marginBottom: 24 }}>
+            Politique de <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>confidentialité.</span>
           </h1>
           <p style={{ fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.6 }}>
             Comment Strawberry Production collecte, utilise et protège vos données personnelles, en stricte conformité avec le RGPD et la loi française.
@@ -226,7 +226,7 @@ export default function PolitiqueConfidentialitePage() {
               <div style={{ fontFamily: SERIF, fontSize: "1.3rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.02em" }}>
                 {String(i + 1).padStart(2, "0")}.
               </div>
-              <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.2 }}>
+              <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.005em", marginBottom: 24, lineHeight: 1.2 }}>
                 {s.title}
               </h2>
               <div style={{ fontFamily: SANS, fontSize: "0.98rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.75 }}>
@@ -239,7 +239,7 @@ export default function PolitiqueConfidentialitePage() {
             <div style={{ fontSize: 11, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 12, textTransform: "uppercase" }}>
               Dernière mise à jour
             </div>
-            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontStyle: "italic", margin: 0 }}>
+            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)",  margin: 0 }}>
               30 mai 2026
             </p>
           </div>

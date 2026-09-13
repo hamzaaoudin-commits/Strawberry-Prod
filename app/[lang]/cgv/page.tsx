@@ -3,8 +3,8 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
-const COLOR = "#e63946"
-const GLOW = "rgba(230,57,70,0.35)"
+const COLOR = "#ff2233"
+const GLOW = "rgba(255,34,51,0.35)"
 
 const ARTICLES = [
   {
@@ -83,7 +83,7 @@ const ARTICLES = [
       <>
         <p><strong>Important :</strong> Conformément à l&apos;article L.221-28 du Code de la consommation, le Client est informé que la Prestation, hautement personnalisée et conçue sur mesure pour son entreprise, ne peut faire l&apos;objet d&apos;un droit de rétractation classique de 14 jours dès lors que son exécution a commencé avec son accord exprès.</p>
         <p style={{ marginTop: 16 }}>Le Prestataire propose néanmoins une politique de remboursement adaptée, en trois temps :</p>
-        <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(230,57,70,0.2)", background: "rgba(230,57,70,0.04)" }}>
+        <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(255,34,51,0.2)", background: "rgba(255,34,51,0.04)" }}>
           <p><strong>A. Avant le démarrage de la prestation :</strong></p>
           <p style={{ marginTop: 8 }}>Dans les sept (7) jours suivant le paiement, et tant que l&apos;entretien d&apos;extraction n&apos;a pas eu lieu, le Client peut demander l&apos;annulation de la commande et obtenir un <strong>remboursement intégral (100%)</strong>, sous quinze (15) jours.</p>
         </div>
@@ -227,8 +227,8 @@ export default function CGVPage() {
           <div style={{ display: "inline-block", padding: "8px 20px", border: `1px solid ${COLOR}`, borderRadius: 100, fontSize: 11, letterSpacing: "0.2em", color: COLOR, marginBottom: 32, textTransform: "uppercase" }}>
             Document contractuel
           </div>
-          <h1 style={{ fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 24 }}>
-            Conditions générales <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff1a1a)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>de vente.</span>
+          <h1 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2.25rem,5vw,3.75rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.005em", marginBottom: 24 }}>
+            Conditions générales <br /><span style={{ background: `linear-gradient(135deg, ${COLOR}, #ff4d2e)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>de vente.</span>
           </h1>
           <p style={{ fontSize: "clamp(0.95rem,1.3vw,1.1rem)", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto", lineHeight: 1.6 }}>
             Conditions applicables à toute prestation commandée auprès de Strawberry Production (Hamza El Jaouahiry, micro-entreprise).
@@ -251,7 +251,7 @@ export default function CGVPage() {
               <div style={{ fontFamily: SERIF, fontSize: "1.3rem", color: COLOR, fontWeight: 700, lineHeight: 1, marginBottom: 12, letterSpacing: "-0.02em" }}>
                 Article {String(i + 1).padStart(2, "0")}.
               </div>
-              <h2 style={{ fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: 24, lineHeight: 1.2 }}>
+              <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(1.4rem,2.2vw,1.85rem)", fontWeight: 600, letterSpacing: "-0.005em", marginBottom: 24, lineHeight: 1.2 }}>
                 {s.title}
               </h2>
               <div style={{ fontFamily: SANS, fontSize: "0.98rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.75 }}>
@@ -264,7 +264,7 @@ export default function CGVPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.25em", color: "rgba(255,255,255,0.5)", marginBottom: 12, textTransform: "uppercase" }}>
               Dernière mise à jour
             </div>
-            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontStyle: "italic", margin: 0 }}>
+            <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)",  margin: 0 }}>
               30 mai 2026
             </p>
           </div>

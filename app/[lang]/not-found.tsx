@@ -23,7 +23,7 @@ export default function NotFound() {
 
         <div className="mx-auto mb-8 h-px w-10 bg-brand" aria-hidden />
 
-        <h1 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-tight tracking-[-0.02em]">
+        <h1 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-tight tracking-[-0.005em] uppercase">
           {t.h1}
         </h1>
 
@@ -31,7 +31,7 @@ export default function NotFound() {
           {t.p}
         </p>
 
-        <Link href="/" className="btn-primary px-10 py-4 tracking-[0.06em] shadow-[0_12px_40px_rgba(230,57,70,0.35)]">
+        <Link href="/" className="btn-primary px-10 py-4 tracking-[0.06em] shadow-[0_12px_40px_rgba(255,34,51,0.35)]">
           {t.cta}
         </Link>
       </div>

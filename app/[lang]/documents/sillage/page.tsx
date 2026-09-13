@@ -40,7 +40,7 @@ export default async function SampleAuditPage({
 
           <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.3em] text-chalk-55">{d.title}</div>
 
-          <h1 className="mb-5 font-serif text-[clamp(3rem,12vw,7rem)] font-bold leading-[0.95] tracking-[-0.04em]">
+          <h1 className="mb-5 font-serif text-[clamp(3rem,12vw,7rem)] font-bold leading-[0.95] tracking-[-0.005em] uppercase">
             <span className="text-gradient">{d.house}</span>
           </h1>
 
@@ -50,11 +50,11 @@ export default async function SampleAuditPage({
 
       {/* PARTIAL-EXTRACT NOTICE — the honest frame, stated up front */}
       <section className="px-gutter pb-16">
-        <div className="relative mx-auto max-w-[820px] border border-brand-hair bg-[linear-gradient(180deg,rgba(230,57,70,0.06)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-12">
+        <div className="relative mx-auto max-w-[820px] border border-brand-hair bg-[linear-gradient(180deg,rgba(255,34,51,0.06)_0%,rgba(10,10,10,0.6)_100%)] p-8 md:p-12">
           <span className="bracket-tl" aria-hidden />
           <span className="bracket-br" aria-hidden />
 
-          <h2 className="mb-4 font-serif text-[clamp(1.35rem,2.6vw,1.95rem)] font-bold tracking-[-0.02em]">
+          <h2 className="mb-4 font-serif text-[clamp(1.35rem,2.6vw,1.95rem)] font-bold tracking-[-0.005em] uppercase">
             {d.partialTitle}
           </h2>
 
@@ -117,7 +117,7 @@ export default async function SampleAuditPage({
       {/* CTA */}
       <section className="section pb-28 text-center">
         <div className="mx-auto max-w-[720px]">
-          <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.02em]">
+          <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.005em] uppercase">
             {d.ctaTitle}
           </h2>
           <p className="lede mx-auto mb-9 max-w-[620px]">{d.ctaBody}</p>

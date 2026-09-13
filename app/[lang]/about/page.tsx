@@ -362,7 +362,7 @@ export default function AboutPage() {
                 <div style={{ fontFamily: SERIF, fontSize: "1.6rem", color: COLOR, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.03em" }}>
                   {r.n}.
                 </div>
-                <h3 style={{ fontFamily: SERIF, fontSize: "clamp(1.25rem,1.8vw,1.55rem)", fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
+                <h3 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(1.25rem,1.8vw,1.55rem)", fontWeight: 600, letterSpacing: "-0.005em", lineHeight: 1.25, color: "#fff", margin: 0 }}>
                   {r.title}
                 </h3>
                 <p style={{ fontFamily: SANS, fontSize: "0.96rem", color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0 }}>
@@ -395,7 +395,7 @@ export default function AboutPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               {t.inheritKicker}
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 28, lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", marginBottom: 28, lineHeight: 1.15 }}>
               {t.inheritH2}
             </h2>
             <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
@@ -495,7 +495,7 @@ export default function AboutPage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               {t.founderKicker}
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 16, lineHeight: 1.15 }}>
+            <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, letterSpacing: "-0.005em", marginBottom: 16, lineHeight: 1.15 }}>
               {t.founderName}
             </h2>
             <div style={{ width: 32, height: 1, background: COLOR, margin: "0 auto 0" }} />
@@ -571,7 +571,7 @@ export default function AboutPage() {
       >
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center," + GLOW + " 0%,transparent 60%)", opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
-          <h2 style={{ fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 32 }}>
+          <h2 style={{ textTransform: "uppercase", fontFamily: SERIF, fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.005em", marginBottom: 32 }}>
             {t.ctaH2}
           </h2>
           <p style={{ fontFamily: SANS, fontSize: "clamp(1rem,1.4vw,1.15rem)", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, maxWidth: 620, margin: "0 auto 48px" }}>
