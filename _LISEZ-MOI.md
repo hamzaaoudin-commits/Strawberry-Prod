@@ -1,39 +1,43 @@
-# Strawberry — le défilement de la tournée
+# Strawberry — le fondu de la tournée, réglé
 
 1 fichier.
 
-## Pourquoi c'était illisible
+## Les deux erreurs successives
 
-Ma formule d'opacité était `1 - distance × 1.35`. À mi-chemin entre deux
-scènes, chacune est à une demi-distance, donc chacune se retrouvait à
-**32 % d'opacité en même temps** : deux textes superposés, et ça sur la
-moitié du parcours. C'est exactement ce que montre votre capture — BRAND
-et THE PRODUCT l'un dans l'autre.
+**Première version** — l'opacité décroissait linéairement sur toute la
+distance. À mi-chemin, les deux scènes étaient à 32 % : deux textes
+superposés et illisibles.
 
-## Le nouveau fondu
+**Deuxième version** — j'ai resserré, mais la scène sortante atteignait
+zéro **avant** que l'entrante ne commence à monter. Résultat : un écran
+presque noir sur une partie du défilement, ce que montrait votre capture.
 
-**Un plateau, puis une chute rapide.** La scène reste pleinement visible
-tant qu'elle est proche, s'efface sur les derniers 52 % de distance, et
-atteint zéro avant que la suivante ne devienne lisible. Il n'y a plus de
-moment où deux textes se disputent l'écran.
+Les deux fois, j'ai réglé une extrémité sans vérifier l'autre.
 
-**Une courbe en S** (`t²(3−2t)`) plutôt qu'une droite. Une chute linéaire
-laisse deux cassures perceptibles — au départ et à l'arrivée du fondu.
-La courbe les supprime : c'est ce qui fait la différence entre un
-changement qu'on subit et un qu'on ne remarque pas.
+## Ce qui manquait
 
-## Deux réglages de mouvement
+La règle à tenir est simple et je ne l'avais pas posée : **la somme des
+opacités doit valoir 1 à tout instant.** En dessous, l'écran s'assombrit ;
+au-dessus, les textes se superposent.
 
-**Le déplacement passe de 7vh à 3,5vh.** À 7, le texte glissait encore
-sous les yeux pendant qu'on le lisait.
+## Le réglage
 
-**Le zoom passe de 5,5 % à 3 %**, et la dérive du fond de 5 % à 3 %. Le
-relief reste, l'agitation part.
+Une fenêtre de fondu centrée sur le point de croisement et débordant de
+part et d'autre :
 
-## Un détail
+| Position | Scène A | Scène B | Somme |
+|---|---|---|---|
+| Sur A | 1 | 0 | **1** |
+| À 42 % | 1 | 0 | **1** |
+| À mi-chemin | 0,5 | 0,5 | **1** |
+| À 58 % | 0 | 1 | **1** |
 
-Une scène effacée gardait ses liens cliquables, superposés à la scène
-visible. `pointer-events` est désormais coupé sous 5 % d'opacité.
+Vérifié par le calcul sur toute la course : la somme vaut 1 partout.
+
+Concrètement, une unité de distance vaut environ 150vh de défilement. Le
+maintien à pleine opacité couvre donc plus de 120vh, et le croisement une
+vingtaine — assez bref pour qu'on ne lise jamais deux textes, assez long
+pour qu'on ne voie aucune coupure.
 
 ## Vérification
 

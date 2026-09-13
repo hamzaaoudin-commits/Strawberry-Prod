@@ -163,7 +163,24 @@ export function TourSection() {
         // pleine tant qu'elle est proche, puis s'efface vite — et la courbe
         // en S (`t*t*(3-2t)`) supprime les deux cassures qu'une chute
         // linéaire laisse au départ et à l'arrivée.
-        const t = ad >= 0.52 ? 0 : 1 - ad / 0.52
+        // Maintien large, croisement bref.
+        //
+        // Version précédente : l'opacité décroissait sur toute la distance,
+        // donc entre deux scènes les deux étaient quasiment à zéro — un
+        // écran presque noir sur une bonne part du défilement.
+        //
+        // La fenêtre de fondu est centrée sur le point de croisement et
+        // déborde de part et d'autre : à mi-chemin, la sortante et
+        // l'entrante sont toutes deux à 50 %, donc leur somme vaut 1 et
+        // l'écran ne s'assombrit jamais. Hors de cette fenêtre — soit plus
+        // des trois quarts du parcours — une seule scène est visible, à
+        // pleine opacité.
+        //
+        // Une unité vaut environ 150vh de défilement : le maintien couvre
+        // donc plus de 120vh et le croisement une vingtaine. Assez bref
+        // pour qu'on ne lise jamais deux textes, assez long pour qu'on ne
+        // voie pas de coupure.
+        const t = Math.max(0, Math.min(1, (0.58 - ad) / 0.16))
         const eased = t * t * (3 - 2 * t)
         sc.style.opacity = String(eased)
         // Moins de déplacement et de zoom : à 7vh, le texte glissait encore
