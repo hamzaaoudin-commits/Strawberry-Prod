@@ -35,8 +35,8 @@ const T = {
     commonLabel: "Dans les quatre cas",
     common: [
       "20 à 30 pages écrites à la main, livrées en PDF sous 7 à 14 jours",
+      "3 à 5 concurrents décortiqués, phrase par phrase, avec le terrain qu'ils laissent libre",
       "3 à 5 mouvements hiérarchisés, avec ce que chacun coûte et ce qu'il débloque",
-      "La liste de ce qu'il faut cesser de dire, et pourquoi",
     ],
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
@@ -46,28 +46,28 @@ const T = {
         k: "Marques & entreprises",
         t: "BRAND",
         line: "Le devis part sans une ligne de justification. Le prix n'est plus ce qu'on discute.",
-        points: ["**3 à 5 concurrents décortiqués** : leur phrase exacte, l'argument qu'ils portent, celui qu'ils n'osent pas", "**Votre discours mis à plat** : la phrase de votre site, celle de vos commerciaux, celle de vos équipes — et l'écart entre les trois"],
+        points: ["Vos quatre discours mis face à face : le site, les commerciaux, les équipes, la plaquette", "La position que personne d'autre ne peut revendiquer sans mentir"],
         href: "/marques-entreprises",
       },
       {
         k: "Produits",
         t: "THE PRODUCT",
         line: "On le prend en main et on comprend pourquoi il a été fait comme ça.",
-        points: ["**3 à 5 produits concurrents décortiqués** : leur promesse exacte, l'argument mis en avant, l'angle laissé libre", "**Votre produit relu comme un acheteur** : page produit, emballage, notice, et ce que disent vos avis"],
+        points: ["L'intention derrière vos choix de conception, mise en mots", "Ce que votre emballage dit avant vous, et ce qu'il devrait dire"],
         href: "/the-product",
       },
       {
         k: "Lieux",
         t: "THE ROOM",
         line: "N'importe qui en salle sait quoi filmer, et le quartier reconnaît le lieu avant d'en lire le nom.",
-        points: ["**3 à 5 adresses concurrentes décortiquées** : ce qu'elles revendiquent, et ce que vos clients en disent", "**Le monde de votre lieu écrit** : son heure, sa lumière, son casting, ses rituels"],
+        points: ["Le monde de votre lieu : son heure, sa lumière, son casting, ses rituels", "Ce que vos habitués répètent sans y penser, et ce qu'il faut en faire"],
         href: "/the-room",
       },
       {
         k: "Artistes & fondateurs",
         t: "THE NAME",
         line: "La sortie tombe et le public sait déjà où elle se range — parce que la précédente l'avait annoncée.",
-        points: ["**3 à 5 artistes de votre zone décortiqués** : leur bio, ce qu'ils occupent, la place qu'ils laissent", "**Le fil qui traverse vos sorties**, nommé et documenté projet par projet"],
+        points: ["Le fil qui traverse déjà vos sorties, nommé projet par projet", "La phrase que la presse devrait reprendre à la place des siennes"],
         href: "/the-name",
       },
     ],
@@ -80,8 +80,8 @@ const T = {
     commonLabel: "In all four cases",
     common: [
       "20 to 30 pages written by hand, delivered as a PDF within 7 to 14 days",
+      "3 to 5 competitors taken apart, sentence by sentence, with the ground they leave open",
       "3 to 5 ranked moves, with what each one costs and unlocks",
-      "The list of what to stop saying, and why",
     ],
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
@@ -91,28 +91,28 @@ const T = {
         k: "Brands & companies",
         t: "BRAND",
         line: "The quote goes out without a line of justification. Price is no longer what gets discussed.",
-        points: ["**3 to 5 competitors taken apart**: their exact sentence, the argument they carry, the one they avoid", "**Your own words laid out**: your site, your sales pitch, your teams — and the gap between the three"],
+        points: ["Your four versions put side by side: the site, the salespeople, the teams, the brochure", "The position nobody else can claim without lying"],
         href: "/marques-entreprises",
       },
       {
         k: "Products",
         t: "THE PRODUCT",
         line: "You pick it up and you understand why it was made this way.",
-        points: ["**3 to 5 competing products taken apart**: their exact promise, the argument they lead with, the angle left open", "**Your product read as a buyer would**: product page, packaging, manual, and what your reviews say"],
+        points: ["The intent behind your design choices, put into words", "What your packaging says before you do, and what it should say"],
         href: "/the-product",
       },
       {
         k: "Venues",
         t: "THE ROOM",
         line: "Anyone on the floor knows what to film, and the neighbourhood recognises the place before reading its name.",
-        points: ["**3 to 5 competing venues taken apart**: what they claim, and what your customers say about them", "**The world of your venue written**: its hour, its light, its cast, its rituals"],
+        points: ["The world of your venue: its hour, its light, its cast, its rituals", "What your regulars repeat without thinking, and what to do with it"],
         href: "/the-room",
       },
       {
         k: "Artists & founders",
         t: "THE NAME",
         line: "The release lands and the audience already knows where it sits — because the last one announced it.",
-        points: ["**3 to 5 artists in your lane taken apart**: their bio, what they hold, the place they leave open", "**The thread running through your releases**, named and documented project by project"],
+        points: ["The thread already running through your releases, named project by project", "The sentence the press should be quoting instead of its own"],
         href: "/the-name",
       },
     ],
@@ -313,11 +313,10 @@ export function TourSection() {
                 <ul className="ts-points list-none p-0">
                   {s.points.map((x) => (
                     <li key={x}>
-                      {/* Le segment entre ** passe en gras : c'est le
-                          livrable lui-même, le reste le précise. */}
-                      {x.split("**").map((part, j) =>
-                        j % 2 === 1 ? <b key={j}>{part}</b> : <span key={j}>{part}</span>,
-                      )}
+                      {/* Les puces sont maintenant des phrases entières et
+                          non des libellés suivis d'une précision : le gras
+                          n'aurait plus rien à isoler. */}
+                      {x}
                     </li>
                   ))}
                 </ul>

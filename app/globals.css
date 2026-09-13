@@ -1208,12 +1208,9 @@ footer {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.55);
 }
-/* Le livrable en blanc, sa précision en gris : l'œil descend la liste en
-   ne lisant que les gras, puis revient sur ce qui l'intéresse. */
-.ts-points li b {
-  font-weight: 600;
-  color: #fff;
-}
+/* Les puces étant devenues des phrases entières, elles se lisent en blanc
+   cassé plutôt qu'en gris : il n'y a plus de libellé à détacher du reste. */
+.ts-points li { color: rgba(255,255,255,0.72); }
 .ts-points li::before {
   content: "";
   position: absolute;
