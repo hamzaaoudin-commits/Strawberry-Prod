@@ -26,6 +26,8 @@ const T = {
       { t: "The Method", d: "The five stages, in full" },
       { t: "The Instruments", d: "What to refuse, and how" },
       { t: "The Demonstration", d: "Three houses, end to end" },
+      { t: "The Objections", d: "What gets raised against a doctrine, and what holds" },
+      { t: "The Holding", d: "What remains once nobody is watching" },
     ],
   },
   fr: {
@@ -43,6 +45,8 @@ const T = {
       { t: "La Méthode", d: "Les cinq étapes, en entier" },
       { t: "Les Instruments", d: "Ce qu'il faut refuser, et comment" },
       { t: "La Démonstration", d: "Trois maisons, de bout en bout" },
+      { t: "Les Objections", d: "Ce qu'on oppose à une doctrine, et ce qui tient" },
+      { t: "La Tenue", d: "Ce qui reste quand personne ne regarde plus" },
     ],
   },
 }
@@ -90,11 +94,16 @@ export function BookSection({ lang }: { lang: Lang }) {
             <p className="mb-6 font-sans text-[16px] leading-[1.8] text-chalk-65">{t.body}</p>
 
             {/* Le sommaire : ce qui distingue un livre d'une plaquette. */}
-            <div className="mb-7 grid gap-px border border-white/[0.07] bg-white/[0.07] [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]">
+            {/* Trois colonnes, pas auto-fit.
+                Avec auto-fit, six entrées pouvaient s'afficher sur quatre
+                colonnes puis deux, laissant deux cases vides en bas — le
+                défaut qu'on vient de corriger. Six se divise par trois et
+                par deux : les deux grilles sont toujours pleines. */}
+            <div className="mb-7 grid grid-cols-2 gap-px border border-white/[0.07] bg-white/[0.07] sm:grid-cols-3">
               {t.parts.map((p, i) => (
                 <div key={p.t} className="bg-ink px-4 py-4">
                   <div className="mb-1.5 font-serif text-[15px] font-bold text-brand">
-                    {["I", "II", "III", "IV"][i]}
+                    {["I", "II", "III", "IV", "V", "VI"][i]}
                   </div>
                   <div className="mb-1 font-serif text-[13.5px] leading-tight text-white">{p.t}</div>
                   <div className="font-sans text-[10.5px] leading-snug text-chalk-40">{p.d}</div>
