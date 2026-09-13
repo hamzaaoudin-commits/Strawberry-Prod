@@ -1,30 +1,36 @@
-# Strawberry — la phrase de clôture sans surlignage
+# Strawberry — l'italique retiré là où je l'avais mis
 
-2 fichiers.
+3 fichiers.
 
 ## Ce qui change
 
-« Tout ça existe déjà chez vous. Il faut juste l'écrire. » redevient une
-ligne en italique simple, en crème.
+Trois endroits que j'avais passés en Instrument Serif italique repassent
+en Bricolage, la police de titre, en demi-gras :
 
-## Pourquoi c'était moche, concrètement
+- **La projection de chaque scène** — « Le devis part sans une ligne de
+  justification. »
+- **La phrase de clôture** de la tournée et des pages d'offres — « Tout ça
+  existe déjà chez vous. »
+- **La classe `accroche`** en général, qui servait à ces deux usages.
 
-Le surlignage tient sur quelques mots : le fond rouge découpe une forme
-autour d'un groupe court, et c'est ce contour irrégulier qui fait l'effet.
-Sur une phrase entière, le fond devient un **rectangle plein** — plus un
-surlignage, une barre. Et placée juste au-dessus du bouton « Commander
-l'audit », cette barre rouge entrait en concurrence avec lui : deux blocs
-rouges empilés, dont un seul est cliquable.
+## Pourquoi c'était faux
 
-Le rouge est donc gardé pour la seule action de la section.
+L'italique fait lire une phrase comme un **aparté ou une citation** —
+quelque chose qui vient d'ailleurs, qu'on rapporte. Or ces lignes-là
+affirment ce que le client obtient : ce sont les phrases les plus
+assertives de la page. Le poids du display les porte, l'italique les
+affaiblissait.
 
-## Corrigé aussi sur les pages d'offres
+Et ça évitait d'introduire une quatrième voix typographique là où trois
+suffisent : Bricolage pour ce qui affirme, Hanken pour ce qui explique,
+Space Mono pour ce qui étiquette.
 
-La même phrase, avec le même traitement, fermait la section « le travail »
-des quatre pages de terrain. Elle est alignée : italique, crème, sans
-fond.
+## Ce que je n'ai pas touché
+
+Les italiques d'origine de la charte : la phrase sous le wordmark des
+pages d'offres, et les `em` du constat. Elles font partie du design de
+NOCTA, pas de mes ajouts. Dites-moi si vous voulez qu'elles partent aussi.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Plus aucun surlignage sur les pages de
-terrain.
+Contrôle de types : zéro erreur.

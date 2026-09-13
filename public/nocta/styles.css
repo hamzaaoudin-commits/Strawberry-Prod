@@ -649,7 +649,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 .ts-t{ font-family:var(--display); font-weight:800; letter-spacing:-.03em;
   font-size:clamp(3rem,11vw,7.5rem); line-height:.95; margin:.6rem 0 1.2rem;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.ts-line{ font-family:var(--serif); font-style:italic; font-size:clamp(1.15rem,2.6vw,1.7rem);
+.ts-line{ font-family:var(--display); font-weight:600; font-style:normal; font-size:clamp(1.15rem,2.6vw,1.7rem);
   color:var(--cream); max-width:44ch; line-height:1.4; }
 .ts-list{ margin-top:1.6rem; display:grid; gap:.9rem; max-width:52ch; }
 .ts-list li{ display:grid; gap:.15rem; padding-left:1.1rem; position:relative; line-height:1.45; }

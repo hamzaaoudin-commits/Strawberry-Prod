@@ -952,11 +952,17 @@ body::after {
    Disponible partout sur le site, à poser là où une phrase doit sonner
    plutôt qu'informer. */
 @utility accroche {
-  font-family: var(--font-accent);
-  font-style: italic;
+  /* Police de titre, pas de serif italique.
+     L'italique fait lire une phrase comme un aparté ou une citation ; ces
+     lignes-là affirment ce que le client obtient. Le poids du display
+     porte mieux l'affirmation, et reste dans la charte plutôt que
+     d'introduire une quatrième voix typographique. */
+  font-family: var(--font-serif);
+  font-weight: 600;
   font-size: clamp(1.2rem, 2.6vw, 1.9rem);
   line-height: 1.25;
-  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* ===========================================================================
@@ -1124,7 +1130,7 @@ footer {
 .ts-t{ font-family:var(--display); font-weight:800; letter-spacing:-.03em;
   font-size:clamp(3rem,11vw,7.5rem); line-height:.95; margin:.6rem 0 1.2rem;
   background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.ts-line{ font-family:var(--serif); font-style:italic; font-size:clamp(1.15rem,2.6vw,1.7rem);
+.ts-line{ font-family:var(--display); font-weight:600; font-style:normal; font-size:clamp(1.15rem,2.6vw,1.7rem);
   color:var(--cream); max-width:44ch; line-height:1.4; }
 .ts-list{ margin-top:1.6rem; display:grid; gap:.9rem; max-width:52ch; }
 .ts-list li{ display:grid; gap:.15rem; padding-left:1.1rem; position:relative; line-height:1.45; }
