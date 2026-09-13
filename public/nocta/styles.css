@@ -774,16 +774,54 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 }
 
 /* ---------------------------------------------------------------------------
-   L'EXTRAIT — trois passages d'un audit, dans chaque page de terrain.
+   L'EXTRAIT — un fac-similé de page du document.
 
-   Remplace l'exemplaire VERSO qui vivait sur la page d'audit : un seul
-   exemple, et c'était celui d'une marque. Ici chaque terrain montre le
-   sien, donc le visiteur lit un extrait qui parle de son cas.
+   Trois cartes de citation ne montraient pas un document, elles montraient
+   trois phrases. Ici la section prend l'anatomie d'une page imprimée :
+   en-tête courant, numéros de pièce dans la marge, notes de marge, folio
+   en pied. Le visiteur voit ce qu'il va recevoir, pas ce qu'on en dit.
    --------------------------------------------------------------------------- */
-.extrait-grid{ margin-top:2.6rem; display:grid; gap:1px; background:var(--line-soft);
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
-.extrait-card{ background:var(--ink-2); padding:clamp(1.5rem,2.6vw,2.1rem); }
-.extrait-k{ display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.24em;
-  text-transform:uppercase; color:var(--coral); margin-bottom:1rem; }
-.extrait-card p{ margin:0; font-size:.98rem; line-height:1.65; color:var(--cream);
-  border-left:2px solid var(--coral); padding-left:1.1rem; }
+.ex-page{ margin-top:2.8rem; background:var(--ink-2); border:1px solid var(--line-soft);
+  border-radius:4px; overflow:hidden;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.8); }
+
+/* L'en-tête courant : ce qu'on lit en haut de chaque page d'un vrai
+   document relié. */
+.ex-page-head{ display:flex; justify-content:space-between; gap:1rem;
+  padding:1.1rem clamp(1.4rem,3.5vw,3rem); border-bottom:1px solid var(--line-soft);
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--smoke-dim); }
+
+.ex-body{ padding:clamp(1.8rem,4vw,3.4rem) clamp(1.4rem,3.5vw,3rem); }
+
+.ex-block{ display:grid; grid-template-columns:auto 1fr; gap:clamp(1.2rem,3vw,2.4rem);
+  padding-block:clamp(1.6rem,3vw,2.4rem); border-top:1px solid var(--line-soft); }
+.ex-block:first-child{ border-top:0; padding-top:0; }
+
+/* Le numéro de pièce, dans la marge, comme une référence de document. */
+.ex-num{ font-family:var(--mono); font-size:.78rem; letter-spacing:.1em; color:var(--coral);
+  padding-top:.35rem; }
+
+.ex-text h3{ font-family:var(--display); font-weight:700; font-size:clamp(1.05rem,2vw,1.3rem);
+  letter-spacing:-.01em; margin:0 0 .9rem; color:var(--cream); }
+/* Le corps garde un filet à gauche : c'est une citation du document, pas
+   notre commentaire. */
+.ex-text p{ margin:0; font-size:clamp(.95rem,1.5vw,1.04rem); line-height:1.72;
+  color:rgba(255,255,255,.82); border-left:2px solid var(--coral); padding-left:1.15rem; }
+
+/* La note de marge : l'annotation que porte un document de travail. */
+.ex-note{ display:block; margin-top:.9rem; padding-left:1.15rem;
+  font-family:var(--mono); font-size:.7rem; line-height:1.6; letter-spacing:.02em;
+  color:var(--smoke-dim); }
+.ex-note::before{ content:"— "; color:var(--coral); }
+
+.ex-page-foot{ display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  padding:1rem clamp(1.4rem,3.5vw,3rem); border-top:1px solid var(--line-soft);
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--smoke-dim); }
+.ex-folio{ color:var(--coral); letter-spacing:.1em; }
+
+@media (max-width:640px){
+  .ex-block{ grid-template-columns:1fr; gap:.6rem; }
+  .ex-num{ padding-top:0; }
+}

@@ -4,9 +4,15 @@
 (function () {
   const DICT = {
     fr: {
+      "ex.head": "Audit narratif · Lieux",
+      "ex.house": "La Table du Passe",
+      "ex.1.n": "Relevé sur la fiche Google, l'Instagram et quarante et un avis clients.",
+      "ex.2.n": "Quartier observé : les cinq adresses que vos clients citent aussi.",
+      "ex.3.n": "Priorité 1 sur 4. Les trois autres mouvements suivent en pages 22 et 23.",
+      "ex.foot": "Extrait des pages 4, 9 et 21 — le document en compte 24.",
       "ex.eyebrow": "Un extrait",
       "ex.title": "Ce que vous lisez, page 14.",
-      "ex.lead": "Trois passages d'un audit, sur un lieu inventé pour l'exercice : une table de quartier, vingt-huit couverts, ouverte depuis quatre ans.",
+      "ex.lead": "Trois passages d'un audit, sur un lieu inventé pour l'exercice : une table de quartier, vingt-huit couverts, ouverte depuis quatre ans. Mise en page d'origine.",
       "ex.1.k": "Le diagnostic",
       "ex.1.b": "« Votre fiche Google dit \u201ecuisine de saison\u201c. Quarante et un restaurants du même arrondissement le disent aussi. Ce que vos habitués racontent, eux, c'est la table six — celle près du passe, où l'on entend la cuisine. Elle n'apparaît nulle part dans ce que vous publiez. »",
       "ex.2.k": "La carte du quartier",
@@ -191,6 +197,12 @@
       "f.required": "Merci de remplir votre nom, le nom du lieu et votre email.",
     },
     en: {
+      "ex.head": "Narrative audit · Venues",
+      "ex.house": "La Table du Passe",
+      "ex.1.n": "Taken from the Google listing, Instagram and forty-one customer reviews.",
+      "ex.2.n": "District observed: the five venues your customers also name.",
+      "ex.3.n": "Priority 1 of 4. The other three moves follow on pages 22 and 23.",
+      "ex.foot": "Excerpt from pages 4, 9 and 21 — the document runs to 24.",
       "ex.eyebrow": "An excerpt",
       "ex.title": "What you read, page 14.",
       "ex.lead": "Three passages from an audit, on a venue invented for the exercise: a neighbourhood table, twenty-eight covers, open for four years.",

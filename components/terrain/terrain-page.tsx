@@ -169,20 +169,47 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="wrap">
 <span class="eyebrow reveal" data-i18n="ex.eyebrow">Un extrait</span>
 <h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Ce que vous lisez, page 14.</h2>
-<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Trois passages d'un audit réel, sur une maison inventée pour l'exercice. C'est le niveau de détail que vous recevez.</p>
-<div class="extrait-grid">
-<article class="extrait-card reveal d1">
-<span class="extrait-k" data-i18n="ex.1.k">Le diagnostic</span>
-<p data-i18n="ex.1.b">Extrait un.</p>
-</article>
-<article class="extrait-card reveal d2">
-<span class="extrait-k" data-i18n="ex.2.k">La carte du champ</span>
-<p data-i18n="ex.2.b">Extrait deux.</p>
-</article>
-<article class="extrait-card reveal d3">
-<span class="extrait-k" data-i18n="ex.3.k">Le mouvement</span>
-<p data-i18n="ex.3.b">Extrait trois.</p>
-</article>
+<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Trois passages d'un audit réel.</p>
+
+<div class="ex-page reveal d1">
+  <div class="ex-page-head">
+    <span data-i18n="ex.head">Audit narratif</span>
+    <span data-i18n="ex.house">Maison LOAM</span>
+  </div>
+
+  <div class="ex-body">
+    <div class="ex-block">
+      <div class="ex-num">02</div>
+      <div class="ex-text">
+        <h3 data-i18n="ex.1.k">Le diagnostic</h3>
+        <p data-i18n="ex.1.b">Extrait un.</p>
+        <aside class="ex-note" data-i18n="ex.1.n">Note de marge.</aside>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <div class="ex-num">05</div>
+      <div class="ex-text">
+        <h3 data-i18n="ex.2.k">La carte du champ</h3>
+        <p data-i18n="ex.2.b">Extrait deux.</p>
+        <aside class="ex-note" data-i18n="ex.2.n">Note de marge.</aside>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <div class="ex-num">11</div>
+      <div class="ex-text">
+        <h3 data-i18n="ex.3.k">Le mouvement</h3>
+        <p data-i18n="ex.3.b">Extrait trois.</p>
+        <aside class="ex-note" data-i18n="ex.3.n">Note de marge.</aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-page-foot">
+    <span data-i18n="ex.foot">Extrait des pages 4, 9 et 21 — le document en compte 24.</span>
+    <span class="ex-folio">14</span>
+  </div>
 </div>
 </div>
 </section>

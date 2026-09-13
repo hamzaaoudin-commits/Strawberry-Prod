@@ -1,49 +1,48 @@
-# Strawberry — un extrait par terrain, et la page audit retirée
+# Strawberry — l'extrait devient un fac-similé de page
 
-13 fichiers. **Supprimez `app/[lang]/brand-narrative-audit/layout.tsx`** à
-la main : il n'a plus d'objet et le zip ne peut pas retirer un fichier.
+6 fichiers.
 
-## La page audit disparaît
+## Ce qui n'allait pas
 
-Elle devient une redirection vers l'accueil. L'adresse a été indexée et
-diffusée, donc on ne la casse pas.
+Trois cartes de citation ne montraient pas un document : elles montraient
+trois phrases posées sur un fond. Le visiteur lisait notre discours sur
+l'audit, pas l'audit.
 
-**Tous les boutons « Commander l'audit » mènent maintenant au paiement
-Stripe** — barre de navigation, bandeau final, section offre, tournée, et
-les trois boutons des pages de terrain. Une étape de moins entre la
-décision et l'achat.
+## Ce que ça devient
 
-Retirée aussi du pied de page et du sitemap.
+La section prend **l'anatomie d'une page imprimée** :
 
-## Un extrait par terrain
+**Un en-tête courant**, comme en haut de chaque page d'un document relié :
+« AUDIT NARRATIF · MARQUES » à gauche, « MAISON LOAM » à droite.
 
-À la place de l'exemplaire VERSO, chaque page de terrain porte **trois
-passages d'un audit** sur une maison inventée pour l'exercice, placés
-juste après les cinq blocs de méthode — on montre le document une fois
-qu'on a expliqué comment il se fabrique.
+**Les numéros de pièce dans la marge** — 02, 05, 11. Ce ne sont pas des
+numéros d'ordre : ce sont les références des pièces dont proviennent les
+passages, ce qui dit au passage que le document en compte bien d'autres.
 
-- **BRAND** — LOAM, mobilier de bureau sur mesure. Le mot « sur mesure »
-  répété onze fois, le terrain vide du délai, le mouvement qui fait
-  défendre une durée plutôt qu'un prix.
-- **THE PRODUCT** — une cafetière inox. Les 1,2 kg qui sont un arbitrage
-  et non une caractéristique, la réparabilité que personne ne revendique.
-- **THE ROOM** — une table de quartier, vingt-huit couverts. « Cuisine de
-  saison » que quarante et un restaurants disent aussi, la table six près
-  du passe, filmer le passe plutôt que l'assiette.
-- **THE NAME** — un producteur de musique. L'enregistrement de terrain en
-  ouverture de chaque projet, que la bio ne mentionne pas.
+**Une note de marge sous chaque extrait**, en mono, introduite par un
+tiret rouge. C'est ce qui fait la différence entre une citation et un
+document de travail :
 
-Trois blocs par page : le diagnostic, la carte du champ, le mouvement. Ce
-sont de vraies phrases d'audit, citées entre guillemets, avec un filet
-rouge à gauche pour qu'on voie que c'est un extrait et non du discours.
+> — Relevé sur la page d'accueil, la plaquette PDF et six fiches produit.
+> — Concurrents retenus : ceux que vos commerciaux citent en rendez-vous.
+> — Priorité 1 sur 4. Les trois autres mouvements suivent en pages 22 et 23.
 
-## Pourquoi c'est meilleur qu'un seul exemplaire
+Ces notes disent **la méthode** sans qu'on ait à l'affirmer : d'où vient
+la matière, comment les concurrents ont été choisis, combien de mouvements
+il y a en tout.
 
-VERSO était une maison de reliure d'art. Un restaurateur ou un fabricant
-ne s'y projetait pas — et c'était le seul élément de preuve du site. Là,
-chacun lit un extrait qui parle de son cas.
+**Un pied de page avec le folio** : « Extrait des pages 4, 9 et 21 — le
+document en compte 24 », et le numéro de page en rouge à droite.
+
+**Une ombre portée basse** sous le bloc, qui le décolle de la page comme
+une feuille posée.
+
+## Les quatre maisons ont un nom
+
+LOAM pour les marques, la cafetière M-01 pour les produits, La Table du
+Passe pour les lieux, ORVAL pour les noms propres. Un exemple sans nom
+reste un exemple ; avec un nom, ça devient un cas.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées. Les trois pages de
-terrain ont exactement le même jeu de clés dans les deux langues.
+Contrôle de types : zéro erreur. Traductions validées.
