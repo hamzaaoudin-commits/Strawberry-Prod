@@ -168,7 +168,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <section class="section">
 <div class="wrap stats">
 <div class="stat card tilt reveal"><span class="num">01</span><div class="v" data-i18n="stat.1.v">2–3</div><div class="l" data-i18n="stat.1.l">Semaines, puis c'est à vous</div></div>
-<div class="stat card tilt reveal d1"><span class="num">02</span><div class="v" data-i18n="stat.2.v">20–30</div><div class="l" data-i18n="stat.2.l">Scripts prêts à tourner</div></div>
+<div class="stat card tilt reveal d1"><span class="num">02</span><div class="v" data-i18n="stat.2.v">3–5</div><div class="l" data-i18n="stat.2.l">Scripts prêts à tourner</div></div>
 <div class="stat card tilt reveal d2"><span class="num">03</span><div class="v" data-i18n="stat.3.v">1</div><div class="l" data-i18n="stat.3.l">Seule personne sur votre lieu</div></div>
 </div>
 </section>

@@ -1,53 +1,43 @@
-# Strawberry — prix, FAQ, et le CTA qui vend
+# Strawberry — les trois chiffres disent autre chose
 
-5 fichiers.
+5 fichiers. Le design du bloc est inchangé : mêmes numéros 01/02/03,
+même chiffre géant, même libellé en dessous.
 
-## 1. Le titre de la section prix
+## Ce qu'ils disaient
 
-**« Payé une fois. Gardé pour toujours. »** — et en anglais « Paid once.
-Kept for good. »
+7–14 jours, 20–30 pages, 490 € — c'est-à-dire le délai, le volume et le
+prix. Les trois sont déjà sur la home, et les trois sont **répétés plus
+bas sur la même page**, dans la carte de prix. Le bloc ne servait donc à
+rien à cet endroit.
 
-Elle fait le travail des deux cartes en six mots : une dépense qui se
-répète d'un côté, une acquisition qui reste de l'autre. Le contraste est
-posé avant même qu'on lise la comparaison.
+## Ce qu'ils disent maintenant
 
-## 2. La FAQ « et si ça ne m'apprend rien »
+Ils répondent aux trois objections que le visiteur a réellement à ce
+moment de la page, et dont aucune n'a de réponse ailleurs :
 
-L'ancienne réponse parlait d'autre chose — elle expliquait que le document
-est applicable par un tiers, ce qui ne répond pas à la question.
+| | | |
+|---|---|---|
+| **01** | **1 h** | De votre temps, questionnaire compris |
+| **02** | **3–5** | Concurrents décortiqués, phrase par phrase |
+| **03** | **0** | Abonnement, aucune dépendance |
 
-La nouvelle répond, et retourne l'objection :
+**« Combien ça va me coûter en temps ? »** — la première objection d'un
+dirigeant, avant même le prix. Une heure, c'est court et vérifiable.
 
-> Alors nous vous le disons, et c'est une réponse en soi : votre position
-> tient, ne la touchez pas. Ça arrive rarement — ce qu'un fondateur trouve
-> évident sur son métier n'apparaît presque jamais dans ce qu'il publie,
-> et c'est cet écart que le document mesure. Dans ce cas, vous aurez
-> économisé la refonte que vous envisagiez, ce qui coûte bien plus que
-> 490 €.
+**« Est-ce que c'est du sérieux ou du générique ? »** — « phrase par
+phrase » dit la profondeur mieux qu'un nombre de pages, qui peut être
+rempli de n'importe quoi.
 
-Trois choses en une : le cas est admis franchement, la raison pour
-laquelle il est rare est donnée — et elle est crédible parce qu'elle
-décrit le mécanisme —, et même ce cas a une valeur chiffrable.
+**« Est-ce que je vais être coincé ? »** — le zéro répond à la crainte de
+l'abonnement, et c'est exactement l'argument de la section prix qui suit :
+le bloc la prépare au lieu de la répéter.
 
-Déclinée par terrain : pour un produit c'est la refonte d'emballage
-évitée, pour un artiste c'est savoir que le problème est ailleurs et où le
-chercher.
+## Nettoyage
 
-## 3. Le CTA final
-
-**Plus aucune mention d'appel**, nulle part. Vérifié : zéro occurrence.
-
-- Surtitre : « On commence par un appel » → **« L'audit narratif »**
-- Titre : « Racontez-moi votre lieu » → **« Vous savez déjà ce que vous
-  valez. »**
-- Texte : les vingt minutes au téléphone → **« 490 €, livré sous sept à
-  quatorze jours. Vingt à trente pages écrites à la main, à vous pour
-  toujours. »**
-- Bouton : « Prendre contact » → **« Commander l'audit »**, et il mène
-  désormais à `/brand-narrative-audit` au lieu du formulaire.
-
-Le bouton « Prendre contact » du hero reste, lui : c'est la porte pour qui
-a une question avant d'acheter.
+Les trois pages surchargeaient chacune le libellé du troisième chiffre
+avec leur propre formulation. Ces surcharges sont retirées : les trois
+terrains partagent maintenant les mêmes chiffres, ce qui est cohérent avec
+« même méthode, même prix, même délai ».
 
 ## Vérification
 
