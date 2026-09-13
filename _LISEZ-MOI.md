@@ -1,14 +1,24 @@
-# Strawberry — « Continuez à défiler » retiré
+# Strawberry — la marge du titre passe en dessous
 
 1 fichier.
 
-La mention sous le titre de la tournée est supprimée, ainsi que sa clé de
-texte dans les deux langues — inutile de laisser du contenu que plus rien
-n'affiche.
+## Ce que j'ai mal fait
 
-Effet secondaire utile : elle occupait une ligne plus 24 pixels de marge
-haute, soit une quarantaine de pixels entre le titre et la première scène.
-Le bloc se resserre d'autant.
+J'ai réduit la marge **haute** du titre pour le rapprocher du hero, jusqu'à
+2 unités. Mais le titre n'avait aucune marge **basse** : la section
+épinglée démarre immédiatement après lui, donc la première scène —
+« MARQUES & ENTREPRISES / BRAND » — lui rentrait dedans.
+
+Je réglais le mauvais côté.
+
+## Le réglage
+
+- Marge haute : `pt-2` → **`pt-6`**, assez pour respirer sans rouvrir le
+  vide d'avant
+- Marge basse : aucune → **`pb-20`**, qui sépare le titre de la première
+  scène
+
+Le titre reste près du hero, et il ne touche plus ce qui le suit.
 
 ## Vérification
 
