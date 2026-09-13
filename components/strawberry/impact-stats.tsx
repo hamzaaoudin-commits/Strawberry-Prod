@@ -79,6 +79,27 @@ export function ImpactStats({ lang }: { lang: Lang }) {
       <ViewTracker name="impact_stats" />
       <div className="shell">
         <div className="kicker mb-10 text-center">{t.kicker}</div>
+
+        {/* Les deux chiffres, côte à côte au-delà du mobile.
+            Chaque bloc : le chiffre, ce qu'il mesure, pourquoi il compte,
+            puis la source — dans cet ordre, pour qu'on puisse s'arrêter
+            après la deuxième ligne et avoir compris. */}
+        <div className="mx-auto grid max-w-[980px] gap-px bg-white/10 sm:grid-cols-2">
+          {[a, b].map((s) => (
+            <div key={s.n} className="bg-ink px-7 py-10 sm:px-9 sm:py-12">
+              <div className="text-gradient font-serif text-[clamp(3rem,7vw,5rem)] font-bold leading-none tracking-[-0.03em]">
+                {s.n}
+              </div>
+              <p className="mb-5 mt-4 font-serif text-[clamp(1.05rem,2vw,1.35rem)] font-semibold leading-[1.3] text-white">
+                {s.title}
+              </p>
+              <p className="m-0 font-sans text-[14.5px] leading-[1.7] text-chalk-55">{s.body}</p>
+              <div className="mt-6 border-t border-hair pt-4 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
+                {s.source}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
