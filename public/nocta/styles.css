@@ -211,10 +211,24 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; line-height:1.02; letter-
 .man-second{ margin-top:1.6rem; }
 
 @media (min-width: 1100px){
-  .manifesto .wrap{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,5vw,5rem); }
-  /* Le surtitre reste seul sur sa ligne, au-dessus des deux colonnes. */
-  .manifesto .eyebrow{ grid-column:1 / -1; }
+  /* Colonnes typographiques plutôt qu'une grille.
+     Avec une grille, chaque paragraphe occupe une cellule : le premier
+     faisant le double du second, la colonne de droite se vidait aux trois
+     quarts. Ici le texte coule d'une colonne à l'autre et le navigateur
+     équilibre les hauteurs lui-même — les deux colonnes se terminent à la
+     même ligne, quelle que soit la longueur des paragraphes. */
+  .manifesto .wrap{ columns:2; column-gap:clamp(2.5rem,5vw,5rem); }
+  /* Le surtitre traverse les deux colonnes et reste seul au-dessus. */
+  /* `column-span` n'agit que sur un élément de bloc, et le surtitre est
+     un <span> : sans `display:block`, la propriété serait ignorée et le
+     surtitre se retrouverait dans la première colonne. */
+  .manifesto .eyebrow{ display:block; column-span:all; margin-bottom:1.4rem; }
   .manifesto p, .man-second{ margin-top:0; max-width:none; }
+  /* Un paragraphe ne doit pas se couper sur une seule ligne en bas de
+     colonne : on autorise la coupure, mais jamais sur moins de deux
+     lignes de part et d'autre. */
+  .manifesto p{ orphans:2; widows:2; }
+  .man-second{ margin-top:1.6rem; }
 }
 /* Les phrases fortes du constat : noir sur rouge, pas rouge clair sur noir.
    En rouge clair elles viraient au rose sur ce fond, et elles se
