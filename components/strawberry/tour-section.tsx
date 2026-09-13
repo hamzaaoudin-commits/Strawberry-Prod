@@ -240,8 +240,12 @@ export function TourSection() {
                     </li>
                   ))}
                 </ul>
-                <Link href={s.href} className="ts-num no-underline text-brand">
-                  {String(i + 1).padStart(2, "0")} / {String(t.scenes.length).padStart(2, "0")} — {t.sceneCta} {s.t} →
+                {/* Le numéro de scène est retiré : la jauge à droite dit déjà
+                    où l'on en est, et « 02 / 04 » en gris parasitait la seule
+                    action de la scène. Reste le nom de l'offre et la flèche. */}
+                <Link href={s.href} className="ts-link no-underline">
+                  {t.sceneCta} {s.t}
+                  <span aria-hidden>→</span>
                 </Link>
               </div>
             </article>
