@@ -1,36 +1,31 @@
-# Strawberry — la section statistiques rétablie
+# Strawberry — la section statistiques resserrée
 
-1 fichier. Correctif du patch précédent.
+1 fichier.
 
-## Ce que j'ai cassé
+## Pourquoi elle était trop grande
 
-Pour retirer le paragraphe de clôture, j'ai utilisé une expression
-régulière sur le rendu. Elle a emporté **tout le bloc des deux
-statistiques**, pas seulement le paragraphe visé. Il ne restait que le
-surtitre « POURQUOI ÇA COMPTE » au-dessus d'un vide — exactement votre
-capture.
+Ses marges avaient été réglées pour une version qui portait un paragraphe
+de clôture en plus. Celui-ci retiré, le contenu a maigri mais l'espace
+autour est resté — d'où le vide en haut et en bas.
 
-Le contrôle de types n'y voyait rien : supprimer du JSX valide laisse du
-JSX valide. C'est le genre d'erreur qu'une expression régulière trop large
-produit en silence, et j'aurais dû relire le rendu après coup plutôt que
-de me fier au fait que la compilation passait.
+## Ce qui est réduit
 
-## Ce qui est rétabli
+| | Avant | Après |
+|---|---|---|
+| Marges de section | 5 rem (80px) | **4 rem** (64px), 5 au-delà du mobile |
+| Sous le surtitre | 40px | **28px** |
+| Intérieur des cartes | 48px | **40px** |
+| Taille du chiffre | jusqu'à 80px | **jusqu'à 67px** |
+| Filet de source | 24 + 16px | **20 + 14px** |
 
-Les deux chiffres sont de retour, côte à côte au-delà du mobile, avec pour
-chacun dans l'ordre :
+Environ **130 pixels de moins** au total, sans que rien ne se touche : les
+écarts baissent tous dans la même proportion, donc le rythme interne du
+bloc est conservé.
 
-- le chiffre en dégradé,
-- ce qu'il mesure,
-- **pourquoi il compte** — le texte réécrit au patch précédent,
-- la source, séparée par un filet.
-
-L'ordre est voulu : on peut s'arrêter après la deuxième ligne et avoir
-compris. La source reste accessible pour qui veut vérifier, sans occuper
-le premier plan.
-
-Le paragraphe de clôture reste supprimé, comme demandé.
+Le chiffre reste le plus gros élément de la section — c'est lui qu'on doit
+voir en premier —, il est simplement moins démesuré par rapport au texte
+qui l'accompagne maintenant.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Rendu relu ligne à ligne cette fois.
+Contrôle de types : zéro erreur.
