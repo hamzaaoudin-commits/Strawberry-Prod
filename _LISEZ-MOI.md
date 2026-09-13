@@ -1,40 +1,52 @@
-# Strawberry — les guillemets cassés dans les extraits
+# Strawberry — les trois autres cas au niveau de LOAM
 
-3 fichiers.
+3 fichiers. Les quatre terrains suivent maintenant la même mécanique.
 
-## Le bug
+## La contradiction, par terrain
 
-Votre capture montrait `\u201eSeize semaines...\u201c` affiché tel quel au
-milieu du texte.
+Chaque cas s'ouvre sur un écart que le client **ne peut pas voir seul**,
+parce qu'il faudrait lire deux de ses propres supports côte à côte :
 
-C'est ma faute, et la cause est précise : j'ai écrit les guillemets sous
-forme de séquences d'échappement `\u201e`. Dans un fichier **JavaScript**,
-le moteur les convertit au chargement — c'est pour ça que ça marchait
-dans `i18n.js`. Mais mon script les a écrites **littéralement** dans les
-fichiers TypeScript, où elles ne sont que du texte déjà encodé. Elles
-s'affichaient donc telles quelles.
+- **THE PRODUCT** — la page produit promet « infusion en 4 minutes », la
+  notice page 2 recommande d'attendre sept minutes. La page a été écrite
+  pour tenir la comparaison en rayon, la notice pour que le café soit bon.
+- **THE NAME** — la bio annonce « des textures organiques », les quatre EP
+  ouvrent tous sur un enregistrement de terrain. Un style contre une
+  méthode : quatorze artistes sur vingt revendiquent le style, personne la
+  méthode.
+- **THE ROOM** — la fiche Google vend « cuisine de saison », et dix-sept
+  avis sur quarante et un décrivent la salle, pas la carte. Vous vendez un
+  produit, vos clients reviennent pour un lieu.
 
-**60 séquences converties** en vrais caractères sur les trois pages.
+## L'enchaînement
 
-## Un second défaut trouvé en corrigeant
+Le deuxième passage n'est plus une observation à côté : il **chiffre ce
+que la contradiction coûte** sur le panel, et montre pourquoi le terrain
+vide l'est resté.
 
-`\u201e` n'est pas le guillemet français : c'est le **guillemet-virgule
-bas allemand**. Mes citations internes étaient donc en `„…“`, une
-convention allemande, à l'intérieur de chevrons français.
+Le cas du produit en est l'exemple le plus net : quatre concurrents sur
+cinq ont un corps plastique qui chauffe vite, vous êtes le seul en inox —
+donc vous avez adopté leur argument alors que votre matériau vous en
+interdit la promesse. Le terrain libre n'est pas la vitesse, c'est le
+café.
 
-**8 paires corrigées** en `“…”`, la convention attendue en français à
-l'intérieur de « ».
+## Le mouvement engage
 
-Vérifié après coup : ouvrants et fermants s'équilibrent exactement sur les
-trois pages, et plus aucun guillemet bas ne subsiste.
+Chacun nomme ce qu'on abandonne, chiffré :
 
-## Ce que j'en retiens
+- **THE PRODUCT** — renoncer au référencement par vitesse d'infusion,
+  environ un tiers du trafic entrant. En échange, les douze avis négatifs
+  sur le café léger disparaissent : ils venaient d'un mauvais appariement.
+- **THE NAME** — renoncer aux mots-clés d'ambiance, où l'artiste figure
+  par défaut.
+- **THE ROOM** — renoncer aux vues faciles de l'assiette, « qui font des
+  vues et n'amènent personne ».
 
-Le contrôle de types ne voit rien ici — une chaîne reste une chaîne, quel
-que soit son contenu. Comme pour le bloc de statistiques supprimé par une
-expression régulière, c'est une erreur qui ne se voit qu'à la lecture du
-rendu. Je relis désormais le texte produit, pas seulement le code.
+Et chacun pose une condition de séquence : avant la refonte d'emballage,
+avant la sortie du cinquième EP, avant toute refonte de carte.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Guillemets équilibrés sur les quatre
+terrains, aucune séquence d'échappement non convertie, traductions
+validées.
