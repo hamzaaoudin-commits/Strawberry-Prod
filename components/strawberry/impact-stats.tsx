@@ -40,17 +40,16 @@ const T = {
       {
         n: "38%",
         title: "de plus payé par les acheteurs qui vous perçoivent comme réellement différent",
-        body: "Contre 11% en moyenne, toutes marques confondues. Même les acheteurs guidés par le prix payaient 14% de plus dans ce cas.",
+        body: "C'est ce que vaut le fait d'être reconnu plutôt que comparé : la moyenne toutes marques confondues plafonne à 11%. Même les acheteurs qui décident au prix payaient 14% de plus.",
         source: "Kantar, analyse BrandZ",
       },
       {
         n: "74%",
         title: "des nouvelles pages web contiennent désormais du texte généré par une machine",
-        body: "Sur 900 000 pages analysées, une par domaine. Seule une sur quatre est encore entièrement écrite par un humain.",
+        body: "Se fondre dans le bruit n'est plus un risque, c'est le scénario par défaut. Sur 900 000 pages analysées, une sur quatre seulement reste écrite par un humain — et c'est celle-là qu'on remarque.",
         source: "Ahrefs, analyse de 900 000 pages, 2025",
       },
     ],
-    closing: "Sur un marché où trois contenus sur quatre sortent déjà d'une machine, se fondre dans le bruit n'est plus un risque théorique — c'est le scénario par défaut. Une identité écrite à la main reste l'exception qu'on remarque, qu'on suit, qu'on paie plus cher.",
   },
   en: {
     kicker: "Why it matters",
@@ -58,17 +57,16 @@ const T = {
       {
         n: "38%",
         title: "more paid by buyers who perceive you as genuinely different",
-        body: "Against 11% on average, across all brands. Even price-driven buyers paid 14% more in that case.",
+        body: "That is what being recognised rather than compared is worth: the average across all brands sits at 11%. Even price-driven buyers paid 14% more.",
         source: "Kantar, BrandZ analysis",
       },
       {
         n: "74%",
         title: "of newly created web pages now contain text written by a machine",
-        body: "Across 900,000 pages analysed, one per domain. Only one in four is still written entirely by a human.",
+        body: "Blending into the noise is no longer a risk, it is the default outcome. Across 900,000 pages analysed, only one in four is still written by a human — and that is the one people notice.",
         source: "Ahrefs, 900,000-page analysis, 2025",
       },
     ],
-    closing: "In a market where three pieces of content out of four already come from a machine, blending into the noise isn't a theoretical risk anymore — it's the default outcome. An identity written by hand stays the exception people notice, follow, and pay more for.",
   },
 }
 
@@ -81,50 +79,6 @@ export function ImpactStats({ lang }: { lang: Lang }) {
       <ViewTracker name="impact_stats" />
       <div className="shell">
         <div className="kicker mb-10 text-center">{t.kicker}</div>
-
-        {/* Une frise plutôt que deux cartes empilées : les deux chiffres se
-            lisent comme une seule phrase, séparés par un simple trait.
-            Grille à quatre lignes partagées entre les deux colonnes — le
-            chiffre, le titre, le corps et la source s'alignent à la même
-            hauteur des deux côtés, même si un texte est plus long que
-            l'autre et prend plus de lignes. */}
-        <div className="mx-auto grid max-w-[820px] grid-cols-1 items-center gap-x-10 gap-y-8 rounded-sm bg-white/[0.015] px-6 py-10 sm:grid-cols-[1fr_auto_1fr] sm:grid-rows-[auto_auto_auto_auto] md:px-10">
-          <CountUp
-            value={a.n}
-            className="sm:[grid-column:1] sm:[grid-row:1] text-center font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient sm:text-right"
-          />
-          <p className="m-0 sm:[grid-column:1] sm:[grid-row:2] max-w-[240px] justify-self-center text-center font-sans text-[13px] font-semibold leading-snug text-white sm:justify-self-end sm:text-right">
-            {a.title}
-          </p>
-          <p className="m-0 sm:[grid-column:1] sm:[grid-row:3] max-w-[240px] justify-self-center text-center font-sans text-[12px] leading-snug text-chalk-55 sm:justify-self-end sm:text-right">
-            {a.body}
-          </p>
-          <div className="sm:[grid-column:1] sm:[grid-row:4] justify-self-center text-center font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40 sm:justify-self-end sm:text-right">
-            {a.source}
-          </div>
-
-          <div aria-hidden className="h-px w-16 justify-self-center bg-brand/30 sm:[grid-column:2] sm:[grid-row:1/5] sm:h-full sm:w-px" />
-
-          <CountUp
-            value={b.n}
-            className="sm:[grid-column:3] sm:[grid-row:1] text-center font-serif text-[clamp(2.6rem,6vw,3.4rem)] font-bold leading-none text-gradient sm:text-left"
-          />
-          <p className="m-0 sm:[grid-column:3] sm:[grid-row:2] max-w-[240px] justify-self-center text-center font-sans text-[13px] font-semibold leading-snug text-white sm:justify-self-start sm:text-left">
-            {b.title}
-          </p>
-          <p className="m-0 sm:[grid-column:3] sm:[grid-row:3] max-w-[240px] justify-self-center text-center font-sans text-[12px] leading-snug text-chalk-55 sm:justify-self-start sm:text-left">
-            {b.body}
-          </p>
-          <div className="sm:[grid-column:3] sm:[grid-row:4] justify-self-center text-center font-sans text-[10.5px] uppercase tracking-[0.14em] text-chalk-40 sm:justify-self-start sm:text-left">
-            {b.source}
-          </div>
-        </div>
-
-        {/* Relie les deux chiffres : l'impact du 74% et ce que représente
-            le 38% — sans quoi ils restaient deux faits côte à côte. */}
-        <p className="mx-auto mt-8 max-w-[620px] text-center font-serif text-[1.05rem] italic leading-[1.6] text-white/75">
-          {t.closing}
-        </p>
       </div>
     </section>
   )

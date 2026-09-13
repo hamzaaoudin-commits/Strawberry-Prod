@@ -1,44 +1,41 @@
-# Strawberry — deux paragraphes en moins
+# Strawberry — les chiffres portent leur propre sens
 
-2 fichiers.
+1 fichier.
 
-## Le paragraphe « agence de branding »
+## Ce qui était mal réparti
 
-Supprimé, avec sa clé de texte dans les deux langues.
+Les deux corps sous les chiffres disaient **d'où venait la donnée** —
+« sur 900 000 pages analysées, une par domaine ». Le paragraphe de
+clôture, lui, disait **pourquoi elle compte**.
 
-Il arrivait juste après les quatre fausses causes, dont l'une est
-précisément « une agence de branding » — il redisait donc en trois lignes
-ce que la liste venait de dire en une, et il revenait sur le refus, déjà
-posé deux fois plus haut.
+Le lecteur devait donc lire deux notes de méthode, puis descendre trouver
+l'interprétation. La plupart s'arrêtent avant.
 
-## Le paragraphe du hero
+## Ce que ça devient
 
-**Avant** (52 mots) :
+Le sens remonte dans chaque chiffre, et le paragraphe disparaît.
 
-> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit — et
-> personne ne l'a jamais écrit. Nous lisons le vôtre comme le fait votre
-> marché, sans complaisance. Vous recevez ce qu'il raconte aujourd'hui, ce
-> qui vous range avec les autres, et les mouvements exacts qui vous en
-> sortent.
+**38 %** :
+> C'est ce que vaut le fait d'être reconnu plutôt que comparé : la moyenne
+> toutes marques confondues plafonne à 11%. Même les acheteurs qui
+> décident au prix payaient 14% de plus.
 
-**Après** (34 mots) :
+**74 %** :
+> Se fondre dans le bruit n'est plus un risque, c'est le scénario par
+> défaut. Sur 900 000 pages analysées, une sur quatre seulement reste
+> écrite par un humain — et c'est celle-là qu'on remarque.
 
-> Une marque, un lieu, un nom : ce que vous vendez tient sur un récit que
-> personne n'a écrit. Nous le lisons comme le fait votre marché, et nous
-> vous rendons les mouvements qui vous sortent du lot.
+Chaque corps commence désormais par l'enjeu et finit par la donnée, au
+lieu de l'inverse. La ligne de source reste sous chaque chiffre pour qui
+veut vérifier.
 
-Ce que j'ai retiré et pourquoi :
+## Ce qui est perdu, et que j'assume
 
-- **La troisième phrase entière.** Elle détaillait le contenu du document
-  — ce qu'il raconte, ce qui vous range, les mouvements — alors que le
-  lecteur ne sait pas encore si ça le concerne. Ce détail est répété deux
-  fois plus bas, dans la tournée et dans la section offre.
-- **« sans complaisance ».** S'affirmer franc est toujours plus faible que
-  de l'être : la page le prouve ensuite en nommant les fausses causes.
-- **Le tiret et la reprise « et personne ne l'a jamais écrit ».** La
-  subordonnée dit la même chose en trois mots de moins.
-
-Un tiers de moins, sans rien perdre de l'argument.
+« Une identité écrite à la main reste l'exception qu'on remarque, qu'on
+suit, qu'on paie plus cher » était une belle phrase. Mais elle refermait
+la section sur une affirmation, après deux chiffres qui la prouvaient
+déjà — et les trois verbes en cascade reprenaient exactement le 38 % et le
+74 % qui la précédaient.
 
 ## Vérification
 
