@@ -1,37 +1,27 @@
-# Strawberry — les frontières entre sections se fondent
+# Strawberry — le vide avant « Un audit, quatre terrains »
 
 2 fichiers.
 
-## Pourquoi ça piquait
+## Deux causes, dont une que je venais de créer
 
-Les sections alternent deux fonds très proches — `#0a0a0a` et `#0d0d0d` —
-séparés par un filet blanc. À trois pour cent d'écart, l'œil ne voit pas
-deux teintes : **il voit une ligne**. Et comme la page en enchaîne cinq ou
-six, on a l'impression de traverser plusieurs maquettes collées bout à
-bout, exactement ce que vous décrivez.
+**Mon dégradé était en pourcentage.** `14%` sur une section courte fait
+60 pixels ; sur la tournée, qui mesure 460vh, ça fait **près de 700
+pixels**. Le haut de la section était donc un long dégradé vide, qu'on lit
+comme un espace mort avant le titre.
 
-## Trois correctifs
+Corrigé : le fondu est en **pixels fixes (120px)**. Même douceur partout,
+quelle que soit la hauteur de la section — et c'est valable pour toutes
+les sections du site, dont certaines sont bien plus hautes que d'autres.
 
-**Les sections à fond alterné dégradent leurs bords.** Chaque section
-`bg-ink-soft` fond ses 14 premiers et derniers pour cent vers la couleur
-de sa voisine. La transition se fait sur une centaine de pixels au lieu
-d'un seul, et la frontière disparaît — sans qu'aucune section ne perde son
-fond. Une seule règle, donc toutes les sections du site sont traitées.
+**La marge haute était de 24 unités**, soit 96 pixels, qui s'ajoutaient à
+l'espace que le hero laisse déjà sous son bouton — le hero fait 82vh avec
+son contenu centré, donc il y a naturellement du vide en dessous. Passée à
+10 unités.
 
-**Les filets s'estompent sur les côtés.** Là où un trait reste utile, il
-part de transparent, tient sur la moitié centrale, et repart à
-transparent. Il suggère la séparation au lieu de la trancher d'un bord à
-l'autre de l'écran.
+## Ce que ça donne
 
-**Le bas du hero se fond.** C'était la frontière la plus visible : la
-lueur rouge s'arrêtait net à la dernière ligne du hero. Un voile la
-dissout sur 160 pixels.
-
-## Ce que ça ne change pas
-
-Les fonds restent différents, donc le rythme des sections est préservé —
-on sent toujours qu'on change de section, mais en descendant une pente au
-lieu de franchir une marche.
+Le surtitre remonte d'environ 660 pixels au total. Le fondu entre les deux
+sections reste, mais il redevient une transition au lieu d'être une zone.
 
 ## Vérification
 

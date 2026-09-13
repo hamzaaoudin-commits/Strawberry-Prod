@@ -1319,11 +1319,17 @@ footer {
    disparaît sans qu'aucune section ne perde son fond.
    --------------------------------------------------------------------------- */
 section[class*="bg-ink-soft"] {
+  /* En pixels, pas en pourcentage.
+     Avec des pourcentages, une section courte fondait sur 60 pixels et la
+     tournée — qui fait 460vh — sur près de 700 : son haut devenait un long
+     dégradé vide, qu'on lisait comme un espace mort avant le titre.
+     120 pixels donnent la même douceur partout, quelle que soit la
+     hauteur de la section. */
   background: linear-gradient(
     180deg,
-    var(--color-ink) 0%,
-    var(--color-ink-soft) 14%,
-    var(--color-ink-soft) 86%,
+    var(--color-ink) 0px,
+    var(--color-ink-soft) 120px,
+    var(--color-ink-soft) calc(100% - 120px),
     var(--color-ink) 100%
   ) !important;
   /* Le filet devient inutile : c'est lui qui dessinait la ligne. */
