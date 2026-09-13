@@ -1,57 +1,39 @@
-# Strawberry — le cas LOAM réécrit
+# Strawberry — les guillemets cassés dans les extraits
 
-1 fichier. Les trois autres terrains suivront sur le même modèle si celui-ci
-vous convient.
+3 fichiers.
 
-## Ce qui a changé, et pourquoi
+## Le bug
 
-### 1. Une contradiction, pas une qualité cachée
+Votre capture montrait `\u201eSeize semaines...\u201c` affiché tel quel au
+milieu du texte.
 
-**Avant** : « vous taisez le refus que personne d'autre ne tiendrait ».
-C'était un compliment déguisé — vous avez une pépite, montrez-la. Un
-dirigeant lit ça et pense qu'il le savait déjà.
+C'est ma faute, et la cause est précise : j'ai écrit les guillemets sous
+forme de séquences d'échappement `\u201e`. Dans un fichier **JavaScript**,
+le moteur les convertit au chargement — c'est pour ça que ça marchait
+dans `i18n.js`. Mais mon script les a écrites **littéralement** dans les
+fichiers TypeScript, où elles ne sont que du texte déjà encodé. Elles
+s'affichaient donc telles quelles.
 
-**Maintenant** : votre accueil promet « livré dans vos délais », votre
-page commande s'excuse de seize semaines, à trois clics. **Vous vendez
-l'inverse de ce que vous faites.** Et la cause est nommée : personne n'a
-jamais tranché entre les deux, donc chaque commercial improvise — trois
-annoncent le délai au premier rendez-vous, deux le gardent pour la fin.
+**60 séquences converties** en vrais caractères sur les trois pages.
 
-Ça, un dirigeant ne peut pas le voir : il ne lit jamais son propre site en
-enfilade.
+## Un second défaut trouvé en corrigeant
 
-### 2. Les trois passages s'enchaînent
+`\u201e` n'est pas le guillemet français : c'est le **guillemet-virgule
+bas allemand**. Mes citations internes étaient donc en `„…“`, une
+convention allemande, à l'intérieur de chevrons français.
 
-Ils étaient juxtaposés. Maintenant chacun dépend du précédent :
+**8 paires corrigées** en `“…”`, la convention attendue en français à
+l'intérieur de « ».
 
-- **Le diagnostic** établit la contradiction et son coût : 31 devis perdus
-  sur 74 en 2024, sur objection délai.
-- **La carte** explique *pourquoi* le terrain est vide — tous ont fait le
-  même calcul — et pourquoi vous seul pouvez l'occuper : vous êtes le seul
-  à sécher en interne, et sept avis sur onze citent déjà la tenue du bois à
-  cinq ans.
-- **Le mouvement** s'ouvre sur « il n'y en a pas d'autre ». Il découle des
-  deux, il n'est pas une idée parmi d'autres.
+Vérifié après coup : ouvrants et fermants s'équilibrent exactement sur les
+trois pages, et plus aucun guillemet bas ne subsiste.
 
-### 3. Le mouvement engage
+## Ce que j'en retiens
 
-**Avant** : une journée de réécriture, coût zéro. Un conseil gratuit a
-l'air d'un conseil bon marché.
-
-**Maintenant** : renoncer aux acheteurs qui décident au délai — les 31
-devis — mais **en amont et par choix**. Le relevé s'appelle désormais
-« coût, risque, effet », et il chiffre ce qu'on perd autant que ce qu'on
-gagne.
-
-Il pose aussi une condition de séquence : « à faire avant toute refonte
-visuelle — le logo n'y changera rien tant que les deux pages se
-contredisent ». C'est ce qu'un audit apporte qu'une agence ne dira jamais.
-
-## Ce qui rend l'ensemble crédible
-
-Chaque affirmation renvoie à un relevé daté et chiffré : entretiens avec
-cinq commerciaux, 74 devis de 2024, 11 avis clients, 15 documents
-commerciaux. On peut contester les conclusions, pas la matière.
+Le contrôle de types ne voit rien ici — une chaîne reste une chaîne, quel
+que soit son contenu. Comme pour le bloc de statistiques supprimé par une
+expression régulière, c'est une erreur qui ne se voit qu'à la lecture du
+rendu. Je relis désormais le texte produit, pas seulement le code.
 
 ## Vérification
 
