@@ -14,29 +14,43 @@ export function CTABanner() {
   const [ref, vis] = useScrollReveal()
 
   return (
-    <section className="relative overflow-hidden bg-ink-soft px-gutter py-16">
-      <div ref={ref} className="shell">
+    <section className="relative overflow-hidden bg-ink px-gutter py-24">
+      {/* La lueur vit derrière le bloc, pas dedans.
+          Dans l'encadré, elle éclairait un fond déjà rouge et le rendait
+          laiteux ; posée sous la section, elle fait monter le bloc de
+          l'obscurité et donne du poids sans ajouter de couleur au premier
+          plan. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_60%,rgba(255,34,51,0.16),transparent_65%)]"
+      />
+
+      <div ref={ref} className="shell relative">
         <div
           className={[
-            // Un encadré plus discret : rayon divisé par trois, marges
-            // verticales réduites de moitié, et plus de dégradé de fond.
-            // À 36px de rayon avec 20 unités de marge, ce bloc était plus
-            // imposant que la section offre elle-même, alors qu'il ne fait
-            // que rappeler l'action.
-            "relative overflow-hidden rounded-xl border border-hair px-8 py-12 text-center md:px-16",
+            "relative overflow-hidden rounded-2xl border border-brand-hair bg-ink-soft px-8 py-20 text-center md:px-20",
+            "shadow-[0_0_90px_-20px_rgba(255,34,51,0.35)]",
             "transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1.2)]",
             vis ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
           ].join(" ")}
         >
-          {/* Le titre en blanc, pas en dégradé : le rouge est gardé pour le
-              bouton, qui est la seule chose à cliquer ici. Deux éléments
-              rouges empilés se disputaient l'attention. */}
-          <h2 className="relative mb-8 font-serif text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold tracking-[-0.02em] text-white">
+          {/* Un filet rouge en haut du bloc : il marque l'entrée dans le
+              dernier moment de la page sans mettre de couleur dans le
+              titre, qui resterait alors en concurrence avec le bouton. */}
+          <span
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(108deg,#ff2233,#ff4d2e)]"
+          />
+
+          <h2 className="relative mb-10 font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-bold leading-[1.08] tracking-[-0.03em] text-white">
             {t.h2}
           </h2>
 
           <div className="relative flex flex-col items-center">
-            <Link href="/brand-narrative-audit" className="btn-primary max-w-full">
+            <Link
+              href="/brand-narrative-audit"
+              className="btn-primary max-w-full px-12 py-[20px] text-[16px]"
+            >
               {t.cta1}
             </Link>
           </div>

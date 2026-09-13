@@ -1,36 +1,41 @@
-# Strawberry — le bandeau final allégé
+# Strawberry — le CTA final reprend du poids
 
 1 fichier.
 
-## Le paragraphe est supprimé
+## J'avais trop coupé
 
-Il redisait ce que la section offre vient d'expliquer trois écrans plus
-haut : le contenu de l'audit, son prix, son délai. Quelqu'un qui arrive
-ici a déjà tout lu — ou a décidé de ne pas lire, et un paragraphe de plus
-n'y change rien.
+En retirant le dégradé, l'ombre et la moitié des marges, j'en ai fait un
+encadré quelconque. C'est le dernier moment de la page : il doit peser.
 
-Il reste la phrase et le bouton.
+## Ce qui lui donne du poids maintenant
 
-## Le titre n'est plus en dégradé
+**La lueur passe derrière le bloc**, sur la section elle-même, au lieu
+d'être dans l'encadré. C'est le vrai changement. Dans l'encadré, elle
+éclairait un fond déjà rouge et le rendait laiteux ; posée dessous, elle
+fait **monter le bloc de l'obscurité** — il gagne en présence sans qu'on
+ajoute de couleur au premier plan.
 
-Le rouge est gardé pour le bouton, qui est la seule chose à cliquer dans
-ce bloc. Un titre rouge au-dessus d'un bouton rouge, ce sont deux éléments
-qui se disputent l'attention au moment précis où il ne doit y en avoir
-qu'un.
+**Le fond de section passe de `ink-soft` à `ink`**, plus sombre, pour que
+le bloc s'en détache au lieu de s'y fondre.
 
-Le titre passe donc en blanc, et sa taille descend de `clamp(2rem, 5vw,
-4rem)` à `clamp(1.6rem, 3.4vw, 2.6rem)`.
+**Un filet rouge de 3px en haut du bloc**, dans le dégradé de marque. Il
+signale l'entrée dans le dernier moment de la page sans mettre du rouge
+dans le titre — qui redeviendrait alors concurrent du bouton.
 
-## L'encadré est réduit
+**Le titre remonte** à `clamp(2.1rem, 5vw, 3.6rem)`, presque sa taille
+d'origine, mais **en blanc**. Les marges reviennent à 20 unités, et
+l'ombre portée est rétablie en plus serrée et plus dense
+(`0 0 90px -20px` au lieu de `0 0 120px`) : elle cerne le bloc au lieu de
+diffuser autour.
 
-- Rayon de **36px → 12px** : à 36, le bloc ressemblait à une carte
-  promotionnelle posée sur la page plutôt qu'à une section.
-- Marges verticales de **20 → 12 unités**, et section de 20 → 16.
-- **Le dégradé de fond et l'ombre portée de 120px sont retirés.** Ils
-  faisaient de ce rappel le bloc le plus imposant de la page, alors qu'il
-  ne fait que répéter une action déjà proposée plus haut.
+**Le bouton est agrandi** — 12 unités de marge horizontale, 20 verticales,
+16px de texte.
 
-Reste un filet fin, comme les autres sections du site.
+## Le principe que j'applique
+
+Le bloc est imposant par sa **masse et sa lumière**, pas par sa couleur.
+Le seul élément rouge plein reste le bouton, donc l'œil sait où cliquer
+même en voyant grand.
 
 ## Vérification
 
