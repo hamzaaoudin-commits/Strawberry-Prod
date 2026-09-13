@@ -28,7 +28,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="hero-fallback"></div>
 <div class="hero-scrim"></div>
 <div class="wrap">
-<span class="hero-kicker eyebrow"><span class="dot"></span><span data-i18n="hero.kicker">Sprint d'écriture · Paris &amp; Île-de-France</span></span>
+<span class="hero-kicker eyebrow"><span class="dot"></span><span data-i18n="hero.kicker">Audit narratif · Lieux</span></span>
 <h1 class="wordmark flicker">THE ROOM</h1>
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
