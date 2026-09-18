@@ -542,7 +542,7 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       "Le même travail, appliqué à la vôtre, commencez par une extraction qu'aucune machine ne peut automatiser : votre vérité, votre singularité, ce que vous ne voyez plus parce que vous êtes dedans.",
     ctaPrimary: "Commander l'architecture",
     ctaSecondary: "Commencer par le diagnostic",
-    ctaFoot: "Limité à quatre commandes par trimestre.",
+    ctaFoot: "",
   },
   en: {
     eyebrow: "An example of what you receive",
@@ -1028,6 +1028,6 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
       "The same work, applied to yours, begins with an extraction no machine can automate: your truth, your singularity, the thing you no longer see because you are inside it.",
     ctaPrimary: "Commission the architecture",
     ctaSecondary: "Start with the diagnosis",
-    ctaFoot: "Limited to four commissions per quarter.",
+    ctaFoot: "",
   },
 }

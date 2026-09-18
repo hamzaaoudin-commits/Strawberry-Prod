@@ -185,7 +185,12 @@
 
   /* ---------- 3D bokeh hero (Three.js, with graceful fallback) ---------- */
   const canvas = document.getElementById("bokeh");
-  if (canvas && !reduce) {
+  // Three.js pèse environ 600 Ko et fait tourner une scène 3D en continu.
+  // Sur un téléphone, c'est le plus gros poste de chargement de la page
+  // pour un fond décoratif — et celui qui vide la batterie. Le dégradé de
+  // repli (.hero-fallback) rend déjà l'ambiance sans rien télécharger.
+  var smallScreen = window.matchMedia("(max-width: 900px)").matches;
+  if (canvas && !reduce && !smallScreen) {
     const s = document.createElement("script");
     s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
     s.onload = () => { try { initBokeh(canvas); } catch (e) { canvas.style.display = "none"; } };

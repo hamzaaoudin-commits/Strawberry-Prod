@@ -106,7 +106,7 @@ const T = {
     investLead: "The price of a few weeks of advertising that vanishes the moment you stop paying. Your narrative, by contrast, does not wear out: it belongs to you, never goes out of date, and keeps working for you years after it was written.",
     ctaH2: "Become impossible to confuse.",
     cta: "Place your commission \u2192",
-    ctaLimit: "Limited to four commissions per quarter.",
+    ctaLimit: "",
     ctaFoot: "Confidential commission \u00b7 NDA available",
     price: "4,500\u20ac",
     successSignals: [
@@ -226,7 +226,7 @@ const T = {
     investLead: "Le prix de quelques semaines de publicit\u00e9, qui cesse d'exister le jour o\u00f9 vous cessez de payer. Votre r\u00e9cit, lui, ne s'use pas : il vous appartient, ne date jamais, et continue de travailler pour vous des ann\u00e9es apr\u00e8s avoir \u00e9t\u00e9 \u00e9crit.",
     ctaH2: "Devenez impossible \u00e0 confondre.",
     cta: "Passer commande \u2192",
-    ctaLimit: "Limit\u00e9 \u00e0 quatre commandes par trimestre.",
+    ctaLimit: "",
     ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
     price: "4 500\u20ac",
     successSignals: [

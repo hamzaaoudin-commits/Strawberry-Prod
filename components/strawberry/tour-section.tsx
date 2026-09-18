@@ -28,100 +28,124 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   fr: {
+    terrainsLabel: "Le même audit, quel que soit ce que vous vendez",
+    terrains: [
+      { n: "BRAND", d: "Marques & entreprises", href: "/marques-entreprises" },
+      { n: "THE PRODUCT", d: "Produits", href: "/the-product" },
+      { n: "THE ROOM", d: "Lieux", href: "/the-room" },
+      { n: "THE NAME", d: "Artistes & fondateurs", href: "/the-name" },
+    ],
     lead: "Une agence s'arrête à la plateforme de marque. Nous commençons par elle — puis nous écrivons les décisions à prendre et ce que vos équipes en font le lundi matin.",
     kicker: "Un audit, quatre terrains",
     title: "Une plateforme de marque ne décide rien. Nous écrivons ce qu'elle vous oblige à faire.",
     afterLabel: "Après l'audit",
     ptsLabel: "Sur ce terrain précisément",
-    commonLabel: "Le document, dans les quatre cas",
-    common: [
-      "La plateforme de marque complète : raison d'être, positionnement, valeurs, personnalité, ton de voix",
-      "Le diagnostic chiffré : vos supports dépouillés un par un, les occurrences comptées, les écarts relevés",
-      "La carte du champ : 3 à 5 concurrents, leur phrase exacte citée, et le terrain qu'ils laissent libre",
-      "Les décisions : 3 à 5 mouvements ordonnés, la formulation à employer, où la mettre, ce qu'elle fait gagner et perdre",
-      "Les playbooks : ce que font vos équipes au quotidien — vente, contenu, réseaux, support, recrutement",
-      "Le lexique et les textes réécrits, prêts à coller — applicables par vos équipes comme par votre outil IA",
-    ],
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
     cta: "Commander l'audit →",
     scenes: [
       {
-        k: "Marques & entreprises",
-        t: "BRAND",
-        line: "Le devis part sans une ligne de justification. Le prix n'est plus ce qu'on discute.",
-        points: ["On dépouille : site, plaquette, discours commercial, signatures mail, et ce que disent vos équipes en rendez-vous", "Pièce en plus : vos quatre versions du même métier mises face à face, et celle qui devient la seule"],
+        k: "Pièce 01",
+        t: "LA PLATEFORME",
+        line: "Raison d'être, positionnement, valeurs, personnalité, ton de voix.",
+        points: ["Exactement ce qu'une agence facture entre 10 000 et 40 000 € — et ce par quoi nous commençons", "Écrite à partir de ce que vous publiez déjà, pas d'un atelier où vous parlez pendant trois heures"],
         href: "/marques-entreprises",
       },
       {
-        k: "Produits",
-        t: "THE PRODUCT",
-        line: "On le prend en main et on comprend pourquoi il a été fait comme ça.",
-        points: ["On dépouille : page produit, fiche technique, emballage, notice, et vos avis clients", "Pièce en plus : chaque caractéristique réécrite en arbitrage — pourquoi ce poids, ce matériau, ce prix"],
-        href: "/the-product",
+        k: "Pièce 02",
+        t: "LE DIAGNOSTIC",
+        line: "Vos supports dépouillés un par un, les occurrences comptées, les écarts relevés.",
+        points: ["Site, plaquette, discours commercial, emballage, fiche Google, avis clients — selon votre terrain", "Les contradictions entre deux de vos propres pages, celles que vous ne pouvez pas voir seul"],
+        href: "/marques-entreprises",
       },
       {
-        k: "Lieux",
-        t: "THE ROOM",
-        line: "N'importe qui en salle sait quoi filmer, et le quartier reconnaît le lieu avant d'en lire le nom.",
-        points: ["On dépouille : fiche Google, carte, avis clients, publications, et ce que vos habitués répètent", "Pièce en plus : le plan de tournage — quoi filmer, à quelle heure, et les phrases à écrire dessous"],
-        href: "/the-room",
+        k: "Pièce 03",
+        t: "LA CARTE",
+        line: "3 à 5 concurrents, leur phrase exacte citée, et le terrain qu'ils laissent libre.",
+        points: ["Le mot que trois d'entre eux revendiquent déjà, et que vous devez cesser d'employer", "Celui que vous êtes seul à pouvoir tenir, avec la preuve que personne ne l'occupe"],
+        href: "/marques-entreprises",
       },
       {
-        k: "Artistes & fondateurs",
-        t: "THE NAME",
-        line: "La sortie tombe et le public sait déjà où elle se range — parce que la précédente l'avait annoncée.",
-        points: ["On dépouille : vos sorties, vos textes, vos visuels, vos interviews, et ce que la presse retient", "Pièce en plus : votre bio en trois longueurs — plateforme, dossier de presse, présentation scène"],
-        href: "/the-name",
+        k: "Pièce 04",
+        t: "LES DÉCISIONS",
+        line: "3 à 5 mouvements ordonnés : la formulation exacte, où la mettre, ce qu'elle coûte.",
+        points: ["Chacun chiffré : ce qu'il fait gagner, et ce qu'il vous fait perdre — nommé, pas caché", "Dans l'ordre, avec ce qu'il faut faire avant toute refonte visuelle"],
+        href: "/marques-entreprises",
+      },
+      {
+        k: "Pièce 05",
+        t: "LES PLAYBOOKS",
+        line: "Ce que vos équipes font au quotidien : vente, contenu, réseaux, support, recrutement.",
+        points: ["Applicables par quelqu'un qui n'était pas dans la conversation — un nouvel arrivant, une agence", "Le trait disqualifiant à l'embauche, la ligne à ne jamais franchir en support, le format tenable"],
+        href: "/marques-entreprises",
+      },
+      {
+        k: "Pièce 06",
+        t: "LE LANGAGE",
+        line: "Le lexique et les textes réécrits, prêts à coller.",
+        points: ["Les mots à employer, ceux à cesser d'employer, et pourquoi — pour toute la maison", "Utilisables tels quels par vos équipes comme par votre outil IA : c'est écrit pour ça"],
+        href: "/marques-entreprises",
       },
     ],
   },
   en: {
+    terrainsLabel: "The same audit, whatever you sell",
+    terrains: [
+      { n: "BRAND", d: "Brands & companies", href: "/marques-entreprises" },
+      { n: "THE PRODUCT", d: "Products", href: "/the-product" },
+      { n: "THE ROOM", d: "Venues", href: "/the-room" },
+      { n: "THE NAME", d: "Artists & founders", href: "/the-name" },
+    ],
     lead: "An agency stops at the brand platform. We start there — then we write the decisions to make, and what your teams do with them on Monday morning.",
     kicker: "One audit, four grounds",
     title: "A brand platform decides nothing. We write what it obliges you to do.",
     afterLabel: "After the audit",
     ptsLabel: "On this ground specifically",
-    commonLabel: "The document, in all four cases",
-    common: [
-      "The full brand platform: purpose, positioning, values, personality, tone of voice",
-      "The measured diagnosis: your supports gone through one by one, occurrences counted, gaps recorded",
-      "The map of the field: 3 to 5 competitors, their exact sentence quoted, and the ground they leave open",
-      "The decisions: 3 to 5 ordered moves, the wording to use, where to put it, what it gains and what it costs",
-      "The playbooks: what your teams do day to day — sales, content, social, support, hiring",
-      "The lexicon and the rewritten copy, ready to paste — usable by your teams and by your AI tool",
-    ],
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
     cta: "Order the audit →",
     scenes: [
       {
-        k: "Brands & companies",
-        t: "BRAND",
-        line: "The quote goes out without a line of justification. Price is no longer what gets discussed.",
-        points: ["We go through: site, brochure, sales pitch, email signatures, and what your teams say in meetings", "Extra piece: your four versions of the same work put side by side, and the one that becomes the only one"],
+        k: "Piece 01",
+        t: "THE PLATFORM",
+        line: "Purpose, positioning, values, personality, tone of voice.",
+        points: ["Exactly what an agency charges €10,000 to €40,000 for — and where we start", "Written from what you already publish, not from a workshop where you talk for three hours"],
         href: "/marques-entreprises",
       },
       {
-        k: "Products",
-        t: "THE PRODUCT",
-        line: "You pick it up and you understand why it was made this way.",
-        points: ["We go through: product page, spec sheet, packaging, manual, and your customer reviews", "Extra piece: every feature rewritten as a trade-off — why this weight, this material, this price"],
-        href: "/the-product",
+        k: "Piece 02",
+        t: "THE DIAGNOSIS",
+        line: "Your supports gone through one by one, occurrences counted, gaps recorded.",
+        points: ["Site, brochure, sales pitch, packaging, Google listing, reviews — depending on your ground", "The contradictions between two of your own pages, the ones you cannot see alone"],
+        href: "/marques-entreprises",
       },
       {
-        k: "Venues",
-        t: "THE ROOM",
-        line: "Anyone on the floor knows what to film, and the neighbourhood recognises the place before reading its name.",
-        points: ["We go through: Google listing, menu, reviews, posts, and what your regulars repeat", "Extra piece: the shooting plan — what to film, at what hour, and the lines to write underneath"],
-        href: "/the-room",
+        k: "Piece 03",
+        t: "THE MAP",
+        line: "3 to 5 competitors, their exact sentence quoted, and the ground they leave open.",
+        points: ["The word three of them already claim, and that you must stop using", "The one only you can hold, with the proof that nobody occupies it"],
+        href: "/marques-entreprises",
       },
       {
-        k: "Artists & founders",
-        t: "THE NAME",
-        line: "The release lands and the audience already knows where it sits — because the last one announced it.",
-        points: ["We go through: your releases, your writing, your visuals, your interviews, and what the press keeps", "Extra piece: your bio at three lengths — platform, press kit, stage introduction"],
-        href: "/the-name",
+        k: "Piece 04",
+        t: "THE DECISIONS",
+        line: "3 to 5 ordered moves: the exact wording, where to put it, what it costs.",
+        points: ["Each one measured: what it gains and what it loses you — named, not hidden", "In order, with what to do before any visual rebrand"],
+        href: "/marques-entreprises",
+      },
+      {
+        k: "Piece 05",
+        t: "THE PLAYBOOKS",
+        line: "What your teams do day to day: sales, content, social, support, hiring.",
+        points: ["Usable by someone who was not in the conversation — a new hire, an agency", "The disqualifying trait when hiring, the line never to cross in support, the format you can sustain"],
+        href: "/marques-entreprises",
+      },
+      {
+        k: "Piece 06",
+        t: "THE LANGUAGE",
+        line: "The lexicon and the rewritten copy, ready to paste.",
+        points: ["Words to use, words to stop using, and why — for the whole house", "Usable as they are by your teams and by your AI tool: that is what they are written for"],
+        href: "/marques-entreprises",
       },
     ],
   },
@@ -287,29 +311,28 @@ export function TourSection() {
             pas si les terrains sont quatre offres ou quatre variantes. */}
         <p className="lede mx-auto mt-6 max-w-[640px]">{t.lead}</p>
 
-        {/* Ce que les quatre terrains partagent, dit une seule fois.
-            Ces trois lignes étaient répétées dans chacune des quatre
-            scènes : quinze puces sur vingt disaient la même chose, et il
-            fallait les traverser quatre fois pour trouver les deux qui
-            vous concernent. Remontées ici, elles libèrent les scènes pour
-            ce qu'elles ont de particulier. */}
-        <div className="mx-auto mt-10 max-w-[880px] border-y border-hair py-6 text-left">
+        {/* Les quatre terrains, en bandeau.
+            Ils disent « c'est pour vous » ; les six scènes qui suivent
+            disent « voici ce que vous recevez ». On se reconnaît avant de
+            lire un sommaire, pas l'inverse. */}
+        <div className="mx-auto mt-10 max-w-[880px]">
           <div className="mb-4 text-center font-mono text-[10.5px] uppercase tracking-[0.22em] text-brand">
-            {t.commonLabel}
+            {t.terrainsLabel}
           </div>
-          {/* Six pièces sur trois colonnes : deux rangées pleines. Un tiret
-              rouge ouvre chaque ligne — sans lui, six phrases denses
-              collées les unes aux autres se lisent comme un paragraphe. */}
-          <ul className="m-0 grid list-none gap-x-7 gap-y-4 p-0 sm:grid-cols-3">
-            {t.common.map((x) => (
-              <li
-                key={x}
-                className="relative pl-5 font-sans text-[13px] leading-[1.5] text-chalk-55 before:absolute before:left-0 before:top-[0.62em] before:h-px before:w-3 before:bg-brand"
+          <div className="grid grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+            {t.terrains.map((x) => (
+              <Link
+                key={x.n}
+                href={x.href}
+                className="group bg-ink px-4 py-4 text-center no-underline transition-colors hover:bg-white/[0.03]"
               >
-                {x}
-              </li>
+                <div className="font-serif text-[15px] font-bold tracking-[-0.005em] text-brand transition-colors group-hover:text-white">
+                  {x.n}
+                </div>
+                <div className="mt-1 font-sans text-[11.5px] text-chalk-40">{x.d}</div>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 

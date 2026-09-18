@@ -66,7 +66,14 @@ export function LoadingIntro() {
   }
   window.addEventListener('keydown', skip, { once: true });
   window.addEventListener('pointerdown', skip, { once: true });
-  setTimeout(finish, 2100);
+  // 2100 ms d'écran noir forcé, quelle que soit la vitesse réelle du
+  // site. Sur mobile, c'est la principale cause de lenteur perçue : la
+  // page était prête bien avant. On descend à 900 ms, et on saute
+  // l'intro sur petit écran et lors des visites suivantes — elle sert à
+  // poser une marque, pas à être revue à chaque page.
+  var skip = window.innerWidth < 900 || sessionStorage.getItem('sp_intro') === '1';
+  try { sessionStorage.setItem('sp_intro', '1'); } catch (e) {}
+  setTimeout(finish, skip ? 0 : 900);
 })();
 `,
         }}

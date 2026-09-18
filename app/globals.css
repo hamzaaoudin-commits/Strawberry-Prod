@@ -1131,6 +1131,15 @@ footer {
               radial-gradient(40% 40% at 50% 8%, rgba(255,34,51,.10), transparent 60%); }
 .ts-4 .ts-bg{ background:radial-gradient(55% 50% at 28% 24%, rgba(243,239,233,.11), transparent 60%),
               radial-gradient(50% 55% at 76% 76%, rgba(169,157,255,.24), transparent 62%); }
+/* Deux fonds de plus : la section compte six scènes depuis qu'elle
+   présente les six pièces du document et non les quatre terrains.
+   Le violet des scènes 3 et 4 vient de la charte NOCTA d'origine ; les
+   deux nouvelles restent dans le rouge de marque pour ramener la série
+   vers la fin. */
+.ts-5 .ts-bg{ background:radial-gradient(62% 55% at 78% 70%, rgba(255,34,51,.30), transparent 62%),
+              radial-gradient(45% 45% at 20% 20%, rgba(255,138,133,.14), transparent 60%); }
+.ts-6 .ts-bg{ background:radial-gradient(58% 58% at 45% 18%, rgba(255,77,46,.30), transparent 64%),
+              radial-gradient(50% 50% at 80% 88%, rgba(255,34,51,.16), transparent 60%); }
 .ts-inner{ position:relative; z-index:1; }
 
 .ts-k{ font-family:var(--mono); font-size:.74rem; letter-spacing:.3em; text-transform:uppercase; color:var(--coral); }

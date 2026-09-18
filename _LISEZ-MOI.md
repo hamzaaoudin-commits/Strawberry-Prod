@@ -1,52 +1,74 @@
-# Strawberry — la plateforme de marque, et ce qui vient après
+# Strawberry — refonte de la home, prix à 999 €
 
-1 fichier.
+Le zip contient les fichiers principaux. **41 remplacements de prix** sur
+15 fichiers : pensez à récupérer aussi les pages terrain, méthode, CGV et
+documents depuis le dépôt si vous appliquez fichier par fichier.
 
-## Le titre de section
+## Le prix
 
-> **Une plateforme de marque ne décide rien. Nous écrivons ce qu'elle vous
-> oblige à faire.**
+490 € → **999 €** partout, dans les deux langues, y compris les mentions
+légales et l'écriture anglaise « €490 ».
 
-Il nomme le livrable que tout le marché vend, et dit sa limite dans la
-même phrase. C'est plus fort que de l'ignorer : un dirigeant qui a déjà
-consulté une agence reconnaît le mot, et comprend immédiatement où vous
-vous situez.
+## L'ordre de la home
 
-## Le chapô
+La tournée — qui présente ce qu'on livre — arrivait **avant** le problème.
+On proposait un remède à quelqu'un qui n'avait pas encore lu son
+diagnostic.
 
-> Une agence s'arrête à la plateforme de marque. Nous commençons par
-> elle — puis nous écrivons les décisions à prendre, et ce que vos équipes
-> en font le lundi matin.
+Nouvel ordre : hero → **le problème** → **ce qui a déjà été essayé en
+vain** → ce qu'on livre → l'offre → les chiffres.
 
-« Le lundi matin » fait le travail : c'est ce qui sépare un document
-stratégique d'un document utilisable.
+## L'accroche
 
-## Le sommaire, dans l'ordre
+> **Vous êtes meilleur que vos concurrents. Votre marché ne le voit pas.**
 
-L'ordre est l'argument. La première ligne rend l'offre **comparable**, les
-cinq suivantes la rendent **supérieure** :
+Elle porte enfin l'enjeu — sortir de la masse — au lieu d'annoncer un
+délai. Et elle flatte avant d'accuser, ce qui fait lire la seconde phrase.
 
-1. **La plateforme de marque complète** — raison d'être, positionnement,
-   valeurs, personnalité, ton de voix. Exactement ce qu'une agence livre.
-2. **Le diagnostic chiffré** — vos supports dépouillés un par un, les
-   occurrences comptées, les écarts relevés.
-3. **La carte du champ** — la phrase exacte de 3 à 5 concurrents, citée.
-4. **Les décisions** — 3 à 5 mouvements ordonnés, la formulation à
-   employer, où la mettre, ce qu'elle fait gagner **et perdre**.
-5. **Les playbooks** — vente, contenu, réseaux, support, recrutement.
-6. **Le lexique et les textes réécrits**, applicables par vos équipes comme
-   par votre outil IA.
+Le paragraphe dit maintenant la chaîne complète : ce qu'on dépouille, ce
+qu'on compare, et les quatre livrables — plateforme, décisions, playbooks,
+textes prêts à coller.
 
-## Ce que j'ai retiré, et pourquoi
+## La tournée présente les livrables
 
-**« 20 à 30 pages ».** J'ai vérifié : le format recommandé pour un brand
-book est de 20 à 40 pages. Cette ligne vous plaçait donc dans la fourchette
-basse du standard — elle vous alignait sur le marché au lieu de vous en
-distinguer, en tête de sommaire.
+C'est le changement principal. Les six scènes épinglées ne montrent plus
+les quatre terrains mais **les six pièces du document** : LA PLATEFORME,
+LE DIAGNOSTIC, LA CARTE, LES DÉCISIONS, LES PLAYBOOKS, LE LANGAGE.
 
-Le volume reste annoncé dans les chiffres clés des pages d'offres, où il
-est une information de cadrage. Il n'a rien à faire en argument.
+La première scène règle la question de la comparaison :
+> « Exactement ce qu'une agence facture entre 10 000 et 40 000 € — et ce
+> par quoi nous commençons. »
+
+**Les quatre terrains passent en bandeau juste au-dessus** : quatre cases
+cliquables sous « Le même audit, quel que soit ce que vous vendez ». Ils
+disent « c'est pour vous », les scènes disent « voici ce que vous
+recevez ».
+
+J'ai supprimé le sommaire en trois colonnes qui listait ces mêmes six
+pièces : il aurait fait doublon à quinze centimètres d'écart.
+
+## Le chargement sur mobile
+
+Deux causes, toutes deux corrigées :
+
+**L'écran d'accueil imposait 2 100 ms d'attente**, quelle que soit la
+vitesse réelle. La page était prête bien avant. Descendu à 900 ms, et
+sauté entièrement sur petit écran et lors des visites suivantes — une
+intro sert à poser une marque, pas à être revue à chaque page.
+
+**Three.js pesait 600 Ko** pour le canvas décoratif des pages d'offres, et
+faisait tourner une scène 3D en continu. Désactivé sous 900 px : le
+dégradé de repli rend déjà l'ambiance sans rien télécharger.
+
+## Suppressions
+
+- Les **quatre commandes par trimestre** : plus aucune occurrence, y
+  compris dans l'exemplaire SILLAGE et la page Studio.
+- **Deux questions de FAQ** : « Pourquoi 4 500 € ? » et « Pourquoi
+  seulement 4 commandes par trimestre ? », dans les deux langues.
+- Le délai de la FAQ passe de 3-4 semaines à **7 à 14 jours** — il datait
+  de l'ancienne offre.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : aucune erreur nouvelle. `app.js` validé.

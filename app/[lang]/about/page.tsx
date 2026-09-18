@@ -20,7 +20,7 @@ const T = {
     badge: "The Studio",
     h1a: "An atelier, not an agency.",
     h1b: "From Paris. By inheritance.",
-    lead: "Strawberry Production is a narrative architecture studio operating from Paris. One founder. A single offer: the narrative audit, 490 €, across four grounds. This page is what you should know before you write.",
+    lead: "Strawberry Production is a narrative architecture studio operating from Paris. One founder. A single offer: the narrative audit, 999 €, across four grounds. This page is what you should know before you write.",
     whyKicker: "Why this studio exists",
     whyH2: "Every market eventually agrees on how to be talked about.",
     whyP1: "Founders adopt the words of their category because language is contagious. AI accelerates this collapse — generating, infinitely, the same brand documents that already sound alike. In that noise, quality is no longer enough. Everyone has become competent.",
@@ -62,7 +62,7 @@ const T = {
     founderQuote: "\"I do not build brands. I write the constitution by which a house declares what it is, what it refuses, and how it sounds when it speaks.\"",
     founderSig: "Hamza El Jaouahiry \u00b7 Founder",
     ctaH2: "Now you know who you would be working with.",
-    ctaP: "One audit, 490 €, delivered within seven to fourteen days. Same method, same price, whatever the ground.",
+    ctaP: "One audit, 999 €, delivered within seven to fourteen days. Same method, same price, whatever the ground.",
     cta: "See our offers \u2192",
     ctaFoot: "Confidential commission \u00b7 NDA available",
   },
@@ -70,7 +70,7 @@ const T = {
     badge: "Le Studio",
     h1a: "Un atelier, pas une agence.",
     h1b: "Depuis Paris. Par h\u00e9ritage.",
-    lead: "Strawberry Production est un studio d'architecture narrative bas\u00e9 \u00e0 Paris. Un fondateur. Une seule offre : l'audit narratif, 490 €, sur quatre terrains.",
+    lead: "Strawberry Production est un studio d'architecture narrative bas\u00e9 \u00e0 Paris. Un fondateur. Une seule offre : l'audit narratif, 999 €, sur quatre terrains.",
     whyKicker: "Pourquoi ce studio existe",
     whyH2: "Chaque march\u00e9 finit par s'accorder sur la fa\u00e7on dont on doit parler de lui.",
     whyP1: "Les fondateurs adoptent les mots de leur cat\u00e9gorie parce que le langage est contagieux. L'IA acc\u00e9l\u00e8re cet effondrement — en g\u00e9n\u00e9rant, \u00e0 l'infini, les m\u00eames documents de marque qui se ressemblent d\u00e9j\u00e0. Dans ce bruit, la qualit\u00e9 ne suffit plus. Tout le monde est devenu comp\u00e9tent.",
@@ -112,7 +112,7 @@ const T = {
     founderQuote: "\u00ab Je ne construis pas des marques. J'\u00e9cris la constitution par laquelle une maison d\u00e9clare ce qu'elle est, ce qu'elle refuse, et comment elle sonne quand elle parle. \u00bb",
     founderSig: "Hamza El Jaouahiry \u00b7 Fondateur",
     ctaH2: "Maintenant vous savez avec qui vous travailleriez.",
-    ctaP: "Un audit, 490 €, livr\u00e9 sous sept \u00e0 quatorze jours. M\u00eame m\u00e9thode, m\u00eame prix, quel que soit le terrain.",
+    ctaP: "Un audit, 999 €, livr\u00e9 sous sept \u00e0 quatorze jours. M\u00eame m\u00e9thode, m\u00eame prix, quel que soit le terrain.",
     cta: "Voir nos offres \u2192",
     ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
   },
@@ -153,7 +153,7 @@ export default function AboutPage() {
         <AnimatedOrb color="radial-gradient(circle,#ff4d2e,transparent)" size={400} x="70%" y="60%" opacity={0.08} />
 
         {/* Le repère du studio : une ligne, quatre marques. Un fondateur,
-            quatre commandes par trimestre — l'idée qui gouverne toute cette
+            le refus assumé — l'idée qui gouverne toute cette
             page, en dessin plutôt qu'en texte seul. Différent du sceau de la
             page Architecture et du champ de points de la home : chaque page
             majeure a maintenant son propre geste, pas une variation du même

@@ -94,7 +94,7 @@ const T = {
       { k: "Scarcity", v: "4 commissions per quarter" },
     ],
     investKicker: "The investment",
-    price: "490€",
+    price: "999 €",
     priceCadence: "one audit, paid once",
     justify:
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
@@ -172,7 +172,7 @@ const T = {
       { k: "Rareté", v: "4 commandes par trimestre" },
     ],
     investKicker: "L'investissement",
-    price: "490€",
+    price: "999 €",
     priceCadence: "un audit, payé une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",

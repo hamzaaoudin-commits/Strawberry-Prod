@@ -60,10 +60,16 @@ export default async function Home({
     <main className="min-h-screen">
       <NavBar />
       <HeroSection />
-      <TourSection />
-      <ReadMarquee />
+      {/* Le problème avant la solution.
+          La tournée — qui présente les livrables — passait avant le
+          constat : on proposait un remède à quelqu'un qui n'avait pas
+          encore lu son diagnostic. ProblemSection pose ce qui ne va pas,
+          DiagnosisSection montre ce qui a déjà été essayé en vain, et
+          seulement ensuite on présente ce qu'on livre. */}
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />
+      <TourSection />
+      <ReadMarquee />
       <OffersSection lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />

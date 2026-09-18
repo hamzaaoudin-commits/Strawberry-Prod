@@ -60,20 +60,20 @@ const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
-    h1a: "Seven days to learn",
-    h1b: "what your market actually keeps of you.",
-    grounding: "Narrative audit · 490 € · Delivered in seven days",
-    sub: "A brand, a venue, a name: what you sell rests on a story nobody has written. We read it the way your market does, and hand you the moves that pull you out of the pack.",
+    h1a: "You are better than your competitors.",
+    h1b: "Your market cannot see it.",
+    grounding: "Narrative audit · 999 € · Delivered in seven days",
+    sub: "We go through everything you publish, compare it sentence by sentence with your competitors, and write what sets you apart: the brand platform, the decisions to make, your teams' playbooks, and copy ready to paste. In seven to fourteen days.",
     cta1: "Place your commission \u2192",
     ctaMain: "Order the audit \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
-    h1a: "Sept jours pour savoir",
-    h1b: "ce que votre marché retient de vous.",
-    grounding: "Audit narratif · 490 € · Livré en sept jours",
-    sub: "Une marque, un lieu, un nom : ce que vous vendez tient sur un récit que personne n'a écrit. Nous le lisons comme le fait votre marché, et nous vous rendons les mouvements qui vous sortent du lot.",
+    h1a: "Vous êtes meilleur que vos concurrents.",
+    h1b: "Votre marché ne le voit pas.",
+    grounding: "Audit narratif · 999 € · Livré en sept jours",
+    sub: "Nous dépouillons tout ce que vous publiez, nous comparons phrase par phrase avec vos concurrents, et nous écrivons ce qui vous en sépare : la plateforme de marque, les décisions à prendre, les playbooks de vos équipes, et les textes prêts à coller. En sept à quatorze jours.",
     cta1: "Passer commande \u2192",
     ctaMain: "Commander l'audit \u2192",
   },
@@ -254,7 +254,7 @@ export function HeroSection() {
           {/* L'action principale : l'audit. Le hero n'avait aucun bouton — il
               menait au diagnostic par le seul défilement, ce qui convenait
               quand la page vendait une commande à 4 500 € qu'on ne décide
-              pas en dix secondes. Pour un audit à 490 €, la décision peut se
+              pas en dix secondes. Pour un audit à 999 €, la décision peut se
               prendre tout de suite : il lui faut un bouton. */}
           <div className="mb-8">
             <Link href="/brand-narrative-audit" className="btn-primary">
