@@ -1,69 +1,50 @@
-# Strawberry — L'Architecture Narrative, 2 900 €, trois semaines
+# Strawberry — correctif du build cassé
 
-21 fichiers.
+1 fichier. **Remplace celui du patch précédent.**
 
-## À faire à la main
+## L'erreur
 
-**Supprimez ces trois fichiers**, un zip ne peut pas retirer un fichier :
+```
+./components/strawberry/why-section.tsx:5:1
+Export pick doesn't exist in target module
+Did you mean to import isLang?
+```
 
-- `app/[lang]/brand-narrative-architecture/layout.tsx`
-- `components/strawberry/doors-section.tsx`
-- `components/strawberry/terrains-section.tsx`
+J'ai importé `pick` et `Lang` depuis `@/lib/i18n`. Or :
 
-Les deux derniers étaient du code mort — plus rien ne les appelait, et ils
-pointaient encore vers l'ancienne offre.
+- **`pick`** vit dans `@/lib/t`
+- **`Lang`** vit dans `@/lib/lang`
 
-**Et créez le lien Stripe à 2 900 €**, puis remplacez l'URL dans
-`lib/config.ts`. Tous les boutons y mènent déjà.
+`@/lib/i18n` réexporte bien `Lang`, mais pas `pick` — il expose `useT` et
+`useLang`, qui sont les équivalents pour les composants qui n'ont pas la
+langue en propriété.
 
-## Le renommage
+J'ai écrit l'import de mémoire, en recopiant un motif que j'avais vu
+ailleurs, sans vérifier ce que le module exporte réellement. Les autres
+composants du site utilisent `import { pick } from "@/lib/t"` — il aurait
+suffi d'en ouvrir un.
 
-**L'audit narratif** devient **L'Architecture Narrative**, partout, dans
-les deux langues. Y compris les boutons : « Commander l'audit » →
-« Commander l'architecture ».
+## Le correctif
 
-C'était nécessaire, pas cosmétique : un audit constate. Vous livrez une
-plateforme de marque, cinq playbooks et des textes réécrits — le mot
-« audit » aurait plafonné le prix quoi qu'on écrive autour.
+```ts
+import { pick } from "@/lib/t"
+import type { Lang } from "@/lib/lang"
+```
 
-## Prix et délai
+## Pourquoi mon contrôle ne l'a pas vu
 
-- **999 € → 2 900 €**, partout, CGV comprises
-- **7-14 jours → trois semaines**, partout : hero, chiffres, FAQ, cas LOAM,
-  questionnaire, méthode
+Mon contrôle de types tourne avec des déclarations de substitution pour
+les modules absents de mon environnement. `@/lib/i18n` étant un fichier
+réel du projet, il aurait dû être résolu — mais l'erreur était noyée dans
+la liste des modules manquants (`next/link`, `next/image`,
+`@vercel/analytics`) que je filtre à l'affichage.
 
-## La page Architecture disparaît
-
-Elle devient une redirection vers l'accueil — l'adresse est indexée.
-
-Retirée aussi du menu (avec son séparateur rouge), du pied de page et du
-sitemap. Les boutons du livre et de la page Studio mènent désormais au
-paiement. `/maisons`, qui redirigeait vers elle, pointe maintenant
-directement sur l'accueil.
-
-## Le questionnaire fusionne
-
-**22 questions étaient réservées à l'Architecture.** Elles servaient à
-produire les playbooks et la plateforme — précisément ce que vous livrez
-maintenant. Sans elles, vous écririez ces pièces sans la matière.
-
-Le parcours passe donc de 14 à **30 écrans** pour un terrain donné.
-
-C'est long, et c'est le point que je vous signale : à 2 900 € c'est
-défendable, mais ça mérite peut-être une coupure en deux séances, ou un
-regroupement de plusieurs champs par écran. Dites-moi si vous voulez que
-je m'en occupe.
-
-## Un chiffre corrigé en conséquence
-
-Le premier chiffre clé annonçait « **1 h** de votre temps, questionnaire
-compris ». Avec 30 écrans, ce n'était plus vrai — et à 2 900 €, promettre
-que le client ne fera presque rien dévalue le travail.
-
-Il annonce désormais « **40+** supports dépouillés, de votre site à vos
-avis clients » : ce que vous faites, pas ce qu'il évite de faire.
+Je filtrais donc précisément la ligne qui comptait. Pour les prochains
+composants, je vérifierai les exports du module avant d'écrire l'import,
+et je lirai la sortie non filtrée.
 
 ## Vérification
 
-Contrôle de types : aucune erreur nouvelle. Traductions validées. Aucune
-trace de 999 €, de « 7 à 14 jours » ni d'« audit narratif ».
+`pick` confirmé dans `lib/t.ts` ligne 9, `ViewTracker` dans
+`view-tracker.tsx` ligne 17, classes `kicker` et `h-section` présentes
+dans `globals.css`. Contrôle de types : aucune erreur sur ce fichier.
