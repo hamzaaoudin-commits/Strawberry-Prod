@@ -1,66 +1,54 @@
-# Strawberry — les pages d'offres
+# Strawberry — « pourquoi ce studio existe » arrive sur la home
 
-6 fichiers. Six des huit points sont traités ; **l'iconographie de « la
-différence » et les FAQ par offre restent à faire** — dites-moi si je
-continue dessus.
+3 fichiers, dont **un nouveau** : `components/strawberry/why-section.tsx`.
 
-## Le cas remplace l'extrait
+## La section remonte sur la home
 
-C'est le changement principal. Les extraits montraient des passages du
-document — donc du texte sur du texte, sans preuve que ça serve à quelque
-chose.
+Vous avez raison : ce texte porte tout l'intérêt de l'offre, et il était
+sur la page Studio — où presque personne ne va.
 
-Chaque page montre maintenant **quatre pièces livrées, et ce que chacune a
-changé** :
+Il est placé **après le diagnostic et avant la tournée**. L'ordre fait
+l'argument : on pose le problème du lecteur, on lui montre ce qu'il a déjà
+essayé en vain, puis on élargit à la cause commune — et seulement ensuite
+on présente ce qu'on livre.
 
-> **Pièce 01 · La plateforme de marque**
-> Une raison d'être en une phrase — « le mobilier qu'on ne remplace pas » —
-> un positionnement, trois valeurs formulées en refus plutôt qu'en
-> adjectifs, et un ton de voix avec ses exemples. Neuf pages.
->
-> **CE QUE ÇA A CHANGÉ**
-> Les trois valeurs tenaient sur un mur de l'atelier. Deux mois plus tard,
-> la deuxième a servi à refuser une commande de 40 000 € en aggloméré — la
-> première fois que le refus était justifiable devant l'équipe.
+**Une phrase est détachée du reste**, en grand :
 
-Les effets sont concrets et vérifiables : un commercial opérationnel sans
-formation, une table qui se réserve à l'avance, un attaché de presse qui
-reprend le texte tel quel, des avis négatifs qui cessent.
+> **CE QUI NE PEUT PAS ÊTRE GÉNÉRÉ, C'EST UNE IDENTITÉ.**
 
-Décliné sur les quatre terrains, dans les deux langues. **26 clés
-identiques partout**, vérifié.
+C'est la bascule de tout l'argument : ce qui précède décrit un
+effondrement, celle-ci dit ce qui y résiste. Elle était noyée en fin de
+paragraphe. Un filet rouge la sépare de la conclusion.
 
-## Les slogans
+## Le paragraphe d'ouverture du Studio
 
-**Ouverture** — « Votre offre tient. Votre récit, personne ne l'a écrit »
-constatait un manque. Devient, par terrain :
-> Un concurrent deux fois moins bon **signe les contrats qui étaient les
-> vôtres.**
+**Avant** : « Strawberry Production est un studio d'architecture narrative
+basé à Paris. Un fondateur. Une seule offre : l'audit narratif, 999 €, sur
+quatre terrains. » — une fiche d'identité administrative.
 
-**Clôture** — « Tout ça existe déjà chez vous » énonçait une évidence sans
-bénéfice. Devient :
-> Ce qui vous rend meilleur existe déjà. Écrit, il devient la raison qu'on
-> vous choisisse.
+**Après :**
+> Tout le monde est devenu compétent. Dans un marché où la qualité ne
+> distingue plus personne, ce qui reste, c'est ce que vous êtes seul à
+> pouvoir dire. Nous l'écrivons — à la main, un fondateur, une seule
+> offre, quatre terrains.
 
-## Le constat
+Les mêmes faits y sont, mais **après** l'enjeu et comme sa conséquence :
+un seul fondateur cesse d'être une information pour devenir une garantie
+qu'aucune agence ne peut donner.
 
-Il commençait par rassurer avant d'amener le problème. Il ouvre désormais
-sur le fait qui pique :
+## La page Studio ne se répète pas
 
-> **Un concurrent deux fois moins bon que vous signe les contrats qui
-> auraient dû être les vôtres.** Il ne travaille pas mieux. Il ne livre pas
-> mieux. Il se raconte mieux — et sur un marché où personne ne peut juger
-> la qualité avant d'acheter, c'est le seul critère qui tranche.
+Le même texte à deux endroits du site se remarque. Sur la page Studio, il
+raconte maintenant **comment ce constat a fondé le studio** plutôt que
+d'exposer le constat une seconde fois :
 
-## Deux corrections
+> En regardant les documents de marque passer, un même défaut revenait :
+> ils étaient corrects, et interchangeables. […] L'IA n'a pas créé ce
+> problème — elle l'a rendu industriel.
 
-**La méthode S.T.R.A.W.** ne figurait plus sur les pages d'offres — seul
-un marqueur de commentaire orphelin restait. Nettoyé.
-
-**Les quatre terrains de la page Architecture** utilisaient `auto-fit` à
-240 px : trois par ligne puis un orphelin. Fixés à quatre colonnes
-au-delà de 900 px, deux en dessous.
+Même idée, autre angle : la home argumente, le Studio raconte.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Traductions validées.
+Contrôle de types : aucune erreur sur le nouveau composant. Les remontées
+sur `about` sont préexistantes (`style jsx`).

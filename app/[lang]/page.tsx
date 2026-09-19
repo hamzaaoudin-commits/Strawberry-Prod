@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/strawberry/hero-section"
 import { TourSection } from "@/components/strawberry/tour-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
+import { WhySection } from "@/components/strawberry/why-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
@@ -68,6 +69,12 @@ export default async function Home({
           seulement ensuite on présente ce qu'on livre. */}
       <ProblemSection lang={lang} />
       <DiagnosisSection lang={lang} />
+      {/* Pourquoi ce studio existe.
+          Ce texte vivait sur la page Studio, où presque personne ne va.
+          C'est pourtant lui qui donne sa raison d'être à l'offre. Placé
+          ici, il élargit le problème du lecteur à sa cause commune, juste
+          avant qu'on ne présente ce qu'on livre. */}
+      <WhySection lang={lang} />
       <TourSection />
       <ReadMarquee />
       <OffersSection lang={lang} />
