@@ -18,7 +18,7 @@ const T = {
     kicker: "Les documents publiés",
     h1a: "Lisez le travail",
     h1b: "avant de le commander.",
-    lead: "Deux documents complets, publiés en entier, sans email à laisser. Ils portent sur des maisons inventées pour l'exercice — aucun client n'a à servir de vitrine.",
+    lead: "Deux extraits, publiés en entier, sans email à laisser. Ils portent sur les pièces 02 et 03 — le diagnostic et la carte du champ — soit deux des six pièces de L'Architecture Narrative. Les maisons sont inventées pour l'exercice : aucun client n'a à servir de vitrine.",
     docs: [
       { name: "SILLAGE", motif: "sillage", sub: "Logiciel de chantier", kind: "BRAND NARRATIVE ARCHITECTURE · quatorze pièces", body: "Une commande complète, de la dissection du champ narratif jusqu'aux quatre-vingt-dix premiers jours de déploiement.", href: "/documents/sillage" },
       { name: "VERSO", motif: "verso", sub: "Reliure d'art", kind: "BRAND NARRATIVE ARCHITECTURE · cinq blocs", body: "Un diagnostic écrit : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements précis à faire. Le format de l'offre d'entrée, en entier.", href: "/documents/verso" },
@@ -29,7 +29,7 @@ const T = {
     kicker: "The published documents",
     h1a: "Read the work",
     h1b: "before commissioning it.",
-    lead: "Two complete documents, published in full, with no email to leave. They cover houses invented for the exercise — no client has to serve as a showcase.",
+    lead: "Two extracts, published in full, with no email to leave. They cover pieces 02 and 03 — the diagnosis and the map of the field — two of the six pieces of The Narrative Architecture. The houses are invented for the exercise: no client has to serve as a showcase.",
     docs: [
       { name: "SILLAGE", motif: "sillage", sub: "Construction software", kind: "BRAND NARRATIVE ARCHITECTURE · fourteen parts", body: "A complete commission, from the dissection of the narrative field to the first ninety days of deployment.", href: "/documents/sillage" },
       { name: "VERSO", motif: "verso", sub: "Art bindery", kind: "BRAND NARRATIVE ARCHITECTURE · five blocks", body: "A written diagnosis: what lands, what makes you indistinguishable from competitors, and the precise moves to make. The format of the offer, in full.", href: "/documents/verso" },

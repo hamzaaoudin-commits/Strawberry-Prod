@@ -1,61 +1,58 @@
-# Strawberry — le lien à 2 900 € et le dernier délai
+# Strawberry — pages, extraits, et FAQ par terrain
 
-16 fichiers.
+9 fichiers.
 
-## Le nouveau lien Stripe
+## Le nombre de pages
 
-`https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g` remplace l'ancien dans
-les **8 fichiers** qui le portaient en dur.
+**Vingt à trente → cinquante à soixante-dix**, partout : les trois cartes
+de prix, la couverture du document sur la home, le descriptif de l'offre,
+et le dictionnaire de THE ROOM.
 
-## Trois entrées Stripe devenues une
+C'était la taille de l'audit à 490 €. Annoncer moins que ce qu'on livre
+rend le prix incompréhensible.
 
-`lib/config.ts` contenait encore :
+**Le descriptif changeait aussi de nature.** Il disait « vous repartez
+avec un état des lieux et un plan, pas une refonte » — vrai pour un audit,
+faux depuis la fusion. Il liste maintenant les six pièces et finit par :
+« Vous ne repartez pas avec un état des lieux : vous repartez avec ce
+qu'il faut faire, et de quoi le faire. »
 
-- `architecture` → l'ancienne offre à 4 500 €
-- `audit490` → qui pointait déjà sur le nouveau lien, mais sous un nom qui
-  ne veut plus rien dire
+## Les deux exemplaires publiés
 
-Il ne reste que **`architecture`**, avec la nouvelle variable
-d'environnement `NEXT_PUBLIC_STRIPE_ARCHITECTURE_URL`. Quatre pages qui
-utilisaient `STRIPE_LINKS.audit490` sont recâblées — dont
-`/documents/verso`, qui vendait donc l'ancienne offre.
+VERSO et SILLAGE couvrent cinq sections de diagnostic et de carte du
+champ — soit les pièces 02 et 03. Ils ne montrent ni la plateforme, ni les
+décisions, ni les playbooks.
 
-**À faire de votre côté :** si vous aviez défini
-`NEXT_PUBLIC_STRIPE_AUDIT_URL` ou `NEXT_PUBLIC_STRIPE_AUDIT490_URL` sur
-Vercel, elles ne sont plus lues. Définissez
-`NEXT_PUBLIC_STRIPE_ARCHITECTURE_URL`, ou laissez la valeur par défaut qui
-est déjà la bonne.
+Ils s'annonçaient comme **« un exemple de ce que vous recevrez »**, et la
+page les présentait comme **« deux documents complets »**. Un visiteur en
+concluait que soixante pages ressemblent à ça — et que 2 900 € c'est cher.
 
-## Le « sous 7 jours » que vous voyiez
+Ils sont désormais **« Extrait — les pièces 02 et 03, sur une maison
+réelle »**, et la page dit lesquelles des six pièces ils couvrent.
 
-Ce n'était pas le bandeau final mais la ligne **sous le bouton d'achat** :
-« Remboursable sous 7 jours ». Elle datait d'un produit à 490 € qu'on
-pouvait rendre sans conséquence.
+C'est plus honnête et plus vendeur : montrer deux pièces sur six laisse
+entendre ce qu'il y a dans les quatre autres.
 
-Elle porte maintenant la garantie qu'on a définie : **« Deux révisions
-incluses · Livré le 21e jour au plus tard, ou remboursé »**.
+## Les FAQ, déclinées
 
-## Trois autres délais périmés
+Trois terrains partageaient les mêmes réponses. Un restaurateur lisait
+« pourquoi pas une agence au mois » avec une réponse écrite pour une
+marque.
 
-- La FAQ « Combien de temps ça prend ? » répondait **sept jours**. Elle
-  détaille maintenant le calendrier : trois semaines, document au jour 15,
-  relecture au jour 20.
-- L'exemplaire VERSO annonçait sept jours, et proposait de **déduire les
-  2 900 € d'une architecture complète** qui n'existe plus.
-- Un bouton « Commander l'audit » subsistait dans le HTML du gabarit des
-  pages d'offres, échappé au renommage.
+- **THE PRODUCT** — « Pourquoi pas une agence packaging ? » · « Et si je
+  vends via des revendeurs ? » · « J'ai plusieurs produits, ça marche ? »
+- **THE ROOM** — « Mon équipe tourne beaucoup, ça sert à quoi ? » · le
+  questionnaire à remplir entre deux services
+- **BRAND** — « Mes commerciaux vont-ils vraiment s'en servir ? »
+- **THE NAME** était déjà personnalisé.
 
-## Les CGV recalculées
+Chaque réponse s'appuie sur une pièce réelle du document — le playbook
+vente, le plan de tournage, la fiche remise au revendeur.
 
-L'article de remboursement partiel plafonnait à **30 %, soit 1 350 €** —
-30 % de 4 500 €. À 2 900 €, c'est **870 €**. Corrigé dans les deux
-langues.
-
-C'est le genre d'erreur qui vous coûte cher exactement le jour où elle
-sert.
+Parité des clés vérifiée : les trois pages ont exactement le même jeu,
+dans les deux langues.
 
 ## Vérification
 
-Plus aucune occurrence de « sept jours », « 7 jours » ni de l'ancien lien.
-Contrôle de types lu sans filtre : uniquement des modules absents de mon
-environnement.
+Contrôle de types : uniquement des modules absents de mon environnement.
+Traductions validées.

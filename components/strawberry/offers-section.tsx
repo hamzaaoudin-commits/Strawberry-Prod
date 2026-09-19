@@ -32,7 +32,7 @@ const T = {
     h2b: "It starts understanding you.",
     intro:
       "What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
-    coverFoot: "Twenty to thirty pages",
+    coverFoot: "Fifty to seventy pages",
     h3: "The brand story no competitor can copy — and no machine can write.",
     body:
       "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
@@ -110,10 +110,10 @@ const T = {
     h2b: "Il commence à vous comprendre.",
     intro:
       "Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
-    coverFoot: "Vingt à trente pages",
+    coverFoot: "Cinquante à soixante-dix pages",
     h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
     body:
-      "Un document de vingt à trente pages, écrit à la main. Il dit ce que vous racontez aujourd'hui, ce que votre marché en retient réellement, ce qui vous range avec vos concurrents, et les trois à cinq mouvements qui vous en sortent — dans l'ordre, avec ce que chacun coûte. Rien n'est réécrit à votre place : vous repartez avec un état des lieux et un plan, pas une refonte.",
+      "Un document de cinquante à soixante-dix pages, écrit à la main, en six pièces : la plateforme de marque complète, le diagnostic de ce que vous dites aujourd'hui, la carte du champ concurrentiel, les décisions à prendre avec ce que chacune coûte, cinq playbooks pour vos équipes, et le lexique avec vos textes réécrits prêts à coller. Vous ne repartez pas avec un état des lieux : vous repartez avec ce qu'il faut faire, et de quoi le faire.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     groups: [
       {

@@ -252,7 +252,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <article class="card reveal d1">
 <span class="chip" data-i18n="price.b.tag">L'architecture narrative</span>
 <h3 data-i18n="price.b.t">2 900 €, une fois</h3>
-<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en trois semaines. Le même audit que pour une marque, une entreprise ou une personne.</p>
+<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de cinquante à soixante-dix pages, livré en trois semaines. Le même audit que pour une marque, une entreprise ou une personne.</p>
 <p style="margin-top:1.4rem"><a href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
 </div>

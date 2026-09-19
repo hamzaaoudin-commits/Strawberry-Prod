@@ -45,7 +45,7 @@ export type AuditDoc = {
 
 export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   fr: {
-    eyebrow: "Un exemple de ce que vous recevrez",
+    eyebrow: "Extrait — les pièces 02 et 03, sur une maison réelle",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "VERSO",
     edition: "Audit n° 000 — cinq blocs",
@@ -222,7 +222,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   },
 
   en: {
-    eyebrow: "An example of what you receive",
+    eyebrow: "Extract — pieces 02 and 03, on a real house",
     title: "BRAND NARRATIVE ARCHITECTURE",
     house: "VERSO",
     edition: "Audit n° 000 — five blocks",
