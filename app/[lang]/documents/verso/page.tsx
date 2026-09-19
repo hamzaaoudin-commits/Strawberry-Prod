@@ -92,7 +92,7 @@ export default async function SampleDocumentPage({
           <h2 className="mb-5 font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.005em] uppercase">{d.ctaTitle}</h2>
           <p className="lede mx-auto mb-9 max-w-[620px]">{d.ctaBody}</p>
           <div className="flex flex-wrap justify-center gap-3.5">
-            <a href={STRIPE_LINKS.audit490} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>
+            <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>
             <Link href="/documents/sillage" className="btn-ghost">{d.ctaSecondary}</Link>
           </div>
         </div>

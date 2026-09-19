@@ -33,7 +33,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
-<a class="btn btn-ghost" data-i18n="hero.cta2" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener">Commander l\'audit</a>
+<a class="btn btn-ghost" data-i18n="hero.cta2" href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener">Commander l\'architecture</a>
 </div>
 </div>
 <span class="scroll-hint" data-i18n="hero.scroll">Défiler</span>
@@ -253,7 +253,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span class="chip" data-i18n="price.b.tag">L'architecture narrative</span>
 <h3 data-i18n="price.b.t">2 900 €, une fois</h3>
 <p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en trois semaines. Le même audit que pour une marque, une entreprise ou une personne.</p>
-<p style="margin-top:1.4rem"><a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
+<p style="margin-top:1.4rem"><a href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
 </div>
 <p class="lead reveal" data-i18n="price.after" style="margin-top:2.4rem; text-align:center">Ensuite, si vous voulez qu'on écrive le monde du lieu et qu'on livre le système qui permet à votre équipe de le tenir seule : le sprint, 2 500 à 3 500 €, deux à trois semaines.</p>
@@ -291,7 +291,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span class="eyebrow" data-i18n="cta.eyebrow">L'architecture narrative</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">2 900 €, livré sous trois semaines. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
-<a class="btn btn-primary" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'architecture</span><span class="arr">→</span></a>
+<a class="btn btn-primary" href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'architecture</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>

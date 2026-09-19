@@ -1,7 +1,7 @@
 import type { Lang } from "@/lib/lang"
 
 /**
- * Demonstration document for the BRAND NARRATIVE AUDIT (490€).
+ * Demonstration document for the BRAND NARRATIVE ARCHITECTURE (2 900 €).
  *
  * Deliberately a different house from SILLAGE, and deliberately shorter: the
  * audit is a diagnosis, not an architecture, and the sample has to make that
@@ -46,7 +46,7 @@ export type AuditDoc = {
 export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   fr: {
     eyebrow: "Un exemple de ce que vous recevrez",
-    title: "BRAND NARRATIVE AUDIT",
+    title: "BRAND NARRATIVE ARCHITECTURE",
     house: "VERSO",
     edition: "Audit n° 000 — cinq blocs",
     disclaimer:
@@ -61,7 +61,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
       ["La maison", "VERSO — Bordeaux, six ans. Reliure et édition d'art à façon."],
       ["Ce qu'elle vend", "Des tirages reliés à la main pour galeries, musées et collectionneurs."],
       ["L'état", "410 k€ de chiffre annuel. Neuf personnes. Carnet plein à trois mois."],
-      ["Le motif de l'audit", "« On refuse du travail et on n'arrive pourtant pas à augmenter nos prix. »"],
+      ["Le motif de l'Architecture", "« On refuse du travail et on n'arrive pourtant pas à augmenter nos prix. »"],
       ["Sa phrase actuelle", "« L'artisanat de la reliure, au service de vos projets. »"],
     ],
     parts: [
@@ -204,7 +204,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
         ],
       },
     ],
-    scopeTitle: "Ce que cet audit ne contient pas",
+    scopeTitle: "Ce que cette Architecture ne contient pas",
     scopeBody:
       "Un diagnostic n'est pas une architecture. Ce document dit où la maison se tient et vers où aller. Il ne fait pas le chemin.",
     scopeNot: [
@@ -214,16 +214,16 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
       "Pas d'extraction en profondeur : le document est produit à partir de ce que vous envoyez",
       "Pas d'allers-retours ni de revue à trente jours",
     ],
-    ctaTitle: "Voilà ce que vous recevez pour 490€.",
+    ctaTitle: "Voilà ce que vous recevez pour 2 900 €.",
     ctaBody:
-      "Sept jours après votre questionnaire, un document de cette forme sur votre propre maison. Si vous commandez ensuite l'architecture complète, les 490€ en sont déduits.",
-    ctaPrimary: "Commander l'audit",
+      "Trois semaines après votre questionnaire, un document de cette forme sur votre propre maison. Deux révisions incluses.",
+    ctaPrimary: "Commander l'architecture",
     ctaSecondary: "Voir l'architecture complète →",
   },
 
   en: {
     eyebrow: "An example of what you receive",
-    title: "BRAND NARRATIVE AUDIT",
+    title: "BRAND NARRATIVE ARCHITECTURE",
     house: "VERSO",
     edition: "Audit n° 000 — five blocks",
     disclaimer:
@@ -238,7 +238,7 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
       ["The house", "VERSO — Bordeaux, six years old. Bespoke art binding and editions."],
       ["What it sells", "Hand-bound editions for galleries, museums and collectors."],
       ["The state", "€410k annual revenue. Nine people. Booked three months ahead."],
-      ["Why the audit", "\u201cWe turn work away and still can't raise our prices.\u201d"],
+      ["Why the Architecture", "\u201cWe turn work away and still can't raise our prices.\u201d"],
       ["Current sentence", "\u201cThe craft of binding, at the service of your projects.\u201d"],
     ],
     parts: [
@@ -361,10 +361,10 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
       "No deep extraction: the document is produced from what you send",
       "No revisions and no thirty-day walkthrough",
     ],
-    ctaTitle: "This is what 490€ buys.",
+    ctaTitle: "This is what 2 900 € buys.",
     ctaBody:
-      "Seven days after your questionnaire, a document of this shape about your own house. If you then commission the full architecture, the 490€ is deducted.",
-    ctaPrimary: "Commission the audit",
+      "Three weeks after your questionnaire, a document of this shape about your own house. Two revisions included.",
+    ctaPrimary: "Commission the Architecture",
     ctaSecondary: "See the full architecture →",
   },
 

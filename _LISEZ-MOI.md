@@ -1,62 +1,61 @@
-# Strawberry — le renommage, fait correctement cette fois
+# Strawberry — le lien à 2 900 € et le dernier délai
 
-20 fichiers.
+16 fichiers.
 
-## Ce que ma passe précédente avait raté
+## Le nouveau lien Stripe
 
-Je cherchais des chaînes exactes — « audit narratif », « L'audit ». Tout ce
-qui était **coupé, abrégé ou encodé** est passé au travers.
+`https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g` remplace l'ancien dans
+les **8 fichiers** qui le portaient en dur.
 
-La couverture de votre capture en est l'exemple parfait :
+## Trois entrées Stripe devenues une
 
-```jsx
-L&apos;Audit
-<br />
-narratif
-```
+`lib/config.ts` contenait encore :
 
-Le titre est coupé par un `<br/>` et l'apostrophe est une entité HTML.
-Aucune recherche sur « L'audit narratif » ne pouvait le trouver. J'aurais
-dû chercher le mot seul dès le départ.
+- `architecture` → l'ancienne offre à 4 500 €
+- `audit490` → qui pointait déjà sur le nouveau lien, mais sous un nom qui
+  ne veut plus rien dire
 
-## Ce qui est corrigé maintenant
+Il ne reste que **`architecture`**, avec la nouvelle variable
+d'environnement `NEXT_PUBLIC_STRIPE_ARCHITECTURE_URL`. Quatre pages qui
+utilisaient `STRIPE_LINKS.audit490` sont recâblées — dont
+`/documents/verso`, qui vendait donc l'ancienne offre.
 
-J'ai recensé **toute occurrence du mot** avant de toucher quoi que ce soit,
-en protégeant les identifiants techniques (`AUDIT490`, `FAQ_AUDIT`, la
-route `/questionnaire/audit`, la clé `"audit"`).
+**À faire de votre côté :** si vous aviez défini
+`NEXT_PUBLIC_STRIPE_AUDIT_URL` ou `NEXT_PUBLIC_STRIPE_AUDIT490_URL` sur
+Vercel, elles ne sont plus lues. Définissez
+`NEXT_PUBLIC_STRIPE_ARCHITECTURE_URL`, ou laissez la valeur par défaut qui
+est déjà la bonne.
 
-- La couverture du document : **L'Architecture narrative**
-- « Le même audit que pour un lieu » → « La même Architecture que… », sur
-  les trois pages de terrain
-- « L'audit · la méthode S.T.R.A.W. », `nav.services`, les réponses de FAQ
-- Les métadonnées et titres de pages `/documents`
-- La page Studio : « Chaque audit est lu, cartographié et écrit à la
-  main », « quand vous commandez un audit »
-- Le bandeau des terrains : « Une Architecture, quatre terrains »
-- Le questionnaire : « Vous avez commandé l'Architecture pour »
-- Deux noms de fonction internes (`AuditSamplePage`)
+## Le « sous 7 jours » que vous voyiez
 
-## Le délai, enfin partout
+Ce n'était pas le bandeau final mais la ligne **sous le bouton d'achat** :
+« Remboursable sous 7 jours ». Elle datait d'un produit à 490 € qu'on
+pouvait rendre sans conséquence.
 
-**« Livré en sept jours »** figurait encore sur la couverture, dans les
-trois `price.b.d`, et dans la ligne d'ancrage du hero anglais —
-« Delivered in seven days » — que ma recherche française ne voyait pas.
+Elle porte maintenant la garantie qu'on a définie : **« Deux révisions
+incluses · Livré le 21e jour au plus tard, ou remboursé »**.
 
-Et **« Trois semaines, et vous saurez quoi changer »** dans le bandeau
-final, qui affichait encore « Sept jours ».
+## Trois autres délais périmés
 
-## Deux valeurs périmées trouvées au passage
+- La FAQ « Combien de temps ça prend ? » répondait **sept jours**. Elle
+  détaille maintenant le calendrier : trois semaines, document au jour 15,
+  relecture au jour 20.
+- L'exemplaire VERSO annonçait sept jours, et proposait de **déduire les
+  2 900 € d'une architecture complète** qui n'existe plus.
+- Un bouton « Commander l'audit » subsistait dans le HTML du gabarit des
+  pages d'offres, échappé au renommage.
 
-**« 4 commandes par trimestre »** subsistait dans la carte de prix des
-pages d'offres. Remplacée par **« Deux révisions incluses »** — la case
-existait, autant qu'elle porte la garantie.
+## Les CGV recalculées
 
-**Le questionnaire annonçait « 20 à 25 minutes »** alors qu'il compte 30
-écrans depuis la fusion. Passé à **50 à 60 minutes**, ce qui correspond à
-ce que la frise annonce déjà sur la home.
+L'article de remboursement partiel plafonnait à **30 %, soit 1 350 €** —
+30 % de 4 500 €. À 2 900 €, c'est **870 €**. Corrigé dans les deux
+langues.
+
+C'est le genre d'erreur qui vous coûte cher exactement le jour où elle
+sert.
 
 ## Vérification
 
-Recensement final : plus aucune occurrence du mot dans le texte visible,
-ni « sept jours », ni « commandes par trimestre ». Contrôle de types lu
-sans filtre : uniquement des modules absents de mon environnement.
+Plus aucune occurrence de « sept jours », « 7 jours » ni de l'ancien lien.
+Contrôle de types lu sans filtre : uniquement des modules absents de mon
+environnement.

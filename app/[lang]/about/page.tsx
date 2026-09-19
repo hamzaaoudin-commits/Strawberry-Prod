@@ -578,7 +578,7 @@ export default function AboutPage() {
             {t.ctaP}
           </p>
           <Link
-            href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+            href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"
             target="_blank"
             rel="noopener"
             style={{

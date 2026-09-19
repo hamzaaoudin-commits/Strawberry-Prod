@@ -89,7 +89,7 @@ const ARTICLES = [
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
           <p><strong>C. Upon delivery, in case of substantial dissatisfaction:</strong></p>
           <p style={{ marginTop: 8 }}>The Client benefits from unlimited minor revisions and two (2) rounds of major revisions within thirty (30) days following delivery.</p>
-          <p style={{ marginTop: 8 }}>If, after these two rounds, the Client considers that the Service does not substantially match their reasonable expectations, they may request a partial refund, capped at <strong>thirty percent (30%) of the total amount, i.e. €1,350</strong>. This request must be motivated in writing within forty-five (45) days following delivery.</p>
+          <p style={{ marginTop: 8 }}>If, after these two rounds, the Client considers that the Service does not substantially match their reasonable expectations, they may request a partial refund, capped at <strong>thirty percent (30%) of the total amount, i.e. €870</strong>. This request must be motivated in writing within forty-five (45) days following delivery.</p>
         </div>
         <p style={{ marginTop: 16 }}>Any refund request must be sent by email to hamza@gostrawberryprod.com, with reference to the invoice concerned.</p>
       </>

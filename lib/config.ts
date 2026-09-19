@@ -36,14 +36,21 @@ export const CONTACT_ENDPOINT = "/api/contact"
  * anchor, so a missing link sends the visitor somewhere useful instead of 404.
  */
 export const STRIPE_LINKS = {
-  architecture: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT_URL, "https://buy.stripe.com/fZu8wIb2A62E9Eq8buf7i0b"),
-  audit490: env(process.env.NEXT_PUBLIC_STRIPE_AUDIT490_URL, "https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"),
+  /**
+   * L'Architecture Narrative — 2 900 €, l'offre unique.
+   *
+   * Les deux entrées précédentes ont disparu avec la fusion : `architecture`
+   * pointait vers l'ancienne offre à 4 500 €, et `audit490` porte désormais
+   * le lien à 2 900 € — le nom de sa variable d'environnement ne veut donc
+   * plus rien dire. Une seule clé, un seul lien, plus d'ambiguïté possible.
+   */
+  architecture: env(process.env.NEXT_PUBLIC_STRIPE_ARCHITECTURE_URL, "https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"),
 
   /**
-   * Paiement en trois fois pour l'architecture.
+   * Paiement en deux fois pour l'architecture.
    *
-   * À CRÉER dans Stripe (abonnement de 3 échéances de 1 500€, ou lien de
-   * paiement échelonné), puis à coller dans NEXT_PUBLIC_STRIPE_ARCH_3X_URL.
+   * À CRÉER dans Stripe (deux échéances de 1 450 €), puis à coller dans
+   * NEXT_PUBLIC_STRIPE_ARCH_3X_URL.
    * Tant qu'il vaut la valeur par défaut, l'option n'est pas proposée : mieux
    * vaut ne rien annoncer qu'annoncer un paiement fractionné qui n'existe pas.
    */

@@ -94,7 +94,7 @@ const ARTICLES = [
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
           <p><strong>C. À la livraison, en cas d&apos;insatisfaction substantielle :</strong></p>
           <p style={{ marginTop: 8 }}>Le Client bénéficie de révisions mineures illimitées et de deux (2) tours de révisions majeures dans les trente (30) jours suivant la livraison.</p>
-          <p style={{ marginTop: 8 }}>Si, après ces deux tours, le Client estime que la Prestation ne correspond pas substantiellement à ses attentes raisonnables, il peut solliciter un remboursement partiel, plafonné à <strong>trente pour cent (30%) du montant total, soit 1 350 €</strong>. Cette demande doit être motivée par écrit dans les quarante-cinq (45) jours suivant la livraison.</p>
+          <p style={{ marginTop: 8 }}>Si, après ces deux tours, le Client estime que la Prestation ne correspond pas substantiellement à ses attentes raisonnables, il peut solliciter un remboursement partiel, plafonné à <strong>trente pour cent (30%) du montant total, soit 870 €</strong>. Cette demande doit être motivée par écrit dans les quarante-cinq (45) jours suivant la livraison.</p>
         </div>
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
           <p><strong>D. Dispositions propres aux autres offres :</strong></p>

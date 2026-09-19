@@ -5,8 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Seven days, and you will know what to change.", cta1: "Order the architecture" },
-  fr: { h2: "Sept jours, et vous saurez quoi changer.", cta1: "Commander l'architecture" },
+  en: { h2: "Three weeks, and you will know what to change.", cta1: "Order the architecture" },
+  fr: { h2: "Trois semaines, et vous saurez quoi changer.", cta1: "Commander l'architecture" },
 }
 
 export function CTABanner() {
@@ -41,7 +41,7 @@ export function CTABanner() {
 
           <div className="relative flex flex-col items-center">
             <a
-              href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+              href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"
               target="_blank"
               rel="noopener"
               className="btn-primary max-w-full px-12 py-[20px] text-[16px]"

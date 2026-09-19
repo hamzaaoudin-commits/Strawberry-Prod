@@ -145,7 +145,7 @@ export function NavBar() {
               style={{ animation: "sp-navpulse 2.4s ease-out infinite" }}
             />
             <a
-              href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+              href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"
               target="_blank"
               rel="noopener"
               className="relative rounded-full px-5 py-2.5 font-sans text-[13px] font-semibold tracking-[0.04em] text-white no-underline"
@@ -184,7 +184,7 @@ export function NavBar() {
               </Link>
             ))}
             <a
-              href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+              href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"
               target="_blank"
               rel="noopener"
               onClick={() => setMobileOpen(false)}

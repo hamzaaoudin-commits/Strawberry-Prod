@@ -100,7 +100,7 @@ const T = {
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
     clock: "A brand, a product, a venue, a company or a person: same method, same price, same turnaround.",
     guaranteeShort: "V2 guarantee if it misses",
-    refundShort: "Refundable within 7 days",
+    refundShort: "Two revisions included · Delivered by day 21 at the latest, or refunded",
     cta1: "Order the architecture →",
     cta2: "See what the Architecture contains",
   },
@@ -178,7 +178,7 @@ const T = {
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
     clock: "Une marque, un produit, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
-    refundShort: "Remboursable sous 7 jours",
+    refundShort: "Deux révisions incluses · Livré le 21e jour au plus tard, ou remboursé",
     cta1: "Commander l'architecture →",
     cta2: "Voir ce que contient l'Architecture",
   },
@@ -312,7 +312,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
               >
                 {t.cta1}
               </TrackedLink>
-              <a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" className="btn-quiet">
+              <a href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener" className="btn-quiet">
                 {t.cta2}
               </a>
             </div>
