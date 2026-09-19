@@ -28,7 +28,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="hero-fallback"></div>
 <div class="hero-scrim"></div>
 <div class="wrap">
-<span class="hero-kicker eyebrow"><span class="dot"></span><span data-i18n="hero.kicker">Audit narratif · Lieux</span></span>
+<span class="hero-kicker eyebrow"><span class="dot"></span><span data-i18n="hero.kicker">Architecture narrative · Lieux</span></span>
 <h1 class="wordmark flicker">THE ROOM</h1>
 <p class="hero-tag" data-i18n="hero.tag">Votre lieu est déjà une histoire.<br/><b>Personne ne l'a écrite.</b></p>
 <div class="hero-cta">
@@ -171,7 +171,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 
 <div class="ex-page reveal d1">
   <div class="ex-page-head">
-    <span data-i18n="ex.head">Audit narratif</span>
+    <span data-i18n="ex.head">Architecture narrative</span>
     <span data-i18n="ex.house">Maison LOAM</span>
   </div>
   <div class="ex-body">
@@ -250,8 +250,8 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p data-i18n="price.a.d">Elle exécute à votre place. Elle sait ce que votre lieu raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.</p>
 </article>
 <article class="card reveal d1">
-<span class="chip" data-i18n="price.b.tag">L'audit narratif</span>
-<h3 data-i18n="price.b.t">999 €, une fois</h3>
+<span class="chip" data-i18n="price.b.tag">L'architecture narrative</span>
+<h3 data-i18n="price.b.t">2 900 €, une fois</h3>
 <p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
 <p style="margin-top:1.4rem"><a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
@@ -288,10 +288,10 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><section class="section">
 <div class="wrap">
 <div class="cta-band wipe">
-<span class="eyebrow" data-i18n="cta.eyebrow">L'audit narratif</span>
+<span class="eyebrow" data-i18n="cta.eyebrow">L'architecture narrative</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
-<p class="lead" data-i18n="cta.lead">999 €, livré sous sept à quatorze jours. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
-<a class="btn btn-primary" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'audit</span><span class="arr">→</span></a>
+<p class="lead" data-i18n="cta.lead">2 900 €, livré sous trois semaines. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
+<a class="btn btn-primary" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'architecture</span><span class="arr">→</span></a>
 </div>
 </div>
 </section>

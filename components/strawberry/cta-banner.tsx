@@ -5,8 +5,8 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import { useT } from "@/lib/i18n"
 
 const T = {
-  en: { h2: "Seven days, and you will know what to change.", cta1: "Order the audit" },
-  fr: { h2: "Sept jours, et vous saurez quoi changer.", cta1: "Commander l'audit" },
+  en: { h2: "Seven days, and you will know what to change.", cta1: "Order the architecture" },
+  fr: { h2: "Sept jours, et vous saurez quoi changer.", cta1: "Commander l'architecture" },
 }
 
 export function CTABanner() {

@@ -250,7 +250,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
-    id: "competitor_edge", offers: ["architecture"], type: "textarea",
+    id: "competitor_edge", offers: ["audit", "architecture"], type: "textarea",
     label: t("Qu'est-ce qu'un concurrent fait mieux que vous, honnêtement ?", "What does a competitor genuinely do better than you?"),
     help: t(
       "Sans ça, le contre-positionnement sonne un peu trop confortable.",
@@ -260,7 +260,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
-    id: "conviction", offers: ["architecture"], type: "textarea",
+    id: "conviction", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Quelle conviction tenez-vous sur votre secteur que la plupart refuseraient de dire à voix haute ?",
       "What conviction do you hold about your field that most people in it would refuse to say out loud?",
@@ -290,7 +290,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Langage", "Language"),
   },
   {
-    id: "rupture", offers: ["architecture"], type: "textarea",
+    id: "rupture", offers: ["audit", "architecture"], type: "textarea",
     label: t("Racontez le moment de rupture.", "Tell me the rupture moment."),
     help: t(
       "Le jour, la conversation, l'échec ou le refus précis qui a fait exister cette maison. Une date si possible. Pas l'histoire polie que vous racontez aux investisseurs — la vraie.",
@@ -314,7 +314,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Identité & langage", "Identity & language"),
   },
   {
-    id: "enemy", offers: ["architecture"], type: "textarea",
+    id: "enemy", offers: ["audit", "architecture"], type: "textarea",
     label: t("Qui ou qu'est-ce qui est l'ennemi de cette maison ?", "Who or what is the enemy of this house?"),
     help: t(
       "Pas un concurrent — une façon de penser, une méthode, une habitude que cette maison refuse d'accepter.",
@@ -324,7 +324,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("La vérité", "The truth"),
   },
   {
-    id: "decision", offers: ["architecture"], type: "choice",
+    id: "decision", offers: ["audit", "architecture"], type: "choice",
     label: t("Qui décide de l'achat, en face de vous ?", "Who decides on the purchase, across from you?"),
     options: [
       t("Moi seul : je décide et je paie", "Me alone: I decide and I pay"),
@@ -335,7 +335,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Audience", "Audience"),
   },
   {
-    id: "audience", offers: ["architecture"], type: "textarea",
+    id: "audience", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Décrivez la personne exacte qui devrait vous commander aujourd'hui.",
       "Describe the exact person who should commission you today.",
@@ -348,7 +348,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Audience", "Audience"),
   },
   {
-    id: "risk", offers: ["architecture"], type: "choice",
+    id: "risk", offers: ["audit", "architecture"], type: "choice",
     label: t(
       "Si un client se trompe en vous choisissant, le risque est surtout...",
       "If a client is wrong to choose you, the risk is mainly...",
@@ -363,7 +363,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Audience", "Audience"),
   },
   {
-    id: "repoussoir", offers: ["architecture"], type: "textarea",
+    id: "repoussoir", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Décrivez un client que vous avez refusé, ou que vous refuseriez.",
       "Describe a client you turned down, or would turn down.",
@@ -373,7 +373,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Audience", "Audience"),
   },
   {
-    id: "support_scene", offers: ["architecture"], type: "textarea",
+    id: "support_scene", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Racontez la dernière fois qu'un client a été déçu ou en colère.",
       "Tell me about the last time a client was disappointed or angry.",
@@ -383,7 +383,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Playbooks", "Playbooks"),
   },
   {
-    id: "hr_disqualifier", offers: ["architecture"], type: "textarea",
+    id: "hr_disqualifier", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Chez quelqu'un que vous embaucheriez, quelle qualité est non-négociable, et laquelle disqualifie immédiatement ?",
       "In someone you would hire, which quality is non-negotiable, and which one disqualifies immediately?",
@@ -393,7 +393,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Playbooks", "Playbooks"),
   },
   {
-    id: "model", offers: ["architecture"], type: "choice",
+    id: "model", offers: ["audit", "architecture"], type: "choice",
     label: t("Comment vendez-vous aujourd'hui ?", "How do you sell today?"),
     options: [
       t("Paiement unique", "One-off payment"),
@@ -404,7 +404,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Business", "Business"),
   },
   {
-    id: "content_format", offers: ["architecture"], type: "choice",
+    id: "content_format", offers: ["audit", "architecture"], type: "choice",
     label: t(
       "Quel format pouvez-vous tenir dans la durée, sans vous épuiser ?",
       "Which format can you sustain over time, without burning out?",
@@ -419,7 +419,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Playbooks", "Playbooks"),
   },
   {
-    id: "traction", offers: ["architecture"], type: "shorttext", optional: true,
+    id: "traction", offers: ["audit", "architecture"], type: "shorttext", optional: true,
     label: t("Quel chiffre concret prouve que ça marche déjà ?", "What concrete number proves it already works?"),
     help: t(
       "Clients, mois d'existence, taux de retour, chiffre d'affaires. Un seul suffit.",
@@ -429,7 +429,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Business", "Business"),
   },
   {
-    id: "price", offers: ["architecture"], type: "textarea",
+    id: "price", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "L'objection qu'on vous oppose le plus souvent avant d'acheter, et ce qui justifierait de doubler votre prix demain.",
       "The objection you hear most often before a purchase, and what would justify doubling your price tomorrow.",
@@ -442,7 +442,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Business", "Business"),
   },
   {
-    id: "forbidden", offers: ["architecture"], type: "textarea",
+    id: "forbidden", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Quel sujet, ton ou blague ne franchirez-vous jamais, même si ça faisait vendre ?",
       "Which subject, tone or joke will you never cross, even if it sold?",
@@ -455,7 +455,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Langage", "Language"),
   },
   {
-    id: "wordbank", offers: ["architecture"], type: "wordbank",
+    id: "wordbank", offers: ["audit", "architecture"], type: "wordbank",
     label: t("Vos mots, et ceux qui ne le seront jamais.", "Your words, and the ones that will never be."),
     help: t(
       "Cochez dans chaque colonne. Un mot ne peut pas être dans les deux.",
@@ -464,7 +464,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Langage", "Language"),
   },
   {
-    id: "deploy", offers: ["architecture"], type: "choice",
+    id: "deploy", offers: ["audit", "architecture"], type: "choice",
     label: t(
       "Aujourd'hui, où de meilleurs mots changeraient immédiatement votre chiffre d'affaires ?",
       "Today, where would better words immediately change your revenue?",
@@ -479,7 +479,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Déploiement", "Deployment"),
   },
   {
-    id: "portrait_house", offers: ["architecture"], type: "textarea",
+    id: "portrait_house", offers: ["audit", "architecture"], type: "textarea",
     label: t("Si cette maison était une personne, décrivez-la.", "If this house were a person, describe them."),
     help: t(
       "Sa posture, sa façon de parler, l'endroit où elle se sentirait chez elle. Soyez précis — les réponses vagues produisent des maisons vagues.",
@@ -493,7 +493,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Identité visuelle", "Visual identity"),
   },
   {
-    id: "outside_refs", offers: ["architecture"], type: "textarea", optional: true,
+    id: "outside_refs", offers: ["audit", "architecture"], type: "textarea", optional: true,
     label: t(
       "Trois références hors de votre secteur qui disent ce que la maison devrait ressentir.",
       "Three references outside your field that say what the house should feel like.",
@@ -506,7 +506,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Identité visuelle", "Visual identity"),
   },
   {
-    id: "proof", offers: ["architecture"], type: "textarea",
+    id: "proof", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Racontez une fois précise où quelqu'un a compris votre maison sans que vous ayez eu à l'expliquer.",
       "Tell me about one specific time someone understood your house without you having to explain it.",
@@ -516,7 +516,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Preuve", "Proof"),
   },
   {
-    id: "headline", offers: ["architecture"], type: "textarea", optional: true,
+    id: "headline", offers: ["audit", "architecture"], type: "textarea", optional: true,
     label: t(
       "Imaginez un article de presse sur votre maison dans trois ans. Quel est le titre ?",
       "Imagine a press article about your house three years from now. What is the headline?",
@@ -538,7 +538,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Accès", "Access"),
   },
   {
-    id: "portrait_founder", offers: ["architecture"], type: "textarea",
+    id: "portrait_founder", offers: ["audit", "architecture"], type: "textarea",
     label: t(
       "Décrivez le fondateur dans un an, une fois ce document appliqué.",
       "Describe the founder one year from now, once this document has been applied.",

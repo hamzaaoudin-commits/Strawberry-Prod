@@ -89,19 +89,19 @@ const T = {
       },
     ],
     specs: [
-      { k: "Lead time", v: "7 to 14 days" },
+      { k: "Lead time", v: "three weeks" },
       { k: "Format", v: "One editorial document" },
       { k: "Scarcity", v: "4 commissions per quarter" },
     ],
     investKicker: "The investment",
-    price: "999 €",
+    price: "2 900 €",
     priceCadence: "one audit, paid once",
     justify:
       "It is the price of a few weeks of advertising that evaporates the day you stop paying. Your story belongs to you and works for you indefinitely.",
     clock: "A brand, a product, a venue, a company or a person: same method, same price, same turnaround.",
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
-    cta1: "Order the audit →",
+    cta1: "Order the architecture →",
     cta2: "See what the audit contains",
   },
   fr: {
@@ -167,19 +167,19 @@ const T = {
       },
     ],
     specs: [
-      { k: "Délai", v: "7 à 14 jours" },
+      { k: "Délai", v: "trois semaines" },
       { k: "Format", v: "Un document éditorial" },
       { k: "Rareté", v: "4 commandes par trimestre" },
     ],
     investKicker: "L'investissement",
-    price: "999 €",
+    price: "2 900 €",
     priceCadence: "un audit, payé une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
     clock: "Une marque, un produit, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
-    cta1: "Commander l'audit →",
+    cta1: "Commander l'architecture →",
     cta2: "Voir ce que contient l'audit",
   },
 }
@@ -226,7 +226,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
             </div>
 
             <div>
-              <div className="pill mb-3">L&apos;AUDIT NARRATIF</div>
+              <div className="pill mb-3">L&apos;ARCHITECTURE NARRATIVE</div>
 
               <h3 className="mb-6 font-serif text-[clamp(1.6rem,3.2vw,2.5rem)] font-bold leading-[1.15] tracking-[-0.005em] uppercase">
                 {t.h3}

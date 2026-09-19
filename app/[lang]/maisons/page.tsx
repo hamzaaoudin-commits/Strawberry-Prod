@@ -15,5 +15,5 @@ export default async function LegacyMaisonsRoute({
 }) {
   const { lang: raw } = await params
   const lang = isLang(raw) ? raw : "fr"
-  redirect(`/${lang}/brand-narrative-architecture`)
+  redirect(`/${lang}`)
 }

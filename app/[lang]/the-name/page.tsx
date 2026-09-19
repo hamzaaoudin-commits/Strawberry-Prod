@@ -13,9 +13,9 @@ import { TerrainPage, type TerrainCopy } from "@/components/terrain/terrain-page
  */
 
 export const metadata: Metadata = {
-  title: "THE NAME — L'audit narratif pour les artistes et les fondateurs",
+  title: "THE NAME — L'architecture narrative pour les artistes et les fondateurs",
   description:
-    "Vos sorties ne s'additionnent pas. L'audit narratif dit ce que votre nom raconte aujourd'hui et donne les mouvements qui font tenir le fil.",
+    "Vos sorties ne s'additionnent pas. L'architecture narrative dit ce que votre nom raconte aujourd'hui et donne les mouvements qui font tenir le fil.",
 }
 
 const COPY: TerrainCopy = {
@@ -24,7 +24,7 @@ const COPY: TerrainCopy = {
   fr: {
     "ex.eyebrow": "Un cas",
     "ex.title": "Ce qu'on a livré à ORVAL, et ce que ça a changé.",
-    "ex.head": "Audit narratif · Noms propres",
+    "ex.head": "Architecture narrative · Noms propres",
     "ex.house": "ORVAL",
     "ex.lead": "ORVAL, producteur de musique électronique, quatre EP en six ans. Le nom est changé, les livrables ne le sont pas.",
     "ex.foot": "Six pièces livrées. Quatre montrées ici.",
@@ -49,7 +49,7 @@ const COPY: TerrainCopy = {
     "ex.4.pk": "Ce que ça a changé",
     "ex.4.pv": "Le dossier de presse du cinquième EP a été envoyé sans être réécrit. Son attaché de presse a repris le texte tel quel.",
     "tour.out": "Ce qui vous rend meilleur existe déjà. Écrit, il devient la raison qu'on vous choisisse.",
-    "hero.kicker": "Audit narratif · Artistes & fondateurs",
+    "hero.kicker": "Architecture narrative · Artistes & fondateurs",
     "mq.1": "Musiciens",
     "mq.2": "Réalisateurs",
     "mq.3": "Fondateurs",
@@ -126,7 +126,7 @@ const COPY: TerrainCopy = {
   en: {
     "ex.eyebrow": "A case",
     "ex.title": "What we delivered to ORVAL, and what it changed.",
-    "ex.head": "Narrative audit · Names",
+    "ex.head": "Narrative architecture · Names",
     "ex.house": "ORVAL",
     "ex.lead": "ORVAL, electronic music producer, four EPs in six years. The name is changed, the deliverables are not.",
     "ex.foot": "Six pieces delivered. Four shown here.",
@@ -151,7 +151,7 @@ const COPY: TerrainCopy = {
     "ex.4.pk": "What it changed",
     "ex.4.pv": "The press kit for the fifth EP went out without being rewritten. His press officer used the text as it was.",
     "tour.out": "What makes you better already exists. Written down, it becomes the reason you get chosen.",
-    "hero.kicker": "Narrative audit · Artists & founders",
+    "hero.kicker": "Narrative architecture · Artists & founders",
     "mq.1": "Musicians",
     "mq.2": "Directors",
     "mq.3": "Founders",
@@ -175,7 +175,7 @@ const COPY: TerrainCopy = {
     "faq.2.q": "I am starting out, is it too early?",
     "faq.2.a": "If there are at least two or three releases to read, no. If there is nothing yet, yes: there is no material to audit, and we will tell you so.",
     "faq.3.q": "How much of my time does it take?",
-    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within seven to fourteen days.",
+    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within three weeks.",
     "faq.4.q": "What if the diagnosis teaches me nothing?",
     "faq.4.a": "Then we tell you so, and that is an answer in itself: the thread already reads, do not force it. It happens rarely — what an artist finds obvious in their work almost never matches what the audience keeps, and that gap is what the document measures. In that case you will know the problem lies elsewhere, and where to look.",
     "faq.5.q": "What do I keep at the end?",

@@ -15,9 +15,9 @@ import { TerrainPage, type TerrainCopy } from "@/components/terrain/terrain-page
  */
 
 export const metadata: Metadata = {
-  title: "BRAND — L'audit narratif pour les marques et les entreprises",
+  title: "BRAND — L'architecture narrative pour les marques et les entreprises",
   description:
-    "On vous compare au prix parce que rien ne dit qui vous êtes. L'audit narratif lit ce que votre marque raconte aujourd'hui et donne les mouvements qui la sortent du rayon.",
+    "On vous compare au prix parce que rien ne dit qui vous êtes. L'architecture narrative lit ce que votre marque raconte aujourd'hui et donne les mouvements qui la sortent du rayon.",
 }
 
 const COPY: TerrainCopy = {
@@ -26,7 +26,7 @@ const COPY: TerrainCopy = {
   fr: {
     "ex.eyebrow": "Un cas",
     "ex.title": "Ce qu'on a livré à LOAM, et ce que ça a changé.",
-    "ex.head": "Audit narratif · Marques",
+    "ex.head": "Architecture narrative · Marques",
     "ex.house": "Maison LOAM",
     "ex.lead": "LOAM, mobilier de bureau sur mesure, douze ans, quatorze personnes. Le nom est changé, les livrables ne le sont pas.",
     "ex.1.n": "Pièce 01",
@@ -51,7 +51,7 @@ const COPY: TerrainCopy = {
     "ex.4.pv": "Le commercial arrivé en mars a été opérationnel sans formation : il a lu le playbook et repris les formulations. Son premier devis n'a pas eu besoin d'être relu — c'est la première fois en douze ans.",
     "ex.foot": "Six pièces livrées. Quatre montrées ici.",
     "tour.out": "Ce qui vous rend meilleur existe déjà. Écrit, il devient la raison qu'on vous choisisse.",
-    "hero.kicker": "Audit narratif · Marques & entreprises",
+    "hero.kicker": "Architecture narrative · Marques & entreprises",
     "mq.1": "Marques",
     "mq.2": "Entreprises",
     "mq.3": "Studios",
@@ -71,13 +71,13 @@ const COPY: TerrainCopy = {
     "focus.good.big": "La position est écrite. N'importe qui dans l'équipe sait ce qu'on revendique et ce qu'on refuse. Tout se ressemble, sans se répéter.",
     "faq.title": "Ce que les dirigeants nous demandent.",
     "faq.1.q": "Pourquoi pas une agence au mois ?",
-    "faq.1.a": "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € sans rien garder. Ici vous payez 999 € une fois, et le document vous appartient.",
+    "faq.1.a": "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € sans rien garder. Ici vous payez 2 900 € une fois, et le document vous appartient.",
     "faq.2.q": "Qu'est-ce que je peux en faire seul ?",
     "faq.2.a": "Tout. Le document nomme les mouvements dans l'ordre, avec leur coût. Vous pouvez les appliquer sans nous — c'est même le but.",
     "faq.3.q": "Combien de temps ça prend, de mon côté ?",
     "faq.3.a": "Quelques heures en tout. Un questionnaire d'entrée, un échange avec vous, et la remise du document. Le reste du travail se fait sans vous mobiliser.",
     "faq.4.q": "Et si le diagnostic ne m'apprend rien ?",
-    "faq.4.a": "Alors nous vous le disons, et c'est une réponse en soi : votre position tient, ne la touchez pas. Ça arrive rarement — ce qu'un fondateur trouve évident sur son métier n'apparaît presque jamais dans ce qu'il publie, et c'est cet écart que le document mesure. Dans ce cas, vous aurez économisé la refonte que vous envisagiez, ce qui coûte bien plus que 999 €.",
+    "faq.4.a": "Alors nous vous le disons, et c'est une réponse en soi : votre position tient, ne la touchez pas. Ça arrive rarement — ce qu'un fondateur trouve évident sur son métier n'apparaît presque jamais dans ce qu'il publie, et c'est cet écart que le document mesure. Dans ce cas, vous aurez économisé la refonte que vous envisagiez, ce qui coûte bien plus que 2 900 €.",
     "faq.5.q": "Qu'est-ce que je garde à la fin ?",
     "faq.5.a": "Le document entier, pour toujours. Votre diagnostic, la carte du champ, les mouvements hiérarchisés et ce qu'il faut cesser de dire.",
     "st.1.t": "Nous lisons ce que le marché lit.",
@@ -128,7 +128,7 @@ const COPY: TerrainCopy = {
   en: {
     "ex.eyebrow": "A case",
     "ex.title": "What we delivered to LOAM, and what it changed.",
-    "ex.head": "Narrative audit · Brands",
+    "ex.head": "Narrative architecture · Brands",
     "ex.house": "LOAM",
     "ex.lead": "LOAM, bespoke office furniture, twelve years, fourteen people. The name is changed, the deliverables are not.",
     "ex.1.n": "Piece 01",
@@ -153,7 +153,7 @@ const COPY: TerrainCopy = {
     "ex.4.pv": "The salesperson who joined in March was operational without training: he read the playbook and used its wording. His first quote did not need proofreading — a first in twelve years.",
     "ex.foot": "Six pieces delivered. Four shown here.",
     "tour.out": "What makes you better already exists. Written down, it becomes the reason you get chosen.",
-    "hero.kicker": "Narrative audit · Brands & companies",
+    "hero.kicker": "Narrative architecture · Brands & companies",
     "mq.1": "Brands",
     "mq.2": "Companies",
     "mq.3": "Studios",
@@ -173,13 +173,13 @@ const COPY: TerrainCopy = {
     "focus.good.big": "The position is written. The whole team knows what you claim and what you refuse.",
     "faq.title": "What founders ask us.",
     "faq.1.q": "Why not a monthly agency?",
-    "faq.1.a": "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay 999 € once, and the document is yours.",
+    "faq.1.a": "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay 2 900 € once, and the document is yours.",
     "faq.2.q": "What can I do with it on my own?",
     "faq.2.a": "Everything. The document names the moves in order, with their cost. You can apply them without us — that is the point.",
     "faq.3.q": "How much of my time does it take?",
-    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within seven to fourteen days.",
+    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within three weeks.",
     "faq.4.q": "What if the diagnosis teaches me nothing?",
-    "faq.4.a": "Then we tell you so, and that is an answer in itself: your position holds, leave it alone. It happens rarely — what a founder finds obvious about their work almost never shows up in what they publish, and that gap is what the document measures. In that case you will have saved the rebuild you were considering, which costs far more than 999 €.",
+    "faq.4.a": "Then we tell you so, and that is an answer in itself: your position holds, leave it alone. It happens rarely — what a founder finds obvious about their work almost never shows up in what they publish, and that gap is what the document measures. In that case you will have saved the rebuild you were considering, which costs far more than 2 900 €.",
     "faq.5.q": "What do I keep at the end?",
     "faq.5.a": "The whole document, forever. Your diagnosis, the map of the field, the ranked moves and what to stop saying.",
     "st.1.t": "We read what the market reads.",

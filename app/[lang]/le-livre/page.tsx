@@ -227,9 +227,9 @@ export default async function BookPage({
             <h2 className="mb-4 font-serif text-[clamp(1.4rem,2.8vw,2rem)] font-bold leading-tight uppercase">{t.bridgeH}</h2>
             <p className="mb-7 max-w-[620px] body-sm">{t.bridgeP}</p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/brand-narrative-architecture" className="btn-primary">
+              <a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" className="btn-primary">
                 {t.bridgeCta}
-              </Link>
+              </a>
               <Link href="/documents/sillage" className="btn-ghost">
                 {t.demoCta}
               </Link>

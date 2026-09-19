@@ -42,7 +42,7 @@ const T = {
     ptsLabel: "Sur ce terrain précisément",
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
-    cta: "Commander l'audit →",
+    cta: "Commander l'architecture →",
     scenes: [
       {
         k: "Pièce 01",
@@ -103,7 +103,7 @@ const T = {
     ptsLabel: "On this ground specifically",
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",
-    cta: "Order the audit →",
+    cta: "Order the architecture →",
     scenes: [
       {
         k: "Piece 01",

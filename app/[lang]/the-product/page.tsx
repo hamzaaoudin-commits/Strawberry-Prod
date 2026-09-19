@@ -14,9 +14,9 @@ import { TerrainPage, type TerrainCopy } from "@/components/terrain/terrain-page
  */
 
 export const metadata: Metadata = {
-  title: "THE PRODUCT — L'audit narratif pour les produits",
+  title: "THE PRODUCT — L'architecture narrative pour les produits",
   description:
-    "Votre produit est bon, mais en rayon il devient une ligne de caractéristiques. L'audit narratif dit ce qu'il raconte aujourd'hui et donne les mouvements qui le sortent de la comparaison.",
+    "Votre produit est bon, mais en rayon il devient une ligne de caractéristiques. L'architecture narrative dit ce qu'il raconte aujourd'hui et donne les mouvements qui le sortent de la comparaison.",
 }
 
 const COPY: TerrainCopy = {
@@ -25,7 +25,7 @@ const COPY: TerrainCopy = {
   fr: {
     "ex.eyebrow": "Un cas",
     "ex.title": "Ce qu'on a livré à M-01, et ce que ça a changé.",
-    "ex.head": "Audit narratif · Produits",
+    "ex.head": "Architecture narrative · Produits",
     "ex.house": "Cafetière M-01",
     "ex.lead": "Une cafetière à filtre en inox fabriquée en Franche-Comté, vendue 89 €. Le nom est changé, les livrables ne le sont pas.",
     "ex.foot": "Six pièces livrées. Quatre montrées ici.",
@@ -69,7 +69,7 @@ const COPY: TerrainCopy = {
     "focus.good.big": "L'intention est écrite. Chaque choix de conception devient un argument au lieu d'une ligne de spec. Tout se tient, sans se répéter.",
     "faq.title": "Ce que les fabricants nous demandent.",
     "faq.1.q": "Pourquoi pas une agence au mois ?",
-    "faq.1.a": "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € sans rien garder. Ici vous payez 999 € une fois, et le document vous appartient.",
+    "faq.1.a": "Parce qu'au bout de deux ans vous aurez payé environ 30 000 € sans rien garder. Ici vous payez 2 900 € une fois, et le document vous appartient.",
     "faq.2.q": "Ça marche pour une gamme entière ?",
     "faq.2.a": "Oui. L'audit porte sur l'intention commune à la gamme, pas sur une référence isolée — c'est ce qui fait qu'on reconnaît vos produits entre eux.",
     "faq.3.q": "Combien de temps ça prend, de mon côté ?",
@@ -104,7 +104,7 @@ const COPY: TerrainCopy = {
     "st.title": "On lit, on compare, on tranche.",
     "st.eyebrow": "L'audit · la méthode S.T.R.A.W.",
     "st.hint": "Faites glisser",
-    "hero.kicker": "Audit narratif · Produits",
+    "hero.kicker": "Architecture narrative · Produits",
     "price.a.d": "Elle exécute à votre place. Elle sait ce que votre produit raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.",
     "price.b.d": "On lit votre produit comme le fait l'acheteur : ce qu'il raconte aujourd'hui, ce qu'on en retient, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, un lieu ou un nom.",
     "price.after": "Ensuite, si vous voulez qu'on écrive le récit complet et qu'on livre les vingt pièces qui le tiennent : l'architecture narrative, 4 500 €.",
@@ -127,7 +127,7 @@ const COPY: TerrainCopy = {
   en: {
     "ex.eyebrow": "A case",
     "ex.title": "What we delivered to the M-01, and what it changed.",
-    "ex.head": "Narrative audit · Products",
+    "ex.head": "Narrative architecture · Products",
     "ex.house": "M-01 coffee maker",
     "ex.lead": "A stainless steel filter coffee maker made in eastern France, sold at €89. The name is changed, the deliverables are not.",
     "ex.foot": "Six pieces delivered. Four shown here.",
@@ -171,11 +171,11 @@ const COPY: TerrainCopy = {
     "focus.good.big": "The intent is written. Every design choice becomes an argument instead of a spec line.",
     "faq.title": "What makers ask us.",
     "faq.1.q": "Why not a monthly agency?",
-    "faq.1.a": "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay 999 € once, and the document is yours.",
+    "faq.1.a": "Because after two years you will have spent around 30,000 € and kept nothing. Here you pay 2 900 € once, and the document is yours.",
     "faq.2.q": "Does it work for a whole range?",
     "faq.2.a": "Yes. The audit covers the intent shared across the range, not a single reference — that is what makes your products recognisable as a family.",
     "faq.3.q": "How much of my time does it take?",
-    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within seven to fourteen days.",
+    "faq.3.a": "About an hour. An entry questionnaire, then we work without taking your time. The document arrives within three weeks.",
     "faq.4.q": "What if the diagnosis teaches me nothing?",
     "faq.4.a": "Then we tell you so, and that is an answer in itself: the intent already reads, leave it alone. It happens rarely — what seems obvious to you in your design choices almost never shows up on the product page or the packaging, and that gap is what the document measures. In that case you will have saved the packaging redesign you were considering.",
     "faq.5.q": "What do I keep at the end?",
@@ -206,7 +206,7 @@ const COPY: TerrainCopy = {
     "st.title": "We read, we compare, we settle.",
     "st.eyebrow": "The audit · the S.T.R.A.W. method",
     "st.hint": "Drag across",
-    "hero.kicker": "Narrative audit · Products",
+    "hero.kicker": "Narrative architecture · Products",
     "price.a.d": "It executes in your place. It knows what your product says, you do not. After two years: roughly 30,000 € spent, and nothing that belongs to you.",
     "price.b.d": "We read your product the way the buyer does: what it says today, what people keep of it, and the moves that change that. A twenty to thirty page document, delivered in seven days. The same audit as for a brand, a venue or a name.",
     "price.after": "Then, if you want the full story written and the twenty pieces that hold it: the narrative architecture, 4,500 €.",

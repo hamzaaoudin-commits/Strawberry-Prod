@@ -62,7 +62,7 @@ const T = {
     founderQuote: "\"I do not build brands. I write the constitution by which a house declares what it is, what it refuses, and how it sounds when it speaks.\"",
     founderSig: "Hamza El Jaouahiry \u00b7 Founder",
     ctaH2: "Now you know who you would be working with.",
-    ctaP: "One audit, 999 €, delivered within seven to fourteen days. Same method, same price, whatever the ground.",
+    ctaP: "One audit, 2 900 €, delivered within three weeks. Same method, same price, whatever the ground.",
     cta: "See our offers \u2192",
     ctaFoot: "Confidential commission \u00b7 NDA available",
   },
@@ -112,7 +112,7 @@ const T = {
     founderQuote: "\u00ab Je ne construis pas des marques. J'\u00e9cris la constitution par laquelle une maison d\u00e9clare ce qu'elle est, ce qu'elle refuse, et comment elle sonne quand elle parle. \u00bb",
     founderSig: "Hamza El Jaouahiry \u00b7 Fondateur",
     ctaH2: "Maintenant vous savez avec qui vous travailleriez.",
-    ctaP: "Un audit, 999 €, livr\u00e9 sous sept \u00e0 quatorze jours. M\u00eame m\u00e9thode, m\u00eame prix, quel que soit le terrain.",
+    ctaP: "Un audit, 2 900 €, livr\u00e9 sous sept \u00e0 quatorze jours. M\u00eame m\u00e9thode, m\u00eame prix, quel que soit le terrain.",
     cta: "Voir nos offres \u2192",
     ctaFoot: "Commande confidentielle \u00b7 NDA disponible",
   },
@@ -578,7 +578,9 @@ export default function AboutPage() {
             {t.ctaP}
           </p>
           <Link
-            href="/brand-narrative-architecture"
+            href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e"
+            target="_blank"
+            rel="noopener"
             style={{
               display: "inline-block",
               background: "linear-gradient(135deg," + COLOR + ",#ff4d2e)",
