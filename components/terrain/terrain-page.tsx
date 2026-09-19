@@ -61,7 +61,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="section-head reveal" style="margin-bottom:0">
 <div class="story-head">
 <div>
-<span class="eyebrow" data-i18n="st.eyebrow">L'audit · la méthode S.T.R.A.W. · la méthode S.T.R.A.W.</span>
+<span class="eyebrow" data-i18n="st.eyebrow">L'Architecture · la méthode S.T.R.A.W. · la méthode S.T.R.A.W.</span>
 <h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">On lit, on compare, on tranche.</h2>
 </div>
 <div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
@@ -252,7 +252,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <article class="card reveal d1">
 <span class="chip" data-i18n="price.b.tag">L'architecture narrative</span>
 <h3 data-i18n="price.b.t">2 900 €, une fois</h3>
-<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
+<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en trois semaines. Le même audit que pour une marque, une entreprise ou une personne.</p>
 <p style="margin-top:1.4rem"><a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
 </div>
@@ -382,7 +382,7 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
           La barre complète du site ne tient pas ici : ces pages ont leur
           propre grille, et le menu débordait en poussant le bouton d'achat
           hors de l'écran. Un logo qui ramène à l'accueil suffit : ces pages
-          mènent déjà vers l'audit par les deux boutons du hero et par la
+          mènent déjà vers l'Architecture par les deux boutons du hero et par la
           carte de prix. */}
       <a
         href={`/${lang}`}
@@ -414,7 +414,7 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
 
       {/* Les autres terrains.
           Chaque page était un cul-de-sac : on y arrivait, on lisait, on
-          partait vers l'audit. Quelqu'un qui a une marque *et* un produit —
+          partait vers l'Architecture. Quelqu'un qui a une marque *et* un produit —
           le cas le plus courant — n'avait aucun moyen de passer de l'une à
           l'autre. Ces liens sont volontairement discrets : ils servent
           celui qui hésite, sans détourner celui qui est au bon endroit. */}

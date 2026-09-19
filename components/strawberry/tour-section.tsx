@@ -28,7 +28,7 @@ import { ViewTracker } from "@/components/strawberry/view-tracker"
 
 const T = {
   fr: {
-    terrainsLabel: "Le même audit, quel que soit ce que vous vendez",
+    terrainsLabel: "La même Architecture, quel que soit ce que vous vendez",
     terrains: [
       { n: "BRAND", d: "Marques & entreprises", href: "/marques-entreprises" },
       { n: "THE PRODUCT", d: "Produits", href: "/the-product" },
@@ -36,9 +36,9 @@ const T = {
       { n: "THE NAME", d: "Artistes & fondateurs", href: "/the-name" },
     ],
     lead: "Une agence s'arrête à la plateforme de marque. Nous commençons par elle — puis nous écrivons les décisions à prendre et ce que vos équipes en font le lundi matin.",
-    kicker: "Un audit, quatre terrains",
+    kicker: "Une Architecture, quatre terrains",
     title: "Une plateforme de marque ne décide rien. Nous écrivons ce qu'elle vous oblige à faire.",
-    afterLabel: "Après l'audit",
+    afterLabel: "Après l'Architecture",
     ptsLabel: "Sur ce terrain précisément",
     sceneCta: "Voir",
     outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
@@ -89,7 +89,7 @@ const T = {
     ],
   },
   en: {
-    terrainsLabel: "The same audit, whatever you sell",
+    terrainsLabel: "The same Architecture, whatever you sell",
     terrains: [
       { n: "BRAND", d: "Brands & companies", href: "/marques-entreprises" },
       { n: "THE PRODUCT", d: "Products", href: "/the-product" },
@@ -97,9 +97,9 @@ const T = {
       { n: "THE NAME", d: "Artists & founders", href: "/the-name" },
     ],
     lead: "An agency stops at the brand platform. We start there — then we write the decisions to make, and what your teams do with them on Monday morning.",
-    kicker: "One audit, four grounds",
+    kicker: "One Architecture, four grounds",
     title: "A brand platform decides nothing. We write what it obliges you to do.",
-    afterLabel: "After the audit",
+    afterLabel: "After the Architecture",
     ptsLabel: "On this ground specifically",
     sceneCta: "See",
     outro: "All of it already exists. It just needs writing.",

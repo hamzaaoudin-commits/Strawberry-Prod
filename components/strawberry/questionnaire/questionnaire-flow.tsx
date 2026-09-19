@@ -82,7 +82,7 @@ const UI_COPY = {
   fr: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     coverTitle: "C'est parti.",
-    terrainLabel: "Vous avez commandé l'audit pour",
+    terrainLabel: "Vous avez commandé l'Architecture pour",
     terrainHelp: "Le questionnaire s'adapte : certaines questions ne se posent pas de la même façon selon ce que vous vendez.",
     terrains: [
       { k: "marques", t: "Une marque ou une entreprise", d: "Vous vendez un produit ou un service" },
@@ -93,7 +93,7 @@ const UI_COPY = {
     coverLede:
       "Ceci est le fondement de votre maison. Prenez votre temps. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
     minutesArchitecture: "45 à 70",
-    minutesAudit: "20 à 25",
+    minutesAudit: "50 à 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
       `Environ ${m} minutes · ${n} questions${optional ? " (quelques-unes facultatives)" : ""}`,
     resumeNote:
@@ -144,7 +144,7 @@ const UI_COPY = {
   en: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     coverTitle: "Let's begin.",
-    terrainLabel: "You commissioned the audit for",
+    terrainLabel: "You commissioned the Architecture for",
     terrainHelp: "The questionnaire adapts: some questions are not asked the same way depending on what you sell.",
     terrains: [
       { k: "marques", t: "A brand or a company", d: "You sell a product or a service" },
@@ -155,7 +155,7 @@ const UI_COPY = {
     coverLede:
       "This is the foundation of your house. Take your time. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
     minutesArchitecture: "45 to 70",
-    minutesAudit: "20 to 25",
+    minutesAudit: "50 to 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
       `About ${m} minutes · ${n} questions${optional ? " (a few are optional)" : ""}`,
     resumeNote:

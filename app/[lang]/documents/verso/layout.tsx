@@ -3,8 +3,8 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "VERSO — un exemple d'audit complet", description: "Un audit de diagnostic complet, publié en entier. Cinq blocs — exactement le document que vous recevrez." },
-  en: { title: "VERSO — a complete sample audit", description: "A complete diagnostic audit, published in full. Five blocks — exactly the document you would receive." },
+  fr: { title: "VERSO — un exemple complet", description: "Un document de diagnostic complet, publié en entier. Cinq blocs — exactement le document que vous recevrez." },
+  en: { title: "VERSO — a complete sample", description: "A complete diagnostic document, published in full. Five blocks — exactly the document you would receive." },
 }
 
 export async function generateMetadata({

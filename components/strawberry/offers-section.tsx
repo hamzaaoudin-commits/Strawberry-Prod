@@ -91,7 +91,7 @@ const T = {
     specs: [
       { k: "Lead time", v: "three weeks" },
       { k: "Format", v: "One editorial document" },
-      { k: "Scarcity", v: "4 commissions per quarter" },
+      { k: "Scarcity", v: "Two revisions included" },
     ],
     investKicker: "The investment",
     price: "2 900 €",
@@ -102,7 +102,7 @@ const T = {
     guaranteeShort: "V2 guarantee if it misses",
     refundShort: "Refundable within 7 days",
     cta1: "Order the architecture →",
-    cta2: "See what the audit contains",
+    cta2: "See what the Architecture contains",
   },
   fr: {
     kicker: "L'offre",
@@ -169,18 +169,18 @@ const T = {
     specs: [
       { k: "Délai", v: "trois semaines" },
       { k: "Format", v: "Un document éditorial" },
-      { k: "Rareté", v: "4 commandes par trimestre" },
+      { k: "Rareté", v: "Deux révisions incluses" },
     ],
     investKicker: "L'investissement",
     price: "2 900 €",
-    priceCadence: "un audit, payé une fois",
+    priceCadence: "une Architecture, payé une fois",
     justify:
       "C'est le prix de quelques semaines de publicité qui s'évapore dès que vous arrêtez de payer. Votre récit vous appartient et travaille pour vous indéfiniment.",
     clock: "Une marque, un produit, un lieu, une entreprise ou une personne : même méthode, même prix, même délai.",
     guaranteeShort: "Garantie V2 si le document ne tape pas juste",
     refundShort: "Remboursable sous 7 jours",
     cta1: "Commander l'architecture →",
-    cta2: "Voir ce que contient l'audit",
+    cta2: "Voir ce que contient l'Architecture",
   },
 }
 
@@ -212,10 +212,13 @@ export function OffersSection({ lang }: { lang: Lang }) {
               <OfferCover
                 k="audit"
                 name={
+                  /* Le titre est coupé par un <br/> et l'apostrophe est une
+                     entité HTML : c'est pour ça qu'aucune recherche sur
+                     « L'audit narratif » ne le trouvait. */
                   <>
-                    L&apos;Audit
+                    L&apos;Architecture
                     <br />
-                    narratif
+                    narrative
                   </>
                 }
                 featured

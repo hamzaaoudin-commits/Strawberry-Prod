@@ -1,50 +1,62 @@
-# Strawberry — ce qui se passe après le paiement
+# Strawberry — le renommage, fait correctement cette fois
 
-4 fichiers, dont **un nouveau** : `components/strawberry/after-section.tsx`.
-Il contient aussi `why-section.tsx` avec les imports corrigés, au cas où
-vous n'auriez pas appliqué le patch précédent.
+20 fichiers.
 
-## La frise, juste avant le bandeau d'achat
+## Ce que ma passe précédente avait raté
 
-Quatre étapes datées, reliées par une ligne horizontale — une frise, pas
-quatre encadrés :
+Je cherchais des chaînes exactes — « audit narratif », « L'audit ». Tout ce
+qui était **coupé, abrégé ou encodé** est passé au travers.
 
-| | | |
-|---|---|---|
-| **Jour 0** | Vous recevez le questionnaire | Trente questions. Comptez une heure. Vos réponses se sauvegardent : vous pouvez le faire en deux fois. |
-| **Jours 1 à 12** | Nous dépouillons | Vos supports et ceux de 3 à 5 concurrents, phrase par phrase. **Nous ne vous sollicitons pas pendant cette période.** |
-| **Jour 15** | Le document arrive | Les six pièces en PDF. |
-| **Jour 20** | On le relit ensemble | Une heure pour noter ce qui ne tient pas. **Deux révisions incluses.** |
+La couverture de votre capture en est l'exemple parfait :
 
-Trois choses y travaillent sans être affirmées : le client sait qu'il sera
-tranquille pendant le gros du travail, il sait que les trente questions
-arrivent — donc il n'est pas pris en traître après avoir payé — et il voit
-que ça ne finit pas sur un envoi de fichier.
+```jsx
+L&apos;Audit
+<br />
+narratif
+```
 
-## L'engagement, en pied de frise
+Le titre est coupé par un `<br/>` et l'apostrophe est une entité HTML.
+Aucune recherche sur « L'audit narratif » ne pouvait le trouver. J'aurais
+dû chercher le mot seul dès le départ.
 
-> **L'ENGAGEMENT**
-> Livré le vingt et unième jour au plus tard. Passé ce délai, vous êtes
-> remboursé intégralement, et le document vous reste.
+## Ce qui est corrigé maintenant
 
-Placé **après** les quatre étapes, il se lit comme la conséquence du
-calendrier qu'on vient de détailler plutôt que comme une promesse
-commerciale isolée. Le fait que le document reste acquis rend
-l'engagement coûteux, donc crédible.
+J'ai recensé **toute occurrence du mot** avant de toucher quoi que ce soit,
+en protégeant les identifiants techniques (`AUDIT490`, `FAQ_AUDIT`, la
+route `/questionnaire/audit`, la clé `"audit"`).
 
-Les deux révisions ne sont pas dans cet encadré : elles sont au jour 20,
-dans le déroulé. Une garantie qui apparaît dans le cours du travail se lit
-comme une pratique ; dans un encart « nos garanties », comme un argument.
+- La couverture du document : **L'Architecture narrative**
+- « Le même audit que pour un lieu » → « La même Architecture que… », sur
+  les trois pages de terrain
+- « L'audit · la méthode S.T.R.A.W. », `nav.services`, les réponses de FAQ
+- Les métadonnées et titres de pages `/documents`
+- La page Studio : « Chaque audit est lu, cartographié et écrit à la
+  main », « quand vous commandez un audit »
+- Le bandeau des terrains : « Une Architecture, quatre terrains »
+- Le questionnaire : « Vous avez commandé l'Architecture pour »
+- Deux noms de fonction internes (`AuditSamplePage`)
 
-## Reprise en FAQ
+## Le délai, enfin partout
 
-Une entrée ajoutée — « Et si le document ne me convient pas ? » — qui
-reprend les deux révisions et l'engagement de délai. C'est là qu'on va
-vérifier une garantie qu'on a lue plus haut.
+**« Livré en sept jours »** figurait encore sur la couverture, dans les
+trois `price.b.d`, et dans la ligne d'ancrage du hero anglais —
+« Delivered in seven days » — que ma recherche française ne voyait pas.
+
+Et **« Trois semaines, et vous saurez quoi changer »** dans le bandeau
+final, qui affichait encore « Sept jours ».
+
+## Deux valeurs périmées trouvées au passage
+
+**« 4 commandes par trimestre »** subsistait dans la carte de prix des
+pages d'offres. Remplacée par **« Deux révisions incluses »** — la case
+existait, autant qu'elle porte la garantie.
+
+**Le questionnaire annonçait « 20 à 25 minutes »** alors qu'il compte 30
+écrans depuis la fusion. Passé à **50 à 60 minutes**, ce qui correspond à
+ce que la frise annonce déjà sur la home.
 
 ## Vérification
 
-Contrôle de types lu **sans filtre** cette fois : une seule remontée, sur
-`@vercel/analytics`, absent de mon environnement. Les cinq classes
-utilisées (`hair-strong`, `brand-hair`, `ink-soft`, `chalk-75`,
-`chalk-55`) sont vérifiées présentes dans `globals.css`.
+Recensement final : plus aucune occurrence du mot dans le texte visible,
+ni « sept jours », ni « commandes par trimestre ». Contrôle de types lu
+sans filtre : uniquement des modules absents de mon environnement.

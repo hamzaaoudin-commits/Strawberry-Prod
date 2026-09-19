@@ -21,7 +21,7 @@ const T = {
     lead: "Deux documents complets, publiés en entier, sans email à laisser. Ils portent sur des maisons inventées pour l'exercice — aucun client n'a à servir de vitrine.",
     docs: [
       { name: "SILLAGE", motif: "sillage", sub: "Logiciel de chantier", kind: "BRAND NARRATIVE ARCHITECTURE · quatorze pièces", body: "Une commande complète, de la dissection du champ narratif jusqu'aux quatre-vingt-dix premiers jours de déploiement.", href: "/documents/sillage" },
-      { name: "VERSO", motif: "verso", sub: "Reliure d'art", kind: "BRAND NARRATIVE AUDIT · cinq blocs", body: "Un diagnostic écrit : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements précis à faire. Le format de l'offre d'entrée, en entier.", href: "/documents/verso" },
+      { name: "VERSO", motif: "verso", sub: "Reliure d'art", kind: "BRAND NARRATIVE ARCHITECTURE · cinq blocs", body: "Un diagnostic écrit : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements précis à faire. Le format de l'offre d'entrée, en entier.", href: "/documents/verso" },
     ],
     read: "Lire le document →",
   },
@@ -32,7 +32,7 @@ const T = {
     lead: "Two complete documents, published in full, with no email to leave. They cover houses invented for the exercise — no client has to serve as a showcase.",
     docs: [
       { name: "SILLAGE", motif: "sillage", sub: "Construction software", kind: "BRAND NARRATIVE ARCHITECTURE · fourteen parts", body: "A complete commission, from the dissection of the narrative field to the first ninety days of deployment.", href: "/documents/sillage" },
-      { name: "VERSO", motif: "verso", sub: "Art bindery", kind: "BRAND NARRATIVE AUDIT · five blocks", body: "A written diagnosis: what lands, what makes you indistinguishable from competitors, and the precise moves to make. The entry offer's format, in full.", href: "/documents/verso" },
+      { name: "VERSO", motif: "verso", sub: "Art bindery", kind: "BRAND NARRATIVE ARCHITECTURE · five blocks", body: "A written diagnosis: what lands, what makes you indistinguishable from competitors, and the precise moves to make. The format of the offer, in full.", href: "/documents/verso" },
     ],
     read: "Read the document →",
   },
@@ -128,7 +128,7 @@ function DocCover({ motif, name }: { motif: string; name: string }) {
       <div className="relative font-serif text-[1.15rem] font-bold tracking-[0.06em] text-brand">{name}</div>
       <div aria-hidden className="relative my-2.5 h-px w-6 bg-brand/50" />
       <div className="relative font-sans text-[9px] uppercase tracking-[0.14em] text-chalk-40">
-        {motif === "sillage" ? "Architecture" : "Audit"}
+        {motif === "sillage" ? "Architecture" : "Architecture"}
       </div>
     </div>
   )

@@ -8,14 +8,14 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { DocumentReader } from "@/components/strawberry/document-reader"
 
 /**
- * VERSO — the demonstration document for the 490€ audit.
+ * VERSO — the demonstration document for the 2 900 € audit.
  *
  * Reads page by page through the same DocumentReader as SILLAGE, rather than
  * the long single scroll it used to be — the two documents on the site now
  * share one reading experience instead of two different ones.
  */
 
-export default async function AuditSamplePage({
+export default async function SampleDocumentPage({
   params,
 }: {
   params: Promise<{ lang: string }>

@@ -16,7 +16,7 @@ import { BackHomeButton } from "@/components/strawberry/back-home-button"
  * and is fully indexable.
  */
 
-export default async function SampleAuditPage({
+export default async function SampleDocumentPage({
   params,
 }: {
   params: Promise<{ lang: string }>
