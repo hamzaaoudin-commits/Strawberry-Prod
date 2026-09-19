@@ -20,9 +20,9 @@ import type { Lang } from "@/lib/lang"
 export type OfferKey = "audit" | "architecture"
 
 /**
- * Le terrain sur lequel porte l'audit.
+ * Le terrain sur lequel porte l'Architecture.
  *
- * L'audit est le même métier pour les quatre, mais certaines questions ne
+ * L'Architecture est le même métier pour les quatre, mais certaines questions ne
  * se posent pas pareil : un restaurant n'a pas de « concurrents avec leur
  * tagline », un artiste n'a pas de « maison ». Une question sans `terrains`
  * vaut pour tous — c'est le cas de la grande majorité, et c'est ce qui rend
@@ -191,7 +191,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
   },
   {
     id: "awareness", offers: ["audit", "architecture"], type: "choice",
-    label: t("Où en est la plupart de vos acheteurs quand ils vous trouvent ?", "Where are most of your buyers when they find you?"),
+    label: t("Où en sont la plupart de vos acheteurs quand ils vous trouvent ?", "Where are most of your buyers when they find you?"),
     help: t("Le niveau de conscience du marché, au sens de Schwartz.", "Market awareness, in Schwartz's sense."),
     options: [
       t("Inconscient du problème", "Unaware of the problem"),
@@ -464,11 +464,16 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Langage", "Language"),
   },
   {
-    id: "deploy", offers: ["audit", "architecture"], type: "choice",
+    // Plusieurs réponses : de meilleurs mots ne changent presque jamais une
+    // seule surface. Forcer un choix unique obligeait le client à trancher
+    // arbitrairement, et nous privait de l'information la plus utile pour
+    // hiérarchiser les mouvements.
+    id: "deploy", offers: ["audit", "architecture"], type: "choice", multi: true,
     label: t(
-      "Aujourd'hui, où de meilleurs mots changeraient immédiatement votre chiffre d'affaires ?",
-      "Today, where would better words immediately change your revenue?",
+      "Où de meilleurs mots changeraient immédiatement votre chiffre d'affaires ?",
+      "Where would better words immediately change your revenue?",
     ),
+    help: t("Plusieurs réponses possibles.", "Select as many as apply."),
     options: [
       t("La page d'accueil", "The homepage"),
       t("Le pitch aux investisseurs ou partenaires", "The pitch to investors or partners"),

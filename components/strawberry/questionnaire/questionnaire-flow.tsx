@@ -368,6 +368,7 @@ export function QuestionnaireFlow({
           <StepScreen
             step={step}
             copy={copy}
+            terrainLabel={copy.terrains.find((x) => x.k === chosenTerrain)?.t}
             words={words}
             index={idx}
             total={steps.length}
@@ -459,12 +460,21 @@ function CoverScreen({
                 type="button"
                 onClick={() => onChooseTerrain(t.k as TerrainKey)}
                 aria-pressed={on}
-                className={`border px-4 py-3 text-left transition-colors ${
+                className={`flex items-center gap-4 border px-4 py-3.5 text-left transition-colors ${
                   on ? "border-brand bg-brand/[0.07]" : "border-hair-strong bg-white/[0.02] hover:border-hair"
                 }`}
               >
-                <div className={`text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</div>
-                <div className="mt-0.5 text-[12.5px] text-chalk-40">{t.d}</div>
+                {/* Un pictogramme par terrain.
+                    Quatre lignes de texte se ressemblent et se lisent mal en
+                    diagonale ; un signe distinct rend le choix immédiat, et
+                    chacun dit la nature du terrain : un bloc plein pour une
+                    marque, une boîte pour un produit, une porte pour un lieu,
+                    une signature pour un nom propre. */}
+                <TerrainMark k={t.k} on={on} />
+                <span className="min-w-0">
+                  <span className={`block text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</span>
+                  <span className="mt-0.5 block text-[12.5px] text-chalk-40">{t.d}</span>
+                </span>
               </button>
             )
           })}
@@ -486,6 +496,7 @@ function CoverScreen({
 function StepScreen({
   step,
   copy,
+  terrainLabel,
   words,
   index,
   total,
@@ -498,6 +509,7 @@ function StepScreen({
   onNext,
   onSkip,
 }: {
+  terrainLabel?: string
   step: Question
   copy: Copy
   words: string[]
@@ -524,6 +536,10 @@ function StepScreen({
         >
           ←
         </button>
+        {/* Le repère permanent : où l'on est, et pour quoi.
+            Sur trente écrans, on oublie ce qu'on remplit — et le terrain
+            choisi au départ conditionne la moitié des questions. L'afficher
+            en continu évite le doute au vingtième écran. */}
         <div className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
           <div
             className="h-full rounded-full"
@@ -536,6 +552,16 @@ function StepScreen({
         <div className="body-sm flex-shrink-0">
           {index + 1} / {total}
         </div>
+      </div>
+
+      <div className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
+        <span className="text-brand">Onboarding</span>
+        {terrainLabel && (
+          <>
+            <span aria-hidden>·</span>
+            <span>{terrainLabel}</span>
+          </>
+        )}
       </div>
 
       <div className="mb-3">
@@ -556,7 +582,17 @@ function StepScreen({
       />
 
       <div className="mt-8 flex items-center gap-4">
-        <button type="button" className="btn-primary" disabled={!valid} onClick={onNext}>
+        {/* Le bouton ne devient rouge que lorsqu'on peut réellement avancer.
+            Il était rouge en permanence, y compris avant d'avoir répondu :
+            on cliquait dans le vide sans comprendre pourquoi rien ne se
+            passait. Éteint, il devient aussi une indication — il reste
+            quelque chose à remplir. */}
+        <button
+          type="button"
+          className={valid ? "btn-primary" : "btn-quiet cursor-not-allowed opacity-45"}
+          disabled={!valid}
+          onClick={onNext}
+        >
           {copy.continue}
         </button>
         {onSkip && (
@@ -733,23 +769,47 @@ function QuestionInput({
   if (step.type === "sliders") {
     const tone = answers.tone
     return (
-      <div>
-        {(step.axes ?? []).map((ax) => (
-          <div key={ax.id} className="mb-6">
-            <div className="mb-2 flex justify-between text-xs text-chalk-55">
-              <span>{ax.l}</span>
-              <span>{ax.r}</span>
+      /* Cinq curseurs identiques empilés : on ne voyait pas où l'on avait
+         déplacé quoi, et la barre rouge pleine donnait l'impression que
+         tout était déjà répondu. Trois corrections :
+         - le pôle vers lequel on penche s'allume, l'autre s'éteint, donc on
+           lit sa réponse sans regarder la position du curseur ;
+         - un repère au centre marque le point neutre, pour qu'un curseur
+           laissé au milieu se distingue d'un curseur posé volontairement ;
+         - chaque axe est séparé d'un filet, ce qui casse l'effet de mur. */
+      <div className="divide-y divide-hair">
+        {(step.axes ?? []).map((ax) => {
+          const v = tone[ax.id] ?? 50
+          const leftOn = v < 45
+          const rightOn = v > 55
+          return (
+            <div key={ax.id} className="py-5 first:pt-0 last:pb-0">
+              <div className="mb-3 flex items-baseline justify-between gap-4 text-[12.5px]">
+                <span className={leftOn ? "text-white" : "text-chalk-40"}>{ax.l}</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-chalk-40">
+                  {leftOn || rightOn ? "" : "—"}
+                </span>
+                <span className={rightOn ? "text-white" : "text-chalk-40"}>{ax.r}</span>
+              </div>
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
+                />
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={5}
+                  value={v}
+                  aria-label={`${ax.l} — ${ax.r}`}
+                  onChange={(e) => onChange("tone", { ...tone, [ax.id]: Number(e.target.value) })}
+                  className="relative w-full accent-[var(--color-brand)]"
+                />
+              </div>
             </div>
-            <input
-              type="range"
-              min={0}
-              max={100}
-              value={tone[ax.id] ?? 50}
-              onChange={(e) => onChange("tone", { ...tone, [ax.id]: Number(e.target.value) })}
-              className="w-full accent-[var(--color-brand)]"
-            />
-          </div>
-        ))}
+          )
+        })}
       </div>
     )
   }
@@ -918,5 +978,50 @@ function DoneScreen({ copy }: { copy: Copy }) {
       <h1 className="h-section mb-5">{copy.doneTitle}</h1>
       <p className="lede mx-auto max-w-md italic">{copy.doneLede}</p>
     </div>
+  )
+}
+
+/**
+ * TerrainMark — le pictogramme de chaque terrain.
+ *
+ * Dessiné en SVG plutôt qu'en emoji : l'emoji change de rendu selon le
+ * système et casse la charte. Chaque signe dit la nature du terrain sans
+ * illustration littérale — on reste dans le vocabulaire graphique du site.
+ */
+function TerrainMark({ k, on }: { k: string; on: boolean }) {
+  const s = on ? "var(--color-brand)" : "rgba(255,255,255,0.35)"
+  const common = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none", stroke: s, strokeWidth: 1.4 }
+  return (
+    <span className="flex-shrink-0 transition-colors" aria-hidden>
+      {k === "marques" && (
+        <svg {...common}>
+          {/* Un bloc plein : l'entreprise comme masse. */}
+          <rect x="3" y="7" width="18" height="12" />
+          <path d="M3 11h18M9 7V4h6v3" />
+        </svg>
+      )}
+      {k === "produits" && (
+        <svg {...common}>
+          {/* Une boîte en perspective : l'objet fabriqué. */}
+          <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+          <path d="M4 7.5l8 4.5 8-4.5M12 12v9" />
+        </svg>
+      )}
+      {k === "lieux" && (
+        <svg {...common}>
+          {/* Une porte ouverte : on entre dans un lieu. */}
+          <path d="M5 21V4h9v17" />
+          <path d="M14 8l5-2v15l-5-2" />
+          <circle cx="11.5" cy="12.5" r="0.9" fill={s} stroke="none" />
+        </svg>
+      )}
+      {k === "artistes" && (
+        <svg {...common}>
+          {/* Un trait de signature : le nom propre. */}
+          <path d="M3 16c3-1 4-9 6.5-9S12 16 14 16s2.5-4 4-4 2 2 3 2" strokeLinecap="round" />
+          <path d="M3 20h18" opacity="0.4" />
+        </svg>
+      )}
+    </span>
   )
 }
