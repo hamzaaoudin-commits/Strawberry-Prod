@@ -1,74 +1,66 @@
-# Strawberry — refonte de la home, prix à 999 €
+# Strawberry — les pages d'offres
 
-Le zip contient les fichiers principaux. **41 remplacements de prix** sur
-15 fichiers : pensez à récupérer aussi les pages terrain, méthode, CGV et
-documents depuis le dépôt si vous appliquez fichier par fichier.
+6 fichiers. Six des huit points sont traités ; **l'iconographie de « la
+différence » et les FAQ par offre restent à faire** — dites-moi si je
+continue dessus.
 
-## Le prix
+## Le cas remplace l'extrait
 
-490 € → **999 €** partout, dans les deux langues, y compris les mentions
-légales et l'écriture anglaise « €490 ».
+C'est le changement principal. Les extraits montraient des passages du
+document — donc du texte sur du texte, sans preuve que ça serve à quelque
+chose.
 
-## L'ordre de la home
+Chaque page montre maintenant **quatre pièces livrées, et ce que chacune a
+changé** :
 
-La tournée — qui présente ce qu'on livre — arrivait **avant** le problème.
-On proposait un remède à quelqu'un qui n'avait pas encore lu son
-diagnostic.
+> **Pièce 01 · La plateforme de marque**
+> Une raison d'être en une phrase — « le mobilier qu'on ne remplace pas » —
+> un positionnement, trois valeurs formulées en refus plutôt qu'en
+> adjectifs, et un ton de voix avec ses exemples. Neuf pages.
+>
+> **CE QUE ÇA A CHANGÉ**
+> Les trois valeurs tenaient sur un mur de l'atelier. Deux mois plus tard,
+> la deuxième a servi à refuser une commande de 40 000 € en aggloméré — la
+> première fois que le refus était justifiable devant l'équipe.
 
-Nouvel ordre : hero → **le problème** → **ce qui a déjà été essayé en
-vain** → ce qu'on livre → l'offre → les chiffres.
+Les effets sont concrets et vérifiables : un commercial opérationnel sans
+formation, une table qui se réserve à l'avance, un attaché de presse qui
+reprend le texte tel quel, des avis négatifs qui cessent.
 
-## L'accroche
+Décliné sur les quatre terrains, dans les deux langues. **26 clés
+identiques partout**, vérifié.
 
-> **Vous êtes meilleur que vos concurrents. Votre marché ne le voit pas.**
+## Les slogans
 
-Elle porte enfin l'enjeu — sortir de la masse — au lieu d'annoncer un
-délai. Et elle flatte avant d'accuser, ce qui fait lire la seconde phrase.
+**Ouverture** — « Votre offre tient. Votre récit, personne ne l'a écrit »
+constatait un manque. Devient, par terrain :
+> Un concurrent deux fois moins bon **signe les contrats qui étaient les
+> vôtres.**
 
-Le paragraphe dit maintenant la chaîne complète : ce qu'on dépouille, ce
-qu'on compare, et les quatre livrables — plateforme, décisions, playbooks,
-textes prêts à coller.
+**Clôture** — « Tout ça existe déjà chez vous » énonçait une évidence sans
+bénéfice. Devient :
+> Ce qui vous rend meilleur existe déjà. Écrit, il devient la raison qu'on
+> vous choisisse.
 
-## La tournée présente les livrables
+## Le constat
 
-C'est le changement principal. Les six scènes épinglées ne montrent plus
-les quatre terrains mais **les six pièces du document** : LA PLATEFORME,
-LE DIAGNOSTIC, LA CARTE, LES DÉCISIONS, LES PLAYBOOKS, LE LANGAGE.
+Il commençait par rassurer avant d'amener le problème. Il ouvre désormais
+sur le fait qui pique :
 
-La première scène règle la question de la comparaison :
-> « Exactement ce qu'une agence facture entre 10 000 et 40 000 € — et ce
-> par quoi nous commençons. »
+> **Un concurrent deux fois moins bon que vous signe les contrats qui
+> auraient dû être les vôtres.** Il ne travaille pas mieux. Il ne livre pas
+> mieux. Il se raconte mieux — et sur un marché où personne ne peut juger
+> la qualité avant d'acheter, c'est le seul critère qui tranche.
 
-**Les quatre terrains passent en bandeau juste au-dessus** : quatre cases
-cliquables sous « Le même audit, quel que soit ce que vous vendez ». Ils
-disent « c'est pour vous », les scènes disent « voici ce que vous
-recevez ».
+## Deux corrections
 
-J'ai supprimé le sommaire en trois colonnes qui listait ces mêmes six
-pièces : il aurait fait doublon à quinze centimètres d'écart.
+**La méthode S.T.R.A.W.** ne figurait plus sur les pages d'offres — seul
+un marqueur de commentaire orphelin restait. Nettoyé.
 
-## Le chargement sur mobile
-
-Deux causes, toutes deux corrigées :
-
-**L'écran d'accueil imposait 2 100 ms d'attente**, quelle que soit la
-vitesse réelle. La page était prête bien avant. Descendu à 900 ms, et
-sauté entièrement sur petit écran et lors des visites suivantes — une
-intro sert à poser une marque, pas à être revue à chaque page.
-
-**Three.js pesait 600 Ko** pour le canvas décoratif des pages d'offres, et
-faisait tourner une scène 3D en continu. Désactivé sous 900 px : le
-dégradé de repli rend déjà l'ambiance sans rien télécharger.
-
-## Suppressions
-
-- Les **quatre commandes par trimestre** : plus aucune occurrence, y
-  compris dans l'exemplaire SILLAGE et la page Studio.
-- **Deux questions de FAQ** : « Pourquoi 4 500 € ? » et « Pourquoi
-  seulement 4 commandes par trimestre ? », dans les deux langues.
-- Le délai de la FAQ passe de 3-4 semaines à **7 à 14 jours** — il datait
-  de l'ancienne offre.
+**Les quatre terrains de la page Architecture** utilisaient `auto-fit` à
+240 px : trois par ligne puis un orphelin. Fixés à quatre colonnes
+au-delà de 900 px, deux en dessous.
 
 ## Vérification
 
-Contrôle de types : aucune erreur nouvelle. `app.js` validé.
+Contrôle de types : zéro erreur. Traductions validées.

@@ -1339,7 +1339,15 @@ export default function BrandNarrativeArchitecturePage() {
             <div style={{ fontSize: 11, letterSpacing: "0.3em", color: COLOR, marginBottom: 24, textTransform: "uppercase" }}>
               {t.terrainsLabel}
             </div>
-            <div style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.1)", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
+            {/* Quatre colonnes fixes, pas auto-fit.
+                À 240px de largeur minimale, les quatre terrains passaient à
+                trois par ligne puis un seul en dessous — une case orpheline
+                qui déséquilibrait le bloc. Quatre colonnes au-delà de 900px,
+                deux en dessous : les deux dispositions sont pleines. */}
+            <div
+              style={{ display: "grid", gap: 1, background: "rgba(255,255,255,0.1)" }}
+              className="grid-cols-2 md:grid-cols-4"
+            >
               {t.terrains.map((x) => (
                 <div key={x.k} style={{ background: "#0a0a0a", padding: "20px 22px" }}>
                   <div style={{ fontSize: 10.5, letterSpacing: "0.18em", textTransform: "uppercase", color: COLOR, marginBottom: 8 }}>{x.k}</div>

@@ -162,64 +162,66 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <hr class="rule"/>
 <!-- ============ PILLARS ============ -->
 
-<!-- ============ STEPS ============ -->
-
 <!-- ============ EXTRAIT ============ -->
 <section class="section extrait">
 <div class="wrap">
-<span class="eyebrow reveal" data-i18n="ex.eyebrow">Un extrait</span>
-<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Un cas réel, avec ses preuves.</h2>
-<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Trois passages d'un audit réel.</p>
+<span class="eyebrow reveal" data-i18n="ex.eyebrow">Un cas</span>
+<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Ce qu'on a livré, et ce que ça a changé.</h2>
+<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Un cas, pièce par pièce.</p>
 
 <div class="ex-page reveal d1">
   <div class="ex-page-head">
     <span data-i18n="ex.head">Audit narratif</span>
     <span data-i18n="ex.house">Maison LOAM</span>
   </div>
-
   <div class="ex-body">
     <div class="ex-block">
-      <div class="ex-num">p. 04</div>
+      <div class="ex-num" data-i18n="ex.1.n">Pièce 01</div>
       <div class="ex-text">
-        <h3 data-i18n="ex.1.k">Le diagnostic</h3>
-        <p data-i18n="ex.1.b">Extrait.</p>
+        <h3 data-i18n="ex.1.k">La plateforme</h3>
+        <p data-i18n="ex.1.b">Livrable.</p>
         <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.1.pk">Relevé</span>
-          <span class="ex-proof-v" data-i18n="ex.1.pv">Données.</span>
+          <span class="ex-proof-k" data-i18n="ex.1.pk">Ce que ça a changé</span>
+          <span class="ex-proof-v" data-i18n="ex.1.pv">Effet.</span>
         </div>
-        <aside class="ex-note" data-i18n="ex.1.n">Note de marge.</aside>
       </div>
     </div>
-
     <div class="ex-block">
-      <div class="ex-num">p. 09</div>
+      <div class="ex-num" data-i18n="ex.2.n">Pièce 03</div>
       <div class="ex-text">
-        <h3 data-i18n="ex.2.k">La carte du champ</h3>
-        <p data-i18n="ex.2.b">Extrait.</p>
+        <h3 data-i18n="ex.2.k">La carte</h3>
+        <p data-i18n="ex.2.b">Livrable.</p>
         <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.2.pk">Relevé</span>
-          <span class="ex-proof-v" data-i18n="ex.2.pv">Données.</span>
+          <span class="ex-proof-k" data-i18n="ex.2.pk">Ce que ça a changé</span>
+          <span class="ex-proof-v" data-i18n="ex.2.pv">Effet.</span>
         </div>
-        <aside class="ex-note" data-i18n="ex.2.n">Note de marge.</aside>
       </div>
     </div>
-
     <div class="ex-block">
-      <div class="ex-num">p. 21</div>
+      <div class="ex-num" data-i18n="ex.3.n">Pièce 04</div>
       <div class="ex-text">
-        <h3 data-i18n="ex.3.k">Le mouvement</h3>
-        <p data-i18n="ex.3.b">Extrait.</p>
+        <h3 data-i18n="ex.3.k">Les décisions</h3>
+        <p data-i18n="ex.3.b">Livrable.</p>
         <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.3.pk">Relevé</span>
-          <span class="ex-proof-v" data-i18n="ex.3.pv">Données.</span>
+          <span class="ex-proof-k" data-i18n="ex.3.pk">Ce que ça a changé</span>
+          <span class="ex-proof-v" data-i18n="ex.3.pv">Effet.</span>
         </div>
-        <aside class="ex-note" data-i18n="ex.3.n">Note de marge.</aside>
+      </div>
+    </div>
+    <div class="ex-block">
+      <div class="ex-num" data-i18n="ex.4.n">Pièce 05</div>
+      <div class="ex-text">
+        <h3 data-i18n="ex.4.k">Les playbooks</h3>
+        <p data-i18n="ex.4.b">Livrable.</p>
+        <div class="ex-proof">
+          <span class="ex-proof-k" data-i18n="ex.4.pk">Ce que ça a changé</span>
+          <span class="ex-proof-v" data-i18n="ex.4.pv">Effet.</span>
+        </div>
       </div>
     </div>
   </div>
-
   <div class="ex-page-foot">
-    <span data-i18n="ex.foot">Extrait des pages 4, 9 et 21 — le document en compte 24.</span>
+    <span data-i18n="ex.foot">Six pièces livrées. Quatre montrées ici.</span>
   </div>
 </div>
 </div>
@@ -249,7 +251,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </article>
 <article class="card reveal d1">
 <span class="chip" data-i18n="price.b.tag">L'audit narratif</span>
-<h3 data-i18n="price.b.t">490 €, une fois</h3>
+<h3 data-i18n="price.b.t">999 €, une fois</h3>
 <p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de vingt à trente pages, livré en sept jours. Le même audit que pour une marque, une entreprise ou une personne.</p>
 <p style="margin-top:1.4rem"><a href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
 </article>
@@ -288,7 +290,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="cta-band wipe">
 <span class="eyebrow" data-i18n="cta.eyebrow">L'audit narratif</span>
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
-<p class="lead" data-i18n="cta.lead">490 €, livré sous sept à quatorze jours. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
+<p class="lead" data-i18n="cta.lead">999 €, livré sous sept à quatorze jours. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
 <a class="btn btn-primary" href="https://buy.stripe.com/fZudR24EcgHicQC1N6f7i0e" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'audit</span><span class="arr">→</span></a>
 </div>
 </div>
