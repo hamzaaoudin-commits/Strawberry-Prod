@@ -1,50 +1,50 @@
-# Strawberry — correctif du build cassé
+# Strawberry — ce qui se passe après le paiement
 
-1 fichier. **Remplace celui du patch précédent.**
+4 fichiers, dont **un nouveau** : `components/strawberry/after-section.tsx`.
+Il contient aussi `why-section.tsx` avec les imports corrigés, au cas où
+vous n'auriez pas appliqué le patch précédent.
 
-## L'erreur
+## La frise, juste avant le bandeau d'achat
 
-```
-./components/strawberry/why-section.tsx:5:1
-Export pick doesn't exist in target module
-Did you mean to import isLang?
-```
+Quatre étapes datées, reliées par une ligne horizontale — une frise, pas
+quatre encadrés :
 
-J'ai importé `pick` et `Lang` depuis `@/lib/i18n`. Or :
+| | | |
+|---|---|---|
+| **Jour 0** | Vous recevez le questionnaire | Trente questions. Comptez une heure. Vos réponses se sauvegardent : vous pouvez le faire en deux fois. |
+| **Jours 1 à 12** | Nous dépouillons | Vos supports et ceux de 3 à 5 concurrents, phrase par phrase. **Nous ne vous sollicitons pas pendant cette période.** |
+| **Jour 15** | Le document arrive | Les six pièces en PDF. |
+| **Jour 20** | On le relit ensemble | Une heure pour noter ce qui ne tient pas. **Deux révisions incluses.** |
 
-- **`pick`** vit dans `@/lib/t`
-- **`Lang`** vit dans `@/lib/lang`
+Trois choses y travaillent sans être affirmées : le client sait qu'il sera
+tranquille pendant le gros du travail, il sait que les trente questions
+arrivent — donc il n'est pas pris en traître après avoir payé — et il voit
+que ça ne finit pas sur un envoi de fichier.
 
-`@/lib/i18n` réexporte bien `Lang`, mais pas `pick` — il expose `useT` et
-`useLang`, qui sont les équivalents pour les composants qui n'ont pas la
-langue en propriété.
+## L'engagement, en pied de frise
 
-J'ai écrit l'import de mémoire, en recopiant un motif que j'avais vu
-ailleurs, sans vérifier ce que le module exporte réellement. Les autres
-composants du site utilisent `import { pick } from "@/lib/t"` — il aurait
-suffi d'en ouvrir un.
+> **L'ENGAGEMENT**
+> Livré le vingt et unième jour au plus tard. Passé ce délai, vous êtes
+> remboursé intégralement, et le document vous reste.
 
-## Le correctif
+Placé **après** les quatre étapes, il se lit comme la conséquence du
+calendrier qu'on vient de détailler plutôt que comme une promesse
+commerciale isolée. Le fait que le document reste acquis rend
+l'engagement coûteux, donc crédible.
 
-```ts
-import { pick } from "@/lib/t"
-import type { Lang } from "@/lib/lang"
-```
+Les deux révisions ne sont pas dans cet encadré : elles sont au jour 20,
+dans le déroulé. Une garantie qui apparaît dans le cours du travail se lit
+comme une pratique ; dans un encart « nos garanties », comme un argument.
 
-## Pourquoi mon contrôle ne l'a pas vu
+## Reprise en FAQ
 
-Mon contrôle de types tourne avec des déclarations de substitution pour
-les modules absents de mon environnement. `@/lib/i18n` étant un fichier
-réel du projet, il aurait dû être résolu — mais l'erreur était noyée dans
-la liste des modules manquants (`next/link`, `next/image`,
-`@vercel/analytics`) que je filtre à l'affichage.
-
-Je filtrais donc précisément la ligne qui comptait. Pour les prochains
-composants, je vérifierai les exports du module avant d'écrire l'import,
-et je lirai la sortie non filtrée.
+Une entrée ajoutée — « Et si le document ne me convient pas ? » — qui
+reprend les deux révisions et l'engagement de délai. C'est là qu'on va
+vérifier une garantie qu'on a lue plus haut.
 
 ## Vérification
 
-`pick` confirmé dans `lib/t.ts` ligne 9, `ViewTracker` dans
-`view-tracker.tsx` ligne 17, classes `kicker` et `h-section` présentes
-dans `globals.css`. Contrôle de types : aucune erreur sur ce fichier.
+Contrôle de types lu **sans filtre** cette fois : une seule remontée, sur
+`@vercel/analytics`, absent de mon environnement. Les cinq classes
+utilisées (`hair-strong`, `brand-hair`, `ink-soft`, `chalk-75`,
+`chalk-55`) sont vérifiées présentes dans `globals.css`.

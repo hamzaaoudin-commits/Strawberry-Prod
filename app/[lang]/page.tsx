@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/strawberry/hero-section"
 import { TourSection } from "@/components/strawberry/tour-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
+import { AfterSection } from "@/components/strawberry/after-section"
 import { WhySection } from "@/components/strawberry/why-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
@@ -80,6 +81,11 @@ export default async function Home({
       <OffersSection lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
+      {/* Ce qui se passe après le paiement.
+          Placé juste avant le bandeau d'achat : la dernière question qu'on
+          se pose devant un bouton à 2 900 € n'est pas « est-ce que c'est
+          bien » mais « qu'est-ce qui m'attend ». */}
+      <AfterSection lang={lang} />
       <BookSection lang={lang} />
       <CTABanner />
       <FaqSection faqs={FAQ_AUDIT} />

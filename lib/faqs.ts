@@ -8,6 +8,8 @@ import type { FaqSet } from "@/components/strawberry/faq-section"
 
 export const FAQ_AUDIT: FaqSet = {
   en: [
+  { icon: "shield", q: "Et si le document ne me convient pas ?", a: "Deux révisions sont incluses. Au jour 20, on relit le document ensemble pendant une heure, vous notez ce qui ne tient pas, et nous réécrivons. Si nous livrons après le vingt et unième jour, vous êtes remboursé intégralement et le document vous reste." },
+
     { icon: "person", q: "Is this for me?", a: "This is written for one person: the founder of a house of one to twenty people, three to ten years in, whose work is genuinely better than the market's and who is nevertheless read as interchangeable with it. You are shortlisted next to names that do a rougher version of what you do, for less, and nothing in how you are perceived tells anyone why that comparison is wrong. If instead you are looking for someone to produce content, run your channels, or redo a logo — no." },
     { icon: "clock", q: "How long does it take?", a: "three weeks from onboarding to delivery. The document is ready to use the Monday after it lands." },
     { icon: "eye", q: "Can't I just do this myself?", a: "You can run the exercises. What you can't do is see your own blind spot — you've been inside your story so long it reads as obvious to you and invisible to everyone else. The value here isn't the method, it's someone outside your head applying it." },
