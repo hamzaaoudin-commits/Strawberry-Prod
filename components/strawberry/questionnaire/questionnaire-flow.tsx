@@ -97,6 +97,17 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
     resumeCta: "Reprendre",
     houseOverline: "On va écrire",
+    piecesLabel: "Le document, pièce par pièce",
+    halfway: (n: number) => `${n}. Vous êtes à la moitié. La plupart des gens qui commencent un exercice comme celui-ci s'arrêtent avant ce point.`,
+    wordsWritten: "mots écrits de votre main",
+
+    hello: (n: string) => `Bonjour ${n}.`,
+    hourLate: "Vous écrivez tard — c'est souvent là que les vraies phrases sortent.",
+    hourEarly: "Vous écrivez tôt. La tête est claire, profitez-en.",
+    orderLabel: "Commande",
+    orderHouse: "Maison",
+    orderDue: "Livraison au plus tard",
+
     emptyAnswer: "Sans réponse — y répondre maintenant",
     minutesLeft: (n: number) => `≈ ${n} min restantes`,
     deferCta: "J'y reviens",
@@ -189,6 +200,17 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
     resumeCta: "Resume",
     houseOverline: "We are going to write",
+    piecesLabel: "The document, piece by piece",
+    halfway: (n: number) => `${n}. You are halfway. Most people who start an exercise like this one stop before this point.`,
+    wordsWritten: "words written in your own hand",
+
+    hello: (n: string) => `Hello ${n}.`,
+    hourLate: "You are writing late — that is often when the real sentences come out.",
+    hourEarly: "You are writing early. Clear head, make the most of it.",
+    orderLabel: "Commission",
+    orderHouse: "House",
+    orderDue: "Delivered by",
+
     emptyAnswer: "No answer — answer it now",
     minutesLeft: (n: number) => `≈ ${n} min left`,
     deferCta: "Come back to it",
@@ -372,6 +394,41 @@ export function QuestionnaireFlow({
     return out
   }, [steps])
 
+  /**
+   * Les six pièces du document, et ce qui les remplit.
+   *
+   * Chaque tag de question correspond à une pièce du livrable. On compte
+   * les réponses non vides sur les questions de ce tag : la barre montre
+   * donc la matière réellement fournie, pas le nombre d'écrans traversés.
+   */
+  const pieces = useMemo(() => {
+    const MAP: Record<string, string> = {
+      Fondation: "01", Identité: "01", Identity: "01", Foundation: "01",
+      Diagnostic: "02", Diagnosis: "02",
+      Concurrence: "03", Competition: "03",
+      Déploiement: "04", Deployment: "04",
+      Langage: "06", Language: "06",
+    }
+    const defs = [
+      { n: "01", t: "La plateforme" }, { n: "02", t: "Le diagnostic" },
+      { n: "03", t: "La carte" }, { n: "04", t: "Les décisions" },
+      { n: "05", t: "Les playbooks" }, { n: "06", t: "Le langage" },
+    ]
+    return defs.map((d) => {
+      const qs = steps.filter((s) => MAP[s.tag ?? ""] === d.n)
+      // La pièce 05 n'a pas de questions propres : elle se nourrit de tout
+      // le reste, donc elle suit la progression générale.
+      if (qs.length === 0) return { ...d, pct: Math.round((idx / Math.max(1, steps.length)) * 100) }
+      const done = qs.filter((q) => {
+        const v = answers[q.id]
+        if (typeof v === "string") return v.trim().length > 0
+        if (Array.isArray(v)) return v.length > 0
+        return v != null
+      }).length
+      return { ...d, pct: Math.round((done / qs.length) * 100) }
+    })
+  }, [steps, answers, idx])
+
   const currentChapter = chapters.filter((ch) => ch.start <= idx).pop()
   const chapterIndex = currentChapter ? chapters.indexOf(currentChapter) : 0
 
@@ -547,6 +604,7 @@ export function QuestionnaireFlow({
             terrainLabel={copy.terrains.find((x) => x.k === chosenTerrain)?.t}
             minutesLeft={minutesLeft}
             deferredCount={deferred.length}
+            pieces={pieces}
             onDefer={deferCurrent}
             previousEcho={(() => {
               // Seules les réponses rédigées font un écho utile : un choix
@@ -616,6 +674,30 @@ function CoverScreen({
 
   // Les paliers d'apparition. Chaque bloc entre 220 ms après le précédent :
   // assez pour qu'on suive, trop court pour qu'on attende.
+  // L'heure : une remarque, pas une donnée. Elle n'apparaît qu'aux heures
+  // où elle veut dire quelque chose — tard le soir, tôt le matin.
+  const hourNote = useMemo(() => {
+    const h = new Date().getHours()
+    if (h >= 22 || h < 5) return copy.hourLate
+    if (h < 8) return copy.hourEarly
+    return ""
+  }, [copy])
+
+  // La date de livraison, calculée : vingt et un jours, l'engagement du site.
+  const dueDate = useMemo(() => {
+    const d = new Date()
+    d.setDate(d.getDate() + 21)
+    return d.toLocaleDateString(undefined, { day: "2-digit", month: "long" })
+  }, [])
+
+  // Une référence de dossier, dérivée du nom de la maison : stable d'une
+  // visite à l'autre, et suffisante pour que ça ressemble à une commande.
+  const orderRef = useMemo(() => {
+    const base = (identity.house || "SP").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 3).padEnd(3, "X")
+    const n = new Date().getFullYear().toString().slice(2)
+    return `${base}-${n}`
+  }, [identity.house])
+
   const [stage, setStage] = useState(0)
   useEffect(() => {
     const timers = [0, 1, 2, 3, 4].map((i) => window.setTimeout(() => setStage(i + 1), 120 + i * 220))
@@ -642,6 +724,17 @@ function CoverScreen({
           C'est ce que le client a payé pour faire écrire. Le voir s'afficher
           à la taille d'une couverture, avant toute question, dit mieux que
           n'importe quelle phrase ce qui est en train de commencer. */}
+      {/* On est accueilli par quelqu'un, pas par une page. Le prénom vient
+          du pré-remplissage ; sans lui, on saute simplement la ligne. */}
+      {identity.name && (
+        <div className={rev(1)}>
+          <p className="mb-9 font-serif text-[clamp(1.1rem,2.2vw,1.5rem)] text-chalk-75">
+            {copy.hello(identity.name.split(" ")[0])}
+            {hourNote && <span className="mt-2 block text-[13.5px] text-chalk-40">{hourNote}</span>}
+          </p>
+        </div>
+      )}
+
       {identity.house && (
         <div className={rev(1)}>
           <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
@@ -661,11 +754,30 @@ function CoverScreen({
       <div className={rev(3)}>
       <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
       {isArchitecture && <p className="body-sm mt-3 text-chalk-40">{copy.resumeNote}</p>}
+      {/* Un bon de commande, pas un rappel de champs.
+          Le bloc disait « déjà rempli pour vous » et listait deux valeurs :
+          utile, mais ça ressemblait à un brouillon. Présenté comme une
+          commande — avec la référence et la date de livraison calculée — il
+          matérialise l'achat qui vient d'être fait. */}
       {(identity.name || identity.house) && (
-        <div className="mx-auto mt-7 mb-8 max-w-sm border border-hair-strong bg-white/[0.02] px-5 py-4 text-left">
-          <div className="field-label mb-1.5">{copy.prefilled}</div>
-          <div className="text-[14.5px] text-white">
-            {identity.name || copy.dash} — {identity.house || copy.dash}
+        <div className="mx-auto mt-10 mb-8 max-w-[440px] border border-hair-strong bg-white/[0.02] text-left">
+          <div className="flex items-center justify-between border-b border-hair px-5 py-3 font-mono text-[9.5px] uppercase tracking-[0.22em] text-chalk-40">
+            <span>{copy.orderLabel}</span>
+            <span className="text-brand">{orderRef}</span>
+          </div>
+          <div className="grid grid-cols-2 gap-px bg-white/[0.06]">
+            <div className="bg-ink px-5 py-4">
+              <div className="mb-1 font-mono text-[9px] uppercase tracking-[0.18em] text-chalk-40">
+                {copy.orderHouse}
+              </div>
+              <div className="text-[14px] text-white">{identity.house || copy.dash}</div>
+            </div>
+            <div className="bg-ink px-5 py-4">
+              <div className="mb-1 font-mono text-[9px] uppercase tracking-[0.18em] text-chalk-40">
+                {copy.orderDue}
+              </div>
+              <div className="text-[14px] text-brand">{dueDate}</div>
+            </div>
           </div>
         </div>
       )}
@@ -729,6 +841,7 @@ function StepScreen({
   previousEcho,
   minutesLeft,
   deferredCount,
+  pieces,
   onDefer,
   words,
   index,
@@ -745,6 +858,7 @@ function StepScreen({
   previousEcho?: string
   minutesLeft: number
   deferredCount: number
+  pieces: { n: string; t: string; pct: number }[]
   onDefer?: () => void
   step: Question
   copy: Copy
@@ -796,8 +910,14 @@ function StepScreen({
     <div
       key={index}
       className={[
+        // Latérale, pas verticale.
+        //
+        // Un fondu montant ressemble à un chargement ; un glissement de
+        // droite à gauche ressemble à un déplacement. Sur trente écrans,
+        // c'est ce qui fait sentir qu'on avance dans un parcours plutôt
+        // qu'on recharge la même page.
         "transition-all duration-[520ms] ease-[cubic-bezier(.22,.68,0,1)]",
-        shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+        shown ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
       ].join(" ")}
     >
       <div className="mb-6 flex items-center gap-3.5">
@@ -903,6 +1023,49 @@ function StepScreen({
           Une heure de travail sans savoir si on peut partir, c'est ce qui
           fait remplir n'importe quoi pour en finir. Le dire une fois par
           écran, discrètement, suffit à lever la crainte. */}
+      {/* Le jalon de mi-parcours.
+          À la moitié, on est fatigué et on ne voit pas la fin. Un mot à cet
+          instant précis vaut mieux que dix encouragements répartis partout —
+          et il dit une chose vraie : la plupart des gens s'arrêtent avant. */}
+      {index + 1 === Math.ceil(total / 2) && (
+        <div className="mt-8 border-l-2 border-brand bg-brand/[0.05] px-5 py-4">
+          <p className="m-0 font-serif text-[15.5px] leading-[1.6] text-white">
+            {copy.halfway(index + 1)}
+          </p>
+        </div>
+      )}
+
+      {/* Le document qui se construit.
+          Le client écrit dans le vide : rien ne montre l'objet qu'il paie.
+          Six barres, une par pièce, qui se remplissent à mesure que les
+          questions les alimentent. C'est la seule représentation du livrable
+          pendant qu'on le nourrit — et elle transforme trente champs en
+          fabrication d'un objet. */}
+      <div className="mt-8 border-t border-hair pt-5">
+        <div className="mb-3 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
+          {copy.piecesLabel}
+        </div>
+        <div className="grid grid-cols-6 gap-1.5">
+          {pieces.map((pc) => (
+            <div key={pc.n} title={pc.t}>
+              <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.07]">
+                <div
+                  className="h-full rounded-full bg-brand transition-all duration-700 ease-out"
+                  style={{ width: `${pc.pct}%` }}
+                />
+              </div>
+              <div
+                className={`mt-1.5 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${
+                  pc.pct >= 100 ? "text-brand" : "text-chalk-40"
+                }`}
+              >
+                {pc.n}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <p className="mt-5 font-sans text-[12px] leading-[1.6] text-chalk-40">
         {copy.leaveNote}
         {deferredCount > 0 && <> · {copy.deferred(deferredCount)}</>}
@@ -1327,6 +1490,13 @@ function ReviewScreen({
   onBack: () => void
   onSubmit: () => void
 }) {
+  /** Les mots écrits, recomptés ici : le récapitulatif a les réponses. */
+  const totalWords = Object.values(answers).reduce<number>((n, v) => {
+    if (typeof v !== "string") return n
+    const t = v.trim()
+    return t ? n + t.split(/\s+/).length : n
+  }, 0)
+
   const dash = copy.dash
 
   function summarize(step: Question): string {
@@ -1378,7 +1548,18 @@ function ReviewScreen({
         <p className="mx-auto mt-5 max-w-[440px] font-sans text-[14.5px] leading-[1.7] text-chalk-55">
           {copy.recapLead}
         </p>
-        <div className="mx-auto mt-7 grid max-w-[520px] grid-cols-3 gap-px bg-white/10">
+        {/* Le compte de ce qui a été écrit.
+            Trente cases cochées ne disent rien ; mille deux cents mots
+            écrits à la main sur ce qu'on refuse, si. C'est la mesure de
+            l'effort réel, et la seule qui donne envie d'avoir bien fait. */}
+        <div className="mt-8 font-serif text-[clamp(2.4rem,6vw,3.6rem)] font-bold leading-none text-brand">
+          {totalWords.toLocaleString()}
+        </div>
+        <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
+          {copy.wordsWritten}
+        </div>
+
+        <div className="mx-auto mt-9 grid max-w-[520px] grid-cols-3 gap-px bg-white/10">
           {copy.recapStats.map((s) => (
             <div key={s.l} className="bg-ink px-3 py-4">
               <div className="font-serif text-[1.5rem] font-bold leading-none text-brand">{s.v}</div>

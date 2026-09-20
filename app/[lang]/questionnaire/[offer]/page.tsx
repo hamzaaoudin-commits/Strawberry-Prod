@@ -33,7 +33,7 @@ export default async function QuestionnairePage({ params, searchParams }: PagePr
   const resolvedLang = isLang(lang) ? lang : DEFAULT_LANG
 
   return (
-    <main className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-gutter py-16 sm:py-20">
+    <main className="q-grain relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-gutter py-16 sm:py-20">
       {/* La lueur du site, reprise ici.
           Le questionnaire est le premier écran après un paiement de 2 900 € :
           un fond noir uni fait rupture avec tout ce que le client vient de

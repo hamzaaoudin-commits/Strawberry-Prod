@@ -1406,3 +1406,29 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
   }
   .ts-points li { font-size: 0.95rem; }
 }
+
+/* ---------------------------------------------------------------------------
+   L'ONBOARDING — grain et halo du champ actif.
+
+   Le questionnaire était le seul endroit du site sans texture : un fond
+   plat, alors que chaque page d'offre porte son grain. Et rien ne
+   signalait le champ dans lequel on écrit, sur un écran qui en contient
+   parfois plusieurs.
+   --------------------------------------------------------------------------- */
+.q-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Le halo suit le champ actif : une lueur rouge très basse, qui dit où
+   l'on écrit sans encadrer ni clignoter. */
+.field:focus,
+.field:focus-visible {
+  box-shadow: 0 0 0 1px rgba(255, 34, 51, 0.35), 0 12px 40px -16px rgba(255, 34, 51, 0.45);
+  outline: none;
+}

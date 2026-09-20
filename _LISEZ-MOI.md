@@ -1,62 +1,65 @@
-# Strawberry — l'onboarding change de forme
+# Strawberry — onze des vingt idées
 
-2 fichiers.
+3 fichiers. Ce qui est fait, et ce qui reste, en toute franchise.
 
-## Ce que j'avais mal fait
+## Fait
 
-J'ai réécrit les mots et laissé l'expérience intacte. On arrivait toujours
-sur une page sombre avec un titre, un paragraphe et des champs — le texte
-disait « vous venez de décider quelque chose », la forme disait
-« formulaire ».
+**1 · L'accueil nommé** — « Bonjour Marc. » avant tout le reste.
 
-## L'arrivée devient une séquence
+**2 · L'heure** — « Vous écrivez tard — c'est souvent là que les vraies
+phrases sortent. » N'apparaît qu'après 22 h ou avant 8 h : à 15 h, elle
+n'aurait rien à dire.
 
-Les éléments entrent l'un après l'autre, 220 ms d'écart : le nom du studio,
-puis le nom de la maison, puis la phrase, puis le choix.
+**3 · La carte de commande** — un bon de commande avec la référence
+dérivée du nom de la maison, et **la date de livraison calculée à
+J+21**. L'engagement du site devient une date réelle, pas une promesse.
 
-Trois secondes qui transforment un chargement en arrivée.
+**6 · Le compte de mots** — à l'arrivée, le nombre de mots écrits à la
+main, en grand. Trente cases cochées ne disent rien ; douze cents mots sur
+ce qu'on refuse, si.
 
-## Le nom de la maison, en grand
+**8 et 10 · Le document qui se remplit** — six barres sous chaque
+question, une par pièce, qui se remplissent selon les réponses réellement
+fournies. La pièce 05, qui n'a pas de questions propres, suit la
+progression générale.
 
-C'est le changement le plus direct. Avant toute question :
+**11 · Le jalon de mi-parcours** — « 15. Vous êtes à la moitié. La plupart
+des gens qui commencent un exercice comme celui-ci s'arrêtent avant ce
+point. »
 
-> ON VA ÉCRIRE
->
-> **LOAM**
-> ———
+**14 · L'écran final** avec le compte de mots en grand.
 
-Le nom du client, en rouge, à la taille d'une couverture, avec son propre
-filet. C'est ce qu'il a payé pour faire écrire — le voir affiché ainsi dit
-ce qui commence mieux que n'importe quelle phrase.
+**15 · Le grain** — le questionnaire était le seul endroit du site sans
+texture.
 
-Il vient du pré-remplissage, donc il s'affiche sans rien demander.
+**16 · Les transitions latérales** — la question glisse depuis la droite
+au lieu de monter. Un fondu montant ressemble à un chargement ; un
+glissement ressemble à un déplacement.
 
-## Les chapitres deviennent des moments
+**18 · Le halo du champ actif** — une lueur rouge basse sous le champ où
+l'on écrit.
 
-Ils s'affichaient entre deux questions comme une carte de plus : on lisait
-en diagonale et on cliquait.
+## Non fait, et pourquoi
 
-Ils occupent maintenant **tout l'écran** (72vh minimum, contenu centré),
-avec une animation en quatre temps : le compteur, le titre qui monte à
-2,4–4,2 rem, **un trait qui se trace** de zéro à 96 pixels, puis la note.
+**4 · Les questions fondatrices en plein écran** — demande de sortir ces
+questions du composant commun. Faisable, mais ça touche la validation, le
+report et la reprise qu'on vient de poser.
 
-C'est le trait qui fait le travail : un geste, pas une apparition. Et le
-bouton n'arrive qu'à 900 ms — on a le temps de lire avant de pouvoir
-cliquer.
+**5 · Les citations du livre** — je n'ai pas le texte. Envoyez-moi cinq ou
+six phrases et je les place.
 
-## Chaque question a une identité
+**7 · Le fond qui se resserre** et **17 · la typographie variable** —
+cosmétiques, je les ai écartées au profit de ce qui se sent davantage.
 
-Un **grand chiffre** en rouge translucide ouvre chaque écran — 01, 02,
-03 — prolongé par un filet.
+**9 · Le rappel d'une réponse précédente dans une question ultérieure** —
+c'est la plus belle de la liste, et elle demande de réécrire les libellés
+dynamiquement. Un vrai chantier.
 
-Sans lui, trente écrans sont indistinguables : même titre, même champ,
-même bouton. Avec, chaque question existe. Et ça rappelle la mise en page
-du document livré, où les pièces sont numérotées de la même façon.
+**12 · La phrase de confirmation** et **13 · le son** — à faire, mais le
+son mérite d'être discuté : mal dosé, il fait gadget.
 
-## La page respire
-
-Le contenu se centre verticalement au lieu de coller en haut, comme sur le
-reste du site.
+**19 et 20 · Le retour d'un modèle** — vous n'avez pas tranché sur le
+risque. Si l'observation tombe à plat, tout l'édifice tombe avec.
 
 ## Vérification
 
