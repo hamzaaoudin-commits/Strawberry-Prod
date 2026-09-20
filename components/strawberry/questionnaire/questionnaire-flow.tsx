@@ -81,6 +81,19 @@ function isValid(step: Question, a: Answers): boolean {
 const UI_COPY = {
   fr: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
+    chapterOf: (n: number, t: number) => `Partie ${n} sur ${t}`,
+    chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
+    chapterFallback: "Quelques questions pour la suite du document.",
+    chapterNotes: {
+      Identité: "On commence par les faits : qui vous êtes, ce que vous vendez, à qui. C'est la matière de toutes les pièces qui suivent.",
+      Diagnostic: "Ce que vous racontez aujourd'hui, et ce que votre marché en retient. Répondez comme vous parleriez, pas comme vous écririez une plaquette.",
+      Langage: "Vos mots, ceux que vous refusez, et le ton que vous tenez. C'est ce qui nourrit le lexique et les textes réécrits.",
+      Concurrence: "Qui on vous compare à qui. Plus vous êtes précis sur leurs phrases exactes, plus la carte du champ sera tranchante.",
+      Déploiement: "Où le document doit servir en premier. Ça décide de l'ordre des mouvements.",
+      Fondation: "Le socle : la conviction, la rupture, ce que vous refusez. Les questions les plus difficiles sont ici — prenez le temps.",
+    } as Record<string, string>,
+    saved: "Enregistré",
+    echoLabel: "Votre réponse précédente",
     coverTitle: "C'est parti.",
     terrainLabel: "Vous avez commandé l'Architecture pour",
     terrainHelp: "Le questionnaire s'adapte : certaines questions ne se posent pas de la même façon selon ce que vous vendez.",
@@ -124,6 +137,14 @@ const UI_COPY = {
     myWords: "Ce sont mes mots",
     neverMyWords: "Ce ne sont jamais les miens",
     beforeSending: "Avant d'envoyer",
+    recapKicker: "Vous y êtes",
+    recapTitle: "Tout ce qu'il faut pour écrire est là.",
+    recapLead: "Nous partons de vos réponses et de rien d'autre. Le dépouillement commence demain : vos supports, ceux de vos concurrents, vos avis. Vous n'êtes plus sollicité jusqu'au jour 15.",
+    recapStats: [
+      { v: "6", l: "pièces à écrire" },
+      { v: "15", l: "jours avant le document" },
+      { v: "2", l: "révisions incluses" },
+    ],
     reviewTitle: "Relisez, puis envoyez.",
     reviewNote: "Rien n'est envoyé tant que vous n'avez pas confirmé.",
     edit: "Modifier",
@@ -143,6 +164,19 @@ const UI_COPY = {
   },
   en: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
+    chapterOf: (n: number, t: number) => `Part ${n} of ${t}`,
+    chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
+    chapterFallback: "A few questions for the rest of the document.",
+    chapterNotes: {
+      Identity: "We start with the facts: who you are, what you sell, to whom. This is the material for every piece that follows.",
+      Diagnosis: "What you say today, and what your market keeps of it. Answer as you would speak, not as you would write a brochure.",
+      Language: "Your words, the ones you refuse, and the tone you hold. This feeds the lexicon and the rewritten copy.",
+      Competition: "Who you get compared to. The more precise you are about their exact sentences, the sharper the map of the field.",
+      Deployment: "Where the document must work first. This decides the order of the moves.",
+      Foundation: "The bedrock: the conviction, the rupture, what you refuse. The hardest questions are here — take your time.",
+    } as Record<string, string>,
+    saved: "Saved",
+    echoLabel: "Your previous answer",
     coverTitle: "Let's begin.",
     terrainLabel: "You commissioned the Architecture for",
     terrainHelp: "The questionnaire adapts: some questions are not asked the same way depending on what you sell.",
@@ -186,6 +220,14 @@ const UI_COPY = {
     myWords: "These are my words",
     neverMyWords: "These are never mine",
     beforeSending: "Before you send",
+    recapKicker: "You are through",
+    recapTitle: "Everything needed to write it is here.",
+    recapLead: "We work from your answers and nothing else. The reading starts tomorrow: your supports, your competitors', your reviews. You will not be contacted again until day 15.",
+    recapStats: [
+      { v: "6", l: "pieces to write" },
+      { v: "15", l: "days to the document" },
+      { v: "2", l: "revisions included" },
+    ],
     reviewTitle: "Read it over, then send.",
     reviewNote: "Nothing is sent until you confirm.",
     edit: "Edit",
@@ -239,7 +281,7 @@ export function QuestionnaireFlow({
   )
   const copy = UI_COPY[lang]
   const words = useMemo(() => wordsFor(lang), [lang])
-  const [screen, setScreen] = useState<"cover" | "steps" | "review" | "done" | "error">("cover")
+  const [screen, setScreen] = useState<"cover" | "chapter" | "steps" | "review" | "done" | "error">("cover")
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>(() => emptyAnswers(prefill))
   const [deepOpen, setDeepOpen] = useState<Record<string, boolean>>({})
@@ -281,13 +323,49 @@ export function QuestionnaireFlow({
 
   const step = steps[idx]
 
+  /**
+   * Les chapitres, dérivés des tags de questions.
+   *
+   * Trente écrans identiques n'ont aucun rythme : on ne sait jamais où l'on
+   * en est ni pourquoi on répond à ça. Les questions portent déjà un tag
+   * (Diagnostic, Langage, Déploiement...) ; on s'en sert pour découper le
+   * parcours et ouvrir chaque section par un écran qui annonce ce qu'on va
+   * y chercher. C'est ce qui transforme un tunnel en parcours.
+   */
+  const chapters = useMemo(() => {
+    const out: { tag: string; start: number; count: number }[] = []
+    steps.forEach((s, i) => {
+      const tag = s.tag ?? ""
+      const last = out[out.length - 1]
+      if (last && last.tag === tag) last.count += 1
+      else out.push({ tag, start: i, count: 1 })
+    })
+    return out
+  }, [steps])
+
+  const currentChapter = chapters.filter((ch) => ch.start <= idx).pop()
+  const chapterIndex = currentChapter ? chapters.indexOf(currentChapter) : 0
+
+  // L'écran de chapitre s'affiche à l'entrée d'une section, une seule fois.
+  const [seenChapters, setSeenChapters] = useState<number[]>([])
+
   function updateAnswer(id: string, value: unknown) {
     setAnswers((prev) => ({ ...prev, [id]: value }))
   }
 
   function goNext() {
-    if (idx < steps.length - 1) setIdx(idx + 1)
-    else setScreen("review")
+    if (idx < steps.length - 1) {
+      const next = idx + 1
+      const ch = chapters.find((x) => x.start === next)
+      const chi = ch ? chapters.indexOf(ch) : -1
+      setIdx(next)
+      // Un écran de chapitre à chaque nouvelle section, jamais deux fois :
+      // le revoir en revenant en arrière serait une punition.
+      if (ch && !seenChapters.includes(chi)) {
+        setSeenChapters((prev) => [...prev, chi])
+        setScreen("chapter")
+      }
+    } else setScreen("review")
   }
   function goBack() {
     if (idx === 0) setScreen("cover")
@@ -363,11 +441,30 @@ export function QuestionnaireFlow({
           />
         )}
 
+        {screen === "chapter" && currentChapter && (
+          <ChapterScreen
+            tag={currentChapter.tag}
+            n={chapterIndex + 1}
+            total={chapters.length}
+            count={currentChapter.count}
+            copy={copy}
+            onStart={() => setScreen("steps")}
+          />
+        )}
+
         {screen === "steps" && step && (
           <StepScreen
             step={step}
             copy={copy}
             terrainLabel={copy.terrains.find((x) => x.k === chosenTerrain)?.t}
+            previousEcho={(() => {
+              // Seules les réponses rédigées font un écho utile : un choix
+              // dans une liste ne se relit pas, il se revoit sur l'écran.
+              const prev = steps[idx - 1]
+              if (!prev || !["textarea", "shorttext"].includes(prev.type)) return undefined
+              const v = answers[prev.id]
+              return typeof v === "string" && v.trim() ? v.trim() : undefined
+            })()}
             words={words}
             index={idx}
             total={steps.length}
@@ -495,6 +592,7 @@ function StepScreen({
   step,
   copy,
   terrainLabel,
+  previousEcho,
   words,
   index,
   total,
@@ -507,6 +605,7 @@ function StepScreen({
   onSkip,
 }: {
   terrainLabel?: string
+  previousEcho?: string
   step: Question
   copy: Copy
   words: string[]
@@ -632,6 +731,22 @@ function StepScreen({
         onChange={onChange}
       />
 
+      {/* Ce qu'on vient de répondre.
+          Trente questions tapées dans le vide, sans jamais revoir ce qu'on a
+          écrit : on doute, on se répète, on perd le fil. Rappeler la réponse
+          précédente en une ligne suffit à sentir qu'un document se
+          construit, et évite de redire ce qu'on vient de dire. */}
+      {previousEcho && (
+        <div className="mt-7 border-t border-hair pt-4">
+          <div className="mb-1.5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
+            {copy.echoLabel}
+          </div>
+          <p className="m-0 line-clamp-2 font-sans text-[13px] leading-[1.6] text-chalk-55">
+            {previousEcho}
+          </p>
+        </div>
+      )}
+
       <div className="mt-8 flex items-center gap-4">
         {/* Le bouton ne devient rouge que lorsqu'on peut réellement avancer.
             Il était rouge en permanence, y compris avant d'avoir répondu :
@@ -646,6 +761,13 @@ function StepScreen({
         >
           {copy.continue}
         </button>
+        {/* La sauvegarde, dite une fois par écran.
+            Au vingtième écran, la peur de tout perdre est réelle — et les
+            réponses sont bien stockées localement, mais rien ne le disait. */}
+        <span className="ml-auto hidden items-center gap-1.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
+          <span className="h-1 w-1 rounded-full bg-brand" aria-hidden />
+          {copy.saved}
+        </span>
         {onSkip && (
           <button type="button" className="btn-quiet" onClick={onSkip}>
             {copy.skip}
@@ -701,14 +823,18 @@ function QuestionInput({
 
   if (step.type === "textarea") {
     const v = (answers[step.id] as string) ?? ""
-    const wordCount = v.trim().length ? v.trim().split(/\s+/).length : 0
     const deepVal = (answers[`${step.id}_deep`] as string) ?? ""
     return (
       <div>
-        <AutoTextarea value={v} placeholder={step.ph} onChange={(val) => onChange(step.id, val)} />
-        <div className="mt-1.5 text-right text-[11px] text-chalk-40">
-          {wordCount} {copy.words}
-        </div>
+        {/* `step.nudge` est la relance propre à la question : elle sait quoi
+            demander de plus. Le compteur qui vivait ici faisait doublon avec
+            celui du champ, et il jugeait au lieu d'aider. */}
+        <AutoTextarea
+          value={v}
+          placeholder={step.ph}
+          nudge={step.nudge}
+          onChange={(val) => onChange(step.id, val)}
+        />
         {step.deep &&
           (deepOpen ? (
             <div className="mt-4 border-l-2 border-brand pl-4">
@@ -929,11 +1055,13 @@ function AutoTextarea({
   value,
   placeholder,
   rows = 5,
+  nudge,
   onChange,
 }: {
   value: string
   placeholder?: string
   rows?: number
+  nudge?: string
   onChange: (v: string) => void
 }) {
   const ref = useRef<HTMLTextAreaElement>(null)
@@ -954,19 +1082,20 @@ function AutoTextarea({
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      {/* Le compteur de mots.
-          Ces réponses nourrissent le document : une réponse de six mots
-          produit une pièce creuse. Le compteur ne bloque rien — il rend
-          simplement visible qu'on a expédié la question, et il s'allume en
-          rouge tant qu'on est sous le seuil où la réponse devient
-          exploitable. */}
-      {n > 0 && (
-        <div
-          className={`pointer-events-none absolute bottom-2.5 right-3 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${
-            n < 25 ? "text-brand" : "text-chalk-40"
-          }`}
-        >
-          {n} {n > 1 ? "mots" : "mot"}
+      {/* Une relance, pas un compteur.
+          Afficher « 8 mots » en rouge juge sans aider : le client sait qu'il
+          a fait court, il ne sait pas quoi ajouter. Une question posée au
+          bon moment débloque la réponse — et elle n'apparaît qu'après une
+          première tentative, jamais sur un champ vide, pour ne pas donner
+          d'ordre avant d'avoir lu. */}
+      {n >= 4 && n < 25 && nudge && (
+        <p className="mt-2.5 border-l-2 border-brand/50 pl-3 font-sans text-[13px] leading-[1.6] text-chalk-55">
+          {nudge}
+        </p>
+      )}
+      {n >= 25 && (
+        <div className="pointer-events-none absolute bottom-2.5 right-3 font-mono text-[10px] uppercase tracking-[0.16em] text-chalk-40">
+          ✓
         </div>
       )}
     </div>
@@ -1028,6 +1157,31 @@ function ReviewScreen({
   return (
     <div>
       <div className="kicker mb-3">{copy.beforeSending}</div>
+      {/* Le moment d'arrivée.
+          Trente questions méritent mieux qu'un bouton « envoyer ». Ce bloc
+          dit ce qu'on vient de fournir et ce qui va en sortir — c'est la
+          seule récompense possible à ce stade, et elle rappelle au passage
+          ce que le client a acheté. */}
+      <div className="mb-9 border-y border-hair py-8 text-center">
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.26em] text-brand">
+          {copy.recapKicker}
+        </div>
+        <h2 className="mx-auto mt-5 max-w-[460px] font-serif text-[clamp(1.6rem,3.4vw,2.4rem)] font-bold uppercase leading-[1.1] tracking-[-0.005em] text-white">
+          {copy.recapTitle}
+        </h2>
+        <p className="mx-auto mt-5 max-w-[440px] font-sans text-[14.5px] leading-[1.7] text-chalk-55">
+          {copy.recapLead}
+        </p>
+        <div className="mx-auto mt-7 grid max-w-[520px] grid-cols-3 gap-px bg-white/10">
+          {copy.recapStats.map((s) => (
+            <div key={s.l} className="bg-ink px-3 py-4">
+              <div className="font-serif text-[1.5rem] font-bold leading-none text-brand">{s.v}</div>
+              <div className="mt-2 font-sans text-[11.5px] leading-tight text-chalk-40">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <h2 className="h-card mb-2">{copy.reviewTitle}</h2>
       <p className="body-sm mb-1">{copy.reviewNote}</p>
       <div>
@@ -1111,5 +1265,66 @@ function TerrainMark({ k, on }: { k: string; on: boolean }) {
         </svg>
       )}
     </span>
+  )
+}
+
+
+/**
+ * ChapterScreen — l'ouverture d'une section.
+ *
+ * Il ne demande rien : c'est une respiration. Sur trente questions, ces
+ * quatre ou cinq pauses sont ce qui empêche l'abandon — elles disent où
+ * l'on en est, ce qu'on va chercher, et combien de temps ça prend.
+ */
+function ChapterScreen({
+  tag,
+  n,
+  total,
+  count,
+  copy,
+  onStart,
+}: {
+  tag: string
+  n: number
+  total: number
+  count: number
+  copy: Copy
+  onStart: () => void
+}) {
+  const [shown, setShown] = useState(false)
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setShown(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
+  const note = copy.chapterNotes[tag] ?? copy.chapterFallback
+  return (
+    <div
+      className={[
+        "py-10 text-center transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]",
+        shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+      ].join(" ")}
+    >
+      <div className="font-mono text-[10.5px] uppercase tracking-[0.26em] text-chalk-40">
+        {copy.chapterOf(n, total)}
+      </div>
+
+      <h2 className="mx-auto mt-6 max-w-[520px] font-serif text-[clamp(1.9rem,4.4vw,3rem)] font-bold uppercase leading-[1.06] tracking-[-0.005em] text-white">
+        {tag}
+      </h2>
+
+      <div className="mx-auto mt-7 h-px w-14 bg-brand" />
+
+      <p className="mx-auto mt-7 max-w-[440px] font-sans text-[15px] leading-[1.75] text-chalk-55">
+        {note}
+      </p>
+
+      <div className="mt-8 font-mono text-[10.5px] uppercase tracking-[0.2em] text-chalk-40">
+        {copy.chapterCount(count)}
+      </div>
+
+      <button type="button" className="btn-primary mt-9" onClick={onStart}>
+        {copy.continue}
+      </button>
+    </div>
   )
 }

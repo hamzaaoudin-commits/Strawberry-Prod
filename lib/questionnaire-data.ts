@@ -68,6 +68,8 @@ export interface QuestionSource {
   optional?: boolean
   /** Optional follow-up prompt, revealed on demand for textarea questions. */
   deep?: I18nText
+  /** Relance affichée quand la réponse reste courte. */
+  nudge?: I18nText
   options?: I18nText[]
   multi?: boolean
   max?: number
@@ -92,6 +94,9 @@ export interface Question {
   tag?: string
   optional?: boolean
   deep?: string
+  /** Relance affichée quand la réponse reste courte : elle demande la
+      précision qui manque, au lieu de compter les mots. */
+  nudge?: string
   options?: string[]
   multi?: boolean
   max?: number
@@ -274,6 +279,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "La version que vous n'avez jamais dite publiquement, celle qui vous ferait le plus de tort si on la lisait de travers.",
       "The version you have never said publicly — the one that would cost you most if it were read the wrong way.",
     ),
+    nudge: t(
+      "Qu'est-ce qui vous a fait penser ça la première fois ? Un client, une commande refusée, une phrase entendue — racontez le moment plutôt que l'idée.",
+      "What made you think that the first time? A client, an order you turned down, something you overheard — tell the moment, not the idea.",
+    ),
     tag: t("La vérité", "The truth"),
   },
   {
@@ -301,6 +310,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Y a-t-il une rupture plus ancienne, avant celle-là, que vous n'aviez jamais reliée à cette histoire jusqu'ici ?",
       "Is there an older rupture, before that one, that you had never connected to this story until now?",
     ),
+    nudge: t(
+      "Où étiez-vous, et qu'est-ce que vous avez décidé de ne plus faire à partir de là ?",
+      "Where were you, and what did you decide to stop doing from that point on?",
+    ),
     tag: t("La vérité", "The truth"),
   },
   {
@@ -321,6 +334,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Not a competitor — a way of thinking, a method, a habit this house refuses to accept.",
     ),
     ph: t("Ce contre quoi nous nous tenons...", "What we stand against..."),
+    nudge: t(
+      "Pas un concurrent : une manière de faire que vous refusez. Qu'est-ce qui vous agace quand vous le voyez chez les autres ?",
+      "Not a competitor: a way of working you refuse. What annoys you when you see others do it?",
+    ),
     tag: t("La vérité", "The truth"),
   },
   {
@@ -495,6 +512,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Et ce qui la trahirait immédiatement comme n'étant PAS elle : le lieu, le ton, la référence qu'elle refuserait.",
       "And what would immediately betray them as NOT being themselves: the place, the tone, the reference they would refuse.",
     ),
+    nudge: t(
+      "Comment parle-t-elle ? Qu'est-ce qu'elle ne dirait jamais ? Qu'est-ce qui la ferait quitter une pièce ?",
+      "How do they speak? What would they never say? What would make them leave a room?",
+    ),
     tag: t("Identité visuelle", "Visual identity"),
   },
   {
@@ -571,6 +592,7 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
     tag: q.tag ? pickText(q.tag, lang) : undefined,
     optional: q.optional,
     deep: q.deep ? pickText(q.deep, lang) : undefined,
+    nudge: q.nudge ? pickText(q.nudge, lang) : undefined,
     options: q.options?.map((o) => pickText(o, lang)),
     multi: q.multi,
     max: q.max,

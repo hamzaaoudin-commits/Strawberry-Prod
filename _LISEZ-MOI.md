@@ -1,50 +1,77 @@
-# Strawberry — le questionnaire au niveau du site
+# Strawberry — le questionnaire, six chantiers
 
 3 fichiers.
 
-## Le principe
+## 1. Les chapitres
 
-C'est le premier écran après un paiement de 2 900 €. Un fond noir uni avec
-des champs empilés fait rupture avec tout ce que le client vient de
-parcourir — et il lui reste trente écrans à traverser.
+Le parcours est découpé en sections, dérivées des tags déjà portés par les
+questions. Chaque section s'ouvre sur un **écran de respiration** : son
+nom en grand, un filet rouge, ce qu'on va y chercher, et le nombre de
+questions.
 
-## Le mouvement
+> **PARTIE 3 SUR 6**
+> **LANGAGE**
+> Vos mots, ceux que vous refusez, et le ton que vous tenez. C'est ce qui
+> nourrit le lexique et les textes réécrits.
+> 5 QUESTIONS
 
-**Chaque question entre en fondu montant**, 520 ms. Sans ça, passer d'un
-écran à l'autre est un remplacement brutal : le texte change, rien ne
-bouge, et trente écrans donnent la sensation d'un tableur.
+Chaque chapitre n'apparaît **qu'une fois** : le revoir en revenant en
+arrière serait une punition.
 
-**La navigation au clavier.** Entrée pour avancer, Cmd+Entrée depuis une
-zone de texte. Sur trente écrans, tendre la main vers la souris à chaque
-fois est le genre de frottement qui fait abandonner en cours de route.
+C'est ce qui transforme un tunnel de trente écrans en parcours — et chaque
+note dit à quoi la section servira dans le document, donc pourquoi
+répondre sérieusement.
 
-## La progression
+## 2. L'écho de la réponse précédente
 
-**Trente segments** au lieu d'une barre continue. Une barre qui avance de
-trois pour cent ne dit rien ; des segments montrent le chemin parcouru et
-surtout **combien il en reste** — la vraie question au quinzième écran.
+Sous chaque question, la réponse qu'on vient d'écrire, sur deux lignes.
 
-## La lecture
+Trente questions tapées dans le vide : on doute, on se répète, on perd le
+fil. Uniquement pour les réponses rédigées — un choix dans une liste ne se
+relit pas.
 
-**Le titre passe à la charte du site** : serif, capitales, crénage
-desserré. Il était en `h-card`, une taille de carte, alors que c'est la
-seule chose à lire de l'écran.
+## 3. Le récapitulatif d'arrivée
 
-**Les options portent un repère de sélection** — carré pour le choix
-multiple, rond pour le choix unique. La forme dit la règle avant même
-qu'on ait lu la consigne. Et elles se soulèvent d'un pixel au survol.
+Avant le bouton d'envoi, un bloc qui dit ce qui va se passer :
 
-**Les zones de texte affichent un compteur de mots**, rouge tant qu'on est
-sous vingt-cinq. Il ne bloque rien : il rend visible qu'on a expédié une
-question. Ces réponses nourrissent le document — six mots produisent une
-pièce creuse, et mieux vaut le voir pendant qu'on écrit qu'à la livraison.
+> **VOUS Y ÊTES**
+> **TOUT CE QU'IL FAUT POUR ÉCRIRE EST LÀ.**
+> Nous partons de vos réponses et de rien d'autre. Le dépouillement
+> commence demain. Vous n'êtes plus sollicité jusqu'au jour 15.
+>
+> **6** pièces à écrire · **15** jours avant le document · **2** révisions
 
-## Le fond
+Trente questions méritent mieux qu'un bouton « envoyer ».
 
-**Deux halos rouges**, repris du site, fixes et sans animation : on
-remplit un document, rien ne doit bouger derrière le texte.
+## 4. Les relances sur les questions difficiles
+
+Quatre questions — la conviction, la rupture, l'ennemi, le portrait — ont
+une relance écrite qui demande la précision qui manque :
+
+> Qu'est-ce qui vous a fait penser ça la première fois ? Un client, une
+> commande refusée, une phrase entendue — racontez le moment plutôt que
+> l'idée.
+
+Elle n'apparaît **qu'après une première tentative**, jamais sur un champ
+vide : on ne donne pas d'ordre avant d'avoir lu.
+
+## 5. Le compteur devient une aide
+
+« 8 mots » en rouge jugeait sans aider — le client sait qu'il a fait
+court, il ne sait pas quoi ajouter. Remplacé par la relance ci-dessus, et
+par une simple coche quand la réponse est consistante.
+
+J'ai supprimé au passage un second compteur qui faisait doublon sous le
+champ.
+
+## 6. La sauvegarde visible
+
+**Un point rouge et « Enregistré »** à côté des boutons. Les réponses
+étaient bien stockées localement, mais rien ne le disait — et au vingtième
+écran, la peur de tout perdre est réelle.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. `pct`, devenu inutile avec la progression
-segmentée, est retiré partout plutôt que laissé mort.
+Contrôle de types : zéro erreur. Deux clés de texte en collision
+(`doneKicker`, `doneTitle`, qui servaient déjà à l'écran de confirmation)
+renommées en `recap*` plutôt qu'écrasées.
