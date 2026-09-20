@@ -93,6 +93,14 @@ const UI_COPY = {
       Fondation: "Le socle : la conviction, la rupture, ce que vous refusez. Les questions les plus difficiles sont ici — prenez le temps.",
     } as Record<string, string>,
     saved: "Enregistré",
+    resumeKicker: "Vous aviez commencé",
+    resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
+    resumeCta: "Reprendre",
+    emptyAnswer: "Sans réponse — y répondre maintenant",
+    minutesLeft: (n: number) => `≈ ${n} min restantes`,
+    deferCta: "J'y reviens",
+    deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} mise${n > 1 ? "s" : ""} de côté`,
+    leaveNote: "Vous pouvez fermer cet onglet : tout est gardé sur cet appareil, vous reprendrez où vous en êtes.",
     echoLabel: "Votre réponse précédente",
     coverTitle: "C'est parti.",
     terrainLabel: "Vous avez commandé l'Architecture pour",
@@ -176,6 +184,14 @@ const UI_COPY = {
       Foundation: "The bedrock: the conviction, the rupture, what you refuse. The hardest questions are here — take your time.",
     } as Record<string, string>,
     saved: "Saved",
+    resumeKicker: "You had started",
+    resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
+    resumeCta: "Resume",
+    emptyAnswer: "No answer — answer it now",
+    minutesLeft: (n: number) => `≈ ${n} min left`,
+    deferCta: "Come back to it",
+    deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} set aside`,
+    leaveNote: "You can close this tab: everything is kept on this device, you will pick up where you left off.",
     echoLabel: "Your previous answer",
     coverTitle: "Let's begin.",
     terrainLabel: "You commissioned the Architecture for",
@@ -281,6 +297,13 @@ export function QuestionnaireFlow({
   )
   const copy = UI_COPY[lang]
   const words = useMemo(() => wordsFor(lang), [lang])
+  // Les questions mises de côté.
+  //
+  // « La conviction que votre milieu refuserait de dire » n'a pas de bonne
+  // réponse au premier passage. Sans échappatoire, on remplit six mots pour
+  // avancer — et la pièce qui en dépend sera creuse. Mieux vaut y revenir.
+  const [deferred, setDeferred] = useState<string[]>([])
+
   const [screen, setScreen] = useState<"cover" | "chapter" | "steps" | "review" | "done" | "error">("cover")
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>(() => emptyAnswers(prefill))
@@ -299,9 +322,13 @@ export function QuestionnaireFlow({
     try {
       const raw = localStorage.getItem(storageKey(offer, email, chosenTerrain))
       if (raw) {
-        const saved = JSON.parse(raw) as { answers: Answers; idx: number }
+        const saved = JSON.parse(raw) as { answers: Answers; idx: number; deferred?: string[] }
         setAnswers((prev) => ({ ...prev, ...saved.answers }))
         setIdx(saved.idx ?? 0)
+        setDeferred(saved.deferred ?? [])
+        // On ne propose la reprise que si le travail engagé vaut la peine :
+        // reprendre à la deuxième question n'a aucun intérêt.
+        if ((saved.idx ?? 0) >= 2) setResumable(saved.idx ?? 0)
       }
     } catch {
       // localStorage unavailable — proceed without resume.
@@ -315,11 +342,11 @@ export function QuestionnaireFlow({
     const email = answers.identity.email
     if (!email) return
     try {
-      localStorage.setItem(storageKey(offer, email, chosenTerrain), JSON.stringify({ answers, idx }))
+      localStorage.setItem(storageKey(offer, email, chosenTerrain), JSON.stringify({ answers, idx, deferred }))
     } catch {
       // best-effort only
     }
-  }, [answers, idx, offer])
+  }, [answers, idx, deferred, offer])
 
   const step = steps[idx]
 
@@ -349,11 +376,48 @@ export function QuestionnaireFlow({
   // L'écran de chapitre s'affiche à l'entrée d'une section, une seule fois.
   const [seenChapters, setSeenChapters] = useState<number[]>([])
 
+  // Un brouillon retrouvé au chargement.
+  //
+  // Les réponses étaient déjà restaurées, mais en silence : on revenait sur
+  // l'écran d'accueil sans savoir que son travail existait encore, donc on
+  // recommençait ou on abandonnait. Le signaler est ce qui sauve le
+  // questionnaire de quelqu'un qui a fermé l'onglet au vingtième écran.
+  const [resumable, setResumable] = useState<number | null>(null)
+
+  // Le temps restant, glissant.
+  //
+  // L'estimation donnée une seule fois au départ ne sert plus après cinq
+  // minutes — or c'est la seule information qui décide de continuer ou de
+  // s'arrêter. Deux minutes par écran rédigé, trente secondes sinon.
+  const minutesLeft = useMemo(() => {
+    const rest = steps.slice(idx)
+    const mins = rest.reduce((s, q) => s + (["textarea", "competitors"].includes(q.type) ? 2 : 0.5), 0)
+    return Math.max(1, Math.round(mins))
+  }, [steps, idx])
+
+
   function updateAnswer(id: string, value: unknown) {
     setAnswers((prev) => ({ ...prev, [id]: value }))
   }
 
+  /** Mettre la question de côté : on la repropose à la fin, pas jamais. */
+  function deferCurrent() {
+    if (!step) return
+    setDeferred((prev) => (prev.includes(step.id) ? prev : [...prev, step.id]))
+    goNext()
+  }
+
   function goNext() {
+    // À la fin du parcours, on ramène les questions mises de côté avant
+    // d'aller au récapitulatif : les laisser vides serait les perdre.
+    if (idx >= steps.length - 1 && deferred.length > 0) {
+      const back = steps.findIndex((s) => s.id === deferred[0])
+      if (back > -1) {
+        setDeferred((prev) => prev.slice(1))
+        setIdx(back)
+        return
+      }
+    }
     if (idx < steps.length - 1) {
       const next = idx + 1
       const ch = chapters.find((x) => x.start === next)
@@ -430,6 +494,27 @@ export function QuestionnaireFlow({
         />
 
         {screen === "cover" && (
+          <>
+          {/* Le brouillon retrouvé.
+              Sans ce bandeau, on revient sur l'écran d'accueil et rien ne
+              dit que son travail existe encore : on recommence, ou on part.
+              C'est la seule chose qui sauve un questionnaire abandonné en
+              cours de route. */}
+          {resumable !== null && (
+            <div className="mb-8 flex flex-wrap items-center gap-x-5 gap-y-3 border border-brand-hair bg-brand/[0.05] px-5 py-4">
+              <div className="min-w-0 flex-1">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
+                  {copy.resumeKicker}
+                </div>
+                <p className="m-0 mt-1.5 font-sans text-[13.5px] leading-[1.6] text-chalk-75">
+                  {copy.resumeLead(resumable + 1, steps.length)}
+                </p>
+              </div>
+              <button type="button" className="btn-primary flex-shrink-0" onClick={() => setScreen("steps")}>
+                {copy.resumeCta}
+              </button>
+            </div>
+          )}
           <CoverScreen
             offer={offer}
             copy={copy}
@@ -439,6 +524,7 @@ export function QuestionnaireFlow({
             onChooseTerrain={setChosenTerrain}
             onStart={() => setScreen("steps")}
           />
+          </>
         )}
 
         {screen === "chapter" && currentChapter && (
@@ -457,6 +543,9 @@ export function QuestionnaireFlow({
             step={step}
             copy={copy}
             terrainLabel={copy.terrains.find((x) => x.k === chosenTerrain)?.t}
+            minutesLeft={minutesLeft}
+            deferredCount={deferred.length}
+            onDefer={deferCurrent}
             previousEcho={(() => {
               // Seules les réponses rédigées font un écho utile : un choix
               // dans une liste ne se relit pas, il se revoit sur l'écran.
@@ -593,6 +682,9 @@ function StepScreen({
   copy,
   terrainLabel,
   previousEcho,
+  minutesLeft,
+  deferredCount,
+  onDefer,
   words,
   index,
   total,
@@ -606,6 +698,9 @@ function StepScreen({
 }: {
   terrainLabel?: string
   previousEcho?: string
+  minutesLeft: number
+  deferredCount: number
+  onDefer?: () => void
   step: Question
   copy: Copy
   words: string[]
@@ -694,8 +789,17 @@ function StepScreen({
             />
           ))}
         </div>
-        <div className="body-sm flex-shrink-0">
-          {index + 1} / {total}
+        {/* Le compte d'écrans, et le temps qu'il reste.
+            L'estimation donnée une seule fois au départ ne sert plus après
+            cinq minutes — c'est pourtant la seule information qui décide de
+            continuer ou de s'arrêter. */}
+        <div className="flex-shrink-0 text-right">
+          <div className="body-sm leading-none">
+            {index + 1} / {total}
+          </div>
+          <div className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-chalk-40">
+            {copy.minutesLeft(minutesLeft)}
+          </div>
         </div>
       </div>
 
@@ -736,6 +840,15 @@ function StepScreen({
           écrit : on doute, on se répète, on perd le fil. Rappeler la réponse
           précédente en une ligne suffit à sentir qu'un document se
           construit, et évite de redire ce qu'on vient de dire. */}
+      {/* Ce qui se passe si on ferme l'onglet.
+          Une heure de travail sans savoir si on peut partir, c'est ce qui
+          fait remplir n'importe quoi pour en finir. Le dire une fois par
+          écran, discrètement, suffit à lever la crainte. */}
+      <p className="mt-5 font-sans text-[12px] leading-[1.6] text-chalk-40">
+        {copy.leaveNote}
+        {deferredCount > 0 && <> · {copy.deferred(deferredCount)}</>}
+      </p>
+
       {previousEcho && (
         <div className="mt-7 border-t border-hair pt-4">
           <div className="mb-1.5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
@@ -747,7 +860,12 @@ function StepScreen({
         </div>
       )}
 
-      <div className="mt-8 flex items-center gap-4">
+      {/* Le pied d'écran.
+          Sur un téléphone, le clavier mange la moitié de la hauteur et le
+          bouton passait sous la ligne de flottaison : on tapait sa réponse
+          sans voir comment avancer. Il colle désormais au bas de l'écran
+          sur mobile, au-dessus de la zone système. */}
+      <div className="sticky bottom-0 z-10 -mx-gutter mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 bg-ink/95 px-gutter py-4 backdrop-blur-sm [padding-bottom:calc(1rem+env(safe-area-inset-bottom,0px))] sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
         {/* Le bouton ne devient rouge que lorsqu'on peut réellement avancer.
             Il était rouge en permanence, y compris avant d'avoir répondu :
             on cliquait dans le vide sans comprendre pourquoi rien ne se
@@ -761,6 +879,20 @@ function StepScreen({
         >
           {copy.continue}
         </button>
+        {/* L'échappatoire honorable.
+            Une question difficile sans porte de sortie se solde par six mots
+            tapés pour avancer — et la pièce qui en dépend sera creuse. Mise
+            de côté, elle revient à la fin, quand le reste a réchauffé. */}
+        {onDefer && !valid && (
+          <button
+            type="button"
+            onClick={onDefer}
+            className="font-sans text-[13px] text-chalk-40 underline decoration-hair-strong underline-offset-4 transition-colors hover:text-chalk-75"
+          >
+            {copy.deferCta}
+          </button>
+        )}
+
         {/* La sauvegarde, dite une fois par écran.
             Au vingtième écran, la peur de tout perdre est réelle — et les
             réponses sont bien stockées localement, mais rien ne le disait. */}
@@ -1196,7 +1328,22 @@ function ReviewScreen({
                 {copy.edit}
               </button>
             </div>
-            <div className="whitespace-pre-wrap text-[14.5px] leading-relaxed text-chalk-75">{summarize(step)}</div>
+            {/* Une réponse vide se repère mal dans une liste de trente.
+                Le vrai risque à ce stade n'est pas la faute de frappe :
+                c'est la question passée sans s'en rendre compte. */}
+            {summarize(step).trim() ? (
+              <div className="whitespace-pre-wrap text-[14.5px] leading-relaxed text-chalk-75">
+                {summarize(step)}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => onEdit(i)}
+                className="flex items-center gap-2 text-left font-sans text-[13.5px] text-brand underline decoration-brand/40 underline-offset-4"
+              >
+                {copy.emptyAnswer}
+              </button>
+            )}
           </div>
         ))}
       </div>
