@@ -96,6 +96,7 @@ const UI_COPY = {
     resumeKicker: "Vous aviez commencé",
     resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
     resumeCta: "Reprendre",
+    houseOverline: "On va écrire",
     emptyAnswer: "Sans réponse — y répondre maintenant",
     minutesLeft: (n: number) => `≈ ${n} min restantes`,
     deferCta: "J'y reviens",
@@ -187,6 +188,7 @@ const UI_COPY = {
     resumeKicker: "You had started",
     resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
     resumeCta: "Resume",
+    houseOverline: "We are going to write",
     emptyAnswer: "No answer — answer it now",
     minutesLeft: (n: number) => `≈ ${n} min left`,
     deferCta: "Come back to it",
@@ -611,11 +613,52 @@ function CoverScreen({
 }) {
   const isArchitecture = offer === "architecture"
   const minutes = isArchitecture ? copy.minutesArchitecture : copy.minutesAudit
+
+  // Les paliers d'apparition. Chaque bloc entre 220 ms après le précédent :
+  // assez pour qu'on suive, trop court pour qu'on attende.
+  const [stage, setStage] = useState(0)
+  useEffect(() => {
+    const timers = [0, 1, 2, 3, 4].map((i) => window.setTimeout(() => setStage(i + 1), 120 + i * 220))
+    return () => timers.forEach(window.clearTimeout)
+  }, [])
+  const rev = (i: number) =>
+    `transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)] ${
+      stage > i ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+    }`
   return (
     <div className="text-center">
-      <div className="kicker mb-4">{copy.kicker}</div>
-      <h1 className="h-section mb-4">{copy.coverTitle}</h1>
-      <p className="lede mx-auto mb-2 max-w-md italic">{copy.coverLede}</p>
+      {/* L'ouverture, en séquence.
+          Tout apparaissait d'un bloc : on arrivait sur une page pleine de
+          texte et de champs, et rien ne distinguait ce moment d'un
+          formulaire. En faisant entrer les éléments l'un après l'autre —
+          le studio, puis le nom de la maison, puis la phrase — les trois
+          premières secondes deviennent une arrivée plutôt qu'un
+          chargement. */}
+      <div className={rev(0)}>
+        <div className="kicker mb-8">{copy.kicker}</div>
+      </div>
+
+      {/* Le nom de la maison, en grand.
+          C'est ce que le client a payé pour faire écrire. Le voir s'afficher
+          à la taille d'une couverture, avant toute question, dit mieux que
+          n'importe quelle phrase ce qui est en train de commencer. */}
+      {identity.house && (
+        <div className={rev(1)}>
+          <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
+            {copy.houseOverline}
+          </div>
+          <div className="font-serif text-[clamp(2.4rem,7vw,4.6rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-brand">
+            {identity.house}
+          </div>
+          <div className="mx-auto mt-8 h-px w-16 bg-brand/50" />
+        </div>
+      )}
+
+      <div className={rev(2)}>
+        <h1 className="h-section mb-6 mt-10">{copy.coverTitle}</h1>
+        <p className="lede mx-auto mb-6 max-w-[520px] whitespace-pre-line">{copy.coverLede}</p>
+      </div>
+      <div className={rev(3)}>
       <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
       {isArchitecture && <p className="body-sm mt-3 text-chalk-40">{copy.resumeNote}</p>}
       {(identity.name || identity.house) && (
@@ -632,7 +675,9 @@ function CoverScreen({
           Le choix est bloquant : le bouton reste inactif tant qu'on n'a
           pas répondu, parce qu'un mauvais parcours ne se rattrape pas en
           cours de route. */}
-      <div className="mx-auto mt-9 max-w-lg text-left">
+      </div>
+
+      <div className={`mx-auto mt-9 max-w-lg text-left ${rev(4)}`}>
         <div className="field-label mb-1.5">{copy.terrainLabel}</div>
         <p className="body-sm mb-4 text-chalk-40">{copy.terrainHelp}</p>
         <div className="grid gap-2">
@@ -800,6 +845,20 @@ function StepScreen({
           <div className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-chalk-40">
             {copy.minutesLeft(minutesLeft)}
           </div>
+        </div>
+      </div>
+
+      {/* Le grand chiffre.
+          Un écran de formulaire ne se distingue pas du précédent : même
+          titre, même champ, même bouton. Le numéro en grand donne à chaque
+          question une identité, et rappelle la mise en page du document
+          livré — les pièces y sont numérotées de la même façon. */}
+      <div className="mb-5 flex items-end gap-4">
+        <div className="font-serif text-[clamp(2.6rem,7vw,4rem)] font-bold leading-[0.8] tracking-[-0.03em] text-brand/25">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+        <div className="flex-1 pb-1.5">
+          <div className="h-px w-full bg-hair" />
         </div>
       </div>
 
@@ -1460,33 +1519,57 @@ function ChapterScreen({
   }, [])
   const note = copy.chapterNotes[tag] ?? copy.chapterFallback
   return (
-    <div
-      className={[
-        "py-10 text-center transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]",
-        shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
-      ].join(" ")}
-    >
-      <div className="font-mono text-[10.5px] uppercase tracking-[0.26em] text-chalk-40">
+    // Un moment, pas un bloc dans la page.
+    //
+    // Le chapitre s'affichait entre deux questions comme une carte de plus :
+    // on le lisait en diagonale et on cliquait. En occupant tout l'écran,
+    // avec un trait qui se trace et un titre qui monte, il redevient une
+    // pause — le seul moment du parcours où l'on ne demande rien.
+    <div className="flex min-h-[72vh] flex-col items-center justify-center py-10 text-center">
+      <div
+        className={`font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40 transition-all duration-[600ms] ${
+          shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+        }`}
+      >
         {copy.chapterOf(n, total)}
       </div>
 
-      <h2 className="mx-auto mt-6 max-w-[520px] font-serif text-[clamp(1.9rem,4.4vw,3rem)] font-bold uppercase leading-[1.06] tracking-[-0.005em] text-white">
+      <h2
+        className={`mx-auto mt-8 max-w-[640px] font-serif text-[clamp(2.4rem,6.5vw,4.2rem)] font-bold uppercase leading-[0.98] tracking-[-0.015em] text-white transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)] ${
+          shown ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+        }`}
+        style={{ transitionDelay: "140ms" }}
+      >
         {tag}
       </h2>
 
-      <div className="mx-auto mt-7 h-px w-14 bg-brand" />
+      {/* Le trait se trace plutôt que d'apparaître : c'est ce geste, plus
+          que le texte, qui fait sentir qu'une étape s'ouvre. */}
+      <div
+        className="mx-auto mt-9 h-px bg-brand transition-all duration-[900ms] ease-out"
+        style={{ width: shown ? 96 : 0, transitionDelay: "420ms" }}
+      />
 
-      <p className="mx-auto mt-7 max-w-[440px] font-sans text-[15px] leading-[1.75] text-chalk-55">
+      <p
+        className={`mx-auto mt-9 max-w-[460px] font-sans text-[15.5px] leading-[1.8] text-chalk-75 transition-all duration-[800ms] ${
+          shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+        }`}
+        style={{ transitionDelay: "620ms" }}
+      >
         {note}
       </p>
 
-      <div className="mt-8 font-mono text-[10.5px] uppercase tracking-[0.2em] text-chalk-40">
-        {copy.chapterCount(count)}
+      <div
+        className={`mt-10 transition-all duration-[700ms] ${shown ? "opacity-100" : "opacity-0"}`}
+        style={{ transitionDelay: "900ms" }}
+      >
+        <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
+          {copy.chapterCount(count)}
+        </div>
+        <button type="button" className="btn-primary" onClick={onStart}>
+          {copy.continue}
+        </button>
       </div>
-
-      <button type="button" className="btn-primary mt-9" onClick={onStart}>
-        {copy.continue}
-      </button>
     </div>
   )
 }

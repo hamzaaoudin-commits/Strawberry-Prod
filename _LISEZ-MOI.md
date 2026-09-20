@@ -1,75 +1,62 @@
-# Strawberry — l'onboarding change de registre
+# Strawberry — l'onboarding change de forme
 
 2 fichiers.
 
-## Le diagnostic que vous avez posé
+## Ce que j'avais mal fait
 
-Le questionnaire traitait le client comme quelqu'un qui remplit un
-formulaire. Il venait de prendre une décision à 2 900 €, et le premier
-écran lui annonçait « 30 questions, 50 à 60 minutes ».
+J'ai réécrit les mots et laissé l'expérience intacte. On arrivait toujours
+sur une page sombre avec un titre, un paragraphe et des champs — le texte
+disait « vous venez de décider quelque chose », la forme disait
+« formulaire ».
 
-Personne n'a envie d'avoir raison d'avoir payé en lisant une estimation de
-durée.
+## L'arrivée devient une séquence
 
-## L'accueil
+Les éléments entrent l'un après l'autre, 220 ms d'écart : le nom du studio,
+puis le nom de la maison, puis la phrase, puis le choix.
 
-**Avant** : « C'est parti. » puis « Ceci est le fondement de votre
-maison. »
+Trois secondes qui transforment un chargement en arrivée.
 
-**Après :**
+## Le nom de la maison, en grand
 
-> **VOUS VENEZ DE DÉCIDER QUELQUE CHOSE.**
+C'est le changement le plus direct. Avant toute question :
+
+> ON VA ÉCRIRE
 >
-> La plupart des maisons de votre taille n'écriront jamais ce que vous vous
-> apprêtez à écrire. Elles continueront d'emprunter les mots de leur
-> secteur, et de se demander pourquoi on les compare au prix.
->
-> Ce qui suit est la seule partie que personne ne peut faire à votre place.
+> **LOAM**
+> ———
 
-Le premier écran ne décrit plus une tâche : il confirme un choix, et il
-place le client du bon côté d'une ligne.
+Le nom du client, en rouge, à la taille d'une couverture, avec son propre
+filet. C'est ce qu'il a payé pour faire écrire — le voir affiché ainsi dit
+ce qui commence mieux que n'importe quelle phrase.
 
-## Les chapitres montent l'enjeu
+Il vient du pré-remplissage, donc il s'affiche sans rien demander.
 
-Ils décrivaient la section. Ils disent maintenant ce qui se joue :
+## Les chapitres deviennent des moments
 
-> **DIAGNOSTIC** — Ici, vous allez écrire des choses que vous n'avez jamais
-> écrites nulle part. C'est normal — c'est exactement ce que vos
-> concurrents n'ont pas fait.
->
-> **CONCURRENCE** — Vous allez regarder vos concurrents de plus près que
-> vous ne l'avez jamais fait. La plupart des fondateurs ne le font jamais —
-> c'est pour ça que la plupart se ressemblent.
->
-> **FONDATION** — C'est la partie difficile, et c'est celle qui vaut le
-> prix. Ce que vous écrivez dans les cinq prochaines minutes tiendra la
-> maison quand vous ne serez pas dans la pièce.
+Ils s'affichaient entre deux questions comme une carte de plus : on lisait
+en diagonale et on cliquait.
 
-## Le manque principal : rien ne répondait jamais
+Ils occupent maintenant **tout l'écran** (72vh minimum, contenu centré),
+avec une animation en quatre temps : le compteur, le titre qui monte à
+2,4–4,2 rem, **un trait qui se trace** de zéro à 96 pixels, puis la note.
 
-C'était ça, le cœur du problème. Le client écrivait trente réponses dans
-le vide, sans jamais savoir s'il avait écrit quelque chose d'utile.
+C'est le trait qui fait le travail : un geste, pas une apparition. Et le
+bouton n'arrive qu'à 900 ms — on a le temps de lire avant de pouvoir
+cliquer.
 
-**Huit questions accusent maintenant réception** dès que la réponse
-devient substantielle, en nommant la pièce du document qu'elle alimente :
+## Chaque question a une identité
 
-> • C'est de là que sortira votre position — la phrase qu'aucun concurrent
-> ne pourra signer sans mentir.
->
-> • Le récit fondateur s'écrira autour de ce moment. C'est la page que vous
-> relirez le plus.
->
-> • Voilà le premier des trois refus qui tiendront votre maison.
+Un **grand chiffre** en rouge translucide ouvre chaque écran — 01, 02,
+03 — prolongé par un filet.
 
-On ne remplit plus un champ : on construit une partie du livrable, et on
-le voit.
+Sans lui, trente écrans sont indistinguables : même titre, même champ,
+même bouton. Avec, chaque question existe. Et ça rappelle la mise en page
+du document livré, où les pièces sont numérotées de la même façon.
 
-## L'arrivée
+## La page respire
 
-> **VOUS VENEZ DE FAIRE CE QUE VOS CONCURRENTS NE FERONT PAS.**
->
-> Une heure d'écriture honnête sur ce que vous refusez : la plupart des
-> fondateurs ne s'y assoient jamais. Le reste nous regarde.
+Le contenu se centre verticalement au lieu de coller en haut, comme sur le
+reste du site.
 
 ## Vérification
 
