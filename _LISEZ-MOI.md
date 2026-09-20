@@ -1,66 +1,51 @@
-# Strawberry — onze des vingt idées
+# Strawberry — les citations du livre dans l'onboarding
 
-3 fichiers. Ce qui est fait, et ce qui reste, en toute franchise.
+1 fichier.
 
-## Fait
+## Où elles apparaissent
 
-**1 · L'accueil nommé** — « Bonjour Marc. » avant tout le reste.
+Sur l'écran d'ouverture de chaque chapitre, **entre le titre et la
+consigne** : on lit d'abord une idée, ensuite ce qu'on attend de vous.
 
-**2 · L'heure** — « Vous écrivez tard — c'est souvent là que les vraies
-phrases sortent. » N'apparaît qu'après 22 h ou avant 8 h : à 15 h, elle
-n'aurait rien à dire.
+Filet rouge à gauche, serif, avec la mention « LA DOCTRINE LA PLUS
+CLAIRE » en dessous. Elles entrent à 560 ms, la consigne à 740.
 
-**3 · La carte de commande** — un bon de commande avec la référence
-dérivée du nom de la maison, et **la date de livraison calculée à
-J+21**. L'engagement du site devient une date réelle, pas une promesse.
+## Le choix, chapitre par chapitre
 
-**6 · Le compte de mots** — à l'arrivée, le nombre de mots écrits à la
-main, en grand. Trente cases cochées ne disent rien ; douze cents mots sur
-ce qu'on refuse, si.
+Chacune est choisie pour **l'état d'esprit qu'il faut avoir pour répondre
+à la section qui suit** — pas pour faire joli.
 
-**8 et 10 · Le document qui se remplit** — six barres sous chaque
-question, une par pièce, qui se remplissent selon les réponses réellement
-fournies. La pièce 05, qui n'a pas de questions propres, suit la
-progression générale.
+**Identité** — « Ce que les gens croient de vous avant de vous avoir
+touché. » Courte, elle pose l'objet du questionnaire en une ligne.
 
-**11 · Le jalon de mi-parcours** — « 15. Vous êtes à la moitié. La plupart
-des gens qui commencent un exercice comme celui-ci s'arrêtent avant ce
-point. »
+**Fondation** — « Une maison n'est plus ce qu'elle fabrique. Une maison
+est ce qu'elle refuse. » C'est exactement ce qu'on s'apprête à demander
+d'écrire : la citation prépare la question.
 
-**14 · L'écran final** avec le compte de mots en grand.
+**Diagnostic** — « Rien, dans un marché, n'est expérimenté. Tout est
+interprété — et l'interprétation arrive avant vous. » Elle explique
+pourquoi on va faire relire ses propres supports.
 
-**15 · Le grain** — le questionnaire était le seul endroit du site sans
-texture.
+**Concurrence** — « Sur un marché où tout le monde a accès à la même
+machine, le meilleur produit ne gagne plus. C'est la doctrine la plus
+claire qui gagne. » La thèse du livre, au moment où l'on regarde ses
+concurrents.
 
-**16 · Les transitions latérales** — la question glisse depuis la droite
-au lieu de monter. Un fondu montant ressemble à un chargement ; un
-glissement ressemble à un déplacement.
+**Langage** — la définition de la doctrine, juste avant de demander ses
+mots.
 
-**18 · Le halo du champ actif** — une lueur rouge basse sous le champ où
-l'on écrit.
-
-## Non fait, et pourquoi
-
-**4 · Les questions fondatrices en plein écran** — demande de sortir ces
-questions du composant commun. Faisable, mais ça touche la validation, le
-report et la reprise qu'on vient de poser.
-
-**5 · Les citations du livre** — je n'ai pas le texte. Envoyez-moi cinq ou
-six phrases et je les place.
-
-**7 · Le fond qui se resserre** et **17 · la typographie variable** —
-cosmétiques, je les ai écartées au profit de ce qui se sent davantage.
-
-**9 · Le rappel d'une réponse précédente dans une question ultérieure** —
-c'est la plus belle de la liste, et elle demande de réécrire les libellés
-dynamiquement. Un vrai chantier.
-
-**12 · La phrase de confirmation** et **13 · le son** — à faire, mais le
-son mérite d'être discuté : mal dosé, il fait gadget.
-
-**19 et 20 · Le retour d'un modèle** — vous n'avez pas tranché sur le
-risque. Si l'observation tombe à plat, tout l'édifice tombe avec.
+**Déploiement** — la définition de la perception, au moment de décider où
+agir en premier.
 
 ## Vérification
+
+**Les six citations sont dans le manuscrit au mot près**, contrôlé par
+comparaison automatique avec le fichier.
+
+Une septième ne l'était pas : j'avais reformulé la définition de la
+doctrine au lieu de la citer — « dérivable » au lieu de « la chose sous
+les histoires ». Attribuer à l'auteur une phrase qu'il n'a pas écrite,
+dans un document qui vend la précision du mot, aurait été la pire faute
+possible. Rétablie.
 
 Contrôle de types : zéro erreur.

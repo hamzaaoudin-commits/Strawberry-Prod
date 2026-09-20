@@ -98,6 +98,16 @@ const UI_COPY = {
     resumeCta: "Reprendre",
     houseOverline: "On va écrire",
     piecesLabel: "Le document, pièce par pièce",
+    quoteSource: "La Doctrine la plus claire",
+    chapterQuotes: {
+      Identité: "Ce que les gens croient de vous avant de vous avoir touché.",
+      Fondation: "Une maison n'est plus ce qu'elle fabrique. Une maison est ce qu'elle refuse — et le marché n'a jamais rien lu plus clairement.",
+      Diagnostic: "Rien, dans un marché, n'est expérimenté. Tout est interprété — et l'interprétation arrive avant vous.",
+      Concurrence: "Sur un marché où tout le monde a accès à la même machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
+      Langage: "Une doctrine est la chose sous les histoires — l'ensemble fixe de convictions qui rend chaque expression d'une maison reconnaissable, cohérente, et impossible à confondre avec celle de quiconque, quel que soit celui — ou ce — qui en a produit la surface.",
+      Déploiement: "La perception est la structure de croyance qu'un marché tient sur une maison avant le contact, et qui détermine ce que chaque contact ultérieur a le droit de signifier.",
+    } as Record<string, string>,
+
     halfway: (n: number) => `${n}. Vous êtes à la moitié. La plupart des gens qui commencent un exercice comme celui-ci s'arrêtent avant ce point.`,
     wordsWritten: "mots écrits de votre main",
 
@@ -201,6 +211,16 @@ const UI_COPY = {
     resumeCta: "Resume",
     houseOverline: "We are going to write",
     piecesLabel: "The document, piece by piece",
+    quoteSource: "The Clearest Doctrine",
+    chapterQuotes: {
+      Identity: "What people believe about you before they have touched you.",
+      Foundation: "A house is no longer what it makes. A house is what it refuses — and the market has never read anything more clearly.",
+      Diagnosis: "Nothing in a market is experienced. Everything is interpreted — and the interpretation arrives before you do.",
+      Competition: "In a market where everyone has the same machine, the best product no longer wins. The clearest doctrine wins.",
+      Language: "A doctrine is the thing beneath the stories — the fixed set of convictions that makes every expression of a house recognisable, coherent, and impossible to confuse with anyone else's, whoever — or whatever — produced the surface.",
+      Deployment: "Perception is the belief structure a market holds about a house before contact, and which determines what every later contact is allowed to mean.",
+    } as Record<string, string>,
+
     halfway: (n: number) => `${n}. You are halfway. Most people who start an exercise like this one stop before this point.`,
     wordsWritten: "words written in your own hand",
 
@@ -1699,6 +1719,7 @@ function ChapterScreen({
     return () => cancelAnimationFrame(id)
   }, [])
   const note = copy.chapterNotes[tag] ?? copy.chapterFallback
+  const quote = copy.chapterQuotes[tag]
   return (
     // Un moment, pas un bloc dans la page.
     //
@@ -1731,11 +1752,33 @@ function ChapterScreen({
         style={{ width: shown ? 96 : 0, transitionDelay: "420ms" }}
       />
 
+      {/* La citation du livre.
+          Chacune est choisie pour l'état d'esprit qu'il faut avoir pour
+          répondre à la section qui suit — celle de « Fondation » dit que la
+          maison est ce qu'elle refuse, ce qu'on s'apprête justement à
+          demander. Elle arrive avant la note : on lit d'abord une idée,
+          ensuite une consigne. */}
+      {quote && (
+        <figure
+          className={`mx-auto mt-10 max-w-[560px] transition-all duration-[800ms] ${
+            shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+          style={{ transitionDelay: "560ms" }}
+        >
+          <blockquote className="m-0 border-l-2 border-brand pl-5 text-left font-serif text-[clamp(1rem,2vw,1.2rem)] leading-[1.6] text-white">
+            {quote}
+          </blockquote>
+          <figcaption className="mt-3 pl-5 text-left font-mono text-[9.5px] uppercase tracking-[0.22em] text-chalk-40">
+            {copy.quoteSource}
+          </figcaption>
+        </figure>
+      )}
+
       <p
         className={`mx-auto mt-9 max-w-[460px] font-sans text-[15.5px] leading-[1.8] text-chalk-75 transition-all duration-[800ms] ${
           shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         }`}
-        style={{ transitionDelay: "620ms" }}
+        style={{ transitionDelay: "740ms" }}
       >
         {note}
       </p>
