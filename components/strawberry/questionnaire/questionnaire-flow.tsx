@@ -97,6 +97,24 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
     resumeCta: "Reprendre",
     houseOverline: "On va écrire",
+    thresholdLead: "Vous venez de commander un document qui dira ce que votre maison refuse. Personne ne peut l'écrire à votre place — ni une agence, ni une machine, ni nous, tant que vous ne nous l'avez pas dit.",
+    thresholdQuestion: "Êtes-vous prêt à écrire ce que vous refusez ?",
+    thresholdCta: "Je suis prêt",
+    bareNote: "Prenez le temps. Personne ne vous regarde.",
+    signLabel: "Signez pour ouvrir le dossier",
+    signPlaceholder: "Votre prénom",
+    sign: "Signer et ouvrir le dossier",
+    sealKicker: "C'est signé",
+    sealTitle: (r: string) => `Le dossier ${r} est ouvert.`,
+    sealDueLabel: "Document livré au plus tard le",
+    sealLead: "Le dépouillement commence demain : vos supports, ceux de vos concurrents, vos avis. Vous n'entendrez plus parler de nous jusqu'au jour 15 — c'est voulu.",
+    sealDownload: "Emporter votre première page ↓",
+
+    mirrorPositioning: "C'est la phrase que nous allons tester, mot pour mot, contre celles de vos concurrents.",
+    mirrorDeploy: "C'est ce refus qui décidera de l'ordre des mouvements. Dites-nous où il doit se voir en premier.",
+    mirrorPortrait: "Ce moment-là deviendra le récit fondateur. Le portrait qui suit lui donnera sa voix.",
+
+
     piecesLabel: "Le document, pièce par pièce",
     quoteSource: "La Doctrine la plus claire",
     chapterQuotes: {
@@ -210,6 +228,24 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
     resumeCta: "Resume",
     houseOverline: "We are going to write",
+    thresholdLead: "You have just commissioned a document that will state what your house refuses. Nobody can write it for you — not an agency, not a machine, not us, until you have told us.",
+    thresholdQuestion: "Are you ready to write what you refuse?",
+    thresholdCta: "I am ready",
+    bareNote: "Take your time. Nobody is watching.",
+    signLabel: "Sign to open the file",
+    signPlaceholder: "Your first name",
+    sign: "Sign and open the file",
+    sealKicker: "Signed",
+    sealTitle: (r: string) => `File ${r} is open.`,
+    sealDueLabel: "Document delivered by",
+    sealLead: "The reading starts tomorrow: your supports, your competitors', your reviews. You will not hear from us until day 15 — that is deliberate.",
+    sealDownload: "Take your first page ↓",
+
+    mirrorPositioning: "This is the sentence we will test, word for word, against your competitors'.",
+    mirrorDeploy: "This refusal will decide the order of the moves. Tell us where it must show first.",
+    mirrorPortrait: "That moment will become the origin story. The portrait below will give it a voice.",
+
+
     piecesLabel: "The document, piece by piece",
     quoteSource: "The Clearest Doctrine",
     chapterQuotes: {
@@ -348,7 +384,7 @@ export function QuestionnaireFlow({
   // avancer — et la pièce qui en dépend sera creuse. Mieux vaut y revenir.
   const [deferred, setDeferred] = useState<string[]>([])
 
-  const [screen, setScreen] = useState<"cover" | "chapter" | "steps" | "review" | "done" | "error">("cover")
+  const [screen, setScreen] = useState<"threshold" | "cover" | "chapter" | "steps" | "review" | "done" | "error">("threshold")
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>(() => emptyAnswers(prefill))
   const [deepOpen, setDeepOpen] = useState<Record<string, boolean>>({})
@@ -448,6 +484,35 @@ export function QuestionnaireFlow({
       return { ...d, pct: Math.round((done / qs.length) * 100) }
     })
   }, [steps, answers, idx])
+
+  /**
+   * Le miroir : une réponse déjà donnée, citée au moment où elle éclaire
+   * la question en cours.
+   *
+   * Les paires sont choisies pour que la citation serve vraiment — la
+   * conviction rappelée quand on demande les concurrents, le refus rappelé
+   * quand on demande le déploiement. Citer au hasard ferait gadget.
+   */
+  const mirror = useMemo(() => {
+    if (!step) return undefined
+    const PAIRS: Record<string, { from: string; note: string }> = {
+      positioning: { from: "conviction", note: copy.mirrorPositioning },
+      positioning_produits: { from: "conviction", note: copy.mirrorPositioning },
+      positioning_lieux: { from: "conviction", note: copy.mirrorPositioning },
+      positioning_artistes: { from: "conviction", note: copy.mirrorPositioning },
+      deploy: { from: "enemy", note: copy.mirrorDeploy },
+      portrait_house: { from: "rupture", note: copy.mirrorPortrait },
+    }
+    const pair = PAIRS[step.id]
+    if (!pair) return undefined
+    const raw = answers[pair.from]
+    if (typeof raw !== "string" || raw.trim().length < 25) return undefined
+    // On cite une phrase, pas un paragraphe : la première suffit, et elle
+    // porte presque toujours l'essentiel.
+    const first = raw.trim().split(/(?<=[.!?])\s/)[0]
+    const quote = first.length > 180 ? `${first.slice(0, 177)}…` : first
+    return { quote, note: pair.note }
+  }, [step, answers, copy])
 
   const currentChapter = chapters.filter((ch) => ch.start <= idx).pop()
   const chapterIndex = currentChapter ? chapters.indexOf(currentChapter) : 0
@@ -572,6 +637,14 @@ export function QuestionnaireFlow({
           onChange={(e) => setHoneypot(e.target.value)}
         />
 
+        {screen === "threshold" && (
+          <ThresholdScreen
+            copy={copy}
+            identity={answers.identity}
+            onEnter={() => setScreen("cover")}
+          />
+        )}
+
         {screen === "cover" && (
           <>
           {/* Le brouillon retrouvé.
@@ -626,6 +699,7 @@ export function QuestionnaireFlow({
             minutesLeft={minutesLeft}
             deferredCount={deferred.length}
             pieces={pieces}
+            mirror={mirror}
             onDefer={deferCurrent}
             previousEcho={(() => {
               // Seules les réponses rédigées font un écho utile : un choix
@@ -667,7 +741,14 @@ export function QuestionnaireFlow({
           />
         )}
 
-        {screen === "done" && <DoneScreen copy={copy} />}
+        {screen === "done" && (
+          <DoneScreen
+            copy={copy}
+            house={answers.identity.house}
+            answers={answers}
+            steps={steps}
+          />
+        )}
       </div>
     </div>
   )
@@ -863,6 +944,7 @@ function StepScreen({
   minutesLeft,
   deferredCount,
   pieces,
+  mirror,
   onDefer,
   words,
   index,
@@ -880,6 +962,7 @@ function StepScreen({
   minutesLeft: number
   deferredCount: number
   pieces: { n: string; t: string; pct: number }[]
+  mirror?: { quote: string; note: string }
   onDefer?: () => void
   step: Question
   copy: Copy
@@ -902,7 +985,20 @@ function StepScreen({
   // texte change, rien ne bouge, et trente écrans donnent l'impression de
   // remplir un tableur. Un court fondu montant suffit à faire sentir qu'on
   // avance. La clé sur l'index force le rejeu à chaque question.
+  // Les questions fondatrices se passent de tout repère.
+  //
+  // C'est le seul moment du parcours où l'on retire le chrono, et c'est
+  // exactement là qu'il faut le retirer : on ne demande pas à quelqu'un de
+  // formuler ce qu'il refuse en lui montrant le temps qui passe.
+  const bare = step.tag === "Fondation" || step.tag === "Foundation"
+
+  const [fieldReady, setFieldReady] = useState(false)
   const [shown, setShown] = useState(false)
+  useEffect(() => {
+    setFieldReady(false)
+    const t = window.setTimeout(() => setFieldReady(true), 1500)
+    return () => window.clearTimeout(t)
+  }, [index])
   useEffect(() => {
     setShown(false)
     const id = requestAnimationFrame(() => setShown(true))
@@ -941,11 +1037,10 @@ function StepScreen({
         shown ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
       ].join(" ")}
     >
-      {/* L'en-tête, réduit à l'essentiel.
-          Il portait la flèche, trente segments, le compteur d'écrans et le
-          temps restant — quatre informations qui se disputent l'attention
-          avant même d'avoir lu la question. Reste une ligne fine et un
-          retour discret. Ce qu'on retire ici, on le gagne sur la question. */}
+      {/* Sur une question fondatrice, l'en-tête disparaît entièrement :
+          ni progression, ni compteur, ni retour. Rien qui rappelle qu'on est
+          dans un parcours — juste la question. */}
+      {!bare && (
       <div className="mb-14 flex items-center gap-5">
         <button
           type="button"
@@ -965,6 +1060,7 @@ function StepScreen({
           {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
         </div>
       </div>
+      )}
 
 
       {/* L'étiquette de section est retirée : l'écran de chapitre vient de
@@ -978,11 +1074,25 @@ function StepScreen({
       {/* Le titre à la charte du site : serif, capitales, crénage desserré.
           « h-card » donnait une taille de carte — ici c'est la seule chose à
           lire de l'écran, elle doit en avoir le poids. */}
+      {bare && (
+        <p className="mb-10 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
+          {copy.bareNote}
+        </p>
+      )}
+
       <h2 className="mb-4 max-w-[19ch] font-serif text-[clamp(1.9rem,4.6vw,3.1rem)] font-bold uppercase leading-[1.04] tracking-[-0.01em] text-white">
         {step.label}
       </h2>
       {step.help ? <p className="mb-10 max-w-[48ch] font-sans text-[14.5px] leading-[1.7] text-chalk-55">{step.help}</p> : <div className="mb-10" />}
 
+      {/* Le champ se fait attendre.
+          Une seconde et demie : assez pour qu'on lise la question au lieu de
+          commencer à taper, trop court pour qu'on s'impatiente. C'est ce
+          délai qui fait la différence entre un formulaire et quelqu'un qui
+          vient de poser une question et attend la réponse. */}
+      <div
+        className={`transition-opacity duration-[900ms] ${fieldReady ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      >
       <QuestionInput
         step={step}
         copy={copy}
@@ -992,6 +1102,7 @@ function StepScreen({
         onOpenDeep={onOpenDeep}
         onChange={onChange}
       />
+      </div>
 
 
       {/* Le pied d'écran.
@@ -1031,7 +1142,11 @@ function StepScreen({
             « Enregistré » répété trente fois devient du bruit ; le temps qui
             reste, lui, sert à chaque écran. Le point rouge suffit à dire que
             tout est gardé. */}
-        <span className="ml-auto hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
+        <span
+          className={`ml-auto hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex ${
+            bare ? "invisible" : ""
+          }`}
+        >
           <span className="h-1 w-1 rounded-full bg-brand" aria-hidden title={copy.saved} />
           {copy.minutesLeft(minutesLeft)}
         </span>
@@ -1375,11 +1490,6 @@ function AutoTextarea({
           <span>{unlock}</span>
         </p>
       )}
-      {n >= 25 && !unlock && (
-        <div className="pointer-events-none absolute bottom-2.5 right-3 font-mono text-[10px] uppercase tracking-[0.16em] text-chalk-40">
-          ✓
-        </div>
-      )}
     </div>
   )
 }
@@ -1404,6 +1514,14 @@ function ReviewScreen({
   onSubmit: () => void
 }) {
   /** Les mots écrits, recomptés ici : le récapitulatif a les réponses. */
+  const [signature, setSignature] = useState("")
+  // Le nom doit correspondre à celui de la commande, aux espaces et aux
+  // accents près : signer « ok » n'est pas signer.
+  const norm = (s: string) =>
+    s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  const signed = signature.trim().length > 2 &&
+    (!answers.identity.name || norm(signature).includes(norm(answers.identity.name.split(" ")[0])))
+
   const totalWords = Object.values(answers).reduce<number>((n, v) => {
     if (typeof v !== "string") return n
     const t = v.trim()
@@ -1517,9 +1635,32 @@ function ReviewScreen({
       </div>
       {errorMsg && <p className="mt-4 text-[13px] text-brand">{errorMsg}</p>}
       <div className="mt-8 flex flex-wrap gap-4">
-        <button type="button" className="btn-primary" disabled={submitting} onClick={onSubmit}>
-          {submitting ? copy.sending : copy.send}
-        </button>
+        {/* On signe, on n'envoie pas.
+            Taper son nom est un geste, pas un clic : c'est ce qui sépare le
+            dépôt d'un formulaire de l'engagement sur ce qu'on vient
+            d'écrire. Et le bouton ne s'active que si le nom correspond — on
+            ne signe pas à la place de quelqu'un d'autre. */}
+        <div className="w-full">
+          <label className="mb-2.5 block font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
+            {copy.signLabel}
+          </label>
+          <div className="flex flex-wrap items-center gap-4">
+            <input
+              className="field max-w-[260px] font-serif text-[16px]"
+              placeholder={answers.identity.name || copy.signPlaceholder}
+              value={signature}
+              onChange={(e) => setSignature(e.target.value)}
+            />
+            <button
+              type="button"
+              className={signed ? "btn-primary" : "btn-quiet cursor-not-allowed opacity-45"}
+              disabled={submitting || !signed}
+              onClick={onSubmit}
+            >
+              {submitting ? copy.sending : copy.sign}
+            </button>
+          </div>
+        </div>
         <button type="button" className="btn-ghost" onClick={onBack}>
           {copy.back}
         </button>
@@ -1528,12 +1669,106 @@ function ReviewScreen({
   )
 }
 
-function DoneScreen({ copy }: { copy: Copy }) {
+function DoneScreen({
+  copy,
+  house,
+  answers,
+  steps,
+}: {
+  copy: Copy
+  house?: string
+  answers: Answers
+  steps: Question[]
+}) {
+  const [shown, setShown] = useState(false)
+  useEffect(() => {
+    const t = window.setTimeout(() => setShown(true), 200)
+    return () => window.clearTimeout(t)
+  }, [])
+
+  /** La référence du dossier et la date, comme sur la carte de commande. */
+  const ref = `${(house || "SP").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4).padEnd(3, "X")}-${new Date()
+    .getFullYear()
+    .toString()
+    .slice(2)}`
+  const due = (() => {
+    const d = new Date()
+    d.setDate(d.getDate() + 21)
+    return d.toLocaleDateString(undefined, { day: "2-digit", month: "long", year: "numeric" })
+  })()
+
+  /**
+   * Ce que le client emporte.
+   *
+   * Ses propres réponses, mises en page, téléchargées en un clic. Il les a
+   * écrites, il les garde, il les relira — c'est la seule trace matérielle
+   * de cette heure, et nous avons déjà toutes les données.
+   */
+  function downloadFirstPage() {
+    const lines = [
+      `# ${house || ""}`,
+      "",
+      `_Votre première page — ${ref} · ${new Date().toLocaleDateString()}_`,
+      "",
+      "Ce document rassemble ce que vous avez écrit de votre main.",
+      "Il est le point de départ de L'Architecture Narrative.",
+      "",
+      "---",
+      "",
+    ]
+    steps.forEach((s) => {
+      const v = answers[s.id]
+      let txt = ""
+      if (typeof v === "string") txt = v.trim()
+      else if (Array.isArray(v)) txt = (v as string[]).join(" · ")
+      if (!txt) return
+      lines.push(`## ${s.label}`, "", txt, "")
+    })
+    const blob = new Blob([lines.join("\n")], { type: "text/markdown;charset=utf-8" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `${ref}-premiere-page.md`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const rev = (d: number) =>
+    `transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)] ${
+      shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+    }`
+
   return (
-    <div className="py-6 text-center">
-      <div className="kicker mb-4">{copy.doneKicker}</div>
-      <h1 className="h-section mb-5">{copy.doneTitle}</h1>
-      <p className="lede mx-auto max-w-md italic">{copy.doneLede}</p>
+    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
+      {/* Le sceau.
+          Quelque chose se ferme et quelque chose s'ouvre dans la même
+          seconde : le questionnaire est derrière, le dossier est devant. */}
+      <div className={rev(0)} style={{ transitionDelay: "0ms" }}>
+        <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
+          {copy.sealKicker}
+        </div>
+        <h2 className="mx-auto mt-7 max-w-[600px] font-serif text-[clamp(1.9rem,5vw,3.2rem)] font-bold uppercase leading-[1.05] tracking-[-0.015em] text-white">
+          {copy.sealTitle(ref)}
+        </h2>
+      </div>
+
+      <div
+        className="mx-auto mt-10 h-px bg-brand transition-all duration-[1100ms] ease-out"
+        style={{ width: shown ? 120 : 0, transitionDelay: "500ms" }}
+      />
+
+      <div className={rev(1)} style={{ transitionDelay: "800ms" }}>
+        <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
+          {copy.sealDueLabel}
+        </p>
+        <p className="mt-3 font-serif text-[clamp(1.3rem,3vw,1.9rem)] font-bold text-brand">{due}</p>
+        <p className="mx-auto mt-10 max-w-[430px] font-sans text-[14.5px] leading-[1.75] text-chalk-55">
+          {copy.sealLead}
+        </p>
+        <button type="button" className="btn-ghost mt-9" onClick={downloadFirstPage}>
+          {copy.sealDownload}
+        </button>
+      </div>
     </div>
   )
 }
@@ -1714,6 +1949,75 @@ function ChapterScreen({
         </div>
         <button type="button" className="btn-primary" onClick={onStart}>
           {copy.continue}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+
+/**
+ * ThresholdScreen — le seuil.
+ *
+ * Ce n'est pas un écran d'accueil, c'est une porte. Rien à remplir, rien à
+ * choisir : une question, et un engagement pris volontairement.
+ *
+ * Un rituel d'entrée coûte trois secondes et change la nature de ce qui
+ * suit. Quelqu'un qui a répondu « je suis prêt » à « êtes-vous prêt à
+ * écrire ce que vous refusez » n'abandonne pas à la douzième question de
+ * la même façon que quelqu'un qui a cliqué sur « commencer ».
+ */
+function ThresholdScreen({
+  copy,
+  identity,
+  onEnter,
+}: {
+  copy: Copy
+  identity: IdentityAnswers
+  onEnter: () => void
+}) {
+  const [stage, setStage] = useState(0)
+  useEffect(() => {
+    // Lent, délibérément. Chaque ligne a le temps d'être lue avant que la
+    // suivante n'arrive — c'est ce rythme, plus que le texte, qui installe
+    // le sérieux du moment.
+    const t = [900, 2100, 3600, 5200].map((ms, i) => window.setTimeout(() => setStage(i + 1), ms))
+    return () => t.forEach(window.clearTimeout)
+  }, [])
+
+  const rev = (i: number) =>
+    `transition-all duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)] ${
+      stage > i ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+    }`
+
+  const first = identity.name ? identity.name.split(" ")[0] : ""
+
+  return (
+    <div className="flex min-h-[78vh] flex-col items-center justify-center text-center">
+      {first && (
+        <p className={`font-serif text-[clamp(1.2rem,2.6vw,1.7rem)] text-chalk-75 ${rev(0)}`}>{first}.</p>
+      )}
+
+      {identity.house && (
+        <p
+          className={`mt-6 font-serif text-[clamp(2rem,6vw,3.6rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-brand ${rev(1)}`}
+        >
+          {identity.house}
+        </p>
+      )}
+
+      <p
+        className={`mx-auto mt-12 max-w-[420px] font-sans text-[14.5px] leading-[1.8] text-chalk-55 ${rev(2)}`}
+      >
+        {copy.thresholdLead}
+      </p>
+
+      <div className={`mt-14 ${rev(3)}`}>
+        <p className="mx-auto mb-8 max-w-[440px] font-serif text-[clamp(1.3rem,3.2vw,1.9rem)] font-bold uppercase leading-[1.15] tracking-[-0.005em] text-white">
+          {copy.thresholdQuestion}
+        </p>
+        <button type="button" className="btn-primary" onClick={onEnter}>
+          {copy.thresholdCta}
         </button>
       </div>
     </div>

@@ -1,59 +1,94 @@
-# Strawberry — l'écran se vide
+# Strawberry — l'onboarding en quatre actes
 
 1 fichier.
 
-## Mon erreur, nommée
+## ACTE I — Le seuil
 
-Depuis cinq patchs, j'ajoutais des éléments en espérant que la somme
-ferait « premium ». C'est l'inverse : le premium se fabrique en retirant.
+Un nouvel écran, avant tout le reste. Fond noir. Les lignes arrivent
+lentement — 0,9 s, 2,1 s, 3,6 s, 5,2 s :
 
-Un écran de question portait **dix-huit éléments** — flèche, trente
-segments, compteur, minutes, « Onboarding · terrain », grand chiffre,
-étiquette, titre, aide, champ, relance, déblocage, six barres de pièces,
-note de sortie, écho, bouton, « enregistré », « j'y reviens ».
+> **Marc.**
+>
+> **LOAM**
+>
+> Vous venez de commander un document qui dira ce que votre maison refuse.
+> Personne ne peut l'écrire à votre place — ni une agence, ni une machine,
+> ni nous, tant que vous ne nous l'avez pas dit.
+>
+> **ÊTES-VOUS PRÊT À ÉCRIRE CE QUE VOUS REFUSEZ ?**
+>
+> [ Je suis prêt ]
 
-Aucune marque premium n'afficherait ça. C'était un tableau de bord.
+Le rythme lent est délibéré : chaque ligne a le temps d'être lue avant la
+suivante. Et un engagement pris volontairement se tient — quelqu'un qui a
+répondu « je suis prêt » n'abandonne pas à la douzième question comme
+quelqu'un qui a cliqué sur « commencer ».
 
-## Ce que j'ai retiré
+## ACTE II — Une séance, pas un questionnaire
 
-**Les six barres de pièces** partent sur les écrans de chapitre. Elles y
-ont leur place : c'est le seul moment où l'on ne demande rien, donc le
-seul où l'on peut montrer l'objet. Sous une question, elles encombraient
-la lecture.
+**Le champ n'apparaît qu'après 1,5 seconde.** Assez pour qu'on lise la
+question au lieu de commencer à taper. C'est ce délai qui fait la
+différence entre un formulaire et quelqu'un qui vient de poser une
+question et attend.
 
-**L'écho de la réponse précédente** — du confort, pas du premium.
+**Les questions fondatrices perdent tout repère** : ni progression, ni
+compteur, ni retour, ni temps restant. Juste la question, et une ligne :
 
-**La note de sortie** — utile une fois, pas trente.
+> PRENEZ LE TEMPS. PERSONNE NE VOUS REGARDE.
 
-**Le bandeau « Onboarding · terrain »** — le mot « onboarding » ne dit
-rien au client, et il connaît son terrain.
+C'est le seul moment où l'on retire le chrono, et c'est exactement là
+qu'il fallait le retirer.
 
-**Le grand chiffre** — il faisait doublon avec le compteur. Deux numéros
-sur un écran, c'est un de trop.
+## ACTE III — Le miroir
 
-**L'étiquette de section** — l'écran de chapitre vient de l'annoncer en
-grand.
+Ses propres mots lui reviennent, cités, au moment où ils éclairent la
+question en cours :
 
-**Le temps restant quitte l'en-tête** pour le pied, où il ne concurrence
-plus la question. Et « Enregistré » devient un simple point rouge avec
-une infobulle : répété trente fois, c'était du bruit.
+> « Nous refusons l'aggloméré, même quand le budget l'impose. »
+> C'est la phrase que nous allons tester, mot pour mot, contre celles de
+> vos concurrents.
 
-## Ce que ça libère
+Trois paires choisies pour que la citation serve : la conviction rappelée
+quand on demande les concurrents, le refus quand on demande le
+déploiement, la rupture quand on demande le portrait. Citer au hasard
+ferait gadget.
 
-**L'en-tête tient en une ligne** : un retour discret, un filet de
-progression d'un pixel, un compteur en mono. Plus quatre informations qui
-se disputent l'attention avant d'avoir lu la question.
+Aucun modèle là-dedans — on reformate ce qu'il vient de taper. Mais être
+cité est le signal le plus fort qu'on a été entendu.
 
-**La question double de taille** — de 1,35 à 3,1 rem au maximum — et
-s'arrête à 19 caractères par ligne. C'est elle qu'on doit voir en entrant.
+**Le jalon de mi-parcours est supprimé** : il parlait d'abandon au moment
+où il fallait porter.
 
-**Dix respirations d'air** avant le champ, au lieu de six.
+## ACTE IV — Le sceau
 
-## Le compte
+**On signe, on n'envoie pas.** Le client tape son nom ; le bouton ne
+s'active que s'il correspond à celui de la commande. On ne signe pas à la
+place de quelqu'un d'autre.
 
-**Dix éléments** au lieu de dix-huit, dont six de chrome périphérique. Le
-cœur de l'écran, c'est désormais : la question, l'aide, le champ, le
-bouton.
+Puis :
+
+> C'EST SIGNÉ
+> **LE DOSSIER LOAM-26 EST OUVERT.**
+> ———
+> DOCUMENT LIVRÉ AU PLUS TARD LE
+> **12 octobre 2026**
+
+Le trait se trace sur 1,1 seconde. Quelque chose se ferme et quelque chose
+s'ouvre dans la même seconde.
+
+## L'objet qu'il emporte
+
+**« Emporter votre première page »** — ses réponses mises en page, en
+Markdown, téléchargées en un clic, nommées d'après sa référence de
+dossier.
+
+Il l'a écrite, il la garde, il la relira. C'est la seule trace matérielle
+de cette heure.
+
+## Retiré au passage
+
+La coche du compteur de mots : elle mesurait là où les relances et les
+déblocages accompagnent déjà.
 
 ## Vérification
 
