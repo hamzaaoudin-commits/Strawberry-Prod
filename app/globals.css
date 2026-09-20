@@ -1432,3 +1432,191 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
   box-shadow: 0 0 0 1px rgba(255, 34, 51, 0.35), 0 12px 40px -16px rgba(255, 34, 51, 0.45);
   outline: none;
 }
+
+/* ===========================================================================
+   L'ONBOARDING — traitement typographique et mise en page
+
+   Ce qui suit corrige ce qui faisait « correct » plutôt que « soigné » :
+   un seul niveau de graisse, une colonne centrée, des champs encadrés, du
+   rouge partout, des marges uniformes, et aucune finition.
+   =========================================================================== */
+
+/* 10 · La finition.
+   Invisible une par une, décisives ensemble : ligatures et alternatives
+   contextuelles, césure propre sur les textes longs, veuves et orphelines
+   interdites, et chiffres elzéviriens dans les libellés courants — les
+   chiffres alignés ne servent que dans les tableaux. */
+.q-shell {
+  font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.q-shell p,
+.q-shell li {
+  hyphens: auto;
+  hyphenate-limit-chars: 7 4 3;
+  orphans: 2;
+  widows: 2;
+}
+.q-num {
+  font-variant-numeric: oldstyle-num tabular-nums;
+}
+
+/* 1 · Le contraste typographique.
+   La question descend à 300 en très grand, l'aide reste à 500 en petit :
+   c'est l'écart entre les deux qui fait l'élégance, pas la taille. */
+.q-question {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  color: #fff;
+  text-wrap: balance;
+}
+.q-help {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 2 · La grille asymétrique.
+   Le folio vit dans la marge, le contenu sur les colonnes utiles. Sur
+   mobile la marge disparaît : une colonne suffit. */
+.q-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 860px) {
+  .q-grid {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: 2.5rem;
+  }
+}
+
+/* 8 · La progression devient un folio.
+   Un grand chiffre dans la marge, comme en bas d'une page imprimée —
+   plutôt qu'une barre qui n'apprend rien. */
+.q-folio {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: rgba(255, 255, 255, 0.16);
+  font-variant-numeric: oldstyle-num;
+}
+.q-folio-total {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* 3 · Les champs cessent d'être des champs.
+   Un trait fin sous le texte, rien d'autre : on écrit sur une ligne, on
+   ne remplit pas une case. Le trait s'épaissit et rougit à la saisie. */
+.q-field {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  background: transparent;
+  padding: 0 0 0.85rem;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.6;
+  color: #fff;
+  resize: none;
+  transition: border-color 400ms ease;
+}
+.q-field::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-style: normal;
+}
+.q-field:focus {
+  outline: none;
+  border-bottom-color: var(--color-brand);
+}
+
+/* 6 · Le mouvement au survol.
+   Rien ne bougeait : ni option, ni bouton, ni lien. Le mouvement est ce
+   qui donne la sensation de qualité, et il doit être court et discret. */
+.q-option {
+  transition: transform 260ms cubic-bezier(0.22, 0.68, 0, 1),
+    border-color 260ms ease, background-color 260ms ease;
+}
+.q-option:hover {
+  transform: translateX(3px);
+}
+
+/* 9 · Le bouton devient un mot souligné.
+   Un trait qui se trace de la gauche vers la droite au survol : moins de
+   matière, plus de tenue qu'un bouton plein. */
+.q-go {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.q-go::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--color-brand);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 420ms cubic-bezier(0.22, 0.68, 0, 1);
+}
+.q-go:disabled {
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+}
+.q-go:disabled::after {
+  background: rgba(255, 255, 255, 0.14);
+  transform: scaleX(0.28);
+}
+.q-go:not(:disabled):hover::after {
+  transform: scaleX(1.12);
+}
+
+/* 7 · Le fond avance avec le parcours.
+   La lueur glisse du bleu froid vers le rouge de marque à mesure qu'on
+   approche de la fin : on sent l'avancée sans qu'elle soit affichée.
+   `--q-progress` est posé par le composant. */
+.q-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: background 1400ms ease;
+  background:
+    radial-gradient(
+      55% 40% at 18% 0%,
+      rgba(
+        calc(60 + 195 * var(--q-progress, 0)),
+        calc(70 - 36 * var(--q-progress, 0)),
+        calc(150 - 99 * var(--q-progress, 0)),
+        0.15
+      ),
+      transparent 62%
+    ),
+    radial-gradient(45% 35% at 88% 100%, rgba(255, 77, 46, calc(0.04 + 0.08 * var(--q-progress, 0))), transparent 60%);
+}

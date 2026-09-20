@@ -33,16 +33,14 @@ export default async function QuestionnairePage({ params, searchParams }: PagePr
   const resolvedLang = isLang(lang) ? lang : DEFAULT_LANG
 
   return (
-    <main className="q-grain relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-gutter py-16 sm:py-20">
+    <main className="q-grain q-shell relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-gutter py-16 sm:py-20">
       {/* La lueur du site, reprise ici.
           Le questionnaire est le premier écran après un paiement de 2 900 € :
           un fond noir uni fait rupture avec tout ce que le client vient de
           parcourir. Deux halos fixes, sans animation — on remplit un
           document, rien ne doit bouger derrière le texte. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_45%_at_20%_0%,rgba(255,34,51,0.13),transparent_62%),radial-gradient(50%_40%_at_85%_100%,rgba(255,77,46,0.09),transparent_60%)]"
-      />
+      {/* La lueur est rendue par le composant, qui connaît la progression :
+          elle glisse du froid vers le rouge de marque à mesure qu'on avance. */}
       <div className="relative shell-sm">
         {/* `terrain` choisit les questions propres au terrain (lieux,
             artistes...). Absent, on sert le parcours commun : les liens

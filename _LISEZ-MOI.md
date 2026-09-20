@@ -1,95 +1,82 @@
-# Strawberry — l'onboarding en quatre actes
+# Strawberry — les dix corrections de design
 
-1 fichier.
+3 fichiers.
 
-## ACTE I — Le seuil
+## 1 · Le contraste typographique
 
-Un nouvel écran, avant tout le reste. Fond noir. Les lignes arrivent
-lentement — 0,9 s, 2,1 s, 3,6 s, 5,2 s :
+La question descend à **300 de graisse** en `clamp(2.1rem, 5.2vw, 3.6rem)`,
+l'aide reste à **500** en 13,5 px. C'est l'écart entre les deux qui fait
+l'élégance, pas la taille absolue — une page où tout est en gras n'a
+aucune hiérarchie.
 
-> **Marc.**
->
-> **LOAM**
->
-> Vous venez de commander un document qui dira ce que votre maison refuse.
-> Personne ne peut l'écrire à votre place — ni une agence, ni une machine,
-> ni nous, tant que vous ne nous l'avez pas dit.
->
-> **ÊTES-VOUS PRÊT À ÉCRIRE CE QUE VOUS REFUSEZ ?**
->
-> [ Je suis prêt ]
+Crénage à -0.028em et `text-wrap: balance` sur la question : les lignes se
+répartissent au lieu de laisser un mot seul en bas.
 
-Le rythme lent est délibéré : chaque ligne a le temps d'être lue avant la
-suivante. Et un engagement pris volontairement se tient — quelqu'un qui a
-répondu « je suis prêt » n'abandonne pas à la douzième question comme
-quelqu'un qui a cliqué sur « commencer ».
+## 2 · La grille asymétrique
 
-## ACTE II — Une séance, pas un questionnaire
+Fini la colonne centrée. Une grille `5.5rem / 1fr` : le folio vit dans la
+marge gauche, le contenu occupe les colonnes utiles. Sur mobile, la marge
+disparaît.
 
-**Le champ n'apparaît qu'après 1,5 seconde.** Assez pour qu'on lise la
-question au lieu de commencer à taper. C'est ce délai qui fait la
-différence entre un formulaire et quelqu'un qui vient de poser une
-question et attend.
+## 3 · Les champs cessent d'être des champs
 
-**Les questions fondatrices perdent tout repère** : ni progression, ni
-compteur, ni retour, ni temps restant. Juste la question, et une ligne :
+Plus de bordure, plus de fond, plus de coins. **Un trait fin sous le
+texte**, qui rougit et s'épaissit à la saisie. Le texte saisi est en serif
+300 à 1,5 rem.
 
-> PRENEZ LE TEMPS. PERSONNE NE VOUS REGARDE.
+On écrit sur une ligne, on ne remplit pas une case.
 
-C'est le seul moment où l'on retire le chrono, et c'est exactement là
-qu'il fallait le retirer.
+## 4 · Le rouge une fois par écran
 
-## ACTE III — Le miroir
+Il était sur le bouton, les filets, le point de sauvegarde, le tiret de
+relance, la puce de déblocage et la barre de progression. **Deux
+occurrences** au lieu de six : le trait du bouton, et le champ actif.
 
-Ses propres mots lui reviennent, cités, au moment où ils éclairent la
-question en cours :
+Le reste passe en blanc à 15–30 %.
 
-> « Nous refusons l'aggloméré, même quand le budget l'impose. »
-> C'est la phrase que nous allons tester, mot pour mot, contre celles de
-> vos concurrents.
+## 5 · Le rythme des marges
 
-Trois paires choisies pour que la citation serve : la conviction rappelée
-quand on demande les concurrents, le refus quand on demande le
-déploiement, la rupture quand on demande le portrait. Citer au hasard
-ferait gadget.
+Les mêmes écarts partout ne créent aucune hiérarchie. Maintenant :
+**12 unités** après la question, **16** avant le pied, **16** après la
+mention des questions fondatrices. Beaucoup d'air là où il faut respirer,
+peu là où les éléments se répondent.
 
-Aucun modèle là-dedans — on reformate ce qu'il vient de taper. Mais être
-cité est le signal le plus fort qu'on a été entendu.
+## 6 · Le mouvement au survol
 
-**Le jalon de mi-parcours est supprimé** : il parlait d'abandon au moment
-où il fallait porter.
+Les options **glissent de 3 px vers la droite**, sur 260 ms. Court et
+discret — le mouvement est ce qui donne la sensation de qualité.
 
-## ACTE IV — Le sceau
+## 7 · Le fond avance avec le parcours
 
-**On signe, on n'envoie pas.** Le client tape son nom ; le bouton ne
-s'active que s'il correspond à celui de la commande. On ne signe pas à la
-place de quelqu'un d'autre.
+La lueur passe **du bleu froid au rouge de marque** à mesure qu'on
+approche de la fin, pilotée par une variable CSS que le composant met à
+jour. Transition de 1,4 s : on ne la voit pas changer, on la sent.
 
-Puis :
+## 8 · La progression devient un folio
 
-> C'EST SIGNÉ
-> **LE DOSSIER LOAM-26 EST OUVERT.**
-> ———
-> DOCUMENT LIVRÉ AU PLUS TARD LE
-> **12 octobre 2026**
+Plus de barre, plus de segments. **Un grand chiffre en marge** — 07 — avec
+le total en dessous en mono, à la manière d'un bas de page imprimée.
 
-Le trait se trace sur 1,1 seconde. Quelque chose se ferme et quelque chose
-s'ouvre dans la même seconde.
+Sur une question fondatrice, la marge reste vide : on ne compte pas les
+pages de quelqu'un à qui on demande ce qu'il refuse.
 
-## L'objet qu'il emporte
+## 9 · Le bouton devient un mot souligné
 
-**« Emporter votre première page »** — ses réponses mises en page, en
-Markdown, téléchargées en un clic, nommées d'après sa référence de
-dossier.
+Plus de bouton rouge arrondi. **Le mot en mono, souligné d'un trait qui se
+tend au survol** (scaleX 1 → 1,12 sur 420 ms). Désactivé, le trait ne fait
+que 28 % de la largeur : l'état se lit sans couleur.
 
-Il l'a écrite, il la garde, il la relira. C'est la seule trace matérielle
-de cette heure.
+## 10 · La finition
 
-## Retiré au passage
+Ce qui est invisible une par une et décisif ensemble :
 
-La coche du compteur de mots : elle mesurait là où les relances et les
-déblocages accompagnent déjà.
+- **Ligatures et alternatives contextuelles** activées
+- **Césure automatique** avec un minimum de 7 caractères, 4 avant, 3 après
+- **Veuves et orphelines** interdites sur tous les paragraphes
+- **Chiffres elzéviriens** sur le folio et les compteurs — les chiffres
+  alignés ne servent que dans les tableaux
+- Lissage et `optimizeLegibility`
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Feuille de style validée.

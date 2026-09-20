@@ -637,6 +637,16 @@ export function QuestionnaireFlow({
           onChange={(e) => setHoneypot(e.target.value)}
         />
 
+      {/* Le fond qui avance.
+          `--q-progress` va de 0 à 1 sur le parcours : la lueur passe d'un
+          bleu froid à l'ouverture au rouge de marque à l'arrivée. On sent
+          l'avancée sans qu'aucun chiffre ne l'affiche. */}
+      <div
+        aria-hidden
+        className="q-ambient"
+        style={{ ["--q-progress" as string]: String(Math.min(1, idx / Math.max(1, steps.length - 1))) }}
+      />
+
         {screen === "threshold" && (
           <ThresholdScreen
             copy={copy}
@@ -1037,30 +1047,30 @@ function StepScreen({
         shown ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
       ].join(" ")}
     >
-      {/* Sur une question fondatrice, l'en-tête disparaît entièrement :
-          ni progression, ni compteur, ni retour. Rien qui rappelle qu'on est
-          dans un parcours — juste la question. */}
-      {!bare && (
-      <div className="mb-14 flex items-center gap-5">
-        <button
-          type="button"
-          onClick={onBack}
-          aria-label={copy.previous}
-          className="text-[18px] leading-none text-chalk-40 transition-colors hover:text-white"
-        >
-          ←
-        </button>
-        <div className="h-px flex-1 overflow-hidden bg-white/[0.07]">
-          <div
-            className="h-full bg-brand transition-all duration-700 ease-out"
-            style={{ width: `${Math.round(((index + 1) / total) * 100)}%` }}
-          />
+      {/* La grille.
+          Le folio vit dans la marge gauche, comme en bas d'une page
+          imprimée ; le contenu occupe les colonnes utiles. Sur une question
+          fondatrice, la marge reste vide — on ne compte pas les pages de
+          quelqu'un à qui on demande ce qu'il refuse. */}
+      <div className="q-grid">
+        <div className="mb-6 md:mb-0 md:pt-2">
+          {!bare && (
+            <>
+              <div className="q-folio q-num">{String(index + 1).padStart(2, "0")}</div>
+              <span className="q-folio-total q-num">/ {String(total).padStart(2, "0")}</span>
+              <button
+                type="button"
+                onClick={onBack}
+                aria-label={copy.previous}
+                className="mt-7 block text-[16px] leading-none text-chalk-40 transition-colors hover:text-white"
+              >
+                ←
+              </button>
+            </>
+          )}
         </div>
-        <div className="flex-shrink-0 font-mono text-[10px] tracking-[0.18em] text-chalk-40">
-          {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
-        </div>
-      </div>
-      )}
+
+        <div>
 
 
       {/* L'étiquette de section est retirée : l'écran de chapitre vient de
@@ -1075,15 +1085,15 @@ function StepScreen({
           « h-card » donnait une taille de carte — ici c'est la seule chose à
           lire de l'écran, elle doit en avoir le poids. */}
       {bare && (
-        <p className="mb-10 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
+        <p className="mb-16 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
           {copy.bareNote}
         </p>
       )}
 
-      <h2 className="mb-4 max-w-[19ch] font-serif text-[clamp(1.9rem,4.6vw,3.1rem)] font-bold uppercase leading-[1.04] tracking-[-0.01em] text-white">
+      <h2 className="q-question mb-5 max-w-[17ch]">
         {step.label}
       </h2>
-      {step.help ? <p className="mb-10 max-w-[48ch] font-sans text-[14.5px] leading-[1.7] text-chalk-55">{step.help}</p> : <div className="mb-10" />}
+      {step.help ? <p className="q-help mb-12 max-w-[46ch]">{step.help}</p> : <div className="mb-10" />}
 
       {/* Le champ se fait attendre.
           Une seconde et demie : assez pour qu'on lise la question au lieu de
@@ -1110,7 +1120,7 @@ function StepScreen({
           bouton passait sous la ligne de flottaison : on tapait sa réponse
           sans voir comment avancer. Il colle désormais au bas de l'écran
           sur mobile, au-dessus de la zone système. */}
-      <div className="sticky bottom-0 z-10 -mx-gutter mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 bg-ink/95 px-gutter py-4 backdrop-blur-sm [padding-bottom:calc(1rem+env(safe-area-inset-bottom,0px))] sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
+      <div className="sticky bottom-0 z-10 -mx-gutter mt-16 flex flex-wrap items-center gap-x-4 gap-y-3 bg-ink/95 px-gutter py-4 backdrop-blur-sm [padding-bottom:calc(1rem+env(safe-area-inset-bottom,0px))] sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
         {/* Le bouton ne devient rouge que lorsqu'on peut réellement avancer.
             Il était rouge en permanence, y compris avant d'avoir répondu :
             on cliquait dans le vide sans comprendre pourquoi rien ne se
@@ -1118,7 +1128,7 @@ function StepScreen({
             quelque chose à remplir. */}
         <button
           type="button"
-          className={valid ? "btn-primary" : "btn-quiet cursor-not-allowed opacity-45"}
+          className="q-go"
           disabled={!valid}
           onClick={onNext}
         >
@@ -1147,7 +1157,7 @@ function StepScreen({
             bare ? "invisible" : ""
           }`}
         >
-          <span className="h-1 w-1 rounded-full bg-brand" aria-hidden title={copy.saved} />
+          <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden title={copy.saved} />
           {copy.minutesLeft(minutesLeft)}
         </span>
         {onSkip && (
@@ -1155,6 +1165,8 @@ function StepScreen({
             {copy.skip}
           </button>
         )}
+      </div>
+        </div>
       </div>
     </div>
   )
@@ -1184,15 +1196,15 @@ function QuestionInput({
       <div className="space-y-3.5">
         <div>
           <label className="field-label">{copy.fieldName}</label>
-          <input className="field" value={v.name} onChange={(e) => set({ name: e.target.value })} placeholder={copy.phName} />
+          <input className="q-field" value={v.name} onChange={(e) => set({ name: e.target.value })} placeholder={copy.phName} />
         </div>
         <div>
           <label className="field-label">{copy.fieldHouse}</label>
-          <input className="field" value={v.house} onChange={(e) => set({ house: e.target.value })} placeholder={copy.phHouse} />
+          <input className="q-field" value={v.house} onChange={(e) => set({ house: e.target.value })} placeholder={copy.phHouse} />
         </div>
         <div>
           <label className="field-label">{copy.fieldEmail}</label>
-          <input className="field" value={v.email} onChange={(e) => set({ email: e.target.value })} placeholder={copy.phEmail} />
+          <input className="q-field" value={v.email} onChange={(e) => set({ email: e.target.value })} placeholder={copy.phEmail} />
         </div>
       </div>
     )
@@ -1200,7 +1212,7 @@ function QuestionInput({
 
   if (step.type === "shorttext") {
     const v = (answers[step.id] as string) ?? ""
-    return <input className="field" value={v} onChange={(e) => onChange(step.id, e.target.value)} placeholder={step.ph} />
+    return <input className="q-field" value={v} onChange={(e) => onChange(step.id, e.target.value)} placeholder={step.ph} />
   }
 
   if (step.type === "textarea") {
@@ -1243,8 +1255,8 @@ function QuestionInput({
       <div>
         {rows.map((c, i) => (
           <div key={i} className="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-[1fr_1.6fr_auto]">
-            <input className="field" placeholder={copy.competitorName} value={c.name} onChange={(e) => setRow(i, { name: e.target.value })} />
-            <input className="field" placeholder={copy.competitorLine} value={c.line} onChange={(e) => setRow(i, { line: e.target.value })} />
+            <input className="q-field" placeholder={copy.competitorName} value={c.name} onChange={(e) => setRow(i, { name: e.target.value })} />
+            <input className="q-field" placeholder={copy.competitorLine} value={c.line} onChange={(e) => setRow(i, { line: e.target.value })} />
             {rows.length > 3 ? (
               <button
                 type="button"
@@ -1275,15 +1287,15 @@ function QuestionInput({
       <div className="space-y-3.5">
         <div>
           <label className="field-label">{copy.linkSite}</label>
-          <input className="field" value={v.site} onChange={(e) => set({ site: e.target.value })} placeholder="https://" />
+          <input className="q-field" value={v.site} onChange={(e) => set({ site: e.target.value })} placeholder="https://" />
         </div>
         <div>
           <label className="field-label">{copy.linkLinkedin}</label>
-          <input className="field" value={v.linkedin} onChange={(e) => set({ linkedin: e.target.value })} placeholder="https://linkedin.com/in/..." />
+          <input className="q-field" value={v.linkedin} onChange={(e) => set({ linkedin: e.target.value })} placeholder="https://linkedin.com/in/..." />
         </div>
         <div>
           <label className="field-label">{copy.linkContent}</label>
-          <input className="field" value={v.content} onChange={(e) => set({ content: e.target.value })} placeholder={copy.phContent} />
+          <input className="q-field" value={v.content} onChange={(e) => set({ content: e.target.value })} placeholder={copy.phContent} />
         </div>
       </div>
     )
@@ -1312,10 +1324,10 @@ function QuestionInput({
                     onChange(step.id, opt)
                   }
                 }}
-                className={`group flex w-full items-start gap-3.5 border px-4 py-3.5 text-left text-[14.5px] leading-snug transition-all duration-200 ${
+                className={`q-option group flex w-full items-start gap-3.5 border px-4 py-3.5 text-left text-[14.5px] leading-snug ${
                   on
                     ? "border-brand bg-brand/10 text-white"
-                    : "border-hair-strong bg-white/[0.02] text-chalk-75 hover:-translate-y-px hover:border-brand/40 hover:bg-white/[0.04]"
+                    : "border-hair-strong bg-white/[0.02] text-chalk-75 hover:border-brand/40 hover:bg-white/[0.04]"
                 }`}
               >
                 {/* Un repère de sélection à gauche.
@@ -1461,7 +1473,7 @@ function AutoTextarea({
     <div className="relative">
       <textarea
         ref={ref}
-        className="field resize-none text-[15.5px] leading-[1.75] transition-colors focus:border-brand/60"
+        className="q-field"
         rows={rows}
         placeholder={placeholder}
         value={value}
@@ -1474,7 +1486,7 @@ function AutoTextarea({
           première tentative, jamais sur un champ vide, pour ne pas donner
           d'ordre avant d'avoir lu. */}
       {n >= 4 && n < 25 && nudge && (
-        <p className="mt-2.5 border-l-2 border-brand/50 pl-3 font-sans text-[13px] leading-[1.6] text-chalk-55">
+        <p className="mt-3 border-l border-white/15 pl-4 font-sans text-[12.5px] leading-[1.65] text-chalk-40">
           {nudge}
         </p>
       )}
@@ -1486,7 +1498,7 @@ function AutoTextarea({
           champ, on construit une partie du livrable. */}
       {n >= 25 && unlock && (
         <p className="mt-2.5 flex items-start gap-2 font-sans text-[12.5px] leading-[1.55] text-chalk-55">
-          <span className="mt-[5px] h-1 w-1 flex-shrink-0 rounded-full bg-brand" aria-hidden />
+          <span className="mt-[5px] h-1 w-1 flex-shrink-0 rounded-full bg-white/25" aria-hidden />
           <span>{unlock}</span>
         </p>
       )}
@@ -1646,7 +1658,7 @@ function ReviewScreen({
           </label>
           <div className="flex flex-wrap items-center gap-4">
             <input
-              className="field max-w-[260px] font-serif text-[16px]"
+              className="q-field max-w-[260px] font-serif text-[16px]"
               placeholder={answers.identity.name || copy.signPlaceholder}
               value={signature}
               onChange={(e) => setSignature(e.target.value)}
