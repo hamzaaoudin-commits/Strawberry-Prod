@@ -612,6 +612,7 @@ export function QuestionnaireFlow({
             n={chapterIndex + 1}
             total={chapters.length}
             count={currentChapter.count}
+            pieces={pieces}
             copy={copy}
             onStart={() => setScreen("steps")}
           />
@@ -940,89 +941,47 @@ function StepScreen({
         shown ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
       ].join(" ")}
     >
-      <div className="mb-6 flex items-center gap-3.5">
+      {/* L'en-tête, réduit à l'essentiel.
+          Il portait la flèche, trente segments, le compteur d'écrans et le
+          temps restant — quatre informations qui se disputent l'attention
+          avant même d'avoir lu la question. Reste une ligne fine et un
+          retour discret. Ce qu'on retire ici, on le gagne sur la question. */}
+      <div className="mb-14 flex items-center gap-5">
         <button
           type="button"
           onClick={onBack}
           aria-label={copy.previous}
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-hair-strong text-chalk-55"
+          className="text-[18px] leading-none text-chalk-40 transition-colors hover:text-white"
         >
           ←
         </button>
-        {/* Le repère permanent : où l'on est, et pour quoi.
-            Sur trente écrans, on oublie ce qu'on remplit — et le terrain
-            choisi au départ conditionne la moitié des questions. L'afficher
-            en continu évite le doute au vingtième écran. */}
-        {/* Une progression segmentée, une case par question.
-            Une barre continue sur trente écrans ne dit rien : elle avance de
-            trois pour cent et le lecteur ne voit pas la différence. Trente
-            segments montrent le chemin parcouru et, surtout, combien il en
-            reste — ce que le client veut vraiment savoir au quinzième. */}
-        <div className="flex flex-1 items-center gap-[3px]" aria-hidden>
-          {Array.from({ length: total }).map((_, i) => (
-            <span
-              key={i}
-              className="h-[3px] flex-1 rounded-full transition-colors duration-500"
-              style={{
-                background:
-                  i < index
-                    ? "var(--color-brand)"
-                    : i === index
-                      ? "var(--color-brand-bright)"
-                      : "rgba(255,255,255,0.09)",
-              }}
-            />
-          ))}
+        <div className="h-px flex-1 overflow-hidden bg-white/[0.07]">
+          <div
+            className="h-full bg-brand transition-all duration-700 ease-out"
+            style={{ width: `${Math.round(((index + 1) / total) * 100)}%` }}
+          />
         </div>
-        {/* Le compte d'écrans, et le temps qu'il reste.
-            L'estimation donnée une seule fois au départ ne sert plus après
-            cinq minutes — c'est pourtant la seule information qui décide de
-            continuer ou de s'arrêter. */}
-        <div className="flex-shrink-0 text-right">
-          <div className="body-sm leading-none">
-            {index + 1} / {total}
-          </div>
-          <div className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-chalk-40">
-            {copy.minutesLeft(minutesLeft)}
-          </div>
+        <div className="flex-shrink-0 font-mono text-[10px] tracking-[0.18em] text-chalk-40">
+          {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
         </div>
       </div>
 
-      {/* Le grand chiffre.
-          Un écran de formulaire ne se distingue pas du précédent : même
-          titre, même champ, même bouton. Le numéro en grand donne à chaque
-          question une identité, et rappelle la mise en page du document
-          livré — les pièces y sont numérotées de la même façon. */}
-      <div className="mb-5 flex items-end gap-4">
-        <div className="font-serif text-[clamp(2.6rem,7vw,4rem)] font-bold leading-[0.8] tracking-[-0.03em] text-brand/25">
-          {String(index + 1).padStart(2, "0")}
-        </div>
-        <div className="flex-1 pb-1.5">
-          <div className="h-px w-full bg-hair" />
-        </div>
-      </div>
 
-      <div className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
-        <span className="text-brand">Onboarding</span>
-        {terrainLabel && (
-          <>
-            <span aria-hidden>·</span>
-            <span>{terrainLabel}</span>
-          </>
-        )}
-      </div>
-
-      <div className="mb-3">
-        {step.tag && <span className="tag mr-1.5">{step.tag}</span>}
-        {step.optional && <span className="tag border-brand-hair text-brand">{copy.optional}</span>}
-      </div>
+      {/* L'étiquette de section est retirée : l'écran de chapitre vient de
+          l'annoncer en grand, la répéter au-dessus de chaque question n'ajoute
+          rien. Reste la seule marque utile — « facultative ». */}
+      {step.optional && (
+        <div className="mb-3">
+          <span className="tag border-brand-hair text-brand">{copy.optional}</span>
+        </div>
+      )}
       {/* Le titre à la charte du site : serif, capitales, crénage desserré.
           « h-card » donnait une taille de carte — ici c'est la seule chose à
           lire de l'écran, elle doit en avoir le poids. */}
-      <h2 className="mb-3 font-serif text-[clamp(1.35rem,2.6vw,1.9rem)] font-bold uppercase leading-[1.12] tracking-[-0.005em] text-white">
+      <h2 className="mb-4 max-w-[19ch] font-serif text-[clamp(1.9rem,4.6vw,3.1rem)] font-bold uppercase leading-[1.04] tracking-[-0.01em] text-white">
         {step.label}
       </h2>
-      {step.help ? <p className="body-sm mb-6">{step.help}</p> : <div className="mb-6" />}
+      {step.help ? <p className="mb-10 max-w-[48ch] font-sans text-[14.5px] leading-[1.7] text-chalk-55">{step.help}</p> : <div className="mb-10" />}
 
       <QuestionInput
         step={step}
@@ -1034,73 +993,6 @@ function StepScreen({
         onChange={onChange}
       />
 
-      {/* Ce qu'on vient de répondre.
-          Trente questions tapées dans le vide, sans jamais revoir ce qu'on a
-          écrit : on doute, on se répète, on perd le fil. Rappeler la réponse
-          précédente en une ligne suffit à sentir qu'un document se
-          construit, et évite de redire ce qu'on vient de dire. */}
-      {/* Ce qui se passe si on ferme l'onglet.
-          Une heure de travail sans savoir si on peut partir, c'est ce qui
-          fait remplir n'importe quoi pour en finir. Le dire une fois par
-          écran, discrètement, suffit à lever la crainte. */}
-      {/* Le jalon de mi-parcours.
-          À la moitié, on est fatigué et on ne voit pas la fin. Un mot à cet
-          instant précis vaut mieux que dix encouragements répartis partout —
-          et il dit une chose vraie : la plupart des gens s'arrêtent avant. */}
-      {index + 1 === Math.ceil(total / 2) && (
-        <div className="mt-8 border-l-2 border-brand bg-brand/[0.05] px-5 py-4">
-          <p className="m-0 font-serif text-[15.5px] leading-[1.6] text-white">
-            {copy.halfway(index + 1)}
-          </p>
-        </div>
-      )}
-
-      {/* Le document qui se construit.
-          Le client écrit dans le vide : rien ne montre l'objet qu'il paie.
-          Six barres, une par pièce, qui se remplissent à mesure que les
-          questions les alimentent. C'est la seule représentation du livrable
-          pendant qu'on le nourrit — et elle transforme trente champs en
-          fabrication d'un objet. */}
-      <div className="mt-8 border-t border-hair pt-5">
-        <div className="mb-3 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
-          {copy.piecesLabel}
-        </div>
-        <div className="grid grid-cols-6 gap-1.5">
-          {pieces.map((pc) => (
-            <div key={pc.n} title={pc.t}>
-              <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.07]">
-                <div
-                  className="h-full rounded-full bg-brand transition-all duration-700 ease-out"
-                  style={{ width: `${pc.pct}%` }}
-                />
-              </div>
-              <div
-                className={`mt-1.5 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${
-                  pc.pct >= 100 ? "text-brand" : "text-chalk-40"
-                }`}
-              >
-                {pc.n}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <p className="mt-5 font-sans text-[12px] leading-[1.6] text-chalk-40">
-        {copy.leaveNote}
-        {deferredCount > 0 && <> · {copy.deferred(deferredCount)}</>}
-      </p>
-
-      {previousEcho && (
-        <div className="mt-7 border-t border-hair pt-4">
-          <div className="mb-1.5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
-            {copy.echoLabel}
-          </div>
-          <p className="m-0 line-clamp-2 font-sans text-[13px] leading-[1.6] text-chalk-55">
-            {previousEcho}
-          </p>
-        </div>
-      )}
 
       {/* Le pied d'écran.
           Sur un téléphone, le clavier mange la moitié de la hauteur et le
@@ -1135,12 +1027,13 @@ function StepScreen({
           </button>
         )}
 
-        {/* La sauvegarde, dite une fois par écran.
-            Au vingtième écran, la peur de tout perdre est réelle — et les
-            réponses sont bien stockées localement, mais rien ne le disait. */}
-        <span className="ml-auto hidden items-center gap-1.5 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
-          <span className="h-1 w-1 rounded-full bg-brand" aria-hidden />
-          {copy.saved}
+        {/* Le temps restant, à la place de la mention de sauvegarde.
+            « Enregistré » répété trente fois devient du bruit ; le temps qui
+            reste, lui, sert à chaque écran. Le point rouge suffit à dire que
+            tout est gardé. */}
+        <span className="ml-auto hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
+          <span className="h-1 w-1 rounded-full bg-brand" aria-hidden title={copy.saved} />
+          {copy.minutesLeft(minutesLeft)}
         </span>
         {onSkip && (
           <button type="button" className="btn-quiet" onClick={onSkip}>
@@ -1704,6 +1597,7 @@ function ChapterScreen({
   total,
   count,
   copy,
+  pieces,
   onStart,
 }: {
   tag: string
@@ -1711,6 +1605,7 @@ function ChapterScreen({
   total: number
   count: number
   copy: Copy
+  pieces?: { n: string; t: string; pct: number }[]
   onStart: () => void
 }) {
   const [shown, setShown] = useState(false)
@@ -1787,6 +1682,33 @@ function ChapterScreen({
         className={`mt-10 transition-all duration-[700ms] ${shown ? "opacity-100" : "opacity-0"}`}
         style={{ transitionDelay: "900ms" }}
       >
+        {/* L'objet qu'on est en train de fabriquer.
+            Les six barres vivaient sous chaque question, où elles
+            encombraient la lecture. Ici, sur le seul écran qui ne demande
+            rien, elles font ce pour quoi elles existent : montrer que le
+            document se remplit. */}
+        {pieces && (
+          <div className="mx-auto mb-9 grid max-w-[360px] grid-cols-6 gap-2">
+            {pieces.map((pc) => (
+              <div key={pc.n} title={pc.t}>
+                <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.08]">
+                  <div
+                    className="h-full rounded-full bg-brand transition-all duration-[1200ms] ease-out"
+                    style={{ width: `${pc.pct}%` }}
+                  />
+                </div>
+                <div
+                  className={`mt-2 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${
+                    pc.pct >= 100 ? "text-brand" : "text-chalk-40"
+                  }`}
+                >
+                  {pc.n}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
           {copy.chapterCount(count)}
         </div>
