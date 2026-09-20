@@ -1,77 +1,75 @@
-# Strawberry — l'onboarding, sept corrections d'usage
+# Strawberry — l'onboarding change de registre
 
 2 fichiers.
 
-## 1. La sortie et la reprise
+## Le diagnostic que vous avez posé
 
-C'était le point qui faisait perdre des questionnaires entiers.
+Le questionnaire traitait le client comme quelqu'un qui remplit un
+formulaire. Il venait de prendre une décision à 2 900 €, et le premier
+écran lui annonçait « 30 questions, 50 à 60 minutes ».
 
-Les réponses étaient déjà restaurées au retour — **mais en silence**. On
-revenait sur l'écran d'accueil sans savoir que son travail existait
-encore, donc on recommençait ou on partait.
+Personne n'a envie d'avoir raison d'avoir payé en lisant une estimation de
+durée.
 
-Un bandeau s'affiche maintenant :
+## L'accueil
 
-> **VOUS AVIEZ COMMENCÉ**
-> Vos réponses sont là, vous étiez à la question 18 sur 30. **[Reprendre]**
+**Avant** : « C'est parti. » puis « Ceci est le fondement de votre
+maison. »
 
-Il n'apparaît qu'à partir de la troisième question : reprendre à la
-deuxième n'a aucun intérêt.
+**Après :**
 
-Et sous chaque écran, en petit : « Vous pouvez fermer cet onglet : tout
-est gardé sur cet appareil, vous reprendrez où vous en êtes. » Une heure
-de travail sans savoir si on peut partir, c'est ce qui fait remplir
-n'importe quoi pour en finir.
+> **VOUS VENEZ DE DÉCIDER QUELQUE CHOSE.**
+>
+> La plupart des maisons de votre taille n'écriront jamais ce que vous vous
+> apprêtez à écrire. Elles continueront d'emprunter les mots de leur
+> secteur, et de se demander pourquoi on les compare au prix.
+>
+> Ce qui suit est la seule partie que personne ne peut faire à votre place.
 
-## 2. Le temps restant, glissant
+Le premier écran ne décrit plus une tâche : il confirme un choix, et il
+place le client du bon côté d'une ligne.
 
-L'estimation était donnée une fois au départ. Elle est maintenant
-recalculée à chaque écran — deux minutes par question rédigée, trente
-secondes sinon — et affichée sous le compteur : **≈ 22 min restantes**.
+## Les chapitres montent l'enjeu
 
-C'est la seule information qui décide de continuer ou de s'arrêter.
+Ils décrivaient la section. Ils disent maintenant ce qui se joue :
 
-## 3. L'échappatoire honorable
+> **DIAGNOSTIC** — Ici, vous allez écrire des choses que vous n'avez jamais
+> écrites nulle part. C'est normal — c'est exactement ce que vos
+> concurrents n'ont pas fait.
+>
+> **CONCURRENCE** — Vous allez regarder vos concurrents de plus près que
+> vous ne l'avez jamais fait. La plupart des fondateurs ne le font jamais —
+> c'est pour ça que la plupart se ressemblent.
+>
+> **FONDATION** — C'est la partie difficile, et c'est celle qui vaut le
+> prix. Ce que vous écrivez dans les cinq prochaines minutes tiendra la
+> maison quand vous ne serez pas dans la pièce.
 
-**« J'y reviens »** apparaît à côté de Continuer tant que la question n'a
-pas de réponse valide. La question est mise de côté et **reproposée à la
-fin**, une fois que le reste a réchauffé.
+## Le manque principal : rien ne répondait jamais
 
-Sans ça, une question comme « la conviction que votre milieu refuserait de
-dire » se solde par six mots tapés pour avancer — et la pièce qui en
-dépend sera creuse.
+C'était ça, le cœur du problème. Le client écrivait trente réponses dans
+le vide, sans jamais savoir s'il avait écrit quelque chose d'utile.
 
-Le report est sauvegardé avec les réponses : il survit à une fermeture
-d'onglet.
+**Huit questions accusent maintenant réception** dès que la réponse
+devient substantielle, en nommant la pièce du document qu'elle alimente :
 
-## 4. Le mobile
+> • C'est de là que sortira votre position — la phrase qu'aucun concurrent
+> ne pourra signer sans mentir.
+>
+> • Le récit fondateur s'écrira autour de ce moment. C'est la page que vous
+> relirez le plus.
+>
+> • Voilà le premier des trois refus qui tiendront votre maison.
 
-Le bouton **colle au bas de l'écran** sur mobile, au-dessus de la zone
-système (`env(safe-area-inset-bottom)`), avec un fond opaque et un flou.
+On ne remplit plus un champ : on construit une partie du livrable, et on
+le voit.
 
-Sur un téléphone, le clavier mange la moitié de la hauteur : on tapait sa
-réponse sans voir comment avancer. C'est là qu'un dirigeant remplira ça,
-dans le train.
+## L'arrivée
 
-## 5. Les réponses vides, signalées au récapitulatif
-
-Une ligne vide ne se repère pas dans une liste de trente. Elle affiche
-désormais **« Sans réponse — y répondre maintenant »**, en rouge et
-cliquable.
-
-Le vrai risque à ce stade n'est pas la faute de frappe : c'est la question
-passée sans s'en rendre compte.
-
-## 6 et 7. Ce que je n'ai pas fait, et pourquoi
-
-**La variation de densité** — grouper deux ou trois questions courtes sur
-un même écran — demande de revoir la validation et la navigation question
-par question. C'est un chantier à part, et le faire à moitié casserait le
-report et la reprise qu'on vient de poser.
-
-**La preuve de progression** — montrer la position qui se dessine — suppose
-de faire tourner un modèle pendant le questionnaire. Techniquement faisable,
-mais ça change la nature du produit : dites-moi si vous le voulez.
+> **VOUS VENEZ DE FAIRE CE QUE VOS CONCURRENTS NE FERONT PAS.**
+>
+> Une heure d'écriture honnête sur ce que vous refusez : la plupart des
+> fondateurs ne s'y assoient jamais. Le reste nous regarde.
 
 ## Vérification
 

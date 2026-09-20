@@ -70,6 +70,8 @@ export interface QuestionSource {
   deep?: I18nText
   /** Relance affichée quand la réponse reste courte. */
   nudge?: I18nText
+  /** Ce que cette réponse alimente dans le document livré. */
+  unlock?: I18nText
   options?: I18nText[]
   multi?: boolean
   max?: number
@@ -97,6 +99,8 @@ export interface Question {
   /** Relance affichée quand la réponse reste courte : elle demande la
       précision qui manque, au lieu de compter les mots. */
   nudge?: string
+  /** Ce que cette réponse alimente dans le document livré. */
+  unlock?: string
   options?: string[]
   multi?: boolean
   max?: number
@@ -162,6 +166,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "The one currently on your homepage or LinkedIn bio. Paste it exactly as it is — including the version you are not proud of.",
     ),
     ph: t("Nous aidons les fondateurs à...", "We help founders to..."),
+    unlock: t(
+      "Ça va directement dans la carte du champ, face aux phrases exactes de vos concurrents.",
+      "This goes straight into the map of the field, against your competitors' exact sentences.",
+    ),
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
@@ -172,6 +180,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "The one on the product page or the packaging. Paste it exactly as it is — including if it is just a list of specs.",
     ),
     ph: t("Conçu pour...", "Designed for..."),
+    unlock: t(
+      "Ça va directement dans la carte du rayon, face aux promesses exactes de vos concurrents.",
+      "This goes straight into the map of the shelf, against your competitors' exact promises.",
+    ),
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
@@ -182,6 +194,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "The one from your Google listing or Instagram bio. Paste it exactly as it is — it is what people read before deciding to walk in.",
     ),
     ph: t("Cuisine de saison au cœur de...", "Seasonal cooking in the heart of..."),
+    unlock: t(
+      "Ça va directement dans la carte du quartier, face à ce que revendiquent les adresses voisines.",
+      "This goes straight into the map of the district, against what neighbouring venues claim.",
+    ),
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
@@ -192,6 +208,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Your bio, the one you use everywhere. Paste it exactly as it is — including if it dates back three projects.",
     ),
     ph: t("Artiste et producteur basé à...", "Artist and producer based in..."),
+    unlock: t(
+      "Ça va directement dans la carte de votre zone, face aux bios des noms qu'on cite à côté du vôtre.",
+      "This goes straight into the map of your lane, against the bios of the names quoted alongside yours.",
+    ),
     tag: t("Diagnostic", "Diagnosis"),
   },
   {
@@ -283,6 +303,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Qu'est-ce qui vous a fait penser ça la première fois ? Un client, une commande refusée, une phrase entendue — racontez le moment plutôt que l'idée.",
       "What made you think that the first time? A client, an order you turned down, something you overheard — tell the moment, not the idea.",
     ),
+    unlock: t(
+      "C'est de là que sortira votre position — la phrase qu'aucun concurrent ne pourra signer sans mentir.",
+      "This is where your position will come from — the sentence no competitor can sign without lying.",
+    ),
     tag: t("La vérité", "The truth"),
   },
   {
@@ -314,6 +338,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Où étiez-vous, et qu'est-ce que vous avez décidé de ne plus faire à partir de là ?",
       "Where were you, and what did you decide to stop doing from that point on?",
     ),
+    unlock: t(
+      "Le récit fondateur s'écrira autour de ce moment. C'est la page que vous relirez le plus.",
+      "The origin story will be written around this moment. It is the page you will reread most.",
+    ),
     tag: t("La vérité", "The truth"),
   },
   {
@@ -337,6 +365,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     nudge: t(
       "Pas un concurrent : une manière de faire que vous refusez. Qu'est-ce qui vous agace quand vous le voyez chez les autres ?",
       "Not a competitor: a way of working you refuse. What annoys you when you see others do it?",
+    ),
+    unlock: t(
+      "Voilà le premier des trois refus qui tiendront votre maison.",
+      "There is the first of the three refusals that will hold your house.",
     ),
     tag: t("La vérité", "The truth"),
   },
@@ -516,6 +548,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "Comment parle-t-elle ? Qu'est-ce qu'elle ne dirait jamais ? Qu'est-ce qui la ferait quitter une pièce ?",
       "How do they speak? What would they never say? What would make them leave a room?",
     ),
+    unlock: t(
+      "Le ton de voix se déduira de ce portrait : sept règles avec vos propres exemples.",
+      "The tone of voice will be derived from this portrait: seven rules with your own examples.",
+    ),
     tag: t("Identité visuelle", "Visual identity"),
   },
   {
@@ -593,6 +629,7 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
     optional: q.optional,
     deep: q.deep ? pickText(q.deep, lang) : undefined,
     nudge: q.nudge ? pickText(q.nudge, lang) : undefined,
+    unlock: q.unlock ? pickText(q.unlock, lang) : undefined,
     options: q.options?.map((o) => pickText(o, lang)),
     multi: q.multi,
     max: q.max,

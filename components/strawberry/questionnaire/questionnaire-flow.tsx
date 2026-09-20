@@ -85,12 +85,12 @@ const UI_COPY = {
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
     chapterFallback: "Quelques questions pour la suite du document.",
     chapterNotes: {
-      Identité: "On commence par les faits : qui vous êtes, ce que vous vendez, à qui. C'est la matière de toutes les pièces qui suivent.",
-      Diagnostic: "Ce que vous racontez aujourd'hui, et ce que votre marché en retient. Répondez comme vous parleriez, pas comme vous écririez une plaquette.",
-      Langage: "Vos mots, ceux que vous refusez, et le ton que vous tenez. C'est ce qui nourrit le lexique et les textes réécrits.",
-      Concurrence: "Qui on vous compare à qui. Plus vous êtes précis sur leurs phrases exactes, plus la carte du champ sera tranchante.",
-      Déploiement: "Où le document doit servir en premier. Ça décide de l'ordre des mouvements.",
-      Fondation: "Le socle : la conviction, la rupture, ce que vous refusez. Les questions les plus difficiles sont ici — prenez le temps.",
+      Identité: "Les faits d'abord. Ce sont eux qu'un lecteur retiendra dans dix ans, quand personne ne se souviendra de votre campagne de cette année.",
+      Diagnostic: "Ici, vous allez écrire des choses que vous n'avez jamais écrites nulle part. C'est normal — c'est exactement ce que vos concurrents n'ont pas fait.",
+      Langage: "Les mots que vous choisissez maintenant, vos équipes les emploieront pendant des années. Prenez-les au sérieux, personne d'autre ne le fera à votre place.",
+      Concurrence: "Vous allez regarder vos concurrents de plus près que vous ne l'avez jamais fait. La plupart des fondateurs ne le font jamais — c'est pour ça que la plupart se ressemblent.",
+      Déploiement: "Presque fini. Ce que vous répondez ici décide de l'ordre dans lequel votre maison va changer.",
+      Fondation: "C'est la partie difficile, et c'est celle qui vaut le prix. Ce que vous écrivez dans les cinq prochaines minutes tiendra la maison quand vous ne serez pas dans la pièce.",
     } as Record<string, string>,
     saved: "Enregistré",
     resumeKicker: "Vous aviez commencé",
@@ -102,7 +102,7 @@ const UI_COPY = {
     deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} mise${n > 1 ? "s" : ""} de côté`,
     leaveNote: "Vous pouvez fermer cet onglet : tout est gardé sur cet appareil, vous reprendrez où vous en êtes.",
     echoLabel: "Votre réponse précédente",
-    coverTitle: "C'est parti.",
+    coverTitle: "Vous venez de décider quelque chose.",
     terrainLabel: "Vous avez commandé l'Architecture pour",
     terrainHelp: "Le questionnaire s'adapte : certaines questions ne se posent pas de la même façon selon ce que vous vendez.",
     terrains: [
@@ -112,7 +112,7 @@ const UI_COPY = {
       { k: "artistes", t: "Un nom propre", d: "Artiste, auteur, fondateur" },
     ],
     coverLede:
-      "Ceci est le fondement de votre maison. Prenez votre temps. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
+      "La plupart des maisons de votre taille n'écriront jamais ce que vous vous apprêtez à écrire. Elles continueront d'emprunter les mots de leur secteur, et de se demander pourquoi on les compare au prix.\n\nCe qui suit est la seule partie que personne ne peut faire à votre place. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
     minutesArchitecture: "45 à 70",
     minutesAudit: "50 à 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -146,8 +146,8 @@ const UI_COPY = {
     neverMyWords: "Ce ne sont jamais les miens",
     beforeSending: "Avant d'envoyer",
     recapKicker: "Vous y êtes",
-    recapTitle: "Tout ce qu'il faut pour écrire est là.",
-    recapLead: "Nous partons de vos réponses et de rien d'autre. Le dépouillement commence demain : vos supports, ceux de vos concurrents, vos avis. Vous n'êtes plus sollicité jusqu'au jour 15.",
+    recapTitle: "Vous venez de faire ce que vos concurrents ne feront pas.",
+    recapLead: "Une heure d'écriture honnête sur ce que vous refusez : la plupart des fondateurs ne s'y assoient jamais. Le reste nous regarde. Le dépouillement commence demain — vos supports, ceux de vos concurrents, vos avis — et vous n'êtes plus sollicité jusqu'au jour 15.",
     recapStats: [
       { v: "6", l: "pièces à écrire" },
       { v: "15", l: "jours avant le document" },
@@ -176,12 +176,12 @@ const UI_COPY = {
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
     chapterFallback: "A few questions for the rest of the document.",
     chapterNotes: {
-      Identity: "We start with the facts: who you are, what you sell, to whom. This is the material for every piece that follows.",
-      Diagnosis: "What you say today, and what your market keeps of it. Answer as you would speak, not as you would write a brochure.",
-      Language: "Your words, the ones you refuse, and the tone you hold. This feeds the lexicon and the rewritten copy.",
-      Competition: "Who you get compared to. The more precise you are about their exact sentences, the sharper the map of the field.",
-      Deployment: "Where the document must work first. This decides the order of the moves.",
-      Foundation: "The bedrock: the conviction, the rupture, what you refuse. The hardest questions are here — take your time.",
+      Identity: "Facts first. These are what a reader will remember in ten years, when nobody recalls this year's campaign.",
+      Diagnosis: "Here you will write things you have never written anywhere. That is normal — it is exactly what your competitors have not done.",
+      Language: "The words you choose now, your teams will use for years. Take them seriously; nobody else will do it for you.",
+      Competition: "You are about to look at your competitors more closely than you ever have. Most founders never do — which is why most of them look alike.",
+      Deployment: "Almost there. What you answer here decides the order in which your house will change.",
+      Foundation: "This is the hard part, and it is the part that is worth the price. What you write in the next five minutes will hold the house when you are not in the room.",
     } as Record<string, string>,
     saved: "Saved",
     resumeKicker: "You had started",
@@ -193,7 +193,7 @@ const UI_COPY = {
     deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} set aside`,
     leaveNote: "You can close this tab: everything is kept on this device, you will pick up where you left off.",
     echoLabel: "Your previous answer",
-    coverTitle: "Let's begin.",
+    coverTitle: "You have just decided something.",
     terrainLabel: "You commissioned the Architecture for",
     terrainHelp: "The questionnaire adapts: some questions are not asked the same way depending on what you sell.",
     terrains: [
@@ -237,8 +237,8 @@ const UI_COPY = {
     neverMyWords: "These are never mine",
     beforeSending: "Before you send",
     recapKicker: "You are through",
-    recapTitle: "Everything needed to write it is here.",
-    recapLead: "We work from your answers and nothing else. The reading starts tomorrow: your supports, your competitors', your reviews. You will not be contacted again until day 15.",
+    recapTitle: "You have just done what your competitors will not do.",
+    recapLead: "An hour of honest writing about what you refuse: most founders never sit down to it. The rest is on us. The reading starts tomorrow — your supports, your competitors', your reviews — and you will not be contacted again until day 15.",
     recapStats: [
       { v: "6", l: "pieces to write" },
       { v: "15", l: "days to the document" },
@@ -965,6 +965,7 @@ function QuestionInput({
           value={v}
           placeholder={step.ph}
           nudge={step.nudge}
+          unlock={step.unlock}
           onChange={(val) => onChange(step.id, val)}
         />
         {step.deep &&
@@ -1188,12 +1189,14 @@ function AutoTextarea({
   placeholder,
   rows = 5,
   nudge,
+  unlock,
   onChange,
 }: {
   value: string
   placeholder?: string
   rows?: number
   nudge?: string
+  unlock?: string
   onChange: (v: string) => void
 }) {
   const ref = useRef<HTMLTextAreaElement>(null)
@@ -1225,7 +1228,19 @@ function AutoTextarea({
           {nudge}
         </p>
       )}
-      {n >= 25 && (
+      {/* Ce que la réponse vient de débloquer.
+          Le client écrit trente réponses et rien ne lui répond jamais — il
+          ne sait pas s'il a écrit quelque chose d'utile ou du remplissage.
+          Une ligne qui nomme la pièce du document que cette réponse
+          alimente change la nature de l'exercice : on ne remplit plus un
+          champ, on construit une partie du livrable. */}
+      {n >= 25 && unlock && (
+        <p className="mt-2.5 flex items-start gap-2 font-sans text-[12.5px] leading-[1.55] text-chalk-55">
+          <span className="mt-[5px] h-1 w-1 flex-shrink-0 rounded-full bg-brand" aria-hidden />
+          <span>{unlock}</span>
+        </p>
+      )}
+      {n >= 25 && !unlock && (
         <div className="pointer-events-none absolute bottom-2.5 right-3 font-mono text-[10px] uppercase tracking-[0.16em] text-chalk-40">
           ✓
         </div>
