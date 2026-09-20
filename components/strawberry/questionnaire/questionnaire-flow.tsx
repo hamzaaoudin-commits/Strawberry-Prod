@@ -280,7 +280,6 @@ export function QuestionnaireFlow({
   }, [answers, idx, offer])
 
   const step = steps[idx]
-  const pct = Math.round((idx / steps.length) * 100)
 
   function updateAnswer(id: string, value: unknown) {
     setAnswers((prev) => ({ ...prev, [id]: value }))
@@ -372,7 +371,6 @@ export function QuestionnaireFlow({
             words={words}
             index={idx}
             total={steps.length}
-            pct={pct}
             answers={answers}
             deepOpen={!!deepOpen[step.id]}
             onOpenDeep={() => setDeepOpen((p) => ({ ...p, [step.id]: true }))}
@@ -500,7 +498,6 @@ function StepScreen({
   words,
   index,
   total,
-  pct,
   answers,
   deepOpen,
   onOpenDeep,
@@ -515,7 +512,6 @@ function StepScreen({
   words: string[]
   index: number
   total: number
-  pct: number
   answers: Answers
   deepOpen: boolean
   onOpenDeep: () => void
@@ -525,8 +521,46 @@ function StepScreen({
   onSkip?: () => void
 }) {
   const valid = isValid(step, answers)
+
+  // L'entrée de chaque question.
+  //
+  // Sans elle, passer d'un écran à l'autre est un remplacement brutal : le
+  // texte change, rien ne bouge, et trente écrans donnent l'impression de
+  // remplir un tableur. Un court fondu montant suffit à faire sentir qu'on
+  // avance. La clé sur l'index force le rejeu à chaque question.
+  const [shown, setShown] = useState(false)
+  useEffect(() => {
+    setShown(false)
+    const id = requestAnimationFrame(() => setShown(true))
+    return () => cancelAnimationFrame(id)
+  }, [index])
+
+  // Entrée au clavier : avancer sans quitter le clavier.
+  //
+  // Sur trente écrans, tendre la main vers la souris à chaque fois est le
+  // genre de frottement qui fait abandonner. Cmd+Entrée depuis une zone de
+  // texte, Entrée depuis n'importe où ailleurs.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Enter" || !valid) return
+      const el = e.target as HTMLElement | null
+      const inText = el?.tagName === "TEXTAREA"
+      if (inText && !(e.metaKey || e.ctrlKey)) return
+      e.preventDefault()
+      onNext()
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [valid, onNext])
+
   return (
-    <div>
+    <div
+      key={index}
+      className={[
+        "transition-all duration-[520ms] ease-[cubic-bezier(.22,.68,0,1)]",
+        shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+      ].join(" ")}
+    >
       <div className="mb-6 flex items-center gap-3.5">
         <button
           type="button"
@@ -540,14 +574,26 @@ function StepScreen({
             Sur trente écrans, on oublie ce qu'on remplit — et le terrain
             choisi au départ conditionne la moitié des questions. L'afficher
             en continu évite le doute au vingtième écran. */}
-        <div className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${pct}%`,
-              background: "linear-gradient(90deg, var(--color-brand), var(--color-brand-bright))",
-            }}
-          />
+        {/* Une progression segmentée, une case par question.
+            Une barre continue sur trente écrans ne dit rien : elle avance de
+            trois pour cent et le lecteur ne voit pas la différence. Trente
+            segments montrent le chemin parcouru et, surtout, combien il en
+            reste — ce que le client veut vraiment savoir au quinzième. */}
+        <div className="flex flex-1 items-center gap-[3px]" aria-hidden>
+          {Array.from({ length: total }).map((_, i) => (
+            <span
+              key={i}
+              className="h-[3px] flex-1 rounded-full transition-colors duration-500"
+              style={{
+                background:
+                  i < index
+                    ? "var(--color-brand)"
+                    : i === index
+                      ? "var(--color-brand-bright)"
+                      : "rgba(255,255,255,0.09)",
+              }}
+            />
+          ))}
         </div>
         <div className="body-sm flex-shrink-0">
           {index + 1} / {total}
@@ -568,7 +614,12 @@ function StepScreen({
         {step.tag && <span className="tag mr-1.5">{step.tag}</span>}
         {step.optional && <span className="tag border-brand-hair text-brand">{copy.optional}</span>}
       </div>
-      <h2 className="h-card mb-2.5">{step.label}</h2>
+      {/* Le titre à la charte du site : serif, capitales, crénage desserré.
+          « h-card » donnait une taille de carte — ici c'est la seule chose à
+          lire de l'écran, elle doit en avoir le poids. */}
+      <h2 className="mb-3 font-serif text-[clamp(1.35rem,2.6vw,1.9rem)] font-bold uppercase leading-[1.12] tracking-[-0.005em] text-white">
+        {step.label}
+      </h2>
       {step.help ? <p className="body-sm mb-6">{step.help}</p> : <div className="mb-6" />}
 
       <QuestionInput
@@ -752,11 +803,30 @@ function QuestionInput({
                     onChange(step.id, opt)
                   }
                 }}
-                className={`block w-full border px-4 py-3.5 text-left text-[14.5px] leading-snug transition-colors ${
-                  on ? "border-brand bg-brand/10" : "border-hair-strong bg-white/[0.02] hover:border-brand/40"
+                className={`group flex w-full items-start gap-3.5 border px-4 py-3.5 text-left text-[14.5px] leading-snug transition-all duration-200 ${
+                  on
+                    ? "border-brand bg-brand/10 text-white"
+                    : "border-hair-strong bg-white/[0.02] text-chalk-75 hover:-translate-y-px hover:border-brand/40 hover:bg-white/[0.04]"
                 }`}
               >
-                {opt}
+                {/* Un repère de sélection à gauche.
+                    Sans lui, on distingue mal une option choisie d'une option
+                    survolée — surtout en choix multiple, où plusieurs lignes
+                    sont actives en même temps. Carré pour le multiple, rond
+                    pour le choix unique : la forme dit la règle. */}
+                <span
+                  aria-hidden
+                  className={`mt-[3px] flex h-[15px] w-[15px] flex-shrink-0 items-center justify-center border transition-colors ${
+                    step.multi ? "rounded-[3px]" : "rounded-full"
+                  } ${on ? "border-brand bg-brand" : "border-hair-strong group-hover:border-brand/50"}`}
+                >
+                  {on && (
+                    <span
+                      className={`bg-ink ${step.multi ? "h-[6px] w-[6px] rounded-[1px]" : "h-[5px] w-[5px] rounded-full"}`}
+                    />
+                  )}
+                </span>
+                <span className="min-w-0">{opt}</span>
               </button>
             )
           })}
@@ -873,15 +943,33 @@ function AutoTextarea({
     el.style.height = "auto"
     el.style.height = `${el.scrollHeight}px`
   }, [value])
+  const n = value.trim() ? value.trim().split(/\s+/).length : 0
   return (
-    <textarea
-      ref={ref}
-      className="field resize-none leading-relaxed"
-      rows={rows}
-      placeholder={placeholder}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <div className="relative">
+      <textarea
+        ref={ref}
+        className="field resize-none text-[15.5px] leading-[1.75] transition-colors focus:border-brand/60"
+        rows={rows}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+      {/* Le compteur de mots.
+          Ces réponses nourrissent le document : une réponse de six mots
+          produit une pièce creuse. Le compteur ne bloque rien — il rend
+          simplement visible qu'on a expédié la question, et il s'allume en
+          rouge tant qu'on est sous le seuil où la réponse devient
+          exploitable. */}
+      {n > 0 && (
+        <div
+          className={`pointer-events-none absolute bottom-2.5 right-3 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${
+            n < 25 ? "text-brand" : "text-chalk-40"
+          }`}
+        >
+          {n} {n > 1 ? "mots" : "mot"}
+        </div>
+      )}
+    </div>
   )
 }
 

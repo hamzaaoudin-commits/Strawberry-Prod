@@ -33,8 +33,17 @@ export default async function QuestionnairePage({ params, searchParams }: PagePr
   const resolvedLang = isLang(lang) ? lang : DEFAULT_LANG
 
   return (
-    <main className="min-h-screen bg-ink px-gutter py-20">
-      <div className="shell-sm">
+    <main className="relative min-h-screen overflow-hidden bg-ink px-gutter py-20">
+      {/* La lueur du site, reprise ici.
+          Le questionnaire est le premier écran après un paiement de 2 900 € :
+          un fond noir uni fait rupture avec tout ce que le client vient de
+          parcourir. Deux halos fixes, sans animation — on remplit un
+          document, rien ne doit bouger derrière le texte. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_45%_at_20%_0%,rgba(255,34,51,0.13),transparent_62%),radial-gradient(50%_40%_at_85%_100%,rgba(255,77,46,0.09),transparent_60%)]"
+      />
+      <div className="relative shell-sm">
         {/* `terrain` choisit les questions propres au terrain (lieux,
             artistes...). Absent, on sert le parcours commun : les liens
             envoyés avant cette évolution continuent donc de fonctionner. */}
