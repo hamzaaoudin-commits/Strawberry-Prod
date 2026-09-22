@@ -60,20 +60,20 @@ const T = {
   en: {
     badge: "NARRATIVE ARCHITECTURE STUDIO · PARIS",
     slogan: "Impossible to confuse. Impossible to generate.",
-    h1a: "You are better than your competitors.",
-    h1b: "Your market cannot see it.",
+    h1a: "The problem is not what you have to offer.",
+    h1b: "It's the story the world keeps of it.",
     grounding: "Narrative architecture · 2 900 € · Delivered in three weeks",
-    sub: "We go through everything you publish, compare it sentence by sentence with your competitors, and write what sets you apart: the brand platform, the decisions to make, your teams' playbooks, and copy ready to paste. In three weeks.",
+    sub: "We build the narrative architecture that makes you identifiable.\n\nWe analyse your brand, your market, and your competitors' stories to find the ground only you can hold. Then we turn that position into a clear architecture: brand platform, territories of expression, editorial principles, playbooks for your teams, and copy ready to use.\n\nIn three weeks, you know what to say, how to say it, and why the world should listen.",
     cta1: "Place your commission \u2192",
     ctaMain: "Order the architecture \u2192",
   },
   fr: {
     badge: "STUDIO D'ARCHITECTURE NARRATIVE · PARIS",
     slogan: "Impossible à confondre. Impossible à générer.",
-    h1a: "Vous êtes meilleur que vos concurrents.",
-    h1b: "Votre marché ne le voit pas.",
+    h1a: "Le problème n'est pas ce que vous avez à offrir.",
+    h1b: "C'est l'histoire que le monde en retient.",
     grounding: "Architecture narrative · 2 900 € · Livré en trois semaines",
-    sub: "Nous dépouillons tout ce que vous publiez, nous comparons phrase par phrase avec vos concurrents, et nous écrivons ce qui vous en sépare : la plateforme de marque, les décisions à prendre, les playbooks de vos équipes, et les textes prêts à coller. En trois semaines.",
+    sub: "Nous construisons l'architecture narrative qui vous rend identifiable.\n\nNous analysons votre marque, votre marché et les récits de vos concurrents pour comprendre où vous pouvez prendre une place qui vous appartient. Puis nous transformons cette position en une architecture narrative claire : plateforme de marque, territoires d'expression, principes éditoriaux, playbooks pour vos équipes et textes prêts à l'emploi.\n\nEn trois semaines, vous savez quoi raconter, comment le raconter et pourquoi le public devrait vous écouter.",
     cta1: "Passer commande \u2192",
     ctaMain: "Commander l'architecture \u2192",
   },
@@ -222,13 +222,6 @@ export function HeroSection() {
             </span>
           </div>
 
-          {/* Le slogan ne vend rien seul : il ne dit ni quoi, ni en combien de
-              temps, ni pourquoi vous. Il devient surtitre, et le H1 porte la
-              proposition de valeur — bénéfice, durée, différenciation. */}
-          <p className="mb-4 font-sans text-[12px] uppercase tracking-[0.22em] text-chalk-40">
-            {t.slogan}
-          </p>
-
           <h1 className="m-0 mb-6 max-w-full break-words font-serif text-[clamp(1.5rem,4.8vw,4.8rem)] font-bold leading-[1.12] tracking-[-0.005em] text-white uppercase">
             {t.h1a}
             <br />
@@ -236,6 +229,14 @@ export function HeroSection() {
               {t.h1b}
             </span>
           </h1>
+
+          {/* Le slogan vient après le titre, comme surtitre du prix : « ceci
+              est impossible à confondre, impossible à générer » — puis « voici
+              ce que ça vaut ». Avant le titre, il précédait la proposition de
+              valeur ; ici il l'appuie juste avant le prix, où il pèse plus. */}
+          <p className="mb-3 font-sans text-[12px] uppercase tracking-[0.22em] text-chalk-40">
+            {t.slogan}
+          </p>
 
           {/* En blanc, plus surlignée.
               Le titre au-dessus est déjà en rouge et le bouton en dessous
@@ -247,7 +248,7 @@ export function HeroSection() {
             {t.grounding}
           </p>
 
-          <p className="mb-8 max-w-[640px] font-sans text-[clamp(0.9rem,1.8vw,1.25rem)] leading-[1.7] text-white/55">
+          <p className="mb-8 max-w-[620px] whitespace-pre-line font-sans text-[clamp(0.9rem,1.8vw,1.15rem)] leading-[1.75] text-white/55">
             {t.sub}
           </p>
 

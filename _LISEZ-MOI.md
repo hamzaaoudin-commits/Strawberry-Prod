@@ -1,56 +1,52 @@
-# Strawberry — la carte enfin retirée
+# Strawberry — hero et diagnostic
 
-2 fichiers. Vous aviez raison, et la cause était plus grave que je ne le
-pensais.
+3 fichiers. Tout est fait sauf un point, détaillé en bas.
 
-## Ce qui était resté depuis le tout premier patch
+## Le hero
 
-Le composant `QuestionnaireFlow` s'ouvrait sur :
+**Le slogan change de place.** « Impossible à confondre. Impossible à
+générer. » passait avant le titre ; il passe maintenant entre le titre et
+la ligne de prix — juste au-dessus d'« Architecture narrative · 2 900 € ·
+Livré en trois semaines », comme demandé.
 
-```tsx
-<div className="relative border border-hair-strong bg-ink">
-  <span className="bracket-tl" aria-hidden="true" />
-  <span className="bracket-br" aria-hidden="true" />
-```
+**Le titre change de sens.** « Vous êtes meilleur que vos concurrents »
+accusait le marché. « Le problème n'est pas ce que vous avez à offrir.
+C'est l'histoire que le monde en retient. » déplace la faute : ce n'est
+plus le marché qui a tort, c'est le récit qui manque — ce qui prépare
+directement l'offre.
 
-Une bordure visible et des coins rouges décoratifs — le motif de
-« couverture de document » utilisé ailleurs sur le site (le livre, les
-fac-similés d'extrait). Il est là depuis la version la plus ancienne de ce
-composant, avant même qu'on parle de plein écran.
+**Le paragraphe est réécrit en trois temps** — ce qu'on fait, comment, ce
+que vous obtenez en trois semaines — avec un saut de ligne entre chacun
+(`whitespace-pre-line`).
 
-**Chaque passe suivante a changé ce qu'il y avait dans la carte, sans
-jamais remarquer que la carte elle-même contredisait l'idée.** J'ai refait
-la typographie, la grille, les quatre actes, dix corrections de design —
-et le cadre qui enferme tout ça n'a jamais bougé. C'est pour ça que ça
-« a l'air pareil qu'avant » malgré tout le travail : structurellement,
-ça l'était.
+## Le problème et le diagnostic
 
-## Ce que ça disait, et pourquoi c'est faux ici
+**Le remède a changé de section.** Il fermait la section Problème, avant
+même qu'on ait montré ce qui avait déjà été essayé en vain. Il ferme
+maintenant la section Diagnostic, après les quatre fausses causes et leur
+propre conclusion — l'ordre logique : on montre ce qui ne marche pas,
+*puis* on nomme le remède.
 
-Un cadre à coins rouges dit « ceci est un objet imprimé, regardez-le de
-l'extérieur ». C'est juste sur une couverture de livre. C'est l'inverse de
-ce qu'on veut sur le questionnaire : un espace ouvert où l'on écrit, pas
-un document qu'on contemple.
+**La phrase sur l'agence de branding est corrigée** : « Nous écrivons ce
+que vous refusez — pas ce que vous portez » sonnait comme une opposition
+entre deux fonctions du studio. Elle devient « Nous écrivons ce que vous
+refusez autant que ce que vous représentez. »
 
-## Le second cadre, dans la page
+**Les quatre fausses causes sont réécrites** dans le rythme que vous avez
+donné — des phrases courtes, plus sèches — et la conclusion aussi :
+> Le problème n'a jamais été votre volume. C'est que personne n'a jamais
+> tranché ce que vous refusez. Et sans refus, aucune identité ne peut
+> vraiment s'accrocher.
 
-`page.tsx` enveloppait aussi le tout dans `shell-sm` — un conteneur figé à
-760 px, hérité des tout premiers patches. Même symptôme : la largeur n'a
-jamais été revue quand le design a changé de nature.
+## Le point en suspens
 
-Il devient un simple conteneur pleine largeur ; chaque élément garde sa
-propre mesure de lecture (`max-w-[17ch]` sur la question, `max-w-[600px]`
-sur le champ), donc rien ne s'étire à l'infini sur un grand écran — mais
-la page elle-même n'est plus une carte flottante dans le noir.
-
-## Ce qui reste identique
-
-Le grain, la lueur qui avance avec le parcours, la typographie, les
-champs à trait — tout ce qu'on a construit ces derniers tours tient. Seul
-le contenant disparaît.
+**Le libellé du bouton du hero.** Votre message s'est coupé net après
+« Le cta ne devrait pas être « commander l'architecture » mais « » — la
+suite n'est jamais arrivée. Je n'ai pas deviné : le bouton affiche toujours
+« Commander l'architecture ». Dites-moi ce qu'il doit dire.
 
 ## Vérification
 
-Contrôle de types : zéro erreur nouvelle. Les neuf autres usages de
-`bracket-tl`/`bracket-br` sur le site (couvertures, extraits) sont
-intacts — je n'ai touché qu'à cette occurrence.
+Contrôle de types : aucune erreur nouvelle. `t.close` confirmé absent de
+`problem-section.tsx` — le retrait est complet, rien n'est resté à moitié
+supprimé.

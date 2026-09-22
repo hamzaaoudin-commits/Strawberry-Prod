@@ -28,7 +28,6 @@ const T = {
     diagramWithoutSub: "Every piece of communication starts from zero.",
     diagramWith: "With an architecture",
     diagramWithSub: "Every piece of communication builds on the last.",
-    close: "The fix is not more content or a better logo. It is a narrative identity strong enough that people stop comparing you — and start belonging to what you stand for.",
   },
   fr: {
     kicker: "LE PROBLÈME",
@@ -40,7 +39,6 @@ const T = {
     diagramWithoutSub: "Chaque prise de parole repart de z\u00e9ro.",
     diagramWith: "Avec architecture",
     diagramWithSub: "Chaque prise de parole s'appuie sur la pr\u00e9c\u00e9dente.",
-    close: "Le remède n'est pas plus de contenu ni un meilleur logo. C'est une identité narrative assez forte pour que le marché cesse de vous comparer — et commence à adhérer à ce que vous représentez.",
   },
 }
 
@@ -103,7 +101,6 @@ export function ProblemSection({ lang }: { lang: Lang }) {
             labelWith={t.diagramWith}
             subWith={t.diagramWithSub}
           />
-          <p className="font-serif text-[clamp(1.15rem,2.2vw,1.55rem)] leading-snug text-white/90">{t.close}</p>
         </div>
       </div>
     </section>

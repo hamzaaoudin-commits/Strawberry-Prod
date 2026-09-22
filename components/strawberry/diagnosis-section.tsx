@@ -25,32 +25,35 @@ const T = {
     falseCauses: [
       {
         label: "A redone logo",
-        impact: "New shopfront, same confusion — the market still confuses you with the one next door.",
-        choice: "Here, the logo comes after the doctrine, never before.",
+        impact: "New shopfront, same confusion. The market still confuses you with the one next door.",
+        choice: "Here, the logo comes after the doctrine. Never before.",
       },
       {
         label: "A branding agency",
-        impact: "It sells you assets and a moodboard, not a decision about what you refuse.",
-        choice: "We write what you refuse — not what you wear.",
+        impact: "Assets, a moodboard, a handful of keywords. But no decision on what you stand for — and above all, what you refuse.",
+        choice: "We write what you refuse as much as what you represent.",
       },
       {
         label: "Posting more often",
-        impact: "More volume in a noise already saturated with machine-written content — no one notices one more post.",
-        choice: "An identity people recognise without you repeating it.",
+        impact: "More volume in a market already saturated with content. One more post does not build an identity.",
+        choice: "We build an identity people recognise without you repeating it.",
       },
       {
         label: "Asking a language model for a positioning statement",
-        impact: "A probable text, statistically average — never a choice you're accountable for.",
-        choice: "A choice someone stands behind, made by someone who answers for what they refuse.",
+        impact: "A plausible text. Well written. Statistically average. But no stance you are accountable for.",
+        choice: "We make choices. And we answer for the ones we make.",
       },
     ],
-    falseCauseOutro: "The problem was never how loud you are. It is that nobody has ever settled what you refuse, and without a refusal there is no identity to belong to.",
+    falseCauseOutro:
+      "The problem was never how loud you are. It is that nobody has ever settled what you refuse. And without a refusal, no identity can truly hold.",
     diagramBefore: "Yesterday",
     diagramAfter: "Today",
     diagramFabrication: "The making",
     diagramArchitecture: "The strategy",
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
+    remedy:
+      "The problem is not producing more content or changing your logo. It is building a narrative identity strong enough that the market stops comparing you — and starts belonging to what you stand for.",
   },
   fr: {
     h2a: "Rien de tout ça n'a manqué de bonne volonté.",
@@ -60,32 +63,36 @@ const T = {
     falseCauses: [
       {
         label: "Un logo refait",
-        impact: "Nouvelle vitrine, même confusion — le marché continue de vous confondre avec le voisin.",
-        choice: "Chez nous, le logo vient après la doctrine, jamais avant.",
+        impact: "Nouvelle vitrine, même confusion. Le marché continue de vous confondre avec le voisin.",
+        choice: "Chez nous, le logo vient après la doctrine. Jamais avant.",
       },
       {
         label: "Une agence de branding",
-        impact: "Elle vend des assets et un moodboard, pas une décision sur ce que vous refusez.",
-        choice: "Nous écrivons ce que vous refusez — pas ce que vous portez.",
+        impact:
+          "Des assets, un moodboard, quelques mots-clés. Mais aucune décision sur ce que vous défendez — et surtout, ce que vous refusez.",
+        choice: "Nous écrivons ce que vous refusez autant que ce que vous représentez.",
       },
       {
         label: "Poster plus souvent",
-        impact: "Plus de volume dans un bruit déjà saturé de contenu généré par une machine — personne ne remarque un post de plus.",
-        choice: "Une identité qu'on reconnaît sans avoir à la répéter.",
+        impact: "Plus de volume dans un marché déjà saturé de contenu. Un post de plus ne crée pas une identité.",
+        choice: "Nous construisons une identité qu'on reconnaît sans avoir à la répéter.",
       },
       {
-        label: "Demander un positionnement à un modèle de langage",
-        impact: "Un texte probable, statistiquement moyen — jamais un choix qui vous engage.",
-        choice: "Un choix assumé, écrit par quelqu'un qui répond de ce qu'il refuse.",
+        label: "Demander son positionnement à un modèle de langage",
+        impact: "Un texte plausible. Bien formulé. Statistiquement moyen. Mais aucune prise de position qui vous engage.",
+        choice: "Nous faisons des choix. Et nous répondons de ceux que nous faisons.",
       },
     ],
-    falseCauseOutro: "Le problème n'a jamais été votre volume. C'est que personne n'a jamais tranché ce que vous refusez, et sans refus, il n'y a aucune identité à laquelle s'accrocher.",
+    falseCauseOutro:
+      "Le problème n'a jamais été votre volume. C'est que personne n'a jamais tranché ce que vous refusez. Et sans refus, aucune identité ne peut vraiment s'accrocher.",
     diagramBefore: "Hier",
     diagramAfter: "Aujourd'hui",
     diagramFabrication: "La fabrication",
     diagramArchitecture: "La stratégie",
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
+    remedy:
+      "Le problème n'est pas de produire plus de contenu ni de changer de logo. C'est de construire une identité narrative assez forte pour que le marché cesse de vous comparer — et commence à adhérer à ce que vous représentez.",
   },
 }
 
@@ -250,6 +257,13 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
           </div>
         </div>
 
+        {/* Le remède, déplacé ici depuis la section problème : il doit
+            venir après qu'on a montré ce qui a déjà été essayé en vain,
+            pas avant — sinon on annonce la solution avant d'avoir établi
+            qu'aucune des tentatives courantes ne fonctionne. */}
+        <p className="mt-10 font-serif text-[clamp(1.15rem,2.2vw,1.55rem)] leading-snug text-white/90">
+          {t.remedy}
+        </p>
       </div>
     </section>
   )
