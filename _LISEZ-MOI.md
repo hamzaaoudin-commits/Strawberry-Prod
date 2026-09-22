@@ -1,55 +1,51 @@
-# Strawberry — la home allégée, la méthode corrigée
+# Strawberry — les pages de terrain, precises
 
-4 fichiers.
+5 fichiers.
 
-## Le défilement démarrait trop tôt
+## « Un cas », retiré
 
-La translation horizontale commençait dès la première image du
-défilement, avant qu'on ait eu le temps de lire le titre qui venait
-d'apparaître. **Les douze premiers pourcents du défilement ne font
-maintenant plus rien** — une zone de lecture avant que les cartes ne
-commencent à bouger. La translation elle-même se joue sur les 83 %
-suivants.
+C'était l'eyebrow de la section EXTRAIT — le fac-similé de document
+fictif (LOAM, M-01, La Table du Passe, ORVAL) construit il y a plusieurs
+patches. Retirée en entier des quatre pages de terrain.
 
-## L'affirmation fausse, corrigée
+## Les trois cas, développés
 
-La première étape disait « Nous venons chez vous » — une visite sur
-place qui n'a jamais existé dans le vrai processus. Elle devient :
+Chaque exemple passe d'une ligne à trois phrases qui suivent le même
+mouvement : ce qui a été refusé, ce que ce refus coûtait sur le moment,
+ce qu'il a fini par rapporter. Par exemple, pour Nike sur la page
+marques :
 
-> **Vous répondez, nous dépouillons.**
-> Vous remplissez un questionnaire d'onboarding complet. Nous le croisons
-> avec l'analyse de tous vos supports — avis clients, réseaux sociaux,
-> site web — pour commencer le travail.
+> A refusé de vendre des chaussures — elle vend une conviction sur le
+> dépassement de soi, portée par les mêmes trois mots depuis 1988. Le
+> pari coûtait cher : parler de sport plutôt que de produit, quand chaque
+> concurrent vantait l'amorti ou la respirabilité. C'est ce refus, tenu
+> sans exception depuis près de quarante ans, qui fait qu'on reconnaît
+> une publicité Nike avant même d'avoir vu le logo.
 
-Vérifié : cette phrase n'existait nulle part ailleurs sur une page
-réellement affichée. Elle subsiste dans un jeu de clés `st.*` de
-`i18n.js` qui n'est plus rendu depuis le retrait de la méthode des pages
-de terrain — signalé comme dette de nettoyage, pas touché aujourd'hui.
+Les douze cas (trois par terrain, plus THE ROOM) suivent ce même
+mouvement en trois temps.
 
-## La tournée, vérifiée avant de retirer l'offre
+## La nouvelle section : les six pièces, pour ce terrain précis
 
-Recompté avant toute suppression : les six pièces, les vingt éléments
-issus des quatre onglets de l'offre — playbooks nommés un par un, le
-récit fondateur, les deux axes de positionnement, les quatre segments
-d'audience, la pièce signature — tous confirmés présents.
+Une liste numérotée de 01 à 06, sous « Ce que vous recevez,
+précisément ». Chaque pièce est expliquée dans le vocabulaire du terrain
+plutôt qu'en langage générique. Par exemple, la pièce 05 (Les playbooks) :
 
-## Trois sections retirées de la home
+- **Marques** — « Ce que dit un commercial en rendez-vous, ce que répond
+  le service client à un mécontent… »
+- **Noms propres** — « Ce que votre équipe répond à un journaliste, ce
+  que vous postez la veille d'une sortie… »
+- **Produits** — « Ce que le vendeur en rayon ou le support client
+  répond à une objection, ce qu'on écrit sur la boîte… »
+- **Lieux** — « Ce que dit le serveur en salle, ce qu'on répond à un
+  avis négatif… »
 
-**L'offre.** Une fois la tournée complète, elle ne faisait plus que
-répéter en plus court ce qui venait d'être dit en détail juste au-dessus.
-
-**Après le paiement.** Retirée avec l'offre.
-
-**Le livre.** Retiré de la home pour la raison que vous avez donnée :
-trop de boutons d'achat qui se suivent finissent par se neutraliser les
-uns les autres. Il reste visible à deux endroits :
-- **La page Studio**, à la suite du bloc « ce qu'est ce studio »
-- **La page Méthode**, à la suite de l'Atlas — l'un et l'autre déjà
-  déplacés là pour la même raison lors d'un patch précédent
+Vingt-quatre entrées au total (six pièces × quatre terrains), chacune
+tenue en une phrase pour rester lisible dans une liste plutôt que dans
+des cartes.
 
 ## Vérification
 
-Contrôle de types : zéro erreur nouvelle. Deux erreurs préexistantes sur
-`<style jsx>` dans la page Studio, propres à mon environnement de
-contrôle allégé (le typage `styled-jsx` n'y est pas installé) — sans
-rapport avec ce patch.
+Contrôle de types : zéro erreur. Contrôle croisé : chaque clé
+`data-i18n` que le gabarit référence existe bien dans le dictionnaire —
+aucune clé orpheline qui afficherait un texte non traduit.

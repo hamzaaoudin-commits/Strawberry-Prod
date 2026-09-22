@@ -56,71 +56,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
 <p class="reveal d2 man-second" data-i18n="man.body2">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
 </div>
-</section><!-- ============ EXTRAIT ============ -->
-<section class="section extrait">
-<div class="wrap">
-<span class="eyebrow reveal" data-i18n="ex.eyebrow">Un cas</span>
-<h2 class="h-sec reveal" data-i18n="ex.title" style="margin-top:1.1rem">Ce qu'on a livré, et ce que ça a changé.</h2>
-<p class="lead reveal" data-i18n="ex.lead" style="margin-top:1.2rem">Un cas, pièce par pièce.</p>
-
-<div class="ex-page reveal d1">
-  <div class="ex-page-head">
-    <span data-i18n="ex.head">Architecture narrative</span>
-    <span data-i18n="ex.house">Maison LOAM</span>
-  </div>
-  <div class="ex-body">
-    <div class="ex-block">
-      <div class="ex-num" data-i18n="ex.1.n">Pièce 01</div>
-      <div class="ex-text">
-        <h3 data-i18n="ex.1.k">La plateforme</h3>
-        <p data-i18n="ex.1.b">Livrable.</p>
-        <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.1.pk">Ce que ça a changé</span>
-          <span class="ex-proof-v" data-i18n="ex.1.pv">Effet.</span>
-        </div>
-      </div>
-    </div>
-    <div class="ex-block">
-      <div class="ex-num" data-i18n="ex.2.n">Pièce 03</div>
-      <div class="ex-text">
-        <h3 data-i18n="ex.2.k">La carte</h3>
-        <p data-i18n="ex.2.b">Livrable.</p>
-        <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.2.pk">Ce que ça a changé</span>
-          <span class="ex-proof-v" data-i18n="ex.2.pv">Effet.</span>
-        </div>
-      </div>
-    </div>
-    <div class="ex-block">
-      <div class="ex-num" data-i18n="ex.3.n">Pièce 04</div>
-      <div class="ex-text">
-        <h3 data-i18n="ex.3.k">Les décisions</h3>
-        <p data-i18n="ex.3.b">Livrable.</p>
-        <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.3.pk">Ce que ça a changé</span>
-          <span class="ex-proof-v" data-i18n="ex.3.pv">Effet.</span>
-        </div>
-      </div>
-    </div>
-    <div class="ex-block">
-      <div class="ex-num" data-i18n="ex.4.n">Pièce 05</div>
-      <div class="ex-text">
-        <h3 data-i18n="ex.4.k">Les playbooks</h3>
-        <p data-i18n="ex.4.b">Livrable.</p>
-        <div class="ex-proof">
-          <span class="ex-proof-k" data-i18n="ex.4.pk">Ce que ça a changé</span>
-          <span class="ex-proof-v" data-i18n="ex.4.pv">Effet.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ex-page-foot">
-    <span data-i18n="ex.foot">Six pièces livrées. Quatre montrées ici.</span>
-  </div>
-</div>
-</div>
-</section>
-<!-- ============ CAS RÉELS ============ -->
+</section><!-- ============ CAS RÉELS ============ -->
 <section class="section">
 <div class="wrap">
 <div class="section-head reveal">
@@ -141,6 +77,42 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <h3 style="margin:0 0 .5rem" data-i18n="case.3.name">Maison</h3>
 <p class="body-sm" data-i18n="case.3.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
+</div>
+</div>
+</section>
+<!-- ============ LIVRABLES ============ -->
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="deliv.eyebrow">Ce que vous recevez, précisément</span>
+<h2 class="h-sec" data-i18n="deliv.title" style="margin-top:1.1rem">Les six pièces.</h2>
+<p class="lead" data-i18n="deliv.lead" style="margin-top:1.2rem">Le même document pour tout le monde, mais rien de générique dedans.</p>
+</div>
+<div style="display:grid; gap:0; border-top:1px solid var(--line-soft)">
+<div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">01</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.1.t">La plateforme</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.1.d">Ce que vous défendez.</p>
+</div>
+<div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">02</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.2.t">Le diagnostic</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.2.d">Ce que vous dites aujourd'hui.</p>
+</div>
+<div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">03</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.3.t">La carte</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.3.d">Le champ concurrentiel.</p>
+</div>
+<div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">04</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.4.t">Les décisions</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.4.d">Ce qu'il faut faire, dans l'ordre.</p>
+</div>
+<div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">05</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.5.t">Les playbooks</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.5.d">Ce que vos équipes font au quotidien.</p>
+</div>
+<div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0">
+<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">06</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.6.t">Le langage</h3></div>
+<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.6.d">Les mots et les textes prêts à coller.</p>
+</div>
 </div>
 </div>
 </section>
