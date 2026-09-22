@@ -75,8 +75,8 @@ const T = {
       {
         k: "Pièce 05",
         t: "LES PLAYBOOKS",
-        line: "Ce que vos équipes font au quotidien : vente, contenu, réseaux, support, recrutement.",
-        points: ["Applicables par quelqu'un qui n'était pas dans la conversation — un nouvel arrivant, une agence", "Le trait disqualifiant à l'embauche, la ligne à ne jamais franchir en support, le format tenable", "Cinq playbooks distincts, un par fonction — pas un seul document générique qui essaie de tout couvrir"],
+        line: "Ce que vos équipes font au quotidien : marketing, contenu, réseaux, vente, support, RH.",
+        points: ["Applicables par quelqu'un qui n'était pas dans la conversation — un nouvel arrivant, une agence", "Le trait disqualifiant à l'embauche, la ligne à ne jamais franchir en support, le format tenable", "Six playbooks distincts, un par département — pas un seul document générique qui essaie de tout couvrir"],
         href: "/marques-entreprises",
       },
       {
@@ -136,8 +136,8 @@ const T = {
       {
         k: "Piece 05",
         t: "THE PLAYBOOKS",
-        line: "What your teams do day to day: sales, content, social, support, hiring.",
-        points: ["Usable by someone who was not in the conversation — a new hire, an agency", "The disqualifying trait when hiring, the line never to cross in support, the format you can sustain", "Five separate playbooks, one per function — not one generic document trying to cover everything"],
+        line: "What your teams do day to day: marketing, content, social, sales, support, HR.",
+        points: ["Usable by someone who was not in the conversation — a new hire, an agency", "The disqualifying trait when hiring, the line never to cross in support, the format you can sustain", "Six separate playbooks, one per department — not one generic document trying to cover everything"],
         href: "/marques-entreprises",
       },
       {

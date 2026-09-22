@@ -1,48 +1,53 @@
-# Strawberry — la tournée enrichie
+# Strawberry — trois vraies fautes, corrigées
 
-1 fichier.
+3 fichiers. Vous aviez raison sur les trois points.
 
-## Ce qui manquait
+## 1. Le sens du curseur était inversé
 
-Chaque pièce avait deux points — un sur ce qu'elle contient, un sur ce
-qu'elle couvre. Suffisant pour donner envie, pas pour se suffire à
-soi-même comme vous le vouliez.
+Le calcul du `clip-path` révélait « Aujourd'hui » sur la partie gauche du
+curseur, et laissait « Hier » visible à droite — l'inverse du sens de
+lecture. J'ai interverti les deux couches (celle du dessous, toujours
+pleine largeur, et celle du dessus, découpée) sans toucher à la formule de
+découpe elle-même. Hier est maintenant à gauche, Aujourd'hui à droite,
+comme il se doit.
 
-## Le troisième point, par pièce
+## 2. Le design de la méthode n'était pas repris
 
-Chacun ajoute un détail concret qui existe réellement dans le document
-livré — rien d'inventé pour l'occasion :
+J'avais remplacé les cinq icônes dessinées à la main — un tracé SVG par
+lettre, S/T/R/A/W — par une simple lettre en gros caractères. Une
+facilité, et vous aviez raison de vous en agacer.
 
-- **La plateforme** — les trois partis pris écrits en refus
-- **Le diagnostic** — ce que vous avez dit d'évident dans le questionnaire
-  et qui n'apparaît nulle part dans vos propres supports
-- **La carte** — ce qui est structurellement indisponible à vos
-  concurrents, ce qu'ils ne pourraient pas copier même s'ils le voulaient
-- **Les décisions** — le premier mouvement, celui qui rend les autres
-  possibles
-- **Les playbooks** — cinq documents distincts, un par fonction, pas un
-  seul document générique
-- **Le langage** — le bloc à coller dans un modèle de langage pour qu'il
-  écrive dans votre voix
+**Je suis allé chercher les tracés originaux** dans l'historique du dépôt
+et je les ai recopiés tels quels dans la nouvelle section.
 
-## Ce que je n'ai pas touché, et pourquoi je le signale
+**Ce que je n'ai délibérément pas fait :** charger la feuille de style
+d'origine (`nocta/styles.css`) pour récupérer le reste de la mise en
+page. Je l'ai vérifié avant d'agir : dix-huit classes sont communes entre
+cette feuille et celle du site moderne, dont `.tour-scene`, `.tour-pin` et
+`.ts-k` — exactement les classes de la tournée qui vit juste au-dessus
+sur cette même page. La charger aurait cassé la tournée pour récupérer la
+méthode. J'ai donc repris les icônes, la seule chose vraiment
+distinctive, dans le système actuel du site plutôt que d'importer un
+fichier qui aurait tout cassé ailleurs.
 
-En cherchant comment enrichir la tournée, j'ai relu `OffersSection` en
-entier — la partie « groupes de livrables » qui suit le paragraphe
-principal. **Elle décrit encore l'ancienne offre à quatorze pièces et
-plus** : « biography system », « investor and partner translation »,
-« origin manifesto », « coherence guide » — du contenu qui n'existe plus
-dans le document réel depuis la refonte du workflow Make, il y a
-plusieurs patches.
+## 3. La tournée n'avait pas tout repris de votre capture
 
-Ce n'est pas ce que vous m'avez demandé de faire aujourd'hui, donc je n'y
-ai pas touché. Mais c'est plus grave qu'une coquille de texte : le site
-promet actuellement des livrables qui n'existent plus. Dites-moi si je
-m'y attaque.
+Votre capture montrait six départements — Marketing, Contenu, Réseaux,
+Vente, Support, RH. La pièce 05 de la tournée en citait cinq, sous des
+noms légèrement différents (vente, contenu, réseaux, support,
+recrutement). Corrigé pour citer les six mêmes noms que ce qui est
+actuellement affiché sur le site.
+
+**Un point que je dois vous signaler**, plutôt que de trancher seul en
+silence : ce chiffre de six vient de la partie « groupes de livrables »
+de l'offre, que je vous ai signalée hier comme obsolète — construite pour
+l'ancienne offre à quatorze pièces et plus. Le workflow Make réellement
+utilisé aujourd'hui ne produit que trois documents de playbooks (vente et
+prix, présence, recrutement et tenue), pas six. J'ai aligné la tournée sur
+ce qui est visible aujourd'hui sur le site plutôt que d'inventer un
+quatrième chiffre — mais les trois se contredisent, et un seul devrait
+survivre. Dites-moi lequel.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Les douze scènes (six pièces × deux
-langues) comptent chacune trois points, confirmé par comptage
-automatique. Le CSS des puces (`.ts-points`) utilise une grille souple
-sans hauteur fixe : le troisième point s'ajoute sans rien casser.
+Contrôle de types : zéro erreur.

@@ -269,28 +269,30 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             className="relative h-[220px] cursor-ew-resize select-none overflow-hidden sm:h-[260px]"
             style={{ opacity: splitVisible ? 1 : 0, transition: "opacity 700ms ease" }}
           >
-            {/* La couche du dessous : « Hier », désaturée, pleine largeur. */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]">
-              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
-                {t.diagramBefore}
-              </div>
-              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
-                {t.splitBefore}
-              </p>
-            </div>
-
-            {/* La couche du dessus : « Aujourd'hui », révélée jusqu'à `pct`
-                via clip-path — le texte ne se déplace pas, seule la fenêtre
-                qui le découvre bouge. */}
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center"
-              style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
-            >
+            {/* La couche du dessous : « Aujourd'hui », pleine largeur — elle
+                se révèle à mesure que le curseur avance vers la droite. */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center">
               <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
                 {t.diagramAfter}
               </div>
               <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
                 {t.splitAfter}
+              </p>
+            </div>
+
+            {/* La couche du dessus : « Hier », désaturée, découpée jusqu'à
+                `pct` — à gauche, comme le sens de lecture le veut : hier
+                avant aujourd'hui. Le texte ne se déplace pas, seule la
+                fenêtre qui le découvre bouge. */}
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]"
+              style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
+            >
+              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
+                {t.diagramBefore}
+              </div>
+              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
+                {t.splitBefore}
               </p>
             </div>
 
