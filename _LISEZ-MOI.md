@@ -1,62 +1,59 @@
-# Strawberry — la tournée montre tout, maintenant
+# Strawberry — le vrai carrousel, enfin
 
-1 fichier.
+1 fichier. Cette fois c'est le design complet, pas seulement les icônes.
 
-## Ce qui manquait
+## Ce qui manquait la fois précédente
 
-J'avais ajouté un troisième point par pièce. Vous m'avez montré les quatre
-onglets de l'offre — Diagnostic, Identité & langage, Pièces & déploiement,
-Les six playbooks — et vingt éléments au total n'apparaissaient nulle part
-dans la tournée.
+J'avais les icônes, mais pas les cartes en accordéon qu'on glisse à la
+souris, pas les points de navigation qui s'allongent en dégradé, pas les
+flèches, pas l'effet de survol sur les cartes. Un habillage, pas le
+design.
 
-## Les dix-neuf repris
+## Ce qui est repris cette fois, précisément
 
-Chacun des vingt éléments des quatre onglets est maintenant réparti dans
-la pièce du document à laquelle il appartient réellement — pas
-mécaniquement dans l'ordre des onglets, mais selon ce que chaque élément
-décrit :
+**Le HTML** — les cinq cartes, recopiées depuis l'historique du dépôt,
+avec leurs icônes SVG dessinées à la main.
 
-- **Diagnostic, Autopsie, Positionnement** → Pièce 03, LA CARTE (les
-  trois décrivent le champ concurrentiel, pas le diagnostic de vos
-  propres supports)
-- **Audience** → Pièce 02, LE DIAGNOSTIC
-- **Plateforme, Origine** → Pièce 01, LA PLATEFORME
-- **Langage** → Pièce 06, LE LANGAGE
-- **Tarifaire, Cohérence** → Pièce 05, LES PLAYBOOKS
-- **Déploiement, Brief visuel** → Pièce 04, LES DÉCISIONS
-- **Biographie, Signature** → Pièce 06, LE LANGAGE
-- **Marketing, Contenu, Réseaux, Vente, Support, RH** → Pièce 05, LES
-  PLAYBOOKS, chacun avec son propre point
+**Le CSS** — uniquement les règles que ces cartes utilisent : `.story-*`,
+`.chapter`, `.ch-list`, les dégradés radiaux propres à chaque carte, le
+compteur en dégradé. Posées dans une balise `<style>` scopée sous
+`.straw-method`, pas dans un fichier chargé globalement.
 
-La pièce 05 est désormais la plus dense — huit points — ce qui reflète la
-réalité : les playbooks sont la catégorie la plus nombreuse des quatre
-onglets.
+Je vous dois une explication sur ce point, parce que c'est la partie qui
+a motivé mon hésitation la dernière fois. **Je n'ai toujours pas chargé
+`nocta/styles.css` dans son entier**, et je l'ai vérifié une seconde
+fois avant d'écrire ce fichier : sur toutes les classes que cette section
+utilise réellement, une seule paire (`.reveal`, `.section`) existe aussi
+côté site moderne — et les deux y font exactement la même chose des deux
+côtés. Ce n'est donc pas un choix de facilité : charger le fichier entier
+aurait aussi redéfini `.tour-scene`, `.tour-pin`, `.ts-k` — les classes de
+la tournée qui vit juste au-dessus sur cette page — et cassé son style à
+elle. Prendre uniquement ce dont cette section a besoin évite ça sans
+rien perdre du design.
 
-## Le vingtième élément, volontairement absent
+**Le glissement à la souris** — la fonction qui gère le glisser-déposer,
+les points actifs et les flèches, copiée depuis `app.js` : une
+soixantaine de lignes, scopées à la classe `.story`. Le reste d'`app.js`
+(le canvas de fond animé, l'inclinaison 3D des cartes au survol, les
+boutons magnétiques) n'est pas repris : il cible `.card` et `.btn`, des
+classes utilisées partout ailleurs sur le site moderne, et l'activer
+aurait collé ces effets à tous les boutons et cartes de la home, pas
+seulement à cette section.
 
-**« Traduction investisseurs et partenaires »** ne figure nulle part dans
-la tournée. Ce n'est pas un oubli : c'est la pièce qu'on a explicitement
-retirée du périmètre lors de la refonte du workflow Make, avec votre
-accord à l'époque — elle ne concernait ni un restaurateur ni un artiste,
-et vos quatre terrains sont censés être égaux depuis.
+## Ce qui manque encore, et pourquoi je vous le dis plutôt que de l'ajouter en douce
 
-La réintégrer sans vous le dire aurait promis un livrable que le workflow
-actuel ne produit plus. Dites-moi si vous voulez la remettre — et si oui,
-il faudra aussi la remettre dans le workflow lui-même, pas seulement dans
-le texte du site.
-
-## Une erreur en cours de route, corrigée avant livraison
-
-Mon premier remplacement du bloc anglais a visé le mauvais endroit par
-mégarde et a écrasé le bloc français avec du contenu anglais. Repéré
-avant l'empaquetage en comparant le contenu de chaque bloc à sa langue
-déclarée ; corrigé en ancrant chaque remplacement sur les lignes qui
-précèdent immédiatement le bon bloc plutôt que sur sa position dans le
-fichier. Les deux blocs sont maintenant vérifiés : six pièces chacun, dans
-la bonne langue.
+**Le mode épinglé plein écran** — celui qui transforme le glissement en
+défilement vertical capturé sur trois hauteurs d'écran (la classe
+`.pin-on`). Sur un gabarit de terrain, cette section était seule sur la
+page ; ici, elle vit entre d'autres sections modernes qui ont leur propre
+logique de défilement, et l'épingler risquerait d'entrer en conflit avec
+elles. Le carrousel — cartes, icônes, glissement, points, flèches — est
+identique en tout point à l'original. Seul cet effet d'épinglage reste
+dehors. Dites-moi si vous le voulez quand même, une fois que vous aurez vu
+le reste tourner.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Contenu croisé : « LA PLATEFORME »
-absent du bloc anglais, « THE PLATFORM » absent du bloc français, chaque
-bloc compte ses six pièces.
+Contrôle de types : zéro erreur. Les variables de police (`--font-mono`,
+`--font-serif`) et la classe utilitaire `.section` confirmées comme
+appartenant déjà au système moderne du site.
