@@ -59,47 +59,36 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><!-- ============ CAS RÉELS ============ -->
 <section class="section">
 <style>
-  /* Cette section a sa propre signature de mouvement — pas le fondu
-     générique .reveal que porte tout le reste de la page. Le chiffre
-     fantôme, le trait qui se trace et le refus qui se dévoile se
-     déclenchent tous sur le même bascule .shown qu'app.js pose déjà,
-     donc rien de nouveau à câbler : seules ces règles sont neuves. */
-  .case-row{ position:relative; overflow:hidden; }
-  .case-num{
-    position:absolute; left:clamp(-1rem,-1vw,0rem); top:50%;
-    font-family:var(--display); font-weight:700;
-    font-size:clamp(6rem,13vw,10.5rem); line-height:1;
-    color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.09);
-    pointer-events:none; z-index:0; user-select:none;
-    opacity:0; transform:translateY(-50%) scale(.94);
-    transition:opacity 1.15s var(--ease), transform 1.15s var(--ease);
-  }
-  .case-row.shown .case-num{ opacity:1; transform:translateY(-50%) scale(1); }
-  .case-name-wrap{ position:relative; z-index:1; }
-  .case-rule{ width:0; height:1px; background:var(--coral); margin-top:.55rem;
-    transition:width .9s var(--ease) .2s; }
+  /* Le chiffre géant en fond flottait tout seul dans le vide — sa
+     position centrée verticalement contre toute la hauteur de la ligne
+     l'éloignait du texte dès que le paragraphe était long. Le numéro est
+     désormais en ligne, collé au nom, jamais isolé. Le refus se dévoile
+     toujours par un rideau qui se retire ; le paragraphe s'ouvre sur une
+     lettrine, un vrai procédé éditorial plutôt qu'une astuce de position.
+     Tout se déclenche sur le même bascule .shown qu'app.js pose déjà. */
+  .case-row{ position:relative; }
+  .case-kicker{ display:flex; align-items:baseline; gap:.6rem; }
+  .case-kicker .n{ font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral); }
+  .case-rule{ width:0; height:1px; background:var(--coral); margin-top:.6rem;
+    transition:width .9s var(--ease) .15s; }
   .case-row.shown .case-rule{ width:2.2rem; }
   .case-pull{
-    position:relative; z-index:1;
     clip-path:inset(0 100% 0 0);
-    transition:clip-path 1.05s var(--ease) .3s;
+    transition:clip-path 1.05s var(--ease) .25s;
   }
   .case-row.shown .case-pull{ clip-path:inset(0 0 0 0); }
-  .case-body{ position:relative; z-index:1; opacity:0; transform:translateY(14px);
-    transition:opacity .9s var(--ease) .6s, transform .9s var(--ease) .6s; }
+  .case-body{ opacity:0; transform:translateY(14px);
+    transition:opacity .9s var(--ease) .55s, transform .9s var(--ease) .55s; }
   .case-row.shown .case-body{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){
-    .case-num, .case-rule, .case-pull, .case-body{ transition:none!important; opacity:1!important; transform:none!important; clip-path:none!important; width:auto!important; }
+  .case-body::first-letter{
+    font-family:var(--display); font-weight:700; font-size:3.1em; line-height:.78;
+    float:left; margin:.03em .1em 0 0; color:var(--cream);
   }
-  /* Les lignes sont en style en ligne (grid-template-columns), qui prime
-     sur une règle de classe ordinaire — d'où le !important ici, pour que
-     la colonne de 170 à 240px ne se retrouve pas écrasée à côté du texte
-     sur un téléphone. Le chiffre fantôme, positionné en absolu, est
-     retiré plutôt que redimensionné : à cette largeur, il ne ferait que
-     passer sur le texte. */
+  @media (prefers-reduced-motion: reduce){
+    .case-rule, .case-pull, .case-body{ transition:none!important; opacity:1!important; transform:none!important; clip-path:none!important; width:auto!important; }
+  }
   @media (max-width:640px){
     .case-row{ grid-template-columns:1fr!important; gap:.9rem!important; }
-    .case-num{ display:none; }
   }
 </style>
 <div class="wrap">
@@ -110,36 +99,33 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </div>
 <div style="display:grid; gap:0">
 <div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft)">
-<span class="case-num" aria-hidden="true">01</span>
-<div class="case-name-wrap">
-<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span>
+<div>
+<div class="case-kicker"><span class="n">01</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span></div>
 <div class="case-rule"></div>
 </div>
 <div>
-<p class="case-pull" style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.1.pull">Ce qu'elle a refusé.</p>
-<p class="case-body body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.1.body">Le développement du cas.</p>
+<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.1.pull">Ce qu'elle a refusé.</p>
+<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.1.body">Le développement du cas.</p>
 </div>
 </div>
 <div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft)">
-<span class="case-num" aria-hidden="true">02</span>
-<div class="case-name-wrap">
-<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span>
+<div>
+<div class="case-kicker"><span class="n">02</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span></div>
 <div class="case-rule"></div>
 </div>
 <div>
-<p class="case-pull" style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.2.pull">Ce qu'elle a refusé.</p>
-<p class="case-body body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.2.body">Le développement du cas.</p>
+<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.2.pull">Ce qu'elle a refusé.</p>
+<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.2.body">Le développement du cas.</p>
 </div>
 </div>
 <div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)">
-<span class="case-num" aria-hidden="true">03</span>
-<div class="case-name-wrap">
-<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span>
+<div>
+<div class="case-kicker"><span class="n">03</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span></div>
 <div class="case-rule"></div>
 </div>
 <div>
-<p class="case-pull" style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.3.pull">Ce qu'elle a refusé.</p>
-<p class="case-body body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.3.body">Le développement du cas.</p>
+<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.3.pull">Ce qu'elle a refusé.</p>
+<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.3.body">Le développement du cas.</p>
 </div>
 </div>
 </div>
