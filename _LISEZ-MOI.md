@@ -1,53 +1,62 @@
-# Strawberry — trois vraies fautes, corrigées
+# Strawberry — la tournée montre tout, maintenant
 
-3 fichiers. Vous aviez raison sur les trois points.
+1 fichier.
 
-## 1. Le sens du curseur était inversé
+## Ce qui manquait
 
-Le calcul du `clip-path` révélait « Aujourd'hui » sur la partie gauche du
-curseur, et laissait « Hier » visible à droite — l'inverse du sens de
-lecture. J'ai interverti les deux couches (celle du dessous, toujours
-pleine largeur, et celle du dessus, découpée) sans toucher à la formule de
-découpe elle-même. Hier est maintenant à gauche, Aujourd'hui à droite,
-comme il se doit.
+J'avais ajouté un troisième point par pièce. Vous m'avez montré les quatre
+onglets de l'offre — Diagnostic, Identité & langage, Pièces & déploiement,
+Les six playbooks — et vingt éléments au total n'apparaissaient nulle part
+dans la tournée.
 
-## 2. Le design de la méthode n'était pas repris
+## Les dix-neuf repris
 
-J'avais remplacé les cinq icônes dessinées à la main — un tracé SVG par
-lettre, S/T/R/A/W — par une simple lettre en gros caractères. Une
-facilité, et vous aviez raison de vous en agacer.
+Chacun des vingt éléments des quatre onglets est maintenant réparti dans
+la pièce du document à laquelle il appartient réellement — pas
+mécaniquement dans l'ordre des onglets, mais selon ce que chaque élément
+décrit :
 
-**Je suis allé chercher les tracés originaux** dans l'historique du dépôt
-et je les ai recopiés tels quels dans la nouvelle section.
+- **Diagnostic, Autopsie, Positionnement** → Pièce 03, LA CARTE (les
+  trois décrivent le champ concurrentiel, pas le diagnostic de vos
+  propres supports)
+- **Audience** → Pièce 02, LE DIAGNOSTIC
+- **Plateforme, Origine** → Pièce 01, LA PLATEFORME
+- **Langage** → Pièce 06, LE LANGAGE
+- **Tarifaire, Cohérence** → Pièce 05, LES PLAYBOOKS
+- **Déploiement, Brief visuel** → Pièce 04, LES DÉCISIONS
+- **Biographie, Signature** → Pièce 06, LE LANGAGE
+- **Marketing, Contenu, Réseaux, Vente, Support, RH** → Pièce 05, LES
+  PLAYBOOKS, chacun avec son propre point
 
-**Ce que je n'ai délibérément pas fait :** charger la feuille de style
-d'origine (`nocta/styles.css`) pour récupérer le reste de la mise en
-page. Je l'ai vérifié avant d'agir : dix-huit classes sont communes entre
-cette feuille et celle du site moderne, dont `.tour-scene`, `.tour-pin` et
-`.ts-k` — exactement les classes de la tournée qui vit juste au-dessus
-sur cette même page. La charger aurait cassé la tournée pour récupérer la
-méthode. J'ai donc repris les icônes, la seule chose vraiment
-distinctive, dans le système actuel du site plutôt que d'importer un
-fichier qui aurait tout cassé ailleurs.
+La pièce 05 est désormais la plus dense — huit points — ce qui reflète la
+réalité : les playbooks sont la catégorie la plus nombreuse des quatre
+onglets.
 
-## 3. La tournée n'avait pas tout repris de votre capture
+## Le vingtième élément, volontairement absent
 
-Votre capture montrait six départements — Marketing, Contenu, Réseaux,
-Vente, Support, RH. La pièce 05 de la tournée en citait cinq, sous des
-noms légèrement différents (vente, contenu, réseaux, support,
-recrutement). Corrigé pour citer les six mêmes noms que ce qui est
-actuellement affiché sur le site.
+**« Traduction investisseurs et partenaires »** ne figure nulle part dans
+la tournée. Ce n'est pas un oubli : c'est la pièce qu'on a explicitement
+retirée du périmètre lors de la refonte du workflow Make, avec votre
+accord à l'époque — elle ne concernait ni un restaurateur ni un artiste,
+et vos quatre terrains sont censés être égaux depuis.
 
-**Un point que je dois vous signaler**, plutôt que de trancher seul en
-silence : ce chiffre de six vient de la partie « groupes de livrables »
-de l'offre, que je vous ai signalée hier comme obsolète — construite pour
-l'ancienne offre à quatorze pièces et plus. Le workflow Make réellement
-utilisé aujourd'hui ne produit que trois documents de playbooks (vente et
-prix, présence, recrutement et tenue), pas six. J'ai aligné la tournée sur
-ce qui est visible aujourd'hui sur le site plutôt que d'inventer un
-quatrième chiffre — mais les trois se contredisent, et un seul devrait
-survivre. Dites-moi lequel.
+La réintégrer sans vous le dire aurait promis un livrable que le workflow
+actuel ne produit plus. Dites-moi si vous voulez la remettre — et si oui,
+il faudra aussi la remettre dans le workflow lui-même, pas seulement dans
+le texte du site.
+
+## Une erreur en cours de route, corrigée avant livraison
+
+Mon premier remplacement du bloc anglais a visé le mauvais endroit par
+mégarde et a écrasé le bloc français avec du contenu anglais. Repéré
+avant l'empaquetage en comparant le contenu de chaque bloc à sa langue
+déclarée ; corrigé en ancrant chaque remplacement sur les lignes qui
+précèdent immédiatement le bon bloc plutôt que sur sa position dans le
+fichier. Les deux blocs sont maintenant vérifiés : six pièces chacun, dans
+la bonne langue.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur. Contenu croisé : « LA PLATEFORME »
+absent du bloc anglais, « THE PLATFORM » absent du bloc français, chaque
+bloc compte ses six pièces.
