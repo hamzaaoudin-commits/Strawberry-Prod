@@ -1,54 +1,47 @@
-# Strawberry — un cas à la fois, développé pour de vrai
+# Strawberry — une vraie signature de mouvement, pas le fondu générique
 
-5 fichiers. Cette fois j'ai traité la vraie demande, pas un symptôme de
-surface.
+1 fichier.
 
-## Ce que j'avais mal compris
+## Ce que je reprends
 
-Vous ne parliez pas du style de la carte — vous parliez de la structure.
-Trois exemples côte à côte, même bien dessinés, forcent à choisir où
-regarder en premier et ne laissent la place que pour une phrase par
-idée. Personne ne comprend un mécanisme en une phrase.
+Vous aviez raison : le fondu `.reveal` que je réutilisais est celui de
+*toute* la page — chapitres, cartes, stats, tout. Rien ne distinguait
+cette section, censée convaincre par l'exemple, du reste du défilement.
 
-## Ce qui change
+## Trois mouvements propres à cette section, séquencés
 
-**Plus de colonnes côte à côte.** Chaque cas occupe maintenant toute la
-largeur, l'un après l'autre, séparé par un simple filet horizontal — le
-nom de la maison à gauche, tout le développement à droite.
+Les trois se déclenchent sur le même bascule que le fondu générique
+(`.shown`, posé par le script déjà en place) — rien de nouveau à câbler,
+seulement des règles plus riches accrochées au même signal.
 
-**Un vrai paragraphe, pas trois fragments.** Nike sur la page marques,
-par exemple, passe de trois bouts de phrase à quatre-vingt-dix mots qui
-expliquent le mécanisme dans l'ordre : ce que tout le monde faisait à
-l'époque, ce que Nike a fait à la place, pourquoi c'était risqué, et
-pourquoi ça continue de payer quarante ans plus tard :
+**Un chiffre fantôme géant** — 01, 02, 03 — en contour seul, presque
+invisible, derrière le nom de chaque maison. Il grossit et s'éclaircit
+légèrement en entrant, un mouvement propre à lui, plus lent que le reste.
 
-> Dans les années 1980, l'argument publicitaire du sport était
-> technique — amorti, respirabilité, poids de la semelle. « Just Do It »
-> ne décrit aucune caractéristique produit : c'est une conviction sur ce
-> que ça fait de dépasser sa propre limite, adressée à quiconque bouge,
-> pas seulement aux athlètes. Le pari était risqué — abandonner
-> l'argument rationnel que la concurrence maîtrisait, pour un territoire
-> qu'aucune fiche technique ne peut prouver. Près de quarante ans plus
-> tard, la marque n'a jamais eu besoin de changer ce message pour rester
-> pertinente, parce qu'il ne parlait jamais du produit lui-même.
+**Un trait qui se trace** sous le nom de la maison, de zéro à sa largeur
+finale — pas une apparition, un geste.
 
-Les douze cas suivent ce même travail : nommer la norme du secteur, dire
-ce qui a été refusé, nommer le risque réel pris, puis montrer l'effet
-qui dure encore aujourd'hui. C'est ce dernier point qui manquait le
-plus : sans lui, un refus reste une anecdote ; avec lui, c'est une
-démonstration.
+**Le refus se dévoile plutôt qu'il n'apparaît.** La phrase en gras est
+masquée par une languette qui se retire de gauche à droite sur un peu
+plus d'une seconde — l'effet d'un rideau qu'on ouvre, pas d'un fondu.
 
-## Une erreur de syntaxe trouvée au contrôle
+**Le paragraphe arrive après**, avec son propre délai, une fois que le
+refus a fini de se révéler — pour qu'on lise dans l'ordre voulu plutôt
+que tout en même temps.
 
-La version anglaise du cas Nike citait *"Just Do It"* avec des guillemets
-droits non échappés à l'intérieur d'une chaîne elle-même entre
-guillemets — une faute de syntaxe qui aurait empêché la page de
-compiler. Le contrôle de types l'a signalée avant l'empaquetage plutôt
-qu'après ; corrigée par échappement, et vérifiée sur l'occurrence
-équivalente chez Nobu qui utilisait le même motif.
+## Le mobile, vérifié avant livraison
+
+Ces lignes utilisent des styles en ligne pour leur grille, qui priment
+sur une règle de classe ordinaire — j'ai donc dû forcer la bascule en une
+colonne sous 640px avec `!important`, sans quoi la colonne de 170 à
+240 px se serait retrouvée écrasée à côté du texte sur un téléphone. Le
+chiffre fantôme est retiré à cette largeur plutôt que redimensionné : il
+ne ferait que passer sur le texte.
+
+Et pour qui préfère moins d'animation : tout s'affiche directement, sans
+transition, si le système le demande.
 
 ## Vérification
 
-Contrôle de types : zéro erreur, après correction. Toutes les clés du
-gabarit confirmées présentes dans le dictionnaire. Aucun résidu de
-l'ancienne structure en trois fragments (`refuse`/`risk`/`win`).
+Contrôle de types : zéro erreur. Toutes les clés du gabarit confirmées
+présentes dans le dictionnaire.
