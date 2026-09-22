@@ -113,7 +113,7 @@ const T = {
   fr: {
     eyebrow: "L'Architecture · la méthode S.T.R.A.W.",
     title: "On lit, on compare, on tranche.",
-    hint: "Faites glisser",
+    hint: "Faites défiler",
     steps: [
       {
         t: "Nous venons chez vous.",
@@ -145,7 +145,7 @@ const T = {
   en: {
     eyebrow: "The Architecture · the S.T.R.A.W. method",
     title: "We read, we compare, we settle.",
-    hint: "Drag",
+    hint: "Scroll",
     steps: [
       {
         t: "We come to you.",
@@ -179,16 +179,71 @@ const T = {
 export function MethodSection({ lang }: { lang: Lang }) {
   const t = pick(T, lang)
   const rootRef = useRef<HTMLDivElement | null>(null)
+  const pinRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const root = rootRef.current
-    if (!root) return
+    const pin = pinRef.current
+    if (!root || !pin) return
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const canPin = !reduce && window.innerWidth >= 900
+
+    // L'épinglage : le même moteur que la tournée juste au-dessus — un
+    // conteneur surdimensionné (300vh) dont l'intérieur reste collé à
+    // l'écran, la position dans ces 300vh pilote une translation
+    // horizontale de la piste. On ne lit que `window.scrollY` à chaque
+    // image, on n'écrit qu'un `transform` : aucun recalcul de mise en
+    // page pendant le défilement, donc aucun à-coup.
+    let cleanupPin = () => {}
+    if (canPin) {
+      pin.classList.add("pin-on")
+      const track = pin.querySelector<HTMLElement>(".story-track")
+      if (track) {
+        let ticking = false
+        let geo = { top: 0, height: 0, vh: 0, max: 0 }
+        const measure = () => {
+          const r = pin.getBoundingClientRect()
+          const max = Math.max(0, track.scrollWidth - track.clientWidth)
+          geo = { top: r.top + window.scrollY, height: r.height, vh: window.innerHeight, max }
+        }
+        const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v)
+        const run = () => {
+          ticking = false
+          const span = Math.max(1, geo.height - geo.vh)
+          const p = clamp01((window.scrollY - geo.top) / span)
+          track.style.transform = `translate3d(${-p * geo.max}px,0,0)`
+        }
+        const onScroll = () => {
+          if (!ticking) {
+            ticking = true
+            requestAnimationFrame(run)
+          }
+        }
+        const onResize = () => {
+          measure()
+          run()
+        }
+        track.style.willChange = "transform"
+        measure()
+        run()
+        window.addEventListener("scroll", onScroll, { passive: true })
+        window.addEventListener("resize", onResize)
+        document.fonts?.ready.then(onResize).catch(() => {})
+        cleanupPin = () => {
+          window.removeEventListener("scroll", onScroll)
+          window.removeEventListener("resize", onResize)
+          pin.classList.remove("pin-on")
+          track.style.transform = ""
+        }
+      }
+    }
 
     // Le glissement, les points, les flèches — copiés d'app.js, scopés au
-    // conteneur de CETTE section plutôt qu'à tout le document : même à
-    // l'identique, une requête document-wide aurait pu, un jour, croiser
-    // un autre `.story` ajouté ailleurs sur le site.
+    // conteneur de CETTE section plutôt qu'à tout le document. Repli pour
+    // le mobile et les écrans étroits, là où l'épinglage est désactivé :
+    // exactement la même règle que l'original, qui ne câble le glisser
+    // qu'en dehors du mode épinglé de bureau.
+    if (!canPin)
     root.querySelectorAll<HTMLElement>(".story").forEach((story) => {
       const track = story.querySelector<HTMLElement>(".story-track")
       if (!track) return
@@ -270,6 +325,8 @@ export function MethodSection({ lang }: { lang: Lang }) {
         true,
       )
     })
+
+    return () => cleanupPin()
   }, [lang])
 
   return (
@@ -314,6 +371,18 @@ export function MethodSection({ lang }: { lang: Lang }) {
         .straw-method .chapter h3{ position:relative; font-family:var(--font-serif); font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.7rem,4.6vw,2.9rem); line-height:1.02; margin-top:auto; }
         .straw-method .chapter p{ position:relative; color:var(--smoke); margin-top:1.1rem; max-width:42ch; font-size:1.05rem; }
         .straw-method .story-nav{ display:flex; align-items:center; justify-content:space-between; margin-top:1.4rem; gap:1rem; }
+        /* Le mode épinglé (classe .pin-on posée par le JS sur .story-pin) :
+           un conteneur surdimensionné à 300vh — la même valeur que
+           l'original — dont l'intérieur reste collé à l'écran pendant
+           qu'on le traverse ; la piste ne défile plus au clic-glisser,
+           elle est translatée horizontalement par le scroll. */
+        .straw-method .story-pin.pin-on{ height:300vh; }
+        .straw-method .story-pin.pin-on .story-sticky{ position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+        .straw-method .story-pin.pin-on .story-track{ overflow:visible; cursor:default; padding-bottom:0; scroll-snap-type:none; }
+        .straw-method .story-pin.pin-on .chapter{ flex:0 0 min(600px,54vw); }
+        .straw-method .story-pin.pin-on .story-arrows{ display:none; }
+        .straw-method .story-pin.pin-on .story-hint .sw{ transform:rotate(90deg); animation:straw-swish-y 1.8s var(--ease) infinite; }
+        @keyframes straw-swish-y{ 0%,100%{transform:rotate(90deg) translateX(0)} 50%{transform:rotate(90deg) translateX(6px)} }
         .straw-method .story-dots{ display:flex; gap:.5rem; align-items:center; }
         .straw-method .story-dot{ width:8px; height:8px; border-radius:50%; background:var(--line); border:0; padding:0; cursor:pointer; transition:width .35s var(--ease), background .35s; }
         .straw-method .story-dot.active{ background:var(--grad); width:26px; border-radius:100px; }
@@ -336,49 +405,53 @@ export function MethodSection({ lang }: { lang: Lang }) {
         .straw-method .chapter .art .fl2{ fill:var(--iris-soft); }
       `}</style>
 
-      <div className="wrap story">
-        <div className="story-head">
-          <div>
-            <span className="eyebrow">{t.eyebrow}</span>
-            <h2 className="h-sec" style={{ marginTop: "1.1rem" }}>
-              {t.title}
-            </h2>
-          </div>
-          <span className="story-hint">
-            {t.hint}
-            <span aria-hidden="true" className="sw">
-              →
-            </span>
-          </span>
-        </div>
+      <div ref={pinRef} className="story-pin">
+        <div className="story-sticky">
+          <div className="wrap story">
+            <div className="story-head">
+              <div>
+                <span className="eyebrow">{t.eyebrow}</span>
+                <h2 className="h-sec" style={{ marginTop: "1.1rem" }}>
+                  {t.title}
+                </h2>
+              </div>
+              <span className="story-hint">
+                {t.hint}
+                <span aria-hidden="true" className="sw">
+                  →
+                </span>
+              </span>
+            </div>
 
-        <div className="story-track">
-          {t.steps.map((s, i) => (
-            <article className="chapter" key={s.t}>
-              <svg aria-hidden="true" className="art" viewBox="0 0 120 120">
-                {STEPS[i].icon}
-              </svg>
-              <span className="idx">{STEPS[i].i}</span>
-              <h3>{s.t}</h3>
-              <p>{s.d}</p>
-              <ul className="ch-list">
-                {s.b.map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+            <div className="story-track">
+              {t.steps.map((s, i) => (
+                <article className="chapter" key={s.t}>
+                  <svg aria-hidden="true" className="art" viewBox="0 0 120 120">
+                    {STEPS[i].icon}
+                  </svg>
+                  <span className="idx">{STEPS[i].i}</span>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
+                  <ul className="ch-list">
+                    {s.b.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
 
-        <div className="story-nav">
-          <div className="story-dots" />
-          <div className="story-arrows">
-            <button aria-label="Précédent" className="story-arrow" data-story="prev">
-              ←
-            </button>
-            <button aria-label="Suivant" className="story-arrow" data-story="next">
-              →
-            </button>
+            <div className="story-nav">
+              <div className="story-dots" />
+              <div className="story-arrows">
+                <button aria-label="Précédent" className="story-arrow" data-story="prev">
+                  ←
+                </button>
+                <button aria-label="Suivant" className="story-arrow" data-story="next">
+                  →
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
