@@ -1,53 +1,54 @@
-# Strawberry — les trois maisons, redessinées
+# Strawberry — un cas à la fois, développé pour de vrai
 
-5 fichiers.
+5 fichiers. Cette fois j'ai traité la vraie demande, pas un symptôme de
+surface.
 
-## Ce qui rendait ça plat
+## Ce que j'avais mal compris
 
-Un paragraphe uniforme, même graisse du début à la fin, aucune ligne qui
-accroche l'œil. Le refus, le coût et le résultat se noyaient dans le même
-bloc de texte gris.
+Vous ne parliez pas du style de la carte — vous parliez de la structure.
+Trois exemples côte à côte, même bien dessinés, forcent à choisir où
+regarder en premier et ne laissent la place que pour une phrase par
+idée. Personne ne comprend un mécanisme en une phrase.
 
-## La nouvelle structure, en trois temps visuels
+## Ce qui change
 
-**Le nom de la maison** en petit, espacé, discret — un repère, pas un
-titre.
+**Plus de colonnes côte à côte.** Chaque cas occupe maintenant toute la
+largeur, l'un après l'autre, séparé par un simple filet horizontal — le
+nom de la maison à gauche, tout le développement à droite.
 
-**Le refus**, seul, en gros caractères, en blanc plein — c'est la phrase
-qu'on doit pouvoir lire en diagonale et retenir. Une bordure rouge sur le
-côté gauche de la carte le signale avant même qu'on ait commencé à lire.
+**Un vrai paragraphe, pas trois fragments.** Nike sur la page marques,
+par exemple, passe de trois bouts de phrase à quatre-vingt-dix mots qui
+expliquent le mécanisme dans l'ordre : ce que tout le monde faisait à
+l'époque, ce que Nike a fait à la place, pourquoi c'était risqué, et
+pourquoi ça continue de payer quarante ans plus tard :
 
-**Puis, séparés par un filet, deux lignes étiquetées :**
+> Dans les années 1980, l'argument publicitaire du sport était
+> technique — amorti, respirabilité, poids de la semelle. « Just Do It »
+> ne décrit aucune caractéristique produit : c'est une conviction sur ce
+> que ça fait de dépasser sa propre limite, adressée à quiconque bouge,
+> pas seulement aux athlètes. Le pari était risqué — abandonner
+> l'argument rationnel que la concurrence maîtrisait, pour un territoire
+> qu'aucune fiche technique ne peut prouver. Près de quarante ans plus
+> tard, la marque n'a jamais eu besoin de changer ce message pour rester
+> pertinente, parce qu'il ne parlait jamais du produit lui-même.
 
-> LE RISQUE
-> Parler de sport plutôt que de produit, quand chaque concurrent vantait
-> l'amorti ou la respirabilité.
->
-> CE QUE ÇA A DONNÉ
-> On reconnaît une publicité Nike avant même d'avoir vu le logo.
+Les douze cas suivent ce même travail : nommer la norme du secteur, dire
+ce qui a été refusé, nommer le risque réel pris, puis montrer l'effet
+qui dure encore aujourd'hui. C'est ce dernier point qui manquait le
+plus : sans lui, un refus reste une anecdote ; avec lui, c'est une
+démonstration.
 
-La seconde ligne est en blanc plein et son étiquette en teinte corail —
-c'est elle qui doit rester en mémoire en quittant la carte.
+## Une erreur de syntaxe trouvée au contrôle
 
-## Une erreur trouvée et corrigée avant livraison
-
-En construisant le contenu de THE ROOM (la porte « lieux », qui vit dans
-le dictionnaire partagé `i18n.js`), j'ai supposé que son bloc anglais
-précédait le bloc français — comme c'est le cas dans les fichiers propres
-à chaque terrain. **C'est l'inverse dans ce fichier précis** : le
-commentaire en tête du fichier le dit clairement, « le français est écrit
-en dur, l'anglais est injecté au clic » — et le français vient bien en
-premier. Ça a inversé les trois cas et les deux étiquettes, résultat
-vérifiable : la ligne `case.riskLabel` disait "The risk" à l'intérieur du
-bloc français.
-
-Repéré en relisant le fichier généré plutôt qu'en le supposant correct,
-corrigé en traitant chaque bloc par sa position réelle plutôt que par une
-hypothèse. Les trois pages de terrain à fichier dédié n'avaient pas ce
-problème — leur ordre était bien fr puis en, vérifié une par une.
+La version anglaise du cas Nike citait *"Just Do It"* avec des guillemets
+droits non échappés à l'intérieur d'une chaîne elle-même entre
+guillemets — une faute de syntaxe qui aurait empêché la page de
+compiler. Le contrôle de types l'a signalée avant l'empaquetage plutôt
+qu'après ; corrigée par échappement, et vérifiée sur l'occurrence
+équivalente chez Nobu qui utilisait le même motif.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Toutes les clés `data-i18n` du gabarit
-confirmées présentes dans le dictionnaire. Aucune trace de l'ancien champ
-`case.N.body`, remplacé proprement par les trois nouveaux champs partout.
+Contrôle de types : zéro erreur, après correction. Toutes les clés du
+gabarit confirmées présentes dans le dictionnaire. Aucun résidu de
+l'ancienne structure en trois fragments (`refuse`/`risk`/`win`).

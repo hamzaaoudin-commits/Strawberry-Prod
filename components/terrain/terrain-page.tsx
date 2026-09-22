@@ -64,31 +64,32 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <h2 class="h-sec" data-i18n="case.title" style="margin-top:1.1rem">Trois maisons qui ont tranché.</h2>
 <p class="lead" data-i18n="case.lead" style="margin-top:1.2rem">Aucune n'a été construite par nous. Toutes les trois ont fait, à leur échelle, ce que cette Architecture fait à la vôtre.</p>
 </div>
-<div class="grid cols-3" style="gap:1.1rem">
-<article class="card reveal" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
-<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span>
-<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.1.refuse">Ce qu'elle a refusé.</p>
-<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.1.risk">Ce que ça coûtait.</span></div>
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.1.win">Ce que ça lui a rapporté.</span></div>
+<!-- Un cas à la fois, en pleine largeur, l'un après l'autre — pas trois
+     colonnes qui forcent à choisir où regarder en premier. Chaque cas a
+     la place de développer réellement le mécanisme : ce qui a été
+     refusé, pourquoi c'était risqué, et pourquoi ça a fini par payer. -->
+<div style="display:grid; gap:0">
+<div class="reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.6rem 0; border-top:1px solid var(--line-soft)">
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim); padding-top:.3rem" data-i18n="case.1.name">Maison</span>
+<div>
+<p style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.1.pull">Ce qu'elle a refusé.</p>
+<p class="body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.1.body">Le développement du cas.</p>
 </div>
-</article>
-<article class="card reveal d1" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
-<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span>
-<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.2.refuse">Ce qu'elle a refusé.</p>
-<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.2.risk">Ce que ça coûtait.</span></div>
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.2.win">Ce que ça lui a rapporté.</span></div>
 </div>
-</article>
-<article class="card reveal d2" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
-<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span>
-<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.3.refuse">Ce qu'elle a refusé.</p>
-<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.3.risk">Ce que ça coûtait.</span></div>
-<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.3.win">Ce que ça lui a rapporté.</span></div>
+<div class="reveal d1" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.6rem 0; border-top:1px solid var(--line-soft)">
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim); padding-top:.3rem" data-i18n="case.2.name">Maison</span>
+<div>
+<p style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.2.pull">Ce qu'elle a refusé.</p>
+<p class="body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.2.body">Le développement du cas.</p>
 </div>
-</article>
+</div>
+<div class="reveal d2" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.6rem 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)">
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim); padding-top:.3rem" data-i18n="case.3.name">Maison</span>
+<div>
+<p style="margin:0 0 1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.3.pull">Ce qu'elle a refusé.</p>
+<p class="body-sm" style="margin:0; max-width:68ch; color:var(--smoke); line-height:1.75" data-i18n="case.3.body">Le développement du cas.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
