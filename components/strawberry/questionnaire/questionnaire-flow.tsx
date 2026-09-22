@@ -705,20 +705,9 @@ export function QuestionnaireFlow({
           <StepScreen
             step={step}
             copy={copy}
-            terrainLabel={copy.terrains.find((x) => x.k === chosenTerrain)?.t}
             minutesLeft={minutesLeft}
-            deferredCount={deferred.length}
-            pieces={pieces}
             mirror={mirror}
             onDefer={deferCurrent}
-            previousEcho={(() => {
-              // Seules les réponses rédigées font un écho utile : un choix
-              // dans une liste ne se relit pas, il se revoit sur l'écran.
-              const prev = steps[idx - 1]
-              if (!prev || !["textarea", "shorttext"].includes(prev.type)) return undefined
-              const v = answers[prev.id]
-              return typeof v === "string" && v.trim() ? v.trim() : undefined
-            })()}
             words={words}
             index={idx}
             total={steps.length}
@@ -949,11 +938,7 @@ function CoverScreen({
 function StepScreen({
   step,
   copy,
-  terrainLabel,
-  previousEcho,
   minutesLeft,
-  deferredCount,
-  pieces,
   mirror,
   onDefer,
   words,
@@ -967,11 +952,7 @@ function StepScreen({
   onNext,
   onSkip,
 }: {
-  terrainLabel?: string
-  previousEcho?: string
   minutesLeft: number
-  deferredCount: number
-  pieces: { n: string; t: string; pct: number }[]
   mirror?: { quote: string; note: string }
   onDefer?: () => void
   step: Question
@@ -1037,6 +1018,7 @@ function StepScreen({
     <div
       key={index}
       className={[
+        "relative flex min-h-[76vh] flex-col items-center justify-center text-center",
         // Latérale, pas verticale.
         //
         // Un fondu montant ressemble à un chargement ; un glissement de
@@ -1047,53 +1029,49 @@ function StepScreen({
         shown ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
       ].join(" ")}
     >
-      {/* La grille.
-          Le folio vit dans la marge gauche, comme en bas d'une page
-          imprimée ; le contenu occupe les colonnes utiles. Sur une question
-          fondatrice, la marge reste vide — on ne compte pas les pages de
-          quelqu'un à qui on demande ce qu'il refuse. */}
-      <div className="q-grid">
-        <div className="mb-6 md:mb-0 md:pt-2">
-          {!bare && (
-            <>
-              <div className="q-folio q-num">{String(index + 1).padStart(2, "0")}</div>
-              <span className="q-folio-total q-num">/ {String(total).padStart(2, "0")}</span>
-              <button
-                type="button"
-                onClick={onBack}
-                aria-label={copy.previous}
-                className="mt-7 block text-[16px] leading-none text-chalk-40 transition-colors hover:text-white"
-              >
-                ←
-              </button>
-            </>
-          )}
-        </div>
-
-        <div>
-
-
-      {/* L'étiquette de section est retirée : l'écran de chapitre vient de
-          l'annoncer en grand, la répéter au-dessus de chaque question n'ajoute
-          rien. Reste la seule marque utile — « facultative ». */}
-      {step.optional && (
-        <div className="mb-3">
-          <span className="tag border-brand-hair text-brand">{copy.optional}</span>
-        </div>
+      {/* Le retour, discret, hors du flux centré : sur une question
+          fondatrice, il disparaît avec le reste du repère — on n'a pas
+          besoin de savoir où on en est pour écrire ce qu'on refuse. */}
+      {!bare && (
+        <button
+          type="button"
+          onClick={onBack}
+          aria-label={copy.previous}
+          className="absolute left-0 top-0 text-[16px] leading-none text-chalk-40 transition-colors hover:text-white"
+        >
+          ←
+        </button>
       )}
-      {/* Le titre à la charte du site : serif, capitales, crénage desserré.
-          « h-card » donnait une taille de carte — ici c'est la seule chose à
-          lire de l'écran, elle doit en avoir le poids. */}
-      {bare && (
+
+      {/* Le repère de section : un point qui respire, comme sur le reste
+          du site, plutôt qu'une barre ou un folio. Sur une question
+          fondatrice, il cède la place à une seule ligne : on ne compte pas
+          les questions de quelqu'un à qui on demande ce qu'il refuse. */}
+      {bare ? (
         <p className="mb-16 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
           {copy.bareNote}
         </p>
+      ) : (
+        <div className="q-kicker mb-14">
+          <span className="q-kicker-dot" aria-hidden />
+          <span className="q-kicker-label">
+            {step.tag ?? ""} — {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+          </span>
+        </div>
       )}
 
-      <h2 className="q-question mb-5 max-w-[17ch]">
-        {step.label}
-      </h2>
-      {step.help ? <p className="q-help mb-12 max-w-[46ch]">{step.help}</p> : <div className="mb-10" />}
+      {step.optional && (
+        <div className="mb-4">
+          <span className="tag border-brand-hair text-brand">{copy.optional}</span>
+        </div>
+      )}
+
+      <h2 className="q-question mx-auto mb-5 max-w-[17ch]">{step.label}</h2>
+      {step.help ? (
+        <p className="q-help mx-auto mb-12 max-w-[46ch]">{step.help}</p>
+      ) : (
+        <div className="mb-10" />
+      )}
 
       {/* Le champ se fait attendre.
           Une seconde et demie : assez pour qu'on lise la question au lieu de
@@ -1101,39 +1079,48 @@ function StepScreen({
           délai qui fait la différence entre un formulaire et quelqu'un qui
           vient de poser une question et attend la réponse. */}
       <div
-        className={`transition-opacity duration-[900ms] ${fieldReady ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`w-full max-w-[600px] transition-opacity duration-[900ms] ${
+          fieldReady ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
       >
-      <QuestionInput
-        step={step}
-        copy={copy}
-        words={words}
-        answers={answers}
-        deepOpen={deepOpen}
-        onOpenDeep={onOpenDeep}
-        onChange={onChange}
-      />
+        <QuestionInput
+          step={step}
+          copy={copy}
+          words={words}
+          answers={answers}
+          deepOpen={deepOpen}
+          onOpenDeep={onOpenDeep}
+          onChange={onChange}
+        />
       </div>
 
+      {/* Le miroir : la réponse déjà donnée qui éclaire celle-ci. Être cité
+          est le signal le plus fort qu'on a été entendu. */}
+      {mirror && (
+        <figure className="mx-auto mt-10 max-w-[520px] border-l border-white/15 pl-5 text-left">
+          <blockquote className="m-0 font-serif text-[15px] italic leading-[1.55] text-white/80">
+            « {mirror.quote} »
+          </blockquote>
+          <figcaption className="mt-2.5 font-sans text-[12.5px] leading-[1.6] text-chalk-40">
+            {mirror.note}
+          </figcaption>
+        </figure>
+      )}
 
       {/* Le pied d'écran.
           Sur un téléphone, le clavier mange la moitié de la hauteur et le
           bouton passait sous la ligne de flottaison : on tapait sa réponse
           sans voir comment avancer. Il colle désormais au bas de l'écran
-          sur mobile, au-dessus de la zone système. */}
-      <div className="sticky bottom-0 z-10 -mx-gutter mt-16 flex flex-wrap items-center gap-x-4 gap-y-3 bg-ink/95 px-gutter py-4 backdrop-blur-sm [padding-bottom:calc(1rem+env(safe-area-inset-bottom,0px))] sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none">
-        {/* Le bouton ne devient rouge que lorsqu'on peut réellement avancer.
-            Il était rouge en permanence, y compris avant d'avoir répondu :
-            on cliquait dans le vide sans comprendre pourquoi rien ne se
-            passait. Éteint, il devient aussi une indication — il reste
-            quelque chose à remplir. */}
-        <button
-          type="button"
-          className="q-go"
-          disabled={!valid}
-          onClick={onNext}
-        >
+          sur mobile, au-dessus de la zone système — sans fond opaque, pour
+          ne pas rompre le noir de l'écran. */}
+      <div className="sticky bottom-0 z-10 mt-16 flex w-full flex-wrap items-center justify-center gap-x-6 gap-y-3 py-4 [padding-bottom:calc(1rem+env(safe-area-inset-bottom,0px))] sm:static sm:py-0">
+        {/* Le bouton ne devient lisible que lorsqu'on peut réellement
+            avancer. Éteint, il reste une indication — il reste quelque
+            chose à remplir. */}
+        <button type="button" className="q-go" disabled={!valid} onClick={onNext}>
           {copy.continue}
         </button>
+
         {/* L'échappatoire honorable.
             Une question difficile sans porte de sortie se solde par six mots
             tapés pour avancer — et la pièce qui en dépend sera creuse. Mise
@@ -1148,26 +1135,21 @@ function StepScreen({
           </button>
         )}
 
-        {/* Le temps restant, à la place de la mention de sauvegarde.
-            « Enregistré » répété trente fois devient du bruit ; le temps qui
-            reste, lui, sert à chaque écran. Le point rouge suffit à dire que
-            tout est gardé. */}
-        <span
-          className={`ml-auto hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex ${
-            bare ? "invisible" : ""
-          }`}
-        >
-          <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden title={copy.saved} />
-          {copy.minutesLeft(minutesLeft)}
-        </span>
         {onSkip && (
           <button type="button" className="btn-quiet" onClick={onSkip}>
             {copy.skip}
           </button>
         )}
       </div>
-        </div>
-      </div>
+
+      {/* Le temps restant et la sauvegarde : en coin, discrets, hors du
+          flux centré. Absents sur une question fondatrice. */}
+      {!bare && (
+        <span className="absolute bottom-0 right-0 hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
+          <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden title={copy.saved} />
+          {copy.minutesLeft(minutesLeft)}
+        </span>
+      )}
     </div>
   )
 }
@@ -1471,14 +1453,25 @@ function AutoTextarea({
   const n = value.trim() ? value.trim().split(/\s+/).length : 0
   return (
     <div className="relative">
-      <textarea
-        ref={ref}
-        className="q-field"
-        rows={rows}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+      {/* Le grand geste : la réponse principale porte le trait qui
+          s'allonge, et un curseur qui clignote avant même le clic — la
+          différence entre un champ vide et une invitation à écrire.
+          Le curseur s'efface dès qu'il y a du texte : le vrai curseur du
+          champ prend le relais. */}
+      <div className="q-field-wrap relative">
+        {!value && (
+          <span className="q-caret" aria-hidden style={{ left: 0 }} />
+        )}
+        <textarea
+          ref={ref}
+          className="q-field"
+          rows={rows}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        <div className="q-line" />
+      </div>
       {/* Une relance, pas un compteur.
           Afficher « 8 mots » en rouge juge sans aider : le client sait qu'il
           a fait court, il ne sait pas quoi ajouter. Une question posée au

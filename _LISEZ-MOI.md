@@ -1,82 +1,42 @@
-# Strawberry — les dix corrections de design
+# Strawberry — le plein écran, en production
 
-3 fichiers.
+2 fichiers. C'est la version retenue parmi les quatre pistes, portée du
+mockup vers le vrai code du questionnaire.
 
-## 1 · Le contraste typographique
+## Ce qui disparaît
 
-La question descend à **300 de graisse** en `clamp(2.1rem, 5.2vw, 3.6rem)`,
-l'aide reste à **500** en 13,5 px. C'est l'écart entre les deux qui fait
-l'élégance, pas la taille absolue — une page où tout est en gras n'a
-aucune hiérarchie.
+**La grille asymétrique et le folio en marge** — remplacés par un écran
+centré : plus de colonne de marge, plus de grand chiffre.
 
-Crénage à -0.028em et `text-wrap: balance` sur la question : les lignes se
-répartissent au lieu de laisser un mot seul en bas.
+**Deux props mortes**, trouvées en réécrivant : `pieces` et
+`previousEcho`/`terrainLabel`/`deferredCount` étaient encore transmis à
+`StepScreen` sans y être jamais lus — restes d'une passe précédente. Et
+**le miroir** (`mirror`) était accepté mais plus jamais rendu depuis un
+nettoyage antérieur qui l'avait emporté par erreur : il est réintégré ici.
 
-## 2 · La grille asymétrique
+## Ce que ça devient
 
-Fini la colonne centrée. Une grille `5.5rem / 1fr` : le folio vit dans la
-marge gauche, le contenu occupe les colonnes utiles. Sur mobile, la marge
-disparaît.
+**Le repère de section** est un point rouge qui respire, comme sur le
+reste du site, avec le nom de la section et le compteur en petit —
+remplace la barre et le folio. Sur une question fondatrice, il cède la
+place à une seule ligne : « Prenez le temps. Personne ne vous regarde. »
 
-## 3 · Les champs cessent d'être des champs
+**La question et l'aide sont centrées**, en contraste net : 300 de
+graisse en grand pour la question, 500 en petit pour l'aide.
 
-Plus de bordure, plus de fond, plus de coins. **Un trait fin sous le
-texte**, qui rougit et s'épaissit à la saisie. Le texte saisi est en serif
-300 à 1,5 rem.
+**Le grand geste est réservé à la réponse principale.** Le trait sous le
+champ s'allonge et rougit au focus (`:focus-within`, sans état React
+requis), et un curseur clignote avant même le clic, tant que le champ est
+vide. Les champs secondaires — nom, maison, email, lignes de concurrents —
+gardent un trait simple qui rougit au focus, sans le grand geste : le
+répéter sur trois champs d'un même écran aurait été trop.
 
-On écrit sur une ligne, on ne remplit pas une case.
+**Le bouton reste un mot souligné**, plus de bouton plein : le silence de
+l'écran n'est pas cassé par un aplat rouge.
 
-## 4 · Le rouge une fois par écran
-
-Il était sur le bouton, les filets, le point de sauvegarde, le tiret de
-relance, la puce de déblocage et la barre de progression. **Deux
-occurrences** au lieu de six : le trait du bouton, et le champ actif.
-
-Le reste passe en blanc à 15–30 %.
-
-## 5 · Le rythme des marges
-
-Les mêmes écarts partout ne créent aucune hiérarchie. Maintenant :
-**12 unités** après la question, **16** avant le pied, **16** après la
-mention des questions fondatrices. Beaucoup d'air là où il faut respirer,
-peu là où les éléments se répondent.
-
-## 6 · Le mouvement au survol
-
-Les options **glissent de 3 px vers la droite**, sur 260 ms. Court et
-discret — le mouvement est ce qui donne la sensation de qualité.
-
-## 7 · Le fond avance avec le parcours
-
-La lueur passe **du bleu froid au rouge de marque** à mesure qu'on
-approche de la fin, pilotée par une variable CSS que le composant met à
-jour. Transition de 1,4 s : on ne la voit pas changer, on la sent.
-
-## 8 · La progression devient un folio
-
-Plus de barre, plus de segments. **Un grand chiffre en marge** — 07 — avec
-le total en dessous en mono, à la manière d'un bas de page imprimée.
-
-Sur une question fondatrice, la marge reste vide : on ne compte pas les
-pages de quelqu'un à qui on demande ce qu'il refuse.
-
-## 9 · Le bouton devient un mot souligné
-
-Plus de bouton rouge arrondi. **Le mot en mono, souligné d'un trait qui se
-tend au survol** (scaleX 1 → 1,12 sur 420 ms). Désactivé, le trait ne fait
-que 28 % de la largeur : l'état se lit sans couleur.
-
-## 10 · La finition
-
-Ce qui est invisible une par une et décisif ensemble :
-
-- **Ligatures et alternatives contextuelles** activées
-- **Césure automatique** avec un minimum de 7 caractères, 4 avant, 3 après
-- **Veuves et orphelines** interdites sur tous les paragraphes
-- **Chiffres elzéviriens** sur le folio et les compteurs — les chiffres
-  alignés ne servent que dans les tableaux
-- Lissage et `optimizeLegibility`
+**Le pied perd son fond opaque** sur mobile : juste le bouton et le flou,
+sans bande sombre qui romprait le noir.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Feuille de style validée.
+Contrôle de types : zéro erreur.
