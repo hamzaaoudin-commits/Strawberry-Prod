@@ -56,113 +56,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
 <p class="reveal d2 man-second" data-i18n="man.body2">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
 </div>
-</section><section class="story-section section" id="prestations">
-<div class="story-pin"><div class="story-sticky"><div class="wrap story">
-<div class="section-head reveal" style="margin-bottom:0">
-<div class="story-head">
-<div>
-<span class="eyebrow" data-i18n="st.eyebrow">L'Architecture · la méthode S.T.R.A.W. · la méthode S.T.R.A.W.</span>
-<h2 class="h-sec" data-i18n="st.title" style="margin-top:1.1rem">On lit, on compare, on tranche.</h2>
-</div>
-<div aria-hidden="true" class="story-counter"><span class="sc-cur">01</span><span class="sc-sep">/</span><span class="sc-tot">05</span></div><span class="story-hint"><span data-i18n="st.hint">Faites glisser</span><span aria-hidden="true" class="sw">→</span></span>
-</div>
-</div>
-<div class="story-track">
-<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
-<circle class="st" cx="52" cy="52" r="22"></circle>
-<path class="st" d="M68 68 L92 92"></path>
-<path class="st2" d="M40 52 h24 M52 40 v24" opacity=".45"></path>
-<circle class="fl2" cx="98" cy="30" r="3.5"></circle>
-<circle class="fl" cx="22" cy="88" r="3"></circle>
-</svg><span class="idx" data-i18n="st.1.i">S</span><h3 data-i18n="st.1.t">Nous venons chez vous.</h3><p data-i18n="st.1.d">Un service entier, à observer. Qui parle à qui, ce que les habitués commandent sans regarder la carte, ce que votre équipe répète sans s'en rendre compte. La matière est déjà là.</p>
-<ul class="ch-list">
-<li data-i18n="st.1.b1">Immersion pendant un service complet</li>
-<li data-i18n="st.1.b2">Entretien avec vous et deux personnes de l'équipe</li>
-</ul></article>
-<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
-<rect class="st2" height="72" rx="7" width="56" x="22" y="24"></rect>
-<line class="st" x1="34" x2="70" y1="42" y2="42"></line>
-<line class="st2" opacity=".5" x1="34" x2="66" y1="54" y2="54"></line>
-<line class="st2" opacity=".35" x1="34" x2="58" y1="64" y2="64"></line>
-<path class="st" d="M78 78 l18 -18 a5 5 0 0 0 -7 -7 l-18 18 z"></path>
-<path class="fl" d="M71 71 l-4 11 11 -4 z"></path>
-</svg><span class="idx" data-i18n="st.2.i">T</span><h3 data-i18n="st.2.t">Nous écrivons votre monde.</h3><p data-i18n="st.2.d">Ce que votre lieu promet en une phrase. Son heure, sa lumière, son atmosphère. Son casting — vous, le barman, les habitués, et le plat signature traité comme un personnage. Ses rituels.</p>
-<ul class="ch-list">
-<li data-i18n="st.2.b1">La promesse du lieu, en une phrase qui tient</li>
-<li data-i18n="st.2.b2">Décor, heure, lumière, atmosphère</li>
-<li data-i18n="st.2.b3">Casting et rituels de la maison</li>
-</ul></article>
-<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
-<path class="st2" d="M26 26 h68 v68 h-68 z"></path>
-<line class="st" x1="26" x2="94" y1="46" y2="46"></line>
-<line class="st2" opacity=".5" x1="46" x2="46" y1="46" y2="94"></line>
-<circle class="fl" cx="36" cy="36" r="3"></circle>
-<path class="st" d="M56 62 h28 M56 74 h20" opacity=".7"></path>
-</svg><span class="idx" data-i18n="st.3.i">R</span><h3 data-i18n="st.3.t">Nous posons la ligne et les mots.</h3><p data-i18n="st.3.d">Trois à cinq rubriques récurrentes, nommées, avec ce qu'elles cherchent à provoquer. Le vocabulaire de la maison : ce qu'on dit, ce qu'on ne dit jamais. Et tous vos textes permanents, écrits une bonne fois.</p>
-<ul class="ch-list">
-<li data-i18n="st.3.b1">3 à 5 rubriques récurrentes avec leur intention</li>
-<li data-i18n="st.3.b2">Le vocabulaire : ce qu'on dit, ce qu'on ne dit jamais</li>
-<li data-i18n="st.3.b3">Bio, fiche Google, menu, réponses-types aux avis</li>
-</ul></article>
-<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
-<rect class="st2" height="46" rx="6" width="66" x="20" y="48"></rect>
-<path class="st" d="M20 60 h66"></path>
-<path class="st2" d="M22 34 l60 -10 4 14 -60 10 z"></path>
-<path class="fl" d="M38 27 l4 13 M54 24 l4 13 M70 21 l4 13" opacity=".7"></path>
-<circle class="fl2" cx="96" cy="74" r="4"></circle>
-</svg><span class="idx" data-i18n="st.4.i">A</span><h3 data-i18n="st.4.t">Nous vous laissons le manuel.</h3><p data-i18n="st.4.d">Vingt à trente scripts prêts à l'emploi, écrits plan par plan pour être tournés au téléphone par n'importe qui en salle. Un calendrier sur quatre semaines qui tourne en boucle. Un protocole de captation pendant le service.</p>
-<ul class="ch-list">
-<li data-i18n="st.4.b1">20 à 30 scripts-types, plan par plan</li>
-<li data-i18n="st.4.b2">Un calendrier sur 4 semaines, reconductible</li>
-<li data-i18n="st.4.b3">Le protocole de captation pendant le service</li>
-</ul></article>
-<article class="chapter"><svg aria-hidden="true" class="art" viewbox="0 0 120 120">
-<rect class="st2" height="60" rx="8" width="38" x="20" y="30"></rect>
-<rect class="st" height="60" rx="8" width="38" x="62" y="30"></rect>
-<path class="fl2" d="M81 48 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 z"></path>
-<line class="st2" opacity=".5" x1="28" x2="50" y1="50" y2="50"></line>
-<line class="st2" opacity=".35" x1="28" x2="44" y1="60" y2="60"></line>
-</svg><span class="idx" data-i18n="st.5.i">W</span><h3 data-i18n="st.5.t">Et nous vous le prouvons.</h3><p data-i18n="st.5.d">Avant de partir, nous produisons la première semaine de contenu moi-même. Pas pour vous rendre dépendant : pour que vous voyiez le système tourner une fois, en vrai, avant de le prendre en main.</p>
-<ul class="ch-list">
-<li data-i18n="st.5.b1">La première semaine de contenu, produite et livrée</li>
-<li data-i18n="st.5.b2">Une passation avec la personne qui prendra le relais</li>
-</ul></article>
-</div>
-<div class="story-nav">
-<div class="story-dots"></div>
-<div class="story-arrows">
-<button aria-label="Précédent" class="story-arrow" data-story="prev">←</button>
-<button aria-label="Suivant" class="story-arrow" data-story="next">→</button>
-</div>
-</div>
-</div></div></div>
-</section>
-<!-- ============ FOCUS DEMO ============ -->
-<section class="section">
-<div class="wrap">
-<div class="section-head reveal">
-<span class="eyebrow" data-i18n="focus.eyebrow">La différence</span>
-<h2 class="h-sec" data-i18n="focus.title">Publier, ou raconter.</h2>
-<p class="lead" data-i18n="focus.lead" style="margin-top:1.2rem">Le même lieu, deux réalités. Prenez la poignée et tirez : à gauche on publie sans savoir quoi dire, à droite le monde est écrit et l'équipe le tient.</p>
-</div>
-<div class="cmp wipe">
-<div class="cmp-base"><div aria-hidden="true" class="feed feed-bad"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<span class="tag" data-i18n="focus.bad.tag">Un lieu qui publie</span>
-<span class="big" data-i18n="focus.bad.big">Chaque post repart de zéro. Personne ne sait quoi filmer, ni quoi écrire dessous. On poste quand on y pense.</span>
-</div>
-<div class="cmp-over"><div aria-hidden="true" class="feed feed-good"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<span class="tag" data-i18n="focus.good.tag">Un lieu qui se raconte</span>
-<span class="big" data-i18n="focus.good.big">Le monde est écrit. N'importe qui en salle ouvre le manuel, prend un script et tourne. Tout se ressemble, sans se répéter.</span>
-</div>
-<div aria-label="Comparer" aria-valuemax="100" aria-valuemin="0" aria-valuenow="55" class="cmp-handle" role="slider" tabindex="0"></div>
-<span class="cmp-hint" data-i18n="cmp.hint">Glissez pour comparer</span>
-</div>
-</div>
-</section>
-<hr class="rule"/>
-<!-- ============ PILLARS ============ -->
-
-<!-- ============ EXTRAIT ============ -->
+</section><!-- ============ EXTRAIT ============ -->
 <section class="section extrait">
 <div class="wrap">
 <span class="eyebrow reveal" data-i18n="ex.eyebrow">Un cas</span>
@@ -226,44 +120,42 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </div>
 </div>
 </section>
-<!-- ============ STATS ============ -->
-<section class="section">
-<div class="wrap stats">
-<div class="stat card tilt reveal"><span class="num">01</span><div class="v" data-i18n="stat.1.v">2–3</div><div class="l" data-i18n="stat.1.l">Semaines, puis c'est à vous</div></div>
-<div class="stat card tilt reveal d1"><span class="num">02</span><div class="v" data-i18n="stat.2.v">3–5</div><div class="l" data-i18n="stat.2.l">Scripts prêts à tourner</div></div>
-<div class="stat card tilt reveal d2"><span class="num">03</span><div class="v" data-i18n="stat.3.v">1</div><div class="l" data-i18n="stat.3.l">Seule personne sur votre lieu</div></div>
-</div>
-</section>
-
-<!-- ============ PRIX / ARGUMENT CENTRAL ============ -->
+<!-- ============ CAS RÉELS ============ -->
 <section class="section">
 <div class="wrap">
 <div class="section-head reveal">
-<span class="eyebrow" data-i18n="price.eyebrow">Ce que ça coûte</span>
-<h2 class="h-sec" data-i18n="price.title">Payé une fois. Gardé pour toujours.</h2>
-<p class="lead" data-i18n="price.lead" style="margin-top:1.2rem">Une agence facture 1 200 à 1 500 € par mois, aussi longtemps que vous la gardez. Le jour où vous arrêtez, il ne vous reste rien.</p>
+<span class="eyebrow" data-i18n="case.eyebrow">Ce que ça donne, ailleurs</span>
+<h2 class="h-sec" data-i18n="case.title" style="margin-top:1.1rem">Trois maisons qui ont tranché.</h2>
+<p class="lead" data-i18n="case.lead" style="margin-top:1.2rem">Aucune n'a été construite par nous. Toutes les trois ont fait, à leur échelle, ce que cette Architecture fait à la vôtre.</p>
 </div>
-<div class="grid cols-2" style="gap:1.1rem">
+<div class="grid cols-3" style="gap:1.1rem">
 <article class="card reveal">
-<span class="chip" data-i18n="price.a.tag">L'agence au mois</span>
-<h3 data-i18n="price.a.t">1 200 – 1 500 € / mois</h3>
-<p data-i18n="price.a.d">Elle exécute à votre place. Elle sait ce que votre lieu raconte, vous non. Au bout de deux ans : environ 30 000 € dépensés, et rien qui vous appartienne.</p>
+<h3 style="margin:0 0 .5rem" data-i18n="case.1.name">Maison</h3>
+<p class="body-sm" data-i18n="case.1.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
 <article class="card reveal d1">
-<span class="chip" data-i18n="price.b.tag">L'architecture narrative</span>
-<h3 data-i18n="price.b.t">2 900 €, une fois</h3>
-<p data-i18n="price.b.d">On lit votre lieu comme le fait votre quartier : ce qu'il raconte aujourd'hui, ce que les gens en retiennent, et les mouvements qui changent ça. Un document de cinquante à soixante-dix pages, livré en trois semaines. Le même audit que pour une marque, une entreprise ou une personne.</p>
-<p style="margin-top:1.4rem"><a href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="price.b.cta">Voir l'offre →</a></p>
+<h3 style="margin:0 0 .5rem" data-i18n="case.2.name">Maison</h3>
+<p class="body-sm" data-i18n="case.2.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+</article>
+<article class="card reveal d2">
+<h3 style="margin:0 0 .5rem" data-i18n="case.3.name">Maison</h3>
+<p class="body-sm" data-i18n="case.3.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
 </div>
-<p class="lead reveal" data-i18n="price.after" style="margin-top:2.4rem; text-align:center">Ensuite, si vous voulez qu'on écrive le monde du lieu et qu'on livre le système qui permet à votre équipe de le tenir seule : le sprint, 2 500 à 3 500 €, deux à trois semaines.</p>
+</div>
+</section>
+<!-- ============ STATS ============ -->
+<section class="section">
+<div class="wrap stats">
+<div class="stat card tilt reveal"><span class="num">01</span><div class="v" data-i18n="stat.1.v">40+</div><div class="l" data-i18n="stat.1.l">Supports dépouillés, de votre site à vos avis clients</div></div>
+<div class="stat card tilt reveal d1"><span class="num">02</span><div class="v" data-i18n="stat.2.v">3–5</div><div class="l" data-i18n="stat.2.l">Scripts prêts à tourner</div></div>
+<div class="stat card tilt reveal d2"><span class="num">03</span><div class="v" data-i18n="stat.3.v">∞</div><div class="l" data-i18n="stat.3.l">Réutilisable par vos équipes comme par votre outil IA</div></div>
 </div>
 </section>
 
 <!-- ============ QUI ÉCRIT ============ -->
 
 <hr class="rule"/>
-<!-- ============ PRICING TEASER ============ -->
 <!-- ============ WORK TEASER ============ -->
 <section class="section" style="padding-top:2.5rem; padding-bottom:3rem">
 <div class="wrap" style="text-align:center">
@@ -421,7 +313,7 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
       <section className="terrain-cross">
         <div className="wrap">
           <div className="terrain-cross-label">
-            {lang === "en" ? "The same audit, on another ground" : "Le même audit, sur un autre terrain"}
+            {lang === "en" ? "The same Architecture, on another ground" : "La même Architecture, sur un autre terrain"}
           </div>
           <div className="terrain-cross-links">
             {TERRAINS.filter((x) => x.slug !== copy.slug).map((x) => (

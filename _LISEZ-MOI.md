@@ -1,52 +1,97 @@
-# Strawberry — hero et diagnostic
+# Strawberry — d'abord un incident, puis onze changements
 
-3 fichiers. Tout est fait sauf un point, détaillé en bas.
+**Le conteneur de travail s'est réinitialisé en plein milieu de cette
+tâche.** Tout le dépôt cloné a disparu, ainsi que la totalité du dossier
+persistant des patches passés (revenu à sp99, un état antérieur à la
+fusion de l'offre). Ce n'est pas une décision de ma part — j'ai vérifié
+que GitHub, lui, reflétait bien votre dernier patch appliqué (sp120), je
+m'y suis re-ancré, et j'ai reconstruit tout ce qui manquait pour cette
+conversation. Rien n'a donc été perdu côté site : seulement mon
+brouillon de travail, reconstruit à l'identique.
 
-## Le hero
+16 fichiers.
 
-**Le slogan change de place.** « Impossible à confondre. Impossible à
-générer. » passait avant le titre ; il passe maintenant entre le titre et
-la ligne de prix — juste au-dessus d'« Architecture narrative · 2 900 € ·
-Livré en trois semaines », comme demandé.
+## Les textes
 
-**Le titre change de sens.** « Vous êtes meilleur que vos concurrents »
-accusait le marché. « Le problème n'est pas ce que vous avez à offrir.
-C'est l'histoire que le monde en retient. » déplace la faute : ce n'est
-plus le marché qui a tort, c'est le récit qui manque — ce qui prépare
-directement l'offre.
+**Le paragraphe de clôture de « pourquoi ce studio existe »** devient une
+déclinaison en quatre lignes courtes après la phrase choc, plutôt qu'une
+seule phrase de conclusion.
 
-**Le paragraphe est réécrit en trois temps** — ce qu'on fait, comment, ce
-que vous obtenez en trois semaines — avec un saut de ligne entre chacun
-(`whitespace-pre-line`).
+**Le titre de la tournée** passe sur deux lignes : « Une plateforme de
+marque ne décide rien. / Une identité, si. » Le chapô qui suit distingue
+maintenant clairement ce qu'une agence fait (s'arrêter à la plateforme) de
+ce que fait le studio (la transformer en décisions, langage, principes).
 
-## Le problème et le diagnostic
+**La phrase de clôture de la tournée** — « Tout ça existe déjà chez vous »
+— devient « Vous avez déjà tout ce qu'il faut. Ce qui manque, c'est une
+identité pour le rendre visible. », répercutée dans les quatre terrains et
+le dictionnaire partagé.
 
-**Le remède a changé de section.** Il fermait la section Problème, avant
-même qu'on ait montré ce qui avait déjà été essayé en vain. Il ferme
-maintenant la section Diagnostic, après les quatre fausses causes et leur
-propre conclusion — l'ordre logique : on montre ce qui ne marche pas,
-*puis* on nomme le remède.
+**Le paragraphe de l'offre** énumère maintenant les six pièces avec ce
+qu'elles vous demandent d'abandonner, et se termine sur « Pas un état des
+lieux. Pas un document à ranger dans un dossier. Une direction à suivre. »
 
-**La phrase sur l'agence de branding est corrigée** : « Nous écrivons ce
-que vous refusez — pas ce que vous portez » sonnait comme une opposition
-entre deux fonctions du studio. Elle devient « Nous écrivons ce que vous
-refusez autant que ce que vous représentez. »
+## Le chantier structurel
 
-**Les quatre fausses causes sont réécrites** dans le rythme que vous avez
-donné — des phrases courtes, plus sèches — et la conclusion aussi :
-> Le problème n'a jamais été votre volume. C'est que personne n'a jamais
-> tranché ce que vous refusez. Et sans refus, aucune identité ne peut
-> vraiment s'accrocher.
+**Trois sections retirées des quatre pages de terrain**, où elles se
+répétaient à l'identique ou presque :
 
-## Le point en suspens
+- La méthode S.T.R.A.W. (id `prestations`) — migrée sur la home en une
+  version unique, en langage neutre. C'était nécessaire : seule THE ROOM
+  avait une version réellement écrite, les trois autres terrains
+  héritaient de son texte par défaut ("votre lieu", "le barman") sans
+  jamais l'avoir adapté.
+- « La différence » (le curseur de comparaison « publier »/« se
+  raconter ») — son mécanisme de glissement anime maintenant le
+  Hier/Aujourd'hui de la home.
+- « Ce que ça coûte » (la comparaison agence-au-mois / payé une fois) —
+  retirée des pages produits comme demandé.
 
-**Le libellé du bouton du hero.** Votre message s'est coupé net après
-« Le cta ne devrait pas être « commander l'architecture » mais « » — la
-suite n'est jamais arrivée. Je n'ai pas deviné : le bouton affiche toujours
-« Commander l'architecture ». Dites-moi ce qu'il doit dire.
+**Le Hier/Aujourd'hui est devenu un curseur de comparaison interactif** :
+on glisse pour révéler « Aujourd'hui » par-dessus « Hier », plutôt que de
+lire deux panneaux figés côte à côte. La scène s'anime seule jusqu'à 50 %
+à l'ouverture, pour montrer que c'est un curseur avant qu'on ait pensé à
+le toucher.
+
+**La méthode a sa propre section sur la home**, en grille de cinq cartes
+plutôt qu'en carrousel à glisser — le carrousel demandait une mécanique JS
+que je n'ai pas voulu réimplémenter à la main un quatrième temps, pour ne
+pas répéter une erreur déjà faite trois fois dans ce projet.
+
+## Les quatre terrains, enfin spécifiques
+
+Chaque page de terrain reçoit une nouvelle section, « Trois [maisons /
+noms / produits / lieux] qui ont tranché », avec trois exemples réels :
+
+- **Marques** — Nike, Coca-Cola, Picard
+- **Noms propres** — Travis Scott, Beyoncé, BTS
+- **Produits** — Patagonia, Aesop, Liquid Death
+- **Lieux** — In-N-Out, Soho House, Nobu
+
+Chaque commentaire reste factuel et de notoriété publique — pas de
+citation inventée, pas de chiffre fabriqué — et suit le même principe que
+le reste du site : ce que la maison a refusé, et ce que ça lui a donné.
+
+## Une correction trouvée en chemin
+
+Une occurrence d'« audit » subsistait en dur dans le gabarit — hors du
+mécanisme `data-i18n`, donc invisible à tous mes précédents balayages :
+« Le même audit, sur un autre terrain » sous les liens croisés entre
+terrains. Corrigée en « La même Architecture ».
+
+## Ce qui n'est pas fait
+
+**L'enrichissement de la tournée** pour qu'elle se suffise à elle-même —
+vous l'aviez demandé en fin de message. Je ne l'ai pas fait cette fois :
+après la réinitialisation du conteneur, j'ai priorisé la reconstruction de
+ce qui était déjà en cours plutôt que d'ouvrir un nouveau chantier. Dites-
+moi si je l'attaque maintenant.
+
+**Le libellé du bouton du hero** reste en attente depuis le tour
+précédent — votre message s'était coupé après « mais « ».
 
 ## Vérification
 
-Contrôle de types : aucune erreur nouvelle. `t.close` confirmé absent de
-`problem-section.tsx` — le retrait est complet, rien n'est resté à moitié
-supprimé.
+Contrôle de types sur l'ensemble du lot : zéro erreur (au-delà des modules
+absents de mon environnement). `i18n.js` validé comme JavaScript exécutable.
+Les quatre jeux de cas vérifiés distincts par terrain.

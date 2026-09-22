@@ -1,6 +1,7 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
 import { TourSection } from "@/components/strawberry/tour-section"
+import { MethodSection } from "@/components/strawberry/method-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
 import { AfterSection } from "@/components/strawberry/after-section"
@@ -77,6 +78,10 @@ export default async function Home({
           avant qu'on ne présente ce qu'on livre. */}
       <WhySection lang={lang} />
       <TourSection />
+      {/* La méthode, une seule fois : elle décrit le même déroulé quel que
+          soit ce qui se vend, elle n'a donc plus de raison de se répéter
+          sur chacune des quatre pages de terrain. */}
+      <MethodSection lang={lang} />
       <ReadMarquee />
       <OffersSection lang={lang} />
       <ImpactStats lang={lang} />

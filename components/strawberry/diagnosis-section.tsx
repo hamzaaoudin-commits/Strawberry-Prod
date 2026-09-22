@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { pick } from "@/lib/t"
 import type { Lang } from "@/lib/lang"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
@@ -52,6 +53,7 @@ const T = {
     diagramArchitecture: "The strategy",
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
+    wipeHint: "Drag to compare",
     remedy:
       "The problem is not producing more content or changing your logo. It is building a narrative identity strong enough that the market stops comparing you — and starts belonging to what you stand for.",
   },
@@ -91,6 +93,7 @@ const T = {
     diagramArchitecture: "La stratégie",
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
+    wipeHint: "Glissez pour comparer",
     remedy:
       "Le problème n'est pas de produire plus de contenu ni de changer de logo. C'est de construire une identité narrative assez forte pour que le marché cesse de vous comparer — et commence à adhérer à ce que vous représentez.",
   },
@@ -101,6 +104,46 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
   const [listRef, listVisible] = useScrollReveal()
   const [h2Ref, h2Visible] = useScrollReveal()
   const [splitRef, splitVisible] = useScrollReveal()
+
+  // Le curseur de comparaison, repris du mécanisme qui servait « la
+  // différence » sur les pages de terrain — retiré de là-bas parce qu'il
+  // s'y répétait quatre fois pour dire la même chose, réemployé ici où il
+  // n'existe qu'une fois. On glisse pour révéler « Aujourd'hui » par-dessus
+  // « Hier » ; à l'ouverture, la scène s'anime seule jusqu'à 50 % pour
+  // montrer que c'est un curseur avant qu'on ait pensé à le toucher.
+  const wipeRef = useRef<HTMLDivElement | null>(null)
+  const [pct, setPct] = useState(6)
+  const dragging = useRef(false)
+
+  function setFromClientX(clientX: number) {
+    const el = wipeRef.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const v = ((clientX - r.left) / r.width) * 100
+    setPct(Math.max(4, Math.min(96, v)))
+  }
+
+  useEffect(() => {
+    if (!splitVisible) return
+    const id = window.setTimeout(() => setPct(50), 500)
+    return () => window.clearTimeout(id)
+  }, [splitVisible])
+
+  useEffect(() => {
+    function onMove(e: PointerEvent) {
+      if (!dragging.current) return
+      setFromClientX(e.clientX)
+    }
+    function onUp() {
+      dragging.current = false
+    }
+    window.addEventListener("pointermove", onMove)
+    window.addEventListener("pointerup", onUp)
+    return () => {
+      window.removeEventListener("pointermove", onMove)
+      window.removeEventListener("pointerup", onUp)
+    }
+  }, [])
 
   return (
     <section className="section relative overflow-hidden bg-ink text-white">
@@ -217,43 +260,52 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             basculement, alors que les deux panneaux posés d'un coup se
             lisaient comme une simple comparaison figée. */}
         <div ref={splitRef} className="relative left-1/2 mt-10 w-screen -translate-x-1/2">
-          <div className="flex h-[200px] overflow-hidden sm:h-[240px]">
-            <div
-              className="flex flex-1 flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)] transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)]"
-              style={{
-                opacity: splitVisible ? 1 : 0,
-                transform: splitVisible ? "translateX(0)" : "translateX(-24px)",
-              }}
-            >
+          <div
+            ref={wipeRef}
+            onPointerDown={(e) => {
+              dragging.current = true
+              setFromClientX(e.clientX)
+            }}
+            className="relative h-[220px] cursor-ew-resize select-none overflow-hidden sm:h-[260px]"
+            style={{ opacity: splitVisible ? 1 : 0, transition: "opacity 700ms ease" }}
+          >
+            {/* La couche du dessous : « Hier », désaturée, pleine largeur. */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]">
               <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
                 {t.diagramBefore}
               </div>
-              <p className="m-0 max-w-[220px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
+              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
                 {t.splitBefore}
               </p>
             </div>
 
+            {/* La couche du dessus : « Aujourd'hui », révélée jusqu'à `pct`
+                via clip-path — le texte ne se déplace pas, seule la fenêtre
+                qui le découvre bouge. */}
             <div
-              aria-hidden
-              className="w-[2px] shrink-0 origin-center bg-brand transition-transform duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]"
-              style={{ transform: splitVisible ? "scaleY(1)" : "scaleY(0)", transitionDelay: "350ms" }}
-            />
-
-            <div
-              className="flex flex-1 flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)]"
-              style={{
-                opacity: splitVisible ? 1 : 0,
-                transform: splitVisible ? "translateX(0)" : "translateX(24px)",
-                transitionDelay: "620ms",
-              }}
+              className="absolute inset-0 flex flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center"
+              style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
             >
               <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
                 {t.diagramAfter}
               </div>
-              <p className="m-0 max-w-[220px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
+              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
                 {t.splitAfter}
               </p>
             </div>
+
+            <div aria-hidden className="pointer-events-none absolute inset-y-0 w-[2px] bg-brand" style={{ left: `${pct}%` }} />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand bg-ink text-[11px] text-brand shadow-[0_0_0_4px_rgba(10,10,10,0.6)]"
+              style={{ left: `${pct}%` }}
+            >
+              ↔
+            </div>
+
+            <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 font-mono text-[9.5px] uppercase tracking-[0.18em] text-chalk-40">
+              {t.wipeHint}
+            </span>
           </div>
         </div>
 

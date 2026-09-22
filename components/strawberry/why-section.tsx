@@ -24,16 +24,20 @@ const T = {
     h2: "Chaque marché finit par s'accorder sur la façon dont on doit parler de lui.",
     p1: "Les fondateurs adoptent les mots de leur catégorie parce que le langage est contagieux. L'IA accélère cet effondrement — en générant, à l'infini, les mêmes documents de marque qui se ressemblent déjà.",
     p2: "Dans ce bruit, la qualité ne suffit plus. Tout le monde est devenu compétent.",
-    punch: "Ce qui ne peut pas être généré, c'est une identité.",
-    close: "Ce studio existe pour écrire l'identité que l'IA ne peut pas écrire.",
+    punch: "Ce qui ne peut pas être généré, c'est un choix.",
+    verses: ["Un vrai choix.", "Ce que vous défendez.", "Ce que vous refusez.", "La place que vous décidez d'occuper."],
+    close:
+      "C'est pour cela que ce studio existe : construire l'identité narrative qui naît de ces choix — et donner au monde une raison de vous reconnaître.",
   },
   en: {
     kicker: "Why this studio exists",
     h2: "Every market eventually agrees on how it should be spoken about.",
     p1: "Founders adopt the words of their category because language is contagious. AI accelerates that collapse — generating, endlessly, the same brand documents that already look alike.",
     p2: "In that noise, quality is no longer enough. Everyone has become competent.",
-    punch: "What cannot be generated is an identity.",
-    close: "This studio exists to write the identity AI cannot write.",
+    punch: "What cannot be generated is a choice.",
+    verses: ["A real choice.", "What you stand for.", "What you refuse.", "The ground you decide to hold."],
+    close:
+      "That is why this studio exists: to build the narrative identity born from those choices — and give the world a reason to recognise you.",
   },
 }
 
@@ -87,6 +91,16 @@ export function WhySection({ lang }: { lang: Lang }) {
         <p className="mx-auto mt-12 max-w-[640px] font-serif text-[clamp(1.4rem,3vw,2.1rem)] font-bold uppercase leading-[1.15] tracking-[-0.005em] text-white">
           {t.punch}
         </p>
+
+        {/* Les quatre lignes courtes : ce que « un choix » veut dire,
+            décliné, du général au concret. */}
+        <ul className="mx-auto mt-6 flex max-w-[420px] list-none flex-col gap-1.5 p-0">
+          {t.verses.map((v) => (
+            <li key={v} className="font-serif text-[15px] text-chalk-55">
+              {v}
+            </li>
+          ))}
+        </ul>
 
         <div className="mx-auto mt-8 h-px w-16 bg-brand" />
 

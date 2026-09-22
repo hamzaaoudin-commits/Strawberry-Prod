@@ -33,9 +33,9 @@ const T = {
     intro:
       "What comes out is not a style guide — it is the written constitution by which your market learns to tell you apart.",
     coverFoot: "Fifty to seventy pages",
-    h3: "The brand story no competitor can copy — and no machine can write.",
+    h3: "The brand story no competitor can copy — because it is built from what makes you singular.",
     body:
-      "It begins with an extraction no AI automates: your truth, your singularity, what you no longer see because you are inside it.",
+      "We build your narrative architecture in six pieces: the brand platform, the diagnosis of what you say today, the map of the competitive field, the decisions that set you apart — and what they ask you to give up —, six playbooks for your teams, and a lexicon of copy ready to use.\n\nNot a survey. Not a document to file away. A direction to follow.",
     deliverablesKicker: "What changes, part by part",
     groups: [
       {
@@ -111,9 +111,9 @@ const T = {
     intro:
       "Ce qui en sort n'est pas une charte — c'est la constitution écrite par laquelle votre marché apprend à vous distinguer.",
     coverFoot: "Cinquante à soixante-dix pages",
-    h3: "Le récit de marque qu'aucun concurrent ne peut copier — et qu'aucune machine ne peut écrire.",
+    h3: "Le récit de marque qu'aucun concurrent ne peut copier — parce qu'il est construit à partir de ce qui vous rend unique.",
     body:
-      "Un document de cinquante à soixante-dix pages, écrit à la main, en six pièces : la plateforme de marque complète, le diagnostic de ce que vous dites aujourd'hui, la carte du champ concurrentiel, les décisions à prendre avec ce que chacune coûte, cinq playbooks pour vos équipes, et le lexique avec vos textes réécrits prêts à coller. Vous ne repartez pas avec un état des lieux : vous repartez avec ce qu'il faut faire, et de quoi le faire.",
+      "Nous construisons en six pièces votre architecture narrative : la plateforme de marque, le diagnostic de votre discours actuel, la carte du champ concurrentiel, les décisions qui vous distinguent — et ce qu'elles vous demandent d'abandonner —, six playbooks pour vos équipes et un lexique de textes prêts à l'emploi.\n\nPas un état des lieux. Pas un document à ranger dans un dossier. Une direction à suivre.",
     deliverablesKicker: "Ce qui change, pièce par pièce",
     groups: [
       {
@@ -235,7 +235,7 @@ export function OffersSection({ lang }: { lang: Lang }) {
                 {t.h3}
               </h3>
 
-              <p className="mb-8 max-w-[620px] font-sans text-base leading-relaxed text-chalk-65">{t.body}</p>
+              <p className="mb-8 max-w-[620px] whitespace-pre-line font-sans text-base leading-relaxed text-chalk-65">{t.body}</p>
 
               <div className="grid gap-px bg-white/10 sm:grid-cols-3">
                 {t.specs.map((sp) => (

@@ -35,13 +35,13 @@ const T = {
       { n: "THE ROOM", d: "Lieux", href: "/the-room" },
       { n: "THE NAME", d: "Artistes & fondateurs", href: "/the-name" },
     ],
-    lead: "Une agence s'arrête à la plateforme de marque. Nous commençons par elle — puis nous écrivons les décisions à prendre et ce que vos équipes en font le lundi matin.",
+    lead: "Une agence s'arrête à la plateforme de marque.\nNous commençons par elle. Puis nous la transformons en décisions, en langage et en principes que vos équipes peuvent réellement utiliser.",
     kicker: "Une Architecture, quatre terrains",
-    title: "Une plateforme de marque ne décide rien. Nous écrivons ce qu'elle vous oblige à faire.",
+    title: "Une plateforme de marque ne décide rien.\nUne identité, si.",
     afterLabel: "Après l'Architecture",
     ptsLabel: "Sur ce terrain précisément",
     sceneCta: "Voir",
-    outro: "Tout ça existe déjà chez vous. Il faut juste l'écrire.",
+    outro: "Vous avez déjà tout ce qu'il faut. Ce qui manque, c'est une identité pour le rendre visible.",
     cta: "Commander l'architecture →",
     scenes: [
       {
@@ -96,13 +96,13 @@ const T = {
       { n: "THE ROOM", d: "Venues", href: "/the-room" },
       { n: "THE NAME", d: "Artists & founders", href: "/the-name" },
     ],
-    lead: "An agency stops at the brand platform. We start there — then we write the decisions to make, and what your teams do with them on Monday morning.",
+    lead: "An agency stops at the brand platform.\nWe start there. Then we turn it into decisions, language, and principles your teams can actually use.",
     kicker: "One Architecture, four grounds",
-    title: "A brand platform decides nothing. We write what it obliges you to do.",
+    title: "A brand platform decides nothing.\nAn identity does.",
     afterLabel: "After the Architecture",
     ptsLabel: "On this ground specifically",
     sceneCta: "See",
-    outro: "All of it already exists. It just needs writing.",
+    outro: "You already have everything you need. What is missing is an identity to make it visible.",
     cta: "Order the architecture →",
     scenes: [
       {
@@ -303,13 +303,13 @@ export function TourSection() {
       <div className="shell pt-6 pb-20 text-center">
         <div className="kicker mb-5">{t.kicker}</div>
         <h2 className="h-section mx-auto max-w-[760px]">
-          <span className="surligne-grad">{t.title}</span>
+          <span className="surligne-grad whitespace-pre-line">{t.title}</span>
         </h2>
 
         {/* Le chapô : il dit ce qui est identique et ce qui change, donc
             comment lire les quatre scènes qui suivent. Sans lui, on ne sait
             pas si les terrains sont quatre offres ou quatre variantes. */}
-        <p className="lede mx-auto mt-6 max-w-[640px]">{t.lead}</p>
+        <p className="lede mx-auto mt-6 max-w-[640px] whitespace-pre-line">{t.lead}</p>
 
         {/* Les quatre terrains, en bandeau.
             Ils disent « c'est pour vous » ; les six scènes qui suivent
