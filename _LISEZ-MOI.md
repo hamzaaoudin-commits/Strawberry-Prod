@@ -1,43 +1,51 @@
-# Strawberry — le chiffre flottant, retiré
+# Strawberry — un vrai mécanisme, pas une nouvelle retouche
 
-1 fichier. Vous aviez raison, c'était cassé.
+5 fichiers. Vous aviez raison de le dire crûment : je traitais ça comme
+un problème de typographie depuis le début, alors que la home a marché
+parce que j'ai pensé en mécanismes — glisser, épingler, dévoiler en
+séquence.
 
-## Ce qui s'est passé
+## Ce qui change vraiment cette fois
 
-Le grand chiffre fantôme était positionné au centre vertical de toute la
-ligne. Sur une ligne haute — à cause du long paragraphe à droite — ça le
-plaçait dans un vide, à distance du nom qu'il était censé accompagner.
-Exactement ce que montrait votre capture : un « 01 » esseulé, flottant
-dans du noir.
+**Un bouton par cas, deux états.** « Ce que fait le secteur » et « Ce
+qu'elle a fait », avec un fondu enchaîné entre les deux quand on clique —
+la même logique de mise en contraste que le curseur Hier/Aujourd'hui de
+la home, en clic plutôt qu'en glissement, pour rester fiable sur toutes
+les tailles d'écran.
 
-## Ce qui le remplace
+**L'effet qui dure reste toujours visible en dessous**, quel que soit
+l'état affiché — c'est la ligne qu'on doit retenir en quittant la
+section, donc elle ne se cache jamais derrière un clic.
 
-**Le numéro rejoint le nom, sur la même ligne** — « 01 » puis « NIKE »,
-côte à côte, en tête de section. Il ne peut plus se détacher de rien
-puisqu'il fait partie du même repère.
+Concrètement, pour Nike :
+- **Ce que fait le secteur** (état par défaut) : « Dans les années 1980,
+  l'argument publicitaire du sport était technique — amorti,
+  respirabilité, poids de la semelle. »
+- **Ce qu'elle a fait** (au clic) : « « Just Do It » ne décrit aucune
+  caractéristique produit : c'est une conviction sur ce que ça fait de
+  dépasser sa propre limite… »
+- **Toujours visible** : « Près de quarante ans plus tard, la marque n'a
+  jamais eu besoin de changer ce message pour rester pertinente. »
 
-**Une lettrine ouvre le paragraphe** — la première lettre en grand,
-posée en retrait, comme dans une page imprimée. C'est un procédé
-éditorial ancien et fiable plutôt qu'une astuce de position qui casse dès
-que le texte change de longueur.
+## Deux erreurs trouvées et corrigées avant de vous l'envoyer
 
-**Le refus continue de se dévoiler** par un rideau qui se retire, et le
-trait sous le nom continue de se tracer — ces deux mouvements-là
-n'étaient pas en cause, ils restent.
+**Un espace réservé oublié.** Le bouton disait littéralement
+« Ce que {"{"}\$HOUSE{"}"} a fait » — un repère de rédaction jamais
+remplacé. Corrigé en un libellé générique, puisque le nom de la maison
+est déjà visible juste au-dessus.
 
-## Une seconde chose corrigée en le faisant
-
-En reconstruisant le paragraphe, j'ai trouvé le même défaut que la fois
-où le texte était devenu illisible : `class="body-sm"` n'existe pas non
-plus dans la feuille de style de ce gabarit, seulement dans celle du
-site moderne. Cette fois le résultat n'était pas cassé — les deux
-feuilles définissent des polices proches — mais c'était la même
-dépendance fragile, invisible jusqu'au jour où elle ne le serait plus.
-Remplacé par les propres jetons du gabarit, en style direct.
+**L'inversion de langue, une troisième fois.** En ajoutant les deux
+libellés partagés à `i18n.js`, j'ai reproduit exactement l'erreur des
+deux derniers patchs — un script de remplacement qui suppose l'ordre des
+blocs au lieu de le vérifier. Cette fois je l'ai corrigé ligne par ligne,
+en repérant explicitement où commence chaque bloc avant d'écrire quoi que
+ce soit, et j'ai vérifié après coup que les dix-sept clés `case.*` du
+bloc français sont bien toutes en français, une par une.
 
 ## Vérification
 
 Contrôle de types : zéro erreur. Toutes les clés du gabarit confirmées
-présentes. Plus aucune trace de `body-sm` dans cette section précise —
-les six occurrences restantes ailleurs dans le fichier sont
-préexistantes et sans rapport.
+présentes dans les quatre dictionnaires. Le script de bascule extrait et
+vérifié séparément avec `node --check` — sa syntaxe est valide, ce que le
+contrôle de types ne peut pas voir puisqu'il ne le lit que comme une
+chaîne de caractères.

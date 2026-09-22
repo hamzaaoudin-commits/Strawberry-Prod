@@ -59,37 +59,22 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><!-- ============ CAS RÉELS ============ -->
 <section class="section">
 <style>
-  /* Le chiffre géant en fond flottait tout seul dans le vide — sa
-     position centrée verticalement contre toute la hauteur de la ligne
-     l'éloignait du texte dès que le paragraphe était long. Le numéro est
-     désormais en ligne, collé au nom, jamais isolé. Le refus se dévoile
-     toujours par un rideau qui se retire ; le paragraphe s'ouvre sur une
-     lettrine, un vrai procédé éditorial plutôt qu'une astuce de position.
-     Tout se déclenche sur le même bascule .shown qu'app.js pose déjà. */
-  .case-row{ position:relative; }
-  .case-kicker{ display:flex; align-items:baseline; gap:.6rem; }
-  .case-kicker .n{ font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral); }
-  .case-rule{ width:0; height:1px; background:var(--coral); margin-top:.6rem;
-    transition:width .9s var(--ease) .15s; }
-  .case-row.shown .case-rule{ width:2.2rem; }
-  .case-pull{
-    clip-path:inset(0 100% 0 0);
-    transition:clip-path 1.05s var(--ease) .25s;
+  /* Le mécanisme : cliquer bascule entre « ce que fait le secteur » et
+     « ce que la maison a fait », avec un fondu enchaîné entre les deux
+     panneaux — la mise en contraste du curseur Hier/Aujourd'hui, en clic
+     plutôt qu'en glissement. L'effet qui dure reste toujours visible en
+     dessous : c'est la ligne qu'on doit retenir en quittant la section. */
+  .case-tab{
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+    padding:.55rem 1.1rem; border:0; border-radius:100px; background:none; color:var(--smoke-dim);
+    cursor:pointer; transition:background .3s, color .3s;
   }
-  .case-row.shown .case-pull{ clip-path:inset(0 0 0 0); }
-  .case-body{ opacity:0; transform:translateY(14px);
-    transition:opacity .9s var(--ease) .55s, transform .9s var(--ease) .55s; }
-  .case-row.shown .case-body{ opacity:1; transform:none; }
-  .case-body::first-letter{
-    font-family:var(--display); font-weight:700; font-size:3.1em; line-height:.78;
-    float:left; margin:.03em .1em 0 0; color:var(--cream);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .case-rule, .case-pull, .case-body{ transition:none!important; opacity:1!important; transform:none!important; clip-path:none!important; width:auto!important; }
-  }
-  @media (max-width:640px){
-    .case-row{ grid-template-columns:1fr!important; gap:.9rem!important; }
-  }
+  .case-tab.active{ background:var(--coral); color:#0a0a0a; }
+  .case-pane-wrap{ position:relative; min-height:3.6em; }
+  .case-pane{ position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); }
+  .case-pane[data-state="norm"].is-visible,
+  .case-pane[data-state="refuse"].is-visible{ opacity:1; pointer-events:auto; position:relative; }
+  .case-row.shown .case-payoff{ }
 </style>
 <div class="wrap">
 <div class="section-head reveal">
@@ -98,38 +83,79 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="lead" data-i18n="case.lead" style="margin-top:1.2rem">Aucune n'a été construite par nous. Toutes les trois ont fait, à leur échelle, ce que cette Architecture fait à la vôtre.</p>
 </div>
 <div style="display:grid; gap:0">
-<div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft)">
-<div>
-<div class="case-kicker"><span class="n">01</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span></div>
-<div class="case-rule"></div>
+<div class="case-row reveal" style="padding:2.8rem 0; border-top:1px solid var(--line-soft)">
+<div style="display:flex; align-items:baseline; gap:.8rem; margin-bottom:1.6rem">
+<span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">01</span>
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span>
 </div>
-<div>
-<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.1.pull">Ce qu'elle a refusé.</p>
-<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.1.body">Le développement du cas.</p>
+<!-- Le bouton : on choisit ce qu'on regarde, comme sur le curseur
+     Hier/Aujourd'hui — en clic plutôt qu'en glissement, pour rester
+     fiable sur toutes les tailles d'écran. -->
+<div class="case-toggle" role="tablist" style="display:inline-flex; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
+<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
+<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
+</div>
+<div class="case-pane-wrap">
+<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.1.norm">La norme du secteur.</p>
+<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.1.refuse">Ce qui a été refusé.</p>
+</div>
+<p class="case-payoff" style="margin:1.6rem 0 0; padding-top:1.5rem; border-top:1px solid var(--line-soft); max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.1.body">L'effet qui dure.</p>
+</div>
+<div class="case-row reveal" style="padding:2.8rem 0; border-top:1px solid var(--line-soft)">
+<div style="display:flex; align-items:baseline; gap:.8rem; margin-bottom:1.6rem">
+<span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">02</span>
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span>
+</div>
+<!-- Le bouton : on choisit ce qu'on regarde, comme sur le curseur
+     Hier/Aujourd'hui — en clic plutôt qu'en glissement, pour rester
+     fiable sur toutes les tailles d'écran. -->
+<div class="case-toggle" role="tablist" style="display:inline-flex; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
+<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
+<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
+</div>
+<div class="case-pane-wrap">
+<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.2.norm">La norme du secteur.</p>
+<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.2.refuse">Ce qui a été refusé.</p>
+</div>
+<p class="case-payoff" style="margin:1.6rem 0 0; padding-top:1.5rem; border-top:1px solid var(--line-soft); max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.2.body">L'effet qui dure.</p>
+</div>
+<div class="case-row reveal" style="padding:2.8rem 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)">
+<div style="display:flex; align-items:baseline; gap:.8rem; margin-bottom:1.6rem">
+<span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">03</span>
+<span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span>
+</div>
+<!-- Le bouton : on choisit ce qu'on regarde, comme sur le curseur
+     Hier/Aujourd'hui — en clic plutôt qu'en glissement, pour rester
+     fiable sur toutes les tailles d'écran. -->
+<div class="case-toggle" role="tablist" style="display:inline-flex; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
+<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
+<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
+</div>
+<div class="case-pane-wrap">
+<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.3.norm">La norme du secteur.</p>
+<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.3.refuse">Ce qui a été refusé.</p>
+</div>
+<p class="case-payoff" style="margin:1.6rem 0 0; padding-top:1.5rem; border-top:1px solid var(--line-soft); max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.3.body">L'effet qui dure.</p>
 </div>
 </div>
-<div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft)">
-<div>
-<div class="case-kicker"><span class="n">02</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span></div>
-<div class="case-rule"></div>
 </div>
-<div>
-<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.2.pull">Ce qu'elle a refusé.</p>
-<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.2.body">Le développement du cas.</p>
-</div>
-</div>
-<div class="case-row reveal" style="display:grid; grid-template-columns:minmax(170px,240px) 1fr; gap:clamp(1.5rem,4vw,3rem); padding:2.8rem 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)">
-<div>
-<div class="case-kicker"><span class="n">03</span><span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span></div>
-<div class="case-rule"></div>
-</div>
-<div>
-<p class="case-pull" style="margin:0 0 1.1rem; font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.24; letter-spacing:-.012em; color:var(--cream)" data-i18n="case.3.pull">Ce qu'elle a refusé.</p>
-<p class="case-body" style="margin:0; max-width:66ch; font-family:var(--body); font-size:1.02rem; color:var(--smoke); line-height:1.8" data-i18n="case.3.body">Le développement du cas.</p>
-</div>
-</div>
-</div>
-</div>
+<script>
+(function(){
+  var rows = document.querySelectorAll(".case-row");
+  rows.forEach(function(row){
+    var tabs = row.querySelectorAll(".case-tab");
+    var panes = row.querySelectorAll(".case-pane");
+    function setState(state){
+      tabs.forEach(function(t){ t.classList.toggle("active", t.dataset.state === state); });
+      panes.forEach(function(p){ p.classList.toggle("is-visible", p.dataset.state === state); });
+    }
+    setState("norm");
+    tabs.forEach(function(t){
+      t.addEventListener("click", function(){ setState(t.dataset.state); });
+    });
+  });
+})();
+</script>
 </section>
 <!-- ============ LIVRABLES ============ -->
 <section class="section">
