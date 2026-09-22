@@ -67,15 +67,15 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div class="grid cols-3" style="gap:1.1rem">
 <article class="card reveal">
 <h3 style="margin:0 0 .5rem" data-i18n="case.1.name">Maison</h3>
-<p class="body-sm" data-i18n="case.1.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<p class="body-sm" data-i18n="case.1.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
 <article class="card reveal d1">
 <h3 style="margin:0 0 .5rem" data-i18n="case.2.name">Maison</h3>
-<p class="body-sm" data-i18n="case.2.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<p class="body-sm" data-i18n="case.2.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
 <article class="card reveal d2">
 <h3 style="margin:0 0 .5rem" data-i18n="case.3.name">Maison</h3>
-<p class="body-sm" data-i18n="case.3.body" style="color:var(--muted)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<p class="body-sm" data-i18n="case.3.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
 </article>
 </div>
 </div>
@@ -91,27 +91,27 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <div style="display:grid; gap:0; border-top:1px solid var(--line-soft)">
 <div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">01</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.1.t">La plateforme</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.1.d">Ce que vous défendez.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.1.d">Ce que vous défendez.</p>
 </div>
 <div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">02</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.2.t">Le diagnostic</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.2.d">Ce que vous dites aujourd'hui.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.2.d">Ce que vous dites aujourd'hui.</p>
 </div>
 <div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">03</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.3.t">La carte</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.3.d">Le champ concurrentiel.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.3.d">Le champ concurrentiel.</p>
 </div>
 <div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">04</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.4.t">Les décisions</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.4.d">Ce qu'il faut faire, dans l'ordre.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.4.d">Ce qu'il faut faire, dans l'ordre.</p>
 </div>
 <div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">05</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.5.t">Les playbooks</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.5.d">Ce que vos équipes font au quotidien.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.5.d">Ce que vos équipes font au quotidien.</p>
 </div>
 <div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0">
 <div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">06</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.6.t">Le langage</h3></div>
-<p class="body-sm" style="color:var(--muted)" data-i18n="deliv.6.d">Les mots et les textes prêts à coller.</p>
+<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.6.d">Les mots et les textes prêts à coller.</p>
 </div>
 </div>
 </div>
