@@ -4,16 +4,13 @@ import { TourSection } from "@/components/strawberry/tour-section"
 import { MethodSection } from "@/components/strawberry/method-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
-import { AfterSection } from "@/components/strawberry/after-section"
 import { WhySection } from "@/components/strawberry/why-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
 import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
-import { OffersSection } from "@/components/strawberry/offers-section"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { CTABanner } from "@/components/strawberry/cta-banner"
-import { BookSection } from "@/components/strawberry/book-section"
 import { ContactSection } from "@/components/strawberry/contact-section"
 import { Footer } from "@/components/strawberry/footer"
 import { isLang, type Lang } from "@/lib/lang"
@@ -77,21 +74,23 @@ export default async function Home({
           ici, il élargit le problème du lecteur à sa cause commune, juste
           avant qu'on ne présente ce qu'on livre. */}
       <WhySection lang={lang} />
+      {/* La tournée présente désormais les six pièces en entier — les
+          vingt éléments qui vivaient dans la carte des livrables plus bas
+          y sont tous repris, pièce par pièce. La section « l'offre » qui
+          suivait n'était donc plus qu'une redite du même contenu, une
+          deuxième fois, dans une forme plus courte. Retirée. */}
       <TourSection />
       {/* La méthode, une seule fois : elle décrit le même déroulé quel que
           soit ce qui se vend, elle n'a donc plus de raison de se répéter
           sur chacune des quatre pages de terrain. */}
       <MethodSection lang={lang} />
       <ReadMarquee />
-      <OffersSection lang={lang} />
       <ImpactStats lang={lang} />
       <MechanismStrip lang={lang} />
-      {/* Ce qui se passe après le paiement.
-          Placé juste avant le bandeau d'achat : la dernière question qu'on
-          se pose devant un bouton à 2 900 € n'est pas « est-ce que c'est
-          bien » mais « qu'est-ce qui m'attend ». */}
-      <AfterSection lang={lang} />
-      <BookSection lang={lang} />
+      {/* La section « après le paiement » et le livre sont retirés de la
+          home : trop de boutons d'achat qui se suivent avant celui-ci
+          finissent par se neutraliser les uns les autres. Le livre reste
+          visible ailleurs — sur la page Studio et sur la page Méthode. */}
       <CTABanner />
       <FaqSection faqs={FAQ_AUDIT} />
       <ContactSection />

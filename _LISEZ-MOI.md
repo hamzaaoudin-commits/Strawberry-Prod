@@ -1,47 +1,55 @@
-# Strawberry — le défilement à la molette, section capturée
+# Strawberry — la home allégée, la méthode corrigée
 
-1 fichier.
+4 fichiers.
 
-## Ce que vous vouliez
+## Le défilement démarrait trop tôt
 
-Que la molette de la souris fasse avancer le carrousel horizontalement,
-et que la page ne passe pas à la section suivante tant qu'on n'a pas fini
-de le traverser.
+La translation horizontale commençait dès la première image du
+défilement, avant qu'on ait eu le temps de lire le titre qui venait
+d'apparaître. **Les douze premiers pourcents du défilement ne font
+maintenant plus rien** — une zone de lecture avant que les cartes ne
+commencent à bouger. La translation elle-même se joue sur les 83 %
+suivants.
 
-## Ce que j'ai fait
+## L'affirmation fausse, corrigée
 
-Plutôt que de porter le JavaScript d'origine pour ce mode précis, j'ai
-repris **le moteur que la tournée utilise déjà juste au-dessus, sur cette
-même page** : un conteneur surdimensionné (300vh) dont l'intérieur reste
-collé à l'écran pendant qu'on le traverse, avec la position dans ce
-défilement qui pilote une translation. La tournée l'utilise pour un
-fondu entre scènes ; ici, la même technique pilote une translation
-horizontale de la piste de cartes.
+La première étape disait « Nous venons chez vous » — une visite sur
+place qui n'a jamais existé dans le vrai processus. Elle devient :
 
-C'est délibéré : réutiliser un mécanisme déjà en place et déjà correct
-sur cette page évite que les deux systèmes d'épinglage se marchent
-dessus, et garantit la même fluidité (on ne lit que la position de
-défilement à chaque image, on n'écrit qu'un `transform` — aucun recalcul
-de mise en page pendant qu'on scrolle).
+> **Vous répondez, nous dépouillons.**
+> Vous remplissez un questionnaire d'onboarding complet. Nous le croisons
+> avec l'analyse de tous vos supports — avis clients, réseaux sociaux,
+> site web — pour commencer le travail.
 
-## Ce qui change concrètement
+Vérifié : cette phrase n'existait nulle part ailleurs sur une page
+réellement affichée. Elle subsiste dans un jeu de clés `st.*` de
+`i18n.js` qui n'est plus rendu depuis le retrait de la méthode des pages
+de terrain — signalé comme dette de nettoyage, pas touché aujourd'hui.
 
-- **Sur ordinateur, molette ou trackpad** : la page se bloque en entrant
-  dans la section, la molette fait glisser les cartes de gauche à droite,
-  et la page ne reprend son défilement normal qu'une fois la cinquième
-  carte atteinte.
-- **Le glisser à la souris et les flèches disparaissent** en mode
-  épinglé — ils n'ont plus de raison d'être, la molette fait tout.
-- **Sur mobile et tablette (moins de 900px)**, l'épinglage se désactive :
-  la molette n'existe pas au doigt, et un conteneur bloqué sur 300vh sur
-  un petit écran serait pénible à traverser. Le glissement au doigt et le
-  défilement tactile natif reprennent, exactement comme avant.
-- **Si votre navigateur préfère les animations réduites**, l'épinglage
-  se désactive aussi — même règle que la tournée.
+## La tournée, vérifiée avant de retirer l'offre
+
+Recompté avant toute suppression : les six pièces, les vingt éléments
+issus des quatre onglets de l'offre — playbooks nommés un par un, le
+récit fondateur, les deux axes de positionnement, les quatre segments
+d'audience, la pièce signature — tous confirmés présents.
+
+## Trois sections retirées de la home
+
+**L'offre.** Une fois la tournée complète, elle ne faisait plus que
+répéter en plus court ce qui venait d'être dit en détail juste au-dessus.
+
+**Après le paiement.** Retirée avec l'offre.
+
+**Le livre.** Retiré de la home pour la raison que vous avez donnée :
+trop de boutons d'achat qui se suivent finissent par se neutraliser les
+uns les autres. Il reste visible à deux endroits :
+- **La page Studio**, à la suite du bloc « ce qu'est ce studio »
+- **La page Méthode**, à la suite de l'Atlas — l'un et l'autre déjà
+  déplacés là pour la même raison lors d'un patch précédent
 
 ## Vérification
 
-Contrôle de types : zéro erreur. La structure de conteneurs
-(`story-pin` → `story-sticky` → `wrap story`) suit exactement celle de
-l'original, seule la classe pilotant la translation change de nom pour
-rester isolée sous `.straw-method`.
+Contrôle de types : zéro erreur nouvelle. Deux erreurs préexistantes sur
+`<style jsx>` dans la page Studio, propres à mon environnement de
+contrôle allégé (le typage `styled-jsx` n'y est pas installé) — sans
+rapport avec ce patch.

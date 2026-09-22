@@ -116,9 +116,9 @@ const T = {
     hint: "Faites défiler",
     steps: [
       {
-        t: "Nous venons chez vous.",
-        d: "Vos supports, vos équipes, vos clients. Ce qui se répète sans qu'on s'en rende compte. La matière est déjà là.",
-        b: ["Immersion dans vos supports et votre quotidien", "Entretien avec vous et deux personnes de vos équipes"],
+        t: "Vous répondez, nous dépouillons.",
+        d: "Vous remplissez un questionnaire d'onboarding complet. Nous le croisons avec l'analyse de tous vos supports — avis clients, réseaux sociaux, site web — pour commencer le travail.",
+        b: ["Un questionnaire complet, à remplir à votre rythme", "L'analyse croisée de vos avis, vos réseaux et votre site"],
       },
       {
         t: "Nous écrivons votre monde.",
@@ -148,9 +148,9 @@ const T = {
     hint: "Scroll",
     steps: [
       {
-        t: "We come to you.",
-        d: "Your supports, your teams, your customers. What repeats without anyone noticing. The material is already there.",
-        b: ["Immersion in your supports and your day to day", "A conversation with you and two people from your teams"],
+        t: "You answer, we go through everything.",
+        d: "You fill in a complete onboarding questionnaire. We cross it with an analysis of all your supports — customer reviews, social pages, your website — to start the work.",
+        b: ["A complete questionnaire, filled in at your own pace", "The cross-analysis of your reviews, your social pages and your site"],
       },
       {
         t: "We write your world.",
@@ -211,7 +211,14 @@ export function MethodSection({ lang }: { lang: Lang }) {
           ticking = false
           const span = Math.max(1, geo.height - geo.vh)
           const p = clamp01((window.scrollY - geo.top) / span)
-          track.style.transform = `translate3d(${-p * geo.max}px,0,0)`
+          // Une zone de lecture au début : sans elle, la piste commence à
+          // glisser dès la première image du défilement, avant même qu'on
+          // ait eu le temps de lire le titre qui vient d'apparaître. Les
+          // 12 premiers pourcents du défilement ne font donc rien ; la
+          // translation elle-même se joue sur les 83 % suivants, et
+          // s'arrête un peu avant la fin pour ne pas couper net.
+          const pAdj = clamp01((p - 0.12) / 0.83)
+          track.style.transform = `translate3d(${-pAdj * geo.max}px,0,0)`
         }
         const onScroll = () => {
           if (!ticking) {

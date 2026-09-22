@@ -9,6 +9,7 @@ import { useScrollReveal } from "@/hooks/use-strawberry"
 import Image from "next/image"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { AboutSection } from "@/components/strawberry/about-section"
+import { BookSection } from "@/components/strawberry/book-section"
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
 const SANS = "var(--font-dm-sans), 'DM Sans', sans-serif"
@@ -556,6 +557,11 @@ export default function AboutPage() {
           fait avancer vers la commande. Il trouve ici sa vraie place, en
           clôture de la page qui porte son nom. */}
       <AboutSection lang={lang} />
+
+      {/* Le livre, retiré de la home — trop de boutons d'achat qui se
+          suivent avant celui-ci finissent par se neutraliser les uns les
+          autres. Il reste visible ici, et sur la page Méthode. */}
+      <BookSection lang={lang} />
 
       {/* FINAL CTA */}
       <section

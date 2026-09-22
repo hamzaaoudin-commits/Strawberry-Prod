@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
-import { useT } from "@/lib/i18n"
+import { useT, useLang } from "@/lib/i18n"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { STRIPE_LINKS } from "@/lib/config"
 import { AtlasSection } from "@/components/strawberry/atlas-section"
+import { BookSection } from "@/components/strawberry/book-section"
 
 
 const SERIF = "var(--font-playfair), 'Playfair Display', serif"
@@ -188,6 +189,7 @@ function useReveal() {
 
 export default function StrawberryMethodPage() {
   const t = useT(T)
+  const { lang } = useLang()
   const LETTERS = t.letters
   const PRINCIPLES = t.principles
   const STAGES = t.stages.map((st, i) => ({ ...st, ...t.letters[i] }))
@@ -462,6 +464,12 @@ export default function StrawberryMethodPage() {
           au bout de la page qui explique la méthode qu'au bout d'une page
           qui vend une commande. */}
       <AtlasSection />
+
+      {/* Le livre, retiré de la home — trop de boutons d'achat qui se
+          suivent avant celui-ci finissent par se neutraliser les uns les
+          autres. Il reste visible ici, à la suite de l'Atlas, et sur la
+          page Studio. */}
+      <BookSection lang={lang} />
 
       {/* FINAL CTA */}
       <section ref={cta.ref as any} style={{ padding: "140px clamp(1.5rem,4vw,4rem)", borderTop: "1px solid rgba(255,255,255,0.07)", position: "relative" }}>
