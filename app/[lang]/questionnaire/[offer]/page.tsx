@@ -41,7 +41,7 @@ export default async function QuestionnairePage({ params, searchParams }: PagePr
           document, rien ne doit bouger derrière le texte. */}
       {/* La lueur est rendue par le composant, qui connaît la progression :
           elle glisse du froid vers le rouge de marque à mesure qu'on avance. */}
-      <div className="relative shell-sm">
+      <div className="relative w-full">
         {/* `terrain` choisit les questions propres au terrain (lieux,
             artistes...). Absent, on sert le parcours commun : les liens
             envoyés avant cette évolution continuent donc de fonctionner. */}

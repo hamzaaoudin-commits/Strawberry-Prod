@@ -625,11 +625,17 @@ export function QuestionnaireFlow({
   }
 
   return (
-    <div className="relative border border-hair-strong bg-ink">
-      <span className="bracket-tl" aria-hidden="true" />
-      <span className="bracket-br" aria-hidden="true" />
+    // Le cadre à coins rouges — bracket-tl/bracket-br — vient du tout premier
+    // patch de ce composant, avant toute la refonte en plein écran. Il n'a
+    // jamais été retiré : chaque passe suivante a changé ce qu'il y avait
+    // DANS la carte, sans remarquer que la carte elle-même contredisait
+    // l'idée. Ce motif reste juste sur les couvertures et les fac-similés
+    // de document ailleurs sur le site — il dit « ceci est un objet
+    // imprimé ». Ici, on veut l'inverse : un espace ouvert où l'on écrit,
+    // pas un document qu'on regarde de l'extérieur.
+    <div className="relative">
       {screen === "cover" && <div className="glow-top" aria-hidden="true" />}
-      <div className="relative px-6 py-10 sm:px-10 sm:py-14">
+      <div className="relative px-gutter py-10 sm:py-14">
         <input
           {...honeypotProps}
           name="company_website"

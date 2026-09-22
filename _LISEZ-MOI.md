@@ -1,42 +1,56 @@
-# Strawberry — le plein écran, en production
+# Strawberry — la carte enfin retirée
 
-2 fichiers. C'est la version retenue parmi les quatre pistes, portée du
-mockup vers le vrai code du questionnaire.
+2 fichiers. Vous aviez raison, et la cause était plus grave que je ne le
+pensais.
 
-## Ce qui disparaît
+## Ce qui était resté depuis le tout premier patch
 
-**La grille asymétrique et le folio en marge** — remplacés par un écran
-centré : plus de colonne de marge, plus de grand chiffre.
+Le composant `QuestionnaireFlow` s'ouvrait sur :
 
-**Deux props mortes**, trouvées en réécrivant : `pieces` et
-`previousEcho`/`terrainLabel`/`deferredCount` étaient encore transmis à
-`StepScreen` sans y être jamais lus — restes d'une passe précédente. Et
-**le miroir** (`mirror`) était accepté mais plus jamais rendu depuis un
-nettoyage antérieur qui l'avait emporté par erreur : il est réintégré ici.
+```tsx
+<div className="relative border border-hair-strong bg-ink">
+  <span className="bracket-tl" aria-hidden="true" />
+  <span className="bracket-br" aria-hidden="true" />
+```
 
-## Ce que ça devient
+Une bordure visible et des coins rouges décoratifs — le motif de
+« couverture de document » utilisé ailleurs sur le site (le livre, les
+fac-similés d'extrait). Il est là depuis la version la plus ancienne de ce
+composant, avant même qu'on parle de plein écran.
 
-**Le repère de section** est un point rouge qui respire, comme sur le
-reste du site, avec le nom de la section et le compteur en petit —
-remplace la barre et le folio. Sur une question fondatrice, il cède la
-place à une seule ligne : « Prenez le temps. Personne ne vous regarde. »
+**Chaque passe suivante a changé ce qu'il y avait dans la carte, sans
+jamais remarquer que la carte elle-même contredisait l'idée.** J'ai refait
+la typographie, la grille, les quatre actes, dix corrections de design —
+et le cadre qui enferme tout ça n'a jamais bougé. C'est pour ça que ça
+« a l'air pareil qu'avant » malgré tout le travail : structurellement,
+ça l'était.
 
-**La question et l'aide sont centrées**, en contraste net : 300 de
-graisse en grand pour la question, 500 en petit pour l'aide.
+## Ce que ça disait, et pourquoi c'est faux ici
 
-**Le grand geste est réservé à la réponse principale.** Le trait sous le
-champ s'allonge et rougit au focus (`:focus-within`, sans état React
-requis), et un curseur clignote avant même le clic, tant que le champ est
-vide. Les champs secondaires — nom, maison, email, lignes de concurrents —
-gardent un trait simple qui rougit au focus, sans le grand geste : le
-répéter sur trois champs d'un même écran aurait été trop.
+Un cadre à coins rouges dit « ceci est un objet imprimé, regardez-le de
+l'extérieur ». C'est juste sur une couverture de livre. C'est l'inverse de
+ce qu'on veut sur le questionnaire : un espace ouvert où l'on écrit, pas
+un document qu'on contemple.
 
-**Le bouton reste un mot souligné**, plus de bouton plein : le silence de
-l'écran n'est pas cassé par un aplat rouge.
+## Le second cadre, dans la page
 
-**Le pied perd son fond opaque** sur mobile : juste le bouton et le flou,
-sans bande sombre qui romprait le noir.
+`page.tsx` enveloppait aussi le tout dans `shell-sm` — un conteneur figé à
+760 px, hérité des tout premiers patches. Même symptôme : la largeur n'a
+jamais été revue quand le design a changé de nature.
+
+Il devient un simple conteneur pleine largeur ; chaque élément garde sa
+propre mesure de lecture (`max-w-[17ch]` sur la question, `max-w-[600px]`
+sur le champ), donc rien ne s'étire à l'infini sur un grand écran — mais
+la page elle-même n'est plus une carte flottante dans le noir.
+
+## Ce qui reste identique
+
+Le grain, la lueur qui avance avec le parcours, la typographie, les
+champs à trait — tout ce qu'on a construit ces derniers tours tient. Seul
+le contenant disparaît.
 
 ## Vérification
 
-Contrôle de types : zéro erreur.
+Contrôle de types : zéro erreur nouvelle. Les neuf autres usages de
+`bracket-tl`/`bracket-br` sur le site (couvertures, extraits) sont
+intacts — je n'ai touché qu'à cette occurrence.
