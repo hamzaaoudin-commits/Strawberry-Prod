@@ -1,51 +1,41 @@
-# Strawberry — un vrai mécanisme, pas une nouvelle retouche
+# Strawberry — les boutons parlaient anglais, et je sais enfin pourquoi
 
-5 fichiers. Vous aviez raison de le dire crûment : je traitais ça comme
-un problème de typographie depuis le début, alors que la home a marché
-parce que j'ai pensé en mécanismes — glisser, épingler, dévoiler en
-séquence.
+5 fichiers. Les deux problèmes sont réels, et je les ai trouvés
+précisément plutôt que de deviner.
 
-## Ce qui change vraiment cette fois
+## Pourquoi les boutons étaient en anglais
 
-**Un bouton par cas, deux états.** « Ce que fait le secteur » et « Ce
-qu'elle a fait », avec un fondu enchaîné entre les deux quand on clique —
-la même logique de mise en contraste que le curseur Hier/Aujourd'hui de
-la home, en clic plutôt qu'en glissement, pour rester fiable sur toutes
-les tailles d'écran.
+Ce n'était pas un problème de déploiement. J'ai remonté le mécanisme :
+chaque page de terrain a son propre fichier de surcharge
+(`marques-entreprises/page.tsx`, etc.), dont le contenu écrase le
+dictionnaire partagé au chargement — `Object.assign(DICT.fr, copy.fr)`.
 
-**L'effet qui dure reste toujours visible en dessous**, quel que soit
-l'état affiché — c'est la ligne qu'on doit retenir en quittant la
-section, donc elle ne se cache jamais derrière un clic.
+**J'avais inversé le français et l'anglais dans ces trois fichiers**,
+exactement la même faute que sur `i18n.js` il y a deux patches — un
+script qui suppose l'ordre des blocs `fr:`/`en:` au lieu de le vérifier.
+Cette fois la faute était dans les fichiers de page, pas dans le
+dictionnaire partagé : c'est pour ça qu'elle est passée inaperçue au
+dernier contrôle, qui portait sur le mauvais fichier.
 
-Concrètement, pour Nike :
-- **Ce que fait le secteur** (état par défaut) : « Dans les années 1980,
-  l'argument publicitaire du sport était technique — amorti,
-  respirabilité, poids de la semelle. »
-- **Ce qu'elle a fait** (au clic) : « « Just Do It » ne décrit aucune
-  caractéristique produit : c'est une conviction sur ce que ça fait de
-  dépasser sa propre limite… »
-- **Toujours visible** : « Près de quarante ans plus tard, la marque n'a
-  jamais eu besoin de changer ce message pour rester pertinente. »
+Corrigé ligne par ligne, comme la fois précédente — mais cette fois j'ai
+aussi passé les quatre fichiers concernés au peigne fin, en cherchant
+automatiquement des marqueurs d'anglais (« the », « was », « what »…)
+dans chaque bloc français. Zéro anomalie trouvée, sur les quatre.
 
-## Deux erreurs trouvées et corrigées avant de vous l'envoyer
+## Le résultat qui gâchait tout
 
-**Un espace réservé oublié.** Le bouton disait littéralement
-« Ce que {"{"}\$HOUSE{"}"} a fait » — un repère de rédaction jamais
-remplacé. Corrigé en un libellé générique, puisque le nom de la maison
-est déjà visible juste au-dessus.
+Vous aviez raison sur ce point aussi. « L'effet qui dure » restait
+affiché en permanence sous les deux boutons — on voyait la conclusion
+avant même d'avoir cliqué une fois. Le bouton ne servait plus à rien.
 
-**L'inversion de langue, une troisième fois.** En ajoutant les deux
-libellés partagés à `i18n.js`, j'ai reproduit exactement l'erreur des
-deux derniers patchs — un script de remplacement qui suppose l'ordre des
-blocs au lieu de le vérifier. Cette fois je l'ai corrigé ligne par ligne,
-en repérant explicitement où commence chaque bloc avant d'écrire quoi que
-ce soit, et j'ai vérifié après coup que les dix-sept clés `case.*` du
-bloc français sont bien toutes en français, une par une.
+**Il devient un troisième onglet**, au même titre que les deux autres :
+« Ce que fait le secteur » · « Ce qu'elle a fait » · « Ce que ça a
+donné ». Rien n'est visible avant qu'on choisisse de le regarder, et
+rien de plus n'est laissé en évidence par défaut.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Toutes les clés du gabarit confirmées
-présentes dans les quatre dictionnaires. Le script de bascule extrait et
-vérifié séparément avec `node --check` — sa syntaxe est valide, ce que le
-contrôle de types ne peut pas voir puisqu'il ne le lit que comme une
-chaîne de caractères.
+Contrôle de types : zéro erreur. Toutes les clés confirmées présentes
+dans les quatre dictionnaires. Script de bascule revérifié avec
+`node --check`. Balayage automatique des quatre fichiers pour toute
+trace d'anglais dans un bloc français : aucune anomalie.
