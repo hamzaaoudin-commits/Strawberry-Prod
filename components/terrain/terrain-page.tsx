@@ -65,17 +65,29 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p class="lead" data-i18n="case.lead" style="margin-top:1.2rem">Aucune n'a été construite par nous. Toutes les trois ont fait, à leur échelle, ce que cette Architecture fait à la vôtre.</p>
 </div>
 <div class="grid cols-3" style="gap:1.1rem">
-<article class="card reveal">
-<h3 style="margin:0 0 .5rem" data-i18n="case.1.name">Maison</h3>
-<p class="body-sm" data-i18n="case.1.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<article class="card reveal" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
+<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span>
+<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.1.refuse">Ce qu'elle a refusé.</p>
+<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.1.risk">Ce que ça coûtait.</span></div>
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.1.win">Ce que ça lui a rapporté.</span></div>
+</div>
 </article>
-<article class="card reveal d1">
-<h3 style="margin:0 0 .5rem" data-i18n="case.2.name">Maison</h3>
-<p class="body-sm" data-i18n="case.2.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<article class="card reveal d1" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
+<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span>
+<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.2.refuse">Ce qu'elle a refusé.</p>
+<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.2.risk">Ce que ça coûtait.</span></div>
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.2.win">Ce que ça lui a rapporté.</span></div>
+</div>
 </article>
-<article class="card reveal d2">
-<h3 style="margin:0 0 .5rem" data-i18n="case.3.name">Maison</h3>
-<p class="body-sm" data-i18n="case.3.body" style="color:var(--smoke)">Ce qu'elle a refusé, et ce que ça lui a donné.</p>
+<article class="card reveal d2" style="border-left:2px solid var(--coral); padding-left:calc(clamp(1.6rem,2.6vw,2.3rem) - 2px)">
+<span style="font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span>
+<p style="margin:.9rem 0 1.5rem; font-family:var(--display); font-weight:700; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.28; letter-spacing:-.01em; color:var(--cream)" data-i18n="case.3.refuse">Ce qu'elle a refusé.</p>
+<div style="border-top:1px solid var(--line-soft); padding-top:1rem; display:grid; gap:.9rem">
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:.35rem" data-i18n="case.riskLabel">Le risque</span><span class="body-sm" style="color:var(--smoke)" data-i18n="case.3.risk">Ce que ça coûtait.</span></div>
+<div><span style="display:block; font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--iris-soft); margin-bottom:.35rem" data-i18n="case.winLabel">Ce que ça a donné</span><span class="body-sm" style="color:var(--cream)" data-i18n="case.3.win">Ce que ça lui a rapporté.</span></div>
+</div>
 </article>
 </div>
 </div>
