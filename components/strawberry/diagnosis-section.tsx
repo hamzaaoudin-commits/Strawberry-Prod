@@ -106,13 +106,14 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
   const [splitRef, splitVisible] = useScrollReveal()
 
   // Le curseur de comparaison, repris du mécanisme qui servait « la
-  // différence » sur les pages de terrain — retiré de là-bas parce qu'il
-  // s'y répétait quatre fois pour dire la même chose, réemployé ici où il
-  // n'existe qu'une fois. On glisse pour révéler « Aujourd'hui » par-dessus
-  // « Hier » ; à l'ouverture, la scène s'anime seule jusqu'à 50 % pour
-  // montrer que c'est un curseur avant qu'on ait pensé à le toucher.
+  // différence » sur les pages de terrain. Il reste entièrement sur
+  // « Hier » au repos — la phrase se lit en entier, sans être coupée en
+  // deux — et c'est le geste de glisser qui révèle « Aujourd'hui ».
+  // L'ancienne version l'animait seule jusqu'à 50 % à l'ouverture, ce qui
+  // coupait les deux phrases en même temps : ni l'une ni l'autre ne se
+  // lisait en entier.
   const wipeRef = useRef<HTMLDivElement | null>(null)
-  const [pct, setPct] = useState(6)
+  const [pct, setPct] = useState(96)
   const dragging = useRef(false)
 
   function setFromClientX(clientX: number) {
@@ -122,12 +123,6 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
     const v = ((clientX - r.left) / r.width) * 100
     setPct(Math.max(4, Math.min(96, v)))
   }
-
-  useEffect(() => {
-    if (!splitVisible) return
-    const id = window.setTimeout(() => setPct(50), 500)
-    return () => window.clearTimeout(id)
-  }, [splitVisible])
 
   useEffect(() => {
     function onMove(e: PointerEvent) {

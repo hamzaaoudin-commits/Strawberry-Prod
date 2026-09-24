@@ -59,20 +59,39 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </section><!-- ============ CAS RÉELS ============ -->
 <section class="section">
 <style>
-  /* Trois états au clic, rien de plus : la norme, le refus, l'effet qui
-     dure. Le dernier n'était pas caché dans la version précédente — il
-     restait affiché en permanence sous les deux premiers, ce qui
-     dévoilait la conclusion avant même d'avoir cliqué. Il est maintenant
-     un état comme les deux autres, à découvrir dans le même geste. */
+  /* Trois états au clic, en CSS pur — trois cases à cocher radio
+     masquées par ligne, montrées/cachées via :checked, sans aucun
+     script. La version précédente posait un <script> à l'intérieur du
+     HTML injecté par dangerouslySetInnerHTML : un script inséré de cette
+     façon ne s'exécute jamais, sur aucun navigateur, sur aucune des
+     quatre pages — pas seulement sur trois d'entre elles. */
+  .case-radio{ position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
   .case-tab{
     font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
-    padding:.55rem 1rem; border:0; border-radius:100px; background:none; color:var(--smoke-dim);
-    cursor:pointer; transition:background .3s, color .3s; white-space:nowrap;
+    padding:.55rem 1rem; border-radius:100px; color:var(--smoke-dim);
+    cursor:pointer; transition:background .3s, color .3s; white-space:nowrap; user-select:none;
   }
-  .case-tab.active{ background:var(--coral); color:#0a0a0a; }
+  .case-radio:focus-visible + label{ outline:2px solid var(--coral); outline-offset:2px; }
+  #case1-norm:checked ~ .case-toggle label[for="case1-norm"],
+  #case1-refuse:checked ~ .case-toggle label[for="case1-refuse"],
+  #case1-result:checked ~ .case-toggle label[for="case1-result"],
+  #case2-norm:checked ~ .case-toggle label[for="case2-norm"],
+  #case2-refuse:checked ~ .case-toggle label[for="case2-refuse"],
+  #case2-result:checked ~ .case-toggle label[for="case2-result"],
+  #case3-norm:checked ~ .case-toggle label[for="case3-norm"],
+  #case3-refuse:checked ~ .case-toggle label[for="case3-refuse"],
+  #case3-result:checked ~ .case-toggle label[for="case3-result"]{ background:var(--coral); color:#0a0a0a; }
   .case-pane-wrap{ position:relative; min-height:4.6em; }
   .case-pane{ position:absolute; inset:0; opacity:0; pointer-events:none; transition:opacity .4s var(--ease); }
-  .case-pane.is-visible{ opacity:1; pointer-events:auto; position:relative; }
+  #case1-norm:checked ~ .case-pane-wrap .case-pane[data-pane="norm"],
+  #case1-refuse:checked ~ .case-pane-wrap .case-pane[data-pane="refuse"],
+  #case1-result:checked ~ .case-pane-wrap .case-pane[data-pane="result"],
+  #case2-norm:checked ~ .case-pane-wrap .case-pane[data-pane="norm"],
+  #case2-refuse:checked ~ .case-pane-wrap .case-pane[data-pane="refuse"],
+  #case2-result:checked ~ .case-pane-wrap .case-pane[data-pane="result"],
+  #case3-norm:checked ~ .case-pane-wrap .case-pane[data-pane="norm"],
+  #case3-refuse:checked ~ .case-pane-wrap .case-pane[data-pane="refuse"],
+  #case3-result:checked ~ .case-pane-wrap .case-pane[data-pane="result"]{ opacity:1; pointer-events:auto; position:relative; }
 </style>
 <div class="wrap">
 <div class="section-head reveal">
@@ -86,17 +105,21 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">01</span>
 <span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.1.name">Maison</span>
 </div>
-<!-- Trois états, pas deux + une conclusion en clair : rien n'est dévoilé
-     avant qu'on ait choisi de le voir. -->
+<!-- Trois cases à cocher radio, masquées, qui pilotent l'affichage par
+     CSS pur (:checked + sélecteur général) : aucun script à exécuter,
+     donc aucun risque qu'il ne s'exécute pas. -->
+<input type="radio" name="case1" id="case1-norm" class="case-radio" checked>
+<input type="radio" name="case1" id="case1-refuse" class="case-radio">
+<input type="radio" name="case1" id="case1-result" class="case-radio">
 <div class="case-toggle" role="tablist" style="display:inline-flex; flex-wrap:wrap; gap:.2rem; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
-<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
-<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
-<button type="button" class="case-tab" data-state="result" data-i18n="case.resultLabel">Ce que ça a donné</button>
+<label for="case1-norm" class="case-tab" data-i18n="case.normLabel">Ce que fait le secteur</label>
+<label for="case1-refuse" class="case-tab" data-i18n="case.refuseLabel">Ce qu'elle a fait</label>
+<label for="case1-result" class="case-tab" data-i18n="case.resultLabel">Ce que ça a donné</label>
 </div>
 <div class="case-pane-wrap">
-<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.1.norm">La norme du secteur.</p>
-<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.1.refuse">Ce qui a été refusé.</p>
-<p class="case-pane" data-state="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.1.body">L'effet qui dure.</p>
+<p class="case-pane" data-pane="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.1.norm">La norme du secteur.</p>
+<p class="case-pane" data-pane="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.1.refuse">Ce qui a été refusé.</p>
+<p class="case-pane" data-pane="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.1.body">L'effet qui dure.</p>
 </div>
 </div>
 <div class="case-row reveal" style="padding:2.8rem 0; border-top:1px solid var(--line-soft)">
@@ -104,17 +127,21 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">02</span>
 <span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.2.name">Maison</span>
 </div>
-<!-- Trois états, pas deux + une conclusion en clair : rien n'est dévoilé
-     avant qu'on ait choisi de le voir. -->
+<!-- Trois cases à cocher radio, masquées, qui pilotent l'affichage par
+     CSS pur (:checked + sélecteur général) : aucun script à exécuter,
+     donc aucun risque qu'il ne s'exécute pas. -->
+<input type="radio" name="case2" id="case2-norm" class="case-radio" checked>
+<input type="radio" name="case2" id="case2-refuse" class="case-radio">
+<input type="radio" name="case2" id="case2-result" class="case-radio">
 <div class="case-toggle" role="tablist" style="display:inline-flex; flex-wrap:wrap; gap:.2rem; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
-<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
-<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
-<button type="button" class="case-tab" data-state="result" data-i18n="case.resultLabel">Ce que ça a donné</button>
+<label for="case2-norm" class="case-tab" data-i18n="case.normLabel">Ce que fait le secteur</label>
+<label for="case2-refuse" class="case-tab" data-i18n="case.refuseLabel">Ce qu'elle a fait</label>
+<label for="case2-result" class="case-tab" data-i18n="case.resultLabel">Ce que ça a donné</label>
 </div>
 <div class="case-pane-wrap">
-<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.2.norm">La norme du secteur.</p>
-<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.2.refuse">Ce qui a été refusé.</p>
-<p class="case-pane" data-state="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.2.body">L'effet qui dure.</p>
+<p class="case-pane" data-pane="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.2.norm">La norme du secteur.</p>
+<p class="case-pane" data-pane="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.2.refuse">Ce qui a été refusé.</p>
+<p class="case-pane" data-pane="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.2.body">L'effet qui dure.</p>
 </div>
 </div>
 <div class="case-row reveal" style="padding:2.8rem 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)">
@@ -122,38 +149,25 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span style="font-family:var(--display); font-weight:700; font-size:1.05rem; color:var(--coral)">03</span>
 <span style="font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--smoke-dim)" data-i18n="case.3.name">Maison</span>
 </div>
-<!-- Trois états, pas deux + une conclusion en clair : rien n'est dévoilé
-     avant qu'on ait choisi de le voir. -->
+<!-- Trois cases à cocher radio, masquées, qui pilotent l'affichage par
+     CSS pur (:checked + sélecteur général) : aucun script à exécuter,
+     donc aucun risque qu'il ne s'exécute pas. -->
+<input type="radio" name="case3" id="case3-norm" class="case-radio" checked>
+<input type="radio" name="case3" id="case3-refuse" class="case-radio">
+<input type="radio" name="case3" id="case3-result" class="case-radio">
 <div class="case-toggle" role="tablist" style="display:inline-flex; flex-wrap:wrap; gap:.2rem; border:1px solid var(--line-soft); border-radius:100px; padding:3px; margin-bottom:1.8rem">
-<button type="button" class="case-tab active" data-state="norm" data-i18n="case.normLabel">Ce que fait le secteur</button>
-<button type="button" class="case-tab" data-state="refuse" data-i18n="case.refuseLabel">Ce qu'elle a fait</button>
-<button type="button" class="case-tab" data-state="result" data-i18n="case.resultLabel">Ce que ça a donné</button>
+<label for="case3-norm" class="case-tab" data-i18n="case.normLabel">Ce que fait le secteur</label>
+<label for="case3-refuse" class="case-tab" data-i18n="case.refuseLabel">Ce qu'elle a fait</label>
+<label for="case3-result" class="case-tab" data-i18n="case.resultLabel">Ce que ça a donné</label>
 </div>
 <div class="case-pane-wrap">
-<p class="case-pane" data-state="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.3.norm">La norme du secteur.</p>
-<p class="case-pane" data-state="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.3.refuse">Ce qui a été refusé.</p>
-<p class="case-pane" data-state="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.3.body">L'effet qui dure.</p>
+<p class="case-pane" data-pane="norm" style="margin:0; max-width:62ch; font-family:var(--body); font-size:1.05rem; color:var(--smoke-dim); line-height:1.75; font-style:italic" data-i18n="case.3.norm">La norme du secteur.</p>
+<p class="case-pane" data-pane="refuse" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--cream); line-height:1.6" data-i18n="case.3.refuse">Ce qui a été refusé.</p>
+<p class="case-pane" data-pane="result" style="margin:0; max-width:62ch; font-family:var(--display); font-weight:700; font-size:1.15rem; color:var(--iris-soft); line-height:1.5" data-i18n="case.3.body">L'effet qui dure.</p>
 </div>
 </div>
 </div>
 </div>
-<script>
-(function(){
-  var rows = document.querySelectorAll(".case-row");
-  rows.forEach(function(row){
-    var tabs = row.querySelectorAll(".case-tab");
-    var panes = row.querySelectorAll(".case-pane");
-    function setState(state){
-      tabs.forEach(function(t){ t.classList.toggle("active", t.dataset.state === state); });
-      panes.forEach(function(p){ p.classList.toggle("is-visible", p.dataset.state === state); });
-    }
-    setState("norm");
-    tabs.forEach(function(t){
-      t.addEventListener("click", function(){ setState(t.dataset.state); });
-    });
-  });
-})();
-</script>
 </section>
 <!-- ============ LIVRABLES ============ -->
 <section class="section">

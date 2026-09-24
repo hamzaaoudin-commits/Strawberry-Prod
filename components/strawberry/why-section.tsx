@@ -98,23 +98,46 @@ export function WhySection({ lang }: { lang: Lang }) {
 
         <h2 className="h-section mx-auto max-w-[680px]">
           {t.h2a}
-          <br />
-          <span className="surligne-grad">{t.h2b}</span>
         </h2>
+        {/* Séparée du titre par un vrai espace plutôt qu'un simple retour à
+            la ligne, et à une taille plus petite : les deux phrases se
+            lisaient comme une seule, coupée en deux, alors que la seconde
+            est la conséquence de la première — elle doit avoir son propre
+            poids, pas le même. */}
+        <p className="surligne-grad mx-auto mt-4 max-w-[560px] font-serif text-[clamp(1.1rem,2.2vw,1.5rem)] font-bold uppercase leading-[1.3] tracking-[-0.005em]">
+          {t.h2b}
+        </p>
 
-        <p className="mx-auto mt-8 max-w-[600px] font-sans text-[15.5px] leading-[1.75] text-chalk-55">
+        {/* Le moment que ce passage doit être : chaque ligne arrive à son
+            tour plutôt que le bloc entier d'un coup, pour que
+            l'accumulation — la vraie idée du passage — se sente dans le
+            mouvement, pas seulement dans le texte. Sept éléments, sept
+            délais croissants, tous pilotés par la même observation que le
+            reste de la section. */}
+        <p
+          className="mx-auto mt-8 max-w-[600px] font-sans text-[15.5px] leading-[1.75] text-chalk-55 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
+          style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(10px)", transitionDelay: "120ms" }}
+        >
           {t.p1}
         </p>
-        <p className="mx-auto mt-3 max-w-[600px] font-sans text-[15.5px] leading-[1.75] text-chalk-55">
+        <p
+          className="mx-auto mt-3 max-w-[600px] font-sans text-[15.5px] leading-[1.75] text-chalk-55 transition-all duration-700 ease-[cubic-bezier(.22,.68,0,1)]"
+          style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(10px)", transitionDelay: "320ms" }}
+        >
           {t.p2}
         </p>
 
         {/* La déclinaison des « mêmes » : cinq lignes courtes, une par
-            répétition du marché, pour faire sentir l'accumulation plutôt
-            que de la résumer en une phrase. */}
+            répétition du marché, chacune posée après la précédente — la
+            répétition qu'elles décrivent se sent dans le rythme où elles
+            arrivent. */}
         <ul className="mx-auto mt-6 flex max-w-[380px] list-none flex-col gap-1 p-0">
-          {t.sameList.map((v) => (
-            <li key={v} className="font-serif text-[15px] italic text-chalk-40">
+          {t.sameList.map((v, i) => (
+            <li
+              key={v}
+              className="font-serif text-[15px] italic text-chalk-40 transition-all duration-600 ease-[cubic-bezier(.22,.68,0,1)]"
+              style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(8px)", transitionDelay: `${560 + i * 130}ms` }}
+            >
               {v}
             </li>
           ))}
