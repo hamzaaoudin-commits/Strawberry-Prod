@@ -230,26 +230,23 @@ export function HeroSection() {
             </span>
           </h1>
 
-          {/* Le slogan vient après le titre, comme surtitre du prix : « ceci
-              est impossible à confondre, impossible à générer » — puis « voici
-              ce que ça vaut ». Avant le titre, il précédait la proposition de
-              valeur ; ici il l'appuie juste avant le prix, où il pèse plus. */}
+          {/* Le slogan vient après le titre, comme surtitre du texte qui
+              suit — « ceci est impossible à confondre, impossible à
+              générer » — avant d'expliquer comment. */}
           <p className="mb-3 font-sans text-[12px] uppercase tracking-[0.22em] text-chalk-40">
             {t.slogan}
           </p>
 
-          {/* En blanc, plus surlignée.
-              Le titre au-dessus est déjà en rouge et le bouton en dessous
-              aussi : un troisième bloc rouge entre les deux faisait trois
-              accents empilés, et le regard ne savait plus où se poser. En
-              blanc, cette ligne sépare le titre du bouton au lieu de leur
-              disputer l'attention. */}
-          <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em] text-white">
-            {t.grounding}
-          </p>
-
           <p className="mb-8 max-w-[620px] whitespace-pre-line font-sans text-[clamp(0.9rem,1.8vw,1.15rem)] leading-[1.75] text-white/55">
             {t.sub}
+          </p>
+
+          {/* Le prix et le délai, juste avant le bouton plutôt qu'avant le
+              paragraphe. On les lisait avant même de savoir ce qu'on
+              achetait ; ils arrivent maintenant au moment où la décision se
+              prend, juste au-dessus de ce qui la permet. */}
+          <p className="mb-6 max-w-[640px] font-sans text-[13px] uppercase tracking-[0.14em] text-white">
+            {t.grounding}
           </p>
 
           {/* L'action principale : l'Architecture. Le hero n'avait aucun bouton — il

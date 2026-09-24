@@ -266,34 +266,63 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
               dragging.current = true
               setFromClientX(e.clientX)
             }}
-            className="relative h-[220px] cursor-ew-resize select-none overflow-hidden sm:h-[260px]"
+            className="relative h-[260px] cursor-ew-resize select-none overflow-hidden sm:h-[300px]"
             style={{ opacity: splitVisible ? 1 : 0, transition: "opacity 700ms ease" }}
           >
             {/* La couche du dessous : « Aujourd'hui », pleine largeur — elle
-                se révèle à mesure que le curseur avance vers la droite. */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center">
-              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
-                {t.diagramAfter}
+                se révèle à mesure que le curseur avance vers la droite.
+                L'illustration reprend les mêmes six éléments que « Hier »,
+                mais alignés le long d'un axe : ce n'est plus un nuage, c'est
+                une architecture. */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[linear-gradient(160deg,#1a0d0e_0%,#0a0a0a_100%)] px-6 text-center">
+              <svg viewBox="0 0 160 70" className="h-14 w-36" aria-hidden>
+                <line x1="14" y1="35" x2="146" y2="35" stroke="var(--color-brand)" strokeWidth="1.5" />
+                {[14, 40.4, 66.8, 93.2, 119.6, 146].map((x, i) => (
+                  <g key={x}>
+                    <line x1={x} y1="35" x2={x} y2={i % 2 === 0 ? 24 : 46} stroke="var(--color-brand)" strokeWidth="1.5" />
+                    {i % 2 === 0 ? (
+                      <rect x={x - 6} y="14" width="12" height="10" rx="1.5" fill="var(--color-brand)" />
+                    ) : (
+                      <circle cx={x} cy="51" r="6" fill="var(--color-brand)" />
+                    )}
+                  </g>
+                ))}
+              </svg>
+              <div>
+                <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-brand">
+                  {t.diagramAfter}
+                </div>
+                <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
+                  {t.splitAfter}
+                </p>
               </div>
-              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] font-bold leading-[1.3] text-white">
-                {t.splitAfter}
-              </p>
             </div>
 
             {/* La couche du dessus : « Hier », désaturée, découpée jusqu'à
                 `pct` — à gauche, comme le sens de lecture le veut : hier
                 avant aujourd'hui. Le texte ne se déplace pas, seule la
-                fenêtre qui le découvre bouge. */}
+                fenêtre qui le découvre bouge. Les mêmes six éléments que
+                « Aujourd'hui », mais dispersés sans aucun axe commun. */}
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]"
+              className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]"
               style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
             >
-              <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
-                {t.diagramBefore}
+              <svg viewBox="0 0 160 70" className="h-14 w-36" aria-hidden>
+                <rect x="10" y="8" width="14" height="11" rx="1.5" transform="rotate(-14 17 13)" fill="var(--color-chalk-40)" />
+                <circle cx="128" cy="16" r="7" fill="var(--color-chalk-40)" />
+                <rect x="66" y="32" width="11" height="15" rx="1.5" transform="rotate(20 71 39)" fill="var(--color-chalk-40)" />
+                <circle cx="30" cy="50" r="6" fill="var(--color-chalk-40)" />
+                <rect x="118" y="42" width="13" height="10" rx="1.5" transform="rotate(-9 124 47)" fill="var(--color-chalk-40)" />
+                <circle cx="92" cy="14" r="5.5" fill="var(--color-chalk-40)" />
+              </svg>
+              <div>
+                <div className="mb-3 font-sans text-[11px] uppercase tracking-[0.16em] text-chalk-40">
+                  {t.diagramBefore}
+                </div>
+                <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
+                  {t.splitBefore}
+                </p>
               </div>
-              <p className="m-0 max-w-[260px] font-serif text-[clamp(1.1rem,2.4vw,1.5rem)] leading-[1.3] text-white">
-                {t.splitBefore}
-              </p>
             </div>
 
             <div aria-hidden className="pointer-events-none absolute inset-y-0 w-[2px] bg-brand" style={{ left: `${pct}%` }} />

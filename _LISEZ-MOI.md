@@ -1,54 +1,56 @@
-# Strawberry — les CGV, remises à jour dans leur ensemble
+# Strawberry — hero, illustrations, manifeste, audit narratif
 
-2 fichiers. Vous aviez signalé une incohérence de prix ; en vérifiant,
-j'en ai trouvé bien plus — un document légal qui décrivait encore
-entièrement l'ancienne offre.
+7 fichiers.
 
-## Ce que le document disait encore
+## Le prix, déplacé
 
-**L'article 2** listait « Brand Narrative Architecture » comme l'offre
-principale à cinq livrables (pas six), avec un « walkthrough de 90
-minutes » qui n'existe plus, une clause de rareté à quatre commandes par
-trimestre déjà retirée du site ailleurs, **puis** listait à nouveau
-« BRAND NARRATIVE ARCHITECTURE » comme une offre complémentaire distincte
-à 2 900 €, dont le montant se déduisait d'une commande ultérieure — un
-reliquat de l'ancien système à deux paliers (l'audit qui se déduisait de
-l'Architecture), resté en place après leur fusion en une seule offre.
-Un abonnement MOMENTUM à 1 500 €/mois y figurait aussi, alors que Momentum
-est désormais une marque séparée avec son propre site.
+« Architecture narrative · 2 900 € · Livré en trois semaines » passe
+après le paragraphe, juste au-dessus du bouton. On le lisait avant même
+de savoir ce qu'on achetait ; il arrive maintenant au moment où la
+décision se prend.
 
-**L'article 3** facturait 4 500 € — le prix que vous aviez repéré.
+## Le Hier/Aujourd'hui, illustré
 
-**Les articles 4 et 5** faisaient courir le délai depuis un « entretien
-d'extraction » (un appel fondateur) qui n'existe plus dans le
-processus actuel, basé sur un questionnaire.
+Deux petits schémas en SVG, un par panneau. « Hier » : six formes
+dispersées sans aucun axe commun, désaturées. « Aujourd'hui » : les
+mêmes six formes alignées le long d'un axe rouge, reliées. Le curseur de
+comparaison révèle donc un vrai changement visuel, pas seulement un
+changement de texte.
 
-**L'article 6** conditionnait le remboursement intégral à l'absence de
-cet entretien, et incluait toute une clause de résiliation d'abonnement
-pour Momentum, sans rapport avec l'offre vendue ici.
+## « Pourquoi ce studio existe », réécrite en entier
 
-## Ce que ça dit maintenant
+L'ancienne version tenait en deux paragraphes courts. La nouvelle
+reprend votre texte au complet, organisée en deux mouvements :
 
-Une seule prestation, « L'Architecture Narrative », 2 900 € TTC, six
-livrables (plateforme, diagnostic, carte, décisions, playbooks, lexique),
-deux tours de révision, délai de trois semaines (vingt et un jours) à
-compter de la réception du questionnaire d'onboarding.
+**Le premier** pose le problème — la saturation, l'uniformisation, la
+déclinaison des « mêmes mots, mêmes codes, mêmes promesses » — jusqu'au
+pivot : « Une marque doit pouvoir être reconnue », avec sa propre
+déclinaison de ce que « reconnaissable » veut dire.
 
-**Une garantie qui manquait entièrement à l'écrit** : le site annonce
-partout « livré le 21e jour au plus tard, ou remboursé » — les CGV ne le
-disaient nulle part. Un nouveau point C à l'article 6 le formalise :
-remboursement intégral si la livraison dépasse ce délai, avec
-conservation du document produit à ce stade.
+**Le second** pose la raison d'être du studio : « Rendre les marques
+impossibles à confondre », avec le paragraphe qui l'explique, et la
+formule de clôture sur ce qui reste comme avantage quand tout le monde
+peut produire.
 
-Fait à l'identique dans les deux fichiers, français et anglais — le
-fichier anglais était en réalité encore plus daté que le français, sans
-même la mention de l'offre complémentaire.
+## L'audit narratif, précisé sur les quatre terrains
 
-La date de révision passe du 30 mai au 24 septembre 2026 dans les deux
-versions, puisque le contenu change substantiellement.
+Vous aviez raison : la présentation des livrables insistait sur les
+refus à faire, sans jamais dire clairement qu'on commence par un audit
+complet de ce que la marque incarne déjà — ce que beaucoup de clients
+attendent le plus.
+
+**Le chapô de la section livrables** le dit maintenant explicitement :
+« Ça commence par un audit narratif complet — tout ce que votre
+entreprise incarne aujourd'hui — avant même de parler de ce qu'il faut
+changer. »
+
+**La description de la pièce 01 (La plateforme)** s'ouvre désormais sur
+l'audit lui-même — personnalité, valeurs, ce qui est réellement incarné
+— avant d'arriver à la conviction qui en découle. Fait sur les quatre
+terrains, chacun dans son propre vocabulaire.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Recherche finale de toute trace de
-l'ancien prix, de l'entretien d'extraction, de Momentum ou du délai à
-quatre semaines : aucune occurrence, dans aucun des deux fichiers.
+Contrôle de types : zéro erreur. Balayage automatique des quatre
+dictionnaires pour toute trace d'anglais dans un bloc français, devenu
+systématique après les incidents précédents : aucune anomalie.
