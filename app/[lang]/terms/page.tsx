@@ -24,16 +24,16 @@ const ARTICLES = [
     title: "Service Offered",
     body: (
       <>
-        <p>The Provider offers a single service named <strong>&quot;Brand Narrative Architecture&quot;</strong> (hereinafter &quot;the Service&quot;), comprising five deliverables:</p>
+        <p>The Provider offers a single service named <strong>&quot;The Narrative Architecture&quot;</strong> (hereinafter &quot;the Service&quot;), priced at <strong>€2,900 (all taxes included)</strong>, comprising six deliverables:</p>
         <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Differentiation Diagnostic</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Narrative Platform</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Language System</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Deployment Kit</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Coherence Guide</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Brand Platform</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Diagnosis</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Map of the Competitive Field</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Decisions</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Playbooks</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Lexicon and rewritten copy</li>
         </ul>
-        <p>The service also includes a 90-minute walkthrough session 30 days after delivery.</p>
-        <p style={{ marginTop: 12 }}>The Provider reserves the right to limit to four (4) the number of commissions accepted per calendar quarter, in order to guarantee the artisanal quality of the service.</p>
+        <p>The service includes two (2) rounds of revisions and a one-hour review session with the Client before final delivery.</p>
       </>
     ),
   },
@@ -41,7 +41,7 @@ const ARTICLES = [
     title: "Price and Payment Terms",
     body: (
       <>
-        <p>The price of the Service is <strong>€4,500 (all taxes included)</strong>. VAT is not applicable pursuant to article 293 B of the French General Tax Code.</p>
+        <p>The price of the Service is <strong>€2,900 (all taxes included)</strong>. VAT is not applicable pursuant to article 293 B of the French General Tax Code.</p>
         <p style={{ marginTop: 12 }}>Payment is made in full online via the payment provider Stripe (Stripe Payments Europe Limited, Dublin, Ireland), at the time of order. No order can be initiated without prior payment.</p>
         <p style={{ marginTop: 12 }}>A paid invoice is sent to the Client by electronic means within 48 hours after payment.</p>
         <p style={{ marginTop: 12 }}>Any bank fees for currency conversion remain the sole responsibility of the Client.</p>
@@ -55,10 +55,9 @@ const ARTICLES = [
         <p>The contract is deemed concluded upon receipt of payment by the Provider. This receipt triggers:</p>
         <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> The sending of a confirmation email within 24 business hours</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> The transmission of an intake questionnaire (preliminary information required for the service)</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> The proposal of an extraction interview (founder interview)</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> The transmission of the onboarding questionnaire (preliminary information required for the service)</li>
         </ul>
-        <p>The four (4) week delivery period begins on the date of the extraction interview.</p>
+        <p>The three (3) week (twenty-one day) delivery period begins once the Provider has received the Client&apos;s completed onboarding questionnaire.</p>
       </>
     ),
   },
@@ -66,9 +65,9 @@ const ARTICLES = [
     title: "Delivery Timeline",
     body: (
       <>
-        <p>The Service is delivered within <strong>four (4) weeks</strong> from the initial extraction interview, subject to the Client&apos;s cooperation (responsiveness to requests for information, availability for interviews).</p>
-        <p style={{ marginTop: 12 }}>Any delay attributable to the Client (lack of response to follow-ups, prolonged unavailability, failure to provide requested items) suspends the countdown.</p>
-        <p style={{ marginTop: 12 }}>In the event of a delay attributable to the Provider, the Client is informed in writing with the new estimated delivery date. No penalty may be claimed for a delay of less than two (2) weeks.</p>
+        <p>The Service is delivered within <strong>three (3) weeks (twenty-one days)</strong> from receipt of the completed onboarding questionnaire, subject to the Client&apos;s cooperation.</p>
+        <p style={{ marginTop: 12 }}>If the Service is not delivered within this twenty-one (21) day period, the Client receives a full refund, and keeps the document as produced at that stage.</p>
+        <p style={{ marginTop: 12 }}>Any delay attributable to the Client (lack of response to follow-ups, failure to provide requested items) suspends the countdown.</p>
       </>
     ),
   },
@@ -77,18 +76,22 @@ const ARTICLES = [
     body: (
       <>
         <p><strong>Important:</strong> In accordance with article L.221-28 of the French Consumer Code, the Client is informed that the Service, highly personalized and designed bespoke for their business, cannot be subject to the standard 14-day withdrawal right once its execution has begun with their express agreement.</p>
-        <p style={{ marginTop: 16 }}>The Provider nevertheless offers an adapted three-stage refund policy:</p>
+        <p style={{ marginTop: 16 }}>The Provider nevertheless offers an adapted four-stage refund policy:</p>
         <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(255,34,51,0.2)", background: "rgba(255,34,51,0.04)" }}>
           <p><strong>A. Before the service starts:</strong></p>
-          <p style={{ marginTop: 8 }}>Within seven (7) days of payment, and as long as the extraction interview has not taken place, the Client may request order cancellation and obtain a <strong>full refund (100%)</strong> within fifteen (15) days.</p>
+          <p style={{ marginTop: 8 }}>Within seven (7) days of payment, and as long as the onboarding questionnaire has not been returned completed, the Client may request order cancellation and obtain a <strong>full refund (100%)</strong> within fifteen (15) days.</p>
         </div>
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
           <p><strong>B. During the service:</strong></p>
-          <p style={{ marginTop: 8 }}>Once the extraction interview has taken place and production work has begun, no refund can be obtained, as most of the value of the service lies in the time devoted to the extraction and analysis phase.</p>
+          <p style={{ marginTop: 8 }}>Once the onboarding questionnaire has been received and the review work has begun, no refund can be obtained, as most of the value of the service lies in the time devoted to analysis.</p>
         </div>
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
-          <p><strong>C. Upon delivery, in case of substantial dissatisfaction:</strong></p>
-          <p style={{ marginTop: 8 }}>The Client benefits from unlimited minor revisions and two (2) rounds of major revisions within thirty (30) days following delivery.</p>
+          <p><strong>C. In case of delivery delay:</strong></p>
+          <p style={{ marginTop: 8 }}>If the Service is not delivered within the twenty-one (21) day period set out in Article 05, the Client receives a <strong>full refund (100%)</strong> upon simple request, and keeps the document as produced at that stage.</p>
+        </div>
+        <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
+          <p><strong>D. Upon delivery, in case of substantial dissatisfaction:</strong></p>
+          <p style={{ marginTop: 8 }}>The Client benefits from two (2) rounds of revisions within thirty (30) days following delivery.</p>
           <p style={{ marginTop: 8 }}>If, after these two rounds, the Client considers that the Service does not substantially match their reasonable expectations, they may request a partial refund, capped at <strong>thirty percent (30%) of the total amount, i.e. €870</strong>. This request must be motivated in writing within forty-five (45) days following delivery.</p>
         </div>
         <p style={{ marginTop: 16 }}>Any refund request must be sent by email to hamza@gostrawberryprod.com, with reference to the invoice concerned.</p>
@@ -232,7 +235,7 @@ export default function TermsPage() {
 
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, border: "1px solid rgba(255,255,255,0.1)", borderBottom: `1px solid ${COLOR}66`, padding: "16px 22px", marginBottom: 32 }}>
             <span style={{ fontFamily: SERIF, fontSize: 15, fontWeight: 700, color: "#fff" }}>Terms of Service</span>
-            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rev. May 30, 2026</span>
+            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rev. September 24, 2026</span>
           </div>
 
           <div style={{ marginBottom: 64, padding: "20px 24px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.02)", borderLeft: `3px solid ${COLOR}` }}>
@@ -260,7 +263,7 @@ export default function TermsPage() {
               Last updated
             </div>
             <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)",  margin: 0 }}>
-              May 30, 2026
+              September 24, 2026
             </p>
           </div>
 

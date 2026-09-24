@@ -24,21 +24,16 @@ const ARTICLES = [
     title: "Prestation proposée",
     body: (
       <>
-        <p>Le Prestataire propose une prestation unique intitulée <strong>« Brand Narrative Architecture »</strong> (ci-après « la Prestation »), comprenant cinq livrables :</p>
+        <p>Le Prestataire propose une prestation unique intitulée <strong>« L&apos;Architecture Narrative »</strong> (ci-après « la Prestation »), au prix de <strong>2 900 € TTC</strong>, comprenant six livrables :</p>
         <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Diagnostic de Différenciation</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> La Plateforme Narrative</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Système de Langage</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Kit de Déploiement</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Guide de Cohérence</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> La Plateforme de marque</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Diagnostic</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> La Carte du champ concurrentiel</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Les Décisions</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Les Playbooks</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Lexique et les textes réécrits</li>
         </ul>
-        <p>La prestation inclut également un walkthrough de 90 minutes 30 jours après la livraison.</p>
-        <p style={{ marginTop: 12 }}>Le Prestataire se réserve le droit de limiter à quatre (4) le nombre de commissions acceptées par trimestre civil, afin de garantir la qualité artisanale de la prestation.</p>
-        <p style={{ marginTop: 16 }}>Le Prestataire propose par ailleurs, sous la même marque Strawberry Production, les offres complémentaires suivantes, chacune régie par les présentes conditions et par les précisions de prix et de rétractation ci-après :</p>
-        <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>BRAND NARRATIVE ARCHITECTURE</strong> — document de diagnostic narratif, au prix de 2 900 € en paiement unique, livré sous sept (7) jours ouvrés à compter de la réception du questionnaire d&apos;entrée dûment complété par le Client. Cette prestation constitue un diagnostic écrit et n&apos;emporte ni refonte narrative, ni production de contenus, ni séance d&apos;échange. En cas de commande ultérieure d&apos;une Brand Narrative Architecture dans un délai de soixante (60) jours à compter de la livraison, le montant de 2 900 € est déduit du prix de cette dernière.</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> <strong>MOMENTUM</strong> — direction créative par abonnement mensuel (service à exécution successive), à partir de 1 500 € par mois, résiliable dans les conditions convenues.</li>
-        </ul>
+        <p>La prestation inclut deux (2) tours de révision et une séance de relecture d&apos;une heure avec le Client avant livraison finale.</p>
       </>
     ),
   },
@@ -46,7 +41,7 @@ const ARTICLES = [
     title: "Prix et modalités de paiement",
     body: (
       <>
-        <p>Le prix de la Prestation est de <strong>4 500 € TTC</strong> (la TVA n&apos;étant pas applicable au titre de l&apos;article 293 B du Code général des impôts).</p>
+        <p>Le prix de la Prestation est de <strong>2 900 € TTC</strong> (la TVA n&apos;étant pas applicable au titre de l&apos;article 293 B du Code général des impôts).</p>
         <p style={{ marginTop: 12 }}>Le paiement s&apos;effectue intégralement en ligne via le prestataire de paiement Stripe (Stripe Payments Europe Limited, Dublin, Irlande), au moment de la commande. Aucune commande ne peut être engagée sans règlement préalable.</p>
         <p style={{ marginTop: 12 }}>Une facture acquittée est transmise au Client par voie électronique sous 48 heures suivant le paiement.</p>
         <p style={{ marginTop: 12 }}>Les éventuels frais bancaires de conversion de devises restent à la charge exclusive du Client.</p>
@@ -60,10 +55,9 @@ const ARTICLES = [
         <p>Le contrat est réputé conclu dès la réception du paiement par le Prestataire. Cette réception déclenche :</p>
         <ul style={{ listStyle: "none", padding: 0, margin: "16px 0", display: "flex", flexDirection: "column", gap: 8 }}>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> L&apos;envoi sous 24h ouvrées d&apos;un courriel de confirmation au Client</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> La transmission d&apos;un questionnaire d&apos;intake (informations préalables nécessaires à la prestation)</li>
-          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> La proposition d&apos;un rendez-vous d&apos;extraction (entretien fondateur)</li>
+          <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>—</span> La transmission du questionnaire d&apos;onboarding (informations préalables nécessaires à la prestation)</li>
         </ul>
-        <p>Le délai de quatre (4) semaines de livraison commence à courir à compter de la date de l&apos;entretien d&apos;extraction.</p>
+        <p>Le délai de trois (3) semaines (vingt et un jours) de livraison commence à courir à compter de la réception, par le Prestataire, du questionnaire d&apos;onboarding dûment complété par le Client.</p>
       </>
     ),
   },
@@ -71,9 +65,9 @@ const ARTICLES = [
     title: "Délais de livraison",
     body: (
       <>
-        <p>La Prestation est livrée dans un délai de <strong>quatre (4) semaines</strong> à compter de l&apos;entretien d&apos;extraction initial, sous réserve de la coopération du Client (réactivité aux demandes d&apos;information, disponibilité pour les entretiens).</p>
-        <p style={{ marginTop: 12 }}>Tout retard imputable au Client (absence de réponse aux relances, indisponibilité prolongée, non-fourniture des éléments demandés) suspend le décompte du délai.</p>
-        <p style={{ marginTop: 12 }}>En cas de retard imputable au Prestataire, le Client en est informé par écrit avec indication du nouveau délai prévisionnel. Aucune pénalité ne peut être réclamée au titre d&apos;un retard inférieur à deux (2) semaines.</p>
+        <p>La Prestation est livrée dans un délai de <strong>trois (3) semaines (vingt et un jours)</strong> à compter de la réception du questionnaire d&apos;onboarding dûment complété, sous réserve de la coopération du Client.</p>
+        <p style={{ marginTop: 12 }}>Si la Prestation n&apos;est pas livrée dans ce délai de vingt et un (21) jours, le Client est intégralement remboursé, et conserve néanmoins le document tel que produit à ce stade.</p>
+        <p style={{ marginTop: 12 }}>Tout retard imputable au Client (absence de réponse aux relances, non-fourniture des éléments demandés) suspend le décompte du délai.</p>
       </>
     ),
   },
@@ -82,23 +76,23 @@ const ARTICLES = [
     body: (
       <>
         <p><strong>Important :</strong> Conformément à l&apos;article L.221-28 du Code de la consommation, le Client est informé que la Prestation, hautement personnalisée et conçue sur mesure pour son entreprise, ne peut faire l&apos;objet d&apos;un droit de rétractation classique de 14 jours dès lors que son exécution a commencé avec son accord exprès.</p>
-        <p style={{ marginTop: 16 }}>Le Prestataire propose néanmoins une politique de remboursement adaptée, en trois temps :</p>
+        <p style={{ marginTop: 16 }}>Le Prestataire propose néanmoins une politique de remboursement adaptée, en quatre temps :</p>
         <div style={{ marginTop: 16, padding: 20, border: "1px solid rgba(255,34,51,0.2)", background: "rgba(255,34,51,0.04)" }}>
           <p><strong>A. Avant le démarrage de la prestation :</strong></p>
-          <p style={{ marginTop: 8 }}>Dans les sept (7) jours suivant le paiement, et tant que l&apos;entretien d&apos;extraction n&apos;a pas eu lieu, le Client peut demander l&apos;annulation de la commande et obtenir un <strong>remboursement intégral (100%)</strong>, sous quinze (15) jours.</p>
+          <p style={{ marginTop: 8 }}>Dans les sept (7) jours suivant le paiement, et tant que le questionnaire d&apos;onboarding n&apos;a pas été retourné complété, le Client peut demander l&apos;annulation de la commande et obtenir un <strong>remboursement intégral (100%)</strong>, sous quinze (15) jours.</p>
         </div>
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
           <p><strong>B. Pendant la prestation :</strong></p>
-          <p style={{ marginTop: 8 }}>Une fois l&apos;entretien d&apos;extraction réalisé et le travail de production engagé, aucun remboursement ne peut être obtenu, l&apos;essentiel de la valeur de la prestation reposant sur le temps consacré à la phase d&apos;extraction et d&apos;analyse.</p>
+          <p style={{ marginTop: 8 }}>Une fois le questionnaire d&apos;onboarding reçu et le travail de dépouillement engagé, aucun remboursement ne peut être obtenu, l&apos;essentiel de la valeur de la prestation reposant sur le temps consacré à l&apos;analyse.</p>
         </div>
         <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
-          <p><strong>C. À la livraison, en cas d&apos;insatisfaction substantielle :</strong></p>
-          <p style={{ marginTop: 8 }}>Le Client bénéficie de révisions mineures illimitées et de deux (2) tours de révisions majeures dans les trente (30) jours suivant la livraison.</p>
+          <p><strong>C. En cas de retard de livraison :</strong></p>
+          <p style={{ marginTop: 8 }}>Si la Prestation n&apos;est pas livrée dans le délai de vingt et un (21) jours prévu à l&apos;Article 05, le Client obtient un <strong>remboursement intégral (100%)</strong> sur simple demande, et conserve le document tel que produit à ce stade.</p>
+        </div>
+        <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
+          <p><strong>D. À la livraison, en cas d&apos;insatisfaction substantielle :</strong></p>
+          <p style={{ marginTop: 8 }}>Le Client bénéficie de deux (2) tours de révisions dans les trente (30) jours suivant la livraison.</p>
           <p style={{ marginTop: 8 }}>Si, après ces deux tours, le Client estime que la Prestation ne correspond pas substantiellement à ses attentes raisonnables, il peut solliciter un remboursement partiel, plafonné à <strong>trente pour cent (30%) du montant total, soit 870 €</strong>. Cette demande doit être motivée par écrit dans les quarante-cinq (45) jours suivant la livraison.</p>
-        </div>
-        <div style={{ marginTop: 12, padding: 20, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.02)" }}>
-          <p><strong>D. Dispositions propres aux autres offres :</strong></p>
-          <p style={{ marginTop: 8 }}><strong>Abonnements (MOMENTUM) :</strong> s&apos;agissant de services à exécution successive, le Client consommateur dispose du droit de rétractation de quatorze (14) jours prévu à l&apos;article L.221-18 du Code de la consommation. S&apos;il demande expressément le commencement de l&apos;exécution avant la fin de ce délai, il reste redevable du montant correspondant au service déjà fourni. L&apos;abonnement est ensuite résiliable à tout moment, la résiliation prenant effet à la fin de la période mensuelle en cours, sans remboursement du mois entamé.</p>
         </div>
         <p style={{ marginTop: 16 }}>Toute demande de remboursement doit être adressée par email à hamza@gostrawberryprod.com, avec mention de la facture concernée.</p>
       </>
@@ -243,7 +237,7 @@ export default function CGVPage() {
               révision côte à côte, avant que les articles ne commencent. */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, border: "1px solid rgba(255,255,255,0.1)", borderBottom: `1px solid ${COLOR}66`, padding: "16px 22px", marginBottom: 48 }}>
             <span style={{ fontFamily: SERIF, fontSize: 15, fontWeight: 700, color: "#fff" }}>Conditions Générales de Vente</span>
-            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rév. 30 mai 2026</span>
+            <span style={{ fontFamily: SANS, fontSize: 10, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Rév. 24 septembre 2026</span>
           </div>
 
           {ARTICLES.map((s, i) => (
@@ -265,7 +259,7 @@ export default function CGVPage() {
               Dernière mise à jour
             </div>
             <p style={{ fontFamily: SERIF, fontSize: "1.05rem", color: "rgba(255,255,255,0.85)",  margin: 0 }}>
-              30 mai 2026
+              24 septembre 2026
             </p>
           </div>
 
