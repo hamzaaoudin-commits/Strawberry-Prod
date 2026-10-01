@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react"
 import {
   wordsFor,
   stepsForOffer,
@@ -105,6 +105,7 @@ const UI_COPY = {
     signPlaceholder: "Votre prénom",
     sign: "Signer et ouvrir le dossier",
     sealKicker: "C'est signé",
+    sealPieces: ["La plateforme", "Le diagnostic", "La carte", "Les décisions", "Les playbooks", "Le langage"],
     sealTitle: (r: string) => `Le dossier ${r} est ouvert.`,
     sealDueLabel: "Document livré au plus tard le",
     sealLead: "Le dépouillement commence demain : vos supports, ceux de vos concurrents, vos avis. Vous n'entendrez plus parler de nous jusqu'au jour 15 — c'est voulu.",
@@ -236,6 +237,7 @@ const UI_COPY = {
     signPlaceholder: "Your first name",
     sign: "Sign and open the file",
     sealKicker: "Signed",
+    sealPieces: ["The platform", "The diagnosis", "The map", "The decisions", "The playbooks", "The language"],
     sealTitle: (r: string) => `File ${r} is open.`,
     sealDueLabel: "Document delivered by",
     sealLead: "The reading starts tomorrow: your supports, your competitors', your reviews. You will not hear from us until day 15 — that is deliberate.",
@@ -1072,7 +1074,10 @@ function StepScreen({
         </div>
       )}
 
-      <h2 className="q-question mx-auto mb-5 max-w-[17ch]">{step.label}</h2>
+      {/* La question se remplit mot à mot — le même geste que le texte
+          qui se colore au défilement dans le diagnostic de la home. Clé
+          sur l'index : le remplissage se rejoue à chaque question. */}
+      <FillQuestion key={index} text={step.label} />
       {step.help ? (
         <p className="q-help mx-auto mb-12 max-w-[46ch]">{step.help}</p>
       ) : (
@@ -1294,13 +1299,19 @@ function QuestionInput({
     const options = step.options ?? []
     return (
       <div>
-        <div className="space-y-2">
-          {options.map((opt) => {
+        {/* Les choix en cartes, sur une piste qu'on fait glisser — la
+            grammaire de la méthode S.T.R.A.W. sur la home : grand numéro,
+            dégradé propre à chaque carte, coins arrondis. Une liste de
+            lignes identiques se lisait comme un formulaire ; une piste de
+            cartes se parcourt. */}
+        <OptionTrack>
+          {options.map((opt, i) => {
             const on = step.multi ? Array.isArray(sel) && (sel as string[]).includes(opt) : sel === opt
             return (
               <button
                 key={opt}
                 type="button"
+                data-option
                 onClick={() => {
                   if (step.multi) {
                     const arr = Array.isArray(sel) ? [...(sel as string[])] : []
@@ -1312,34 +1323,34 @@ function QuestionInput({
                     onChange(step.id, opt)
                   }
                 }}
-                className={`q-option group flex w-full items-start gap-3.5 border px-4 py-3.5 text-left text-[14.5px] leading-snug ${
-                  on
-                    ? "border-brand bg-brand/10 text-white"
-                    : "border-hair-strong bg-white/[0.02] text-chalk-75 hover:border-brand/40 hover:bg-white/[0.04]"
+                aria-pressed={on}
+                className={`q-card relative flex shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[18px] border p-5 text-left transition-[border-color,transform] duration-300 ${
+                  on ? "border-brand" : "border-white/[0.08] hover:-translate-y-1 hover:border-white/20"
                 }`}
+                style={{ background: CARD_GLOWS[i % CARD_GLOWS.length] }}
               >
-                {/* Un repère de sélection à gauche.
-                    Sans lui, on distingue mal une option choisie d'une option
-                    survolée — surtout en choix multiple, où plusieurs lignes
-                    sont actives en même temps. Carré pour le multiple, rond
-                    pour le choix unique : la forme dit la règle. */}
-                <span
-                  aria-hidden
-                  className={`mt-[3px] flex h-[15px] w-[15px] flex-shrink-0 items-center justify-center border transition-colors ${
-                    step.multi ? "rounded-[3px]" : "rounded-full"
-                  } ${on ? "border-brand bg-brand" : "border-hair-strong group-hover:border-brand/50"}`}
-                >
-                  {on && (
-                    <span
-                      className={`bg-ink ${step.multi ? "h-[6px] w-[6px] rounded-[1px]" : "h-[5px] w-[5px] rounded-full"}`}
-                    />
-                  )}
+                <span className="flex items-start justify-between">
+                  <span className="font-mono text-[11px] tracking-[0.24em] text-brand">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {/* La coche : carré pour le multiple, rond pour l'unique —
+                      la forme dit la règle avant la consigne. */}
+                  <span
+                    aria-hidden
+                    className={`flex h-5 w-5 items-center justify-center border transition-colors ${
+                      step.multi ? "rounded-[4px]" : "rounded-full"
+                    } ${on ? "border-brand bg-brand text-ink" : "border-white/25"}`}
+                  >
+                    {on && <span className="text-[11px] font-bold leading-none">✓</span>}
+                  </span>
                 </span>
-                <span className="min-w-0">{opt}</span>
+                <span className={`font-serif text-[1.05rem] font-bold leading-[1.25] ${on ? "text-white" : "text-white/85"}`}>
+                  {opt}
+                </span>
               </button>
             )
           })}
-        </div>
+        </OptionTrack>
         {step.multi && <div className="body-sm mt-2">{copy.upToChoices(step.max ?? 2)}</div>}
       </div>
     )
@@ -1751,10 +1762,43 @@ function DoneScreen({
 
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
+      {/* Le document qui s'assemble.
+          Six cartes — les six pièces — arrivent l'une après l'autre et
+          s'empilent en éventail, puis le titre du sceau tombe dessous. Le
+          client voit l'objet qu'il vient de nourrir prendre forme avant
+          qu'on lui dise qu'il est ouvert. Tout tient en deux secondes : au-
+          delà, la récompense deviendrait une attente. */}
+      <div aria-hidden className="relative mb-12 h-[150px] w-[220px]">
+        {copy.sealPieces.map((label, i) => {
+          const angle = (i - 2.5) * 5
+          return (
+            <div
+              key={label}
+              className="absolute inset-0 flex flex-col justify-between rounded-[14px] border border-white/10 p-4 text-left transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]"
+              style={{
+                background: CARD_GLOWS[i % CARD_GLOWS.length],
+                opacity: shown ? 1 : 0,
+                transform: shown
+                  ? `translateX(${(i - 2.5) * 6}px) rotate(${angle}deg)`
+                  : `translateY(-60px) rotate(${angle * 2}deg)`,
+                transitionDelay: `${i * 140}ms`,
+                zIndex: i,
+                boxShadow: "0 12px 30px -12px rgba(0,0,0,.8)",
+              }}
+            >
+              <span className="font-mono text-[10px] tracking-[0.24em] text-brand">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="font-serif text-[13px] font-bold uppercase leading-tight text-white">{label}</span>
+            </div>
+          )
+        })}
+      </div>
+
       {/* Le sceau.
           Quelque chose se ferme et quelque chose s'ouvre dans la même
           seconde : le questionnaire est derrière, le dossier est devant. */}
-      <div className={rev(0)} style={{ transitionDelay: "0ms" }}>
+      <div className={rev(0)} style={{ transitionDelay: "1000ms" }}>
         <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
           {copy.sealKicker}
         </div>
@@ -1765,10 +1809,10 @@ function DoneScreen({
 
       <div
         className="mx-auto mt-10 h-px bg-brand transition-all duration-[1100ms] ease-out"
-        style={{ width: shown ? 120 : 0, transitionDelay: "500ms" }}
+        style={{ width: shown ? 120 : 0, transitionDelay: "1400ms" }}
       />
 
-      <div className={rev(1)} style={{ transitionDelay: "800ms" }}>
+      <div className={rev(1)} style={{ transitionDelay: "1700ms" }}>
         <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
           {copy.sealDueLabel}
         </p>
@@ -1868,9 +1912,42 @@ function ChapterScreen({
     // on le lisait en diagonale et on cliquait. En occupant tout l'écran,
     // avec un trait qui se trace et un titre qui monte, il redevient une
     // pause — le seul moment du parcours où l'on ne demande rien.
-    <div className="flex min-h-[72vh] flex-col items-center justify-center py-10 text-center">
+    <div className="relative isolate flex min-h-[72vh] flex-col items-center justify-center py-10 text-center">
+      {/* Les bandes de cinéma — le letterbox des pages de terrain. Elles
+          entrent fermées sur l'écran puis s'ouvrent, comme un plan qui
+          commence : le chapitre se lit comme une nouvelle scène, pas comme
+          un écran de plus. Fixes et plein écran, elles débordent du
+          conteneur centré exprès. */}
       <div
-        className={`font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40 transition-all duration-[600ms] ${
+        aria-hidden
+        className="pointer-events-none fixed inset-x-0 top-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
+        style={{ height: shown ? "7vh" : "50vh" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
+        style={{ height: shown ? "7vh" : "50vh" }}
+      />
+
+      {/* Le grand numéro de scène, en contour, derrière le titre — comme
+          les numéros des scènes de la tournée sur la home. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-serif font-bold leading-none transition-all duration-[1400ms] ease-[cubic-bezier(.22,.68,0,1)]"
+        style={{
+          fontSize: "clamp(10rem,30vw,22rem)",
+          color: "transparent",
+          WebkitTextStroke: "1px rgba(255,255,255,0.07)",
+          opacity: shown ? 1 : 0,
+          transform: `translate(-50%,-50%) scale(${shown ? 1 : 1.08})`,
+          transitionDelay: "300ms",
+        }}
+      >
+        {String(n).padStart(2, "0")}
+      </div>
+
+      <div
+        className={`relative font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40 transition-all duration-[600ms] ${
           shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
         }`}
       >
@@ -2031,6 +2108,106 @@ function ThresholdScreen({
           {copy.thresholdCta}
         </button>
       </div>
+    </div>
+  )
+}
+
+
+/**
+ * FillQuestion — la question qui s'écrit sous les yeux.
+ *
+ * Chaque mot part en gris très pâle et passe au blanc, l'un après
+ * l'autre ; le dernier mot porte le dégradé rouge du titre de la home.
+ * Le remplissage complet tient toujours sous une seconde, même pour une
+ * question longue : au-delà, l'effet deviendrait une attente — et le
+ * champ, lui, apparaît à 1,5 s.
+ */
+function FillQuestion({ text }: { text: string }) {
+  const [go, setGo] = useState(false)
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setGo(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
+  const words = text.split(" ")
+  const step = Math.min(55, 850 / Math.max(1, words.length))
+  return (
+    <h2 className="q-question mx-auto mb-5 max-w-[17ch]">
+      {words.map((w, i) => {
+        const last = i === words.length - 1
+        return (
+          <span key={i}>
+            <span
+              className={last ? "bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text" : ""}
+              style={
+                last
+                  ? // Le mot en dégradé : texte transparent sur fond clippé,
+                    // donc on fait monter l'opacité plutôt que la couleur —
+                    // sinon le rouge transparaissait déjà sous le gris.
+                    { color: "transparent", opacity: go ? 1 : 0.14, transition: `opacity 420ms ease ${Math.round(i * step)}ms` }
+                  : { color: go ? "#fff" : "rgba(255,255,255,0.14)", transition: `color 420ms ease ${Math.round(i * step)}ms` }
+              }
+            >
+              {w}
+            </span>
+            {last ? null : " "}
+          </span>
+        )
+      })}
+    </h2>
+  )
+}
+
+
+/** Les dégradés des cartes de choix, repris des cinq chapitres S.T.R.A.W. */
+const CARD_GLOWS = [
+  "radial-gradient(70% 70% at 85% 15%, rgba(255,34,51,.16), transparent 60%), #0d0d0d",
+  "radial-gradient(70% 70% at 15% 20%, rgba(255,77,46,.18), transparent 60%), #0d0d0d",
+  "radial-gradient(70% 70% at 85% 85%, rgba(255,138,133,.16), transparent 60%), #0d0d0d",
+  "radial-gradient(70% 70% at 20% 85%, rgba(255,77,46,.16), transparent 60%), #0d0d0d",
+  "radial-gradient(80% 80% at 50% 20%, rgba(255,34,51,.14), transparent 55%), #0d0d0d",
+]
+
+/**
+ * OptionTrack — la piste de cartes qu'on fait glisser.
+ *
+ * Glisser à la souris sur ordinateur, défilement natif au doigt sur
+ * mobile, aimantation sur chaque carte. Un glissement de plus de quelques
+ * pixels annule le clic qui suit : on ne sélectionne pas une carte par
+ * accident en faisant défiler la piste.
+ */
+function OptionTrack({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const drag = useRef({ down: false, x: 0, left: 0, moved: false })
+  return (
+    <div
+      ref={ref}
+      className="q-track -mx-4 flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 pt-1 active:cursor-grabbing"
+      onPointerDown={(e) => {
+        if (e.pointerType === "touch" || !ref.current) return
+        drag.current = { down: true, x: e.clientX, left: ref.current.scrollLeft, moved: false }
+      }}
+      onPointerMove={(e) => {
+        const d = drag.current
+        if (!d.down || !ref.current) return
+        const dx = e.clientX - d.x
+        if (Math.abs(dx) > 5) d.moved = true
+        ref.current.scrollLeft = d.left - dx
+      }}
+      onPointerUp={() => {
+        drag.current.down = false
+      }}
+      onPointerLeave={() => {
+        drag.current.down = false
+      }}
+      onClickCapture={(e) => {
+        if (drag.current.moved) {
+          e.preventDefault()
+          e.stopPropagation()
+          drag.current.moved = false
+        }
+      }}
+    >
+      {children}
     </div>
   )
 }

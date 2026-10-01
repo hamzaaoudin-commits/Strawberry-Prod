@@ -1,63 +1,107 @@
-# Strawberry — cinq corrections, dont une bien plus profonde qu'il n'y paraissait
+# Strawberry — le questionnaire à la hauteur du site, et branché sur Make
 
-4 fichiers.
+3 fichiers de code + le blueprint Make mis à jour.
 
-## Le paragraphe du hero, retiré
+## Les quatre idées de design
 
-« Nous analysons votre marque, votre marché et les récits de vos
-concurrents… » disparaît. Le paragraphe qui reste va directement de
-« nous construisons l'architecture narrative qui vous rend
-identifiable » à « en trois semaines, vous savez quoi raconter » — plus
-court, et l'offre qui suit plus bas explique déjà le détail.
+**1 · La question qui se remplit.** Elle apparaît en gris très pâle et
+se colore mot à mot, le dernier mot en dégradé rouge — le même geste que
+le texte du diagnostic sur la home. Toujours sous une seconde, même pour
+une question longue.
 
-## Le curseur Hier/Aujourd'hui, plus au milieu
+**2 · Les chapitres comme des scènes de film.** Les deux bandes noires de
+cinéma (le letterbox des pages de terrain) arrivent fermées sur l'écran
+et s'ouvrent comme un plan qui commence, avec un grand numéro de scène en
+contour derrière le titre.
 
-Il démarrait à 6 %, puis s'animait tout seul jusqu'à 50 % — ce qui
-coupait les deux phrases en même temps, aucune ne se lisant en entier.
-Il reste maintenant entièrement sur « Hier » au repos (96 %) : la phrase
-se lit en entier, et c'est le geste de glisser qui révèle
-« Aujourd'hui ».
+**4 · Les choix en cartes S.T.R.A.W.** Les options deviennent de grandes
+cartes à coins arrondis, chacune avec son numéro et son dégradé repris
+des cinq chapitres de la méthode, sur une piste qu'on fait glisser à la
+souris (ou au doigt sur mobile). Un glissement n'active jamais une carte
+par erreur.
 
-## Le sous-titre de « pourquoi ce studio existe », détaché
+**9 · Le document qui s'assemble.** Au sceau, les six pièces arrivent
+une à une et s'empilent en éventail ; le titre « le dossier est ouvert »
+ne tombe qu'une fois le document formé.
 
-« Et pourtant, si peu de marques sont reconnaissables » collait au titre
-au-dessus, séparé seulement par un retour à la ligne, à la même taille —
-les deux se lisaient comme une seule phrase coupée en deux. Il descend
-maintenant dans son propre paragraphe, plus petit, avec un vrai espace
-au-dessus : la conséquence du titre, pas sa répétition.
+## Le branchement Make
 
-## Le passage « chaque jour, des milliers de marques publient… », animé
+### Côté site — déjà fait dans ce patch
 
-Les deux phrases et les cinq lignes de la déclinaison des « mêmes »
-arrivent maintenant l'une après l'autre, avec un délai croissant, plutôt
-que d'un bloc avec le reste de la section. La répétition que ces lignes
-décrivent se sent maintenant dans le rythme où elles arrivent.
+Le questionnaire envoie maintenant ses réponses **depuis le serveur**
+vers un webhook Make, en plus de l'e-mail Formspree. L'URL du webhook
+n'est jamais visible dans le navigateur : personne ne peut la récupérer
+pour injecter de fausses commandes dans votre scénario.
 
-## Le vrai bug des onglets, et pourquoi il ne touchait pas que trois pages
+Les deux envois partent en même temps : si l'un échoue, l'autre suffit,
+rien n'est perdu.
 
-Vous aviez raison que ça ne marchait pas — mais pas seulement sur les
-pages autres que marques. **Ça ne marchait sur aucune des quatre.**
+### La structure envoyée à Make
 
-Le mécanisme reposait sur un `<script>` posé à l'intérieur du bloc HTML
-injecté via `dangerouslySetInnerHTML`. C'est un comportement du
-navigateur, pas un bug de mon code à corriger au cas par cas : **un
-script inséré de cette façon ne s'exécute jamais, sur aucun navigateur,
-quel que soit son contenu.** J'ai dû me tromper en pensant l'avoir vu
-fonctionner sur la page marques — ou vous avez cliqué sur l'onglet déjà
-actif par défaut, qui n'a évidemment rien changé.
+```json
+{
+  "event": "onboarding_completed",
+  "submission_id": "LOA-M1K2X9",
+  "submitted_at": "2026-09-24T10:12:00.000Z",
+  "offer": "architecture",
+  "terrain": "marques",
+  "terrain_label": "Marques",
+  "lang": "fr",
+  "client": { "name": "Marc", "house": "LOAM", "email": "marc@loam.fr" },
+  "responses": {
+    "positioning": "…",
+    "conviction": "…",
+    "rupture": "…",
+    "enemy": "…",
+    "competitor_1_name": "…",
+    "competitor_1_line": "…",
+    "tone_formal": 40,
+    "deploy": "Site | Vente",
+    "words_mine": "… | …",
+    "words_never": "… | …",
+    "link_site": "…"
+  },
+  "answers_text": "Tout le questionnaire, intitulés + réponses, en un bloc"
+}
+```
 
-**La reconstruction est entièrement en CSS**, sans une seule ligne de
-JavaScript : trois cases à cocher radio masquées par ligne, et des
-règles `:checked` qui montrent le bon panneau et surlignent le bon
-bouton. Ce mécanisme ne peut pas subir le même problème : il n'y a rien
-à exécuter, donc rien qui puisse ne pas s'exécuter. Il fonctionne
-maintenant identiquement sur les quatre pages, puisque les quatre
-partagent ce même gabarit.
+**Les balises** sont les identifiants des questions — `conviction`,
+`rupture`, `enemy`, `portrait_house`, `price`, `forbidden`, etc. Les
+questions qui existent en variante par terrain (`positioning_lieux`,
+`competitors_produits`…) sont ramenées à une seule balise (`positioning`,
+`competitor_N_*`) : votre scénario n'a qu'un chemin à gérer, quel que soit
+ce que le client vend.
+
+`answers_text` contient tout le questionnaire mis en forme : c'est la
+variable à injecter telle quelle dans les prompts.
+
+### Une correction trouvée en le faisant
+
+L'e-mail Formspree listait jusqu'ici **les quatre variantes** du
+positionnement et des concurrents, dont trois toujours vides — la route
+ne filtrait pas par terrain. Corrigé avec la logique de filtrage déjà
+présente dans `questionnaire-data.ts`.
+
+### Côté Make — à faire par vous, dans cet ordre
+
+1. **Importez `architecture-narrative-blueprint.json`.** Le déclencheur
+   Tally est remplacé par un **Custom Webhook** ; la variable
+   `Context_Global` lit désormais `{{1.answers_text}}` — l'IA reçoit les
+   trente réponses, contre neuf avec Tally.
+2. **Ouvrez le module 1 → « Add » → créez le webhook**, puis copiez l'URL
+   qu'il affiche. (Un webhook ne peut pas être créé depuis un fichier
+   importé, c'est la seule étape manuelle.)
+3. **Sur Vercel**, ajoutez la variable d'environnement
+   `MAKE_WEBHOOK_URL` avec cette URL, puis redéployez.
+4. **Dans Make, cliquez « Redetermine data structure »** sur le module 1,
+   puis remplissez une fois le questionnaire sur le site. Make capture les
+   balises automatiquement.
+5. Lancez le scénario.
+
+La connexion Gmail et les vingt-huit modules d'écriture sont intacts —
+vérifié : aucune référence orpheline, aucune trace de Tally restante.
 
 ## Vérification
 
-Contrôle de types : zéro erreur. Toutes les clés `data-i18n` confirmées
-présentes dans le dictionnaire. Confirmé par lecture directe qu'aucune
-vraie balise `<script>` ne subsiste dans la section reconstruite — la
-seule occurrence trouvée était le mot cité dans mon propre commentaire
-explicatif.
+Contrôle de types : zéro erreur sur le questionnaire, et zéro en mode
+strict sur la route serveur.

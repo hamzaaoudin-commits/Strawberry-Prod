@@ -1662,3 +1662,11 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
     ),
     radial-gradient(45% 35% at 88% 100%, rgba(255, 77, 46, calc(0.04 + 0.08 * var(--q-progress, 0))), transparent 60%);
 }
+
+/* Les cartes de choix du questionnaire — format des chapitres S.T.R.A.W.
+   de la home, à l'échelle d'une réponse : assez larges pour une phrase,
+   assez étroites pour qu'on voie la suivante dépasser et qu'on comprenne
+   qu'il faut glisser. */
+.q-card { width: min(240px, 72vw); min-height: 190px; user-select: none; -webkit-user-select: none; }
+.q-track { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.q-track::-webkit-scrollbar { display: none; height: 0; }
