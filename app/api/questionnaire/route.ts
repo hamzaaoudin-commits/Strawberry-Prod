@@ -69,7 +69,18 @@ function formatAnswer(step: Question, answers: Record<string, unknown>): string 
   }
   if (step.type === "links") {
     const l = (answers.links ?? {}) as Record<string, unknown>
-    return `${label}\nSite : ${sanitize(str(l.site), LIMITS.short) || "—"}\nLinkedIn : ${sanitize(str(l.linkedin), LIMITS.short) || "—"}\nContenu : ${sanitize(str(l.content), LIMITS.short) || "—"}`
+    const extras = (Array.isArray(l.extra) ? l.extra : [])
+      .slice(0, 10)
+      .map((u) => sanitize(str(u), LIMITS.short))
+      .filter(Boolean)
+      .map((u, i) => `Lien ${i + 1} : ${u}`)
+    return [
+      label,
+      `Site : ${sanitize(str(l.site), LIMITS.short) || "—"}`,
+      `LinkedIn : ${sanitize(str(l.linkedin), LIMITS.short) || "—"}`,
+      `Contenu : ${sanitize(str(l.content), LIMITS.short) || "—"}`,
+      ...extras,
+    ].join("\n")
   }
   if (step.type === "choice") {
     const v = answers[step.id]
@@ -150,6 +161,18 @@ function buildResponses(steps: Question[], answers: Record<string, unknown>): Re
       if (site) out.link_site = site
       if (linkedin) out.link_linkedin = linkedin
       if (content) out.link_content = content
+      // Les liens ajoutés par le client : link_extra_1, link_extra_2…
+      // (dix au plus). Make les voit comme autant de balises distinctes ;
+      // `link_extra_count` dit combien il y en a, pour un filtre sans
+      // avoir à tester chaque balise.
+      const extras = (Array.isArray(l.extra) ? l.extra : [])
+        .slice(0, 10)
+        .map((u) => sanitize(str(u), LIMITS.short))
+        .filter(Boolean)
+      extras.forEach((u, i) => {
+        out[`link_extra_${i + 1}`] = u
+      })
+      if (extras.length) out.link_extra_count = extras.length
       continue
     }
     if (step.type === "sliders") {

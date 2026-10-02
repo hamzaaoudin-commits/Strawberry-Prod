@@ -73,6 +73,8 @@ export interface QuestionSource {
   /** Ce que cette réponse alimente dans le document livré. */
   unlock?: I18nText
   options?: I18nText[]
+  /** Une phrase par option, dans le même ordre : ce que l'option veut dire. */
+  hints?: I18nText[]
   multi?: boolean
   max?: number
   axes?: SliderAxisSource[]
@@ -102,6 +104,9 @@ export interface Question {
   /** Ce que cette réponse alimente dans le document livré. */
   unlock?: string
   options?: string[]
+  hints?: string[]
+  /** Clé du chapitre (voir CHAPTERS). */
+  chapter?: string
   multi?: boolean
   max?: number
   axes?: SliderAxis[]
@@ -122,6 +127,29 @@ export const ARCHETYPES: I18nText[] = [
   t("Le Souverain", "The Ruler"),
   t("L'Explorateur", "The Explorer"),
   t("L'Innocent", "The Innocent"),
+]
+
+/**
+ * Ce que chaque archétype veut dire, en une phrase.
+ *
+ * Les douze noms seuls ne disent rien à quelqu'un qui n'a pas lu Jung ni
+ * Pearson : « Le Gars d'à côté » ou « Le Protecteur » se choisissent au
+ * hasard. Chaque nom porte donc ce qu'il promet à un public et une
+ * marque qui l'incarne, dans le même ordre que ARCHETYPES.
+ */
+const ARCHETYPE_HINTS: I18nText[] = [
+  t("Construit, invente, laisse une œuvre. Lego, Adobe.", "Builds, invents, leaves a body of work. Lego, Adobe."),
+  t("Casse les règles, refuse l'ordre établi. Harley-Davidson, Diesel.", "Breaks the rules, refuses the established order. Harley-Davidson, Diesel."),
+  t("Cherche la vérité, explique, éclaire. Google, The Economist.", "Seeks truth, explains, illuminates. Google, The Economist."),
+  t("Transforme, fait vivre une expérience hors du commun. Disney.", "Transforms, creates an extraordinary experience. Disney."),
+  t("Relève le défi, prouve sa valeur par l'effort. Nike.", "Takes on the challenge, proves worth through effort. Nike."),
+  t("Séduit, crée l'intimité et le désir. Chanel, Häagen-Dazs.", "Seduces, creates intimacy and desire. Chanel, Häagen-Dazs."),
+  t("Fait rire, dédramatise, refuse de se prendre au sérieux. Old Spice, Ben & Jerry's.", "Makes people laugh, plays it down, refuses to take itself seriously. Old Spice, Ben & Jerry's."),
+  t("Simple, proche, sans prétention : « une marque comme moi ». IKEA.", "Simple, close, unpretentious: \"a brand like me\". IKEA."),
+  t("Prend soin, protège, rassure. Volvo, Johnson & Johnson.", "Cares, protects, reassures. Volvo, Johnson & Johnson."),
+  t("Commande, structure, incarne l'autorité et le prestige. Rolex, Mercedes.", "Commands, structures, embodies authority and prestige. Rolex, Mercedes."),
+  t("Part vers l'inconnu, valorise la liberté et la découverte. The North Face, Jeep.", "Heads into the unknown, values freedom and discovery. The North Face, Jeep."),
+  t("Optimiste, pur, simple : le bonheur sans complication. Dove, Coca-Cola.", "Optimistic, pure, simple: happiness without complication. Dove, Coca-Cola."),
 ]
 
 export const WORDS: I18nText[] = [
@@ -352,6 +380,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
       "The classic repertoire of brand storytelling. Go on instinct, not calculation.",
     ),
     options: ARCHETYPES,
+    hints: ARCHETYPE_HINTS,
     tag: t("Identité & langage", "Identity & language"),
   },
   {
@@ -631,6 +660,7 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
     nudge: q.nudge ? pickText(q.nudge, lang) : undefined,
     unlock: q.unlock ? pickText(q.unlock, lang) : undefined,
     options: q.options?.map((o) => pickText(o, lang)),
+    hints: q.hints?.map((h) => pickText(h, lang)),
     multi: q.multi,
     max: q.max,
     terrains: q.terrains,
@@ -644,6 +674,39 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
  * Sans terrain, on renvoie tout ce qui n'est pas propre à un terrain : c'est
  * le comportement d'avant, donc les liens existants continuent de marcher.
  */
+/**
+ * Les sept chapitres du parcours, dans l'ordre où on les traverse.
+ *
+ * Avant, un chapitre était une suite de questions portant la même
+ * étiquette — et les étiquettes alternaient (« La vérité », « Langage »,
+ * « La vérité », « Identité & langage », « La vérité »…), ce qui
+ * fabriquait une vingtaine d'écrans de chapitre pour trente questions.
+ * Les chapitres sont maintenant définis ici, explicitement : chacun
+ * regroupe les questions qui nourrissent une même partie du document, et
+ * dit pourquoi il est nécessaire.
+ *
+ * Un identifiant de question sans suffixe de terrain (`positioning`,
+ * pas `positioning_lieux`) : les variantes par terrain tombent dans le
+ * même chapitre, à la même place.
+ */
+export const CHAPTERS: { key: string; ids: string[] }[] = [
+  { key: "fondations", ids: ["identity", "conviction", "rupture", "enemy"] },
+  { key: "champ", ids: ["positioning", "awareness", "maturity", "competitors", "competitor_edge"] },
+  { key: "voix", ids: ["archetype", "tone", "forbidden", "wordbank"] },
+  { key: "audience", ids: ["decision", "audience", "risk", "repoussoir"] },
+  { key: "quotidien", ids: ["model", "price", "traction", "content_format", "support_scene", "hr_disqualifier"] },
+  { key: "deploiement", ids: ["deploy", "portrait_house", "outside_refs"] },
+  { key: "preuve", ids: ["proof", "headline", "portrait_founder", "links"] },
+]
+
+const canonicalId = (id: string) => id.replace(/_(produits|lieux|artistes)$/, "")
+
+/** Le chapitre d'une question, par son identifiant canonique. */
+export function chapterKeyOf(id: string): string {
+  const cid = canonicalId(id)
+  return CHAPTERS.find((ch) => ch.ids.includes(cid))?.key ?? "preuve"
+}
+
 export function stepsForOffer(offer: OfferKey, lang: Lang, terrain?: TerrainKey): Question[] {
   // Sans terrain, on retombe sur « marques ».
   //
@@ -655,11 +718,19 @@ export function stepsForOffer(offer: OfferKey, lang: Lang, terrain?: TerrainKey)
   // signale. Le repli garantit qu'il y a toujours une version de chaque
   // question.
   const t: TerrainKey = terrain ?? "marques"
+  const flat = CHAPTERS.flatMap((ch) => ch.ids)
+  const rank = (id: string) => {
+    const i = flat.indexOf(canonicalId(id))
+    return i === -1 ? flat.length : i
+  }
   return QUESTION_SOURCES.filter((q) => {
     if (!q.offers.includes(offer)) return false
     if (!q.terrains) return true
     return q.terrains.includes(t)
-  }).map((q) => localizeQuestion(q, lang))
+  })
+    // Tri stable : les questions d'un même rang gardent leur ordre d'écriture.
+    .sort((a, b) => rank(a.id) - rank(b.id))
+    .map((q) => ({ ...localizeQuestion(q, lang), chapter: chapterKeyOf(q.id) }))
 }
 
 /** Word bank chips, resolved. Kept separate: the UI renders them, not a question. */

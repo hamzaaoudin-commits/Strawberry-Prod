@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import {
   wordsFor,
   stepsForOffer,
@@ -31,7 +31,7 @@ import { isBot, rateLimit, honeypotProps } from "@/lib/form-security"
 
 type IdentityAnswers = { name: string; house: string; email: string }
 type CompetitorRow = { name: string; line: string }
-type LinksAnswers = { site: string; linkedin: string; content: string }
+type LinksAnswers = { site: string; linkedin: string; content: string; extra?: string[] }
 type WordbankAnswers = { mine: string[]; notmine: string[] }
 
 interface Answers {
@@ -84,13 +84,33 @@ const UI_COPY = {
     chapterOf: (n: number, t: number) => `Partie ${n} sur ${t}`,
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
     chapterFallback: "Quelques questions pour la suite du document.",
+    chapterTitles: {
+      fondations: "Les fondations",
+      champ: "Le champ",
+      voix: "La voix",
+      audience: "L'audience",
+      quotidien: "Le quotidien",
+      deploiement: "Le déploiement",
+      preuve: "La preuve",
+    } as Record<string, string>,
+    // Pourquoi ce chapitre existe — ce qu'il fabrique dans le document.
     chapterNotes: {
-      Identité: "Les faits d'abord. Ce sont eux qu'un lecteur retiendra dans dix ans, quand personne ne se souviendra de votre campagne de cette année.",
-      Diagnostic: "Ici, vous allez écrire des choses que vous n'avez jamais écrites nulle part. C'est normal — c'est exactement ce que vos concurrents n'ont pas fait.",
-      Langage: "Les mots que vous choisissez maintenant, vos équipes les emploieront pendant des années. Prenez-les au sérieux, personne d'autre ne le fera à votre place.",
-      Concurrence: "Vous allez regarder vos concurrents de plus près que vous ne l'avez jamais fait. La plupart des fondateurs ne le font jamais — c'est pour ça que la plupart se ressemblent.",
-      Déploiement: "Presque fini. Ce que vous répondez ici décide de l'ordre dans lequel votre maison va changer.",
-      Fondation: "C'est la partie difficile, et c'est celle qui vaut le prix. Ce que vous écrivez dans les cinq prochaines minutes tiendra la maison quand vous ne serez pas dans la pièce.",
+      fondations: "Tout le document repose sur ces quatre réponses : qui vous êtes, ce que vous croyez, ce qui vous a fait naître, ce que vous refusez. Ce sont elles qui rendent la plateforme impossible à copier. Aucune agence, aucune IA ne peut les deviner à votre place — et on ne les écrit qu'une fois.",
+      champ: "Une position ne vaut que face aux autres. Pour trouver ce que vous seul pouvez dire, il faut savoir ce que vos concurrents disent déjà, mot pour mot. Vos réponses fabriquent le diagnostic et la carte du champ : plus vous êtes précis, plus la carte est tranchante.",
+      voix: "Deux maisons peuvent dire la même chose sans se ressembler : tout tient à la voix. Ces questions fixent votre personnalité, votre ton et vos interdits. Elles deviennent le lexique et les règles que vos équipes — et vos outils d'IA — appliqueront.",
+      audience: "On n'écrit pas pour tout le monde. Ces questions décrivent la personne précise qui doit vous choisir, ce qui la retient, et celle dont vous ne voulez pas. Elles décident à qui le document parle et ce qu'il doit dire pour la convaincre.",
+      quotidien: "Un document qui n'est pas appliqué le lundi matin ne sert à rien. Ces questions décrivent comment vous vendez, à quel prix, comment vous vous exprimez au quotidien et qui vous recrutez. Elles deviennent les playbooks de vos équipes.",
+      deploiement: "Les mots d'abord, l'image ensuite. Ces trois questions disent où le document doit servir en premier et à quoi la maison doit ressembler. Elles fixent l'ordre des décisions et le brief remis à votre designer.",
+      preuve: "Un récit sans preuve ne tient pas. Dernier chapitre : ce qui vous rend crédible, ce que vous visez, et l'accès à vos supports. C'est de là que part le dépouillement de votre site, de vos avis et de vos réseaux.",
+    } as Record<string, string>,
+    chapterFeeds: {
+      fondations: "Nourrit la pièce 01 — La plateforme",
+      champ: "Nourrit les pièces 02 et 03 — Le diagnostic, La carte",
+      voix: "Nourrit la pièce 06 — Le langage",
+      audience: "Nourrit les pièces 02 et 05 — Le diagnostic, Les playbooks",
+      quotidien: "Nourrit la pièce 05 — Les playbooks",
+      deploiement: "Nourrit la pièce 04 — Les décisions",
+      preuve: "Nourrit les pièces 02 et 03 — Le dépouillement",
     } as Record<string, string>,
     saved: "Enregistré",
     resumeKicker: "Vous aviez commencé",
@@ -109,8 +129,18 @@ const UI_COPY = {
     sealPieces: ["La plateforme", "Le diagnostic", "La carte", "Les décisions", "Les playbooks", "Le langage"],
     sealTitle: (r: string) => `Le dossier ${r} est ouvert.`,
     sealDueLabel: "Document livré au plus tard le",
-    sealLead: "Le dépouillement commence demain : vos supports, ceux de vos concurrents, vos avis. Vous n'entendrez plus parler de nous jusqu'au jour 15 — c'est voulu.",
+    locale: "fr-FR",
+    sealLead: "Vous n'avez plus rien à faire. Vous n'entendrez plus parler de nous jusqu'au jour 15 — c'est voulu.",
     sealDownload: "Emporter votre première page ↓",
+    sealRefLabel: "Votre référence",
+    nextTitle: "Ce qui se passe maintenant",
+    nextSteps: (d15: string, d20: string, d21: string) => [
+      { when: "Demain", what: "Le dépouillement commence : vos supports, ceux de vos concurrents, vos avis clients, vos pages." },
+      { when: `Jour 15 · ${d15}`, what: "Le document vous est remis." },
+      { when: `Jour 20 · ${d20}`, what: "Une heure de relecture ensemble, puis deux tours de révision." },
+      { when: `Jour 21 · ${d21}`, what: "Livraison finale, au plus tard. Passé ce délai, vous êtes remboursé et le document vous reste." },
+    ],
+    backToSite: "Retour au site",
 
     mirrorPositioning: "C'est la phrase que nous allons tester, mot pour mot, contre celles de vos concurrents.",
     mirrorDeploy: "C'est ce refus qui décidera de l'ordre des mouvements. Dites-nous où il doit se voir en premier.",
@@ -120,12 +150,12 @@ const UI_COPY = {
     piecesLabel: "Le document, pièce par pièce",
     quoteSource: "La Doctrine la plus claire",
     chapterQuotes: {
-      Identité: "Ce que les gens croient de vous avant de vous avoir touché.",
-      Fondation: "Une maison n'est plus ce qu'elle fabrique. Une maison est ce qu'elle refuse — et le marché n'a jamais rien lu plus clairement.",
-      Diagnostic: "Rien, dans un marché, n'est expérimenté. Tout est interprété — et l'interprétation arrive avant vous.",
-      Concurrence: "Sur un marché où tout le monde a accès à la même machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
-      Langage: "Une doctrine est la chose sous les histoires — l'ensemble fixe de convictions qui rend chaque expression d'une maison reconnaissable, cohérente, et impossible à confondre avec celle de quiconque, quel que soit celui — ou ce — qui en a produit la surface.",
-      Déploiement: "La perception est la structure de croyance qu'un marché tient sur une maison avant le contact, et qui détermine ce que chaque contact ultérieur a le droit de signifier.",
+      fondations: "Une maison n'est plus ce qu'elle fabrique. Une maison est ce qu'elle refuse — et le marché n'a jamais rien lu plus clairement.",
+      champ: "Sur un marché où tout le monde a accès à la même machine, le meilleur produit ne gagne plus. C'est la doctrine la plus claire qui gagne.",
+      voix: "Une doctrine est la chose sous les histoires — l'ensemble fixe de convictions qui rend chaque expression d'une maison reconnaissable, cohérente, et impossible à confondre avec celle de quiconque, quel que soit celui — ou ce — qui en a produit la surface.",
+      audience: "Ce que les gens croient de vous avant de vous avoir touché.",
+      deploiement: "La perception est la structure de croyance qu'un marché tient sur une maison avant le contact, et qui détermine ce que chaque contact ultérieur a le droit de signifier.",
+      preuve: "Rien, dans un marché, n'est expérimenté. Tout est interprété — et l'interprétation arrive avant vous.",
     } as Record<string, string>,
 
     halfway: (n: number) => `${n}. Vous êtes à la moitié. La plupart des gens qui commencent un exercice comme celui-ci s'arrêtent avant ce point.`,
@@ -182,6 +212,10 @@ const UI_COPY = {
     linkSite: "Site actuel",
     linkLinkedin: "LinkedIn du fondateur",
     linkContent: "Un contenu déjà publié (facultatif)",
+    linkExtra: "Un autre lien utile",
+    phExtra: "Fiche Google, Instagram, TikTok, presse, avis, dossier partagé…",
+    addLink: "+ Ajouter un lien",
+    removeLink: "Retirer ce lien",
     phContent: "Lien vers un post, un article, une vidéo",
     upToChoices: (n: number) => `Jusqu'à ${n} choix.`,
     myWords: "Ce sont mes mots",
@@ -217,13 +251,32 @@ const UI_COPY = {
     chapterOf: (n: number, t: number) => `Part ${n} of ${t}`,
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
     chapterFallback: "A few questions for the rest of the document.",
+    chapterTitles: {
+      fondations: "The foundations",
+      champ: "The field",
+      voix: "The voice",
+      audience: "The audience",
+      quotidien: "Day to day",
+      deploiement: "Deployment",
+      preuve: "The proof",
+    } as Record<string, string>,
     chapterNotes: {
-      Identity: "Facts first. These are what a reader will remember in ten years, when nobody recalls this year's campaign.",
-      Diagnosis: "Here you will write things you have never written anywhere. That is normal — it is exactly what your competitors have not done.",
-      Language: "The words you choose now, your teams will use for years. Take them seriously; nobody else will do it for you.",
-      Competition: "You are about to look at your competitors more closely than you ever have. Most founders never do — which is why most of them look alike.",
-      Deployment: "Almost there. What you answer here decides the order in which your house will change.",
-      Foundation: "This is the hard part, and it is the part that is worth the price. What you write in the next five minutes will hold the house when you are not in the room.",
+      fondations: "The whole document rests on these four answers: who you are, what you believe, what made you, what you refuse. They are what makes the platform impossible to copy. No agency and no AI can guess them for you — and you only write them once.",
+      champ: "A position only means something against others. To find what only you can say, you need to know what your competitors already say, word for word. Your answers build the diagnosis and the map of the field: the more precise you are, the sharper the map.",
+      voix: "Two houses can say the same thing and not look alike: it all comes down to voice. These questions fix your personality, your tone and your off-limits. They become the lexicon and the rules your teams — and your AI tools — will apply.",
+      audience: "You do not write for everyone. These questions describe the precise person who must choose you, what holds them back, and the one you do not want. They decide who the document speaks to and what it must say to win them.",
+      quotidien: "A document that is not applied on Monday morning is worth nothing. These questions describe how you sell, at what price, how you express yourself day to day and who you hire. They become your teams' playbooks.",
+      deploiement: "Words first, image second. These three questions say where the document must work first and what the house should look like. They set the order of the decisions and the brief handed to your designer.",
+      preuve: "A story without proof does not hold. Final chapter: what makes you credible, what you aim for, and access to your materials. This is where the review of your site, your reviews and your social pages starts.",
+    } as Record<string, string>,
+    chapterFeeds: {
+      fondations: "Feeds piece 01 — The platform",
+      champ: "Feeds pieces 02 and 03 — The diagnosis, The map",
+      voix: "Feeds piece 06 — The language",
+      audience: "Feeds pieces 02 and 05 — The diagnosis, The playbooks",
+      quotidien: "Feeds piece 05 — The playbooks",
+      deploiement: "Feeds piece 04 — The decisions",
+      preuve: "Feeds pieces 02 and 03 — The review",
     } as Record<string, string>,
     saved: "Saved",
     resumeKicker: "You had started",
@@ -242,8 +295,18 @@ const UI_COPY = {
     sealPieces: ["The platform", "The diagnosis", "The map", "The decisions", "The playbooks", "The language"],
     sealTitle: (r: string) => `File ${r} is open.`,
     sealDueLabel: "Document delivered by",
-    sealLead: "The reading starts tomorrow: your supports, your competitors', your reviews. You will not hear from us until day 15 — that is deliberate.",
+    locale: "en-GB",
+    sealLead: "There is nothing left for you to do. You will not hear from us until day 15 — that is deliberate.",
     sealDownload: "Take your first page ↓",
+    sealRefLabel: "Your reference",
+    nextTitle: "What happens now",
+    nextSteps: (d15: string, d20: string, d21: string) => [
+      { when: "Tomorrow", what: "The review begins: your materials, your competitors', your customer reviews, your pages." },
+      { when: `Day 15 · ${d15}`, what: "The document is handed to you." },
+      { when: `Day 20 · ${d20}`, what: "One hour of review together, then two rounds of revisions." },
+      { when: `Day 21 · ${d21}`, what: "Final delivery, at the latest. Past that date, you are refunded and keep the document." },
+    ],
+    backToSite: "Back to the site",
 
     mirrorPositioning: "This is the sentence we will test, word for word, against your competitors'.",
     mirrorDeploy: "This refusal will decide the order of the moves. Tell us where it must show first.",
@@ -253,12 +316,12 @@ const UI_COPY = {
     piecesLabel: "The document, piece by piece",
     quoteSource: "The Clearest Doctrine",
     chapterQuotes: {
-      Identity: "What people believe about you before they have touched you.",
-      Foundation: "A house is no longer what it makes. A house is what it refuses — and the market has never read anything more clearly.",
-      Diagnosis: "Nothing in a market is experienced. Everything is interpreted — and the interpretation arrives before you do.",
-      Competition: "In a market where everyone has the same machine, the best product no longer wins. The clearest doctrine wins.",
-      Language: "A doctrine is the thing beneath the stories — the fixed set of convictions that makes every expression of a house recognisable, coherent, and impossible to confuse with anyone else's, whoever — or whatever — produced the surface.",
-      Deployment: "Perception is the belief structure a market holds about a house before contact, and which determines what every later contact is allowed to mean.",
+      fondations: "A house is no longer what it makes. A house is what it refuses — and the market has never read anything more clearly.",
+      champ: "In a market where everyone has the same machine, the best product no longer wins. The clearest doctrine wins.",
+      voix: "A doctrine is the thing beneath the stories — the fixed set of convictions that makes every expression of a house recognisable, coherent, and impossible to confuse with anyone else's, whoever — or whatever — produced the surface.",
+      audience: "What people believe about you before they have touched you.",
+      deploiement: "Perception is the belief structure a market holds about a house before contact, and which determines what every later contact is allowed to mean.",
+      preuve: "Nothing in a market is experienced. Everything is interpreted — and the interpretation arrives before you do.",
     } as Record<string, string>,
 
     halfway: (n: number) => `${n}. You are halfway. Most people who start an exercise like this one stop before this point.`,
@@ -315,6 +378,10 @@ const UI_COPY = {
     linkSite: "Current website",
     linkLinkedin: "Founder's LinkedIn",
     linkContent: "Something you've published (optional)",
+    linkExtra: "Another useful link",
+    phExtra: "Google listing, Instagram, TikTok, press, reviews, shared folder…",
+    addLink: "+ Add a link",
+    removeLink: "Remove this link",
     phContent: "Link to a post, an article, a video",
     upToChoices: (n: number) => `Up to ${n} choices.`,
     myWords: "These are my words",
@@ -356,7 +423,10 @@ type Copy = (typeof UI_COPY)["fr"]
 function storageKey(offer: OfferKey, email: string, terrain?: TerrainKey) {
   // Le terrain entre dans la clé : deux parcours différents ne doivent pas
   // se réécrire l'un l'autre dans le stockage local.
-  return `sp_questionnaire:${offer}:${terrain ?? "all"}:${email.trim().toLowerCase() || "anon"}`
+  // « v2 » : l'ordre des questions a changé avec les sept chapitres. Un
+  // brouillon enregistré avant pointerait sur la mauvaise question à la
+  // reprise — on repart d'une clé neuve plutôt que de mélanger les deux.
+  return `sp_questionnaire:v2:${offer}:${terrain ?? "all"}:${email.trim().toLowerCase() || "anon"}`
 }
 
 export function QuestionnaireFlow({
@@ -394,6 +464,7 @@ export function QuestionnaireFlow({
   const [deepOpen, setDeepOpen] = useState<Record<string, boolean>>({})
   const [honeypot, setHoneypot] = useState("")
   const [submitting, setSubmitting] = useState(false)
+  const [refId, setRefId] = useState<string | undefined>(undefined)
   const [errorMsg, setErrorMsg] = useState("")
   const startedAt = useRef<number>(Date.now())
   const hydrated = useRef(false)
@@ -446,10 +517,10 @@ export function QuestionnaireFlow({
   const chapters = useMemo(() => {
     const out: { tag: string; start: number; count: number }[] = []
     steps.forEach((s, i) => {
-      const tag = s.tag ?? ""
+      const key = s.chapter ?? ""
       const last = out[out.length - 1]
-      if (last && last.tag === tag) last.count += 1
-      else out.push({ tag, start: i, count: 1 })
+      if (last && last.tag === key) last.count += 1
+      else out.push({ tag: key, start: i, count: 1 })
     })
     return out
   }, [steps])
@@ -462,12 +533,10 @@ export function QuestionnaireFlow({
    * donc la matière réellement fournie, pas le nombre d'écrans traversés.
    */
   const pieces = useMemo(() => {
-    const MAP: Record<string, string> = {
-      Fondation: "01", Identité: "01", Identity: "01", Foundation: "01",
-      Diagnostic: "02", Diagnosis: "02",
-      Concurrence: "03", Competition: "03",
-      Déploiement: "04", Deployment: "04",
-      Langage: "06", Language: "06",
+    // Quelle pièce se nourrit de quel chapitre — voir `chapterFeeds`.
+    const FEEDS: Record<string, string[]> = {
+      fondations: ["01"], champ: ["02", "03"], voix: ["06"], audience: ["02", "05"],
+      quotidien: ["05"], deploiement: ["04"], preuve: ["02", "03"],
     }
     const defs = [
       { n: "01", t: "La plateforme" }, { n: "02", t: "Le diagnostic" },
@@ -475,10 +544,8 @@ export function QuestionnaireFlow({
       { n: "05", t: "Les playbooks" }, { n: "06", t: "Le langage" },
     ]
     return defs.map((d) => {
-      const qs = steps.filter((s) => MAP[s.tag ?? ""] === d.n)
-      // La pièce 05 n'a pas de questions propres : elle se nourrit de tout
-      // le reste, donc elle suit la progression générale.
-      if (qs.length === 0) return { ...d, pct: Math.round((idx / Math.max(1, steps.length)) * 100) }
+      const qs = steps.filter((s) => (FEEDS[s.chapter ?? ""] ?? []).includes(d.n))
+      if (qs.length === 0) return { ...d, pct: 0 }
       const done = qs.filter((q) => {
         const v = answers[q.id]
         if (typeof v === "string") return v.trim().length > 0
@@ -615,8 +682,9 @@ export function QuestionnaireFlow({
       })
       const data = await res.json().catch(() => ({ ok: false }))
       if (!res.ok || !data.ok) throw new Error(data?.error ?? "submit_failed")
+      if (typeof data.submission_id === "string") setRefId(data.submission_id)
       try {
-        localStorage.removeItem(storageKey(offer, answers.identity.email))
+        localStorage.removeItem(storageKey(offer, answers.identity.email, chosenTerrain))
       } catch {
         // ignore
       }
@@ -690,10 +758,16 @@ export function QuestionnaireFlow({
             offer={offer}
             copy={copy}
             stepCount={steps.length}
-            identity={answers.identity}
             chosenTerrain={chosenTerrain}
             onChooseTerrain={setChosenTerrain}
-            onStart={() => setScreen("steps")}
+            // Le premier chapitre a son écran, comme les autres : c'est
+            // lui qui explique pourquoi les premières questions comptent.
+            // Il n'apparaissait jamais — on passait de la couverture
+            // directement à la question 1.
+            onStart={() => {
+              setSeenChapters((prev) => (prev.includes(0) ? prev : [...prev, 0]))
+              setScreen("chapter")
+            }}
           />
           </>
         )}
@@ -755,6 +829,8 @@ export function QuestionnaireFlow({
             house={answers.identity.house}
             answers={answers}
             steps={steps}
+            refId={refId}
+            lang={lang}
           />
         )}
       </div>
@@ -766,7 +842,6 @@ function CoverScreen({
   offer,
   copy,
   stepCount,
-  identity,
   chosenTerrain,
   onChooseTerrain,
   onStart,
@@ -774,7 +849,6 @@ function CoverScreen({
   offer: OfferKey
   copy: Copy
   stepCount: number
-  identity: IdentityAnswers
   chosenTerrain?: TerrainKey
   onChooseTerrain: (t: TerrainKey) => void
   onStart: () => void
@@ -782,164 +856,102 @@ function CoverScreen({
   const isArchitecture = offer === "architecture"
   const minutes = isArchitecture ? copy.minutesArchitecture : copy.minutesAudit
 
-  // Les paliers d'apparition. Chaque bloc entre 220 ms après le précédent :
-  // assez pour qu'on suive, trop court pour qu'on attende.
-  // L'heure : une remarque, pas une donnée. Elle n'apparaît qu'aux heures
-  // où elle veut dire quelque chose — tard le soir, tôt le matin.
-  const hourNote = useMemo(() => {
-    const h = new Date().getHours()
-    if (h >= 22 || h < 5) return copy.hourLate
-    if (h < 8) return copy.hourEarly
-    return ""
-  }, [copy])
+  // Deux pages, pas une.
+  //
+  // Le titre, deux paragraphes, la durée, la note de reprise et le choix
+  // du terrain tenaient sur le même écran : trop de texte avant la
+  // première question. Page 1 : l'idée, en une phrase. Page 2 : ce que
+  // l'on demande, et le choix du terrain. Le lede d'origine contient déjà
+  // deux paragraphes séparés par une ligne vide — on les sépare, on ne
+  // réécrit rien.
+  const [page, setPage] = useState(0)
+  const [first, ...rest] = copy.coverLede.split("\n\n")
+  const second = rest.join("\n\n")
+  // Entrée en animations CSS (aucun minuteur) : la page reste lisible même
+  // si le script tarde.
+  const at = (ms: number) => ({ animationDelay: `${ms}ms` })
 
-  // La date de livraison, calculée : vingt et un jours, l'engagement du site.
-  const dueDate = useMemo(() => {
-    const d = new Date()
-    d.setDate(d.getDate() + 21)
-    return d.toLocaleDateString(undefined, { day: "2-digit", month: "long" })
-  }, [])
-
-  // Une référence de dossier, dérivée du nom de la maison : stable d'une
-  // visite à l'autre, et suffisante pour que ça ressemble à une commande.
-  const orderRef = useMemo(() => {
-    const base = (identity.house || "SP").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 3).padEnd(3, "X")
-    const n = new Date().getFullYear().toString().slice(2)
-    return `${base}-${n}`
-  }, [identity.house])
-
-  const [stage, setStage] = useState(0)
-  useEffect(() => {
-    const timers = [0, 1, 2, 3, 4].map((i) => window.setTimeout(() => setStage(i + 1), 120 + i * 220))
-    return () => timers.forEach(window.clearTimeout)
-  }, [])
-  const rev = (i: number) =>
-    `transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)] ${
-      stage > i ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-    }`
   return (
-    <div className="text-center">
-      {/* L'ouverture, en séquence.
-          Tout apparaissait d'un bloc : on arrivait sur une page pleine de
-          texte et de champs, et rien ne distinguait ce moment d'un
-          formulaire. En faisant entrer les éléments l'un après l'autre —
-          le studio, puis le nom de la maison, puis la phrase — les trois
-          premières secondes deviennent une arrivée plutôt qu'un
-          chargement. */}
-      <div className={rev(0)}>
-        <div className="kicker mb-8">{copy.kicker}</div>
-      </div>
-
-      {/* Le nom de la maison, en grand.
-          C'est ce que le client a payé pour faire écrire. Le voir s'afficher
-          à la taille d'une couverture, avant toute question, dit mieux que
-          n'importe quelle phrase ce qui est en train de commencer. */}
-      {/* On est accueilli par quelqu'un, pas par une page. Le prénom vient
-          du pré-remplissage ; sans lui, on saute simplement la ligne. */}
-      {identity.name && (
-        <div className={rev(1)}>
-          <p className="mb-9 font-serif text-[clamp(1.1rem,2.2vw,1.5rem)] text-chalk-75">
-            {copy.hello(identity.name.split(" ")[0])}
-            {hourNote && <span className="mt-2 block text-[13.5px] text-chalk-40">{hourNote}</span>}
-          </p>
-        </div>
+    <div key={page} className="mx-auto max-w-[560px] text-center">
+      {page === 0 && (
+        <>
+          <div className="q-rise kicker mb-8" style={at(0)}>{copy.kicker}</div>
+          <h1 className="q-rise h-section mb-8" style={at(150)}>{copy.coverTitle}</h1>
+          <p className="q-rise lede mx-auto mb-12 max-w-[520px]" style={at(350)}>{first}</p>
+          <div className="q-rise" style={at(600)}>
+            <button type="button" className="btn-primary" onClick={() => setPage(1)} autoFocus>
+              {copy.continue}
+            </button>
+          </div>
+        </>
       )}
 
-      {identity.house && (
-        <div className={rev(1)}>
-          <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
-            {copy.houseOverline}
-          </div>
-          <div className="font-serif text-[clamp(2.4rem,7vw,4.6rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-brand">
-            {identity.house}
-          </div>
-          <div className="mx-auto mt-8 h-px w-16 bg-brand/50" />
-        </div>
-      )}
+      {page === 1 && (
+        <>
+          <button
+            type="button"
+            onClick={() => setPage(0)}
+            aria-label={copy.back}
+            className="q-rise mb-8 block text-[13px] text-chalk-40 transition-colors hover:text-white"
+            style={at(0)}
+          >
+            ← {copy.back}
+          </button>
 
-      <div className={rev(2)}>
-        <h1 className="h-section mb-6 mt-10">{copy.coverTitle}</h1>
-        <p className="lede mx-auto mb-6 max-w-[520px] whitespace-pre-line">{copy.coverLede}</p>
-      </div>
-      <div className={rev(3)}>
-      <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
-      {isArchitecture && <p className="body-sm mt-3 text-chalk-40">{copy.resumeNote}</p>}
-      {/* Un bon de commande, pas un rappel de champs.
-          Le bloc disait « déjà rempli pour vous » et listait deux valeurs :
-          utile, mais ça ressemblait à un brouillon. Présenté comme une
-          commande — avec la référence et la date de livraison calculée — il
-          matérialise l'achat qui vient d'être fait. */}
-      {(identity.name || identity.house) && (
-        <div className="mx-auto mt-10 mb-8 max-w-[440px] border border-hair-strong bg-white/[0.02] text-left">
-          <div className="flex items-center justify-between border-b border-hair px-5 py-3 font-mono text-[9.5px] uppercase tracking-[0.22em] text-chalk-40">
-            <span>{copy.orderLabel}</span>
-            <span className="text-brand">{orderRef}</span>
+          {second && (
+            <p className="q-rise lede mx-auto mb-4 max-w-[520px] whitespace-pre-line" style={at(100)}>
+              {second}
+            </p>
+          )}
+          <div className="q-rise" style={at(250)}>
+            <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
+            {isArchitecture && <p className="body-sm mt-2 text-chalk-40">{copy.resumeNote}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-px bg-white/[0.06]">
-            <div className="bg-ink px-5 py-4">
-              <div className="mb-1 font-mono text-[9px] uppercase tracking-[0.18em] text-chalk-40">
-                {copy.orderHouse}
-              </div>
-              <div className="text-[14px] text-white">{identity.house || copy.dash}</div>
-            </div>
-            <div className="bg-ink px-5 py-4">
-              <div className="mb-1 font-mono text-[9px] uppercase tracking-[0.18em] text-chalk-40">
-                {copy.orderDue}
-              </div>
-              <div className="text-[14px] text-brand">{dueDate}</div>
+
+          {/* Le choix du terrain, avant les questions : sans lui, le
+              parcours retombait sur « marques » et un restaurateur se
+              voyait demander la tagline de ses concurrents. Il est
+              bloquant — un mauvais parcours ne se rattrape pas en cours
+              de route. */}
+          <div className="q-rise mx-auto mt-10 max-w-lg text-left" style={at(400)}>
+            <div className="field-label mb-1.5">{copy.terrainLabel}</div>
+            <p className="body-sm mb-4 text-chalk-40">{copy.terrainHelp}</p>
+            <div className="grid gap-2">
+              {copy.terrains.map((t) => {
+                const on = chosenTerrain === t.k
+                return (
+                  <button
+                    key={t.k}
+                    type="button"
+                    onClick={() => onChooseTerrain(t.k as TerrainKey)}
+                    aria-pressed={on}
+                    className={`flex items-center gap-4 border px-4 py-3.5 text-left transition-colors ${
+                      on ? "border-brand bg-brand/[0.07]" : "border-hair-strong bg-white/[0.02] hover:border-hair"
+                    }`}
+                  >
+                    <TerrainMark k={t.k} on={on} />
+                    <span className="min-w-0">
+                      <span className={`block text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</span>
+                      <span className="mt-0.5 block text-[12.5px] text-chalk-40">{t.d}</span>
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </div>
-        </div>
+
+          <div className="q-rise" style={at(550)}>
+            <button
+              type="button"
+              className="btn-primary mt-8 disabled:cursor-not-allowed disabled:opacity-40"
+              onClick={onStart}
+              disabled={!chosenTerrain}
+            >
+              {copy.start}
+            </button>
+          </div>
+        </>
       )}
-      {/* Le choix du terrain, avant les questions.
-          Sans lui, le parcours retombait sur « marques » par défaut et un
-          restaurateur se voyait demander la tagline de ses concurrents.
-          Le choix est bloquant : le bouton reste inactif tant qu'on n'a
-          pas répondu, parce qu'un mauvais parcours ne se rattrape pas en
-          cours de route. */}
-      </div>
-
-      <div className={`mx-auto mt-9 max-w-lg text-left ${rev(4)}`}>
-        <div className="field-label mb-1.5">{copy.terrainLabel}</div>
-        <p className="body-sm mb-4 text-chalk-40">{copy.terrainHelp}</p>
-        <div className="grid gap-2">
-          {copy.terrains.map((t) => {
-            const on = chosenTerrain === t.k
-            return (
-              <button
-                key={t.k}
-                type="button"
-                onClick={() => onChooseTerrain(t.k as TerrainKey)}
-                aria-pressed={on}
-                className={`flex items-center gap-4 border px-4 py-3.5 text-left transition-colors ${
-                  on ? "border-brand bg-brand/[0.07]" : "border-hair-strong bg-white/[0.02] hover:border-hair"
-                }`}
-              >
-                {/* Un pictogramme par terrain.
-                    Quatre lignes de texte se ressemblent et se lisent mal en
-                    diagonale ; un signe distinct rend le choix immédiat, et
-                    chacun dit la nature du terrain : un bloc plein pour une
-                    marque, une boîte pour un produit, une porte pour un lieu,
-                    une signature pour un nom propre. */}
-                <TerrainMark k={t.k} on={on} />
-                <span className="min-w-0">
-                  <span className={`block text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</span>
-                  <span className="mt-0.5 block text-[12.5px] text-chalk-40">{t.d}</span>
-                </span>
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      <button
-        type="button"
-        className="btn-primary mt-8 disabled:cursor-not-allowed disabled:opacity-40"
-        onClick={onStart}
-        disabled={!chosenTerrain}
-      >
-        {copy.start}
-      </button>
     </div>
   )
 }
@@ -990,7 +1002,8 @@ function StepScreen({
   // C'est le seul moment du parcours où l'on retire le chrono, et c'est
   // exactement là qu'il faut le retirer : on ne demande pas à quelqu'un de
   // formuler ce qu'il refuse en lui montrant le temps qui passe.
-  const bare = step.tag === "Fondation" || step.tag === "Foundation"
+  // Les trois questions fondatrices : plein silence, ni titre ni minuteur.
+  const bare = ["conviction", "rupture", "enemy"].includes(step.id)
 
   const [fieldReady, setFieldReady] = useState(false)
   const [shown, setShown] = useState(false)
@@ -1064,7 +1077,7 @@ function StepScreen({
         <div className="q-kicker mb-14">
           <span className="q-kicker-dot" aria-hidden />
           <span className="q-kicker-label">
-            {step.tag ?? ""} — {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+            {copy.chapterTitles[step.chapter ?? ""] ?? step.tag ?? ""} — {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
           </span>
         </div>
       )}
@@ -1091,9 +1104,8 @@ function StepScreen({
           délai qui fait la différence entre un formulaire et quelqu'un qui
           vient de poser une question et attend la réponse. */}
       <div
-        className={`w-full max-w-[600px] transition-opacity duration-[900ms] ${
-          fieldReady ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`q-rise w-full ${step.type === "choice" ? "max-w-[880px]" : "max-w-[600px]"}`}
+        style={{ animationDelay: "1400ms" }}
       >
         <QuestionInput
           step={step}
@@ -1291,6 +1303,40 @@ function QuestionInput({
           <label className="field-label">{copy.linkContent}</label>
           <input className="q-field" value={v.content} onChange={(e) => set({ content: e.target.value })} placeholder={copy.phContent} />
         </div>
+
+        {/* Autant de liens supplémentaires qu'on veut (dix au plus) : fiche
+            Google, Instagram, TikTok, presse, avis, dossier partagé… Chaque
+            lien de plus est une source de plus pour le dépouillement. */}
+        {(v.extra ?? []).map((url, i) => (
+          <div key={i}>
+            <label className="field-label">{copy.linkExtra} {i + 1}</label>
+            <div className="flex items-end gap-3">
+              <input
+                className="q-field"
+                value={url}
+                onChange={(e) => {
+                  const next = [...(v.extra ?? [])]
+                  next[i] = e.target.value
+                  set({ extra: next })
+                }}
+                placeholder={copy.phExtra}
+              />
+              <button
+                type="button"
+                aria-label={copy.removeLink}
+                className="btn-quiet flex-shrink-0 pb-2"
+                onClick={() => set({ extra: (v.extra ?? []).filter((_, j) => j !== i) })}
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        ))}
+        {(v.extra ?? []).length < 10 && (
+          <button type="button" className="btn-quiet mt-1" onClick={() => set({ extra: [...(v.extra ?? []), ""] })}>
+            {copy.addLink}
+          </button>
+        )}
       </div>
     )
   }
@@ -1300,12 +1346,13 @@ function QuestionInput({
     const options = step.options ?? []
     return (
       <div>
-        {/* Les choix en cartes, sur une piste qu'on fait glisser — la
-            grammaire de la méthode S.T.R.A.W. sur la home : grand numéro,
-            dégradé propre à chaque carte, coins arrondis. Une liste de
-            lignes identiques se lisait comme un formulaire ; une piste de
-            cartes se parcourt. */}
-        <OptionTrack>
+        {/* Les choix en cartes, tous visibles d'un coup — la grammaire de
+            la méthode S.T.R.A.W. de la home (numéro, dégradé propre à
+            chaque carte, coins arrondis). Elles étaient d'abord sur une
+            piste à faire glisser : trois cartes visibles, les autres
+            cachées derrière un défilement horizontal que rien n'annonçait.
+            Une grille se lit d'un regard. */}
+        <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
           {options.map((opt, i) => {
             const on = step.multi ? Array.isArray(sel) && (sel as string[]).includes(opt) : sel === opt
             return (
@@ -1325,7 +1372,7 @@ function QuestionInput({
                   }
                 }}
                 aria-pressed={on}
-                className={`q-card relative flex shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[18px] border p-5 text-left transition-[border-color,transform] duration-300 ${
+                className={`q-card relative flex flex-col justify-between gap-4 overflow-hidden rounded-[18px] border p-5 text-left transition-[border-color,transform] duration-300 ${
                   on ? "border-brand" : "border-white/[0.08] hover:-translate-y-1 hover:border-white/20"
                 }`}
                 style={{ background: CARD_GLOWS[i % CARD_GLOWS.length] }}
@@ -1345,13 +1392,21 @@ function QuestionInput({
                     {on && <span className="text-[11px] font-bold leading-none">✓</span>}
                   </span>
                 </span>
-                <span className={`font-serif text-[1.05rem] font-bold leading-[1.25] ${on ? "text-white" : "text-white/85"}`}>
-                  {opt}
+                <span>
+                  <span className={`block font-serif text-[1.05rem] font-bold leading-[1.25] ${on ? "text-white" : "text-white/85"}`}>
+                    {opt}
+                  </span>
+                  {/* Ce que l'option veut dire — pour les archétypes, par
+                      exemple, dont le nom seul ne dit rien à qui n'a pas
+                      lu Jung. */}
+                  {step.hints?.[i] && (
+                    <span className="mt-2 block font-sans text-[12.5px] leading-[1.5] text-chalk-55">{step.hints[i]}</span>
+                  )}
                 </span>
               </button>
             )
           })}
-        </OptionTrack>
+        </div>
         {step.multi && <div className="body-sm mt-2">{copy.upToChoices(step.max ?? 2)}</div>}
       </div>
     )
@@ -1360,47 +1415,21 @@ function QuestionInput({
   if (step.type === "sliders") {
     const tone = answers.tone
     return (
-      /* Cinq curseurs identiques empilés : on ne voyait pas où l'on avait
-         déplacé quoi, et la barre rouge pleine donnait l'impression que
-         tout était déjà répondu. Trois corrections :
-         - le pôle vers lequel on penche s'allume, l'autre s'éteint, donc on
-           lit sa réponse sans regarder la position du curseur ;
-         - un repère au centre marque le point neutre, pour qu'un curseur
-           laissé au milieu se distingue d'un curseur posé volontairement ;
-         - chaque axe est séparé d'un filet, ce qui casse l'effet de mur. */
+      // Cinq jauges, chacune un instrument de mesure : onze barres entre
+      // deux pôles. Le curseur natif du navigateur donnait une barre
+      // rouge épaisse et un gros rond — le look « réglage de volume » de
+      // n'importe quel formulaire. Ici on voit la position d'un coup
+      // d'œil, et le pôle vers lequel on penche s'allume.
       <div className="divide-y divide-hair">
-        {(step.axes ?? []).map((ax) => {
-          const v = tone[ax.id] ?? 50
-          const leftOn = v < 45
-          const rightOn = v > 55
-          return (
-            <div key={ax.id} className="py-5 first:pt-0 last:pb-0">
-              <div className="mb-3 flex items-baseline justify-between gap-4 text-[12.5px]">
-                <span className={leftOn ? "text-white" : "text-chalk-40"}>{ax.l}</span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-chalk-40">
-                  {leftOn || rightOn ? "" : "—"}
-                </span>
-                <span className={rightOn ? "text-white" : "text-chalk-40"}>{ax.r}</span>
-              </div>
-              <div className="relative">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute left-1/2 top-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
-                />
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  step={5}
-                  value={v}
-                  aria-label={`${ax.l} — ${ax.r}`}
-                  onChange={(e) => onChange("tone", { ...tone, [ax.id]: Number(e.target.value) })}
-                  className="relative w-full accent-[var(--color-brand)]"
-                />
-              </div>
-            </div>
-          )
-        })}
+        {(step.axes ?? []).map((ax) => (
+          <ToneGauge
+            key={ax.id}
+            left={ax.l}
+            right={ax.r}
+            value={tone[ax.id] ?? 50}
+            onChange={(v) => onChange("tone", { ...tone, [ax.id]: v })}
+          />
+        ))}
       </div>
     )
   }
@@ -1567,7 +1596,7 @@ function ReviewScreen({
       return parts.join("\n") || dash
     }
     if (step.type === "links") {
-      return `${copy.siteLabel} : ${answers.links.site || dash}\nLinkedIn : ${answers.links.linkedin || dash}`
+      return [`${copy.siteLabel} : ${answers.links.site || dash}`, `LinkedIn : ${answers.links.linkedin || dash}`, ...(answers.links.extra ?? []).filter((u) => u.trim()).map((u, i) => `${copy.linkExtra} ${i + 1} : ${u}`)].join("\n")
     }
     if (step.type === "choice") {
       const v = answers[step.id]
@@ -1697,28 +1726,41 @@ function DoneScreen({
   house,
   answers,
   steps,
+  refId,
+  lang,
 }: {
   copy: Copy
   house?: string
   answers: Answers
   steps: Question[]
+  /** La référence renvoyée par le serveur — la même que dans Make et l'e-mail. */
+  refId?: string
+  lang: Lang
 }) {
-  const [shown, setShown] = useState(false)
-  useEffect(() => {
-    const t = window.setTimeout(() => setShown(true), 200)
-    return () => window.clearTimeout(t)
-  }, [])
+  // La page de fin tient en animations CSS : si un script tardait, elle
+  // resterait lisible. (La version précédente restait invisible tant
+  // qu'un minuteur n'avait pas tourné.)
+  const at = (ms: number) => ({ animationDelay: `${ms}ms` })
 
-  /** La référence du dossier et la date, comme sur la carte de commande. */
-  const ref = `${(house || "SP").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4).padEnd(3, "X")}-${new Date()
-    .getFullYear()
-    .toString()
-    .slice(2)}`
-  const due = (() => {
+  // La référence du dossier : celle du serveur quand on l'a (c'est elle
+  // qu'on retrouvera dans Make et dans l'e-mail), sinon une référence
+  // locale de repli.
+  const ref =
+    refId ||
+    `${(house || "SP").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4).padEnd(3, "X")}-${new Date()
+      .getFullYear()
+      .toString()
+      .slice(2)}`
+
+  // Les dates, dans la langue du site — pas celle du navigateur : un site
+  // en français ne doit pas afficher « October 23 ».
+  const day = (n: number, year = false) => {
     const d = new Date()
-    d.setDate(d.getDate() + 21)
-    return d.toLocaleDateString(undefined, { day: "2-digit", month: "long", year: "numeric" })
-  })()
+    d.setDate(d.getDate() + n)
+    return d.toLocaleDateString(copy.locale, { day: "numeric", month: "long", ...(year ? { year: "numeric" } : {}) })
+  }
+  const due = day(21, true)
+  const timeline = copy.nextSteps(day(15), day(20), day(21))
 
   /**
    * Ce que le client emporte.
@@ -1731,7 +1773,7 @@ function DoneScreen({
     const lines = [
       `# ${house || ""}`,
       "",
-      `_Votre première page — ${ref} · ${new Date().toLocaleDateString()}_`,
+      `_Votre première page — ${ref} · ${new Date().toLocaleDateString(copy.locale)}_`,
       "",
       "Ce document rassemble ce que vous avez écrit de votre main.",
       "Il est le point de départ de L'Architecture Narrative.",
@@ -1756,74 +1798,78 @@ function DoneScreen({
     URL.revokeObjectURL(url)
   }
 
-  const rev = (d: number) =>
-    `transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)] ${
-      shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-    }`
-
   return (
-    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
-      {/* Le document qui s'assemble.
-          Six cartes — les six pièces — arrivent l'une après l'autre et
-          s'empilent en éventail, puis le titre du sceau tombe dessous. Le
-          client voit l'objet qu'il vient de nourrir prendre forme avant
-          qu'on lui dise qu'il est ouvert. Tout tient en deux secondes : au-
-          delà, la récompense deviendrait une attente. */}
+    <div className="flex min-h-[70vh] flex-col items-center justify-center py-8 text-center">
+      {/* Le document qui s'assemble : les six pièces arrivent l'une après
+          l'autre et s'empilent en éventail. */}
       <div aria-hidden className="relative mb-12 h-[150px] w-[220px]">
         {copy.sealPieces.map((label, i) => {
           const angle = (i - 2.5) * 5
           return (
             <div
               key={label}
-              className="absolute inset-0 flex flex-col justify-between rounded-[14px] border border-white/10 p-4 text-left transition-all duration-[700ms] ease-[cubic-bezier(.22,.68,0,1)]"
-              style={{
-                background: CARD_GLOWS[i % CARD_GLOWS.length],
-                opacity: shown ? 1 : 0,
-                transform: shown
-                  ? `translateX(${(i - 2.5) * 6}px) rotate(${angle}deg)`
-                  : `translateY(-60px) rotate(${angle * 2}deg)`,
-                transitionDelay: `${i * 140}ms`,
-                zIndex: i,
-                boxShadow: "0 12px 30px -12px rgba(0,0,0,.8)",
-              }}
+              className="q-deal absolute inset-0 flex flex-col justify-between rounded-[14px] border border-white/10 p-4 text-left"
+              style={
+                {
+                  background: CARD_GLOWS[i % CARD_GLOWS.length],
+                  transform: `translateX(${(i - 2.5) * 6}px) rotate(${angle}deg)`,
+                  "--r": `${angle}deg`,
+                  "--x": `${(i - 2.5) * 6}px`,
+                  animationDelay: `${i * 140}ms`,
+                  zIndex: i,
+                  boxShadow: "0 12px 30px -12px rgba(0,0,0,.8)",
+                } as React.CSSProperties
+              }
             >
-              <span className="font-mono text-[10px] tracking-[0.24em] text-brand">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <span className="font-mono text-[10px] tracking-[0.24em] text-brand">{String(i + 1).padStart(2, "0")}</span>
               <span className="font-serif text-[13px] font-bold uppercase leading-tight text-white">{label}</span>
             </div>
           )
         })}
       </div>
 
-      {/* Le sceau.
-          Quelque chose se ferme et quelque chose s'ouvre dans la même
-          seconde : le questionnaire est derrière, le dossier est devant. */}
-      <div className={rev(0)} style={{ transitionDelay: "1000ms" }}>
-        <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">
-          {copy.sealKicker}
-        </div>
+      {/* Le sceau : quelque chose se ferme, quelque chose s'ouvre. */}
+      <div className="q-rise" style={at(1000)}>
+        <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-chalk-40">{copy.sealKicker}</div>
         <h2 className="mx-auto mt-7 max-w-[600px] font-serif text-[clamp(1.9rem,5vw,3.2rem)] font-bold uppercase leading-[1.05] tracking-[-0.015em] text-white">
           {copy.sealTitle(ref)}
         </h2>
       </div>
 
-      <div
-        className="mx-auto mt-10 h-px bg-brand transition-all duration-[1100ms] ease-out"
-        style={{ width: shown ? 120 : 0, transitionDelay: "1400ms" }}
-      />
+      <div className="q-grow mx-auto mt-9 h-px bg-brand" style={at(1300)} />
 
-      <div className={rev(1)} style={{ transitionDelay: "1700ms" }}>
-        <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">
-          {copy.sealDueLabel}
-        </p>
+      <div className="q-rise" style={at(1500)}>
+        <p className="mt-9 font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">{copy.sealDueLabel}</p>
         <p className="mt-3 font-serif text-[clamp(1.3rem,3vw,1.9rem)] font-bold text-brand">{due}</p>
-        <p className="mx-auto mt-10 max-w-[430px] font-sans text-[14.5px] leading-[1.75] text-chalk-55">
-          {copy.sealLead}
-        </p>
-        <button type="button" className="btn-ghost mt-9" onClick={downloadFirstPage}>
+        <p className="mx-auto mt-8 max-w-[430px] font-sans text-[14.5px] leading-[1.75] text-chalk-55">{copy.sealLead}</p>
+      </div>
+
+      {/* Ce qui se passe maintenant : quatre dates, dans l'ordre. C'est la
+          dernière question qu'on se pose après avoir envoyé trente
+          réponses — « et maintenant ? » — et la page de fin n'y répondait
+          pas. */}
+      <div className="q-rise mx-auto mt-14 w-full max-w-[520px] text-left" style={at(1800)}>
+        <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.26em] text-brand">{copy.nextTitle}</div>
+        <ol className="m-0 list-none p-0">
+          {timeline.map((s, i) => (
+            <li key={i} className="grid grid-cols-[132px_1fr] gap-5 border-t border-hair py-4 first:border-t-0 first:pt-0 sm:grid-cols-[168px_1fr]">
+              <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-chalk-40">{s.when}</span>
+              <span className="font-sans text-[14px] leading-[1.6] text-chalk-75">{s.what}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="q-rise mt-12 flex flex-col items-center gap-5" style={at(2100)}>
+        <button type="button" className="btn-ghost" onClick={downloadFirstPage}>
           {copy.sealDownload}
         </button>
+        <a href={`/${lang}`} className="text-[13px] text-chalk-40 underline underline-offset-4 transition-colors hover:text-white">
+          {copy.backToSite}
+        </a>
+        <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-chalk-40">
+          {copy.sealRefLabel} · {ref}
+        </p>
       </div>
     </div>
   )
@@ -1906,6 +1952,8 @@ function ChapterScreen({
   }, [])
   const note = copy.chapterNotes[tag] ?? copy.chapterFallback
   const quote = copy.chapterQuotes[tag]
+  const title = copy.chapterTitles[tag] ?? tag
+  const feeds = copy.chapterFeeds[tag]
   return (
     // Un moment, pas un bloc dans la page.
     //
@@ -1959,7 +2007,7 @@ function ChapterScreen({
         }`}
         style={{ transitionDelay: "140ms" }}
       >
-        {tag}
+        {title}
       </h2>
 
       {/* Le trait se trace plutôt que d'apparaître : c'est ce geste, plus
@@ -1969,40 +2017,53 @@ function ChapterScreen({
         style={{ width: shown ? 96 : 0, transitionDelay: "420ms" }}
       />
 
-      {/* La citation du livre.
-          Chacune est choisie pour l'état d'esprit qu'il faut avoir pour
-          répondre à la section qui suit — celle de « Fondation » dit que la
-          maison est ce qu'elle refuse, ce qu'on s'apprête justement à
-          demander. Elle arrive avant la note : on lit d'abord une idée,
-          ensuite une consigne. */}
-      {quote && (
-        <figure
-          className={`mx-auto mt-10 max-w-[560px] transition-all duration-[800ms] ${
+      {/* Pourquoi ce chapitre existe — la raison, avant tout le reste.
+          L'ancienne version affichait « quelques questions pour la suite
+          du document » : une phrase qui ne dit rien et qui laissait croire
+          que les questions étaient interchangeables. Ici on dit ce que le
+          chapitre fabrique, puis quelle pièce du document il nourrit. */}
+      <p
+        className={`mx-auto mt-9 max-w-[520px] font-sans text-[16px] leading-[1.8] text-chalk-75 transition-all duration-[800ms] ${
+          shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+        }`}
+        style={{ transitionDelay: "560ms" }}
+      >
+        {note}
+      </p>
+
+      {feeds && (
+        <div
+          className={`mt-6 font-mono text-[10.5px] uppercase tracking-[0.2em] text-brand transition-all duration-[800ms] ${
             shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
           }`}
-          style={{ transitionDelay: "560ms" }}
+          style={{ transitionDelay: "720ms" }}
         >
-          <blockquote className="m-0 border-l-2 border-brand pl-5 text-left font-serif text-[clamp(1rem,2vw,1.2rem)] leading-[1.6] text-white">
+          {feeds}
+        </div>
+      )}
+
+      {/* La citation du livre : une idée de plus, volontairement discrète.
+          Elle passe après la raison — on lit d'abord ce qu'on va faire,
+          ensuite ce qui l'éclaire. */}
+      {quote && (
+        <figure
+          className={`mx-auto mt-9 max-w-[480px] transition-all duration-[800ms] ${
+            shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+          style={{ transitionDelay: "880ms" }}
+        >
+          <blockquote className="m-0 border-l-2 border-white/15 pl-4 text-left font-serif text-[13.5px] italic leading-[1.6] text-chalk-55">
             {quote}
           </blockquote>
-          <figcaption className="mt-3 pl-5 text-left font-mono text-[9.5px] uppercase tracking-[0.22em] text-chalk-40">
+          <figcaption className="mt-2 pl-4 text-left font-mono text-[9px] uppercase tracking-[0.22em] text-chalk-40">
             {copy.quoteSource}
           </figcaption>
         </figure>
       )}
 
-      <p
-        className={`mx-auto mt-9 max-w-[460px] font-sans text-[15.5px] leading-[1.8] text-chalk-75 transition-all duration-[800ms] ${
-          shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-        }`}
-        style={{ transitionDelay: "740ms" }}
-      >
-        {note}
-      </p>
-
       <div
         className={`mt-10 transition-all duration-[700ms] ${shown ? "opacity-100" : "opacity-0"}`}
-        style={{ transitionDelay: "900ms" }}
+        style={{ transitionDelay: "1000ms" }}
       >
         {/* L'objet qu'on est en train de fabriquer.
             Les six barres vivaient sous chaque question, où elles
@@ -2181,47 +2242,123 @@ const CARD_GLOWS = [
   "radial-gradient(80% 80% at 50% 20%, rgba(255,34,51,.14), transparent 55%), #0d0d0d",
 ]
 
+
 /**
- * OptionTrack — la piste de cartes qu'on fait glisser.
+ * ToneGauge — une jauge entre deux pôles.
  *
- * Glisser à la souris sur ordinateur, défilement natif au doigt sur
- * mobile, aimantation sur chaque carte. Un glissement de plus de quelques
- * pixels annule le clic qui suit : on ne sélectionne pas une carte par
- * accident en faisant défiler la piste.
+ * Onze barres verticales, comme un indicateur de niveau : le centre est le
+ * point neutre, et les barres entre le centre et la position choisie
+ * s'allument en dégradé rouge. Le pôle vers lequel on penche passe en
+ * grand et en blanc, l'autre s'éteint — on lit sa réponse sans chercher
+ * où est le curseur. Valeur de 0 à 100 par pas de 10 (le scénario Make
+ * reçoit toujours un nombre).
+ *
+ * Accessible : c'est un `slider` ARIA, au clavier flèches / Début / Fin.
  */
-function OptionTrack({ children }: { children: ReactNode }) {
+function ToneGauge({
+  left,
+  right,
+  value,
+  onChange,
+}: {
+  left: string
+  right: string
+  value: number
+  onChange: (v: number) => void
+}) {
+  const N = 11
+  const MID = 5
+  const idx = Math.max(0, Math.min(N - 1, Math.round(value / 10)))
   const ref = useRef<HTMLDivElement | null>(null)
-  const drag = useRef({ down: false, x: 0, left: 0, moved: false })
+  const dragging = useRef(false)
+
+  const setFromX = (clientX: number) => {
+    const el = ref.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const i = Math.max(0, Math.min(N - 1, Math.round(((clientX - r.left) / r.width) * (N - 1))))
+    if (i !== idx) onChange(i * 10)
+  }
+  const leftOn = idx < MID
+  const rightOn = idx > MID
+  const lo = Math.min(idx, MID)
+  const hi = Math.max(idx, MID)
+
   return (
-    <div
-      ref={ref}
-      className="q-track -mx-4 flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 pt-1 active:cursor-grabbing"
-      onPointerDown={(e) => {
-        if (e.pointerType === "touch" || !ref.current) return
-        drag.current = { down: true, x: e.clientX, left: ref.current.scrollLeft, moved: false }
-      }}
-      onPointerMove={(e) => {
-        const d = drag.current
-        if (!d.down || !ref.current) return
-        const dx = e.clientX - d.x
-        if (Math.abs(dx) > 5) d.moved = true
-        ref.current.scrollLeft = d.left - dx
-      }}
-      onPointerUp={() => {
-        drag.current.down = false
-      }}
-      onPointerLeave={() => {
-        drag.current.down = false
-      }}
-      onClickCapture={(e) => {
-        if (drag.current.moved) {
-          e.preventDefault()
-          e.stopPropagation()
-          drag.current.moved = false
-        }
-      }}
-    >
-      {children}
+    <div className="py-6 first:pt-0 last:pb-0">
+      <div className="mb-4 flex items-baseline justify-between gap-6">
+        <span className={`font-serif text-[1.15rem] transition-colors duration-200 ${leftOn ? "font-bold text-white" : "text-chalk-40"}`}>
+          {left}
+        </span>
+        <span className={`text-right font-serif text-[1.15rem] transition-colors duration-200 ${rightOn ? "font-bold text-white" : "text-chalk-40"}`}>
+          {right}
+        </span>
+      </div>
+      <div
+        ref={ref}
+        role="slider"
+        tabIndex={0}
+        aria-label={`${left} — ${right}`}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={idx * 10}
+        className="flex h-[52px] cursor-pointer select-none items-end justify-between gap-[5px] rounded-md outline-none focus-visible:ring-1 focus-visible:ring-brand/60 [touch-action:pan-y]"
+        onPointerDown={(e) => {
+          dragging.current = true
+          try {
+            e.currentTarget.setPointerCapture(e.pointerId)
+          } catch {
+            /* sans conséquence */
+          }
+          setFromX(e.clientX)
+        }}
+        onPointerMove={(e) => {
+          if (dragging.current) setFromX(e.clientX)
+        }}
+        onPointerUp={() => {
+          dragging.current = false
+        }}
+        onPointerCancel={() => {
+          dragging.current = false
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+            e.preventDefault()
+            onChange(Math.min(100, idx * 10 + 10))
+          } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+            e.preventDefault()
+            onChange(Math.max(0, idx * 10 - 10))
+          } else if (e.key === "Home") {
+            e.preventDefault()
+            onChange(0)
+          } else if (e.key === "End") {
+            e.preventDefault()
+            onChange(100)
+          }
+        }}
+      >
+        {Array.from({ length: N }, (_, i) => {
+          const lit = i >= lo && i <= hi && idx !== MID
+          const current = i === idx
+          const center = i === MID
+          return (
+            <span
+              key={i}
+              aria-hidden
+              className="flex-1 rounded-full transition-all duration-200 ease-out"
+              style={{
+                height: current ? 52 : center ? 34 : 24,
+                background: lit
+                  ? "linear-gradient(180deg,#ff4d2e,#ff2233)"
+                  : center
+                    ? "rgba(255,255,255,0.35)"
+                    : "rgba(255,255,255,0.1)",
+                boxShadow: current && idx !== MID ? "0 0 18px rgba(255,34,51,0.55)" : "none",
+              }}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
