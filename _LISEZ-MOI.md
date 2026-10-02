@@ -1,69 +1,53 @@
-# Strawberry — les pages d'accueil du questionnaire, refaites et regardées
+# Strawberry — onboarding : 48 questions, balises Make, animations de chapitre
 
-4 fichiers de code (cumulatifs avec sp142) + 9 captures dans `captures/`.
+4 fichiers de code · 4 fichiers Make · 6 captures.
 
-## Ce qui change vraiment cette fois : je regarde ce que je produis
+## À faire de votre côté, dans cet ordre
 
-Jusqu'ici je vérifiais que le code fonctionne, jamais à quoi il ressemble.
-J'ai installé un vrai navigateur dans mon environnement : j'ai maintenant
-fait des captures de chaque écran, à la largeur exacte de votre fenêtre
-(920 px), sur téléphone et sur grand écran. Ma capture de votre page
-« Vous avez commandé… » était quasi identique à la vôtre — et ce que j'y ai
-vu, c'était une page plate : un paragraphe gris, des boîtes à peine
-visibles, un bouton éteint.
+1. Appliquer les fichiers de code (cumulatifs avec sp143).
+2. **Make** : importer `make/architecture-narrative-blueprint.json` (déclencheur = Custom Webhook,
+   28 modules d'écriture mis à jour), créer le webhook, coller son URL dans `MAKE_WEBHOOK_URL` sur Vercel.
+3. Envoyer `make/exemple-payload-make.json` au webhook (voir `make/balises-make.md`) : les 77 balises
+   apparaissent d'un coup dans la liste de mappage.
+4. Relire `make/audit-des-questions.md` et me dire quelles questions retirer.
 
-## Vos trois demandes
+## Ce qui change
 
-**1 · La page que vous avez envoyée, et sa jumelle.** Les deux pages de la
-couverture ont maintenant le niveau du seuil :
-- *Page 1* — « VOUS VENEZ DE DÉCIDER **QUELQUE CHOSE.** » en grand, qui se
-  remplit mot à mot, lueur rouge derrière, centrée à l'écran (elle était
-  collée en haut avec 60 % de vide dessous).
-- *Page 2* — « VOUS AVEZ COMMANDÉ **L'ARCHITECTURE** POUR… » ; quatre grandes
-  cartes avec icône, dégradé propre et coche (la carte choisie s'illumine) ;
-  trois chiffres (45–70 minutes · 30 questions · enregistré en continu) à la
-  place d'une phrase ; la promesse (« pas de mauvaises réponses… ») en
-  citation ; un bouton plein, avec la consigne « Choisissez d'abord ce que
-  vous vendez » tant qu'on n'a pas choisi. Tout tient dans la hauteur de
-  votre fenêtre.
+**Page 2 de la couverture** : le bandeau de chiffres et la citation sont retirés.
 
-**2 · Les cartes de choix : grandes, sur une seule ligne, sans défilement.**
-4 ou 5 options : une seule rangée qui occupe toute la largeur. Les 12
-archétypes : 4 par ligne sur 3 lignes, chacun avec sa description. Sur
-téléphone, une colonne, et la hauteur des cartes s'adapte (210 px de vide
-par carte, c'était un écran et demi pour cinq choix).
+**Balises Make.** Chaque question de chacun des 4 terrains a été passée par la vraie route serveur :
+toutes produisent leur balise (aucune orpheline, toutes en snake_case). Correction faite au passage :
+une question laissée vide n'envoyait pas sa balise, donc Make ne la proposait jamais au mappage.
+Les **77 balises sont désormais toujours présentes**, vides si besoin, identiques sur les 4 terrains.
 
-**3 · Toutes les questions en majuscules.**
+**48 questions** (30 → 48), voir `make/audit-des-questions.md` :
+- 27 conservées, 3 reformulées (`price` contenait deux questions en une ; `traction` ne demandait qu'un
+  chiffre ; `hr_disqualifier` supposait que le client embauche), 18 nouvelles dont 7 facultatives.
+- Les 18 comblent ce que les 28 modules d'écriture ignoraient : langue, tutoiement/vouvoiement, équipe,
+  canaux actifs, objections, intouchables, échéances, budget, texte du client écrit de sa main,
+  phrases de ses vrais clients, signe de réussite, logistique de la relecture.
+- Durée estimée : environ 65-70 minutes, contre 45.
 
-## Défauts que seule une vraie capture m'a montrés
+**Blueprint.** Un bloc « INTAKE CONSTRAINTS » dans les 28 modules d'écriture : respect de la langue
+cochée, du mode d'adresse, des éléments intouchables, du budget et des échéances, de la taille de
+l'équipe (pas de playbook RH pour un solo), des tentatives passées, et calibrage de la voix sur le
+texte du client. La règle « français sauf si le client écrit en anglais » est remplacée par « la
+première langue cochée ». Intégrité vérifiée : 33 modules, aucune référence orpheline.
 
-- **La lueur rouge du seuil était en haut à gauche**, pas derrière le titre :
-  mon animation ajoutait un décalage à celui de Tailwind (corrigé — et cela
-  datait de sp140).
-- **Les jauges étaient de larges pilules plates** avec un gros rond au
-  centre, pas les fines barres que j'avais décrites : refaites en 21
-  graduations fines comme une règle, le rouge s'allume du centre à la
-  position choisie, la graduation active se dresse avec sa lueur.
-- **« Inconscien / t du problème »** : un mot coupé en deux dans les cartes à
-  cinq colonnes. La police s'adapte désormais au nombre de colonnes.
-- **Le grand numéro de chapitre fantôme** passait en travers du texte ;
-  il reste derrière le titre.
-- **Le texte d'accueil anglais** était une ancienne version en un seul
-  paragraphe : aligné sur le français.
-- Titres de cartes désalignés selon la longueur de leur description :
-  alignés en haut.
+**Animations de chapitre.** Une animation propre à chacun des 7 chapitres (colonnes qui montent,
+radar, onde sonore, cible, semaine qui tourne, chemin balisé, sceau) ; le titre et le texte se
+remplissent mot à mot ; les pièces nourries s'allument ; durée du chapitre affichée ; les bandes
+se referment au clic. Tout est en CSS : lisible même si le script tarde.
+- Défaut trouvé par capture : mon premier dessin traversait le titre et le paragraphe. Il a maintenant
+  sa place, au-dessus du titre.
+- Défaut trouvé par capture : sur téléphone, « Partie 4 sur 7 » passait sous la bande du haut.
+- La citation du livre n'apparaît que sur les écrans de 900 px de haut ou plus.
 
-## Ce que je n'ai PAS pu vérifier
+## Vérifié, et ce qui ne l'est pas
 
-Mes captures viennent de Chrome ; **vous utilisez Safari**. Les polices sont
-les bonnes (Bricolage Grotesque, Hanken Grotesk, Space Mono), mais de petites
-différences de rendu sont possibles — notamment l'équilibrage automatique
-des titres (`text-wrap: balance`, Safari 17.5 minimum). Si un détail diffère
-chez vous, envoyez-moi une capture : je peux maintenant la comparer à la
-mienne.
+Parcours complet des 48 questions dans Chrome, jusqu'à la page de fin, sans erreur, à 920 px, sur
+téléphone (390 px) et sur grand écran (1440 px). Types en mode strict : zéro erreur.
 
-## Et si la page de fin n'apparaît pas
-
-Elle apparaît (voir `6-page-de-fin.png`, atteinte en parcourant les 30
-questions dans un vrai navigateur). Si ce n'est pas le cas chez vous,
-vérifiez que `FORMSPREE_ID` ou `MAKE_WEBHOOK_URL` est défini sur Vercel.
+**Non vérifié** : Safari (vos captures viennent de Safari, les miennes de Chrome) ; le parcours
+anglais en entier (les 48 questions sont traduites, le début est vérifié) ; l'exécution réelle du
+scénario Make avec les nouveaux prompts — je n'ai pas accès à votre compte, c'est le premier test à faire.

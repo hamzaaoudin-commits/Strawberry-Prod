@@ -118,6 +118,37 @@ function buildResponses(steps: Question[], answers: Record<string, unknown>): Re
   const out: Record<string, string | number> = {}
   const canonical = (id: string) => id.replace(/_(produits|lieux|artistes)$/, "")
 
+  // Toutes les balises existent toujours, vides si la question est restée
+  // sans réponse. Make n'apprend la structure que d'un échantillon : une
+  // balise absente de l'échantillon n'apparaît jamais dans la liste de
+  // mappage, et resterait invisible tant que quelqu'un ne l'a pas remplie.
+  // Un champ vide, lui, se filtre simplement (« n'est pas vide »).
+  for (const step of steps) {
+    const key = canonical(step.id)
+    if (step.type === "textarea") {
+      out[key] = ""
+      if (step.deep) out[`${key}_deep`] = ""
+    } else if (step.type === "shorttext" || step.type === "choice") {
+      out[key] = ""
+    } else if (step.type === "competitors") {
+      for (let i = 1; i <= 5; i++) {
+        out[`competitor_${i}_name`] = ""
+        out[`competitor_${i}_line`] = ""
+      }
+    } else if (step.type === "links") {
+      out.link_site = ""
+      out.link_linkedin = ""
+      out.link_content = ""
+      for (let i = 1; i <= 10; i++) out[`link_extra_${i}`] = ""
+      out.link_extra_count = 0
+    } else if (step.type === "sliders") {
+      for (const ax of step.axes ?? []) out[`tone_${ax.id}`] = 50
+    } else if (step.type === "wordbank") {
+      out.words_mine = ""
+      out.words_never = ""
+    }
+  }
+
   for (const step of steps) {
     const key = canonical(step.id)
     if (step.type === "identity") continue // déjà dans `client`

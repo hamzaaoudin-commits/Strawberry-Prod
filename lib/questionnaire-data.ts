@@ -461,12 +461,15 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Playbooks", "Playbooks"),
   },
   {
-    id: "hr_disqualifier", offers: ["audit", "architecture"], type: "textarea",
+    id: "hr_disqualifier", offers: ["audit", "architecture"], type: "textarea", optional: true,
     label: t(
-      "Chez quelqu'un que vous embaucheriez, quelle qualité est non-négociable, et laquelle disqualifie immédiatement ?",
-      "In someone you would hire, which quality is non-negotiable, and which one disqualifies immediately?",
+      "Chez quelqu'un qui travaillerait avec vous (employé, associé, prestataire), quelle qualité est non-négociable, et laquelle disqualifie immédiatement ?",
+      "In someone who would work with you (employee, partner, contractor), which quality is non-negotiable, and which disqualifies them immediately?",
     ),
-    help: t("Même avec un CV parfait.", "Even with a perfect CV."),
+    help: t(
+      "Même avec un CV parfait. Si vous travaillez seul·e, répondez pour la première personne que vous accueilleriez.",
+      "Even with a perfect CV. If you work alone, answer for the first person you would bring in.",
+    ),
     ph: t("Non-négociable : ... Disqualifiant : ...", "Non-negotiable: ... Disqualifying: ..."),
     tag: t("Playbooks", "Playbooks"),
   },
@@ -497,26 +500,29 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     tag: t("Playbooks", "Playbooks"),
   },
   {
-    id: "traction", offers: ["audit", "architecture"], type: "shorttext", optional: true,
-    label: t("Quel chiffre concret prouve que ça marche déjà ?", "What concrete number proves it already works?"),
-    help: t(
-      "Clients, mois d'existence, taux de retour, chiffre d'affaires. Un seul suffit.",
-      "Clients, months in business, return rate, revenue. One is enough.",
+    id: "traction", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t(
+      "Quels chiffres ou faits vérifiables prouvent que ça marche déjà ?",
+      "Which verifiable numbers or facts prove it already works?",
     ),
-    ph: t("Ex : 43 clients en 14 mois", "E.g. 43 clients in 14 months"),
+    help: t(
+      "Clients, ancienneté, résultats mesurés, presse, récompenses, clients connus. Autant qu'il y en a.",
+      "Clients, years in business, measured results, press, awards, well-known clients. As many as there are.",
+    ),
+    ph: t("Ex : 43 clients en 14 mois, 4,9 sur 212 avis, cité par...", "E.g. 43 clients in 14 months, 4.9 across 212 reviews, quoted by..."),
     tag: t("Business", "Business"),
   },
   {
     id: "price", offers: ["audit", "architecture"], type: "textarea",
     label: t(
-      "L'objection qu'on vous oppose le plus souvent avant d'acheter, et ce qui justifierait de doubler votre prix demain.",
-      "The objection you hear most often before a purchase, and what would justify doubling your price tomorrow.",
+      "Qu'est-ce qui justifierait de doubler votre prix demain ?",
+      "What would justify doubling your price tomorrow?",
     ),
     help: t(
-      "La vraie objection, pas la version qu'on vous fait en étant poli.",
-      "The real objection, not the polite version people give you.",
+      "Ce qu'il faudrait que vous prouviez, ou que vous soyez, pour que le doubler ne choque personne.",
+      "What you would have to prove, or be, for doubling it to shock nobody.",
     ),
-    ph: t("On me dit souvent que...", "People often tell me that..."),
+    ph: t("Il faudrait que...", "I would have to..."),
     tag: t("Business", "Business"),
   },
   {
@@ -641,6 +647,251 @@ export const QUESTION_SOURCES: QuestionSource[] = [
     ph: t("Dans un an...", "A year from now..."),
     tag: t("Ambition", "Ambition"),
   },
+
+  // ─── Ajouts : le pratique, que les 28 modules d'écriture doivent connaître ───
+  {
+    id: "activity", offers: ["audit", "architecture"], type: "textarea",
+    label: t(
+      "Dites-nous les faits : ce que vous vendez ou faites, pour qui, depuis quand, et où.",
+      "Give us the facts: what you sell or do, for whom, since when, and where.",
+    ),
+    help: t(
+      "Sans adjectifs. Deux ou trois phrases, comme à quelqu'un qui n'a jamais entendu parler de vous.",
+      "No adjectives. Two or three sentences, as if to someone who has never heard of you.",
+    ),
+    ph: t("Nous fabriquons... pour... depuis... à...", "We make... for... since... in..."),
+    tag: t("Identité", "Identity"),
+  },
+  {
+    id: "category", offers: ["audit", "architecture"], type: "textarea",
+    label: t(
+      "Dans quelle case vous range-t-on spontanément ? Et dans laquelle voudriez-vous être rangé ?",
+      "What box do people put you in spontaneously? And which box would you rather be in?",
+    ),
+    help: t(
+      "Par exemple « agence de communication » plutôt que « studio de narration ». L'écart entre les deux est souvent la vraie position à prendre.",
+      "For instance \u201ccommunications agency\u201d rather than \u201cnarrative studio\u201d. The gap between the two is often the real position to take.",
+    ),
+    ph: t("On me range parmi... Je voudrais qu'on me range parmi...", "People file me under... I would rather be filed under..."),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "past_attempts", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t(
+      "Qu'avez-vous déjà essayé pour vous démarquer, et pourquoi ça n'a pas pris ?",
+      "What have you already tried to stand out, and why didn't it take?",
+    ),
+    help: t(
+      "Une agence, un changement de nom, un ghostwriter, un outil d'IA, une refonte du site. Écrivez « rien » si c'est le cas.",
+      "An agency, a rename, a ghostwriter, an AI tool, a site redesign. Write \u201cnothing\u201d if that is the case.",
+    ),
+    ph: t("J'ai déjà essayé... Ça n'a pas pris parce que...", "I already tried... It didn't take because..."),
+    tag: t("Diagnostic", "Diagnosis"),
+  },
+  {
+    id: "voice_sample", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t("Collez un texte qui vous ressemble vraiment.", "Paste a text that truly sounds like you."),
+    help: t(
+      "Un mail, un post, un message vocal retranscrit, une présentation — écrit par vous, ou par quelqu'un qui vous a parfaitement compris. C'est ce qui nous apprend le plus sur votre voix.",
+      "An email, a post, a transcribed voice note, a pitch — written by you, or by someone who understood you perfectly. It teaches us more about your voice than anything else.",
+    ),
+    ph: t("Collez le texte tel quel...", "Paste the text as it is..."),
+    tag: t("Langage", "Language"),
+  },
+  {
+    id: "address_mode", offers: ["audit", "architecture"], type: "choice",
+    label: t("Comment la maison s'adresse-t-elle à ses clients ?", "How does the house address its customers?"),
+    options: [
+      t("Nous, au vouvoiement", "\u201cWe\u201d, formal"),
+      t("Je, au vouvoiement", "\u201cI\u201d, formal"),
+      t("Nous, au tutoiement", "\u201cWe\u201d, casual"),
+      t("Je, au tutoiement", "\u201cI\u201d, casual"),
+      t("Ça dépend du support", "It depends on the channel"),
+    ],
+    tag: t("Langage", "Language"),
+  },
+  {
+    id: "languages", offers: ["audit", "architecture"], type: "choice", multi: true, max: 3,
+    label: t("Dans quelle(s) langue(s) la maison s'exprime-t-elle ?", "In which language(s) does the house speak?"),
+    help: t("Cochez la langue principale en premier.", "Tick the main language first."),
+    options: [
+      t("Français", "French"),
+      t("Anglais", "English"),
+      t("Espagnol", "Spanish"),
+      t("Allemand", "German"),
+      t("Italien", "Italian"),
+      t("Autre", "Other"),
+    ],
+    tag: t("Langage", "Language"),
+  },
+  {
+    id: "objections", offers: ["audit", "architecture"], type: "textarea",
+    label: t(
+      "Les trois objections qu'on vous oppose le plus souvent avant d'acheter.",
+      "The three objections you hear most often before someone buys.",
+    ),
+    help: t(
+      "Les vraies, pas la version polie. Pour chacune, ce que vous répondez aujourd'hui, même si ce n'est pas convaincant.",
+      "The real ones, not the polite version. For each, what you answer today, even if it isn't convincing.",
+    ),
+    ph: t("1. « C'est trop cher » — je réponds que...", "1. \u201cIt's too expensive\u201d — I answer that..."),
+    tag: t("Audience", "Audience"),
+  },
+  {
+    id: "customer_words", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t(
+      "Collez trois phrases que vos clients ont dites ou écrites sur vous.",
+      "Paste three sentences your customers have said or written about you.",
+    ),
+    help: t(
+      "Avis, messages, mails, retours à l'oral retranscrits. Mot pour mot : c'est leur vocabulaire, pas le vôtre, qui rendra le document juste.",
+      "Reviews, messages, emails, spoken feedback written down. Word for word: their vocabulary, not yours, will make the document right.",
+    ),
+    ph: t("« ... »", "\u201c...\u201d"),
+    tag: t("Audience", "Audience"),
+  },
+  {
+    id: "acquisition", offers: ["audit", "architecture"], type: "choice", multi: true, max: 3,
+    label: t("Comment vos meilleurs clients arrivent-ils jusqu'à vous ?", "How do your best customers find their way to you?"),
+    help: t("Jusqu'à trois réponses.", "Up to three answers."),
+    options: [
+      t("Bouche-à-oreille et recommandation", "Word of mouth and referrals"),
+      t("Réseaux sociaux", "Social media"),
+      t("Recherche Google ou site", "Google search or website"),
+      t("Prospection directe", "Direct outreach"),
+      t("Presse, médias, événements", "Press, media, events"),
+      t("Partenaires et prescripteurs", "Partners and referrers"),
+      t("Passage et emplacement", "Foot traffic and location"),
+      t("Publicité payante", "Paid advertising"),
+    ],
+    tag: t("Audience", "Audience"),
+  },
+  {
+    id: "team", offers: ["audit", "architecture"], type: "choice",
+    label: t("Combien de personnes parlent au nom de la maison ?", "How many people speak on behalf of the house?"),
+    help: t("Vous compris, associés, équipe, prestataires réguliers.", "Including you, partners, team, regular contractors."),
+    options: [
+      t("Moi seul·e", "Just me"),
+      t("2 à 5 personnes", "2 to 5 people"),
+      t("6 à 20 personnes", "6 to 20 people"),
+      t("Plus de 20 personnes", "More than 20 people"),
+    ],
+    tag: t("Playbooks", "Playbooks"),
+  },
+  {
+    id: "who_writes", offers: ["audit", "architecture"], type: "choice", multi: true, max: 3,
+    label: t("Qui écrit aujourd'hui au nom de la maison ?", "Who writes on behalf of the house today?"),
+    help: t(
+      "Les playbooks seront écrits pour ceux-là : ils doivent pouvoir s'en servir tels quels.",
+      "The playbooks will be written for them: they must be able to use them as they are.",
+    ),
+    options: [
+      t("Moi", "Me"),
+      t("Un membre de l'équipe", "A team member"),
+      t("Un freelance ou une agence", "A freelancer or an agency"),
+      t("Un outil d'IA", "An AI tool"),
+      t("Personne : ça ne se fait pas vraiment", "Nobody: it doesn't really happen"),
+    ],
+    tag: t("Playbooks", "Playbooks"),
+  },
+  {
+    id: "channels", offers: ["audit", "architecture"], type: "choice", multi: true, max: 9,
+    label: t(
+      "Sur quels canaux la maison s'exprime-t-elle régulièrement aujourd'hui ?",
+      "On which channels does the house speak regularly today?",
+    ),
+    help: t("Régulièrement : au moins une fois par mois.", "Regularly: at least once a month."),
+    options: [
+      t("Site web", "Website"),
+      t("Instagram", "Instagram"),
+      t("LinkedIn", "LinkedIn"),
+      t("TikTok", "TikTok"),
+      t("YouTube", "YouTube"),
+      t("Newsletter", "Newsletter"),
+      t("Presse et médias", "Press and media"),
+      t("Salons et événements", "Fairs and events"),
+      t("Rien de régulier", "Nothing regular"),
+    ],
+    tag: t("Playbooks", "Playbooks"),
+  },
+  {
+    id: "visual_keep", offers: ["audit", "architecture"], type: "textarea",
+    label: t(
+      "Dans votre identité visuelle actuelle, qu'est-ce qui doit rester, et qu'est-ce qui doit disparaître ?",
+      "In your current visual identity, what must stay, and what must go?",
+    ),
+    help: t(
+      "Logo, couleurs, typographies, photos, packaging, décor. Si vous n'avez encore rien, dites-le.",
+      "Logo, colours, typefaces, photos, packaging, decor. If you have nothing yet, say so.",
+    ),
+    ph: t("À garder : ... À abandonner : ...", "Keep: ... Drop: ..."),
+    tag: t("Identité visuelle", "Visual identity"),
+  },
+  {
+    id: "calendar", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t("Quelles échéances avez-vous dans les six prochains mois ?", "What deadlines do you have in the next six months?"),
+    help: t(
+      "Lancement, saison forte, levée de fonds, recrutement, événement, ouverture. Elles décident de l'ordre des décisions.",
+      "A launch, a peak season, fundraising, hiring, an event, an opening. They set the order of the decisions.",
+    ),
+    ph: t("En mars : ... En juin : ...", "In March: ... In June: ..."),
+    tag: t("Déploiement", "Deployment"),
+  },
+  {
+    id: "untouchables", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t("Qu'est-ce qui est intouchable, sensible ou confidentiel ?", "What is untouchable, sensitive or confidential?"),
+    help: t(
+      "Un nom, un slogan historique, une contrainte légale ou réglementaire, un partenaire, un épisode du passé à ne pas réveiller, un chiffre à ne jamais citer.",
+      "A name, a historic slogan, a legal or regulatory constraint, a partner, a past episode not to be revived, a figure never to be quoted.",
+    ),
+    ph: t("On ne touche pas à... On ne cite jamais...", "We never touch... We never quote..."),
+    tag: t("Déploiement", "Deployment"),
+  },
+  {
+    id: "budget", offers: ["audit", "architecture"], type: "choice", optional: true,
+    label: t(
+      "Quel budget annuel pouvez-vous consacrer à appliquer ces décisions ?",
+      "What annual budget can you put into applying these decisions?",
+    ),
+    help: t(
+      "Hors honoraires pour ce document. Cela nous évite de vous recommander ce que vous ne pourrez pas faire.",
+      "Excluding the fee for this document. It keeps us from recommending what you could not do.",
+    ),
+    options: [
+      t("Moins de 5 000 €", "Under €5,000"),
+      t("5 000 à 20 000 €", "€5,000 to €20,000"),
+      t("20 000 à 100 000 €", "€20,000 to €100,000"),
+      t("Plus de 100 000 €", "Over €100,000"),
+      t("Je ne sais pas encore", "I don't know yet"),
+    ],
+    tag: t("Déploiement", "Deployment"),
+  },
+  {
+    id: "success_signal", offers: ["audit", "architecture"], type: "textarea",
+    label: t(
+      "Dans six mois, quel signe concret vous dirait que ce document a servi ?",
+      "In six months, what concrete sign would tell you this document has been worth it?",
+    ),
+    help: t(
+      "Pas un chiffre d'affaires : un signe qu'on peut observer. Un type de client qui écrit, une phrase qu'on vous cite, une proposition que vous avez refusé de faire.",
+      "Not a revenue figure: a sign you can observe. A type of customer who writes in, a sentence people quote to you, a proposal you refused to make.",
+    ),
+    ph: t("Je saurai que ça a servi quand...", "I will know it was worth it when..."),
+    tag: t("Ambition", "Ambition"),
+  },
+  {
+    id: "review_logistics", offers: ["audit", "architecture"], type: "textarea", optional: true,
+    label: t(
+      "Qui doit valider le document avec vous, et quels créneaux vous arrangent pour l'heure de relecture, vers le jour 20 ?",
+      "Who must approve the document with you, and which slots suit you for the one-hour review around day 20?",
+    ),
+    help: t(
+      "Associé, conjoint, comité — et deux ou trois créneaux, avec votre fuseau horaire.",
+      "Partner, spouse, committee — and two or three slots, with your time zone.",
+    ),
+    ph: t("Validation : ... Créneaux : ...", "Approval: ... Slots: ..."),
+    tag: t("Ambition", "Ambition"),
+  },
 ]
 
 const pickText = (v: I18nText, lang: Lang): string => v[lang] ?? v.fr
@@ -690,13 +941,13 @@ export function localizeQuestion(q: QuestionSource, lang: Lang): Question {
  * même chapitre, à la même place.
  */
 export const CHAPTERS: { key: string; ids: string[] }[] = [
-  { key: "fondations", ids: ["identity", "conviction", "rupture", "enemy"] },
-  { key: "champ", ids: ["positioning", "awareness", "maturity", "competitors", "competitor_edge"] },
-  { key: "voix", ids: ["archetype", "tone", "forbidden", "wordbank"] },
-  { key: "audience", ids: ["decision", "audience", "risk", "repoussoir"] },
-  { key: "quotidien", ids: ["model", "price", "traction", "content_format", "support_scene", "hr_disqualifier"] },
-  { key: "deploiement", ids: ["deploy", "portrait_house", "outside_refs"] },
-  { key: "preuve", ids: ["proof", "headline", "portrait_founder", "links"] },
+  { key: "fondations", ids: ["identity", "activity", "conviction", "rupture", "enemy"] },
+  { key: "champ", ids: ["positioning", "category", "awareness", "maturity", "competitors", "competitor_edge", "past_attempts"] },
+  { key: "voix", ids: ["archetype", "tone", "address_mode", "languages", "forbidden", "wordbank", "voice_sample"] },
+  { key: "audience", ids: ["decision", "audience", "customer_words", "objections", "risk", "repoussoir", "acquisition"] },
+  { key: "quotidien", ids: ["team", "model", "price", "traction", "who_writes", "channels", "content_format", "support_scene", "hr_disqualifier"] },
+  { key: "deploiement", ids: ["deploy", "visual_keep", "portrait_house", "outside_refs", "calendar", "untouchables", "budget"] },
+  { key: "preuve", ids: ["proof", "success_signal", "headline", "portrait_founder", "review_logistics", "links"] },
 ]
 
 const canonicalId = (id: string) => id.replace(/_(produits|lieux|artistes)$/, "")

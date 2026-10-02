@@ -1714,3 +1714,53 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 .q-deal { animation: q-deal 700ms cubic-bezier(.22,.68,0,1) both; }
 .q-grow { width: 120px; animation: q-grow 1100ms ease-out both; }
 @media (prefers-reduced-motion: reduce) { .q-deal, .q-grow { animation: none; } }
+
+/* ─── Écran de chapitre : les sept animations ────────────────────────────
+   Chaque dessin est visible et complet par défaut ; l'animation ne fait que
+   le rejouer (fill-mode « both » = invisible pendant le délai, puis figé à
+   l'état final). Aucun JavaScript n'est nécessaire pour qu'il s'affiche. */
+@keyframes q-ink-soft { from { color: rgba(255,255,255,.1); } to { color: rgba(255,255,255,.75); } }
+.q-ink-soft { animation: q-ink-soft 500ms ease both; }
+@keyframes q-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+.q-pulse { animation: q-pulse 2.2s ease-in-out infinite; }
+@keyframes q-grow-sm { from { width: 0; } to { width: 2rem; } }
+.q-grow-sm { animation: q-grow-sm 800ms ease-out both; }
+
+/* un trait qui se trace (les formes portent pathLength="1") */
+@keyframes cm-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.cm-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: cm-draw 1500ms cubic-bezier(.22,.68,0,1) both; }
+/* une forme qui apparaît */
+@keyframes cm-pop { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
+.cm-pop { transform-box: fill-box; transform-origin: center; animation: cm-pop 650ms cubic-bezier(.22,.68,0,1) both; }
+/* une colonne qui monte depuis la ligne de base */
+@keyframes cm-rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.cm-rise { transform-box: fill-box; transform-origin: bottom; animation: cm-rise 1000ms cubic-bezier(.22,.68,0,1) both; }
+/* des cercles qui se resserrent sur la cible */
+@keyframes cm-zoom { from { opacity: 0; transform: scale(1.7); } to { opacity: 1; transform: scale(1); } }
+.cm-zoom { transform-box: fill-box; transform-origin: center; animation: cm-zoom 1000ms cubic-bezier(.22,.68,0,1) both; }
+/* un anneau qui se propage */
+@keyframes cm-ring { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.1); } }
+.cm-ring { transform-box: fill-box; transform-origin: center; animation: cm-ring 2.4s ease-out infinite; }
+/* le balayage du radar */
+@keyframes cm-sweep { to { transform: rotate(360deg); } }
+.cm-sweep { transform-origin: 220px 95px; animation: cm-sweep 7s linear infinite; }
+/* une onde sonore qui respire */
+@keyframes cm-wave { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+.cm-wave { transform-box: fill-box; transform-origin: center; animation: cm-wave 1.8s ease-in-out infinite; }
+/* les sept jours de la semaine, l'un après l'autre */
+@keyframes cm-seq { 0%, 100% { opacity: .22; } 12%, 30% { opacity: 1; } }
+.cm-seq { animation: cm-seq 3.6s ease-in-out infinite; }
+/* un anneau en pointillés qui tourne lentement */
+@keyframes cm-turn { to { transform: rotate(360deg); } }
+.cm-turn { transform-origin: 220px 95px; animation: cm-turn 30s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .q-ink-soft, .q-pulse, .q-grow-sm, .cm-draw, .cm-pop, .cm-rise, .cm-zoom, .cm-ring, .cm-sweep, .cm-wave, .cm-seq, .cm-turn { animation: none; }
+  .cm-ring { opacity: 0; }
+}
+
+/* La citation de l'écran de chapitre n'est affichée que si l'écran est assez
+   haut : sur un portable, elle ferait défiler un écran qui doit tenir d'un
+   seul regard. */
+.q-tall-only { display: none; }
+@media (min-height: 900px) { .q-tall-only { display: block; } }

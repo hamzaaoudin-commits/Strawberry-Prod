@@ -77,12 +77,19 @@ function isValid(step: Question, a: Answers): boolean {
   }
 }
 
+/** Quelle pièce du document se nourrit de quel chapitre (voir `chapterFeeds`). */
+const CHAPTER_FEEDS: Record<string, string[]> = {
+  fondations: ["01"], champ: ["02", "03"], voix: ["06"], audience: ["02", "05"],
+  quotidien: ["05"], deploiement: ["04"], preuve: ["02", "03"],
+}
+
 /** All chrome copy that isn't a question. Questions live in questionnaire-data. */
 const UI_COPY = {
   fr: {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     chapterOf: (n: number, t: number) => `Partie ${n} sur ${t}`,
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
+    chapterMinutes: (m: number) => `environ ${m} min`,
     chapterFallback: "Quelques questions pour la suite du document.",
     chapterTitles: {
       fondations: "Les fondations",
@@ -95,13 +102,13 @@ const UI_COPY = {
     } as Record<string, string>,
     // Pourquoi ce chapitre existe — ce qu'il fabrique dans le document.
     chapterNotes: {
-      fondations: "Tout le document repose sur ces quatre réponses : qui vous êtes, ce que vous croyez, ce qui vous a fait naître, ce que vous refusez. Ce sont elles qui rendent la plateforme impossible à copier. Aucune agence, aucune IA ne peut les deviner à votre place — et on ne les écrit qu'une fois.",
-      champ: "Une position ne vaut que face aux autres. Pour trouver ce que vous seul pouvez dire, il faut savoir ce que vos concurrents disent déjà, mot pour mot. Vos réponses fabriquent le diagnostic et la carte du champ : plus vous êtes précis, plus la carte est tranchante.",
-      voix: "Deux maisons peuvent dire la même chose sans se ressembler : tout tient à la voix. Ces questions fixent votre personnalité, votre ton et vos interdits. Elles deviennent le lexique et les règles que vos équipes — et vos outils d'IA — appliqueront.",
-      audience: "On n'écrit pas pour tout le monde. Ces questions décrivent la personne précise qui doit vous choisir, ce qui la retient, et celle dont vous ne voulez pas. Elles décident à qui le document parle et ce qu'il doit dire pour la convaincre.",
-      quotidien: "Un document qui n'est pas appliqué le lundi matin ne sert à rien. Ces questions décrivent comment vous vendez, à quel prix, comment vous vous exprimez au quotidien et qui vous recrutez. Elles deviennent les playbooks de vos équipes.",
-      deploiement: "Les mots d'abord, l'image ensuite. Ces trois questions disent où le document doit servir en premier et à quoi la maison doit ressembler. Elles fixent l'ordre des décisions et le brief remis à votre designer.",
-      preuve: "Un récit sans preuve ne tient pas. Dernier chapitre : ce qui vous rend crédible, ce que vous visez, et l'accès à vos supports. C'est de là que part le dépouillement de votre site, de vos avis et de vos réseaux.",
+      fondations: "Tout le document repose sur ces réponses : ce que vous faites, ce que vous croyez, ce qui vous a fait naître, ce que vous refusez. Ce sont elles qui rendent la plateforme impossible à copier. Aucune agence, aucune IA ne peut les deviner à votre place — et on ne les écrit qu'une fois.",
+      champ: "Une position ne vaut que face aux autres. Pour trouver ce que vous seul pouvez dire, il faut savoir comment on vous range, ce que vos concurrents disent déjà — mot pour mot — et ce qui n'a pas pris jusqu'ici. Vos réponses fabriquent le diagnostic et la carte du champ : plus vous êtes précis, plus la carte est tranchante.",
+      voix: "Deux maisons peuvent dire la même chose sans se ressembler : tout tient à la voix. Ces questions fixent votre personnalité, votre ton, votre langue, la manière de vous adresser à vos clients et vos interdits. Elles deviennent le lexique et les règles que vos équipes — et vos outils d'IA — appliqueront.",
+      audience: "On n'écrit pas pour tout le monde. Ces questions décrivent la personne précise qui doit vous choisir, les mots qu'elle emploie, ce qui la retient, comment elle vous trouve — et celle dont vous ne voulez pas. Elles décident à qui le document parle et ce qu'il doit dire pour la convaincre.",
+      quotidien: "Un document qui n'est pas appliqué le lundi matin ne sert à rien. Ces questions décrivent qui parle au nom de la maison, où, comment vous vendez, à quel prix et qui vous recrutez. Elles deviennent les playbooks de vos équipes — dimensionnés pour la vôtre.",
+      deploiement: "Les mots d'abord, l'image ensuite — mais dans les limites du réel. Ces questions disent où le document doit servir en premier, ce qui est intouchable, quelles échéances et quel budget bornent les décisions, et à quoi la maison doit ressembler. Elles fixent l'ordre des décisions et le brief remis à votre designer.",
+      preuve: "Un récit sans preuve ne tient pas. Dernier chapitre : ce qui vous rend crédible, ce que vous visez, à quoi vous reconnaîtrez que le document a servi, et l'accès à vos supports. C'est de là que part le dépouillement de votre site, de vos avis et de vos réseaux.",
     } as Record<string, string>,
     chapterFeeds: {
       fondations: "Nourrit la pièce 01 — La plateforme",
@@ -184,7 +191,7 @@ const UI_COPY = {
       { k: "artistes", t: "Un nom propre", d: "Artiste, auteur, fondateur" },
     ],
     coverLede:
-      "La plupart des maisons de votre taille n'écriront jamais ce que vous vous apprêtez à écrire. Elles continueront d'emprunter les mots de leur secteur, et de se demander pourquoi on les compare au prix.\n\nCe qui suit est la seule partie que personne ne peut faire à votre place. Écrivez comme vous parleriez à quelqu'un qui comprend déjà. Il n'y a pas de mauvaises réponses — seulement des honnêtes et des malhonnêtes.",
+      "La plupart des maisons de votre taille n'écriront jamais ce que vous vous apprêtez à écrire. Elles continueront d'emprunter les mots de leur secteur, et de se demander pourquoi on les compare au prix.",
     minutesArchitecture: "45 à 70",
     minutesAudit: "50 à 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -193,9 +200,6 @@ const UI_COPY = {
       "Vous pouvez fermer cet onglet à tout moment : tout est sauvegardé, vous reprendrez exactement où vous en étiez.",
     prefilled: "Déjà rempli pour vous",
     start: "Commencer →",
-    statMinutes: "minutes",
-    statQuestions: "questions",
-    statSaved: "Enregistré en continu",
     chooseFirst: "Choisissez d'abord ce que vous vendez",
     previous: "Précédent",
     optional: "Facultatif",
@@ -254,6 +258,7 @@ const UI_COPY = {
     kicker: "STRAWBERRY PRODUCTION · ONBOARDING",
     chapterOf: (n: number, t: number) => `Part ${n} of ${t}`,
     chapterCount: (n: number) => `${n} question${n > 1 ? "s" : ""}`,
+    chapterMinutes: (m: number) => `about ${m} min`,
     chapterFallback: "A few questions for the rest of the document.",
     chapterTitles: {
       fondations: "The foundations",
@@ -265,13 +270,13 @@ const UI_COPY = {
       preuve: "The proof",
     } as Record<string, string>,
     chapterNotes: {
-      fondations: "The whole document rests on these four answers: who you are, what you believe, what made you, what you refuse. They are what makes the platform impossible to copy. No agency and no AI can guess them for you — and you only write them once.",
-      champ: "A position only means something against others. To find what only you can say, you need to know what your competitors already say, word for word. Your answers build the diagnosis and the map of the field: the more precise you are, the sharper the map.",
-      voix: "Two houses can say the same thing and not look alike: it all comes down to voice. These questions fix your personality, your tone and your off-limits. They become the lexicon and the rules your teams — and your AI tools — will apply.",
-      audience: "You do not write for everyone. These questions describe the precise person who must choose you, what holds them back, and the one you do not want. They decide who the document speaks to and what it must say to win them.",
-      quotidien: "A document that is not applied on Monday morning is worth nothing. These questions describe how you sell, at what price, how you express yourself day to day and who you hire. They become your teams' playbooks.",
-      deploiement: "Words first, image second. These three questions say where the document must work first and what the house should look like. They set the order of the decisions and the brief handed to your designer.",
-      preuve: "A story without proof does not hold. Final chapter: what makes you credible, what you aim for, and access to your materials. This is where the review of your site, your reviews and your social pages starts.",
+      fondations: "The whole document rests on these answers: what you do, what you believe, what made you, what you refuse. They are what makes the platform impossible to copy. No agency and no AI can guess them for you — and you only write them once.",
+      champ: "A position only means something against others. To find what only you can say, you need to know how people file you, what your competitors already say — word for word — and what hasn't taken so far. Your answers build the diagnosis and the map of the field: the more precise you are, the sharper the map.",
+      voix: "Two houses can say the same thing and not look alike: it all comes down to voice. These questions fix your personality, your tone, your language, how you address your customers and your off-limits. They become the lexicon and the rules your teams — and your AI tools — will apply.",
+      audience: "You do not write for everyone. These questions describe the precise person who must choose you, the words they use, what holds them back, how they find you — and the one you do not want. They decide who the document speaks to and what it must say to win them.",
+      quotidien: "A document that is not applied on Monday morning is worth nothing. These questions describe who speaks on behalf of the house, where, how you sell, at what price and who you hire. They become your teams' playbooks — sized for yours.",
+      deploiement: "Words first, image second — but within the limits of reality. These questions say where the document must work first, what is untouchable, which deadlines and budget bound the decisions, and what the house should look like. They set the order of the decisions and the brief handed to your designer.",
+      preuve: "A story without proof does not hold. Final chapter: what makes you credible, what you aim for, how you will know the document was worth it, and access to your materials. This is where the review of your site, your reviews and your social pages starts.",
     } as Record<string, string>,
     chapterFeeds: {
       fondations: "Feeds piece 01 — The platform",
@@ -354,7 +359,7 @@ const UI_COPY = {
       { k: "artistes", t: "A name", d: "Artist, author, founder" },
     ],
     coverLede:
-      "Most houses your size will never write what you are about to write. They will keep borrowing their sector's words, and keep wondering why they are compared on price.\n\nWhat follows is the one part nobody can do in your place. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
+      "Most houses your size will never write what you are about to write. They will keep borrowing their sector's words, and keep wondering why they are compared on price.",
     minutesArchitecture: "45 to 70",
     minutesAudit: "50 to 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -363,9 +368,6 @@ const UI_COPY = {
       "You can close this tab at any time: everything is saved, and you will pick up exactly where you left off.",
     prefilled: "Already filled in for you",
     start: "Begin →",
-    statMinutes: "minutes",
-    statQuestions: "questions",
-    statSaved: "Saved as you go",
     chooseFirst: "First, choose what you sell",
     previous: "Previous",
     optional: "Optional",
@@ -541,18 +543,13 @@ export function QuestionnaireFlow({
    * donc la matière réellement fournie, pas le nombre d'écrans traversés.
    */
   const pieces = useMemo(() => {
-    // Quelle pièce se nourrit de quel chapitre — voir `chapterFeeds`.
-    const FEEDS: Record<string, string[]> = {
-      fondations: ["01"], champ: ["02", "03"], voix: ["06"], audience: ["02", "05"],
-      quotidien: ["05"], deploiement: ["04"], preuve: ["02", "03"],
-    }
     const defs = [
       { n: "01", t: "La plateforme" }, { n: "02", t: "Le diagnostic" },
       { n: "03", t: "La carte" }, { n: "04", t: "Les décisions" },
       { n: "05", t: "Les playbooks" }, { n: "06", t: "Le langage" },
     ]
     return defs.map((d) => {
-      const qs = steps.filter((s) => (FEEDS[s.chapter ?? ""] ?? []).includes(d.n))
+      const qs = steps.filter((s) => (CHAPTER_FEEDS[s.chapter ?? ""] ?? []).includes(d.n))
       if (qs.length === 0) return { ...d, pct: 0 }
       const done = qs.filter((q) => {
         const v = answers[q.id]
@@ -612,6 +609,16 @@ export function QuestionnaireFlow({
   // L'estimation donnée une seule fois au départ ne sert plus après cinq
   // minutes — or c'est la seule information qui décide de continuer ou de
   // s'arrêter. Deux minutes par écran rédigé, trente secondes sinon.
+  // Le temps du chapitre qui s'ouvre : mêmes poids que la durée restante.
+  const chapterMins = useMemo(() => {
+    const ch = chapters[chapterIndex]
+    if (!ch) return 1
+    const mins = steps
+      .slice(ch.start, ch.start + ch.count)
+      .reduce((s, q) => s + (["textarea", "competitors"].includes(q.type) ? 2 : 0.5), 0)
+    return Math.max(1, Math.round(mins))
+  }, [steps, chapters, chapterIndex])
+
   const minutesLeft = useMemo(() => {
     const rest = steps.slice(idx)
     const mins = rest.reduce((s, q) => s + (["textarea", "competitors"].includes(q.type) ? 2 : 0.5), 0)
@@ -763,9 +770,7 @@ export function QuestionnaireFlow({
             </div>
           )}
           <CoverScreen
-            offer={offer}
             copy={copy}
-            stepCount={steps.length}
             chosenTerrain={chosenTerrain}
             onChooseTerrain={setChosenTerrain}
             // Le premier chapitre a son écran, comme les autres : c'est
@@ -786,6 +791,7 @@ export function QuestionnaireFlow({
             n={chapterIndex + 1}
             total={chapters.length}
             count={currentChapter.count}
+            mins={chapterMins}
             pieces={pieces}
             copy={copy}
             onStart={() => setScreen("steps")}
@@ -847,30 +853,22 @@ export function QuestionnaireFlow({
 }
 
 function CoverScreen({
-  offer,
   copy,
-  stepCount,
   chosenTerrain,
   onChooseTerrain,
   onStart,
 }: {
-  offer: OfferKey
   copy: Copy
-  stepCount: number
   chosenTerrain?: TerrainKey
   onChooseTerrain: (t: TerrainKey) => void
   onStart: () => void
 }) {
-  const isArchitecture = offer === "architecture"
-  const minutes = (isArchitecture ? copy.minutesArchitecture : copy.minutesAudit).replace(/\s*(à|to)\s*/i, "–")
-
   // Deux pages, au niveau du seuil : titre géant qui se remplit, lueur
   // qui respire, centrage vertical. Elles étaient plates — un paragraphe
   // gris collé en haut, une moitié d'écran vide, des boîtes à peine
   // visibles.
   const [page, setPage] = useState(0)
-  const [first, ...rest] = copy.coverLede.split("\n\n")
-  const second = rest.join("\n\n")
+  const first = copy.coverLede.split("\n\n")[0]
   const at = (ms: number) => ({ animationDelay: `${ms}ms` })
   const balance = { textWrap: "balance" } as React.CSSProperties
 
@@ -970,30 +968,7 @@ function CoverScreen({
         })}
       </div>
 
-      {/* Ce que ça demande : trois chiffres, pas une phrase. */}
-      <div className="q-rise mt-10 grid w-full max-w-[620px] grid-cols-3 divide-x divide-white/10 border-y border-white/10" style={at(1600)}>
-        {[
-          { v: minutes, l: copy.statMinutes },
-          { v: String(stepCount), l: copy.statQuestions },
-          { v: "✓", l: copy.statSaved },
-        ].map((s) => (
-          <div key={s.l} className="px-3 py-4">
-            <div className="font-serif text-[1.7rem] font-bold leading-none text-brand">{s.v}</div>
-            <div className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">{s.l}</div>
-          </div>
-        ))}
-      </div>
-
-      {second && (
-        <blockquote
-          className="q-rise mx-auto mt-9 max-w-[560px] border-l-2 border-brand pl-5 text-left font-serif text-[15px] leading-[1.7] text-chalk-75"
-          style={at(1800)}
-        >
-          {second}
-        </blockquote>
-      )}
-
-      <div className="q-rise mt-9 flex flex-col items-center gap-3" style={at(2000)}>
+      <div className="q-rise mt-10 flex flex-col items-center gap-3" style={at(1600)}>
         <button
           type="button"
           className="btn-primary disabled:cursor-not-allowed disabled:opacity-35"
@@ -1978,15 +1953,20 @@ function TerrainMark({ k, on, size = 26 }: { k: string; on: boolean; size?: numb
 /**
  * ChapterScreen — l'ouverture d'une section.
  *
- * Il ne demande rien : c'est une respiration. Sur trente questions, ces
- * quatre ou cinq pauses sont ce qui empêche l'abandon — elles disent où
- * l'on en est, ce qu'on va chercher, et combien de temps ça prend.
+ * Il ne demande rien : c'est une respiration. Ces sept pauses sont ce qui
+ * empêche l'abandon — elles disent où l'on en est, ce que le chapitre
+ * fabrique dans le document, et combien de temps il prend.
+ *
+ * Chaque chapitre a sa propre animation (voir ChapterMotif) qui raconte ce
+ * qu'il fabrique ; tout le mouvement est en CSS, donc lisible même si le
+ * script tarde.
  */
 function ChapterScreen({
   tag,
   n,
   total,
   count,
+  mins,
   copy,
   pieces,
   onStart,
@@ -1995,117 +1975,81 @@ function ChapterScreen({
   n: number
   total: number
   count: number
+  mins: number
   copy: Copy
   pieces?: { n: string; t: string; pct: number }[]
   onStart: () => void
 }) {
-  const [shown, setShown] = useState(false)
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setShown(true))
-    return () => cancelAnimationFrame(id)
-  }, [])
+  const [leaving, setLeaving] = useState(false)
+  const go = () => {
+    if (leaving) return
+    setLeaving(true)
+    // Les bandes se referment avant la suite, comme à la sortie du seuil.
+    window.setTimeout(onStart, 450)
+  }
   const note = copy.chapterNotes[tag] ?? copy.chapterFallback
   const quote = copy.chapterQuotes[tag]
   const title = copy.chapterTitles[tag] ?? tag
   const feeds = copy.chapterFeeds[tag]
-  return (
-    // Un moment, pas un bloc dans la page.
-    //
-    // Le chapitre s'affichait entre deux questions comme une carte de plus :
-    // on le lisait en diagonale et on cliquait. En occupant tout l'écran,
-    // avec un trait qui se trace et un titre qui monte, il redevient une
-    // pause — le seul moment du parcours où l'on ne demande rien.
-    <div className="relative isolate flex min-h-[72vh] flex-col items-center justify-center py-10 text-center">
-      {/* Les bandes de cinéma — le letterbox des pages de terrain. Elles
-          entrent fermées sur l'écran puis s'ouvrent, comme un plan qui
-          commence : le chapitre se lit comme une nouvelle scène, pas comme
-          un écran de plus. Fixes et plein écran, elles débordent du
-          conteneur centré exprès. */}
-      <div
-        aria-hidden
-        className="q-bar pointer-events-none fixed inset-x-0 top-0 z-30 bg-black"
-      />
-      <div
-        aria-hidden
-        className="q-bar pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black"
-      />
+  const fed = CHAPTER_FEEDS[tag] ?? []
+  const at = (ms: number) => ({ animationDelay: `${ms}ms` })
+  const noteWords = note.split(" ").length
+  // Le texte s'écrit à 22 ms par mot ; tout ce qui suit attend qu'il ait fini.
+  const t0 = 1000
+  const tNote = t0 + noteWords * 22
+  // Haut et bas dégagés des bandes de cinéma (8 % de la hauteur) : sur un
+  // téléphone le contenu dépasse l'écran, et la graduation passait sous la bande.
+  const closeBar = leaving ? { height: "50vh", transition: "height 450ms ease" } : undefined
 
-      {/* Le grand numéro de scène, en contour, derrière le titre — comme
-          les numéros des scènes de la tournée sur la home. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[25%] -z-10 select-none font-serif font-bold leading-none transition-all duration-[1400ms] ease-[cubic-bezier(.22,.68,0,1)]"
-        style={{
-          fontSize: "clamp(10rem,30vw,22rem)",
-          color: "transparent",
-          WebkitTextStroke: "1px rgba(255,255,255,0.07)",
-          opacity: shown ? 1 : 0,
-          transform: `translate(-50%,-50%) scale(${shown ? 1 : 1.08})`,
-          transitionDelay: "300ms",
-        }}
-      >
-        {String(n).padStart(2, "0")}
+  return (
+    <div className="relative isolate flex min-h-[78vh] flex-col items-center justify-center py-[calc(8vh+0.9rem)] text-center">
+      <div aria-hidden className="q-bar pointer-events-none fixed inset-x-0 top-0 z-30 bg-black" style={closeBar} />
+      <div aria-hidden className="q-bar pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black" style={closeBar} />
+      <BreatheGlow />
+
+      {/* Où l'on en est : sept graduations, la courante allumée. */}
+      <div className="q-rise flex flex-col items-center gap-3" style={at(150)}>
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40">{copy.chapterOf(n, total)}</div>
+        <div className="flex items-center gap-1.5">
+          {Array.from({ length: total }, (_, i) => (
+            <span
+              key={i}
+              className={`h-[3px] rounded-full transition-all ${i + 1 < n ? "w-5 bg-brand/60" : i + 1 === n ? "q-pulse w-8 bg-brand" : "w-5 bg-white/12"}`}
+            />
+          ))}
+        </div>
       </div>
 
-      <div
-        className={`relative font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40 transition-all duration-[600ms] ${
-          shown ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
-        }`}
-      >
-        {copy.chapterOf(n, total)}
+      {/* L'animation propre au chapitre : elle a sa propre place, au-dessus
+          du titre. En filigrane derrière le texte, elle le traversait et
+          gênait la lecture. */}
+      <div aria-hidden className="mt-4 w-[min(290px,66vw)]">
+        <ChapterMotif k={tag} />
       </div>
 
       <h2
-        className={`mx-auto mt-8 max-w-[640px] font-serif text-[clamp(2.4rem,6.5vw,4.2rem)] font-bold uppercase leading-[0.98] tracking-[-0.015em] text-white transition-all duration-[900ms] ease-[cubic-bezier(.22,.68,0,1)] ${
-          shown ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-        }`}
-        style={{ transitionDelay: "140ms" }}
+        className="mx-auto mt-4 max-w-[14ch] font-serif text-[clamp(2.2rem,6.4vw,4.2rem)] font-bold uppercase leading-[0.98] tracking-[-0.02em] text-white"
+        style={{ textWrap: "balance" } as React.CSSProperties}
       >
-        {title}
+        <InkWords text={title} keyRe={/\S+$/} delay={300} step={120} />
       </h2>
 
-      {/* Le trait se trace plutôt que d'apparaître : c'est ce geste, plus
-          que le texte, qui fait sentir qu'une étape s'ouvre. */}
-      <div
-        className="mx-auto mt-9 h-px bg-brand transition-all duration-[900ms] ease-out"
-        style={{ width: shown ? 96 : 0, transitionDelay: "420ms" }}
-      />
+      <div className="q-grow mt-5 h-px bg-brand" style={at(700)} />
 
-      {/* Pourquoi ce chapitre existe — la raison, avant tout le reste.
-          L'ancienne version affichait « quelques questions pour la suite
-          du document » : une phrase qui ne dit rien et qui laissait croire
-          que les questions étaient interchangeables. Ici on dit ce que le
-          chapitre fabrique, puis quelle pièce du document il nourrit. */}
-      <p
-        className={`mx-auto mt-9 max-w-[520px] font-sans text-[16px] leading-[1.8] text-chalk-75 transition-all duration-[800ms] ${
-          shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-        }`}
-        style={{ transitionDelay: "560ms" }}
-      >
-        {note}
+      {/* Pourquoi ce chapitre existe : le texte s'écrit mot à mot. */}
+      <p className="mx-auto mt-5 max-w-[520px] font-sans text-[15.5px] leading-[1.7] text-chalk-75">
+        <InkWords text={note} delay={t0} step={22} soft />
       </p>
 
       {feeds && (
-        <div
-          className={`mt-6 font-mono text-[10.5px] uppercase tracking-[0.2em] text-brand transition-all duration-[800ms] ${
-            shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-          }`}
-          style={{ transitionDelay: "720ms" }}
-        >
+        <div className="q-rise mt-4 flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.2em] text-brand" style={at(tNote + 150)}>
+          <span aria-hidden className="q-grow-sm inline-block h-px w-8 bg-brand" style={at(tNote + 150)} />
           {feeds}
         </div>
       )}
 
-      {/* La citation du livre : une idée de plus, volontairement discrète.
-          Elle passe après la raison — on lit d'abord ce qu'on va faire,
-          ensuite ce qui l'éclaire. */}
       {quote && (
-        <figure
-          className={`mx-auto mt-9 max-w-[480px] transition-all duration-[800ms] ${
-            shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-          }`}
-          style={{ transitionDelay: "880ms" }}
-        >
+        <figure className="q-rise q-tall-only mx-auto mt-6 max-w-[480px]" style={at(tNote + 450)}>
           <blockquote className="m-0 border-l-2 border-white/15 pl-4 text-left font-serif text-[13.5px] italic leading-[1.6] text-chalk-55">
             {quote}
           </blockquote>
@@ -2115,45 +2059,167 @@ function ChapterScreen({
         </figure>
       )}
 
-      <div
-        className={`mt-10 transition-all duration-[700ms] ${shown ? "opacity-100" : "opacity-0"}`}
-        style={{ transitionDelay: "1000ms" }}
-      >
-        {/* L'objet qu'on est en train de fabriquer.
-            Les six barres vivaient sous chaque question, où elles
-            encombraient la lecture. Ici, sur le seul écran qui ne demande
-            rien, elles font ce pour quoi elles existent : montrer que le
-            document se remplit. */}
+      <div className="q-rise mt-6" style={at(tNote + 700)}>
+        {/* Le document, pièce par pièce : celles que ce chapitre nourrit
+            s'allument ; les autres restent à leur niveau. */}
         {pieces && (
-          <div className="mx-auto mb-9 grid max-w-[360px] grid-cols-6 gap-2">
-            {pieces.map((pc) => (
-              <div key={pc.n} title={pc.t}>
-                <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.08]">
-                  <div
-                    className="h-full rounded-full bg-brand transition-all duration-[1200ms] ease-out"
-                    style={{ width: `${pc.pct}%` }}
-                  />
+          <div className="mx-auto mb-5 grid max-w-[380px] grid-cols-6 gap-2">
+            {pieces.map((pc) => {
+              const on = fed.includes(pc.n)
+              return (
+                <div key={pc.n} title={pc.t}>
+                  <div className={`h-[3px] overflow-hidden rounded-full ${on ? "q-pulse bg-brand/35" : "bg-white/[0.08]"}`}>
+                    <div className="h-full rounded-full bg-brand transition-all duration-[1200ms] ease-out" style={{ width: `${pc.pct}%` }} />
+                  </div>
+                  <div className={`mt-2 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${on ? "font-bold text-brand" : "text-chalk-40"}`}>{pc.n}</div>
                 </div>
-                <div
-                  className={`mt-2 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${
-                    pc.pct >= 100 ? "text-brand" : "text-chalk-40"
-                  }`}
-                >
-                  {pc.n}
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
 
-        <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
-          {copy.chapterCount(count)}
+        <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
+          {copy.chapterCount(count)} · {copy.chapterMinutes(mins)}
         </div>
-        <button type="button" className="btn-primary" onClick={onStart}>
+        <button type="button" className="btn-primary" onClick={go} disabled={leaving} autoFocus>
           {copy.continue}
         </button>
       </div>
     </div>
+  )
+}
+
+/**
+ * ChapterMotif — l'animation propre à chaque chapitre.
+ *
+ * Sept dessins, chacun une image de ce que le chapitre fabrique :
+ * des colonnes qui montent (les fondations), un radar qui balaie le champ
+ * des concurrents, une onde sonore (la voix), une cible qui se resserre
+ * (l'audience), la semaine qui tourne (le quotidien), un chemin balisé
+ * (le déploiement), un sceau (la preuve).
+ *
+ * SVG et CSS purs : les traits se tracent (stroke-dashoffset), les formes
+ * apparaissent (cm-pop), les barres montent (cm-rise). L'état par défaut
+ * est le dessin terminé — l'animation ne fait que le rejouer.
+ */
+function ChapterMotif({ k }: { k: string }) {
+  const W = "rgba(255,255,255,0.38)"
+  const B = "#ff2233"
+  const dl = (ms: number) => ({ animationDelay: `${ms}ms` })
+  const common = { viewBox: "0 0 440 190", fill: "none", strokeLinecap: "round" as const, strokeLinejoin: "round" as const, className: "block h-auto w-full" }
+
+  if (k === "fondations")
+    return (
+      <svg {...common}>
+        <line x1="40" y1="162" x2="400" y2="162" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" pathLength={1} className="cm-draw" style={dl(200)} />
+        {[90, 155, 220, 285, 350].map((x, i) => {
+          const h = [78, 104, 124, 104, 78][i]
+          return <rect key={x} x={x - 12} y={162 - h} width="24" height={h} rx="2" stroke={W} strokeWidth="1.4" fill="rgba(255,255,255,0.04)" className="cm-rise" style={dl(400 + i * 150)} />
+        })}
+        <path d="M70 84 L220 34 L370 84" stroke={B} strokeWidth="1.8" pathLength={1} className="cm-draw" style={dl(1300)} />
+        <circle cx="220" cy="34" r="4" fill={B} className="cm-pop" style={dl(2300)} />
+      </svg>
+    )
+
+  if (k === "champ")
+    return (
+      <svg {...common}>
+        {[34, 62, 90].map((r, i) => (
+          <circle key={r} cx="220" cy="95" r={r} stroke={W} strokeWidth="1.2" pathLength={1} className="cm-draw" style={dl(200 + i * 250)} />
+        ))}
+        <line x1="116" y1="95" x2="324" y2="95" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <line x1="220" y1="5" x2="220" y2="185" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <g className="cm-sweep">
+          <polygon points="220,95 310,95 306,66" fill="rgba(255,34,51,0.16)" />
+          <line x1="220" y1="95" x2="310" y2="95" stroke={B} strokeWidth="1.5" />
+        </g>
+        {[[262, 62], [180, 58], [286, 118], [150, 128], [236, 140]].map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r="4.5" fill="rgba(255,255,255,0.55)" className="cm-pop" style={dl(900 + i * 220)} />
+        ))}
+        <circle cx="196" cy="100" r="6" fill={B} className="cm-pop" style={dl(2200)} />
+        <circle cx="196" cy="100" r="13" stroke={B} strokeWidth="1.2" className="cm-ring" style={dl(2400)} />
+      </svg>
+    )
+
+  if (k === "voix")
+    return (
+      <svg {...common}>
+        {Array.from({ length: 31 }, (_, i) => {
+          const d = Math.abs(i - 15)
+          const h = 14 + 120 * Math.exp(-(d * d) / 60) * (0.55 + 0.45 * Math.abs(Math.sin(i * 1.7)))
+          return (
+            <rect
+              key={i}
+              x={40 + i * 11.6}
+              y={95 - h / 2}
+              width="5"
+              height={h}
+              rx="2.5"
+              fill={d < 6 ? B : "rgba(255,255,255,0.22)"}
+              fillOpacity={d < 6 ? 0.85 : 1}
+              className="cm-wave"
+              style={dl(i * 55)}
+            />
+          )
+        })}
+      </svg>
+    )
+
+  if (k === "audience")
+    return (
+      <svg {...common}>
+        {[88, 66, 44, 22].map((r, i) => (
+          <circle key={r} cx="220" cy="95" r={r} stroke={i === 3 ? B : W} strokeWidth={i === 3 ? 1.8 : 1.2} className="cm-zoom" style={dl(200 + i * 260)} />
+        ))}
+        {[[220, 2, 220, 18], [220, 172, 220, 188], [112, 95, 128, 95], [312, 95, 328, 95]].map(([x1, y1, x2, y2], i) => (
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(255,255,255,0.35)" strokeWidth="1.4" className="cm-pop" style={dl(1500 + i * 80)} />
+        ))}
+        <circle cx="220" cy="95" r="5.5" fill={B} className="cm-pop" style={dl(1500)} />
+        <circle cx="220" cy="95" r="14" stroke={B} strokeWidth="1.2" className="cm-ring" style={dl(1700)} />
+      </svg>
+    )
+
+  if (k === "quotidien")
+    return (
+      <svg {...common}>
+        <circle cx="220" cy="95" r="72" stroke={W} strokeWidth="1.2" pathLength={1} className="cm-draw" style={dl(200)} />
+        <circle cx="220" cy="95" r="46" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="2 6" />
+        {Array.from({ length: 7 }, (_, i) => {
+          const a = (-90 + i * (360 / 7)) * (Math.PI / 180)
+          return <circle key={i} cx={220 + 72 * Math.cos(a)} cy={95 + 72 * Math.sin(a)} r={i === 0 ? 7 : 5} fill={i === 0 ? B : "rgba(255,255,255,0.5)"} className="cm-seq" style={dl(i * 450)} />
+        })}
+        <path d="M205 95 L218 108 L238 82" stroke={B} strokeWidth="2" pathLength={1} className="cm-draw" style={dl(1400)} />
+      </svg>
+    )
+
+  if (k === "deploiement")
+    return (
+      <svg {...common}>
+        <path d="M30 150 C 110 150, 120 50, 200 70 S 320 160, 400 60" stroke={W} strokeWidth="1.6" strokeDasharray="1" pathLength={1} className="cm-draw" style={dl(200)} />
+        {[[30, 150], [128, 98], [232, 108], [330, 118]].map(([x, y], i) => (
+          <g key={i} className="cm-pop" style={dl(500 + i * 450)}>
+            <circle cx={x} cy={y} r="9" fill="#0a0a0a" stroke="rgba(255,255,255,0.45)" strokeWidth="1.4" />
+            <text x={x} y={y + 3.5} textAnchor="middle" fontSize="10" fontFamily="monospace" fill="rgba(255,255,255,0.7)">{i + 1}</text>
+          </g>
+        ))}
+        <g className="cm-pop" style={dl(2300)}>
+          <circle cx="400" cy="60" r="10" fill={B} />
+          <path d="M395 60 H405 M401 56 L405 60 L401 64" stroke="#0a0a0a" strokeWidth="1.8" />
+        </g>
+      </svg>
+    )
+
+  // preuve : un sceau
+  return (
+    <svg {...common}>
+      <circle cx="220" cy="95" r="70" stroke={W} strokeWidth="1.4" pathLength={1} className="cm-draw" style={dl(200)} />
+      <circle cx="220" cy="95" r="54" stroke="rgba(255,255,255,0.16)" strokeWidth="1" strokeDasharray="3 7" className="cm-turn" />
+      {Array.from({ length: 36 }, (_, i) => {
+        const a = (i * 10) * (Math.PI / 180)
+        return <line key={i} x1={220 + 76 * Math.cos(a)} y1={95 + 76 * Math.sin(a)} x2={220 + 82 * Math.cos(a)} y2={95 + 82 * Math.sin(a)} stroke="rgba(255,255,255,0.3)" strokeWidth="1.4" className="cm-pop" style={dl(500 + i * 25)} />
+      })}
+      <path d="M190 97 L212 119 L254 70" stroke={B} strokeWidth="3.2" pathLength={1} className="cm-draw" style={dl(1500)} />
+    </svg>
   )
 }
 
@@ -2417,7 +2483,7 @@ function ToneGauge({
  * comme « quelque chose » — prend le dégradé rouge du titre de la home.
  * Animations CSS pures : le texte est lisible même si le script tarde.
  */
-function InkWords({ text, keyRe, delay = 0, step = 80 }: { text: string; keyRe?: RegExp; delay?: number; step?: number }) {
+function InkWords({ text, keyRe, delay = 0, step = 80, soft = false }: { text: string; keyRe?: RegExp; delay?: number; step?: number; soft?: boolean }) {
   const words = text.split(" ")
   const m = keyRe ? keyRe.exec(text) : null
   let offset = 0
@@ -2438,7 +2504,7 @@ function InkWords({ text, keyRe, delay = 0, step = 80 }: { text: string; keyRe?:
                 {w}
               </span>
             ) : (
-              <span className="q-ink" style={d}>
+              <span className={soft ? "q-ink-soft" : "q-ink"} style={d}>
                 {w}
               </span>
             )}

@@ -1,0 +1,2132 @@
+{
+  "name": "🍓 L'ARCHITECTURE NARRATIVE",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": -2000,
+          "y": 0,
+          "name": "WEBHOOK ONBOARDING (site)"
+        },
+        "restore": {
+          "parameters": {
+            "__IMTHOOK__": {
+              "data": {
+                "editable": "false"
+              },
+              "label": "My New Response webhook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTHOOK__",
+            "type": "hook:tally",
+            "label": "Webhook",
+            "required": true
+          }
+        ],
+        "interface": [
+          {
+            "name": "eventId",
+            "type": "text",
+            "label": "Event ID"
+          },
+          {
+            "name": "responseId",
+            "type": "text",
+            "label": "Response ID"
+          },
+          {
+            "name": "submissionId",
+            "type": "text",
+            "label": "Submission ID"
+          },
+          {
+            "name": "respondentId",
+            "type": "text",
+            "label": "Respondent ID"
+          },
+          {
+            "name": "formId",
+            "type": "text",
+            "label": "Form ID"
+          },
+          {
+            "name": "formName",
+            "type": "text",
+            "label": "Form Name"
+          },
+          {
+            "name": "createdAt",
+            "type": "date",
+            "label": "Created at"
+          },
+          {
+            "name": "fields",
+            "spec": [
+              {
+                "name": "YOUR NAME AND THE NAME OF THE HOUSE.",
+                "type": "text"
+              },
+              {
+                "name": "WHAT IS THE CONVICTION YOU HOLD ABOUT YOUR FIELD THAT MOST PEOPLE IN IT WOULD REFUSE TO SAY OUT LOUD?",
+                "type": "text"
+              },
+              {
+                "name": "TELL ME THE RUPTURE MOMENT.",
+                "type": "text"
+              },
+              {
+                "name": "WHO OR WHAT IS THE ENEMY OF THIS HOUSE ?",
+                "type": "text"
+              },
+              {
+                "name": "NAME YOUR 3 TO 5 DIRECT COMPETITORS. FOR EACH ONE, PASTE THE SENTENCE THEY USE TO DESCRIBE THEMSELVES.",
+                "type": "text"
+              },
+              {
+                "name": "WHAT SENTENCE DESCRIBES YOUR HOUSE TODAY ?",
+                "type": "text"
+              },
+              {
+                "name": "IF THIS HOUSE WERE A PERSON, DESCRIBE THEM.",
+                "type": "text"
+              },
+              {
+                "name": "DESCRIBE THE FOUNDER OR PERSON WHO WILL READ AND APPLY THIS DOCUMENT ONE YEAR FROM NOW.",
+                "type": "text"
+              },
+              {
+                "name": "LINKS AND ACCESS.",
+                "type": "text"
+              },
+              {
+                "name": "WHAT ARE YOUR CURRENT MARKET FIGURES (Annual revenue, average order value, customer acquisition cost if known) ?",
+                "type": "text"
+              },
+              {
+                "name": "DESCRIBE YOUR 4 CURRENT CUSTOMER SEGMENTS : WHO BUYS THE MOST AND WHO IS THE MOST PROFITABLE ?",
+                "type": "text"
+              },
+              {
+                "name": "WHAT ARE THE 3 MAJOR TRENDS (TECH,SOCIAL, OR ECONOMIC) IMPACTING YOUR INDUSTRY TODAY ? ",
+                "type": "text"
+              },
+              {
+                "name": "WHAT IS YOUR GREATEST IDENTIFIED BUSINESS RISK FOR THE NEXT 12 MONTHS ? ",
+                "type": "text"
+              }
+            ],
+            "type": "collection",
+            "label": "Fields"
+          },
+          {
+            "name": "fieldsById",
+            "spec": [
+              {
+                "name": "question_eEoa2q",
+                "type": "text",
+                "label": "YOUR NAME AND THE NAME OF THE HOUSE."
+              },
+              {
+                "name": "question_zzqola",
+                "type": "text",
+                "label": "WHAT IS THE CONVICTION YOU HOLD ABOUT YOUR FIELD THAT MOST PEOPLE IN IT WOULD REFUSE TO SAY OUT LOUD?"
+              },
+              {
+                "name": "question_5kzDR6",
+                "type": "text",
+                "label": "TELL ME THE RUPTURE MOMENT."
+              },
+              {
+                "name": "question_dA61Bq",
+                "type": "text",
+                "label": "WHO OR WHAT IS THE ENEMY OF THIS HOUSE ?"
+              },
+              {
+                "name": "question_D1NPgq",
+                "type": "text",
+                "label": "NAME YOUR 3 TO 5 DIRECT COMPETITORS. FOR EACH ONE, PASTE THE SENTENCE THEY USE TO DESCRIBE THEMSELVES."
+              },
+              {
+                "name": "question_oBy1Xe",
+                "type": "text",
+                "label": "WHAT SENTENCE DESCRIBES YOUR HOUSE TODAY ?"
+              },
+              {
+                "name": "question_OPz9O7",
+                "type": "text",
+                "label": "IF THIS HOUSE WERE A PERSON, DESCRIBE THEM."
+              },
+              {
+                "name": "question_E0pMGo",
+                "type": "text",
+                "label": "DESCRIBE THE FOUNDER OR PERSON WHO WILL READ AND APPLY THIS DOCUMENT ONE YEAR FROM NOW."
+              },
+              {
+                "name": "question_rEXvQM",
+                "type": "text",
+                "label": "LINKS AND ACCESS."
+              },
+              {
+                "name": "question_YOQvN5",
+                "type": "text",
+                "label": "WHAT ARE YOUR CURRENT MARKET FIGURES (Annual revenue, average order value, customer acquisition cost if known) ?"
+              },
+              {
+                "name": "question_lAy1JB",
+                "type": "text",
+                "label": "DESCRIBE YOUR 4 CURRENT CUSTOMER SEGMENTS : WHO BUYS THE MOST AND WHO IS THE MOST PROFITABLE ?"
+              },
+              {
+                "name": "question_R40aEd",
+                "type": "text",
+                "label": "WHAT ARE THE 3 MAJOR TRENDS (TECH,SOCIAL, OR ECONOMIC) IMPACTING YOUR INDUSTRY TODAY ? "
+              },
+              {
+                "name": "question_G1z48p",
+                "type": "text",
+                "label": "WHAT IS YOUR GREATEST IDENTIFIED BUSINESS RISK FOR THE NEXT 12 MONTHS ? "
+              }
+            ],
+            "type": "collection",
+            "label": "Fields by ID"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariable2",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "name": "Context_Global",
+        "scope": "roundtrip",
+        "value": "=== COMMISSION INTAKE ===\n\nDOSSIER : {{1.submission_id}}\nTERRAIN : {{1.terrain_label}}\nMAISON : {{1.client.house}}\nFONDATEUR : {{1.client.name}}\n\n=== QUESTIONNAIRE COMPLET (intitulés de questions + réponses du client, mot pour mot) ===\n\n{{1.answers_text}}\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -1700,
+          "y": 0,
+          "name": "CONTEXT GLOBAL"
+        },
+        "restore": {
+          "expect": {
+            "scope": {
+              "label": "One cycle"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "name",
+            "type": "text",
+            "label": "Variable name",
+            "required": true
+          },
+          {
+            "name": "scope",
+            "type": "select",
+            "label": "Variable lifetime",
+            "required": true,
+            "validate": {
+              "enum": [
+                "roundtrip",
+                "execution"
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": "any",
+            "label": "Variable value"
+          }
+        ],
+        "interface": [
+          {
+            "name": "Context_Global",
+            "type": "any",
+            "label": "Context_Global"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 01A — PLATEFORME : POSITION ET REFUS.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the doctrinal core of the platform. Four sections only:\n1. RAISON D'ÊTRE — one sentence: why this house would be missed if it closed. Not a mission.\n2. POSITION — one sentence naming the ground held, phrased so no competitor named in the intake could sign it without lying. Name explicitly which competitor sentence it displaces, quoted.\n3. TROIS PARTIS PRIS — three values written as refusals: 'Nous refusons X, même quand Y', where Y is the tempting circumstance. A refusal that costs nothing is cut and replaced.\n4. LE MOT INTERDIT — the single word this house must never use about itself, and why. Usually the one the whole field uses.\n\nLENGTH\nThree to four pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -1500,
+          "y": 0,
+          "name": "01A — PLATEFORME : POSITION ET REFUS"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 01A — PLATEFORME : POSITION ET REFUS.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{3.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- The three refusals are the spine of the whole commission. If one could be adopted by any house in the field, replace it.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree to four pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -1240,
+          "y": 0,
+          "name": "01A — PLATEFORME : POSITION ET REFUS — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 01B — PLATEFORME : LA PERSONNE ET LE TON.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the expression layer of the platform. Two sections:\n1. LA PERSONNE — the house as a person: how they speak, what they never say, what makes them leave a room, what they are visibly bad at. Written as a portrait, not a list of traits.\n2. TON DE VOIX — seven rules. Each rule states the principle, then a wrong example and a right one, both drawn from this house's own material in the intake. Generic examples are worthless here.\n\nLENGTH\nThree pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -980,
+          "y": 0,
+          "name": "01B — PLATEFORME : LA PERSONNE ET LE TON"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 01B — PLATEFORME : LA PERSONNE ET LE TON.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{5.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Any tone rule whose wrong example could come from another industry is not specific enough.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -720,
+          "y": 0,
+          "name": "01B — PLATEFORME : LA PERSONNE ET LE TON — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 01C — PLATEFORME : LE RÉCIT FONDATEUR.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nWrite the origin as a piece of prose, not as a summary. Use the rupture moment from the intake.\n\nIt must be readable aloud without skipping a sentence. It must name what the founder refused at that moment — the easier path that was available and not taken. It must end on the conviction the field would refuse to say out loud, without announcing it as a conclusion.\n\nThis is the only literary piece of the commission. It is what the founder will reread and quote, and what carries the house in rooms the founder is not in. Write it with that weight.\n\nLENGTH\nTwo full pages, 900 to 1 200 words. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -460,
+          "y": 0,
+          "name": "01C — PLATEFORME : LE RÉCIT FONDATEUR"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 01C — PLATEFORME : LE RÉCIT FONDATEUR.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{7.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Read it aloud in your head. Any sentence a listener would stop following is cut and rewritten.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nTwo full pages, 900 to 1 200 words. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": -200,
+          "y": 0,
+          "name": "01C — PLATEFORME : LE RÉCIT FONDATEUR — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 02 — LE DIAGNOSTIC.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the written diagnosis of what this house says today.\n1. CE QUE VOUS DITES — each support named in the intake, with the sentence it leads with, quoted.\n2. LES ÉCARTS — the contradictions between two of the house's own supports. This is the heart: a founder never reads their material end to end, so this is what they cannot see alone. Quote both sides, state which one the market believes, and what the contradiction costs.\n3. LE MOT PARTAGÉ — the words this house uses that competitors also use. Count where the intake allows, mark [À RELEVER] otherwise.\n4. CE QUI N'APPARAÎT NULLE PART — what the founder called obvious in the intake and which appears in none of their published material. Usually the most valuable finding of the commission.\n\nLENGTH\nFive to six pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 60,
+          "y": 0,
+          "name": "02 — LE DIAGNOSTIC"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 02 — LE DIAGNOSTIC.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{9.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- LES ÉCARTS must be uncomfortable to read. If it is not, it is not finished.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nFive to six pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 320,
+          "y": 0,
+          "name": "02 — LE DIAGNOSTIC — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 02B — QUI VOUS LIT.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the audience intelligence.\n1. QUI DÉCIDE — who actually signs, and who influences them without deciding.\n2. CE QU'ILS CROIENT DÉJÀ — what they believe about this field before meeting this house. What they assume is true of everyone in it.\n3. CE QU'ILS CRAIGNENT D'ACHETER — the fear behind the objection. Name the objection never said out loud.\n4. CE QU'ILS RETIENNENT — the gap between what this house thinks it communicates and what its audience repeats. Quote both sides where the intake allows.\n\nNo personas, no demographics, no invented names. Where the intake gives no evidence, write the question that would have to be asked to find out.\n\nLENGTH\nThree pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 580,
+          "y": 0,
+          "name": "02B — QUI VOUS LIT"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 02B — QUI VOUS LIT.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{11.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Any sentence that could describe the audience of any house in this field is cut.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 840,
+          "y": 0,
+          "name": "02B — QUI VOUS LIT — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 03 — LA CARTE DU CHAMP.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the forensic map of the narrative field.\n1. LE PANEL — the 3 to 5 competitors, each with their self-description quoted word for word.\n2. CE QUE CHACUN REVENDIQUE — the argument each leads with, and the one each avoids.\n3. LES MOTS PARTAGÉS — a count of which claims are made by how many. Any word claimed by three or more is a word this house must stop using, and you say so explicitly.\n4. LE TERRAIN LIBRE — the ground nobody claims. Explain why it is empty — usually because they all ran the same calculation — and whether this house can actually hold it, with the proof from the intake.\n5. CE QU'ILS NE PEUVENT PAS COPIER — the one thing structurally unavailable to the panel.\n\nLENGTH\nFive pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1100,
+          "y": 0,
+          "name": "03 — LA CARTE DU CHAMP"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 03 — LA CARTE DU CHAMP.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{16.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- If the empty ground is one this house cannot structurally hold, say so plainly rather than flatter.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nFive pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1360,
+          "y": 0,
+          "name": "03 — LA CARTE DU CHAMP — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 04 — LES DÉCISIONS.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce three to five ordered moves. This is what separates this commission from a platform an agency would deliver, because a platform decides nothing.\n\nFor each move: LE MOUVEMENT (what changes, one sentence) · LA FORMULATION (the exact wording, ready to paste — the sentence itself, not a direction) · OÙ (which page, which support, which line it replaces) · CE QUE ÇA COÛTE · CE QUE ÇA FAIT PERDRE (the segment, the enquiries, the visibility given up — quantified from the intake, [À RELEVER] otherwise; a move with no stated loss is not finished) · CE QUE ÇA DÉBLOQUE (the second-order effect, not a restatement).\n\nThen L'ORDRE: why this sequence and no other, including what must be done before any visual rebrand.\n\nLENGTH\nFive to six pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1620,
+          "y": 0,
+          "name": "04 — LES DÉCISIONS"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 04 — LES DÉCISIONS.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{18.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Move 1 must be doable tomorrow and must make the others possible.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nFive to six pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1880,
+          "y": 0,
+          "name": "04 — LES DÉCISIONS — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 04B — LE BRIEF VISUEL.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the brief for whoever will do the visual work, in-house or agency. Not a moodboard: the constraints.\n1. CE QUE L'IDENTITÉ NE DOIT JAMAIS ÊTRE — three visual directions forbidden, each with the reason drawn from the position.\n2. LES TROIS ADJECTIFS INTERDITS AU DESIGNER — the words that, if used to describe the work, mean the brief was not read.\n3. LA DÉCISION VISUELLE QUI DÉCOULE DE LA POSITION — one structural choice the position makes mandatory, and why.\n4. CE QU'ON LEUR REMET — which pieces of this commission the designer receives, and which they must not see.\n5. COMMENT REFUSER UN RENDU — the sentence to say, pointing at which line of this brief.\n\nLENGTH\nTwo pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2140,
+          "y": 0,
+          "name": "04B — LE BRIEF VISUEL"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 04B — LE BRIEF VISUEL.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{20.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- The brief must be enforceable. A designer must be able to be told 'this does not respect the brief', with a line to point at.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nTwo pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2400,
+          "y": 0,
+          "name": "04B — LE BRIEF VISUEL — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 05A — PLAYBOOK VENTE ET PRIX.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the sales playbook.\n1. LES TROIS OBJECTIONS RÉELLES — drawn from the intake, each with the answer in this house's own words.\n2. CE QU'ON NE CONCÈDE JAMAIS — and what to say instead.\n3. LE DEVIS COMPARATIF — the exact wording when a prospect asks to be compared before being listened to.\n4. PRIX — the sentence that names it, the sentence that justifies it, and the rule: never discount without removing something, never compare, never apologise. Include the exact wording for 'c'est cher'.\n\nWritten so a salesperson who was not in the conversation can use it on their first call.\n\nLENGTH\nThree pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2660,
+          "y": 0,
+          "name": "05A — PLAYBOOK VENTE ET PRIX"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 05A — PLAYBOOK VENTE ET PRIX.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{22.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Anything requiring the founder's judgement is not a playbook. Rewrite it as a rule.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2920,
+          "y": 0,
+          "name": "05A — PLAYBOOK VENTE ET PRIX — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 05B — PLAYBOOK PRÉSENCE.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the day-to-day presence playbook, in three parts.\n1. CONTENU — what to show, at what rhythm, in the formats this house can actually sustain at its size. What to stop publishing, and why.\n2. RÉSEAUX — the recurring subject, the framing, the line to write underneath. Usable without the founder.\n3. SUPPORT — the tone, and the one line never to cross.\n\nEach part fits on one page and is written to be read standing up.\n\nLENGTH\nThree pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3180,
+          "y": 0,
+          "name": "05B — PLAYBOOK PRÉSENCE"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 05B — PLAYBOOK PRÉSENCE.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{24.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Any instruction that cannot be followed by a new hire on their second day is rewritten.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3440,
+          "y": 0,
+          "name": "05B — PLAYBOOK PRÉSENCE — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 05C — RECRUTEMENT ET TENUE.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the two pieces that make the doctrine survive the founder.\n1. RECRUTEMENT — what to look for, and the disqualifying trait, named precisely. What to test during a trial. The question to ask that reveals whether someone can hold this house's refusals.\n2. LA TENUE — five questions to ask of any new page, offer or post before publishing. Each answerable yes or no with no interpretation. If any answer is no, it does not go out. Then: the three signs, six months from now, that the house has drifted back to the field's language.\n\nLENGTH\nTwo to three pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3700,
+          "y": 0,
+          "name": "05C — RECRUTEMENT ET TENUE"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 05C — RECRUTEMENT ET TENUE.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{26.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Each of the five questions must be answerable without judgement. Any question needing interpretation is rewritten.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nTwo to three pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3960,
+          "y": 0,
+          "name": "05C — RECRUTEMENT ET TENUE — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 06A — LE LEXIQUE.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nProduce the language system.\n1. LES MOTS À EMPLOYER — with, for each, the reason it belongs to this house.\n2. LES MOTS À CESSER D'EMPLOYER — each with the reason it was banned: a competitor owns it, or it means nothing. Include every word identified as shared with the panel.\n3. LES CINQ PHRASES FONDATRICES — the homepage line, the one-line answer to 'what do you do', the refusal sentence, the price sentence, the closing sentence.\n4. POUR UNE MACHINE — a compact block to paste into any language model so it writes in this house's voice: the position, the three refusals, the banned words, the tone rules. Written as instructions to a model, not as prose about the house.\n\nLENGTH\nThree to four pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 4220,
+          "y": 0,
+          "name": "06A — LE LEXIQUE"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 06A — LE LEXIQUE.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{28.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Section 4 must be usable as-is. Test every line: would a model follow this without interpreting?\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nThree to four pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 4480,
+          "y": 0,
+          "name": "06A — LE LEXIQUE — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): 06B — LES TEXTES RÉÉCRITS.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nTASK\nRewrite, ready to paste, using the position and the tone established upstream:\n1. L'OUVERTURE DU SITE — the homepage opening paragraph.\n2. LA PAGE À PROPOS — full.\n3. LE MAIL DE RELANCE — after a quote with no reply.\n4. LA BIO EN TROIS LONGUEURS — one line, one paragraph, one page.\n5. LA RÉPONSE À UN AVIS NÉGATIF — the template, in this house's voice.\n\nEach text is delivered final. No brackets to fill except real unknowns, marked [À RELEVER].\n\nLENGTH\nFour pages. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 4740,
+          "y": 0,
+          "name": "06B — LES TEXTES RÉÉCRITS"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on 06B — LES TEXTES RÉÉCRITS.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{30.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- Any text still containing a placeholder that could have been written is finished by you.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\nFour pages. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 5000,
+          "y": 0,
+          "name": "06B — LES TEXTES RÉÉCRITS — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "Role: You are the lead narrative architect at Strawberry Production, a Paris-based narrative architecture studio. You are writing one section of a three-week commission (L'ARCHITECTURE NARRATIVE, 2 900 €): LA PIÈCE SIGNATURE.\n\nThis call produces this section and nothing else. Do not summarise the rest of the commission, do not announce what comes next, do not restate the intake.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\nPOSITION ET REFUS ÉTABLIS\n{{4.result}}\n\nTON DE VOIX ÉTABLI\n{{6.result}}\n\n\nTASK\nWrite one emblematic text this house can publish as it is, and that no competitor named in the intake could publish without lying.\n\nIt must carry the position and one of the three refusals established above. It must be written to be shared — someone should want to send it to someone else. It is not an article about the house: it is the house speaking about its field.\n\nThis piece is the test of everything upstream. If it could appear on a competitor's site, the position is not sharp enough — and you say so at the end, in one line, rather than publishing a weak piece.\n\nLENGTH\n400 to 600 words, plus the one-line verdict. Anything shorter is unfinished. Do not pad — go deeper instead.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 5260,
+          "y": 0,
+          "name": "06C — LA PIÈCE SIGNATURE"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "module": "openai-gpt-3:askAnything",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "model": "gpt-5.5",
+        "textPrompt": "You are the senior narrative architect at Strawberry Production performing a critical refinement pass on LA PIÈCE SIGNATURE.\n\nYour job is not to rewrite — it is to surgically sharpen. Find the weak sentences, the generic phrasings, anywhere the document slips into agency speak.\n\nNAMING DISCIPLINE\nThroughout this document, refer to the house by the name provided in the intake. Do not use \"the brand\", \"the company\", or \"this brand\". Use \"the house\" sparingly and only when the name has already been used in the same paragraph. Section titles must include the house name where it strengthens the framing.\n\nVOCABULARY DISCIPLINE\nBanned words and phrases: \"brand\", \"company\", \"framework\", \"deliverables\", \"strategy\", \"system\", \"client\", \"project\", \"service\", \"package\", \"solutions\", \"synergy\", \"leverage\", \"disrupt\", \"game-changer\", \"best-in-class\", \"world-class\", \"ROI\", \"stakeholders\", \"ecosystem\", \"value proposition\", \"innovate\", \"scalable\", \"robust\", \"seamless\", \"empower\", \"streamline\".\nUse instead: \"house\", \"doctrine\", \"constitution\", \"commission\", \"founder\", \"architecture\", \"narrative spine\", \"craft\", \"mythology\", \"archetype\", \"perception\", \"refuse\", \"unforgettable\", \"rupture\", \"singularity\".\n\nEVIDENCE DISCIPLINE\nThis document is a record, not an opinion. Every claim must be traceable to something in the intake: a sentence the founder wrote, a competitor's exact wording, a stated refusal. When you assert something the intake does not support, write instead what would have to be verified, and name the support to check. Never invent a figure, a review count or a competitor sentence. Where a count matters and the intake gives none, write the count as [À RELEVER] so it is filled by hand before delivery.\n\nREFUSAL DISCIPLINE\nAnything this house could keep doing without contradiction is not a decision. Every recommendation must name what it makes the house give up — a segment, a word, a kind of enquiry — and what that costs. A move with no cost is not a move.\n\nINTAKE CONSTRAINTS\nThe intake contains practical answers. They bind every sentence you write, example texts included.\n- LANGUAGE: write in the first language ticked in the intake's language question. If none is ticked, follow the delivery-language rule in OUTPUT.\n- ADDRESS: respect the stated mode of address (we or I, formal or casual). A house that says \"vous\" never slips into \"tu\" in any sample text.\n- UNTOUCHABLES: nothing the intake names as untouchable, sensitive or confidential may be changed, quoted or contradicted. If a recommendation would touch it, say so in one line and propose the move around it.\n- BUDGET AND CALENDAR: never recommend a move the stated annual budget cannot carry, nor one that ignores a stated deadline. When the budget is unknown, give each cost as a range.\n- TEAM AND CHANNELS: size every playbook for the stated team (a one-person house gets no HR playbook — say so in one line) and write channel guidance only for channels the house uses or is about to use.\n- PAST ATTEMPTS: never recommend what the intake says was already tried and did not take, unless you name why this time differs.\n- VOICE EVIDENCE: where the intake contains a text the founder wrote, or sentences customers used, calibrate the voice on them and quote them as evidence rather than inventing a voice.\n\nCLIENT INTAKE\n{{2.Context_Global}}\n\n\nDOCUMENT TO REFINE\n{{32.result}}\n\nREFINEMENT INSTRUCTIONS\n- Every adjective must earn its place. Delete the rest.\n- Every claim must point back to the intake. If it cannot, replace it with what would have to be verified.\n- Any sentence a competitor of this house could sign without lying must be cut or made unsignable.\n- Any recommendation with no stated cost must be given one, or removed.\n- The piece must be publishable with no edit. Any sentence needing context the reader does not have is rewritten.\n- Do not add new sections. Return the complete refined document, nothing else.\n\nLENGTH\n400 to 600 words. If your version is shorter than the source, you cut without replacing. Go back.\n\nOUTPUT\nMarkdown. No preamble, no meta-commentary, no closing summary. Begin directly with the section title. Delivery language: the first language ticked in the intake's language question; if none is ticked, French unless the intake is written in English, in which case match the intake.\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 5520,
+          "y": 0,
+          "name": "06C — LA PIÈCE SIGNATURE — refine"
+        },
+        "restore": {
+          "expect": {
+            "model": {
+              "label": "GPT-5.5The ultimate frontier model for autonomous reasoning and state-of-the-art multimodal intelligence"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "model",
+            "type": "select",
+            "label": "Model",
+            "required": true,
+            "validate": {
+              "enum": [
+                "gpt-5.5",
+                "gpt-5.4-nano",
+                "gpt-5.4-mini",
+                "gpt-5.4",
+                "gpt-5.3-chat-latest",
+                "gpt-5.2",
+                "gpt-5.1",
+                "gpt-5",
+                "gpt-5-nano",
+                "gpt-5-mini"
+              ]
+            }
+          },
+          {
+            "name": "textPrompt",
+            "type": "text",
+            "label": "Text prompt",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "module": "util:TextAggregator",
+      "version": 1,
+      "parameters": {
+        "feeder": 33,
+        "rowSeparator": "other",
+        "rowSeparatorOther": "\n\n---\n\n"
+      },
+      "mapper": {
+        "value": "# L'ARCHITECTURE NARRATIVE\n\n**Strawberry Production · Paris**\n*Commande de {{1.client.house}} ({{1.client.name}})*\n\nBrouillon interne généré depuis le questionnaire. À relire et à affiner à la main pendant les trois semaines de production. Toute mention [À RELEVER] doit être comblée par un relevé réel avant envoi.\n\n---\n\n# PIÈCE 01 — LA PLATEFORME DE MARQUE\n\n## Position et refus\n\n{{4.result}}\n\n## La personne et le ton\n\n{{6.result}}\n\n## Le récit fondateur\n\n{{8.result}}\n\n---\n\n# PIÈCE 02 — LE DIAGNOSTIC\n\n{{10.result}}\n\n## Qui vous lit\n\n{{12.result}}\n\n---\n\n# PIÈCE 03 — LA CARTE DU CHAMP\n\n{{17.result}}\n\n---\n\n# PIÈCE 04 — LES DÉCISIONS\n\n{{19.result}}\n\n## Le brief visuel\n\n{{21.result}}\n\n---\n\n# PIÈCE 05 — LES PLAYBOOKS\n\n## Vente et prix\n\n{{23.result}}\n\n## Présence\n\n{{25.result}}\n\n## Recrutement et tenue\n\n{{27.result}}\n\n---\n\n# PIÈCE 06 — LE LANGAGE\n\n## Le lexique\n\n{{29.result}}\n\n## Les textes réécrits\n\n{{31.result}}\n\n## La pièce signature\n\n{{33.result}}\n\n---\n\n*Six pièces, cinquante à soixante-dix pages. Deux révisions incluses. Livré le vingt et unième jour au plus tard.*\n"
+      },
+      "metadata": {
+        "designer": {
+          "x": 5780,
+          "y": 0,
+          "name": "ASSEMBLE COMMISSION"
+        },
+        "restore": {
+          "expect": {
+            "rowSeparator": {
+              "label": "Other"
+            }
+          },
+          "parameters": {
+            "feeder": {
+              "label": "14R — Audience refine"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 14,
+      "module": "markdown:Compile",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "gfm": true,
+        "data": "{{13.text}}",
+        "sanitize": ""
+      },
+      "metadata": {
+        "designer": {
+          "x": 6040,
+          "y": 0,
+          "name": "COMPILE MARKDOWN"
+        },
+        "restore": {
+          "expect": {
+            "sanitize": {
+              "label": "Off"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "data",
+            "type": "text",
+            "label": "Markdown"
+          },
+          {
+            "name": "gfm",
+            "type": "boolean",
+            "label": "GitHub Flavored Markdown",
+            "required": true
+          },
+          {
+            "name": "sanitize",
+            "type": "select",
+            "label": "Sanitize",
+            "validate": {
+              "enum": [
+                "strip",
+                "escape"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "module": "google-email:sendAnEmail",
+      "version": 4,
+      "parameters": {
+        "__IMTCONN__": 8149901
+      },
+      "mapper": {
+        "to": [
+          "hamzaa.oudin@gmail.com"
+        ],
+        "content": "{{14.data}}",
+        "subject": "🍓 L'Architecture Narrative — brouillon interne prêt ({{1.client.house}} ({{1.client.name}}))",
+        "bodyType": "rawHtml"
+      },
+      "metadata": {
+        "designer": {
+          "x": 6300,
+          "y": 0,
+          "name": "INTERNAL DRAFT TO HAMZA"
+        },
+        "restore": {
+          "expect": {
+            "cc": {
+              "mode": "chose"
+            },
+            "to": {
+              "mode": "chose",
+              "items": [
+                null
+              ]
+            },
+            "bcc": {
+              "mode": "chose"
+            },
+            "from": {
+              "mode": "chose"
+            },
+            "bodyType": {
+              "label": "Raw HTML"
+            },
+            "attachments": {
+              "mode": "chose"
+            },
+            "emailHeaders": {
+              "mode": "chose"
+            }
+          },
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "google-email"
+              },
+              "label": "My Gmail connection"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:google-email",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "to",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address",
+              "required": true,
+              "validate": true
+            },
+            "type": "array",
+            "label": "To",
+            "required": true
+          },
+          {
+            "name": "subject",
+            "type": "text",
+            "label": "Subject"
+          },
+          {
+            "name": "bodyType",
+            "type": "select",
+            "label": "Body type",
+            "required": true,
+            "validate": {
+              "enum": [
+                "rawHtml",
+                "collection"
+              ]
+            }
+          },
+          {
+            "name": "attachments",
+            "spec": {
+              "name": "value",
+              "spec": [
+                {
+                  "name": "filename",
+                  "type": "filename",
+                  "label": "File name",
+                  "required": true,
+                  "semantic": "file:name"
+                },
+                {
+                  "name": "data",
+                  "type": "buffer",
+                  "label": "Data",
+                  "required": true,
+                  "semantic": "file:data"
+                }
+              ],
+              "type": "collection",
+              "label": "Attachment"
+            },
+            "type": "array",
+            "label": "Attachments"
+          },
+          {
+            "name": "from",
+            "type": "select",
+            "label": "From"
+          },
+          {
+            "name": "cc",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address"
+            },
+            "type": "array",
+            "label": "CC recipients"
+          },
+          {
+            "name": "bcc",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address"
+            },
+            "type": "array",
+            "label": "BCC recipients"
+          },
+          {
+            "name": "emailHeaders",
+            "spec": {
+              "name": "value",
+              "spec": [
+                {
+                  "name": "key",
+                  "type": "text",
+                  "label": "Key",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "text",
+                  "label": "Value"
+                }
+              ],
+              "type": "collection",
+              "label": "Email header"
+            },
+            "type": "array",
+            "label": "Additional email headers"
+          },
+          {
+            "name": "content",
+            "type": "text",
+            "label": "Content"
+          },
+          {
+            "name": "to",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address",
+              "required": true,
+              "validate": true
+            },
+            "type": "array",
+            "label": "To",
+            "required": true
+          },
+          {
+            "name": "subject",
+            "type": "text",
+            "label": "Subject"
+          },
+          {
+            "name": "bodyType",
+            "type": "select",
+            "label": "Body type",
+            "required": true,
+            "validate": {
+              "enum": [
+                "rawHtml",
+                "collection"
+              ]
+            }
+          },
+          {
+            "name": "attachments",
+            "spec": {
+              "name": "value",
+              "spec": [
+                {
+                  "name": "filename",
+                  "type": "filename",
+                  "label": "File name",
+                  "required": true,
+                  "semantic": "file:name"
+                },
+                {
+                  "name": "data",
+                  "type": "buffer",
+                  "label": "Data",
+                  "required": true,
+                  "semantic": "file:data"
+                }
+              ],
+              "type": "collection",
+              "label": "Attachment"
+            },
+            "type": "array",
+            "label": "Attachments"
+          },
+          {
+            "name": "from",
+            "type": "select",
+            "label": "From"
+          },
+          {
+            "name": "cc",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address"
+            },
+            "type": "array",
+            "label": "CC recipients"
+          },
+          {
+            "name": "bcc",
+            "spec": {
+              "name": "value",
+              "type": "email",
+              "label": "Recipient email address"
+            },
+            "type": "array",
+            "label": "BCC recipients"
+          },
+          {
+            "name": "emailHeaders",
+            "spec": {
+              "name": "value",
+              "spec": [
+                {
+                  "name": "key",
+                  "type": "text",
+                  "label": "Key",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "text",
+                  "label": "Value"
+                }
+              ],
+              "type": "collection",
+              "label": "Email header"
+            },
+            "type": "array",
+            "label": "Additional email headers"
+          },
+          {
+            "name": "content",
+            "type": "text",
+            "label": "Content"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu1.make.com",
+    "notes": [
+      {
+        "moduleIds": [
+          1
+        ],
+        "content": "Webhook to reconnect after import: point to Tally form 9qvIbY (https://tally.so/r/9qvIbY)",
+        "isFilterNote": false,
+        "metadata": {
+          "color": "#9138FE"
+        }
+      },
+      {
+        "moduleIds": [
+          15
+        ],
+        "content": "Gmail account to reconnect after import — sender = hamzaa.oudin@gmail.com",
+        "isFilterNote": false,
+        "metadata": {
+          "color": "#9138FE"
+        }
+      }
+    ]
+  }
+}
