@@ -1,107 +1,51 @@
-# Strawberry — le questionnaire à la hauteur du site, et branché sur Make
+# Strawberry — l'écran de seuil, refait
 
-3 fichiers de code + le blueprint Make mis à jour.
+2 fichiers.
 
-## Les quatre idées de design
+## Pourquoi il était vide
 
-**1 · La question qui se remplit.** Elle apparaît en gris très pâle et
-se colore mot à mot, le dernier mot en dégradé rouge — le même geste que
-le texte du diagnostic sur la home. Toujours sous une seconde, même pour
-une question longue.
+Les deux lignes fortes de cet écran — le prénom et le nom de la maison —
+dépendent d'un pré-remplissage dans le lien. Sans lui (cas de votre
+capture), elles disparaissent : il restait un paragraphe gris en petits
+caractères, flottant sous une moitié d'écran vide. Et la question
+n'arrivait qu'au bout de 5,2 secondes.
 
-**2 · Les chapitres comme des scènes de film.** Les deux bandes noires de
-cinéma (le letterbox des pages de terrain) arrivent fermées sur l'écran
-et s'ouvrent comme un plan qui commence, avec un grand numéro de scène en
-contour derrière le titre.
+L'écran tient maintenant seul, avec ou sans prénom.
 
-**4 · Les choix en cartes S.T.R.A.W.** Les options deviennent de grandes
-cartes à coins arrondis, chacune avec son numéro et son dégradé repris
-des cinq chapitres de la méthode, sur une piste qu'on fait glisser à la
-souris (ou au doigt sur mobile). Un glissement n'active jamais une carte
-par erreur.
+## Ce qui le compose
 
-**9 · Le document qui s'assemble.** Au sceau, les six pièces arrivent
-une à une et s'empilent en éventail ; le titre « le dossier est ouvert »
-ne tombe qu'une fois le document formé.
+**Une ouverture de film.** Les deux bandes noires couvrent l'écran à
+l'arrivée et s'écartent comme un premier plan — le même letterbox que les
+pages de terrain et les chapitres du questionnaire. Elles se referment
+quand on s'est engagé, avant la suite.
 
-## Le branchement Make
+**La question devient l'héroïne.** « Êtes-vous prêt à écrire ce que vous
+refusez ? » en très grand (jusqu'à 5,6 rem), qui se remplit mot à mot ;
+« refusez ? » en dégradé rouge, comme le titre de la home. Le point
+d'interrogation reste attaché au mot par une espace insécable — sinon,
+en français, il aurait été seul en rouge.
 
-### Côté site — déjà fait dans ce patch
+**Une lueur rouge qui respire** derrière, en pulsation lente — le halo du
+hero de la home.
 
-Le questionnaire envoie maintenant ses réponses **depuis le serveur**
-vers un webhook Make, en plus de l'e-mail Formspree. L'URL du webhook
-n'est jamais visible dans le navigateur : personne ne peut la récupérer
-pour injecter de fausses commandes dans votre scénario.
+**Un surtitre daté** : « Strawberry Production · Dossier ouvert le
+2 octobre ». Le prénom et la maison s'ajoutent en dessous quand ils sont
+connus.
 
-Les deux envois partent en même temps : si l'un échoue, l'autre suffit,
-rien n'est perdu.
+**Le bouton qu'on maintient.** « Je suis prêt » ne se clique pas : on
+appuie et on tient 1,1 seconde, le bouton se remplit de rouge pendant
+l'appui, se resserre légèrement, et redescend si on lâche trop tôt.
+Plein, l'écran se referme. Un engagement qui demande un geste se tient
+autrement qu'un clic — c'est tout le sens de cet écran. La mention
+« Maintenez pour commencer » est affichée dessous ; au clavier, on
+maintient Espace ou Entrée.
 
-### La structure envoyée à Make
+## Le rythme
 
-```json
-{
-  "event": "onboarding_completed",
-  "submission_id": "LOA-M1K2X9",
-  "submitted_at": "2026-09-24T10:12:00.000Z",
-  "offer": "architecture",
-  "terrain": "marques",
-  "terrain_label": "Marques",
-  "lang": "fr",
-  "client": { "name": "Marc", "house": "LOAM", "email": "marc@loam.fr" },
-  "responses": {
-    "positioning": "…",
-    "conviction": "…",
-    "rupture": "…",
-    "enemy": "…",
-    "competitor_1_name": "…",
-    "competitor_1_line": "…",
-    "tone_formal": 40,
-    "deploy": "Site | Vente",
-    "words_mine": "… | …",
-    "words_never": "… | …",
-    "link_site": "…"
-  },
-  "answers_text": "Tout le questionnaire, intitulés + réponses, en un bloc"
-}
-```
-
-**Les balises** sont les identifiants des questions — `conviction`,
-`rupture`, `enemy`, `portrait_house`, `price`, `forbidden`, etc. Les
-questions qui existent en variante par terrain (`positioning_lieux`,
-`competitors_produits`…) sont ramenées à une seule balise (`positioning`,
-`competitor_N_*`) : votre scénario n'a qu'un chemin à gérer, quel que soit
-ce que le client vend.
-
-`answers_text` contient tout le questionnaire mis en forme : c'est la
-variable à injecter telle quelle dans les prompts.
-
-### Une correction trouvée en le faisant
-
-L'e-mail Formspree listait jusqu'ici **les quatre variantes** du
-positionnement et des concurrents, dont trois toujours vides — la route
-ne filtrait pas par terrain. Corrigé avec la logique de filtrage déjà
-présente dans `questionnaire-data.ts`.
-
-### Côté Make — à faire par vous, dans cet ordre
-
-1. **Importez `architecture-narrative-blueprint.json`.** Le déclencheur
-   Tally est remplacé par un **Custom Webhook** ; la variable
-   `Context_Global` lit désormais `{{1.answers_text}}` — l'IA reçoit les
-   trente réponses, contre neuf avec Tally.
-2. **Ouvrez le module 1 → « Add » → créez le webhook**, puis copiez l'URL
-   qu'il affiche. (Un webhook ne peut pas être créé depuis un fichier
-   importé, c'est la seule étape manuelle.)
-3. **Sur Vercel**, ajoutez la variable d'environnement
-   `MAKE_WEBHOOK_URL` avec cette URL, puis redéployez.
-4. **Dans Make, cliquez « Redetermine data structure »** sur le module 1,
-   puis remplissez une fois le questionnaire sur le site. Make capture les
-   balises automatiquement.
-5. Lancez le scénario.
-
-La connexion Gmail et les vingt-huit modules d'écriture sont intacts —
-vérifié : aucune référence orpheline, aucune trace de Tally restante.
+Toute la séquence tient en moins de trois secondes : bandes, surtitre,
+nom, question, texte, bouton.
 
 ## Vérification
 
-Contrôle de types : zéro erreur sur le questionnaire, et zéro en mode
-strict sur la route serveur.
+Contrôle de types : zéro erreur. Découpage de la question testé dans les
+deux langues — le dégradé tombe bien sur « refusez ? » et « refuse? ».

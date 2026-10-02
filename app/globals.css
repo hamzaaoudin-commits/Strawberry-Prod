@@ -1670,3 +1670,11 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 .q-card { width: min(240px, 72vw); min-height: 190px; user-select: none; -webkit-user-select: none; }
 .q-track { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .q-track::-webkit-scrollbar { display: none; height: 0; }
+
+/* La lueur qui respire derrière l'écran de seuil du questionnaire. */
+@keyframes q-breathe {
+  0%, 100% { opacity: .65; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+.q-breathe { animation: q-breathe 5.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .q-breathe { animation: none; } }
