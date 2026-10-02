@@ -77,12 +77,6 @@ function isValid(step: Question, a: Answers): boolean {
   }
 }
 
-/** Quelle pièce du document se nourrit de quel chapitre (voir `chapterFeeds`). */
-const CHAPTER_FEEDS: Record<string, string[]> = {
-  fondations: ["01"], champ: ["02", "03"], voix: ["06"], audience: ["02", "05"],
-  quotidien: ["05"], deploiement: ["04"], preuve: ["02", "03"],
-}
-
 /** All chrome copy that isn't a question. Questions live in questionnaire-data. */
 const UI_COPY = {
   fr: {
@@ -176,14 +170,12 @@ const UI_COPY = {
     orderDue: "Livraison au plus tard",
 
     emptyAnswer: "Sans réponse — y répondre maintenant",
-    minutesLeft: (n: number) => `≈ ${n} min restantes`,
     deferCta: "J'y reviens",
     deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} mise${n > 1 ? "s" : ""} de côté`,
     leaveNote: "Vous pouvez fermer cet onglet : tout est gardé sur cet appareil, vous reprendrez où vous en êtes.",
     echoLabel: "Votre réponse précédente",
-    coverTitle: "Vous venez de décider quelque chose.",
+    coverTitle: "Vous allez écrire ce que vos concurrents n'écriront jamais.",
     terrainLabel: "Vous avez commandé l'Architecture pour",
-    terrainHelp: "Le questionnaire s'adapte : certaines questions ne se posent pas de la même façon selon ce que vous vendez.",
     terrains: [
       { k: "marques", t: "Une marque ou une entreprise", d: "Vous vendez un produit ou un service" },
       { k: "produits", t: "Un produit", d: "Un objet, une application, une gamme" },
@@ -191,7 +183,7 @@ const UI_COPY = {
       { k: "artistes", t: "Un nom propre", d: "Artiste, auteur, fondateur" },
     ],
     coverLede:
-      "La plupart des maisons de votre taille n'écriront jamais ce que vous vous apprêtez à écrire. Elles continueront d'emprunter les mots de leur secteur, et de se demander pourquoi on les compare au prix.",
+      "La plupart des maisons de votre taille continueront d'emprunter les mots de leur secteur, et de se demander pourquoi on les compare au prix.",
     minutesArchitecture: "45 à 70",
     minutesAudit: "50 à 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -344,14 +336,12 @@ const UI_COPY = {
     orderDue: "Delivered by",
 
     emptyAnswer: "No answer — answer it now",
-    minutesLeft: (n: number) => `≈ ${n} min left`,
     deferCta: "Come back to it",
     deferred: (n: number) => `${n} question${n > 1 ? "s" : ""} set aside`,
     leaveNote: "You can close this tab: everything is kept on this device, you will pick up where you left off.",
     echoLabel: "Your previous answer",
-    coverTitle: "You have just decided something.",
+    coverTitle: "You are about to write what your competitors never will.",
     terrainLabel: "You commissioned the Architecture for",
-    terrainHelp: "The questionnaire adapts: some questions are not asked the same way depending on what you sell.",
     terrains: [
       { k: "marques", t: "A brand or a company", d: "You sell a product or a service" },
       { k: "produits", t: "A product", d: "An object, an app, a range" },
@@ -359,7 +349,7 @@ const UI_COPY = {
       { k: "artistes", t: "A name", d: "Artist, author, founder" },
     ],
     coverLede:
-      "Most houses your size will never write what you are about to write. They will keep borrowing their sector's words, and keep wondering why they are compared on price.",
+      "Most houses your size will keep borrowing their sector's words, and keep wondering why they are compared on price.",
     minutesArchitecture: "45 to 70",
     minutesAudit: "50 to 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -536,32 +526,6 @@ export function QuestionnaireFlow({
   }, [steps])
 
   /**
-   * Les six pièces du document, et ce qui les remplit.
-   *
-   * Chaque tag de question correspond à une pièce du livrable. On compte
-   * les réponses non vides sur les questions de ce tag : la barre montre
-   * donc la matière réellement fournie, pas le nombre d'écrans traversés.
-   */
-  const pieces = useMemo(() => {
-    const defs = [
-      { n: "01", t: "La plateforme" }, { n: "02", t: "Le diagnostic" },
-      { n: "03", t: "La carte" }, { n: "04", t: "Les décisions" },
-      { n: "05", t: "Les playbooks" }, { n: "06", t: "Le langage" },
-    ]
-    return defs.map((d) => {
-      const qs = steps.filter((s) => (CHAPTER_FEEDS[s.chapter ?? ""] ?? []).includes(d.n))
-      if (qs.length === 0) return { ...d, pct: 0 }
-      const done = qs.filter((q) => {
-        const v = answers[q.id]
-        if (typeof v === "string") return v.trim().length > 0
-        if (Array.isArray(v)) return v.length > 0
-        return v != null
-      }).length
-      return { ...d, pct: Math.round((done / qs.length) * 100) }
-    })
-  }, [steps, answers, idx])
-
-  /**
    * Le miroir : une réponse déjà donnée, citée au moment où elle éclaire
    * la question en cours.
    *
@@ -619,11 +583,6 @@ export function QuestionnaireFlow({
     return Math.max(1, Math.round(mins))
   }, [steps, chapters, chapterIndex])
 
-  const minutesLeft = useMemo(() => {
-    const rest = steps.slice(idx)
-    const mins = rest.reduce((s, q) => s + (["textarea", "competitors"].includes(q.type) ? 2 : 0.5), 0)
-    return Math.max(1, Math.round(mins))
-  }, [steps, idx])
 
 
   function updateAnswer(id: string, value: unknown) {
@@ -792,7 +751,6 @@ export function QuestionnaireFlow({
             total={chapters.length}
             count={currentChapter.count}
             mins={chapterMins}
-            pieces={pieces}
             copy={copy}
             onStart={() => setScreen("steps")}
           />
@@ -802,7 +760,6 @@ export function QuestionnaireFlow({
           <StepScreen
             step={step}
             copy={copy}
-            minutesLeft={minutesLeft}
             mirror={mirror}
             onDefer={deferCurrent}
             words={words}
@@ -880,12 +837,12 @@ function CoverScreen({
           {copy.kicker}
         </div>
         <h1
-          className="mx-auto mt-9 max-w-[15ch] font-serif text-[clamp(2.4rem,7vw,5.4rem)] font-bold uppercase leading-[0.98] tracking-[-0.02em] text-white"
+          className="mx-auto mt-9 max-w-[19ch] font-serif text-[clamp(2rem,5.8vw,4.5rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
           style={balance}
         >
-          <InkWords text={copy.coverTitle} keyRe={/quelque chose|something/i} delay={350} step={90} />
+          <InkWords text={copy.coverTitle} keyRe={/n'écriront jamais|never will/i} delay={350} step={90} />
         </h1>
-        <p className="q-rise mx-auto mt-9 max-w-[500px] font-sans text-[16px] leading-[1.75] text-chalk-75" style={at(1500)}>
+        <p className="q-rise mx-auto mt-9 max-w-[500px] font-sans text-[16px] leading-[1.75] text-chalk-75 [text-wrap:balance]" style={at(1500)}>
           {first}
         </p>
         <div className="q-rise mt-12" style={at(1900)}>
@@ -916,9 +873,6 @@ function CoverScreen({
       >
         <InkWords text={`${copy.terrainLabel}…`} keyRe={/architecture/i} delay={100} step={70} />
       </h2>
-      <p className="q-rise mx-auto mt-5 max-w-[520px] font-sans text-[14.5px] leading-[1.7] text-chalk-55" style={at(900)}>
-        {copy.terrainHelp}
-      </p>
 
       {/* Le choix du terrain : quatre grandes cartes sur une ligne. Sans
           lui, le parcours retombait sur « marques » et un restaurateur se
@@ -988,7 +942,6 @@ function CoverScreen({
 function StepScreen({
   step,
   copy,
-  minutesLeft,
   mirror,
   onDefer,
   words,
@@ -1002,7 +955,6 @@ function StepScreen({
   onNext,
   onSkip,
 }: {
-  minutesLeft: number
   mirror?: { quote: string; note: string }
   onDefer?: () => void
   step: Question
@@ -1195,14 +1147,6 @@ function StepScreen({
         )}
       </div>
 
-      {/* Le temps restant et la sauvegarde : en coin, discrets, hors du
-          flux centré. Absents sur une question fondatrice. */}
-      {!bare && (
-        <span className="absolute bottom-0 right-0 hidden items-center gap-2 font-mono text-[9.5px] uppercase tracking-[0.16em] text-chalk-40 sm:flex">
-          <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden title={copy.saved} />
-          {copy.minutesLeft(minutesLeft)}
-        </span>
-      )}
     </div>
   )
 }
@@ -1968,7 +1912,6 @@ function ChapterScreen({
   count,
   mins,
   copy,
-  pieces,
   onStart,
 }: {
   tag: string
@@ -1977,7 +1920,6 @@ function ChapterScreen({
   count: number
   mins: number
   copy: Copy
-  pieces?: { n: string; t: string; pct: number }[]
   onStart: () => void
 }) {
   const [leaving, setLeaving] = useState(false)
@@ -1991,7 +1933,6 @@ function ChapterScreen({
   const quote = copy.chapterQuotes[tag]
   const title = copy.chapterTitles[tag] ?? tag
   const feeds = copy.chapterFeeds[tag]
-  const fed = CHAPTER_FEEDS[tag] ?? []
   const at = (ms: number) => ({ animationDelay: `${ms}ms` })
   const noteWords = note.split(" ").length
   // Le texte s'écrit à 22 ms par mot ; tout ce qui suit attend qu'il ait fini.
@@ -2060,24 +2001,6 @@ function ChapterScreen({
       )}
 
       <div className="q-rise mt-6" style={at(tNote + 700)}>
-        {/* Le document, pièce par pièce : celles que ce chapitre nourrit
-            s'allument ; les autres restent à leur niveau. */}
-        {pieces && (
-          <div className="mx-auto mb-5 grid max-w-[380px] grid-cols-6 gap-2">
-            {pieces.map((pc) => {
-              const on = fed.includes(pc.n)
-              return (
-                <div key={pc.n} title={pc.t}>
-                  <div className={`h-[3px] overflow-hidden rounded-full ${on ? "q-pulse bg-brand/35" : "bg-white/[0.08]"}`}>
-                    <div className="h-full rounded-full bg-brand transition-all duration-[1200ms] ease-out" style={{ width: `${pc.pct}%` }} />
-                  </div>
-                  <div className={`mt-2 font-mono text-[8.5px] tracking-[0.1em] transition-colors ${on ? "font-bold text-brand" : "text-chalk-40"}`}>{pc.n}</div>
-                </div>
-              )
-            })}
-          </div>
-        )}
-
         <div className="mb-5 font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
           {copy.chapterCount(count)} · {copy.chapterMinutes(mins)}
         </div>
@@ -2314,25 +2237,14 @@ function FillQuestion({ text }: { text: string }) {
   const step = Math.min(55, 850 / Math.max(1, words.length))
   return (
     <h2 className="q-question mx-auto mb-5 max-w-[24ch]">
-      {words.map((w, i) => {
-        const last = i === words.length - 1
-        const delay = { animationDelay: `${Math.round(i * step)}ms` }
-        return (
-          <span key={i}>
-            {last ? (
-              <span
-                className="q-ink-op bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
-                style={{ color: "transparent", ...delay }}
-              >
-                {w}
-              </span>
-            ) : (
-              <span className="q-ink" style={delay}>{w}</span>
-            )}
-            {last ? null : " "}
+      {words.map((w, i) => (
+        <span key={i}>
+          <span className="q-ink" style={{ animationDelay: `${Math.round(i * step)}ms` }}>
+            {w}
           </span>
-        )
-      })}
+          {i < words.length - 1 ? " " : null}
+        </span>
+      ))}
     </h2>
   )
 }

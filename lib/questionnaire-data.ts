@@ -245,7 +245,10 @@ export const QUESTION_SOURCES: QuestionSource[] = [
   {
     id: "awareness", offers: ["audit", "architecture"], type: "choice",
     label: t("Où en sont la plupart de vos acheteurs quand ils vous trouvent ?", "Where are most of your buyers when they find you?"),
-    help: t("Le niveau de conscience du marché, au sens de Schwartz.", "Market awareness, in Schwartz's sense."),
+    help: t(
+      "Choisissez la situation la plus fréquente, pas la plus flatteuse.",
+      "Pick the most common situation, not the most flattering one.",
+    ),
     options: [
       t("Inconscient du problème", "Unaware of the problem"),
       t("Conscient du problème, pas des solutions", "Problem-aware, not solution-aware"),
