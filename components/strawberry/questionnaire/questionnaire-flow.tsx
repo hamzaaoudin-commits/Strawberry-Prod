@@ -117,6 +117,7 @@ const UI_COPY = {
     resumeKicker: "Vous aviez commencé",
     resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
     resumeCta: "Reprendre",
+    resumeRestart: "Recommencer à zéro",
     houseOverline: "On va écrire",
     thresholdKicker: "Strawberry Production · Onboarding",
     thresholdTitle: "Votre architecture narrative commence ici.",
@@ -283,6 +284,7 @@ const UI_COPY = {
     resumeKicker: "You had started",
     resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
     resumeCta: "Resume",
+    resumeRestart: "Start over",
     houseOverline: "We are going to write",
     thresholdKicker: "Strawberry Production · Onboarding",
     thresholdTitle: "Your narrative architecture starts here.",
@@ -420,13 +422,16 @@ const UI_COPY = {
  */
 type Copy = (typeof UI_COPY)["fr"]
 
-function storageKey(offer: OfferKey, email: string, terrain?: TerrainKey) {
-  // Le terrain entre dans la clé : deux parcours différents ne doivent pas
-  // se réécrire l'un l'autre dans le stockage local.
-  // « v2 » : l'ordre des questions a changé avec les sept chapitres. Un
-  // brouillon enregistré avant pointerait sur la mauvaise question à la
-  // reprise — on repart d'une clé neuve plutôt que de mélanger les deux.
-  return `sp_questionnaire:v2:${offer}:${terrain ?? "all"}:${email.trim().toLowerCase() || "anon"}`
+function storageKey(offer: OfferKey) {
+  // Une seule sauvegarde par appareil et par offre.
+  //
+  // La clé contenait l'e-mail du client — qu'on ne connaît pas à la
+  // réouverture, puisque le lien est le même pour tous. Résultat : la
+  // sauvegarde était écrite sous une clé qu'on ne savait plus relire, et un
+  // client qui fermait l'onglet à la question 20 perdait tout, malgré la
+  // promesse « vous reprendrez où vous en êtes ». « v3 » : la forme des
+  // données a changé (le terrain y est maintenant).
+  return `sp_questionnaire:v3:${offer}`
 }
 
 export function QuestionnaireFlow({
@@ -469,18 +474,18 @@ export function QuestionnaireFlow({
   const startedAt = useRef<number>(Date.now())
   const hydrated = useRef(false)
 
-  // Resume from localStorage once we know the email (from prefill or once typed).
+  // Reprise : on relit la sauvegarde de l'appareil dès l'ouverture, sans
+  // attendre d'e-mail.
   useEffect(() => {
     if (hydrated.current) return
-    const email = prefill?.email ?? ""
-    if (!email) return
     try {
-      const raw = localStorage.getItem(storageKey(offer, email, chosenTerrain))
+      const raw = localStorage.getItem(storageKey(offer))
       if (raw) {
-        const saved = JSON.parse(raw) as { answers: Answers; idx: number; deferred?: string[] }
+        const saved = JSON.parse(raw) as { answers: Answers; idx: number; deferred?: string[]; terrain?: TerrainKey }
         setAnswers((prev) => ({ ...prev, ...saved.answers }))
         setIdx(saved.idx ?? 0)
         setDeferred(saved.deferred ?? [])
+        if (saved.terrain) setChosenTerrain(saved.terrain)
         // On ne propose la reprise que si le travail engagé vaut la peine :
         // reprendre à la deuxième question n'a aucun intérêt.
         if ((saved.idx ?? 0) >= 2) setResumable(saved.idx ?? 0)
@@ -492,16 +497,34 @@ export function QuestionnaireFlow({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offer])
 
-  // Autosave on every change, once we have an email to key on.
+  // Sauvegarde à chaque changement, dès qu'il y a quelque chose à garder.
+  // Garde-fou : on n'écrit rien tant que l'écran est vide, sinon la toute
+  // première exécution (état vide) écraserait la sauvegarde avant qu'elle
+  // ait été relue.
   useEffect(() => {
-    const email = answers.identity.email
-    if (!email) return
+    const started = idx > 0 || !!(answers.identity.name || answers.identity.email || answers.identity.house)
+    if (!started) return
     try {
-      localStorage.setItem(storageKey(offer, email, chosenTerrain), JSON.stringify({ answers, idx, deferred }))
+      localStorage.setItem(storageKey(offer), JSON.stringify({ answers, idx, deferred, terrain: chosenTerrain }))
     } catch {
       // best-effort only
     }
-  }, [answers, idx, deferred, offer])
+  }, [answers, idx, deferred, offer, chosenTerrain])
+
+  /** Repartir de zéro : efface la sauvegarde et remet tout à l'état d'ouverture. */
+  function startOver() {
+    try {
+      localStorage.removeItem(storageKey(offer))
+    } catch {
+      // sans conséquence
+    }
+    setAnswers(emptyAnswers(prefill))
+    setIdx(0)
+    setDeferred([])
+    setResumable(null)
+    setChosenTerrain(terrain)
+    setSeenChapters([])
+  }
 
   const step = steps[idx]
 
@@ -658,7 +681,7 @@ export function QuestionnaireFlow({
       if (!res.ok || !data.ok) throw new Error(data?.error ?? "submit_failed")
       if (typeof data.submission_id === "string") setRefId(data.submission_id)
       try {
-        localStorage.removeItem(storageKey(offer, answers.identity.email, chosenTerrain))
+        localStorage.removeItem(storageKey(offer))
       } catch {
         // ignore
       }
@@ -723,9 +746,14 @@ export function QuestionnaireFlow({
                   {copy.resumeLead(resumable + 1, steps.length)}
                 </p>
               </div>
-              <button type="button" className="btn-primary flex-shrink-0" onClick={() => setScreen("steps")}>
-                {copy.resumeCta}
-              </button>
+              <div className="flex flex-shrink-0 items-center gap-4">
+                <button type="button" className="btn-quiet" onClick={startOver}>
+                  {copy.resumeRestart}
+                </button>
+                <button type="button" className="btn-primary" onClick={() => setScreen("steps")}>
+                  {copy.resumeCta}
+                </button>
+              </div>
             </div>
           )}
           <CoverScreen
