@@ -1678,3 +1678,23 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 }
 .q-breathe { animation: q-breathe 5.5s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .q-breathe { animation: none; } }
+
+/* L'entrée du questionnaire, en animations CSS pures.
+   Chaque élément est visible par défaut ; l'animation ne fait que rejouer
+   son arrivée (fill-mode « both » : il attend, invisible, pendant son
+   délai, puis reste à l'état final). Aucun minuteur JavaScript ne conditionne
+   l'affichage — si le script tarde, la page reste lisible. */
+@keyframes q-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes q-ink { from { color: rgba(255,255,255,.1); } to { color: #fff; } }
+@keyframes q-ink-op { from { opacity: .1; } to { opacity: 1; } }
+/* Les bandes de cinéma : ouvertes par défaut (8vh) ; elles partent de
+   « fermées » (50vh) et s'ouvrent. `backwards` = elles tiennent la position
+   de départ pendant le délai, sans jamais rester bloquées ensuite. */
+@keyframes q-bars { from { height: 50vh; } to { height: 8vh; } }
+.q-rise { animation: q-rise 1000ms cubic-bezier(.22,.68,0,1) both; }
+.q-ink { animation: q-ink 600ms ease both; }
+.q-ink-op { animation: q-ink-op 600ms ease both; }
+.q-bar { height: 8vh; animation: q-bars 1100ms cubic-bezier(.22,.68,0,1) 150ms backwards; }
+@media (prefers-reduced-motion: reduce) {
+  .q-rise, .q-ink, .q-ink-op, .q-bar { animation: none; }
+}

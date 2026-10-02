@@ -97,12 +97,10 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Vos réponses sont là, vous étiez à la question ${n} sur ${t}.`,
     resumeCta: "Reprendre",
     houseOverline: "On va écrire",
-    thresholdLead: "Vous venez de commander un document qui dira ce que votre maison refuse. Personne ne peut l'écrire à votre place — ni une agence, ni une machine, ni nous, tant que vous ne nous l'avez pas dit.",
-    thresholdQuestion: "Êtes-vous prêt à écrire ce que vous refusez ?",
-    thresholdCta: "Je suis prêt",
-    thresholdKicker: (d: string) => `Strawberry Production · Dossier ouvert le ${d}`,
-    thresholdHold: "Maintenez pour commencer",
-    thresholdGo: "C'est parti",
+    thresholdKicker: "Strawberry Production · Onboarding",
+    thresholdTitle: "Votre architecture narrative commence ici.",
+    thresholdLead: "Les questions qui suivent sont la matière première de votre document : plus vos réponses sont précises, plus il sera juste. Prenez le temps qu'il faut — tout est enregistré au fil de l'eau.",
+    thresholdCta: "Commencer",
     bareNote: "Prenez le temps. Personne ne vous regarde.",
     signLabel: "Signez pour ouvrir le dossier",
     signPlaceholder: "Votre prénom",
@@ -232,12 +230,10 @@ const UI_COPY = {
     resumeLead: (n: number, t: number) => `Your answers are here, you were on question ${n} of ${t}.`,
     resumeCta: "Resume",
     houseOverline: "We are going to write",
-    thresholdLead: "You have just commissioned a document that will state what your house refuses. Nobody can write it for you — not an agency, not a machine, not us, until you have told us.",
-    thresholdQuestion: "Are you ready to write what you refuse?",
-    thresholdCta: "I am ready",
-    thresholdKicker: (d: string) => `Strawberry Production · File opened ${d}`,
-    thresholdHold: "Hold to begin",
-    thresholdGo: "Here we go",
+    thresholdKicker: "Strawberry Production · Onboarding",
+    thresholdTitle: "Your narrative architecture starts here.",
+    thresholdLead: "The questions that follow are the raw material of your document: the more precise your answers, the more accurate it will be. Take the time you need — everything is saved as you go.",
+    thresholdCta: "Begin",
     bareNote: "Take your time. Nobody is watching.",
     signLabel: "Sign to open the file",
     signPlaceholder: "Your first name",
@@ -664,7 +660,6 @@ export function QuestionnaireFlow({
         {screen === "threshold" && (
           <ThresholdScreen
             copy={copy}
-            identity={answers.identity}
             onEnter={() => setScreen("cover")}
           />
         )}
@@ -1926,13 +1921,11 @@ function ChapterScreen({
           conteneur centré exprès. */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 top-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
-        style={{ height: shown ? "7vh" : "50vh" }}
+        className="q-bar pointer-events-none fixed inset-x-0 top-0 z-30 bg-black"
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
-        style={{ height: shown ? "7vh" : "50vh" }}
+        className="q-bar pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black"
       />
 
       {/* Le grand numéro de scène, en contour, derrière le titre — comme
@@ -2061,180 +2054,80 @@ function ChapterScreen({
  * écrire ce que vous refusez » n'abandonne pas à la douzième question de
  * la même façon que quelqu'un qui a cliqué sur « commencer ».
  */
-function ThresholdScreen({
-  copy,
-  identity,
-  onEnter,
-}: {
-  copy: Copy
-  identity: IdentityAnswers
-  onEnter: () => void
-}) {
-  // La séquence d'ouverture, en moins de trois secondes : les bandes
-  // s'ouvrent, le surtitre, le nom s'il existe, la question qui se
-  // remplit, puis le texte et le bouton. L'ancienne version attendait
-  // 5,2 s avant d'afficher la question — et sans prénom ni maison dans le
-  // lien, l'écran restait vide pendant tout ce temps.
-  const [stage, setStage] = useState(0)
-  useEffect(() => {
-    const t = [80, 600, 900, 1200, 2300, 2700].map((ms, i) => window.setTimeout(() => setStage(i + 1), ms))
-    return () => t.forEach(window.clearTimeout)
-  }, [])
-  const rev = (i: number) =>
-    `transition-all duration-[1000ms] ease-[cubic-bezier(.22,.68,0,1)] ${
-      stage > i ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-    }`
-
-  // Le bouton qu'on maintient : 1,1 s d'appui pour s'engager. Lâcher avant
-  // fait redescendre le remplissage. Un engagement qui demande un geste se
-  // tient autrement qu'un clic — c'est tout le sens de cet écran.
-  const HOLD_MS = 1100
-  const [hold, setHold] = useState(0)
+function ThresholdScreen({ copy, onEnter }: { copy: Copy; onEnter: () => void }) {
+  // Tout le mouvement d'entrée est en animations CSS, pas en minuteurs
+  // JavaScript. La version précédente cachait chaque élément derrière un
+  // état mis à jour par setTimeout, et démarrait avec les bandes noires
+  // fermées sur tout l'écran : si un minuteur tardait, la page restait
+  // intégralement noire. Ici l'état par défaut est « tout visible, bandes
+  // ouvertes » ; l'animation ne fait que rejouer l'arrivée par-dessus.
   const [leaving, setLeaving] = useState(false)
-  const raf = useRef<number | null>(null)
-  const startAt = useRef(0)
-  const holding = useRef(false)
-
-  const tick = () => {
-    if (!holding.current) return
-    const p = Math.min(1, (performance.now() - startAt.current) / HOLD_MS)
-    setHold(p)
-    if (p >= 1) {
-      holding.current = false
-      setLeaving(true)
-      window.setTimeout(onEnter, 900)
-      return
-    }
-    raf.current = requestAnimationFrame(tick)
+  const go = () => {
+    if (leaving) return
+    setLeaving(true)
+    // Les bandes se referment (450 ms) avant la suite.
+    window.setTimeout(onEnter, 450)
   }
-  const press = () => {
-    if (leaving || holding.current) return
-    holding.current = true
-    startAt.current = performance.now() - hold * HOLD_MS
-    raf.current = requestAnimationFrame(tick)
-  }
-  const release = () => {
-    if (!holding.current) return
-    holding.current = false
-    if (raf.current) cancelAnimationFrame(raf.current)
-    setHold(0)
-  }
-  useEffect(() => () => {
-    if (raf.current) cancelAnimationFrame(raf.current)
-  }, [])
 
-  const first = identity.name ? identity.name.split(" ")[0] : ""
-  const today = new Date().toLocaleDateString(undefined, { day: "numeric", month: "long" })
-
-  // La question : le mot clé et sa ponctuation en dégradé rouge. Découpée
-  // à la main plutôt que « dernier mot », parce qu'en français le point
-  // d'interrogation est séparé par une espace et serait seul en rouge.
-  const q = copy.thresholdQuestion
-  const words = q.replace(/\s+([?!])/g, "\u00a0$1").split(" ")
-
-  const barsOpen = stage >= 1 && !leaving
+  // Le mot clé de la phrase passe en dégradé rouge, comme sur la home.
+  const words = copy.thresholdTitle.split(" ")
+  const isKey = (w: string) => /commence|starts/i.test(w)
+  const at = (ms: number) => ({ animationDelay: `${ms}ms` })
 
   return (
     <div className="relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center">
-      {/* Les bandes de cinéma : fermées sur l'écran à l'arrivée, elles
-          s'ouvrent comme un premier plan — et se referment quand on s'est
-          engagé, avant la suite. */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 top-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
-        style={{ height: barsOpen ? "8vh" : "50vh" }}
+        className="q-bar pointer-events-none fixed inset-x-0 top-0 z-30 bg-black"
+        style={leaving ? { height: "50vh", transition: "height 450ms ease" } : undefined}
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black transition-[height] duration-[1100ms] ease-[cubic-bezier(.22,.68,0,1)]"
-        style={{ height: barsOpen ? "8vh" : "50vh" }}
+        className="q-bar pointer-events-none fixed inset-x-0 bottom-0 z-30 bg-black"
+        style={leaving ? { height: "50vh", transition: "height 450ms ease" } : undefined}
       />
 
-      {/* La lueur qui respire, derrière la question : le halo rouge du
-          hero de la home, en pulsation lente. */}
       <div
         aria-hidden
         className="q-breathe pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(255,34,51,.22) 0%, rgba(255,34,51,.06) 40%, transparent 70%)" }}
       />
 
-      <div className={`font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40 ${rev(1)}`}>
-        {copy.thresholdKicker(today)}
+      <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(500)}>
+        {copy.thresholdKicker}
       </div>
 
-      {(first || identity.house) && (
-        <div className={`mt-8 ${rev(2)}`}>
-          {first && <p className="m-0 font-serif text-[clamp(1.1rem,2.2vw,1.4rem)] text-chalk-75">{first},</p>}
-          {identity.house && (
-            <p className="m-0 mt-1 font-serif text-[clamp(1.4rem,3vw,2rem)] font-bold uppercase tracking-[-0.01em] text-brand">
-              {identity.house}
-            </p>
-          )}
-        </div>
-      )}
-
-      {/* La question, héroïne de l'écran : très grande, elle se remplit
-          mot à mot, le mot clé en dégradé rouge comme le titre de la home. */}
-      <h1 className="mx-auto mt-10 max-w-[14ch] font-serif text-[clamp(2.4rem,7vw,5.6rem)] font-bold uppercase leading-[0.98] tracking-[-0.02em]">
-        {words.map((w, i) => {
-          const key = /refus|refuse/i.test(w)
-          const on = stage >= 4
-          const delay = `${i * 70}ms`
-          return (
-            <span key={i}>
-              {key ? (
-                <span
-                  className="bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
-                  style={{ color: "transparent", opacity: on ? 1 : 0.1, transition: `opacity 500ms ease ${delay}` }}
-                >
-                  {w}
-                </span>
-              ) : (
-                <span style={{ color: on ? "#fff" : "rgba(255,255,255,0.1)", transition: `color 500ms ease ${delay}` }}>{w}</span>
-              )}
-              {i < words.length - 1 ? " " : null}
-            </span>
-          )
-        })}
+      <h1
+        className="mx-auto mt-9 max-w-[16ch] font-serif text-[clamp(2.2rem,6.2vw,4.8rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
+        style={{ textWrap: "balance" } as React.CSSProperties}
+      >
+        {words.map((w, i) => (
+          <span key={i}>
+            {isKey(w) ? (
+              <span
+                className="q-ink-op bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
+                style={{ color: "transparent", animationDelay: `${800 + i * 90}ms` }}
+              >
+                {w}
+              </span>
+            ) : (
+              <span className="q-ink" style={{ animationDelay: `${800 + i * 90}ms` }}>
+                {w}
+              </span>
+            )}
+            {i < words.length - 1 ? " " : null}
+          </span>
+        ))}
       </h1>
 
-      <p className={`mx-auto mt-9 max-w-[480px] font-sans text-[15.5px] leading-[1.75] text-chalk-55 ${rev(4)}`}>
+      <p className="q-rise mx-auto mt-9 max-w-[500px] font-sans text-[15.5px] leading-[1.75] text-chalk-55" style={at(1700)}>
         {copy.thresholdLead}
       </p>
 
-      <div className={`mt-12 flex flex-col items-center gap-4 ${rev(5)}`}>
-        <button
-          type="button"
-          onPointerDown={press}
-          onPointerUp={release}
-          onPointerLeave={release}
-          onPointerCancel={release}
-          onKeyDown={(e) => {
-            if ((e.key === " " || e.key === "Enter") && !e.repeat) {
-              e.preventDefault()
-              press()
-            }
-          }}
-          onKeyUp={(e) => {
-            if (e.key === " " || e.key === "Enter") release()
-          }}
-          onContextMenu={(e) => e.preventDefault()}
-          aria-label={`${copy.thresholdCta} — ${copy.thresholdHold}`}
-          className="relative select-none overflow-hidden rounded-full border border-brand px-10 py-4 font-sans text-[15px] font-semibold text-white [touch-action:none]"
-          style={{ transform: `scale(${1 - hold * 0.04})`, transition: "transform 120ms ease" }}
-        >
-          {/* Le remplissage : il monte pendant l'appui, redescend si on
-              lâche. Plein, l'écran se referme. */}
-          <span
-            aria-hidden
-            className="absolute inset-y-0 left-0 bg-[linear-gradient(90deg,#e0102a,#ff2233,#ff4d2e)]"
-            style={{ width: `${hold * 100}%`, transition: hold === 0 ? "width 350ms ease" : "none" }}
-          />
-          <span className="relative">{copy.thresholdCta}</span>
+      <div className="q-rise mt-12" style={at(2000)}>
+        <button type="button" className="btn-primary" onClick={go} disabled={leaving} autoFocus>
+          {copy.thresholdCta} →
         </button>
-        <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-chalk-40">
-          {leaving ? copy.thresholdGo : copy.thresholdHold}
-        </span>
       </div>
     </div>
   )
@@ -2251,32 +2144,25 @@ function ThresholdScreen({
  * champ, lui, apparaît à 1,5 s.
  */
 function FillQuestion({ text }: { text: string }) {
-  const [go, setGo] = useState(false)
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setGo(true))
-    return () => cancelAnimationFrame(id)
-  }, [])
   const words = text.split(" ")
   const step = Math.min(55, 850 / Math.max(1, words.length))
   return (
     <h2 className="q-question mx-auto mb-5 max-w-[17ch]">
       {words.map((w, i) => {
         const last = i === words.length - 1
+        const delay = { animationDelay: `${Math.round(i * step)}ms` }
         return (
           <span key={i}>
-            <span
-              className={last ? "bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text" : ""}
-              style={
-                last
-                  ? // Le mot en dégradé : texte transparent sur fond clippé,
-                    // donc on fait monter l'opacité plutôt que la couleur —
-                    // sinon le rouge transparaissait déjà sous le gris.
-                    { color: "transparent", opacity: go ? 1 : 0.14, transition: `opacity 420ms ease ${Math.round(i * step)}ms` }
-                  : { color: go ? "#fff" : "rgba(255,255,255,0.14)", transition: `color 420ms ease ${Math.round(i * step)}ms` }
-              }
-            >
-              {w}
-            </span>
+            {last ? (
+              <span
+                className="q-ink-op bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
+                style={{ color: "transparent", ...delay }}
+              >
+                {w}
+              </span>
+            ) : (
+              <span className="q-ink" style={delay}>{w}</span>
+            )}
             {last ? null : " "}
           </span>
         )

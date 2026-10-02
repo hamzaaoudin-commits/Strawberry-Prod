@@ -1,51 +1,54 @@
-# Strawberry — l'écran de seuil, refait
+# Strawberry — l'écran d'accueil de l'onboarding, refait et testé
 
-2 fichiers.
+3 fichiers.
 
-## Pourquoi il était vide
+## Ce qui n'allait pas, précisément
 
-Les deux lignes fortes de cet écran — le prénom et le nom de la maison —
-dépendent d'un pré-remplissage dans le lien. Sans lui (cas de votre
-capture), elles disparaissent : il restait un paragraphe gris en petits
-caractères, flottant sous une moitié d'écran vide. Et la question
-n'arrivait qu'au bout de 5,2 secondes.
+**La phrase.** « Êtes-vous prêt à écrire ce que vous refusez ? » n'a rien à
+faire sur l'écran d'accueil d'un onboarding : le client vient de payer, on
+l'accueille. Remplacée par :
 
-L'écran tient maintenant seul, avec ou sans prénom.
+> STRAWBERRY PRODUCTION · ONBOARDING
+> **VOTRE ARCHITECTURE NARRATIVE COMMENCE ICI.**
+> Les questions qui suivent sont la matière première de votre document :
+> plus vos réponses sont précises, plus il sera juste. Prenez le temps
+> qu'il faut — tout est enregistré au fil de l'eau.
+> [ Commencer → ]
 
-## Ce qui le compose
+« commence » porte le dégradé rouge. Plus de prénom ni de maison : l'écran
+est identique pour tous.
 
-**Une ouverture de film.** Les deux bandes noires couvrent l'écran à
-l'arrivée et s'écartent comme un premier plan — le même letterbox que les
-pages de terrain et les chapitres du questionnaire. Elles se referment
-quand on s'est engagé, avant la suite.
+**Le bouton.** C'était mon bouton « à maintenir 1,1 s ». Un clic normal ne
+faisait **rien** — c'est ce que vous constatiez. Je l'ai inventé, personne
+ne devine qu'il faut tenir. Remplacé par un bouton ordinaire : un clic, et
+les bandes noires se referment avant la suite.
 
-**La question devient l'héroïne.** « Êtes-vous prêt à écrire ce que vous
-refusez ? » en très grand (jusqu'à 5,6 rem), qui se remplit mot à mot ;
-« refusez ? » en dégradé rouge, comme le titre de la home. Le point
-d'interrogation reste attaché au mot par une espace insécable — sinon,
-en français, il aurait été seul en rouge.
+**L'écran noir.** Tout l'écran dépendait de minuteurs JavaScript pour
+apparaître, et les bandes de cinéma démarraient *fermées* sur 100 % de la
+hauteur : si un minuteur tardait, la page restait entièrement noire.
+Désormais :
+- l'ouverture est en **animations CSS**, dont l'état par défaut est
+  « tout visible, bandes ouvertes » — l'animation ne fait que rejouer
+  l'arrivée par-dessus ;
+- c'est vrai aussi des bandes des écrans de chapitre et de la question qui
+  se remplit, qui avaient la même fragilité.
 
-**Une lueur rouge qui respire** derrière, en pulsation lente — le halo du
-hero de la home.
+## Une phrase absurde trouvée en testant
 
-**Un surtitre daté** : « Strawberry Production · Dossier ouvert le
-2 octobre ». Le prénom et la maison s'ajoutent en dessous quand ils sont
-connus.
+La première question affichait « Prérempli quand le lien vient de vous. »
+— sans sens pour un client, puisque le lien est le même pour tous. Elle
+dit maintenant « Tels qu'ils figureront sur votre document. »
 
-**Le bouton qu'on maintient.** « Je suis prêt » ne se clique pas : on
-appuie et on tient 1,1 seconde, le bouton se remplit de rouge pendant
-l'appui, se resserre légèrement, et redescend si on lâche trop tôt.
-Plein, l'écran se referme. Un engagement qui demande un geste se tient
-autrement qu'un clic — c'est tout le sens de cet écran. La mention
-« Maintenez pour commencer » est affichée dessous ; au clavier, on
-maintient Espace ou Entrée.
+## Comment c'est vérifié, cette fois
 
-## Le rythme
+Je n'ai pas seulement contrôlé les types : j'ai fait tourner le vrai
+composant dans un navigateur simulé et cliqué dedans.
+- Le texte de l'accueil est présent **à l'instant zéro**, sans attendre
+  aucun minuteur ; aucun prénom ni maison.
+- Un clic sur « Commencer » mène à l'écran suivant ; puis choix du terrain ;
+  puis la première question — **aucune erreur**.
+- Le seul élément masqué est le champ piège anti-robot, voulu.
 
-Toute la séquence tient en moins de trois secondes : bandes, surtitre,
-nom, question, texte, bouton.
-
-## Vérification
-
-Contrôle de types : zéro erreur. Découpage de la question testé dans les
-deux langues — le dégradé tombe bien sur « refusez ? » et « refuse? ».
+Ce que je ne peux pas tester d'ici : le rendu visuel réel (les animations,
+la lueur). Si l'écran reste noir chez vous, dites-moi quel navigateur et si
+la page est servie par la dernière version déployée.

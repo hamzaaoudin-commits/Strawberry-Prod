@@ -155,7 +155,7 @@ export const QUESTION_SOURCES: QuestionSource[] = [
   {
     id: "identity", offers: ["audit", "architecture"], type: "identity",
     label: t("Votre nom et le nom de la maison.", "Your name and the name of the house."),
-    help: t("Prérempli quand le lien vient de vous.", "Prefilled when the link came from us."),
+    help: t("Tels qu'ils figureront sur votre document.", "As they will appear on your document."),
     tag: t("Identité", "Identity"),
   },
   {
