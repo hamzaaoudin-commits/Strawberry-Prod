@@ -193,6 +193,10 @@ const UI_COPY = {
       "Vous pouvez fermer cet onglet à tout moment : tout est sauvegardé, vous reprendrez exactement où vous en étiez.",
     prefilled: "Déjà rempli pour vous",
     start: "Commencer →",
+    statMinutes: "minutes",
+    statQuestions: "questions",
+    statSaved: "Enregistré en continu",
+    chooseFirst: "Choisissez d'abord ce que vous vendez",
     previous: "Précédent",
     optional: "Facultatif",
     continue: "Continuer →",
@@ -350,7 +354,7 @@ const UI_COPY = {
       { k: "artistes", t: "A name", d: "Artist, author, founder" },
     ],
     coverLede:
-      "This is the foundation of your house. Take your time. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
+      "Most houses your size will never write what you are about to write. They will keep borrowing their sector's words, and keep wondering why they are compared on price.\n\nWhat follows is the one part nobody can do in your place. Write the way you would speak to someone who already understands. There are no wrong answers — only honest ones and dishonest ones.",
     minutesArchitecture: "45 to 70",
     minutesAudit: "50 to 60",
     aboutMinutes: (m: string, n: number, optional: boolean) =>
@@ -359,6 +363,10 @@ const UI_COPY = {
       "You can close this tab at any time: everything is saved, and you will pick up exactly where you left off.",
     prefilled: "Already filled in for you",
     start: "Begin →",
+    statMinutes: "minutes",
+    statQuestions: "questions",
+    statSaved: "Saved as you go",
+    chooseFirst: "First, choose what you sell",
     previous: "Previous",
     optional: "Optional",
     continue: "Continue →",
@@ -854,104 +862,150 @@ function CoverScreen({
   onStart: () => void
 }) {
   const isArchitecture = offer === "architecture"
-  const minutes = isArchitecture ? copy.minutesArchitecture : copy.minutesAudit
+  const minutes = (isArchitecture ? copy.minutesArchitecture : copy.minutesAudit).replace(/\s*(à|to)\s*/i, "–")
 
-  // Deux pages, pas une.
-  //
-  // Le titre, deux paragraphes, la durée, la note de reprise et le choix
-  // du terrain tenaient sur le même écran : trop de texte avant la
-  // première question. Page 1 : l'idée, en une phrase. Page 2 : ce que
-  // l'on demande, et le choix du terrain. Le lede d'origine contient déjà
-  // deux paragraphes séparés par une ligne vide — on les sépare, on ne
-  // réécrit rien.
+  // Deux pages, au niveau du seuil : titre géant qui se remplit, lueur
+  // qui respire, centrage vertical. Elles étaient plates — un paragraphe
+  // gris collé en haut, une moitié d'écran vide, des boîtes à peine
+  // visibles.
   const [page, setPage] = useState(0)
   const [first, ...rest] = copy.coverLede.split("\n\n")
   const second = rest.join("\n\n")
-  // Entrée en animations CSS (aucun minuteur) : la page reste lisible même
-  // si le script tarde.
   const at = (ms: number) => ({ animationDelay: `${ms}ms` })
+  const balance = { textWrap: "balance" } as React.CSSProperties
+
+  if (page === 0) {
+    return (
+      <div key="p0" className="relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center">
+        <BreatheGlow />
+        <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(150)}>
+          {copy.kicker}
+        </div>
+        <h1
+          className="mx-auto mt-9 max-w-[15ch] font-serif text-[clamp(2.4rem,7vw,5.4rem)] font-bold uppercase leading-[0.98] tracking-[-0.02em] text-white"
+          style={balance}
+        >
+          <InkWords text={copy.coverTitle} keyRe={/quelque chose|something/i} delay={350} step={90} />
+        </h1>
+        <p className="q-rise mx-auto mt-9 max-w-[500px] font-sans text-[16px] leading-[1.75] text-chalk-75" style={at(1500)}>
+          {first}
+        </p>
+        <div className="q-rise mt-12" style={at(1900)}>
+          <button type="button" className="btn-primary" onClick={() => setPage(1)} autoFocus>
+            {copy.continue}
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div key={page} className="mx-auto max-w-[560px] text-center">
-      {page === 0 && (
-        <>
-          <div className="q-rise kicker mb-8" style={at(0)}>{copy.kicker}</div>
-          <h1 className="q-rise h-section mb-8" style={at(150)}>{copy.coverTitle}</h1>
-          <p className="q-rise lede mx-auto mb-12 max-w-[520px]" style={at(350)}>{first}</p>
-          <div className="q-rise" style={at(600)}>
-            <button type="button" className="btn-primary" onClick={() => setPage(1)} autoFocus>
-              {copy.continue}
-            </button>
-          </div>
-        </>
-      )}
+    <div key="p1" className="relative isolate mx-auto flex min-h-[82vh] w-full max-w-[1040px] flex-col items-center justify-center py-12 text-center">
+      <BreatheGlow />
+      <button
+        type="button"
+        onClick={() => setPage(0)}
+        aria-label={copy.back}
+        className="q-rise absolute left-0 top-2 text-[13px] text-chalk-40 transition-colors hover:text-white"
+        style={at(0)}
+      >
+        ← {copy.back}
+      </button>
 
-      {page === 1 && (
-        <>
-          <button
-            type="button"
-            onClick={() => setPage(0)}
-            aria-label={copy.back}
-            className="q-rise mb-8 block text-[13px] text-chalk-40 transition-colors hover:text-white"
-            style={at(0)}
-          >
-            ← {copy.back}
-          </button>
+      <h2
+        className="mx-auto max-w-[19ch] font-serif text-[clamp(1.7rem,4.6vw,3.3rem)] font-bold uppercase leading-[1.02] tracking-[-0.018em] text-white"
+        style={balance}
+      >
+        <InkWords text={`${copy.terrainLabel}…`} keyRe={/architecture/i} delay={100} step={70} />
+      </h2>
+      <p className="q-rise mx-auto mt-5 max-w-[520px] font-sans text-[14.5px] leading-[1.7] text-chalk-55" style={at(900)}>
+        {copy.terrainHelp}
+      </p>
 
-          {second && (
-            <p className="q-rise lede mx-auto mb-4 max-w-[520px] whitespace-pre-line" style={at(100)}>
-              {second}
-            </p>
-          )}
-          <div className="q-rise" style={at(250)}>
-            <div className="body-sm mb-1">{copy.aboutMinutes(minutes, stepCount, isArchitecture)}</div>
-            {isArchitecture && <p className="body-sm mt-2 text-chalk-40">{copy.resumeNote}</p>}
-          </div>
-
-          {/* Le choix du terrain, avant les questions : sans lui, le
-              parcours retombait sur « marques » et un restaurateur se
-              voyait demander la tagline de ses concurrents. Il est
-              bloquant — un mauvais parcours ne se rattrape pas en cours
-              de route. */}
-          <div className="q-rise mx-auto mt-10 max-w-lg text-left" style={at(400)}>
-            <div className="field-label mb-1.5">{copy.terrainLabel}</div>
-            <p className="body-sm mb-4 text-chalk-40">{copy.terrainHelp}</p>
-            <div className="grid gap-2">
-              {copy.terrains.map((t) => {
-                const on = chosenTerrain === t.k
-                return (
-                  <button
-                    key={t.k}
-                    type="button"
-                    onClick={() => onChooseTerrain(t.k as TerrainKey)}
-                    aria-pressed={on}
-                    className={`flex items-center gap-4 border px-4 py-3.5 text-left transition-colors ${
-                      on ? "border-brand bg-brand/[0.07]" : "border-hair-strong bg-white/[0.02] hover:border-hair"
-                    }`}
-                  >
-                    <TerrainMark k={t.k} on={on} />
-                    <span className="min-w-0">
-                      <span className={`block text-[14.5px] ${on ? "text-white" : "text-chalk-75"}`}>{t.t}</span>
-                      <span className="mt-0.5 block text-[12.5px] text-chalk-40">{t.d}</span>
-                    </span>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          <div className="q-rise" style={at(550)}>
+      {/* Le choix du terrain : quatre grandes cartes sur une ligne. Sans
+          lui, le parcours retombait sur « marques » et un restaurateur se
+          voyait demander la tagline de ses concurrents ; il est donc
+          bloquant. */}
+      <div className="mt-10 grid w-full grid-cols-2 gap-3.5 md:grid-cols-4">
+        {copy.terrains.map((t, i) => {
+          const on = chosenTerrain === t.k
+          return (
             <button
+              key={t.k}
               type="button"
-              className="btn-primary mt-8 disabled:cursor-not-allowed disabled:opacity-40"
-              onClick={onStart}
-              disabled={!chosenTerrain}
+              onClick={() => onChooseTerrain(t.k as TerrainKey)}
+              aria-pressed={on}
+              className={`q-rise relative flex min-h-[214px] flex-col gap-8 overflow-hidden rounded-[18px] border p-5 text-left transition-all duration-300 ${
+                on ? "-translate-y-1 border-brand" : "border-white/[0.09] hover:-translate-y-1 hover:border-white/25"
+              }`}
+              style={{
+                background: CARD_GLOWS[i % CARD_GLOWS.length],
+                animationDelay: `${1000 + i * 110}ms`,
+                boxShadow: on ? "0 0 0 1px rgba(255,34,51,.55), 0 22px 60px -20px rgba(255,34,51,.6)" : "none",
+              }}
             >
-              {copy.start}
+              <span className="flex items-start justify-between">
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-full border transition-colors ${
+                    on ? "border-brand/60 bg-brand/10" : "border-white/10"
+                  }`}
+                >
+                  <TerrainMark k={t.k} on={on} size={24} />
+                </span>
+                <span
+                  aria-hidden
+                  className={`flex h-5 w-5 items-center justify-center rounded-full border text-[11px] font-bold leading-none transition-colors ${
+                    on ? "border-brand bg-brand text-ink" : "border-white/25"
+                  }`}
+                >
+                  {on && "✓"}
+                </span>
+              </span>
+              <span>
+                <span className={`block font-serif text-[1.15rem] font-bold leading-[1.2] ${on ? "text-white" : "text-white/90"}`}>{t.t}</span>
+                <span className="mt-2 block font-sans text-[12.5px] leading-[1.5] text-chalk-55">{t.d}</span>
+              </span>
             </button>
+          )
+        })}
+      </div>
+
+      {/* Ce que ça demande : trois chiffres, pas une phrase. */}
+      <div className="q-rise mt-10 grid w-full max-w-[620px] grid-cols-3 divide-x divide-white/10 border-y border-white/10" style={at(1600)}>
+        {[
+          { v: minutes, l: copy.statMinutes },
+          { v: String(stepCount), l: copy.statQuestions },
+          { v: "✓", l: copy.statSaved },
+        ].map((s) => (
+          <div key={s.l} className="px-3 py-4">
+            <div className="font-serif text-[1.7rem] font-bold leading-none text-brand">{s.v}</div>
+            <div className="mt-2 font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">{s.l}</div>
           </div>
-        </>
+        ))}
+      </div>
+
+      {second && (
+        <blockquote
+          className="q-rise mx-auto mt-9 max-w-[560px] border-l-2 border-brand pl-5 text-left font-serif text-[15px] leading-[1.7] text-chalk-75"
+          style={at(1800)}
+        >
+          {second}
+        </blockquote>
       )}
+
+      <div className="q-rise mt-9 flex flex-col items-center gap-3" style={at(2000)}>
+        <button
+          type="button"
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-35"
+          onClick={onStart}
+          disabled={!chosenTerrain}
+        >
+          {copy.start}
+        </button>
+        {!chosenTerrain && (
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-chalk-40">{copy.chooseFirst}</span>
+        )}
+      </div>
     </div>
   )
 }
@@ -1104,7 +1158,7 @@ function StepScreen({
           délai qui fait la différence entre un formulaire et quelqu'un qui
           vient de poser une question et attend la réponse. */}
       <div
-        className={`q-rise w-full ${step.type === "choice" ? "max-w-[880px]" : "max-w-[600px]"}`}
+        className={`q-rise w-full ${step.type === "choice" ? "max-w-[1040px]" : "max-w-[600px]"}`}
         style={{ animationDelay: "1400ms" }}
       >
         <QuestionInput
@@ -1352,7 +1406,7 @@ function QuestionInput({
             piste à faire glisser : trois cartes visibles, les autres
             cachées derrière un défilement horizontal que rien n'annonçait.
             Une grille se lit d'un regard. */}
-        <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
+        <div className="q-choice" style={{ "--cols": choiceCols(options.length) } as React.CSSProperties}>
           {options.map((opt, i) => {
             const on = step.multi ? Array.isArray(sel) && (sel as string[]).includes(opt) : sel === opt
             return (
@@ -1372,7 +1426,7 @@ function QuestionInput({
                   }
                 }}
                 aria-pressed={on}
-                className={`q-card relative flex flex-col justify-between gap-4 overflow-hidden rounded-[18px] border p-5 text-left transition-[border-color,transform] duration-300 ${
+                className={`q-card relative flex flex-col gap-7 overflow-hidden rounded-[18px] border text-left ${choiceCols(options.length) >= 5 ? "p-5" : "p-6"} transition-[border-color,transform] duration-300 ${
                   on ? "border-brand" : "border-white/[0.08] hover:-translate-y-1 hover:border-white/20"
                 }`}
                 style={{ background: CARD_GLOWS[i % CARD_GLOWS.length] }}
@@ -1393,14 +1447,14 @@ function QuestionInput({
                   </span>
                 </span>
                 <span>
-                  <span className={`block font-serif text-[1.05rem] font-bold leading-[1.25] ${on ? "text-white" : "text-white/85"}`}>
+                  <span className={`block font-serif font-bold leading-[1.2] ${choiceCols(options.length) >= 5 ? "text-[1.02rem]" : "text-[1.2rem]"} ${on ? "text-white" : "text-white/85"}`}>
                     {opt}
                   </span>
                   {/* Ce que l'option veut dire — pour les archétypes, par
                       exemple, dont le nom seul ne dit rien à qui n'a pas
                       lu Jung. */}
                   {step.hints?.[i] && (
-                    <span className="mt-2 block font-sans text-[12.5px] leading-[1.5] text-chalk-55">{step.hints[i]}</span>
+                    <span className="mt-2.5 block font-sans text-[13px] leading-[1.5] text-chalk-55">{step.hints[i]}</span>
                   )}
                 </span>
               </button>
@@ -1882,9 +1936,9 @@ function DoneScreen({
  * système et casse la charte. Chaque signe dit la nature du terrain sans
  * illustration littérale — on reste dans le vocabulaire graphique du site.
  */
-function TerrainMark({ k, on }: { k: string; on: boolean }) {
+function TerrainMark({ k, on, size = 26 }: { k: string; on: boolean; size?: number }) {
   const s = on ? "var(--color-brand)" : "rgba(255,255,255,0.35)"
-  const common = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none", stroke: s, strokeWidth: 1.4 }
+  const common = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: s, strokeWidth: 1.4 }
   return (
     <span className="flex-shrink-0 transition-colors" aria-hidden>
       {k === "marques" && (
@@ -1980,7 +2034,7 @@ function ChapterScreen({
           les numéros des scènes de la tournée sur la home. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-serif font-bold leading-none transition-all duration-[1400ms] ease-[cubic-bezier(.22,.68,0,1)]"
+        className="pointer-events-none absolute left-1/2 top-[25%] -z-10 select-none font-serif font-bold leading-none transition-all duration-[1400ms] ease-[cubic-bezier(.22,.68,0,1)]"
         style={{
           fontSize: "clamp(10rem,30vw,22rem)",
           color: "transparent",
@@ -2115,6 +2169,14 @@ function ChapterScreen({
  * écrire ce que vous refusez » n'abandonne pas à la douzième question de
  * la même façon que quelqu'un qui a cliqué sur « commencer ».
  */
+/** Combien de colonnes pour n options : tout sur une ligne jusqu'à 5, puis des rangées régulières. */
+function choiceCols(n: number): number {
+  if (n <= 5) return Math.max(1, n)
+  if (n === 6 || n === 9) return 3
+  if (n === 10) return 5
+  return 4
+}
+
 function ThresholdScreen({ copy, onEnter }: { copy: Copy; onEnter: () => void }) {
   // Tout le mouvement d'entrée est en animations CSS, pas en minuteurs
   // JavaScript. La version précédente cachait chaque élément derrière un
@@ -2130,9 +2192,6 @@ function ThresholdScreen({ copy, onEnter }: { copy: Copy; onEnter: () => void })
     window.setTimeout(onEnter, 450)
   }
 
-  // Le mot clé de la phrase passe en dégradé rouge, comme sur la home.
-  const words = copy.thresholdTitle.split(" ")
-  const isKey = (w: string) => /commence|starts/i.test(w)
   const at = (ms: number) => ({ animationDelay: `${ms}ms` })
 
   return (
@@ -2148,11 +2207,7 @@ function ThresholdScreen({ copy, onEnter }: { copy: Copy; onEnter: () => void })
         style={leaving ? { height: "50vh", transition: "height 450ms ease" } : undefined}
       />
 
-      <div
-        aria-hidden
-        className="q-breathe pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(255,34,51,.22) 0%, rgba(255,34,51,.06) 40%, transparent 70%)" }}
-      />
+      <BreatheGlow />
 
       <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(500)}>
         {copy.thresholdKicker}
@@ -2162,23 +2217,7 @@ function ThresholdScreen({ copy, onEnter }: { copy: Copy; onEnter: () => void })
         className="mx-auto mt-9 max-w-[16ch] font-serif text-[clamp(2.2rem,6.2vw,4.8rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
         style={{ textWrap: "balance" } as React.CSSProperties}
       >
-        {words.map((w, i) => (
-          <span key={i}>
-            {isKey(w) ? (
-              <span
-                className="q-ink-op bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
-                style={{ color: "transparent", animationDelay: `${800 + i * 90}ms` }}
-              >
-                {w}
-              </span>
-            ) : (
-              <span className="q-ink" style={{ animationDelay: `${800 + i * 90}ms` }}>
-                {w}
-              </span>
-            )}
-            {i < words.length - 1 ? " " : null}
-          </span>
-        ))}
+        <InkWords text={copy.thresholdTitle} keyRe={/commence|starts/i} delay={800} step={90} />
       </h1>
 
       <p className="q-rise mx-auto mt-9 max-w-[500px] font-sans text-[15.5px] leading-[1.75] text-chalk-55" style={at(1700)}>
@@ -2208,7 +2247,7 @@ function FillQuestion({ text }: { text: string }) {
   const words = text.split(" ")
   const step = Math.min(55, 850 / Math.max(1, words.length))
   return (
-    <h2 className="q-question mx-auto mb-5 max-w-[17ch]">
+    <h2 className="q-question mx-auto mb-5 max-w-[24ch]">
       {words.map((w, i) => {
         const last = i === words.length - 1
         const delay = { animationDelay: `${Math.round(i * step)}ms` }
@@ -2244,14 +2283,14 @@ const CARD_GLOWS = [
 
 
 /**
- * ToneGauge — une jauge entre deux pôles.
+ * ToneGauge — une jauge entre deux pôles, en graduations fines.
  *
- * Onze barres verticales, comme un indicateur de niveau : le centre est le
- * point neutre, et les barres entre le centre et la position choisie
- * s'allument en dégradé rouge. Le pôle vers lequel on penche passe en
- * grand et en blanc, l'autre s'éteint — on lit sa réponse sans chercher
- * où est le curseur. Valeur de 0 à 100 par pas de 10 (le scénario Make
- * reçoit toujours un nombre).
+ * Vingt et une graduations comme sur une règle : le centre est le point
+ * neutre, celles entre le centre et la position choisie s'allument en
+ * dégradé rouge, et la position elle-même se dresse, haute et lumineuse.
+ * Le pôle vers lequel on penche passe en grand et en blanc, l'autre
+ * s'éteint — on lit sa réponse sans chercher où est le curseur. Valeur de
+ * 0 à 100 par pas de 5 (le scénario Make reçoit toujours un nombre).
  *
  * Accessible : c'est un `slider` ARIA, au clavier flèches / Début / Fin.
  */
@@ -2266,9 +2305,9 @@ function ToneGauge({
   value: number
   onChange: (v: number) => void
 }) {
-  const N = 11
-  const MID = 5
-  const idx = Math.max(0, Math.min(N - 1, Math.round(value / 10)))
+  const N = 21
+  const MID = 10
+  const idx = Math.max(0, Math.min(N - 1, Math.round(value / 5)))
   const ref = useRef<HTMLDivElement | null>(null)
   const dragging = useRef(false)
 
@@ -2277,7 +2316,7 @@ function ToneGauge({
     if (!el) return
     const r = el.getBoundingClientRect()
     const i = Math.max(0, Math.min(N - 1, Math.round(((clientX - r.left) / r.width) * (N - 1))))
-    if (i !== idx) onChange(i * 10)
+    if (i !== idx) onChange(i * 5)
   }
   const leftOn = idx < MID
   const rightOn = idx > MID
@@ -2285,12 +2324,12 @@ function ToneGauge({
   const hi = Math.max(idx, MID)
 
   return (
-    <div className="py-6 first:pt-0 last:pb-0">
-      <div className="mb-4 flex items-baseline justify-between gap-6">
-        <span className={`font-serif text-[1.15rem] transition-colors duration-200 ${leftOn ? "font-bold text-white" : "text-chalk-40"}`}>
+    <div className="py-7 first:pt-0 last:pb-0">
+      <div className="mb-5 flex items-baseline justify-between gap-6">
+        <span className={`font-serif text-[1.25rem] uppercase tracking-[-0.01em] transition-all duration-200 ${leftOn ? "font-bold text-white" : "font-semibold text-chalk-40"}`}>
           {left}
         </span>
-        <span className={`text-right font-serif text-[1.15rem] transition-colors duration-200 ${rightOn ? "font-bold text-white" : "text-chalk-40"}`}>
+        <span className={`text-right font-serif text-[1.25rem] uppercase tracking-[-0.01em] transition-all duration-200 ${rightOn ? "font-bold text-white" : "font-semibold text-chalk-40"}`}>
           {right}
         </span>
       </div>
@@ -2301,8 +2340,8 @@ function ToneGauge({
         aria-label={`${left} — ${right}`}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={idx * 10}
-        className="flex h-[52px] cursor-pointer select-none items-end justify-between gap-[5px] rounded-md outline-none focus-visible:ring-1 focus-visible:ring-brand/60 [touch-action:pan-y]"
+        aria-valuenow={idx * 5}
+        className="flex h-[64px] cursor-pointer select-none items-end justify-between rounded-md outline-none focus-visible:ring-1 focus-visible:ring-brand/60 [touch-action:pan-y]"
         onPointerDown={(e) => {
           dragging.current = true
           try {
@@ -2324,10 +2363,10 @@ function ToneGauge({
         onKeyDown={(e) => {
           if (e.key === "ArrowRight" || e.key === "ArrowUp") {
             e.preventDefault()
-            onChange(Math.min(100, idx * 10 + 10))
+            onChange(Math.min(100, idx * 5 + 5))
           } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
             e.preventDefault()
-            onChange(Math.max(0, idx * 10 - 10))
+            onChange(Math.max(0, idx * 5 - 5))
           } else if (e.key === "Home") {
             e.preventDefault()
             onChange(0)
@@ -2338,27 +2377,86 @@ function ToneGauge({
         }}
       >
         {Array.from({ length: N }, (_, i) => {
-          const lit = i >= lo && i <= hi && idx !== MID
           const current = i === idx
           const center = i === MID
+          const major = i % 5 === 0
+          const lit = i >= lo && i <= hi && idx !== MID
           return (
             <span
               key={i}
               aria-hidden
-              className="flex-1 rounded-full transition-all duration-200 ease-out"
+              className="rounded-full transition-all duration-200 ease-out"
               style={{
-                height: current ? 52 : center ? 34 : 24,
-                background: lit
-                  ? "linear-gradient(180deg,#ff4d2e,#ff2233)"
-                  : center
-                    ? "rgba(255,255,255,0.35)"
-                    : "rgba(255,255,255,0.1)",
-                boxShadow: current && idx !== MID ? "0 0 18px rgba(255,34,51,0.55)" : "none",
+                width: current ? 5 : 3,
+                height: current ? 64 : center ? 40 : major ? 28 : 18,
+                background: current && idx !== MID
+                  ? "linear-gradient(180deg,#ff6a3d,#ff2233)"
+                  : lit
+                    ? "linear-gradient(180deg,#ff4d2e,#e0102a)"
+                    : center
+                      ? "rgba(255,255,255,0.55)"
+                      : major
+                        ? "rgba(255,255,255,0.28)"
+                        : "rgba(255,255,255,0.13)",
+                boxShadow: current && idx !== MID ? "0 0 22px rgba(255,34,51,0.7)" : "none",
               }}
             />
           )
         })}
       </div>
     </div>
+  )
+}
+
+
+/**
+ * InkWords — un titre dont les mots se remplissent un à un.
+ *
+ * Même geste partout (seuil, couvertures) : le gris pâle passe au blanc
+ * mot après mot, et l'expression clé — qui peut couvrir plusieurs mots,
+ * comme « quelque chose » — prend le dégradé rouge du titre de la home.
+ * Animations CSS pures : le texte est lisible même si le script tarde.
+ */
+function InkWords({ text, keyRe, delay = 0, step = 80 }: { text: string; keyRe?: RegExp; delay?: number; step?: number }) {
+  const words = text.split(" ")
+  const m = keyRe ? keyRe.exec(text) : null
+  let offset = 0
+  return (
+    <>
+      {words.map((w, i) => {
+        const start = offset
+        offset += w.length + 1
+        const key = !!m && start < m.index + m[0].length && start + w.length > m.index
+        const d = { animationDelay: `${delay + i * step}ms` }
+        return (
+          <span key={i}>
+            {key ? (
+              <span
+                className="q-ink-op bg-[linear-gradient(135deg,#ff2233_20%,#ff4d2e_60%,#e0102a)] bg-clip-text"
+                style={{ color: "transparent", ...d }}
+              >
+                {w}
+              </span>
+            ) : (
+              <span className="q-ink" style={d}>
+                {w}
+              </span>
+            )}
+            {i < words.length - 1 ? " " : null}
+          </span>
+        )
+      })}
+    </>
+  )
+}
+
+/** La lueur rouge qui respire derrière le titre, centrée sur l'écran. */
+function BreatheGlow() {
+  return (
+    <div
+      aria-hidden
+      className="q-breathe pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
+      style={{ background: "radial-gradient(circle, rgba(255,34,51,.22) 0%, rgba(255,34,51,.06) 40%, transparent 70%)" }}
+    />
   )
 }

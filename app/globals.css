@@ -1494,10 +1494,11 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
    la taille. */
 .q-question {
   font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: clamp(2rem, 4.6vw, 3.4rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.9vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
   color: #fff;
   text-wrap: balance;
 }
@@ -1665,12 +1666,19 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 
 /* Les cartes de choix du questionnaire — format des chapitres S.T.R.A.W.
    de la home, à l'échelle d'une réponse, en grille : toutes visibles. */
-.q-card { min-height: 116px; user-select: none; -webkit-user-select: none; }
+/* La hauteur suit la largeur : une carte de 210 px empilée cinq fois sur
+   un téléphone fait un écran et demi de vide. */
+.q-card { min-height: 92px; user-select: none; -webkit-user-select: none; }
+@media (min-width: 480px) { .q-card { min-height: 150px; } }
+@media (min-width: 720px) { .q-card { min-height: 210px; } }
+.q-choice { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 480px) { .q-choice { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 720px) { .q-choice { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); } }
 
 /* La lueur qui respire derrière l'écran de seuil du questionnaire. */
 @keyframes q-breathe {
-  0%, 100% { opacity: .65; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  0%, 100% { opacity: .65; scale: 1; }
+  50% { opacity: 1; scale: 1.08; }
 }
 .q-breathe { animation: q-breathe 5.5s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .q-breathe { animation: none; } }
