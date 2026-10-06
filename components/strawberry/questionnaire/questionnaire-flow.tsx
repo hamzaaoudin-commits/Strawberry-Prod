@@ -138,11 +138,11 @@ const UI_COPY = {
     sealDownload: "Emporter votre première page ↓",
     sealRefLabel: "Votre référence",
     nextTitle: "Ce qui se passe maintenant",
-    nextSteps: (d15: string, d20: string, d21: string) => [
+    nextSteps: (d15: string, d21: string) => [
       { when: "Demain", what: "Le dépouillement commence : vos supports, ceux de vos concurrents, vos avis clients, vos pages." },
       { when: `Jour 15 · ${d15}`, what: "Le document vous est remis." },
-      { when: `Jour 20 · ${d20}`, what: "Une heure de relecture ensemble, puis deux tours de révision." },
       { when: `Jour 21 · ${d21}`, what: "Livraison finale, au plus tard. Passé ce délai, vous êtes remboursé et le document vous reste." },
+      { when: "Ensuite", what: "Deux tours de révision, dans les 30 jours qui suivent la livraison." },
     ],
     backToSite: "Retour au site",
 
@@ -307,11 +307,11 @@ const UI_COPY = {
     sealDownload: "Take your first page ↓",
     sealRefLabel: "Your reference",
     nextTitle: "What happens now",
-    nextSteps: (d15: string, d20: string, d21: string) => [
+    nextSteps: (d15: string, d21: string) => [
       { when: "Tomorrow", what: "The review begins: your materials, your competitors', your customer reviews, your pages." },
       { when: `Day 15 · ${d15}`, what: "The document is handed to you." },
-      { when: `Day 20 · ${d20}`, what: "One hour of review together, then two rounds of revisions." },
       { when: `Day 21 · ${d21}`, what: "Final delivery, at the latest. Past that date, you are refunded and keep the document." },
+      { when: "Then", what: "Two rounds of revisions, within 30 days of delivery." },
     ],
     backToSite: "Back to the site",
 
@@ -1815,7 +1815,7 @@ function DoneScreen({
     return d.toLocaleDateString(copy.locale, { day: "numeric", month: "long", ...(year ? { year: "numeric" } : {}) })
   }
   const due = day(21, true)
-  const timeline = copy.nextSteps(day(15), day(20), day(21))
+  const timeline = copy.nextSteps(day(15), day(21))
 
   /**
    * Ce que le client emporte.

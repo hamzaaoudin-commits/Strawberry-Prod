@@ -885,14 +885,14 @@ export const QUESTION_SOURCES: QuestionSource[] = [
   {
     id: "review_logistics", offers: ["audit", "architecture"], type: "textarea", optional: true,
     label: t(
-      "Qui doit valider le document avec vous, et quels créneaux vous arrangent pour l'heure de relecture, vers le jour 20 ?",
-      "Who must approve the document with you, and which slots suit you for the one-hour review around day 20?",
+      "Qui, en dehors de vous, doit valider le document ?",
+      "Who, besides you, must approve the document?",
     ),
     help: t(
-      "Associé, conjoint, comité — et deux ou trois créneaux, avec votre fuseau horaire.",
-      "Partner, spouse, committee — and two or three slots, with your time zone.",
+      "Associé, conjoint, comité : toute personne dont l'avis comptera quand vous relirez le document.",
+      "Partner, spouse, committee: anyone whose opinion will count when you read the document.",
     ),
-    ph: t("Validation : ... Créneaux : ...", "Approval: ... Slots: ..."),
+    ph: t("Validation : ...", "Approval: ..."),
     tag: t("Ambition", "Ambition"),
   },
 ]

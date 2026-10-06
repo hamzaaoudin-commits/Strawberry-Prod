@@ -33,7 +33,7 @@ const ARTICLES = [
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Playbooks</li>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> The Lexicon and rewritten copy</li>
         </ul>
-        <p>The service includes two (2) rounds of revisions and a one-hour review session with the Client before final delivery.</p>
+        <p>The service includes two (2) rounds of revisions, within thirty (30) days following delivery.</p>
       </>
     ),
   },

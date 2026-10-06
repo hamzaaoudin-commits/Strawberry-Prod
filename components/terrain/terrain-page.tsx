@@ -1,5 +1,6 @@
 "use client"
 
+import { strawHtml, STRAW_DICT } from "@/lib/straw-html"
 import { useEffect } from "react"
 import { useLang } from "@/lib/i18n"
 
@@ -169,42 +170,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </div>
 </div>
 </section>
-<!-- ============ LIVRABLES ============ -->
-<section class="section">
-<div class="wrap">
-<div class="section-head reveal">
-<span class="eyebrow" data-i18n="deliv.eyebrow">Ce que vous recevez, précisément</span>
-<h2 class="h-sec" data-i18n="deliv.title" style="margin-top:1.1rem">Les six pièces.</h2>
-<p class="lead" data-i18n="deliv.lead" style="margin-top:1.2rem">Le même document pour tout le monde, mais rien de générique dedans.</p>
-</div>
-<div style="display:grid; gap:0; border-top:1px solid var(--line-soft)">
-<div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">01</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.1.t">La plateforme</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.1.d">Ce que vous défendez.</p>
-</div>
-<div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">02</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.2.t">Le diagnostic</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.2.d">Ce que vous dites aujourd'hui.</p>
-</div>
-<div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">03</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.3.t">La carte</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.3.d">Le champ concurrentiel.</p>
-</div>
-<div class="reveal" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">04</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.4.t">Les décisions</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.4.d">Ce qu'il faut faire, dans l'ordre.</p>
-</div>
-<div class="reveal d1" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--line-soft)">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">05</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.5.t">Les playbooks</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.5.d">Ce que vos équipes font au quotidien.</p>
-</div>
-<div class="reveal d2" style="display:grid; grid-template-columns:minmax(180px,260px) 1fr; gap:1.5rem; padding:1.6rem 0">
-<div><span style="font-family:var(--mono); font-size:.72rem; color:var(--coral); letter-spacing:.1em">06</span><h3 style="margin-top:.4rem; font-size:1.05rem" data-i18n="deliv.6.t">Le langage</h3></div>
-<p class="body-sm" style="color:var(--smoke)" data-i18n="deliv.6.d">Les mots et les textes prêts à coller.</p>
-</div>
-</div>
-</div>
-</section>
+${strawHtml()}
 <!-- ============ STATS ============ -->
 <section class="section">
 <div class="wrap stats">
@@ -285,9 +251,12 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
     const applyOverrides = () => {
       const api = (window as unknown as { NOCTA_I18N?: { DICT: Record<string, Record<string, string>>; apply: (l: string) => void; getLang: () => string } }).NOCTA_I18N
       if (!api) return false
-      Object.assign(api.DICT.fr ?? {}, copy.fr)
-      Object.assign(api.DICT.en ?? {}, copy.en)
-      api.apply(api.getLang())
+      Object.assign(api.DICT.fr ?? {}, STRAW_DICT.fr, copy.fr)
+      Object.assign(api.DICT.en ?? {}, STRAW_DICT.en, copy.en)
+      // La langue de l'ADRESSE décide : i18n.js ne connaît que la dernière langue
+      // enregistrée dans le navigateur (« fr » par défaut), si bien qu'une
+      // personne qui ouvrait /en/... voyait la page entière en français.
+      api.apply(lang)
       return true
     }
 
@@ -315,7 +284,7 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
       cancelled = true
       added.forEach((s) => s.remove())
     }
-  }, [copy])
+  }, [copy, lang])
 
   const html = TERRAIN_HTML.split("__LANG__").join(`/${lang}`).replace(
     /<h1 class="wordmark flicker">[^<]*<\/h1>/,

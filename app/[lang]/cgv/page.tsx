@@ -33,7 +33,7 @@ const ARTICLES = [
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Les Playbooks</li>
           <li style={{ paddingLeft: 20, position: "relative" }}><span style={{ position: "absolute", left: 0, color: COLOR }}>✦</span> Le Lexique et les textes réécrits</li>
         </ul>
-        <p>La prestation inclut deux (2) tours de révision et une séance de relecture d&apos;une heure avec le Client avant livraison finale.</p>
+        <p>La prestation inclut deux (2) tours de révision, dans les trente (30) jours suivant la livraison.</p>
       </>
     ),
   },

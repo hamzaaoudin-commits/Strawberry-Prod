@@ -1,6 +1,6 @@
 import { NavBar } from "@/components/strawberry/navbar"
 import { HeroSection } from "@/components/strawberry/hero-section"
-import { TourSection } from "@/components/strawberry/tour-section"
+import { StrawMechanism } from "@/components/strawberry/straw-mechanism"
 import { MethodSection } from "@/components/strawberry/method-section"
 import { ReadMarquee } from "@/components/strawberry/read-marquee"
 import { ProblemSection } from "@/components/strawberry/problem-section"
@@ -74,12 +74,12 @@ export default async function Home({
           ici, il élargit le problème du lecteur à sa cause commune, juste
           avant qu'on ne présente ce qu'on livre. */}
       <WhySection lang={lang} />
-      {/* La tournée présente désormais les six pièces en entier — les
-          vingt éléments qui vivaient dans la carte des livrables plus bas
-          y sont tous repris, pièce par pièce. La section « l'offre » qui
-          suivait n'était donc plus qu'une redite du même contenu, une
-          deuxième fois, dans une forme plus courte. Retirée. */}
-      <TourSection />
+      {/* S.T.R.A.W. : le mécanisme propriétaire du studio, avec tous les
+          livrables rangés par catégorie. Il remplace la tournée — six scènes
+          épinglées qu'on traversait en défilant, sur la home seulement. La
+          même section figure désormais sur chaque page de terrain, où elle
+          prend aussi la place de la liste « ce que vous recevez ». */}
+      <StrawMechanism lang={lang} />
       {/* La méthode, une seule fois : elle décrit le même déroulé quel que
           soit ce qui se vend, elle n'a donc plus de raison de se répéter
           sur chacune des quatre pages de terrain. */}

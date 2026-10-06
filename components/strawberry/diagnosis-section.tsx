@@ -53,7 +53,7 @@ const T = {
     diagramArchitecture: "The strategy",
     splitBefore: "The making carried the value.",
     splitAfter: "The strategy carries the value.",
-    wipeHint: "Drag to compare",
+    wipeHint: "Drag to the right",
     remedy:
       "The problem is not producing more content or changing your logo. It is building a narrative identity strong enough that the market stops comparing you — and starts belonging to what you stand for.",
   },
@@ -93,7 +93,7 @@ const T = {
     diagramArchitecture: "La stratégie",
     splitBefore: "La fabrication portait la valeur.",
     splitAfter: "La stratégie porte la valeur.",
-    wipeHint: "Glissez pour comparer",
+    wipeHint: "Glissez vers la droite",
     remedy:
       "Le problème n'est pas de produire plus de contenu ni de changer de logo. C'est de construire une identité narrative assez forte pour que le marché cesse de vous comparer — et commence à adhérer à ce que vous représentez.",
   },
@@ -106,14 +106,15 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
   const [splitRef, splitVisible] = useScrollReveal()
 
   // Le curseur de comparaison, repris du mécanisme qui servait « la
-  // différence » sur les pages de terrain. Il reste entièrement sur
-  // « Hier » au repos — la phrase se lit en entier, sans être coupée en
-  // deux — et c'est le geste de glisser qui révèle « Aujourd'hui ».
-  // L'ancienne version l'animait seule jusqu'à 50 % à l'ouverture, ce qui
-  // coupait les deux phrases en même temps : ni l'une ni l'autre ne se
-  // lisait en entier.
+  // différence » sur les pages de terrain. Il se comporte comme une
+  // jauge : il part de la GAUCHE et « Aujourd'hui » se remplit depuis la
+  // gauche, vers la droite, à mesure qu'on le fait glisser. Au repos, il
+  // reste entièrement sur « Hier » — la phrase se lit en entier, sans être
+  // coupée en deux — et c'est le geste de glisser qui révèle
+  // « Aujourd'hui ». (Il partait avant de la droite et se faisait glisser
+  // vers la gauche, à rebours du sens de lecture d'une jauge.)
   const wipeRef = useRef<HTMLDivElement | null>(null)
-  const [pct, setPct] = useState(96)
+  const [pct, setPct] = useState(4)
   const dragging = useRef(false)
 
   function setFromClientX(clientX: number) {
@@ -265,7 +266,8 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
             style={{ opacity: splitVisible ? 1 : 0, transition: "opacity 700ms ease" }}
           >
             {/* La couche du dessous : « Aujourd'hui », pleine largeur — elle
-                se révèle à mesure que le curseur avance vers la droite.
+                se révèle depuis la gauche, à mesure que le curseur avance
+                vers la droite.
                 L'illustration reprend les mêmes six éléments que « Hier »,
                 mais alignés le long d'un axe : ce n'est plus un nuage, c'est
                 une architecture. */}
@@ -293,14 +295,14 @@ export function DiagnosisSection({ lang }: { lang: Lang }) {
               </div>
             </div>
 
-            {/* La couche du dessus : « Hier », désaturée, découpée jusqu'à
-                `pct` — à gauche, comme le sens de lecture le veut : hier
-                avant aujourd'hui. Le texte ne se déplace pas, seule la
-                fenêtre qui le découvre bouge. Les mêmes six éléments que
+            {/* La couche du dessus : « Hier », désaturée, découpée à partir
+                de `pct` — à droite du curseur : ce qui n'a pas encore été
+                rempli. Le texte ne se déplace pas, seule la fenêtre qui le
+                découvre bouge. Les mêmes six éléments que
                 « Aujourd'hui », mais dispersés sans aucun axe commun. */}
             <div
               className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#0d0d0d] px-6 text-center [filter:grayscale(1)_brightness(0.75)]"
-              style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
+              style={{ clipPath: `inset(0 0 0 ${pct}%)` }}
             >
               <svg viewBox="0 0 160 70" className="h-14 w-36" aria-hidden>
                 <rect x="10" y="8" width="14" height="11" rx="1.5" transform="rotate(-14 17 13)" fill="var(--color-chalk-40)" />

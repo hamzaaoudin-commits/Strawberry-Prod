@@ -63,7 +63,9 @@ const T = {
     h1a: "The problem is not what you have to offer.",
     h1b: "It's the story the world keeps of it.",
     grounding: "Narrative architecture · 2 900 € · Delivered in three weeks",
-    sub: "We build the narrative architecture that makes you identifiable.\n\nIn three weeks, you know what to say, how to say it, and why the world should listen.",
+    sub: "We build the narrative architecture that makes you identifiable.",
+    lead: "In three weeks, you know:",
+    items: ["What to say", "How to say it", "Why the world should listen"],
     cta1: "Place your commission \u2192",
     ctaMain: "Order the architecture \u2192",
   },
@@ -73,7 +75,9 @@ const T = {
     h1a: "Le problème n'est pas ce que vous avez à offrir.",
     h1b: "C'est l'histoire que le monde en retient.",
     grounding: "Architecture narrative · 2 900 € · Livré en trois semaines",
-    sub: "Nous construisons l'architecture narrative qui vous rend identifiable.\n\nEn trois semaines, vous savez quoi raconter, comment le raconter et pourquoi le public devrait vous écouter.",
+    sub: "Nous construisons l'architecture narrative qui vous rend identifiable.",
+    lead: "En trois semaines, vous savez :",
+    items: ["Quoi raconter", "Comment le raconter", "Pourquoi le public devrait vous écouter"],
     cta1: "Passer commande \u2192",
     ctaMain: "Commander l'architecture \u2192",
   },
@@ -237,9 +241,28 @@ export function HeroSection() {
             {t.slogan}
           </p>
 
-          <p className="mb-8 max-w-[620px] whitespace-pre-line font-sans text-[clamp(0.9rem,1.8vw,1.15rem)] leading-[1.75] text-white/55">
+          <p className="mb-5 max-w-[620px] font-sans text-[clamp(0.9rem,1.8vw,1.15rem)] leading-[1.75] text-white/55">
             {t.sub}
           </p>
+
+          {/* Trois promesses : une liste, pas une phrase. « Vous savez quoi
+              raconter, comment le raconter et pourquoi le public devrait
+              vous écouter » se lisait d'une traite, alors que ce sont trois
+              choses distinctes que le lecteur doit pouvoir compter. */}
+          <p className="mb-3 max-w-[620px] font-sans text-[clamp(0.9rem,1.8vw,1.15rem)] leading-[1.75] text-white/55">
+            {t.lead}
+          </p>
+          <ul className="mb-8 flex max-w-[620px] list-none flex-col gap-3 p-0">
+            {t.items.map((item) => (
+              <li
+                key={item}
+                className="flex items-baseline gap-3.5 font-sans text-[clamp(1rem,1.9vw,1.2rem)] font-medium leading-[1.45] text-white"
+              >
+                <span aria-hidden className="relative -top-[0.12em] h-[7px] w-[7px] flex-none rounded-full bg-brand shadow-[0_0_12px_rgba(255,34,51,0.75)]" />
+                {item}
+              </li>
+            ))}
+          </ul>
 
           {/* Le prix et le délai, juste avant le bouton plutôt qu'avant le
               paragraphe. On les lisait avant même de savoir ce qu'on
