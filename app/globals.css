@@ -485,21 +485,6 @@
   to { transform: translateX(-50%); }
 }
 
-/* Animation de logo au chargement (LoadingIntro). Le calque et ses lettres
-   partent visibles/masquées par défaut dans le HTML ; ce sont ces deux règles
-   qui font l'animation, pilotées par un script en ligne qui ajoute/retire des
-   classes et des styles au bon moment. */
-#sp-intro {
-  transition: opacity 400ms ease-out;
-}
-.sp-intro-letter {
-  transition: opacity 450ms ease-out, transform 450ms ease-out;
-}
-.sp-intro-letter.sp-intro-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ============================================================
    Grain de fond.
    ============================================================
@@ -1765,70 +1750,37 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 .q-tall-only { display: none; }
 @media (min-height: 900px) { .q-tall-only { display: block; } }
 
-/* ─── Ouverture : le nom du studio vient à l'écran ───────────────────────
-   Un calque plein écran qui se dissout de lui-même, en CSS pur. Son état
-   par défaut est INVISIBLE (opacity: 0) : l'animation le montre puis le
-   retire. Si les animations sont désactivées ou ne démarrent pas, le calque
-   n'apparaît simplement pas et l'écran en dessous reste utilisable — un
-   écran d'ouverture ne doit jamais pouvoir bloquer un client qui vient de
-   payer. */
-.q-intro { opacity: 0; animation: q-intro-out 2700ms linear both; }
-@keyframes q-intro-out {
-  0%, 74% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.04); }
-}
-/* la lumière qui s'allume derrière le nom */
-@keyframes q-ignite { from { opacity: 0; transform: translate(-50%, -50%) scale(.55); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-.q-intro-glow { animation: q-ignite 1900ms cubic-bezier(.22,.68,0,1) 350ms both; }
-/* le trait qui s'étire depuis le centre */
-@keyframes q-slit { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
-.q-intro-line { height: 1px; width: min(440px, 62vw); background: linear-gradient(90deg, transparent, #ff2233 30%, #ff2233 70%, transparent); animation: q-slit 1000ms cubic-bezier(.22,.68,0,1) 150ms both; }
-/* les lettres se forment : floues et trop grandes, puis nettes */
-@keyframes q-letter { from { opacity: 0; transform: translateY(.38em) scale(1.14); filter: blur(14px); } to { opacity: 1; transform: none; filter: blur(0); } }
-.q-letter { display: inline-block; animation: q-letter 950ms cubic-bezier(.22,.68,0,1) both; }
-/* et le nom se resserre en se posant */
-@keyframes q-track { from { letter-spacing: .26em; } to { letter-spacing: .035em; } }
-.q-intro-word { animation: q-track 2300ms cubic-bezier(.22,.68,0,1) 450ms both; }
-@keyframes q-intro-sub { from { opacity: 0; letter-spacing: .6em; } to { opacity: 1; letter-spacing: .34em; } }
-.q-intro-sub { animation: q-intro-sub 1300ms cubic-bezier(.22,.68,0,1) 1500ms both; }
-@media (prefers-reduced-motion: reduce) {
-  .q-intro, .q-intro-glow, .q-intro-line, .q-letter, .q-intro-word, .q-intro-sub { animation: none; }
-  .q-intro { opacity: 0; }
-}
-
-
-/* ─── L'ouverture : « STRAWBERRY PROD. » vient à l'écran ───────────────────
+/* ─── L'ouverture du site : « STRAWBERRY PROD. » vient à l'écran ───────────
    Chaque lettre monte en perdant son flou (--d = son délai), puis une vague
-   de lumière la traverse. L'ensemble s'efface à 2,1 s ; l'écran de langue
-   attend 2,25 s avant d'entrer. */
-@keyframes q-letter-in { from { opacity: 0; transform: translateY(.42em) scale(1.1); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
-@keyframes q-letter-glow { 0%, 100% { text-shadow: 0 0 0 rgba(255,34,51,0); color: #ff2233; } 45% { text-shadow: 0 0 36px rgba(255,100,70,.95); color: #ff7a63; } }
-.q-letter {
+   de lumière la traverse. Le nom reste posé, entier, jusqu'à 3,3 s ; le
+   fondu de sortie dure 0,65 s. Ce délai de 3300 ms est repris dans le script
+   de loading-intro.tsx (EXIT) : les deux doivent rester égaux. */
+@keyframes sp-letter-in { from { opacity: 0; transform: translateY(.42em) scale(1.1); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes sp-letter-glow { 0%, 100% { text-shadow: 0 0 0 rgba(255,34,51,0); color: #ff2233; } 45% { text-shadow: 0 0 36px rgba(255,100,70,.95); color: #ff7a63; } }
+.sp-letter {
   display: inline-block;
-  animation: q-letter-in 800ms cubic-bezier(.22,.68,0,1) var(--d, 0ms) both,
-             q-letter-glow 900ms ease calc(var(--d, 0ms) + 500ms) both;
+  animation: sp-letter-in 800ms cubic-bezier(.22,.68,0,1) var(--d, 0ms) both,
+             sp-letter-glow 900ms ease calc(var(--d, 0ms) + 500ms) both;
 }
-@keyframes q-bloom { 0% { opacity: 0; transform: scale(.45); } 45% { opacity: 1; } 100% { opacity: .6; transform: scale(1.12); } }
-.q-bloom { animation: q-bloom 2200ms cubic-bezier(.22,.68,0,1) 200ms both; }
-@keyframes q-intro-line { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
-.q-intro-line { background: linear-gradient(90deg, transparent, #ff2233 30%, #ff8352 50%, #ff2233 70%, transparent); animation: q-intro-line 900ms cubic-bezier(.22,.68,0,1) 1050ms both; }
-@keyframes q-intro-tag { from { opacity: 0; letter-spacing: .95em; } to { opacity: .8; letter-spacing: .34em; } }
-.q-intro-tag { animation: q-intro-tag 1000ms cubic-bezier(.22,.68,0,1) 1350ms both; }
-@keyframes q-intro-out { 0% { opacity: 1; transform: scale(1); visibility: visible; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; transform: scale(1.05); visibility: hidden; } }
-.q-intro { animation: q-intro-out 650ms ease-in 2100ms both; }
+@keyframes sp-bloom { 0% { opacity: 0; transform: scale(.45); } 45% { opacity: 1; } 100% { opacity: .6; transform: scale(1.12); } }
+.sp-bloom { animation: sp-bloom 3000ms cubic-bezier(.22,.68,0,1) 200ms both; }
+@keyframes sp-line { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+.sp-line { background: linear-gradient(90deg, transparent, #ff2233 30%, #ff8352 50%, #ff2233 70%, transparent); animation: sp-line 900ms cubic-bezier(.22,.68,0,1) 1050ms both; }
+@keyframes sp-tag { from { opacity: 0; letter-spacing: .95em; } to { opacity: .8; letter-spacing: .34em; } }
+.sp-tag { animation: sp-tag 1000ms cubic-bezier(.22,.68,0,1) 1350ms both; }
+/* l'avancée de caméra : le nom gagne 7 % sur toute la durée */
+@keyframes sp-push { from { transform: scale(.955); } to { transform: scale(1.03); } }
+.sp-push { animation: sp-push 3600ms cubic-bezier(.22,.68,0,1) both; }
+/* la sortie : visible par défaut, puis fondu, puis invisible (même sans script) */
+@keyframes sp-intro-out { 0% { opacity: 1; transform: scale(1); visibility: visible; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; transform: scale(1.05); visibility: hidden; } }
+.sp-intro { animation: sp-intro-out 650ms ease-in 3300ms both; }
 
-/* La page de choix attend la fin de l'ouverture : invisible jusqu'à son délai. */
-@keyframes q-after { from { opacity: 0; } to { opacity: 1; } }
-.q-after { animation: q-after 500ms ease both; }
+@media (prefers-reduced-motion: reduce) {
+  .sp-intro { display: none; }
+  .sp-letter, .sp-bloom, .sp-line, .sp-tag, .sp-push { animation: none; }
+}
 
-/* L'avancée de caméra : tout l'ensemble gagne 6 % sur la durée de l'ouverture. */
-@keyframes q-push { from { transform: scale(.955); } to { transform: scale(1.025); } }
-.q-push { animation: q-push 2700ms cubic-bezier(.22,.68,0,1) both; }
-
-/* Un clic passe l'ouverture : tout ce qui est animé et fini va à son état
-   final aussitôt. Les animations infinies (lueur qui respire) n'en font
-   pas partie — à 1 ms, elles clignoteraient. */
-.q-skipped .q-rise, .q-skipped .q-ink, .q-skipped .q-ink-op, .q-skipped .q-grow,
-.q-skipped .q-after, .q-skipped .q-push, .q-skipped .q-intro, .q-skipped .q-intro * { animation-duration: 1ms !important; animation-delay: 0ms !important; }
-
-@media (prefers-reduced-motion: reduce) { .q-intro { display: none; } .q-letter, .q-bloom, .q-intro-line, .q-intro-tag, .q-push, .q-after { animation: none; } }
+/* Quand on passe l'ouverture, la page qui l'attendait (le questionnaire)
+   va aussitôt à son état final. Les animations infinies n'en font pas
+   partie : à 1 ms, elles clignoteraient. */
+.q-skipped .q-rise, .q-skipped .q-ink, .q-skipped .q-ink-op, .q-skipped .q-grow { animation-duration: 1ms !important; animation-delay: 0ms !important; }

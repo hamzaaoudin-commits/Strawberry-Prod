@@ -2523,131 +2523,74 @@ function BreatheGlow() {
 
 
 /**
- * IntroOverlay — la séquence d'ouverture : « STRAWBERRY PROD. » vient à l'écran.
- *
- * Environ deux secondes et demie, une seule fois par session :
- *   1. le nom se révèle lettre par lettre (montée, flou qui se résorbe) ;
- *   2. une vague de lumière le traverse de gauche à droite ;
- *   3. une lueur éclot derrière, un trait se trace dessous, « ONBOARDING »
- *      s'écarte et se pose ;
- *   4. le tout s'estompe sur l'écran du choix de la langue.
- *
- * Tout le mouvement est en CSS. Un clic n'importe où la passe, et un
- * minuteur la retire de toute façon au bout de quatre secondes : elle ne
- * peut jamais rester collée devant le questionnaire.
- */
-function IntroOverlay({ onSkip }: { onSkip: () => void }) {
-  const words = ["STRAWBERRY", "PROD."]
-  let n = 0
-  return (
-    <div
-      aria-hidden
-      onClick={onSkip}
-      className="q-intro fixed inset-0 z-50 flex cursor-pointer flex-col items-center justify-center bg-[#0a0a0a]"
-    >
-      <div
-        className="q-bloom pointer-events-none absolute left-1/2 top-1/2 h-[85vmin] w-[85vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(255,34,51,.36) 0%, rgba(255,34,51,.09) 42%, transparent 70%)" }}
-      />
-      <div className="q-push relative flex flex-col items-center">
-        <div className="relative flex flex-wrap items-baseline justify-center gap-x-[0.32em] px-6 font-serif text-[clamp(2.2rem,8vw,6.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-brand">
-          {words.map((w) => (
-            <span key={w} className="inline-flex whitespace-nowrap">
-              {w.split("").map((ch) => {
-                const d = 300 + n++ * 45
-                return (
-                  <span key={n} className="q-letter" style={{ "--d": `${d}ms` } as React.CSSProperties}>
-                    {ch}
-                  </span>
-                )
-              })}
-            </span>
-          ))}
-        </div>
-        <div className="q-intro-line relative mt-7 h-px w-[min(420px,70vw)]" />
-        <div className="q-intro-tag relative mt-6 font-mono text-[11px] uppercase text-chalk-55">Onboarding</div>
-      </div>
-    </div>
-  )
-}
-
-/**
  * LanguageScreen — le tout premier écran : français ou anglais.
  *
  * Il est volontairement bilingue : on ne sait pas encore dans quelle langue
  * lire. Le choix est définitif pour ce parcours (voir `lang` dans le
  * composant) et pilote aussi la langue des e-mails envoyés ensuite.
+ *
+ * Il attend l'ouverture du site (voir loading-intro.tsx) : le nom reste
+ * posé une seconde, puis s'efface en fondu, et c'est dans ce fondu que le
+ * titre commence à se dessiner dessous.
  */
 function LanguageScreen({ onPick }: { onPick: (l: Lang) => void }) {
-  // L'ouverture ne joue qu'une fois par session : un rechargement (pour
-  // changer de langue, par exemple) ne doit pas la rejouer. Cette valeur ne
-  // change jamais en cours de route — c'est ce qui fixe les délais ci-dessous.
-  const [intro] = useState(() => {
+  // Le délai se calcule une fois, à l'arrivée : le temps qu'il reste avant
+  // que l'ouverture ne commence à s'effacer, plus 150 ms. Pas d'ouverture
+  // (déjà jouée, petit écran, animations réduites) : aucun délai.
+  const [OFF] = useState(() => {
     try {
-      if (sessionStorage.getItem("sp_q_intro")) return false
-      sessionStorage.setItem("sp_q_intro", "1")
+      const exit = (window as unknown as { __spIntroExit?: number }).__spIntroExit
+      if (!exit) return 0
+      const wait = exit - performance.now()
+      return wait > 0 ? Math.round(wait + 150) : 0
     } catch {
-      // stockage indisponible : on joue l'ouverture
+      return 0
     }
-    return true
   })
-  // Le calque d'ouverture, lui, est retiré par un minuteur de sécurité : il
-  // ne peut pas rester collé devant le questionnaire. Il est séparé de
-  // `intro` à dessein : si le minuteur changeait les délais de la page, elle
-  // sauterait à son état final en plein milieu de son apparition.
-  const [overlay, setOverlay] = useState(intro)
+  // Un clic ou une touche passe l'ouverture : la page n'attend plus.
   const [skipped, setSkipped] = useState(false)
   useEffect(() => {
-    if (!overlay) return
-    const id = window.setTimeout(() => setOverlay(false), 4000)
-    return () => window.clearTimeout(id)
-  }, [overlay])
+    const on = () => setSkipped(true)
+    window.addEventListener("sp-intro-skip", on)
+    return () => window.removeEventListener("sp-intro-skip", on)
+  }, [])
 
-  // Le mot s'efface de 2,1 s à 2,75 s ; puis une seconde de noir, pour
-  // respirer ; puis seulement, la page de choix.
-  const OFF = intro ? 2100 + 650 + 1000 : 0
   const at = (ms: number) => ({ animationDelay: `${ms + OFF}ms` })
   const options: { l: Lang; name: string; line: string; tag: string }[] = [
     { l: "fr", name: "Français", line: "Continuer en français", tag: "FR" },
     { l: "en", name: "English", line: "Continue in English", tag: "EN" },
   ]
   return (
-    <div className={`relative isolate flex min-h-[82vh] items-center justify-center ${skipped ? "q-skipped" : ""}`}>
-      {overlay && <IntroOverlay onSkip={() => setSkipped(true)} />}
-      {/* Tout ce qui suit est masqué jusqu'à la fin de l'attente : sans ce
-          calque, le titre — dont les mots démarrent à un gris très pâle —
-          se devinait déjà sous le mot qui s'efface. */}
-      <div className="q-after flex w-full flex-col items-center text-center" style={{ animationDelay: `${OFF}ms` }}>
-        <BreatheGlow />
-        <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(100)}>
-          Strawberry Production · Onboarding
-        </div>
-        <h1
-          className="mx-auto mt-9 max-w-[16ch] font-serif text-[clamp(2.2rem,6vw,4.4rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
-          style={{ textWrap: "balance" } as React.CSSProperties}
-        >
-          <InkWords text="Choisissez votre langue." keyRe={/langue/i} delay={250 + OFF} step={110} />
-        </h1>
-        <p className="q-rise mt-5 font-mono text-[11px] uppercase tracking-[0.3em] text-chalk-40" style={at(750)}>
-          Choose your language
-        </p>
-        <div className="mt-12 grid w-full max-w-[580px] grid-cols-1 gap-4 sm:grid-cols-2">
-          {options.map((o, i) => (
-            <button
-              key={o.l}
-              type="button"
-              onClick={() => onPick(o.l)}
-              className="q-rise group relative flex min-h-[170px] flex-col justify-between overflow-hidden rounded-[18px] border border-white/[0.09] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-[0_22px_60px_-22px_rgba(255,34,51,0.6)] focus-visible:-translate-y-1 focus-visible:border-brand focus-visible:outline-none"
-              style={{ background: CARD_GLOWS[i], animationDelay: `${850 + i * 130 + OFF}ms` }}
-            >
-              <span className="font-mono text-[11px] tracking-[0.28em] text-brand">{o.tag}</span>
-              <span>
-                <span className="block font-serif text-[1.9rem] font-bold uppercase leading-none text-white">{o.name}</span>
-                <span className="mt-3 block font-sans text-[13.5px] text-chalk-55 transition-colors group-hover:text-white">{o.line} →</span>
-              </span>
-            </button>
-          ))}
-        </div>
+    <div className={`relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center ${skipped ? "q-skipped" : ""}`}>
+      <BreatheGlow />
+      <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(100)}>
+        Strawberry Production · Onboarding
+      </div>
+      <h1
+        className="mx-auto mt-9 max-w-[16ch] font-serif text-[clamp(2.2rem,6vw,4.4rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
+        style={{ textWrap: "balance" } as React.CSSProperties}
+      >
+        <InkWords text="Choisissez votre langue." keyRe={/langue/i} delay={250 + OFF} step={110} />
+      </h1>
+      <p className="q-rise mt-5 font-mono text-[11px] uppercase tracking-[0.3em] text-chalk-40" style={at(1000)}>
+        Choose your language
+      </p>
+      <div className="mt-12 grid w-full max-w-[580px] grid-cols-1 gap-4 sm:grid-cols-2">
+        {options.map((o, i) => (
+          <button
+            key={o.l}
+            type="button"
+            onClick={() => onPick(o.l)}
+            className="q-rise group relative flex min-h-[170px] flex-col justify-between overflow-hidden rounded-[18px] border border-white/[0.09] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-[0_22px_60px_-22px_rgba(255,34,51,0.6)] focus-visible:-translate-y-1 focus-visible:border-brand focus-visible:outline-none"
+            style={{ background: CARD_GLOWS[i], animationDelay: `${1200 + i * 130 + OFF}ms` }}
+          >
+            <span className="font-mono text-[11px] tracking-[0.28em] text-brand">{o.tag}</span>
+            <span>
+              <span className="block font-serif text-[1.9rem] font-bold uppercase leading-none text-white">{o.name}</span>
+              <span className="mt-3 block font-sans text-[13.5px] text-chalk-55 transition-colors group-hover:text-white">{o.line} →</span>
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   )

@@ -1,43 +1,64 @@
 /**
- * L'animation de logo au chargement.
+ * L'ouverture du site : « STRAWBERRY PROD. » vient à l'écran.
  *
- * Avant, le calque partait invisible (état React initial) et n'apparaissait
- * qu'après l'hydratation, via useEffect — assez tard pour qu'on voie la home
- * pendant un instant avant que l'animation ne démarre. La décision de montrer
- * ou non l'animation doit être prise avant la première image affichée, pas
- * après.
+ * Il n'y en a qu'une — celle-ci, montée dans le layout de toutes les pages.
+ * (Une version parallèle avait été bâtie dans le questionnaire : l'ancien
+ * logo passait d'abord, puis le nouveau. Elle est supprimée.)
  *
- * Ce composant n'est donc plus piloté par l'état React. Il rend un calque
- * visible par défaut dans le HTML lui-même (aucune classe cachée à retirer
- * plus tard), suivi d'un script en ligne qui s'exécute au moment même où le
- * navigateur atteint cette ligne du document — avant la peinture, avant
- * l'hydratation. Ce script :
- *  - masque le calque instantanément si l'animation a déjà joué cette session
- *    (sessionStorage) ou si l'utilisateur a demandé moins d'animations ;
- *  - sinon, anime les lettres une par une puis efface le calque après environ
- *    2,5 secondes, ou immédiatement au premier clic / à la première touche.
+ * Le moment :
+ *   1. le nom se révèle lettre par lettre (montée, flou qui se résorbe) ;
+ *   2. une vague de lumière le traverse de gauche à droite ;
+ *   3. une lueur éclot derrière, un trait se trace dessous, le sous-titre
+ *      s'écarte et se pose ;
+ *   4. le nom reste posé une seconde, entier, puis s'efface en fondu sur la
+ *      page, qui se dessine dessous.
  *
- * Toujours du CSS pour l'animation elle-même (transform/opacity) ; le script
- * ne fait que poser des classes et des délais, rien de coûteux.
+ * Comme avant, la décision de jouer l'ouverture est prise AVANT la première
+ * image : le calque est visible par défaut dans le HTML, et un script en
+ * ligne le masque aussitôt s'il a déjà joué dans la session, si l'écran est
+ * petit (sur mobile, c'est la principale cause de lenteur perçue) ou si le
+ * visiteur a demandé moins d'animations. Tout le mouvement est en CSS : même
+ * sans JavaScript, le calque s'efface seul à la fin (voir globals.css).
+ *
+ * Les pages qui doivent attendre la fin (le questionnaire) lisent
+ * `window.__spIntroExit` — l'instant, en `performance.now()`, où le fondu de
+ * sortie commence — et l'événement `sp-intro-skip` si on passe l'ouverture.
  */
 
-const WORD = "STRAWBERRY PROD."
+const WORDS = ["STRAWBERRY", "PROD."]
 
 export function LoadingIntro() {
+  let n = 0
   return (
-    <div id="sp-intro" className="fixed inset-0 z-[999] flex items-center justify-center bg-[#0a0a0a]">
-      <span className="font-serif text-[clamp(2rem,7vw,3.6rem)] font-bold tracking-[-0.02em] text-brand">
-        {WORD.split("").map((ch, i) => (
-          <span
-            key={i}
-            data-sp-letter
-            className="sp-intro-letter inline-block translate-y-3 opacity-0"
-            style={{ whiteSpace: ch === " " ? "pre" : "normal", transitionDelay: `${i * 28}ms` }}
-          >
-            {ch}
-          </span>
-        ))}
-      </span>
+    <div
+      id="sp-intro"
+      aria-hidden
+      className="sp-intro fixed inset-0 z-[999] flex cursor-pointer flex-col items-center justify-center bg-[#0a0a0a]"
+    >
+      <div
+        className="sp-bloom pointer-events-none absolute left-1/2 top-1/2 h-[85vmin] w-[85vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(255,34,51,.36) 0%, rgba(255,34,51,.09) 42%, transparent 70%)" }}
+      />
+      <div className="sp-push relative flex flex-col items-center">
+        <div className="relative flex flex-wrap items-baseline justify-center gap-x-[0.32em] px-6 font-serif text-[clamp(2.2rem,8vw,6.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-brand">
+          {WORDS.map((w) => (
+            <span key={w} className="inline-flex whitespace-nowrap">
+              {w.split("").map((ch) => {
+                const d = 300 + n++ * 45
+                return (
+                  <span key={n} className="sp-letter" style={{ ["--d" as string]: `${d}ms` }}>
+                    {ch}
+                  </span>
+                )
+              })}
+            </span>
+          ))}
+        </div>
+        <div className="sp-line relative mt-7 h-px w-[min(420px,70vw)]" />
+        <div data-sp-tag className="sp-tag relative mt-6 font-mono text-[11px] uppercase text-chalk-55">
+          Architecture narrative
+        </div>
+      </div>
 
       <script
         // eslint-disable-next-line react/no-danger
@@ -48,32 +69,43 @@ export function LoadingIntro() {
   if (!el) return;
   var KEY = 'sp_intro_seen';
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var seen = window.sessionStorage.getItem(KEY);
-  if (reduced || seen) { el.style.display = 'none'; return; }
-  window.sessionStorage.setItem(KEY, '1');
-  function letters() { return el.querySelectorAll('[data-sp-letter]'); }
-  requestAnimationFrame(function () {
-    var ls = letters();
-    for (var i = 0; i < ls.length; i++) ls[i].classList.add('sp-intro-in');
-  });
-  function skip() { finish(); }
-  function finish() {
+  var seen = false;
+  try { seen = !!window.sessionStorage.getItem(KEY); } catch (e) {}
+  if (reduced || seen || window.innerWidth < 900) { el.style.display = 'none'; return; }
+  try { window.sessionStorage.setItem(KEY, '1'); } catch (e) {}
+
+  // Le sous-titre suit la page et la langue.
+  var tag = el.querySelector('[data-sp-tag]');
+  if (tag) {
+    var en = (document.documentElement.lang || '').indexOf('en') === 0;
+    var onboarding = location.pathname.indexOf('/questionnaire') !== -1;
+    tag.textContent = onboarding ? 'Onboarding' : (en ? 'Narrative architecture' : 'Architecture narrative');
+  }
+
+  // Le fondu de sortie commence à 3300 ms (même valeur que le délai de
+  // .sp-intro dans globals.css). Les pages qui attendent s'y calent.
+  var EXIT = 3300;
+  window.__spIntroExit = performance.now() + EXIT;
+  var over = false;
+  function cleanup() {
+    over = true;
+    window.removeEventListener('pointerdown', skip);
+    window.removeEventListener('keydown', skip);
+  }
+  function skip() {
+    if (over) return;
+    cleanup();
+    window.__spIntroExit = 0;
+    el.style.animation = 'none';
+    el.style.transition = 'opacity 300ms ease';
     el.style.opacity = '0';
     el.style.pointerEvents = 'none';
-    window.removeEventListener('keydown', skip);
-    window.removeEventListener('pointerdown', skip);
-    setTimeout(function () { el.style.display = 'none'; }, 400);
+    try { window.dispatchEvent(new Event('sp-intro-skip')); } catch (e) {}
+    setTimeout(function () { el.style.display = 'none'; }, 350);
   }
-  window.addEventListener('keydown', skip, { once: true });
-  window.addEventListener('pointerdown', skip, { once: true });
-  // 2100 ms d'écran noir forcé, quelle que soit la vitesse réelle du
-  // site. Sur mobile, c'est la principale cause de lenteur perçue : la
-  // page était prête bien avant. On descend à 900 ms, et on saute
-  // l'intro sur petit écran et lors des visites suivantes — elle sert à
-  // poser une marque, pas à être revue à chaque page.
-  var skip = window.innerWidth < 900 || sessionStorage.getItem('sp_intro') === '1';
-  try { sessionStorage.setItem('sp_intro', '1'); } catch (e) {}
-  setTimeout(finish, skip ? 0 : 900);
+  window.addEventListener('pointerdown', skip);
+  window.addEventListener('keydown', skip);
+  setTimeout(cleanup, EXIT + 800);
 })();
 `,
         }}
