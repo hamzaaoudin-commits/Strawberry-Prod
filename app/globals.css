@@ -1817,6 +1817,10 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 @keyframes q-intro-out { 0% { opacity: 1; transform: scale(1); visibility: visible; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; transform: scale(1.05); visibility: hidden; } }
 .q-intro { animation: q-intro-out 650ms ease-in 2100ms both; }
 
+/* La page de choix attend la fin de l'ouverture : invisible jusqu'à son délai. */
+@keyframes q-after { from { opacity: 0; } to { opacity: 1; } }
+.q-after { animation: q-after 500ms ease both; }
+
 /* L'avancée de caméra : tout l'ensemble gagne 6 % sur la durée de l'ouverture. */
 @keyframes q-push { from { transform: scale(.955); } to { transform: scale(1.025); } }
 .q-push { animation: q-push 2700ms cubic-bezier(.22,.68,0,1) both; }
@@ -1825,6 +1829,6 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
    final aussitôt. Les animations infinies (lueur qui respire) n'en font
    pas partie — à 1 ms, elles clignoteraient. */
 .q-skipped .q-rise, .q-skipped .q-ink, .q-skipped .q-ink-op, .q-skipped .q-grow,
-.q-skipped .q-push, .q-skipped .q-intro, .q-skipped .q-intro * { animation-duration: 1ms !important; animation-delay: 0ms !important; }
+.q-skipped .q-after, .q-skipped .q-push, .q-skipped .q-intro, .q-skipped .q-intro * { animation-duration: 1ms !important; animation-delay: 0ms !important; }
 
-@media (prefers-reduced-motion: reduce) { .q-intro { display: none; } .q-letter, .q-bloom, .q-intro-line, .q-intro-tag, .q-push { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .q-intro { display: none; } .q-letter, .q-bloom, .q-intro-line, .q-intro-tag, .q-push, .q-after { animation: none; } }
