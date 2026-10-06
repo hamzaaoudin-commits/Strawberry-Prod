@@ -441,7 +441,7 @@ function storageKey(offer: OfferKey) {
 export function QuestionnaireFlow({
   offer,
   terrain,
-  lang,
+  lang: initialLang,
   prefill,
 }: {
   offer: OfferKey
@@ -454,6 +454,12 @@ export function QuestionnaireFlow({
   // paramètre : la personne qui a payé sait ce qu'elle a acheté, et on
   // évite d'avoir à le lui demander par mail après coup.
   const [chosenTerrain, setChosenTerrain] = useState<TerrainKey | undefined>(terrain)
+  // La langue est choisie par le client sur le tout premier écran ; la langue
+  // de l'adresse n'est que la valeur de départ. Elle ne peut pas changer en
+  // cours de route : les réponses à choix sont stockées avec le texte de
+  // l'option, qui dépend de la langue. Elle est donc enregistrée avec la
+  // sauvegarde, et une reprise se fait dans la langue d'origine.
+  const [lang, setLang] = useState<Lang>(initialLang)
   const steps = useMemo(
     () => stepsForOffer(offer, lang, chosenTerrain),
     [offer, lang, chosenTerrain],
@@ -467,7 +473,11 @@ export function QuestionnaireFlow({
   // avancer — et la pièce qui en dépend sera creuse. Mieux vaut y revenir.
   const [deferred, setDeferred] = useState<string[]>([])
 
-  const [screen, setScreen] = useState<"threshold" | "cover" | "chapter" | "steps" | "review" | "done" | "error">("threshold")
+  const [screen, setScreen] = useState<"language" | "threshold" | "cover" | "chapter" | "steps" | "review" | "done" | "error">("language")
+  // Vrai une fois la sauvegarde relue : tant que ce n'est pas le cas, on
+  // n'affiche rien, pour qu'un client qui reprend ne voie pas, une fraction
+  // de seconde, un écran de choix de langue qu'il n'a pas à repasser.
+  const [ready, setReady] = useState(false)
   const [idx, setIdx] = useState(0)
   const [answers, setAnswers] = useState<Answers>(() => emptyAnswers(prefill))
   const [deepOpen, setDeepOpen] = useState<Record<string, boolean>>({})
@@ -485,19 +495,25 @@ export function QuestionnaireFlow({
     try {
       const raw = localStorage.getItem(storageKey(offer))
       if (raw) {
-        const saved = JSON.parse(raw) as { answers: Answers; idx: number; deferred?: string[]; terrain?: TerrainKey }
+        const saved = JSON.parse(raw) as { answers: Answers; idx: number; deferred?: string[]; terrain?: TerrainKey; lang?: Lang }
         setAnswers((prev) => ({ ...prev, ...saved.answers }))
         setIdx(saved.idx ?? 0)
         setDeferred(saved.deferred ?? [])
         if (saved.terrain) setChosenTerrain(saved.terrain)
         // On ne propose la reprise que si le travail engagé vaut la peine :
-        // reprendre à la deuxième question n'a aucun intérêt.
-        if ((saved.idx ?? 0) >= 2) setResumable(saved.idx ?? 0)
+        // reprendre à la deuxième question n'a aucun intérêt. Et on reprend
+        // dans la langue d'origine, sans redemander laquelle.
+        if ((saved.idx ?? 0) >= 2) {
+          setResumable(saved.idx ?? 0)
+          if (saved.lang === "fr" || saved.lang === "en") setLang(saved.lang)
+          setScreen("threshold")
+        }
       }
     } catch {
       // localStorage unavailable — proceed without resume.
     }
     hydrated.current = true
+    setReady(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offer])
 
@@ -509,11 +525,11 @@ export function QuestionnaireFlow({
     const started = idx > 0 || !!(answers.identity.name || answers.identity.email || answers.identity.house)
     if (!started) return
     try {
-      localStorage.setItem(storageKey(offer), JSON.stringify({ answers, idx, deferred, terrain: chosenTerrain }))
+      localStorage.setItem(storageKey(offer), JSON.stringify({ answers, idx, deferred, terrain: chosenTerrain, lang }))
     } catch {
       // best-effort only
     }
-  }, [answers, idx, deferred, offer, chosenTerrain])
+  }, [answers, idx, deferred, offer, chosenTerrain, lang])
 
   /** Repartir de zéro : efface la sauvegarde et remet tout à l'état d'ouverture. */
   function startOver() {
@@ -528,7 +544,13 @@ export function QuestionnaireFlow({
     setResumable(null)
     setChosenTerrain(terrain)
     setSeenChapters([])
+    setScreen("language")
   }
+
+  // Le document déclare sa langue : lecteurs d'écran et traduction automatique.
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
 
   const step = steps[idx]
 
@@ -725,6 +747,15 @@ export function QuestionnaireFlow({
         className="q-ambient"
         style={{ ["--q-progress" as string]: String(Math.min(1, idx / Math.max(1, steps.length - 1))) }}
       />
+
+        {ready && screen === "language" && (
+          <LanguageScreen
+            onPick={(l) => {
+              setLang(l)
+              setScreen("threshold")
+            }}
+          />
+        )}
 
         {screen === "threshold" && (
           <ThresholdScreen
@@ -2487,5 +2518,55 @@ function BreatheGlow() {
       className="q-breathe pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
       style={{ background: "radial-gradient(circle, rgba(255,34,51,.22) 0%, rgba(255,34,51,.06) 40%, transparent 70%)" }}
     />
+  )
+}
+
+
+/**
+ * LanguageScreen — le tout premier écran : français ou anglais.
+ *
+ * Il est volontairement bilingue : on ne sait pas encore dans quelle langue
+ * lire. Le choix est définitif pour ce parcours (voir `lang` dans le
+ * composant) et pilote aussi la langue des e-mails envoyés ensuite.
+ */
+function LanguageScreen({ onPick }: { onPick: (l: Lang) => void }) {
+  const at = (ms: number) => ({ animationDelay: `${ms}ms` })
+  const options: { l: Lang; name: string; line: string; tag: string }[] = [
+    { l: "fr", name: "Français", line: "Continuer en français", tag: "FR" },
+    { l: "en", name: "English", line: "Continue in English", tag: "EN" },
+  ]
+  return (
+    <div className="relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center">
+      <BreatheGlow />
+      <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(100)}>
+        Strawberry Production · Onboarding
+      </div>
+      <h1
+        className="mx-auto mt-9 max-w-[16ch] font-serif text-[clamp(2.2rem,6vw,4.4rem)] font-bold uppercase leading-[1] tracking-[-0.02em] text-white"
+        style={{ textWrap: "balance" } as React.CSSProperties}
+      >
+        <InkWords text="Choisissez votre langue." keyRe={/langue/i} delay={250} step={110} />
+      </h1>
+      <p className="q-rise mt-5 font-mono text-[11px] uppercase tracking-[0.3em] text-chalk-40" style={at(1000)}>
+        Choose your language
+      </p>
+      <div className="mt-12 grid w-full max-w-[580px] grid-cols-1 gap-4 sm:grid-cols-2">
+        {options.map((o, i) => (
+          <button
+            key={o.l}
+            type="button"
+            onClick={() => onPick(o.l)}
+            className="q-rise group relative flex min-h-[170px] flex-col justify-between overflow-hidden rounded-[18px] border border-white/[0.09] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-[0_22px_60px_-22px_rgba(255,34,51,0.6)] focus-visible:-translate-y-1 focus-visible:border-brand focus-visible:outline-none"
+            style={{ background: CARD_GLOWS[i], animationDelay: `${1200 + i * 130}ms` }}
+          >
+            <span className="font-mono text-[11px] tracking-[0.28em] text-brand">{o.tag}</span>
+            <span>
+              <span className="block font-serif text-[1.9rem] font-bold uppercase leading-none text-white">{o.name}</span>
+              <span className="mt-3 block font-sans text-[13.5px] text-chalk-55 transition-colors group-hover:text-white">{o.line} →</span>
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
   )
 }
