@@ -404,7 +404,8 @@
   const wipes = Array.from(document.querySelectorAll(".wipe"));
 
   /* immersive venue tour */
-  const tourPin = document.querySelector(".tour-pin");
+  // La tournée React (marquée data-react-tour) a son propre moteur : on la laisse.
+  const tourPin = Array.from(document.querySelectorAll(".tour-pin")).find((p) => !p.closest("[data-react-tour]")) || null;
   let tourScenes = [], tourFill = null;
   if (tourPin) {
     tourPin.classList.add("tour-on");

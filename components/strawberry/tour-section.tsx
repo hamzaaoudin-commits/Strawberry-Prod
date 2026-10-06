@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { LocaleLink as Link } from "@/components/locale-link"
 import { useT } from "@/lib/i18n"
 import { ViewTracker } from "@/components/strawberry/view-tracker"
+import { LettersReveal } from "@/components/strawberry/letters-reveal"
 
 /**
  * « La tournée » — la section épinglée de THE ROOM, portée sur la home.
@@ -36,7 +37,7 @@ const T = {
       { n: "THE NAME", d: "Artistes & fondateurs", href: "/the-name" },
     ],
     lead: "Une agence s'arrête à la plateforme de marque.\nNous commençons par elle. Puis nous la transformons en décisions, en langage et en principes que vos équipes peuvent réellement utiliser.",
-    kicker: "Une Architecture, quatre terrains",
+    kicker: "S.T.R.A.W. · Le mécanisme propriétaire du studio",
     title: "Une plateforme de marque ne décide rien.\nUne identité, si.",
     afterLabel: "Après l'Architecture",
     ptsLabel: "Sur ce terrain précisément",
@@ -45,7 +46,7 @@ const T = {
     cta: "Commander l'architecture →",
         scenes: [
       {
-        k: "Pièce 01",
+        k: "S · Soul — Pièce 01",
         t: "LA PLATEFORME",
         line: "Raison d'être, positionnement, valeurs, personnalité, ton de voix.",
         points: [
@@ -58,7 +59,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Pièce 02",
+        k: "T · Territory — Pièce 02",
         t: "LE DIAGNOSTIC",
         line: "Vos supports dépouillés un par un, les occurrences comptées, les écarts relevés.",
         points: [
@@ -70,7 +71,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Pièce 03",
+        k: "R · Reframe — Pièce 03",
         t: "LA CARTE",
         line: "3 à 5 concurrents, leur phrase exacte citée, et le terrain qu'ils laissent libre.",
         points: [
@@ -83,7 +84,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Pièce 04",
+        k: "A · Architecture — Pièce 04",
         t: "LES DÉCISIONS",
         line: "3 à 5 mouvements ordonnés : la formulation exacte, où la mettre, ce qu'elle coûte.",
         points: [
@@ -96,7 +97,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Pièce 05",
+        k: "W · Weaponize — Pièce 05",
         t: "LES PLAYBOOKS",
         line: "Ce que vos équipes font au quotidien : marketing, contenu, réseaux, vente, support, RH.",
         points: [
@@ -112,7 +113,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Pièce 06",
+        k: "W · Weaponize — Pièce 06",
         t: "LE LANGAGE",
         line: "Le lexique et les textes réécrits, prêts à coller.",
         points: [
@@ -135,7 +136,7 @@ const T = {
       { n: "THE NAME", d: "Artists & founders", href: "/the-name" },
     ],
     lead: "An agency stops at the brand platform.\nWe start there. Then we turn it into decisions, language, and principles your teams can actually use.",
-    kicker: "One Architecture, four grounds",
+    kicker: "S.T.R.A.W. · The studio's proprietary mechanism",
     title: "A brand platform decides nothing.\nAn identity does.",
     afterLabel: "After the Architecture",
     ptsLabel: "On this ground specifically",
@@ -144,7 +145,7 @@ const T = {
     cta: "Order the architecture →",
         scenes: [
       {
-        k: "Piece 01",
+        k: "S · Soul — Piece 01",
         t: "THE PLATFORM",
         line: "Purpose, positioning, values, personality, tone of voice.",
         points: [
@@ -157,7 +158,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Piece 02",
+        k: "T · Territory — Piece 02",
         t: "THE DIAGNOSIS",
         line: "Your supports gone through one by one, occurrences counted, gaps recorded.",
         points: [
@@ -169,7 +170,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Piece 03",
+        k: "R · Reframe — Piece 03",
         t: "THE MAP",
         line: "3 to 5 competitors, their exact sentence quoted, and the ground they leave open.",
         points: [
@@ -182,7 +183,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Piece 04",
+        k: "A · Architecture — Piece 04",
         t: "THE DECISIONS",
         line: "3 to 5 ordered moves: the exact wording, where to put it, what it costs.",
         points: [
@@ -195,7 +196,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Piece 05",
+        k: "W · Weaponize — Piece 05",
         t: "THE PLAYBOOKS",
         line: "What your teams do day to day: marketing, content, social, sales, support, HR.",
         points: [
@@ -211,7 +212,7 @@ const T = {
         href: "/marques-entreprises",
       },
       {
-        k: "Piece 06",
+        k: "W · Weaponize — Piece 06",
         t: "THE LANGUAGE",
         line: "The lexicon and the rewritten copy, ready to paste.",
         points: [
@@ -386,6 +387,21 @@ export function TourSection() {
             comment lire les quatre scènes qui suivent. Sans lui, on ne sait
             pas si les terrains sont quatre offres ou quatre variantes. */}
         <p className="lede mx-auto mt-6 max-w-[640px] whitespace-pre-line">{t.lead}</p>
+
+        {/* Le mécanisme : les cinq étapes S.T.R.A.W. Chaque scène qui suit
+            porte la sienne dans son surtitre — c'est ce qui range les
+            livrables par catégorie, sans rien changer au design. */}
+        <div className="mt-12">
+          <LettersReveal
+            letters={[
+              { letter: "S", name: "Soul" },
+              { letter: "T", name: "Territory" },
+              { letter: "R", name: "Reframe" },
+              { letter: "A", name: "Architecture" },
+              { letter: "W", name: "Weaponize" },
+            ]}
+          />
+        </div>
 
         {/* Les quatre terrains, en bandeau.
             Ils disent « c'est pour vous » ; les six scènes qui suivent

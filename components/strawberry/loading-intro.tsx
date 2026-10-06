@@ -30,9 +30,16 @@ const WORDS = ["STRAWBERRY", "PROD."]
 export function LoadingIntro() {
   let n = 0
   return (
+    // suppressHydrationWarning : le script ci-dessous modifie ce calque AVANT
+    // que React ne prenne la main (sous-titre selon la page et la langue,
+    // classe d'attente, masquage). Sans cette mention, React voyait une
+    // différence avec le HTML du serveur et reconstruisait TOUTE la page dans
+    // le navigateur — pendant l'intro, sur chaque page anglaise et dans le
+    // questionnaire. C'était aussi une source de saccades.
     <div
       id="sp-intro"
       aria-hidden
+      suppressHydrationWarning
       className="sp-intro fixed inset-0 z-[999] flex cursor-pointer flex-col items-center justify-center bg-[#0a0a0a]"
     >
       <div
@@ -48,6 +55,10 @@ export function LoadingIntro() {
                 return (
                   <span key={n} className="sp-letter" style={{ ["--d" as string]: `${d}ms` }}>
                     {ch}
+                    {/* La même lettre, déjà lumineuse (couleur corail et halo
+                        peints une seule fois) : la vague ne fait varier que
+                        son opacité, ce que la carte graphique gère seule. */}
+                    <span className="sp-glow">{ch}</span>
                   </span>
                 )
               })}
@@ -55,7 +66,7 @@ export function LoadingIntro() {
           ))}
         </div>
         <div className="sp-line relative mt-7 h-px w-[min(420px,70vw)]" />
-        <div data-sp-tag className="sp-tag relative mt-6 font-mono text-[11px] uppercase text-chalk-55">
+        <div data-sp-tag suppressHydrationWarning className="sp-tag relative mt-6 font-mono text-[11px] uppercase text-chalk-55">
           Architecture narrative
         </div>
       </div>
@@ -85,10 +96,32 @@ export function LoadingIntro() {
   // Le fondu de sortie commence à 3300 ms (même valeur que le délai de
   // .sp-intro dans globals.css). Les pages qui attendent s'y calent.
   var EXIT = 3300;
-  window.__spIntroExit = performance.now() + EXIT;
+  // On attend que la police du nom soit prête (500 ms au plus) avant de
+  // lancer l'animation : si elle arrivait en route, chaque lettre
+  // changerait de forme et de position en plein mouvement — une saccade.
+  // Tant qu'on attend, toutes les animations sont en pause (classe
+  // sp-wait) : l'écran reste noir, puis le nom se construit d'un trait.
+  el.classList.add('sp-wait');
+  window.__spIntroExit = performance.now() + EXIT + 500;
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+    el.classList.remove('sp-wait');
+    window.__spIntroExit = performance.now() + EXIT;
+    setTimeout(cleanup, EXIT + 800);
+  }
+  if (document.fonts && document.fonts.status !== 'loaded') {
+    document.fonts.ready.then(start);
+    setTimeout(start, 500);
+  } else {
+    start();
+  }
   var over = false;
   function cleanup() {
     over = true;
+    started = true;
+    el.classList.remove('sp-wait');
     window.removeEventListener('pointerdown', skip);
     window.removeEventListener('keydown', skip);
   }
@@ -105,7 +138,6 @@ export function LoadingIntro() {
   }
   window.addEventListener('pointerdown', skip);
   window.addEventListener('keydown', skip);
-  setTimeout(cleanup, EXIT + 800);
 })();
 `,
         }}

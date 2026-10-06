@@ -1,6 +1,6 @@
 "use client"
 
-import { strawHtml, STRAW_DICT } from "@/lib/straw-html"
+import { TourSection } from "@/components/strawberry/tour-section"
 import { useEffect } from "react"
 import { useLang } from "@/lib/i18n"
 
@@ -170,7 +170,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </div>
 </div>
 </section>
-${strawHtml()}
+<!--SP-TOUR-->
 <!-- ============ STATS ============ -->
 <section class="section">
 <div class="wrap stats">
@@ -251,8 +251,8 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
     const applyOverrides = () => {
       const api = (window as unknown as { NOCTA_I18N?: { DICT: Record<string, Record<string, string>>; apply: (l: string) => void; getLang: () => string } }).NOCTA_I18N
       if (!api) return false
-      Object.assign(api.DICT.fr ?? {}, STRAW_DICT.fr, copy.fr)
-      Object.assign(api.DICT.en ?? {}, STRAW_DICT.en, copy.en)
+      Object.assign(api.DICT.fr ?? {}, copy.fr)
+      Object.assign(api.DICT.en ?? {}, copy.en)
       // La langue de l'ADRESSE décide : i18n.js ne connaît que la dernière langue
       // enregistrée dans le navigateur (« fr » par défaut), si bien qu'une
       // personne qui ouvrait /en/... voyait la page entière en français.
@@ -290,6 +290,7 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
     /<h1 class="wordmark flicker">[^<]*<\/h1>/,
     `<h1 class="wordmark flicker">${copy.wordmark}</h1>`,
   )
+  const [htmlA, htmlB] = html.split("<!--SP-TOUR-->")
 
   return (
     <>
@@ -332,7 +333,18 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
           n'avait pas de page mère. Posé ici, il bénéficie de LocaleLink,
           donc il garde la langue — ce qu'un lien écrit dans le HTML brut
           ne ferait pas. */}
-      <main id="main" dangerouslySetInnerHTML={{ __html: html }} />
+      {/* La tournée est le composant React de la home, posé entre les deux
+          moitiés du HTML de la page. Elle est marquée `data-react-tour` :
+          app.js pilote aussi une « .tour-pin » et l'ignore désormais quand
+          elle porte cette marque — deux moteurs sur les mêmes scènes, c'est
+          la saccade assurée. */}
+      <main id="main">
+        <div dangerouslySetInnerHTML={{ __html: htmlA }} />
+        <div data-react-tour>
+          <TourSection />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: htmlB }} />
+      </main>
 
       {/* Les autres terrains.
           Chaque page était un cul-de-sac : on y arrivait, on lisait, on
