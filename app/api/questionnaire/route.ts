@@ -23,6 +23,14 @@ const FORMSPREE_ID =
  */
 const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL ?? ""
 
+/**
+ * Le webhook du second scénario Make, celui qui écrit AU CLIENT pour confirmer
+ * la réception. C'est un scénario à part, volontairement : si l'envoi de cet
+ * e-mail échoue (adresse refusée, quota Gmail), la production du document,
+ * elle, n'est pas touchée. Facultatif : sans cette variable, rien n'est envoyé.
+ */
+const MAKE_CONFIRM_WEBHOOK_URL = process.env.MAKE_CONFIRM_WEBHOOK_URL ?? ""
+
 const MAX_PER_WINDOW = 2
 const WINDOW_MS = 10 * 60 * 1000
 const hits = new Map<string, number[]>()
@@ -351,6 +359,24 @@ export async function POST(req: NextRequest) {
 
   if (!makeOk && !mailOk) {
     return NextResponse.json({ ok: false, error: "upstream" }, { status: 502 })
+  }
+
+  // La confirmation au client : seulement si quelque chose a bien été
+  // enregistré, avec le strict nécessaire (jamais les réponses), et sans
+  // jamais rendre la soumission dépendante de cet envoi. Quatre secondes au
+  // plus : on n'allonge pas l'attente du client pour un e-mail.
+  if (MAKE_CONFIRM_WEBHOOK_URL) {
+    await Promise.race([
+      send(MAKE_CONFIRM_WEBHOOK_URL, {
+        event: "onboarding_confirmation",
+        submission_id: submissionId,
+        submitted_at: new Date().toISOString(),
+        lang,
+        terrain_label: terrainLabel,
+        client: { name, house, email },
+      }),
+      new Promise((resolve) => setTimeout(resolve, 4000)),
+    ])
   }
   return NextResponse.json({ ok: true, submission_id: submissionId })
 }

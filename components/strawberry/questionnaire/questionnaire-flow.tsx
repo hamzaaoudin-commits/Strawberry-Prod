@@ -126,6 +126,8 @@ const UI_COPY = {
     bareNote: "Prenez le temps. Personne ne vous regarde.",
     signLabel: "Signez pour ouvrir le dossier",
     signPlaceholder: "Votre prénom",
+    privacyNote: "Vos réponses servent uniquement à écrire votre document. Elles sont traitées par nos outils — dont des outils d'intelligence artificielle — et ne sont jamais publiées.",
+    privacyLink: "Politique de confidentialité",
     sign: "Signer et ouvrir le dossier",
     sealKicker: "C'est signé",
     sealPieces: ["La plateforme", "Le diagnostic", "La carte", "Les décisions", "Les playbooks", "Le langage"],
@@ -293,6 +295,8 @@ const UI_COPY = {
     bareNote: "Take your time. Nobody is watching.",
     signLabel: "Sign to open the file",
     signPlaceholder: "Your first name",
+    privacyNote: "Your answers are used only to write your document. They are processed by our tools — including artificial intelligence tools — and are never published.",
+    privacyLink: "Privacy policy",
     sign: "Sign and open the file",
     sealKicker: "Signed",
     sealPieces: ["The platform", "The diagnosis", "The map", "The decisions", "The playbooks", "The language"],
@@ -819,6 +823,7 @@ export function QuestionnaireFlow({
               setScreen("steps")
             }}
             onSubmit={submit}
+            lang={lang}
           />
         )}
 
@@ -1556,6 +1561,7 @@ function ReviewScreen({
   onEdit,
   onBack,
   onSubmit,
+  lang,
 }: {
   steps: Question[]
   copy: Copy
@@ -1565,6 +1571,7 @@ function ReviewScreen({
   onEdit: (i: number) => void
   onBack: () => void
   onSubmit: () => void
+  lang: Lang
 }) {
   /** Les mots écrits, recomptés ici : le récapitulatif a les réponses. */
   const [signature, setSignature] = useState("")
@@ -1687,36 +1694,52 @@ function ReviewScreen({
         ))}
       </div>
       {errorMsg && <p className="mt-4 text-[13px] text-brand">{errorMsg}</p>}
-      <div className="mt-8 flex flex-wrap gap-4">
+      <div className="mt-10 w-full">
         {/* On signe, on n'envoie pas.
             Taper son nom est un geste, pas un clic : c'est ce qui sépare le
             dépôt d'un formulaire de l'engagement sur ce qu'on vient
             d'écrire. Et le bouton ne s'active que si le nom correspond — on
             ne signe pas à la place de quelqu'un d'autre. */}
-        <div className="w-full">
-          <label className="mb-2.5 block font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
-            {copy.signLabel}
-          </label>
-          <div className="flex flex-wrap items-center gap-4">
-            <input
-              className="q-field max-w-[260px] font-serif text-[16px]"
-              placeholder={answers.identity.name || copy.signPlaceholder}
-              value={signature}
-              onChange={(e) => setSignature(e.target.value)}
-            />
-            <button
-              type="button"
-              className={signed ? "btn-primary" : "btn-quiet cursor-not-allowed opacity-45"}
-              disabled={submitting || !signed}
-              onClick={onSubmit}
-            >
-              {submitting ? copy.sending : copy.sign}
-            </button>
-          </div>
+        <label className="mb-2.5 block font-mono text-[9.5px] uppercase tracking-[0.2em] text-chalk-40">
+          {copy.signLabel}
+        </label>
+        <input
+          className="q-field w-full max-w-[420px] font-serif text-[18px]"
+          placeholder={answers.identity.name || copy.signPlaceholder}
+          value={signature}
+          onChange={(e) => setSignature(e.target.value)}
+        />
+
+        {/* Ce que devient ce qu'on vient d'écrire : dit au moment de signer,
+            pas enfoui dans un pied de page. */}
+        <p className="mt-6 max-w-[520px] font-sans text-[12.5px] leading-[1.65] text-chalk-40">
+          {copy.privacyNote}{" "}
+          <a
+            href={`/${lang}/privacy`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whitespace-nowrap underline underline-offset-4 transition-colors hover:text-white"
+          >
+            {copy.privacyLink}
+          </a>
+        </p>
+
+        {/* Toujours un vrai bouton : grisé tant que le nom ne correspond pas,
+            plein ensuite. Il passait d'un petit texte rouge à un bouton, et
+            l'acte final d'une heure de travail ressemblait à un lien. */}
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            className="btn-primary disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+            disabled={submitting || !signed}
+            onClick={onSubmit}
+          >
+            {submitting ? copy.sending : copy.sign}
+          </button>
+          <button type="button" className="btn-ghost" onClick={onBack}>
+            {copy.back}
+          </button>
         </div>
-        <button type="button" className="btn-ghost" onClick={onBack}>
-          {copy.back}
-        </button>
       </div>
     </div>
   )
