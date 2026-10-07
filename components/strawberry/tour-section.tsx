@@ -38,7 +38,6 @@ const T = {
     ],
     lead: "Une agence s'arrête à la plateforme de marque.\nNous commençons par elle. Puis nous la transformons en décisions, en langage et en principes que vos équipes peuvent réellement utiliser.",
     kicker: "S.T.R.A.W. · Le mécanisme propriétaire du studio",
-    title: "Une plateforme de marque ne décide rien.\nUne identité, si.",
     afterLabel: "Après l'Architecture",
     ptsLabel: "Sur ce terrain précisément",
     sceneCta: "Voir",
@@ -150,7 +149,6 @@ const T = {
     ],
     lead: "An agency stops at the brand platform.\nWe start there. Then we turn it into decisions, language, and principles your teams can actually use.",
     kicker: "S.T.R.A.W. · The studio's proprietary mechanism",
-    title: "A brand platform decides nothing.\nAn identity does.",
     afterLabel: "After the Architecture",
     ptsLabel: "On this ground specifically",
     sceneCta: "See",
@@ -405,14 +403,10 @@ export function TourSection() {
           début. */}
       <div className="shell pt-6 pb-20 text-center">
         <div className="kicker mb-5">{t.kicker}</div>
-        <h2 className="h-section mx-auto max-w-[760px]">
-          <span className="surligne-grad whitespace-pre-line">{t.title}</span>
-        </h2>
-
         {/* Le chapô : il dit ce qui est identique et ce qui change, donc
             comment lire les quatre scènes qui suivent. Sans lui, on ne sait
             pas si les terrains sont quatre offres ou quatre variantes. */}
-        <p className="lede mx-auto mt-6 max-w-[640px] whitespace-pre-line">{t.lead}</p>
+        <p className="lede mx-auto max-w-[640px] whitespace-pre-line">{t.lead}</p>
 
         {/* Le mécanisme : les cinq étapes S.T.R.A.W. Chaque scène qui suit
             porte la sienne dans son surtitre — c'est ce qui range les

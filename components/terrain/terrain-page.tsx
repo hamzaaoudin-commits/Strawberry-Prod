@@ -1,6 +1,5 @@
 "use client"
 
-import { TourSection } from "@/components/strawberry/tour-section"
 import { useEffect } from "react"
 import { useLang } from "@/lib/i18n"
 
@@ -170,7 +169,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 </div>
 </div>
 </section>
-<!--SP-TOUR-->
+
 <!-- ============ STATS ============ -->
 <section class="section">
 <div class="wrap stats">
@@ -290,7 +289,6 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
     /<h1 class="wordmark flicker">[^<]*<\/h1>/,
     `<h1 class="wordmark flicker">${copy.wordmark}</h1>`,
   )
-  const [htmlA, htmlB] = html.split("<!--SP-TOUR-->")
 
   return (
     <>
@@ -333,17 +331,8 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
           n'avait pas de page mère. Posé ici, il bénéficie de LocaleLink,
           donc il garde la langue — ce qu'un lien écrit dans le HTML brut
           ne ferait pas. */}
-      {/* La tournée est le composant React de la home, posé entre les deux
-          moitiés du HTML de la page. Elle est marquée `data-react-tour` :
-          app.js pilote aussi une « .tour-pin » et l'ignore désormais quand
-          elle porte cette marque — deux moteurs sur les mêmes scènes, c'est
-          la saccade assurée. */}
       <main id="main">
-        <div dangerouslySetInnerHTML={{ __html: htmlA }} />
-        <div data-react-tour>
-          <TourSection />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: htmlB }} />
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </main>
 
       {/* Les autres terrains.
