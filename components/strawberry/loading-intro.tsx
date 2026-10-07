@@ -72,7 +72,7 @@ export function LoadingIntro() {
 
   var en = (document.documentElement.lang || '').indexOf('en') === 0;
   var onboarding = location.pathname.indexOf('/questionnaire') !== -1;
-  var src = '/intro/' + (onboarding ? 'onboarding' : (en ? 'en' : 'fr')) + '.mp4?v=1';
+  var src = '/intro/' + (onboarding ? 'onboarding' : (en ? 'en' : 'fr')) + '.mp4?v=2';
 
   var finished = false, started = false;
   function exit(fast) {
