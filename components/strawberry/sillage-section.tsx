@@ -19,41 +19,45 @@ const T = {
     kicker: "The work, in full",
     h2a: "Judge the work",
     h2b: "before you pay for it.",
-    lead: "A narrative architecture is the one document a house cannot share — it is the position itself. So we wrote a complete commission and published every part of it, so you can read exactly what you would receive.",
+    lead: "A narrative architecture is the one document a house cannot share — it is the position itself. So we wrote a sample of the Narrative Architecture on an invented house and published all six pieces, so you can read the shape of what you would receive.",
     docTitle: "SILLAGE",
-    docSub: "A complete Brand Narrative Architecture, published in full.",
+    docSub: "The Narrative Architecture, in six pieces.",
     docMeta: "Free · No email required",
     points: [
-      { n: "01", t: "The field, dissected", d: "Five competitors, their sentences taken apart, and the ground none of them occupies." },
-      { n: "02", t: "The position, defended", d: "One sentence a competitor could not write without lying — and why it holds." },
-      { n: "03", t: "The words, decided", d: "The lexicon that becomes theirs, and the forbidden list drawn from rivals' real copy." },
-      { n: "04", t: "The first ninety days", d: "What gets said, in what order, on which surface — day one to day ninety." },
+      { n: "01", t: "The platform", d: "" },
+      { n: "02", t: "The diagnosis", d: "" },
+      { n: "03", t: "The map", d: "" },
+      { n: "04", t: "The decisions", d: "" },
+      { n: "05", t: "The playbooks", d: "" },
+      { n: "06", t: "The language", d: "" },
     ],
-    coverSub: "Brand Narrative\nArchitecture",
-    badges: ["Fourteen parts", "Free access", "No email"],
-    more: "+ ten further parts",
+    coverSub: "The Narrative\nArchitecture",
+    badges: ["Six pieces", "Free access", "No email"],
+    more: "",
     cta: "Read the SILLAGE document →",
-    note: "An example of what a commission produces, published in full so you can judge the work before commissioning it.",
+    note: "An example of what the Narrative Architecture produces: six pieces, in S.T.R.A.W. order, so you can judge the work before ordering it.",
   },
   fr: {
     kicker: "Le travail, en entier",
     h2a: "Jugez le travail",
     h2b: "avant de le payer.",
-    lead: "Une architecture narrative est le seul document qu'une maison ne peut pas partager — c'est la position elle-même. Nous avons donc écrit une commande complète et publié chacune de ses pièces, pour que vous lisiez exactement ce que vous recevrez.",
+    lead: "Une architecture narrative est le seul document qu'une maison ne peut pas partager — c'est la position elle-même. Nous avons donc écrit un exemple de l'Architecture Narrative sur une maison inventée et publié les six pièces, pour que vous lisiez la forme de ce que vous recevrez.",
     docTitle: "SILLAGE",
-    docSub: "Une Brand Narrative Architecture complète, publiée en entier.",
+    docSub: "L'Architecture Narrative, en six pièces.",
     docMeta: "Accès libre · Sans email",
     points: [
-      { n: "01", t: "Le champ, disséqué", d: "Cinq concurrents, leurs phrases démontées, et le terrain qu'aucun n'occupe." },
-      { n: "02", t: "La position, défendue", d: "Une phrase qu'un concurrent ne pourrait pas écrire sans mentir — et pourquoi elle tient." },
-      { n: "03", t: "Les mots, tranchés", d: "Le lexique qui devient le leur, et la liste interdite tirée du copy réel des rivaux." },
-      { n: "04", t: "Les quatre-vingt-dix premiers jours", d: "Ce qui se dit, dans quel ordre, sur quelle surface — du jour un au jour quatre-vingt-dix." },
+      { n: "01", t: "La plateforme", d: "" },
+      { n: "02", t: "Le diagnostic", d: "" },
+      { n: "03", t: "La carte", d: "" },
+      { n: "04", t: "Les décisions", d: "" },
+      { n: "05", t: "Les playbooks", d: "" },
+      { n: "06", t: "Le langage", d: "" },
     ],
-    coverSub: "Brand Narrative\nArchitecture",
-    badges: ["Quatorze pièces", "Accès libre", "Sans email"],
-    more: "+ dix autres pièces",
+    coverSub: "L'Architecture\nNarrative",
+    badges: ["Six pièces", "Accès libre", "Sans email"],
+    more: "",
     cta: "Lire le document SILLAGE →",
-    note: "Un exemple de ce que produit une commande, publié en entier pour que vous puissiez juger le travail avant de le commander.",
+    note: "Un exemple de ce que produit l'Architecture Narrative : six pièces, dans l'ordre S.T.R.A.W., pour juger le travail avant de le commander.",
   },
 }
 
@@ -133,9 +137,9 @@ export function SillageSection({ lang }: { lang: Lang }) {
                     <span className="font-sans text-[14px] text-chalk-75">{pt.t}</span>
                   </div>
                 ))}
-                <div className="bg-ink px-4 py-3.5 font-sans text-[14px] text-chalk-40 sm:col-span-2">
-                  {t.more}
-                </div>
+                {t.more ? (
+                  <div className="bg-ink px-4 py-3.5 font-sans text-[14px] text-chalk-40 sm:col-span-2">{t.more}</div>
+                ) : null}
               </div>
 
               <TrackedLink href="/documents/sillage" className="btn-primary" event="cta_click" data={{ section: "sillage", target: "documents" }}>

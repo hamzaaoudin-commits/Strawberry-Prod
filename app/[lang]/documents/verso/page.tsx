@@ -6,9 +6,11 @@ import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
 import { DocumentReader } from "@/components/strawberry/document-reader"
+import { DocStraw } from "@/components/strawberry/doc-straw"
+import { SIX } from "@/lib/doc-six"
 
 /**
- * VERSO — the demonstration document for the 2 900 € audit.
+ * VERSO — the demonstration document for L'Architecture Narrative (2 900 €).
  *
  * Reads page by page through the same DocumentReader as SILLAGE, rather than
  * the long single scroll it used to be — the two documents on the site now
@@ -23,6 +25,7 @@ export default async function SampleDocumentPage({
   const { lang: raw } = await params
   const lang: Lang = isLang(raw) ? raw : "fr"
   const d = AUDIT_DOC[lang] ?? AUDIT_DOC.fr
+  const six = SIX[lang] ?? SIX.fr
 
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
@@ -55,6 +58,10 @@ export default async function SampleDocumentPage({
         </div>
       </section>
 
+      <section className="px-gutter pb-14">
+        <DocStraw kicker={six.strawKicker} title={six.strawTitle} note={six.strawNote} steps={six.straw} />
+      </section>
+
       {/* LE DOCUMENT, PAGE PAR PAGE */}
       <div className="border-t border-white/[0.08]">
         <DocumentReader
@@ -69,7 +76,7 @@ export default async function SampleDocumentPage({
         />
       </div>
 
-      {/* SCOPE — the boundary against the 4,500€ commission, stated inside the sample */}
+      {/* What the web edition tightens */}
       <section className="px-gutter py-14">
         <div className="relative mx-auto max-w-[820px] border border-hair-strong bg-white/[0.02] p-8 md:p-12">
           <h2 className="mb-4 font-serif text-[clamp(1.35rem,2.6vw,1.95rem)] font-bold tracking-[-0.005em] uppercase">
@@ -79,12 +86,16 @@ export default async function SampleDocumentPage({
           <ul className="m-0 flex list-none flex-col gap-3 p-0">
             {d.scopeNot.map((n) => (
               <li key={n} className="flex items-start gap-3.5 font-sans text-[14.5px] leading-relaxed text-chalk-65">
-                <span aria-hidden className="mt-0.5 shrink-0 text-brand">✕</span>
+                <span aria-hidden className="mt-0.5 shrink-0 text-brand">+</span>
                 {n}
               </li>
             ))}
           </ul>
         </div>
+      </section>
+
+      <section className="px-gutter pb-4">
+        <p className="mx-auto max-w-[720px] text-center font-sans text-[13px] leading-relaxed text-chalk-40">{d.disclaimer}</p>
       </section>
 
       <section className="section pb-28 text-center">
@@ -95,6 +106,7 @@ export default async function SampleDocumentPage({
             <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>
             <Link href="/documents/sillage" className="btn-ghost">{d.ctaSecondary}</Link>
           </div>
+          <p className="mt-6 font-sans text-[13px] text-chalk-40">{d.ctaFoot}</p>
         </div>
       </section>
 

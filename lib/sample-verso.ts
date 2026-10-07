@@ -1,24 +1,28 @@
 import type { Lang } from "@/lib/lang"
+import { SIX } from "@/lib/doc-six"
 
 /**
- * Demonstration document for the BRAND NARRATIVE ARCHITECTURE (2 900 €).
+ * Demonstration document for L'ARCHITECTURE NARRATIVE (2 900 €, jour 21).
  *
- * Deliberately a different house from SILLAGE, and deliberately shorter: the
- * audit is a diagnosis, not an architecture, and the sample has to make that
- * boundary obvious at a glance rather than in a disclaimer. Five blocks, the
- * exact five the offer promises.
+ * A different house from SILLAGE, a different trade (art binding rather than
+ * software), the same offer: the six pieces, in S.T.R.A.W. order. The raw
+ * analysis below (RAW) was first written as five blocks; build() at the bottom
+ * regroups it into the six pieces and adds the ones that were missing — the
+ * platform, the ninety days, the playbooks, the block to paste into an AI tool.
  *
  * VERSO is invented. So are its competitors.
  */
 
 export type AuditBlock =
+  | { kind: "section"; n: string; title: string; note?: string }
+  | { kind: "lead"; text: string }
   | { kind: "p"; text: string }
   | { kind: "quote"; text: string }
   | { kind: "list"; items: string[] }
   | { kind: "table"; head: string[]; rows: string[][] }
   | { kind: "pair"; beforeLabel: string; afterLabel: string; before: string; after: string }
 
-export type AuditPart = { n: string; title: string; blocks: AuditBlock[] }
+export type AuditPart = { n: string; title: string; subtitle?: string; blocks: AuditBlock[] }
 
 export type AuditDoc = {
   eyebrow: string
@@ -41,9 +45,12 @@ export type AuditDoc = {
   ctaBody: string
   ctaPrimary: string
   ctaSecondary: string
+  ctaFoot: string
 }
 
-export const AUDIT_DOC: Record<Lang, AuditDoc> = {
+type RawAudit = { parts: AuditPart[]; dossierRows: [string, string][]; house: string; disclaimer: string; dossierTitle: string } & Record<string, unknown>
+
+const RAW: Record<Lang, RawAudit> = {
   fr: {
     eyebrow: "Extrait — les pièces 02 et 03, sur une maison réelle",
     title: "BRAND NARRATIVE ARCHITECTURE",
@@ -369,3 +376,244 @@ export const AUDIT_DOC: Record<Lang, AuditDoc> = {
   },
 
 }
+
+type Item = { title: string; note?: string; from?: string; blocks?: AuditBlock[] }
+
+const PLATFORM: Record<Lang, AuditBlock[]> = {
+  fr: [
+    { kind: "p", text: "VERSO existe pour que les ouvrages qui comptent — un catalogue de collection, un fonds d'archives, un tirage de galerie — survivent à ceux qui les ont commandés." },
+    { kind: "quote", text: "Nous relions les ouvrages destinés à durer plus longtemps que ceux qui les commandent." },
+    { kind: "list", items: [
+      "Pour qui : les galeries, les musées et les collectionneurs qui achètent un objet pour le transmettre, pas pour l'exposer un soir.",
+      "Contre quoi : le façonnage vendu au devis, où la reliure se compare au prix de la page.",
+      "Preuve : chaque pièce numérotée, documentée, restaurable à l'identique ; neuf personnes et six ans d'ouvrages qui reviennent à l'atelier pour être entretenus, jamais refaits.",
+    ] },
+  ],
+  en: [
+    { kind: "p", text: "VERSO exists so that the volumes that matter — a collection catalogue, an archive holding, a gallery edition — outlive the people who commissioned them." },
+    { kind: "quote", text: "We bind the volumes meant to last longer than the people who commission them." },
+    { kind: "list", items: [
+      "For whom: the galleries, museums and collectors who buy an object to hand it on, not to show it for one evening.",
+      "Against what: finishing sold by the quote, where binding is compared on the price per page.",
+      "Proof: every piece numbered, documented, restorable to the identical state; nine people and six years of volumes that come back to the workshop to be maintained, never remade.",
+    ] },
+  ],
+}
+
+const VALUES: Record<Lang, AuditBlock[]> = {
+  fr: [
+    { kind: "table", head: ["Valeur", "Ce qu'elle interdit", "Ce qu'elle impose"], rows: [
+      ["Durée", "Promettre « de qualité » sans dire pour combien de temps.", "Un chiffre, un protocole, une fiche de conservation."],
+      ["Retenue", "Se décerner l'exception ; parler de passion.", "Montrer la pièce, nommer les matériaux, laisser le lecteur conclure."],
+      ["Refus", "Relier n'importe quoi pour remplir le carnet.", "Une catégorie de travaux que la maison ne prend pas, dite en clair."],
+    ] },
+    { kind: "p", text: "Personnalité : celle d'un conservateur, pas d'un vendeur. Phrases courtes, matériaux nommés, jamais d'adjectif qui s'applique à un concurrent. Le ton constate et ne plaide pas." },
+  ],
+  en: [
+    { kind: "table", head: ["Value", "What it forbids", "What it requires"], rows: [
+      ["Duration", "Promising “quality” without saying for how long.", "A figure, a protocol, a conservation record."],
+      ["Restraint", "Awarding oneself the exception; talking about passion.", "Showing the piece, naming the materials, letting the reader conclude."],
+      ["Refusal", "Binding anything to fill the order book.", "A category of work the house does not take, stated plainly."],
+    ] },
+    { kind: "p", text: "Personality: a conservator's, not a salesman's. Short sentences, materials named, never an adjective that fits a competitor. The tone states; it does not plead." },
+  ],
+}
+
+const NINETY: Record<Lang, AuditBlock[]> = {
+  fr: [
+    { kind: "table", head: ["Période", "Ce qui se fait", "Qui"], rows: [
+      ["Semaines 1 à 2", "Mouvement 1 : retirer « artisanat » et « au service de » de l'accueil, des devis et de la signature. Rédiger la fiche de conservation type.", "La direction, une personne de l'atelier"],
+      ["Semaines 3 à 6", "Mouvement 3 : numéroter les pièces en cours, remettre la fiche avec chaque ouvrage. Commencer la réécriture du site (mouvement 2).", "L'atelier, un rédacteur"],
+      ["Semaines 7 à 12", "Mettre le site en ligne. Annoncer la catégorie de travaux refusée (mouvement 4). Relever l'effet sur les devis.", "La direction"],
+    ] },
+    { kind: "p", text: "Le point de contrôle est au jour 90 : le prix moyen des devis, et ce à quoi les acheteurs le comparent dans leur réponse." },
+  ],
+  en: [
+    { kind: "table", head: ["Period", "What happens", "Who"], rows: [
+      ["Weeks 1 to 2", "Move 1: strip “craft” and “at the service of” from the homepage, the quotes and the signature. Write the standard conservation record.", "Management, one person from the workshop"],
+      ["Weeks 3 to 6", "Move 3: number the pieces in progress, hand over the record with every volume. Begin the site rewrite (move 2).", "The workshop, a writer"],
+      ["Weeks 7 to 12", "Put the site live. Announce the refused category of work (move 4). Read the effect on quotes.", "Management"],
+    ] },
+    { kind: "p", text: "The checkpoint is day 90: the average quote price, and what buyers compare it to in their reply." },
+  ],
+}
+
+const PLAYBOOKS: Record<Lang, Item[]> = {
+  fr: [
+    { title: "Playbook vente", note: "Le rendez-vous et le devis", blocks: [
+      { kind: "p", text: "Question d'ouverture : « Cet ouvrage, qui doit pouvoir le lire dans cent ans ? ». Elle déplace la conversation du travail à la durée avant qu'un prix ne soit cité." },
+      { kind: "table", head: ["L'objection", "La réponse"], rows: [
+        ["« Vous êtes plus cher qu'un façonnier. »", "« Un façonnier relie un ouvrage. Nous remettons un objet de conservation, numéroté, documenté, restaurable. Comparez-le à ce que coûte de le perdre. »"],
+        ["« Nous avons besoin d'un geste sur le prix. »", "« Nous ne baissons pas le prix : nous retirons une prestation. Laquelle vous importe le moins ? »"],
+      ] },
+    ] },
+    { title: "Playbook tarifaire", note: "Le prix ne bouge pas ; ce à quoi on le compare, si", blocks: [
+      { kind: "p", text: "Aucun devis ne descend. Un devis se réduit en retirant une prestation, jamais en baissant le montant. Chaque devis nomme la fiche de conservation et le numéro de la pièce, afin que le prix soit lu contre la durée et non contre une page imprimée." },
+    ] },
+    { title: "Playbook RH & recrutement", blocks: [
+      { kind: "p", text: "Une personne qui rejoint l'atelier reçoit, le premier jour, le bloc de la pièce 06 et deux fiches de conservation réelles. On recrute sur la capacité à documenter, avant la capacité à relier : la seconde s'apprend à l'atelier, la première non." },
+    ] },
+    { title: "Guide de cohérence", blocks: [
+      { kind: "list", items: [
+        "Le texte parle-t-il de ce que devient l'objet, ou de la manière dont on le fabrique ?",
+        "Un concurrent pourrait-il signer cette phrase sans mentir ?",
+        "Contient-elle un mot de la liste à retirer ?",
+        "La durée est-elle chiffrée ou prouvée par un document ?",
+      ] },
+    ] },
+  ],
+  en: [
+    { title: "Sales playbook", note: "The meeting and the quote", blocks: [
+      { kind: "p", text: "Opening question: “This volume, who must still be able to read it in a hundred years?”. It moves the conversation from the work to the duration before any price is named." },
+      { kind: "table", head: ["The objection", "The answer"], rows: [
+        ["“You are more expensive than a finisher.”", "“A finisher binds a volume. We hand over a conservation object, numbered, documented, restorable. Compare it to the cost of losing it.”"],
+        ["“We need a gesture on the price.”", "“We do not lower the price: we remove a service. Which one matters least to you?”"],
+      ] },
+    ] },
+    { title: "Pricing playbook", note: "The price does not move; what it is compared to does", blocks: [
+      { kind: "p", text: "No quote goes down. A quote is reduced by removing a service, never by lowering the amount. Every quote names the conservation record and the piece number, so that the price is read against duration and not against a printed page." },
+    ] },
+    { title: "HR & hiring playbook", blocks: [
+      { kind: "p", text: "A person joining the workshop receives, on day one, the block from piece 06 and two real conservation records. We hire on the ability to document before the ability to bind: the second is learned in the workshop, the first is not." },
+    ] },
+    { title: "Coherence guide", blocks: [
+      { kind: "list", items: [
+        "Does the text speak of what the object becomes, or of how it is made?",
+        "Could a competitor sign this sentence without lying?",
+        "Does it contain a word from the retire list?",
+        "Is the duration quantified or proven by a document?",
+      ] },
+    ] },
+  ],
+}
+
+const PASTE: Record<Lang, AuditBlock[]> = {
+  fr: [
+    { kind: "p", text: "Un seul bloc de texte, à coller en tête de n'importe quel outil d'écriture IA. Il porte la position, les refus et les mots à retirer : l'outil écrit dans la voix de la maison sans avoir à la deviner." },
+    { kind: "quote", text: "Tu écris pour VERSO. Position : VERSO relie les ouvrages destinés à durer plus longtemps que ceux qui les commandent. Ne décris jamais le savoir-faire ; parle de ce que devient l'objet une fois entre les mains de quelqu'un. Ton : celui du conservateur. Tu constates, tu ne plaides pas. Mots à employer : conservation, siècle, transmission, pièce numérotée, restaurable, fonds. Mots interdits : artisanat, artisanal, au service de, sur mesure, projets, exception, passion. Avant chaque phrase, demande-toi : un concurrent pourrait-il l'écrire sans mentir ? Si oui, réécris-la." },
+    { kind: "p", text: "Version courte pour une biographie : « VERSO relie à Bordeaux, depuis six ans, les ouvrages que galeries, musées et collectionneurs veulent voir durer. Chaque pièce est numérotée, documentée, restaurable. »" },
+  ],
+  en: [
+    { kind: "p", text: "A single block of text, to paste at the top of any AI writing tool. It carries the position, the refusals and the words to retire: the tool writes in the house's voice without having to guess it." },
+    { kind: "quote", text: "You are writing for VERSO. Position: VERSO binds the volumes meant to last longer than the people who commission them. Never describe the craft; speak of what the object becomes once it is in someone's hands. Tone: the conservator. You state, you do not plead. Words to use: conservation, century, transmission, numbered piece, restorable, holdings. Forbidden words: craft, artisanal, at the service of, bespoke, projects, exceptional, passion. Before every sentence, ask yourself: could a competitor write it without lying? If so, rewrite it." },
+    { kind: "p", text: "Short version for a bio: “VERSO has bound, in Bordeaux for six years, the volumes that galleries, museums and collectors want to last. Every piece is numbered, documented, restorable.”" },
+  ],
+}
+
+const PLAN: Record<Lang, Item[][]> = {
+  fr: [
+    [
+      { title: "La constitution de la maison", blocks: PLATFORM.fr },
+      { title: "Les valeurs et la personnalité", blocks: VALUES.fr },
+    ],
+    [
+      { from: "02", title: "La phrase actuelle, autopsiée", note: "Ce qu'elle dit, ce qu'elle coûte" },
+      { from: "05", title: "Le verdict", note: "Le problème est de catégorie, pas de qualité" },
+    ],
+    [{ from: "01", title: "Les quatre concurrents et le terrain libre", note: "Leur phrase exacte, citée" }],
+    [
+      { from: "04", title: "Les mouvements, dans l'ordre", note: "Coût et déblocage de chacun" },
+      { title: "Les quatre-vingt-dix premiers jours", blocks: NINETY.fr },
+    ],
+    PLAYBOOKS.fr,
+    [
+      { from: "03", title: "Les mots à retirer, les mots à prendre", note: "Le lexique et la réécriture" },
+      { title: "Le bloc à coller dans votre outil IA", blocks: PASTE.fr },
+    ],
+  ],
+  en: [
+    [
+      { title: "The constitution of the house", blocks: PLATFORM.en },
+      { title: "Values and personality", blocks: VALUES.en },
+    ],
+    [
+      { from: "02", title: "The current sentence, autopsied", note: "What it says, what it costs" },
+      { from: "05", title: "The verdict", note: "The problem is category, not quality" },
+    ],
+    [{ from: "01", title: "The four competitors and the open ground", note: "Their exact sentence, quoted" }],
+    [
+      { from: "04", title: "The moves, in order", note: "Cost and unlock of each" },
+      { title: "The first ninety days", blocks: NINETY.en },
+    ],
+    PLAYBOOKS.en,
+    [
+      { from: "03", title: "Words to retire, words to take", note: "The lexicon and the rewrite" },
+      { title: "The block to paste into your AI tool", blocks: PASTE.en },
+    ],
+  ],
+}
+
+const PAGE = {
+  fr: {
+    eyebrow: "Extrait — les six pièces, sur une maison inventée",
+    title: "L'ARCHITECTURE NARRATIVE",
+    edition: "Commande n° 000 — six pièces, cinq étapes",
+    scopeTitle: "Ce que cette édition web resserre",
+    scopeBody:
+      "Ce document présente les six pièces, dans l'ordre où elles sont écrites, resserrées pour l'écran. Votre exemplaire est écrit sur votre maison et plus long. Ce qui est retiré ici :",
+    scopeNot: [
+      "Les développements longs de chaque analyse, réduits à leur conclusion",
+      "Les fiches concurrent complètes et les profils d'audience détaillés",
+      "Les playbooks dans leur version longue : scripts, arbres d'objections, protocoles",
+      "Le brief au designer, l'essai signature et les textes réécrits en entier",
+    ],
+    ctaSecondary: "Lire aussi SILLAGE →",
+  },
+  en: {
+    eyebrow: "Extract — the six pieces, on an invented house",
+    title: "THE NARRATIVE ARCHITECTURE",
+    edition: "Commission n° 000 — six pieces, five stages",
+    scopeTitle: "What this web edition tightens",
+    scopeBody:
+      "This document presents the six pieces, in the order they are written, tightened for the screen. Your copy is written on your house and is longer. What is removed here:",
+    scopeNot: [
+      "The long developments of each analysis, reduced to their conclusion",
+      "The full competitor files and the detailed audience profiles",
+      "The playbooks in their long form: scripts, objection trees, protocols",
+      "The designer brief, the signature essay and the rewritten texts in full",
+    ],
+    ctaSecondary: "Read SILLAGE too →",
+  },
+} as const
+
+function build(lang: Lang): AuditDoc {
+  const raw = RAW[lang]
+  const six = SIX[lang]
+  const byN = new Map(raw.parts.map((p) => [p.n, p]))
+  const parts: AuditPart[] = six.pieces.map((pc, pi) => {
+    const blocks: AuditBlock[] = [{ kind: "lead", text: pc.lead }]
+    PLAN[lang][pi].forEach((it, k) => {
+      const sec = `${pc.n}.${k + 1}`
+      if (it.from) {
+        const src = byN.get(it.from)
+        if (!src) throw new Error(`sample-verso : partie ${it.from} introuvable`)
+        blocks.push({ kind: "section", n: sec, title: it.title, note: it.note })
+        blocks.push(...src.blocks)
+      } else {
+        blocks.push({ kind: "section", n: sec, title: it.title, note: it.note })
+        blocks.push(...(it.blocks ?? []))
+      }
+    })
+    return { n: pc.n, title: pc.title, subtitle: pc.subtitle, blocks }
+  })
+  return {
+    house: raw.house,
+    disclaimer: raw.disclaimer,
+    dossierTitle: raw.dossierTitle,
+    ...PAGE[lang],
+    scopeNot: [...PAGE[lang].scopeNot],
+    dossierRows: [...raw.dossierRows, [six.containsKey, six.containsValue], [six.calendarKey, six.calendarValue]],
+    parts,
+    readerToc: six.contentsTitle,
+    readerPrev: six.readerPrev,
+    readerNext: six.readerNext,
+    readerPageOfTemplate: six.readerPageOfTemplate,
+    readerOfCount: six.readerOfCount,
+    ctaTitle: six.ctaTitle,
+    ctaBody: six.ctaBody,
+    ctaPrimary: six.ctaPrimary,
+    ctaFoot: six.ctaFoot,
+  }
+}
+
+export const AUDIT_DOC: Record<Lang, AuditDoc> = { fr: build("fr"), en: build("en") }

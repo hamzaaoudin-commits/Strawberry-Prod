@@ -1,17 +1,23 @@
 import type { Lang } from "@/lib/i18n"
+import { SIX } from "@/lib/doc-six"
 
 /**
  * The SILLAGE demonstration document.
  *
- * SILLAGE is a fictional house. This is an abridged web edition of a twenty-part
- * commission — every part is represented, none is reproduced in full. The complete
- * document delivered to a commissioner runs to roughly ninety pages.
+ * SILLAGE is a fictional house. This is an abridged web edition of a commission
+ * of L'Architecture Narrative (2 900 €): the six pieces, in S.T.R.A.W. order —
+ * the platform, the diagnosis, the map, the decisions, the playbooks, the
+ * language. Each is represented, none is reproduced in full.
+ *
+ * The text below (RAW_DOC) was written part by part; the exported SAMPLE_DOC, at
+ * the bottom of the file, regroups those parts into the six pieces of the offer.
  *
  * Kept as plain data so the page stays a server component: no client JavaScript is
  * shipped for the document body itself.
  */
 
 export type Block =
+  | { kind: "section"; n: string; title: string; note?: string }
   | { kind: "p"; text: string }
   | { kind: "lead"; text: string }
   | { kind: "quote"; text: string }
@@ -57,7 +63,7 @@ export type SampleDoc = {
   readerOfCount: string
 }
 
-export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
+const RAW_DOC: Record<Lang, SampleDoc> = {
   fr: {
     eyebrow: "Extrait — les pièces 02 et 03, sur une maison réelle",
     title: "BRAND NARRATIVE ARCHITECTURE",
@@ -1030,4 +1036,261 @@ export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
     ctaSecondary: "Start with the diagnosis",
     ctaFoot: "",
   },
+}
+
+
+// ---------------------------------------------------------------------------
+// Les six pièces de l'offre.
+//
+// RAW_DOC ci-dessus garde le texte écrit pour SILLAGE, partie par partie. La
+// commande n'en compte plus vingt mais six : on les regroupe ici, dans l'ordre
+// de S.T.R.A.W., sans réécrire ce qui était juste. Chaque ancienne partie
+// devient une sous-partie de la pièce qui l'accueille. La traduction pour
+// investisseurs n'est plus dans l'offre : elle n'est pas reprise.
+// ---------------------------------------------------------------------------
+
+type Item =
+  | { from: string; title: string; note?: string }
+  | { title: string; note?: string; blocks: Block[] }
+
+const MOVES: Record<Lang, Block[]> = {
+  fr: [
+    {
+      kind: "p",
+      text: "Quatre mouvements, par ordre d'exécution. Chacun porte son coût et ce qu'il débloque ; la formulation exacte est dans les pièces 01 et 06, le calendrier dans les quatre-vingt-dix jours qui suivent.",
+    },
+    {
+      kind: "list",
+      items: [
+        "1 — Changer la question d'ouverture des rendez-vous. De « comment vous gérez vos chantiers ? » à « votre dernière contestation, elle remonte à quand ? ». Coût : rien, c'est demain matin. Débloque : le déplacement de la classe de référence dès la première semaine, et les trois mouvements suivants.",
+        "2 — Remplacer la phrase d'accueil. Retirer « Le suivi de chantier simple et visuel » de la page d'accueil, des devis et de la signature de courriel. Coût : une demi-journée. Débloque : la sortie du rayon productivité, donc du plafond à 40 €.",
+        "3 — Chiffrer le coût d'une contestation, et le publier. Une page, ligne par ligne : les reprises, les heures du dirigeant, la relation abîmée. Coût : une semaine de la fondatrice. Débloque : la source qui fixe le prix de la protection pour les trois années suivantes.",
+        "4 — Passer le prix de l'outil à la protection. Refaire la page de tarifs autour du risque couvert, et démonter une fois, en public, l'objection du groupe photos. Coût : une partie des comptes d'architectes indépendants, qui achètent un outil et non une protection. Débloque : l'acheteur qui signe, la direction des entreprises générales.",
+      ],
+    },
+    {
+      kind: "quote",
+      text: "Le mouvement 1 est celui qui paie le plus vite : il ne coûte rien, et il change la conversation avant que le site ne change.",
+    },
+    {
+      kind: "p",
+      text: "Sur l'ordre : le 1 se fait seul, tout de suite. Le 2 suppose le 1, sans quoi la nouvelle phrase serait lue avec l'ancienne question. Le 3 nourrit le 4 : un prix de protection ne se défend que s'il est chiffré. Le 4 est le seul qui coûte du chiffre à court terme ; il se prend en dernier, quand les trois autres sont en place.",
+    },
+  ],
+  en: [
+    {
+      kind: "p",
+      text: "Four moves, in order of execution. Each carries its cost and what it unlocks; the exact wording is in pieces 01 and 06, the calendar in the ninety days that follow.",
+    },
+    {
+      kind: "list",
+      items: [
+        "1 — Change the opening question of every meeting. From “how do you manage your sites?” to “when was your last dispute?”. Cost: nothing, it starts tomorrow morning. Unlocks: the shift of the reference class within the first week, and the three moves that follow.",
+        "2 — Replace the homepage sentence. Remove “Simple, visual site tracking” from the homepage, the quotes and the email signature. Cost: half a day. Unlocks: the exit from the productivity shelf, and so from the €40 ceiling.",
+        "3 — Put a figure on the cost of a dispute, and publish it. One page, line by line: the rework, the manager's hours, the damaged relationship. Cost: a week of the founder's time. Unlocks: the source that sets the price of protection for the next three years.",
+        "4 — Move the price from a tool to a protection. Rebuild the pricing page around the risk covered, and take apart the photo-group objection once, in public. Cost: part of the independent-architect accounts, who buy a tool and not a protection. Unlocks: the buyer who signs, the management of the general contractors.",
+      ],
+    },
+    {
+      kind: "quote",
+      text: "Move 1 pays fastest: it costs nothing, and it changes the conversation before the website changes.",
+    },
+    {
+      kind: "p",
+      text: "On the order: 1 is done alone, straight away. 2 assumes 1, otherwise the new sentence would be read with the old question. 3 feeds 4: a protection price can only be defended if it is quantified. 4 is the only one that costs revenue in the short term; it comes last, once the other three are in place.",
+    },
+  ],
+}
+
+const PASTE: Record<Lang, Block[]> = {
+  fr: [
+    {
+      kind: "p",
+      text: "Un seul bloc de texte, à coller en tête de n'importe quel outil d'écriture IA. Il porte la position, les refus et les mots interdits : l'outil écrit alors dans la voix de la maison, sans avoir à la deviner.",
+    },
+    {
+      kind: "quote",
+      text: "Tu écris pour SILLAGE. Position : SILLAGE rend le travail exécuté établissable. Ne décris jamais ce que fait le produit ; parle du moment où il sert, huit mois plus tard, quand quelqu'un conteste. Ton : celui du témoin. Tu constates, tu ne dramatises pas, tu ne juges que les mécanismes, jamais les personnes. Mots à employer : établir, établissable, pièce, contestation, dossier, huit mois plus tard. Mots interdits : simple, visuel, gain de temps, plateforme, digitaliser, zéro litige, nouvelle génération, intuitif, innovant. Avant chaque phrase, demande-toi : BATIFLOW pourrait-il l'écrire sans mentir ? Si oui, réécris-la.",
+    },
+    {
+      kind: "p",
+      text: "Le même bloc existe pour chaque maison, écrit à partir de sa propre position. C'est ce qui permet à une équipe de dix personnes, ou à un outil, de tenir la même voix sans que la fondatrice relise chaque texte.",
+    },
+  ],
+  en: [
+    {
+      kind: "p",
+      text: "A single block of text, to paste at the top of any AI writing tool. It carries the position, the refusals and the forbidden words: the tool then writes in the house's voice without having to guess it.",
+    },
+    {
+      kind: "quote",
+      text: "You are writing for SILLAGE. Position: SILLAGE makes the work performed establishable. Never describe what the product does; speak of the moment it serves, eight months later, when someone disputes. Tone: the witness. You state, you do not dramatise, you judge only mechanisms, never people. Words to use: establish, establishable, record, dispute, file, eight months later. Forbidden words: simple, visual, time-saving, platform, digitise, zero disputes, next generation, intuitive, innovative. Before every sentence, ask yourself: could BATIFLOW write it without lying? If so, rewrite it.",
+    },
+    {
+      kind: "p",
+      text: "The same block exists for every house, written from its own position. It is what lets a team of ten, or a tool, hold the same voice without the founder rereading every text.",
+    },
+  ],
+}
+
+const PLAN: Record<Lang, Item[][]> = {
+  fr: [
+    [
+      { from: "02", title: "La plateforme narrative" },
+      { from: "10", title: "Le récit fondateur" },
+    ],
+    [
+      { from: "01", title: "Le diagnostic de différenciation" },
+      { from: "14", title: "L'audience, segment par segment" },
+    ],
+    [
+      { from: "08", title: "Les concurrents, fiche par fiche" },
+      { from: "13", title: "La carte de positionnement" },
+    ],
+    [
+      { title: "Les mouvements, dans l'ordre", blocks: MOVES.fr },
+      { from: "04", title: "Les quatre-vingt-dix premiers jours" },
+      { from: "12", title: "Le brief remis au designer" },
+    ],
+    [
+      { from: "15", title: "Playbook marketing" },
+      { from: "16", title: "Playbook contenu" },
+      { from: "17", title: "Playbook réseaux sociaux" },
+      { from: "18", title: "Playbook vente" },
+      { from: "19", title: "Playbook support" },
+      { from: "20", title: "Playbook RH & management" },
+      { from: "06", title: "Playbook tarifaire" },
+      { from: "05", title: "Guide de cohérence" },
+    ],
+    [
+      { from: "03", title: "Le système de langage" },
+      { from: "07", title: "Les biographies" },
+      { from: "09", title: "La pièce signature" },
+      { title: "Le bloc à coller dans votre outil IA", blocks: PASTE.fr },
+    ],
+  ],
+  en: [
+    [
+      { from: "02", title: "The narrative platform" },
+      { from: "10", title: "The founding story" },
+    ],
+    [
+      { from: "01", title: "The differentiation diagnosis" },
+      { from: "14", title: "The audience, segment by segment" },
+    ],
+    [
+      { from: "08", title: "The competitors, file by file" },
+      { from: "13", title: "The positioning map" },
+    ],
+    [
+      { title: "The moves, in order", blocks: MOVES.en },
+      { from: "04", title: "The first ninety days" },
+      { from: "12", title: "The brief handed to the designer" },
+    ],
+    [
+      { from: "15", title: "Marketing playbook" },
+      { from: "16", title: "Content playbook" },
+      { from: "17", title: "Social media playbook" },
+      { from: "18", title: "Sales playbook" },
+      { from: "19", title: "Support playbook" },
+      { from: "20", title: "HR & management playbook" },
+      { from: "06", title: "Pricing playbook" },
+      { from: "05", title: "Coherence guide" },
+    ],
+    [
+      { from: "03", title: "The language system" },
+      { from: "07", title: "The bios" },
+      { from: "09", title: "The signature piece" },
+      { title: "The block to paste into your AI tool", blocks: PASTE.en },
+    ],
+  ],
+}
+
+const PAGE: Record<
+  Lang,
+  Pick<SampleDoc, "eyebrow" | "title" | "edition" | "partialTitle" | "partialBody" | "partialPoints" | "ctaSecondary">
+> = {
+  fr: {
+    eyebrow: "Extrait — les six pièces, sur une maison inventée",
+    title: "L'ARCHITECTURE NARRATIVE",
+    edition: "Commande n° 000 — six pièces, cinq étapes",
+    partialTitle: "Ceci n'est qu'une partie de ce que vous recevrez.",
+    partialBody:
+      "L'Architecture Narrative compte six pièces, écrites sur votre propre maison. Cette page présente les six, dans l'ordre où elles sont écrites, mais resserrées pour l'écran : ce que vous lisez est l'écriture, pas le volume. Ce qui est retiré de cette édition web :",
+    partialPoints: [
+      "Les développements longs de chaque analyse, réduits ici à leur conclusion",
+      "Les fiches concurrent complètes, une par acteur du champ, dissection phrase par phrase",
+      "Les quatre profils d'audience détaillés, avec déclencheurs, résistances et mots exacts",
+      "Le kit de déploiement entier : copy prêt à l'emploi, quinze angles de contenu, plan des sept premiers jours",
+      "Le brief au designer complet, avec références directionnelles et exécutions à refuser",
+      "L'essai signature intégral, publiable en l'état",
+      "Les huit playbooks dans leur version longue : scripts complets, arbres d'objections, protocoles d'incident et grilles d'entretien",
+    ],
+    ctaSecondary: "Lire aussi VERSO →",
+  },
+  en: {
+    eyebrow: "Extract — the six pieces, on an invented house",
+    title: "THE NARRATIVE ARCHITECTURE",
+    edition: "Commission n° 000 — six pieces, five stages",
+    partialTitle: "This is only a portion of what you would receive.",
+    partialBody:
+      "The Narrative Architecture comes in six pieces, written on your own house. This page presents all six, in the order they are written, but tightened for the screen: what you read is the writing, not the volume. What is removed from this web edition:",
+    partialPoints: [
+      "The long developments of each analysis, reduced here to their conclusion",
+      "The full competitor files, one per player in the field, dissected sentence by sentence",
+      "The four detailed audience profiles, with triggers, resistances and exact words",
+      "The whole deployment kit: ready-to-use copy, fifteen content angles, the first seven days planned",
+      "The complete designer brief, with directional references and executions to refuse",
+      "The full signature essay, publishable as it stands",
+      "The eight playbooks in their long form: complete scripts, objection trees, incident protocols and interview grids",
+    ],
+    ctaSecondary: "Read VERSO too →",
+  },
+}
+
+function build(lang: Lang): SampleDoc {
+  const raw = RAW_DOC[lang]
+  const six = SIX[lang]
+  const byN = new Map(raw.parts.map((p) => [p.n, p]))
+
+  const parts: Part[] = six.pieces.map((pc, pi) => {
+    const blocks: Block[] = [{ kind: "lead", text: pc.lead }]
+    PLAN[lang][pi].forEach((it, k) => {
+      if ("from" in it) {
+        const src = byN.get(it.from)
+        if (!src) throw new Error(`sample-sillage : partie ${it.from} introuvable`)
+        blocks.push({ kind: "section", n: `${pc.n}.${k + 1}`, title: it.title, note: it.note ?? src.subtitle })
+        blocks.push(...src.blocks)
+      } else {
+        blocks.push({ kind: "section", n: `${pc.n}.${k + 1}`, title: it.title, note: it.note })
+        blocks.push(...it.blocks)
+      }
+    })
+    return { n: pc.n, title: pc.title, subtitle: pc.subtitle, blocks }
+  })
+
+  return {
+    ...raw,
+    ...PAGE[lang],
+    dossierRows: [
+      ...raw.dossierRows,
+      [six.containsKey, six.containsValue],
+      [six.calendarKey, six.calendarValue],
+    ],
+    parts,
+    contentsTitle: six.contentsTitle,
+    readerPrev: six.readerPrev,
+    readerNext: six.readerNext,
+    readerPageOfTemplate: six.readerPageOfTemplate,
+    readerOfCount: six.readerOfCount,
+    ctaTitle: six.ctaTitle,
+    ctaBody: six.ctaBody,
+    ctaPrimary: six.ctaPrimary,
+    ctaFoot: six.ctaFoot,
+  }
+}
+
+export const SAMPLE_DOC: Record<Lang, SampleDoc> = {
+  fr: build("fr"),
+  en: build("en"),
 }

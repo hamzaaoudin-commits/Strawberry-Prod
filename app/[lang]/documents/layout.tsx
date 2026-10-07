@@ -6,12 +6,12 @@ const COPY: Record<Lang, { title: string; description: string }> = {
   fr: {
     title: 'Les documents publiés',
     description:
-      "Deux documents complets, publiés en entier et gratuitement : une architecture narrative de quatorze pièces et une Architecture de cinq blocs. Maisons de démonstration, déclarées comme telles.",
+      "Deux exemples de L'Architecture Narrative, publiés gratuitement : les six pièces, dans l'ordre S.T.R.A.W., sur deux maisons de démonstration déclarées comme telles.",
   },
   en: {
     title: 'The published documents',
     description:
-      'Two complete documents, published in full and free: a fourteen-part narrative architecture and a five-block document. Demonstration houses, declared as such.',
+      'Two samples of The Narrative Architecture, published free: the six pieces, in S.T.R.A.W. order, on two demonstration houses declared as such.',
   },
 }
 

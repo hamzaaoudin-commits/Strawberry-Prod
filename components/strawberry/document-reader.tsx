@@ -9,6 +9,7 @@ import { useRef, useState } from "react"
  * Le lecteur accepte l'intersection des deux plutôt que d'être lié à un seul.
  */
 export type ReaderBlock =
+  | { kind: "section"; n: string; title: string; note?: string }
   | { kind: "h"; text: string }
   | { kind: "lead"; text: string }
   | { kind: "p"; text: string }
@@ -35,6 +36,20 @@ export type ReaderPart = { n: string; title: string; subtitle?: string; blocks: 
 
 function RenderBlock({ b }: { b: ReaderBlock }) {
   switch (b.kind) {
+    // Le début d'une sous-partie à l'intérieur d'une pièce : une pièce en
+    // regroupe plusieurs (les huit playbooks, par exemple), et sans repère le
+    // lecteur ne voit plus où l'une finit et où l'autre commence.
+    case "section":
+      return (
+        <div className="mb-7 mt-16 border-t border-white/15 pt-7 first:mt-0 first:border-t-0 first:pt-0">
+          <div className="mb-2 font-sans text-[11px] uppercase tracking-[0.22em] text-brand">{b.n}</div>
+          <h2 className="m-0 font-serif text-[clamp(1.5rem,3vw,2.15rem)] font-bold leading-[1.1] tracking-[-0.01em] text-white uppercase">
+            {b.title}
+          </h2>
+          {b.note ? <p className="mt-3 font-sans text-[14px] leading-relaxed text-chalk-55">{b.note}</p> : null}
+        </div>
+      )
+
     case "h":
       return (
         <h3 className="mb-4 mt-10 font-serif text-[clamp(1.15rem,2vw,1.5rem)] font-bold tracking-[-0.01em] text-white first:mt-0 uppercase">

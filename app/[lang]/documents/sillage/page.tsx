@@ -7,6 +7,8 @@ import { SillageBeforeAfter } from "@/components/strawberry/sillage-before-after
 import { isLang, type Lang } from "@/lib/lang"
 import { STRIPE_LINKS } from "@/lib/config"
 import { BackHomeButton } from "@/components/strawberry/back-home-button"
+import { DocStraw } from "@/components/strawberry/doc-straw"
+import { SIX } from "@/lib/doc-six"
 
 /**
  * The SILLAGE demonstration document.
@@ -26,6 +28,7 @@ export default async function SampleDocumentPage({
   const { lang: raw } = await params
   const lang: Lang = isLang(raw) ? raw : "fr"
   const d = SAMPLE_DOC[lang] ?? SAMPLE_DOC.fr
+  const six = SIX[lang] ?? SIX.fr
 
   return (
     <main className="min-h-screen overflow-hidden bg-ink font-sans text-white">
@@ -88,6 +91,10 @@ export default async function SampleDocumentPage({
         </div>
       </section>
 
+      <section className="px-gutter pb-16">
+        <DocStraw kicker={six.strawKicker} title={six.strawTitle} note={six.strawNote} steps={six.straw} />
+      </section>
+
       {/* AVANT / APRÈS — un vrai extrait du document */}
       <section className="px-gutter pb-16">
         <SillageBeforeAfter lang={lang} />
@@ -124,7 +131,7 @@ export default async function SampleDocumentPage({
 
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={STRIPE_LINKS.architecture} className="btn-primary" rel="noopener">{d.ctaPrimary}</a>
-            <Link href="/brand-narrative-audit" className="btn-ghost">{d.ctaSecondary}</Link>
+            <Link href="/documents/verso" className="btn-ghost">{d.ctaSecondary}</Link>
           </div>
 
           <p className="mt-6 font-sans text-[13px] text-chalk-40">{d.ctaFoot}</p>

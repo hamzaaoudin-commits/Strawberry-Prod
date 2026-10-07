@@ -3,8 +3,8 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "VERSO — un exemple complet", description: "Un document de diagnostic complet, publié en entier. Cinq blocs — exactement le document que vous recevrez." },
-  en: { title: "VERSO — a complete sample", description: "A complete diagnostic document, published in full. Five blocks — exactly the document you would receive." },
+  fr: { title: "VERSO — les six pièces de l'Architecture Narrative", description: "Un second exemple de L'Architecture Narrative (2 900 €), sur une maison d'un autre métier : plateforme, diagnostic, carte, décisions, playbooks, langage." },
+  en: { title: "VERSO — the six pieces of the Narrative Architecture", description: "A second sample of The Narrative Architecture (€2,900), on a house from another trade: platform, diagnosis, map, decisions, playbooks, language." },
 }
 
 export async function generateMetadata({
