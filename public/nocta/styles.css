@@ -841,3 +841,88 @@ h1,h2,h3{ font-family:var(--display); font-weight:700; text-transform:uppercase;
   text-transform:uppercase; color:var(--coral); margin-bottom:.45rem; }
 .ex-proof-v{ display:block; font-family:var(--mono); font-size:.74rem; line-height:1.7;
   color:rgba(255,255,255,.66); }
+
+/* ---------------------------------------------------------------------------
+   PAGES PRODUITS — assurance du hero, documents publiés, « pour qui »,
+   l'offre et la garantie, la barre d'achat.
+   Tout est posé sur des jetons déjà définis plus haut (--coral, --line-soft…).
+   Seuls opacity et transform sont animés.
+   --------------------------------------------------------------------------- */
+.hero-assure{ margin-top:1.4rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--smoke-dim); }
+
+.docs-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-soft);
+  border:1px solid var(--line-soft); border-radius:16px; overflow:hidden; margin-top:2.4rem; }
+.docs-card{ display:flex; flex-direction:column; gap:.55rem; background:var(--ink-2);
+  padding:clamp(1.5rem,3vw,2.4rem); color:inherit; text-decoration:none; transition:background .3s; }
+.docs-card:hover{ background:#14121a; }
+.docs-name{ font-family:var(--display); font-weight:800; font-size:clamp(1.5rem,3vw,2.2rem);
+  letter-spacing:-.01em; color:var(--cream); }
+.docs-sub{ font-family:var(--mono); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--coral); }
+.docs-card p{ margin:.4rem 0 0; color:var(--smoke); font-size:.98rem; line-height:1.65; }
+.docs-read{ margin-top:auto; padding-top:1.2rem; font-family:var(--mono); font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--cream); }
+.docs-card:hover .docs-read{ color:var(--coral); }
+
+.for-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:2.4rem; }
+.for-col{ border:1px solid var(--line-soft); border-radius:16px; background:var(--ink-2);
+  padding:clamp(1.4rem,3vw,2.2rem); }
+.for-k{ font-family:var(--mono); font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; margin-bottom:1.2rem; }
+.for-yes .for-k{ color:var(--coral); }
+.for-no .for-k{ color:var(--smoke-dim); }
+.for-col ul{ list-style:none; margin:0; padding:0; display:grid; gap:.95rem; }
+.for-col li{ position:relative; padding-left:1.5rem; line-height:1.6; font-size:1rem; color:rgba(255,255,255,.86); }
+.for-col li::before{ position:absolute; left:0; top:0; font-family:var(--mono); }
+.for-yes li::before{ content:"+"; color:var(--coral); }
+.for-no li{ color:var(--smoke); }
+.for-no li::before{ content:"–"; color:var(--smoke-dim); }
+
+.offer-grid{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(1.4rem,4vw,3.4rem);
+  margin-top:2.4rem; align-items:start; }
+.offer-card{ border:1px solid var(--line); border-radius:22px; padding:clamp(1.8rem,4vw,2.8rem);
+  background:radial-gradient(90% 90% at 50% 0%, rgba(255,34,51,.16), transparent 62%), var(--ink-2); }
+.offer-name{ font-family:var(--mono); font-size:.72rem; letter-spacing:.26em; text-transform:uppercase; color:var(--coral); }
+.offer-price{ font-family:var(--display); font-weight:800; font-size:clamp(3rem,7vw,4.6rem); line-height:1; margin:.9rem 0 .8rem; }
+.offer-desc{ margin:0 0 1.8rem; color:var(--smoke); line-height:1.6; }
+.offer-note{ margin:1rem 0 0; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-dim); }
+.offer-steps-title{ font-family:var(--mono); font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; color:var(--smoke-dim); margin-bottom:1.1rem; }
+.offer-steps{ list-style:none; margin:0; padding:0; display:grid; gap:0; }
+.offer-steps li{ display:grid; grid-template-columns:7.2rem 1fr; gap:1rem; padding:1.15rem 0; border-top:1px solid var(--line-soft); }
+.offer-steps li:last-child{ border-bottom:1px solid var(--line-soft); }
+.os-k{ font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--coral); padding-top:.2rem; }
+.offer-steps b{ display:block; font-family:var(--display); font-weight:700; font-size:1.08rem; margin-bottom:.3rem; color:var(--cream); }
+.offer-steps li span:not(.os-k){ color:var(--smoke); font-size:.95rem; line-height:1.6; }
+.guar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-soft);
+  border:1px solid var(--line-soft); border-radius:16px; overflow:hidden; margin-top:clamp(1.8rem,4vw,3rem); }
+.guar{ background:var(--ink-2); padding:clamp(1.3rem,2.6vw,2rem); }
+.guar b{ display:block; font-family:var(--display); font-weight:700; font-size:1.12rem; color:var(--cream); margin-bottom:.5rem; }
+.guar p{ margin:0; color:var(--smoke); font-size:.95rem; line-height:1.6; }
+
+.cta-note{ margin:1.2rem 0 0; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-dim); }
+
+.terrain-cross-mixed{ margin:0 0 1.4rem; max-width:62ch; color:var(--smoke); font-size:.98rem; line-height:1.65; }
+
+/* La barre d'achat : fixe en bas, glisse et apparaît. */
+.buybar{ position:fixed; left:50%; bottom:16px; z-index:125; width:min(680px,calc(100vw - 24px));
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:.7rem .75rem .7rem 1.2rem; border:1px solid var(--line); border-radius:100px;
+  background:rgba(14,12,18,.92); box-shadow:0 18px 50px -14px rgba(0,0,0,.8);
+  opacity:0; transform:translate(-50%,24px); pointer-events:none;
+  transition:opacity .35s var(--ease), transform .35s var(--ease); }
+.buybar.on{ opacity:1; transform:translate(-50%,0); pointer-events:auto; }
+.buybar-txt{ display:flex; flex-direction:column; min-width:0; }
+.buybar-txt b{ font-family:var(--display); font-weight:700; font-size:.98rem; color:var(--cream); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.buybar-txt span{ font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-dim); }
+.buybar-btn{ flex:none; padding:.75rem 1.3rem; }
+
+@media (max-width:820px){
+  .docs-grid,.for-grid,.offer-grid,.guar-grid{ grid-template-columns:1fr; }
+  .offer-steps li{ grid-template-columns:1fr; gap:.3rem; }
+}
+@media (max-width:520px){
+  .buybar{ padding:.55rem .55rem .55rem 1rem; }
+  .buybar-txt b{ font-size:.84rem; }
+  .buybar-txt span{ display:none; }
+  .buybar-btn{ padding:.7rem 1rem; }
+  .buybar-btn .arr{ display:none; }
+}

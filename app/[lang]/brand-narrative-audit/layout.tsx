@@ -3,8 +3,8 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "BRAND NARRATIVE AUDIT — 490€", description: "Un diagnostic écrit de votre récit actuel : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements à faire." },
-  en: { title: "BRAND NARRATIVE AUDIT — 490€", description: "A written diagnosis of your current narrative: what lands, what blurs you, and the moves to make." },
+  fr: { title: "L'ARCHITECTURE NARRATIVE — 2 900€", description: "Un diagnostic écrit de votre récit actuel : ce qui porte, ce qui vous confond avec vos concurrents, et les mouvements à faire." },
+  en: { title: "THE NARRATIVE ARCHITECTURE — €2,900", description: "A written diagnosis of your current narrative: what lands, what blurs you, and the moves to make." },
 }
 
 export async function generateMetadata({

@@ -3,8 +3,8 @@ import { alternatesFor, SITE } from '@/lib/routing'
 import { isLang, type Lang } from '@/lib/lang'
 
 const COPY: Record<Lang, { title: string; description: string }> = {
-  fr: { title: "BRAND NARRATIVE ARCHITECTURE — 4 500€", description: "Le récit de marque qui vous rend impossible à confondre — et impossible à générer." },
-  en: { title: "BRAND NARRATIVE ARCHITECTURE — 4,500€", description: "The brand story that makes you impossible to confuse — and impossible to generate." },
+  fr: { title: "L'ARCHITECTURE NARRATIVE — 2 900€", description: "Le récit de marque qui vous rend impossible à confondre — et impossible à générer." },
+  en: { title: "THE NARRATIVE ARCHITECTURE — €2,900", description: "The brand story that makes you impossible to confuse — and impossible to generate." },
 }
 
 export async function generateMetadata({

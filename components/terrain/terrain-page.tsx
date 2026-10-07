@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useLang } from "@/lib/i18n"
 
 /**
@@ -35,6 +35,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <a class="btn btn-primary" href="__LANG__/#contact"><span data-i18n="hero.cta1">Prendre contact</span><span class="arr">→</span></a>
 <a class="btn btn-ghost" data-i18n="hero.cta2" href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener">Commander l\'architecture</a>
 </div>
+<p class="hero-assure" data-i18n="hero.assure">2 900 € · trois semaines · jour 21 ou remboursé</p>
 </div>
 <span class="scroll-hint" data-i18n="hero.scroll">Défiler</span>
 </section>
@@ -55,6 +56,35 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <span class="eyebrow reveal" data-i18n="man.eyebrow">Le constat</span>
 <p class="reveal d1" data-i18n="man.body">Votre cuisine est excellente. Votre salle est pleine. <em>Et pourtant</em>, chaque publication repart de zéro — parce que personne chez vous ne sait ce que votre lieu raconte. Pendant ce temps, à trois rues d'ici, une adresse deux fois moins bonne que la vôtre affiche complet tous les soirs. Elle ne cuisine pas mieux. <em>Elle se raconte mieux.</em></p>
 <p class="reveal d2 man-second" data-i18n="man.body2">Vous n'avez pas un problème de contenu. Vous avez un problème de monde. Un restaurant est déjà une fiction — un décor, une heure, une lumière, un casting, des rituels. <em>Le vôtre n'a jamais été écrit.</em></p>
+</div>
+</section>
+<!-- ============ LISEZ LE TRAVAIL ============ -->
+<section class="section" id="documents">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="docs.eyebrow">Lisez le travail</span>
+<h2 class="h-sec" data-i18n="docs.title" style="margin-top:1.1rem">Lisez le travail avant de le commander.</h2>
+<p class="lead" data-i18n="docs.lead" style="margin-top:1.2rem">Deux documents publiés en entier, sans email à laisser.</p>
+</div>
+<div class="docs-grid reveal d1">
+<a class="docs-card" href="__LANG__/documents/sillage"><span class="docs-name" data-i18n="docs.1.name">SILLAGE</span><span class="docs-sub" data-i18n="docs.1.sub">Logiciel de chantier</span><p data-i18n="docs.1.body">Une commande complète.</p><span class="docs-read" data-i18n="docs.read">Lire le document →</span></a>
+<a class="docs-card" href="__LANG__/documents/verso"><span class="docs-name" data-i18n="docs.2.name">VERSO</span><span class="docs-sub" data-i18n="docs.2.sub">Reliure d'art</span><p data-i18n="docs.2.body">Un diagnostic écrit.</p><span class="docs-read" data-i18n="docs.read">Lire le document →</span></a>
+</div>
+</div>
+</section>
+<!-- ============ POUR QUI ============ -->
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="for.eyebrow">Pour qui</span>
+<h2 class="h-sec" data-i18n="for.title" style="margin-top:1.1rem">Est-ce que c'est pour vous ?</h2>
+</div>
+<div class="for-grid reveal d1">
+<div class="for-col for-yes"><div class="for-k" data-i18n="for.yesLabel">C'est pour vous si</div><ul>
+<li data-i18n="for.yes.1">.</li><li data-i18n="for.yes.2">.</li><li data-i18n="for.yes.3">.</li></ul></div>
+<div class="for-col for-no"><div class="for-k" data-i18n="for.noLabel">Ce n'est pas pour vous si</div><ul>
+<li data-i18n="for.no.1">.</li><li data-i18n="for.no.2">.</li><li data-i18n="for.no.3">.</li></ul></div>
+</div>
 </div>
 </section><!-- ============ CAS RÉELS ============ -->
 <section class="section">
@@ -188,6 +218,38 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <p data-i18n="tour.out" style="font-family:var(--display); font-weight:600; font-size:clamp(1.4rem,3.5vw,2.2rem); color:var(--cream)">Tout ça existe déjà chez vous. Il faut juste l'écrire.</p>
 </div>
 </section>
+<!-- ============ L'OFFRE ============ -->
+<section class="section offer" id="offre">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow" data-i18n="offer.eyebrow">L'offre</span>
+<h2 class="h-sec" data-i18n="offer.title" style="margin-top:1.1rem">Une offre. Un prix. Une date de livraison.</h2>
+</div>
+<div class="offer-grid reveal d1">
+<div class="offer-card">
+<div class="offer-name" data-i18n="offer.name">L'Architecture Narrative</div>
+<div class="offer-price" data-i18n="offer.price">2 900 €</div>
+<p class="offer-desc" data-i18n="offer.desc">Un document écrit pour vous, livré en trois semaines, à vous pour toujours.</p>
+<a class="btn btn-primary" href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener"><span data-i18n="offer.btn">Commander · 2 900 €</span><span class="arr">→</span></a>
+<p class="offer-note" data-i18n="offer.note">Paiement sécurisé par Stripe.</p>
+</div>
+<div class="offer-steps-wrap">
+<div class="offer-steps-title" data-i18n="offer.stepsTitle">Après le paiement</div>
+<ol class="offer-steps">
+<li><span class="os-k" data-i18n="offer.s1.k">.</span><div><b data-i18n="offer.s1.t">.</b><span data-i18n="offer.s1.d">.</span></div></li>
+<li><span class="os-k" data-i18n="offer.s2.k">.</span><div><b data-i18n="offer.s2.t">.</b><span data-i18n="offer.s2.d">.</span></div></li>
+<li><span class="os-k" data-i18n="offer.s3.k">.</span><div><b data-i18n="offer.s3.t">.</b><span data-i18n="offer.s3.d">.</span></div></li>
+<li><span class="os-k" data-i18n="offer.s4.k">.</span><div><b data-i18n="offer.s4.t">.</b><span data-i18n="offer.s4.d">.</span></div></li>
+</ol>
+</div>
+</div>
+<div class="guar-grid reveal d2">
+<div class="guar"><b data-i18n="guar.1.t">.</b><p data-i18n="guar.1.d">.</p></div>
+<div class="guar"><b data-i18n="guar.2.t">.</b><p data-i18n="guar.2.d">.</p></div>
+<div class="guar"><b data-i18n="guar.3.t">.</b><p data-i18n="guar.3.d">.</p></div>
+</div>
+</div>
+</section>
 <!-- ============ CTA BAND ============ -->
 <section class="section">
 <div class="wrap">
@@ -196,11 +258,14 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <h2 class="h-sec" data-i18n="faq.title">Ce que les gérants nous demandent.</h2>
 </div>
 <div class="faq reveal d1">
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.1.q">Pourquoi ne pas simplement prendre une agence au mois ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.1.a">Parce qu'au bout de deux ans vous aurez payé environ 30 000 € et vous n'aurez rien gardé. Ici vous payez une fois, et vous repartez avec le système. Si nous nous quittons demain, il continue de fonctionner sans nous.</p></div></div></div>
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.2.q">Qui publie une fois le sprint terminé ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.2.a">Votre équipe — c'est le but. Le manuel contient 20 à 30 scripts prêts à l'emploi, écrits plan par plan, plus un calendrier sur quatre semaines qui tourne en boucle. Personne n'a besoin de deviner quoi poster.</p></div></div></div>
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.3.q">Combien de temps ça prend, de mon côté ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.3.a">Quelques heures en tout. Une immersion pendant un service, un entretien avec vous, deux points d'étape et une remise finale. Le reste du travail se fait sans vous mobiliser.</p></div></div></div>
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.4.q">Personne chez moi ne sait filmer.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.4.a">C'est prévu. Les scripts sont écrits pour quelqu'un qui n'a jamais tourné : où se placer, quoi cadrer, combien de secondes, quoi dire. Un téléphone suffit, et n'importe qui en salle peut le faire.</p></div></div></div>
-<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.5.q">Qu'est-ce que je garde à la fin ?</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.5.a">Tout, et pour toujours : le document qui décrit votre monde, votre ligne éditoriale, vos textes permanents, le manuel d'exécution, et la première semaine de contenu déjà produite.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.1.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.1.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.2.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.2.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.3.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.3.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.4.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.4.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.5.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.5.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.6.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.6.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.7.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.7.a">.</p></div></div></div>
+<div class="faq-item"><button aria-expanded="false" class="faq-q"><span data-i18n="faq.8.q">.</span><span class="pm">+</span></button><div class="faq-a"><div><p data-i18n="faq.8.a">.</p></div></div></div>
 </div>
 </div>
 </section><section class="section">
@@ -210,6 +275,7 @@ const TERRAIN_HTML = `<canvas class="bokeh-fixed" id="bokeh"></canvas><div aria-
 <h2 data-i18n="cta.title" style="margin-top:1rem">Racontez-moi votre lieu.</h2>
 <p class="lead" data-i18n="cta.lead">2 900 €, livré sous trois semaines. Vingt à trente pages écrites à la main, à vous pour toujours.</p>
 <a class="btn btn-primary" href="https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g" target="_blank" rel="noopener"><span data-i18n="cta.btn">Commander l'architecture</span><span class="arr">→</span></a>
+<p class="cta-note" data-i18n="cta.note">.</p>
 </div>
 </div>
 </section>
@@ -234,6 +300,62 @@ export type TerrainCopy = {
   /** Surcharges de texte, par clé data-i18n, et par langue. */
   fr: Record<string, string>
   en: Record<string, string>
+}
+
+const BAR = {"fr": {"name": "Architecture Narrative · 2 900 €", "sub": "Jour 21 ou remboursé", "btn": "Commander"}, "en": {"name": "Narrative Architecture · €2,900", "sub": "Day 21 or refunded", "btn": "Order"}}
+const MIXED = {"fr": "Une marque et un produit ? Même méthode, même prix, une seule commande : commencez par le terrain qui porte le plus de chiffre, et dites-nous le reste dans le questionnaire.", "en": "A brand and a product? Same method, same price, one order: start with the ground that carries the most revenue, and tell us the rest in the questionnaire."}
+const STRIPE_URL = "https://buy.stripe.com/eVq7sEb2AfDe8Am2Raf7i0g"
+
+/**
+ * La barre d'achat vit dans son propre composant, et c'est voulu : son état
+ * change à chaque défilement. Si cet état vivait dans TerrainPage, chaque
+ * changement re-rendrait la page, et React réécrirait alors le HTML injecté
+ * (dangerouslySetInnerHTML) : les textes traduits, les révélations déjà
+ * jouées et l'accordéon repartiraient de zéro.
+ */
+function BuyBar({ lang }: { lang: string }) {
+  const bar = BAR[lang === "en" ? "en" : "fr"]
+
+  // La barre d'achat : visible une fois le hero passé, masquée quand l'offre
+  // ou le bandeau final sont à l'écran (le bouton y est déjà). Mesure à chaque
+  // défilement, coalescée par image ; seul l'opacité et la position sont animées.
+  const [showBar, setShowBar] = useState(false)
+  useEffect(() => {
+    let raf = 0
+    const measure = () => {
+      raf = 0
+      const vh = window.innerHeight
+      const hero = document.querySelector(".hero")?.getBoundingClientRect()
+      const past = !!hero && hero.bottom < vh * 0.15
+      const inView = (sel: string) => {
+        const r = document.querySelector(sel)?.getBoundingClientRect()
+        return !!r && r.top < vh * 0.9 && r.bottom > vh * 0.1
+      }
+      setShowBar(past && !inView(".offer") && !inView(".cta-band"))
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(measure) }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    const t = window.setTimeout(measure, 600)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+      window.clearTimeout(t)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+  return (
+    <div className={`buybar${showBar ? " on" : ""}`} aria-hidden={!showBar}>
+      <div className="buybar-txt">
+        <b>{bar.name}</b>
+        <span>{bar.sub}</span>
+      </div>
+      <a className="btn btn-primary buybar-btn" href={STRIPE_URL} target="_blank" rel="noopener" tabIndex={showBar ? 0 : -1}>
+        <span>{bar.btn}</span>
+        <span className="arr">→</span>
+      </a>
+    </div>
+  )
 }
 
 export function TerrainPage({ copy }: { copy: TerrainCopy }) {
@@ -341,11 +463,14 @@ export function TerrainPage({ copy }: { copy: TerrainCopy }) {
           le cas le plus courant — n'avait aucun moyen de passer de l'une à
           l'autre. Ces liens sont volontairement discrets : ils servent
           celui qui hésite, sans détourner celui qui est au bon endroit. */}
+      <BuyBar lang={lang} />
+
       <section className="terrain-cross">
         <div className="wrap">
           <div className="terrain-cross-label">
             {lang === "en" ? "The same Architecture, on another ground" : "La même Architecture, sur un autre terrain"}
           </div>
+          <p className="terrain-cross-mixed">{MIXED[lang === "en" ? "en" : "fr"]}</p>
           <div className="terrain-cross-links">
             {TERRAINS.filter((x) => x.slug !== copy.slug).map((x) => (
               <a key={x.slug} href={`/${lang}/${x.slug}`}>
