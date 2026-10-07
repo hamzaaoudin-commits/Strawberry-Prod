@@ -2529,31 +2529,35 @@ function BreatheGlow() {
  * lire. Le choix est définitif pour ce parcours (voir `lang` dans le
  * composant) et pilote aussi la langue des e-mails envoyés ensuite.
  *
- * Il attend l'ouverture du site (voir loading-intro.tsx) : le nom reste
- * posé une seconde, puis s'efface en fondu, et c'est dans ce fondu que le
- * titre commence à se dessiner dessous.
+ * Il attend l'ouverture du site (voir loading-intro.tsx) : il ne commence à
+ * se dessiner qu'au signal `sp-intro-exit`, envoyé au début du fondu de
+ * l'intro — que la vidéo ait joué jusqu'au bout, qu'on l'ait passée d'un
+ * clic, ou qu'elle n'ait pas pu se charger.
  */
 function LanguageScreen({ onPick }: { onPick: (l: Lang) => void }) {
-  // Le délai se calcule une fois, à l'arrivée : le temps qu'il reste avant
-  // que l'ouverture ne commence à s'effacer, plus 150 ms. Pas d'ouverture
-  // (déjà jouée, petit écran, animations réduites) : aucun délai.
-  const [OFF] = useState(() => {
+  // Tant que l'intro est à l'écran, rien n'est rendu ici : l'écran se
+  // dessine au signal de fin, pendant le fondu (150 ms après son début).
+  const [go, setGo] = useState(() => {
     try {
-      const exit = (window as unknown as { __spIntroExit?: number }).__spIntroExit
-      if (!exit) return 0
-      const wait = exit - performance.now()
-      return wait > 0 ? Math.round(wait + 150) : 0
+      return !(window as unknown as { __spIntroActive?: boolean }).__spIntroActive
     } catch {
-      return 0
+      return true
     }
   })
-  // Un clic ou une touche passe l'ouverture : la page n'attend plus.
-  const [skipped, setSkipped] = useState(false)
   useEffect(() => {
-    const on = () => setSkipped(true)
-    window.addEventListener("sp-intro-skip", on)
-    return () => window.removeEventListener("sp-intro-skip", on)
-  }, [])
+    if (go) return
+    const on = () => setGo(true)
+    window.addEventListener("sp-intro-exit", on)
+    // Filet : jamais plus de 8 s d'attente, quoi qu'il arrive à l'intro.
+    const t = window.setTimeout(on, 8000)
+    // L'intro a pu finir entre le premier rendu et cet effet.
+    if (!(window as unknown as { __spIntroActive?: boolean }).__spIntroActive) on()
+    return () => {
+      window.removeEventListener("sp-intro-exit", on)
+      window.clearTimeout(t)
+    }
+  }, [go])
+  const OFF = 150
 
   const at = (ms: number) => ({ animationDelay: `${ms + OFF}ms` })
   const options: { l: Lang; name: string; line: string; tag: string }[] = [
@@ -2561,7 +2565,10 @@ function LanguageScreen({ onPick }: { onPick: (l: Lang) => void }) {
     { l: "en", name: "English", line: "Continue in English", tag: "EN" },
   ]
   return (
-    <div className={`relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center ${skipped ? "q-skipped" : ""}`}>
+    !go ? (
+      <div className="min-h-[82vh]" aria-hidden />
+    ) : (
+    <div className="relative isolate flex min-h-[82vh] flex-col items-center justify-center text-center">
       <BreatheGlow />
       <div className="q-rise font-mono text-[10.5px] uppercase tracking-[0.3em] text-chalk-40" style={at(100)}>
         Strawberry Production · Onboarding
@@ -2593,5 +2600,6 @@ function LanguageScreen({ onPick }: { onPick: (l: Lang) => void }) {
         ))}
       </div>
     </div>
+    )
   )
 }
