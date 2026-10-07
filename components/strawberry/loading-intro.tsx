@@ -40,8 +40,14 @@ export function LoadingIntro() {
       id="sp-intro"
       aria-hidden
       suppressHydrationWarning
-      className="sp-intro fixed inset-0 z-[999] flex cursor-pointer flex-col items-center justify-center bg-[#0a0a0a]"
+      className="sp-intro fixed inset-0 z-[999] cursor-pointer"
     >
+      {/* Le fondu de sortie vit sur cet élément intérieur, seul : opacité et
+          échelle, rien d'autre, donc calculé par la carte graphique. Il était
+          sur le calque extérieur avec `visibility`, qui ne se calcule pas sur
+          la carte graphique — tout le fondu retombait alors sur le processeur,
+          en pleine hydratation de la page, et saccadait à chaque fois. */}
+      <div className="sp-fade absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a]">
       <div
         className="sp-bloom pointer-events-none absolute left-1/2 top-1/2 h-[85vmin] w-[85vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(255,34,51,.36) 0%, rgba(255,34,51,.09) 42%, transparent 70%)" }}
@@ -70,6 +76,7 @@ export function LoadingIntro() {
           Architecture narrative
         </div>
       </div>
+      </div>
 
       <script
         // eslint-disable-next-line react/no-danger
@@ -96,13 +103,22 @@ export function LoadingIntro() {
   // Le fondu de sortie commence à 3300 ms (même valeur que le délai de
   // .sp-intro dans globals.css). Les pages qui attendent s'y calent.
   var EXIT = 3300;
-  // On attend que la police du nom soit prête (500 ms au plus) avant de
-  // lancer l'animation : si elle arrivait en route, chaque lettre
-  // changerait de forme et de position en plein mouvement — une saccade.
+  // On attend que les polices du nom et du sous-titre soient chargées
+  // (1,2 s au plus) avant de lancer l'animation : si elles arrivaient en
+  // route, chaque lettre changerait de forme et de position en plein
+  // mouvement — une saccade.
+  //
+  // On les DEMANDE explicitement (document.fonts.load). La version
+  // précédente se contentait de vérifier document.fonts.status : or, au
+  // moment où ce script s'exécute, aucune police n'a encore été demandée,
+  // le navigateur répond donc « tout est chargé » — l'intro démarrait
+  // aussitôt et la police arrivait en plein mouvement, à chaque première
+  // visite et en navigation privée.
+  //
   // Tant qu'on attend, toutes les animations sont en pause (classe
   // sp-wait) : l'écran reste noir, puis le nom se construit d'un trait.
   el.classList.add('sp-wait');
-  window.__spIntroExit = performance.now() + EXIT + 500;
+  window.__spIntroExit = performance.now() + EXIT + 1200;
   var started = false;
   function start() {
     if (started) return;
@@ -110,11 +126,22 @@ export function LoadingIntro() {
     el.classList.remove('sp-wait');
     window.__spIntroExit = performance.now() + EXIT;
     setTimeout(cleanup, EXIT + 800);
+    // Retiré dès la fin du fondu (le CSS le masque aussi, au cas où).
+    setTimeout(function () { el.style.display = 'none'; }, EXIT + 700);
   }
-  if (document.fonts && document.fonts.status !== 'loaded') {
-    document.fonts.ready.then(start);
-    setTimeout(start, 500);
-  } else {
+  var MAX_WAIT = 1200;
+  setTimeout(start, MAX_WAIT);
+  try {
+    var letter = el.querySelector('.sp-letter');
+    var faces = [];
+    if (letter) faces.push(document.fonts.load('700 100px ' + getComputedStyle(letter).fontFamily, 'STRAWBERRY PROD.'));
+    if (tag) faces.push(document.fonts.load('400 11px ' + getComputedStyle(tag).fontFamily, tag.textContent));
+    Promise.all(faces).then(function () {
+      // Une image de plus : la nouvelle police est appliquée avant que les
+      // lettres ne commencent à bouger.
+      requestAnimationFrame(function () { requestAnimationFrame(start); });
+    }, start);
+  } catch (e) {
     start();
   }
   var over = false;

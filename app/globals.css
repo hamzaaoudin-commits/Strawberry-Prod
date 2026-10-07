@@ -1790,15 +1790,24 @@ section[class*="border-t"][class*="border-hair"]:not([class*="bg-ink-soft"])::be
 /* l'avancée de caméra : le nom gagne 7 % sur toute la durée */
 .sp-push { will-change: transform; animation: sp-push 3600ms cubic-bezier(.22,.68,0,1) both; }
 @keyframes sp-push { from { transform: scale(.955); } to { transform: scale(1.03); } }
-/* la sortie : visible par défaut, puis fondu, puis invisible (même sans script) */
-.sp-intro { will-change: opacity, transform; animation: sp-intro-out 650ms ease-in 3300ms both; }
-@keyframes sp-intro-out { 0% { opacity: 1; transform: scale(1); visibility: visible; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; transform: scale(1.05); visibility: hidden; } }
+/* La sortie, sur deux éléments.
+   .sp-fade : le fondu — opacité et échelle SEULEMENT, donc calculé par la
+   carte graphique. Mêler `visibility` à ces images clés suffisait à faire
+   retomber tout le fondu sur le processeur, en pleine hydratation de la
+   page : il saccadait à chaque fois.
+   .sp-intro : le masquage final, seul sur son élément, juste après le
+   fondu — utile seulement si le script ne tourne pas (il retire déjà le
+   calque à 4 s). */
+.sp-fade { will-change: opacity, transform; animation: sp-fade-out 650ms ease-in 3300ms both; }
+@keyframes sp-fade-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.05); } }
+.sp-intro { animation: sp-intro-hide 1ms linear 3960ms forwards; }
+@keyframes sp-intro-hide { to { visibility: hidden; } }
 /* en attendant la police (500 ms au plus) : tout est en pause, l'écran reste noir */
 .sp-intro.sp-wait, .sp-intro.sp-wait * { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .sp-intro { display: none; }
-  .sp-letter, .sp-glow, .sp-bloom, .sp-line, .sp-tag, .sp-push { animation: none; }
+  .sp-letter, .sp-glow, .sp-bloom, .sp-line, .sp-tag, .sp-push, .sp-fade { animation: none; }
 }
 
 /* Quand on passe l'ouverture, la page qui l'attendait (le questionnaire)
