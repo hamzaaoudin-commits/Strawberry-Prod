@@ -87,7 +87,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
     dossierRows: [
       ["La maison", "SILLAGE — Lyon, quatre ans. Logiciel de suivi de chantier."],
       ["La fondatrice", "Claire Vasseur, architecte, dix ans de maîtrise d'œuvre."],
-      ["L'état", "340 comptes payants. 47 000 € de revenu mensuel récurrent. Six personnes. Aucune levée."],
+      ["L'état", "300 comptes payants. 47 000 € de revenu mensuel récurrent. Six personnes. Aucune levée."],
       ["La fracture", "Bâtie pour les architectes indépendants. 61 % du revenu vient désormais d'entreprises générales. Le discours parle toujours aux premiers."],
       ["Ce qu'elle est venue dire", "« On a du départ chez les architectes et on n'arrive pas à monter en gamme chez les entreprises. On est coincés au milieu. »"],
     ],
@@ -116,10 +116,10 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
       { kind: "lead", text: "« Le suivi de chantier simple et visuel. » Sept mots, trois défauts structurels." },
       { kind: "list", items: [
         "« Le suivi de chantier » — c'est le nom de la catégorie, pas de ce que fait SILLAGE. Les cinq concurrents peuvent l'écrire sans mentir. Une phrase de position doit être indisponible aux autres.",
-        "« simple » — trois concurrents le revendiquent déjà. C'est un attribut du produit, pas une position dans la perception. Et il signale léger, donc moins complet, donc moins cher.",
+        "« simple » — trois concurrents le revendiquent déjà dans leurs pages. C'est un attribut du produit, pas une position dans la perception. Et il signale léger, donc moins complet, donc moins cher.",
         "« visuel » — décrit le moyen au lieu du résultat. Transforme SILLAGE en application photo, alors que tout le monde en possède déjà une. La phrase fabrique elle-même l'objection principale : « on a déjà un groupe photos ».",
       ]},
-      { kind: "p", text: "Toute la valeur réelle de SILLAGE est absente de la phrase qui décrit SILLAGE. Et la conséquence est tarifaire : une phrase fixe une classe de référence, et le prix ne se négocie jamais, il se déduit de la catégorie à laquelle on vous compare. Rangée au rayon productivité, SILLAGE vaut deux heures gagnées par semaine — soit exactement le plafond de 40 € auquel elle bute." },
+      { kind: "p", text: "Toute la valeur réelle de SILLAGE est absente de la phrase qui décrit SILLAGE. Et la conséquence est tarifaire : une phrase fixe une classe de référence, et le prix ne se négocie jamais, il se déduit de la catégorie à laquelle on vous compare. Rangée au rayon productivité, SILLAGE vaut deux heures gagnées par semaine — soit exactement le plafond de 40 € par utilisateur et par mois auquel elle bute." },
       { kind: "h", text: "Le terrain choisi" },
       { kind: "p", text: "Quatre vides territoriaux ont été identifiés : la preuve, l'effort nul, l'asymétrie, la transmission. SILLAGE prend le premier." },
       { kind: "list", items: [
@@ -209,7 +209,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
     blocks: [
       { kind: "h", text: "La doctrine des 90 jours" },
       { kind: "list", items: [
-        "Jours 1 à 30 — Nommer le moment. Aucune vente. L'unique objectif est que « la contestation huit mois après la réception » devienne une catégorie mentale partagée.",
+        "Jours 1 à 30 — Nommer le moment. Aucune vente par le contenu. L'unique objectif est que « la contestation huit mois après la réception » devienne une catégorie mentale partagée.",
         "Jours 31 à 60 — Chiffrer le coût. Le moment existe, il lui faut un prix. Phase la moins spectaculaire et la plus déterminante : elle fixe le plafond tarifaire des trois années suivantes.",
         "Jours 61 à 90 — Fermer l'objection et convertir. Le groupe photos se démonte une fois, en public, proprement. Puis reprise à froid de tous les prospects touchés.",
       ]},
@@ -230,7 +230,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
         "De l'outil vers la protection — c'est le recadrage qui porte le prix.",
       ]},
       { kind: "h", text: "La première semaine, pièce par pièce" },
-      { kind: "p", text: "Sept pièces datées, chacune avec sa surface, sa longueur, son pilier et le recadrage qu'elle opère. Le jour 1 ouvre sur une phrase entendue et ne vend rien ; le jour 3 publie le chiffrage complet qui servira de source pendant trois mois ; le jour 7 reprend à froid tous les prospects des six derniers mois avec pour objet « Votre dernière contestation »." },
+      { kind: "p", text: "Sept pièces datées, chacune avec sa surface, sa longueur, son pilier et le recadrage qu'elle opère. Le jour 1 ouvre sur une phrase entendue et ne vend rien ; le jour 3 publie le premier chiffrage, la source que les jours 31 à 60 viendront préciser ; le jour 7 reprend à froid tous les prospects des six derniers mois avec pour objet « Votre dernière contestation »." },
       { kind: "quote", text: "Ce qui change côté commercial dès la semaine 1 : la question d'ouverture n'est plus « comment vous gérez vos chantiers ? » mais « votre dernière contestation, elle remonte à quand ? ». Une question déplace la classe de référence plus vite que trois mois de contenu." },
     ],
   },
@@ -261,7 +261,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
         "Une demande d'architecte modifie l'usage quotidien des entreprises.",
       ]},
       { kind: "h", text: "L'instruction finale" },
-      { kind: "quote", text: "Le matin où vous défendrez cette position pour la première fois devant quelqu'un qui te demandera en quoi vous êtes différente de BATIFLOW, vous n'auras pas besoin de mieux répondre : vous aurez besoin de ne pas répondre à cette question-là. Ne plaide pas. Constate. Dis ce que vous avez vu, dis ce que ça coûte, et laisse la personne en face reconnaître sa propre histoire — parce qu'elle en a une, et qu'elle n'a jamais entendu personne la nommer." },
+      { kind: "quote", text: "Le matin où vous défendrez cette position pour la première fois devant quelqu'un qui vous demandera en quoi vous êtes différente de BATIFLOW, vous n'aurez pas besoin de mieux répondre : vous aurez besoin de ne pas répondre à cette question-là. Ne plaidez pas. Constatez. Dites ce que vous avez vu, dites ce que ça coûte, et laissez la personne en face reconnaître sa propre histoire — parce qu'elle en a une, et qu'elle n'a jamais entendu personne la nommer." },
     ],
   },
   {
@@ -280,7 +280,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
         "« Sur nos trois cents comptes, il y en a eu quatre-vingt-onze en douze mois. »",
         "« La question n'est pas de savoir si SILLAGE coûte plus cher qu'un outil de suivi. C'est de savoir ce que coûte la prochaine. »",
       ]},
-      { kind: "h", text: "Les trois objections" },
+      { kind: "h", text: "Les deux objections de prix" },
       { kind: "pair", beforeLabel: "L'objection", afterLabel: "Le recadrage", before: "« C'est plus cher que BATIFLOW. »", after: "« Oui. On ne fait pas la même chose. Si votre problème est de mieux tenir le planning, prenez BATIFLOW, sincèrement. Si votre problème est ce qui se passe huit mois après, on est les seuls sur ce terrain. Ce ne sont pas deux prix pour la même chose, ce sont deux prix pour deux moments. »" },
       { kind: "pair", beforeLabel: "L'objection", afterLabel: "Le recadrage", before: "« On a déjà un groupe photos. »", after: "« Vous prenez déjà les photos — le problème n'a jamais été de les prendre. Le jour de la contestation, il faut produire une chronologie ordonnée, datée, avec l'accord du maître d'ouvrage. Dans un fil de discussion, ces trois éléments n'existent pas. Une photo n'est pas une pièce. »" },
       { kind: "h", text: "La position sur la remise" },
@@ -290,7 +290,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
   {
     n: "07",
     title: "Système biographique",
-    subtitle: "Quatre formats, une seule rupture.",
+    subtitle: "Quatre formats, une seule rupture. Extrait : deux formats sur quatre.",
     blocks: [
       { kind: "h", text: "La bio de 50 mots" },
       { kind: "quote", text: "Claire Vasseur a passé dix ans en maîtrise d'œuvre avant de payer quatorze mille euros pour un chantier qu'elle avait bien fait et qu'elle ne pouvait pas prouver. Elle a fondé SILLAGE à Lyon pour établir ce qui a été exécuté sur un chantier. Trois cents entreprises l'utilisent." },
@@ -573,7 +573,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
     dossierRows: [
       ["The house", "SILLAGE — Lyon, four years old. Construction site tracking software."],
       ["The founder", "Claire Vasseur, architect, ten years in project supervision."],
-      ["The state", "340 paying accounts. €47,000 monthly recurring revenue. Six people. No funding."],
+      ["The state", "300 paying accounts. €47,000 monthly recurring revenue. Six people. No funding."],
       ["The fracture", "Built for independent architects. 61% of revenue now comes from general contractors. The language still speaks to the former."],
       ["What she came to say", "\u201cWe're losing architects and we can't move upmarket with contractors. We're stuck in the middle.\u201d"],
     ],
@@ -602,10 +602,10 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
       { kind: "lead", text: "\u201cSimple, visual construction site tracking.\u201d Six words, three structural faults." },
       { kind: "list", items: [
         "\u201cConstruction site tracking\u201d — that is the name of the category, not of what SILLAGE does. All five competitors could write it without lying. A positioning sentence must be unavailable to the others.",
-        "\u201cSimple\u201d — three competitors already claim it. It is a product attribute, not a position in perception. And it signals light, therefore less complete, therefore cheaper.",
+        "\u201cSimple\u201d — three competitors already claim it on their pages. It is a product attribute, not a position in perception. And it signals light, therefore less complete, therefore cheaper.",
         "\u201cVisual\u201d — describes the means instead of the result. It turns SILLAGE into a photo app, when everyone already owns one. The sentence manufactures its own principal objection: \u201cwe already have a photo group chat.\u201d",
       ]},
-      { kind: "p", text: "All of SILLAGE's real value is absent from the sentence that describes SILLAGE. The consequence is a price ceiling: a sentence fixes a reference class, and price is never negotiated — it is deduced from the category you are compared to. Filed under productivity, SILLAGE is worth two hours a week, which is precisely the €40 ceiling it keeps hitting." },
+      { kind: "p", text: "All of SILLAGE's real value is absent from the sentence that describes SILLAGE. The consequence is a price ceiling: a sentence fixes a reference class, and price is never negotiated — it is deduced from the category you are compared to. Filed under productivity, SILLAGE is worth two hours a week, which is precisely the €40 per user per month ceiling it keeps hitting." },
       { kind: "h", text: "The chosen ground" },
       { kind: "p", text: "Four territorial vacuums were identified: proof, zero effort, asymmetry, transmission. SILLAGE takes the first." },
       { kind: "list", items: [
@@ -695,7 +695,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
     blocks: [
       { kind: "h", text: "The ninety-day doctrine" },
       { kind: "list", items: [
-        "Days 1 to 30 — Name the moment. No selling. The single objective is that \u201cthe dispute eight months after handover\u201d becomes a shared mental category.",
+        "Days 1 to 30 — Name the moment. No selling through content. The single objective is that \u201cthe dispute eight months after handover\u201d becomes a shared mental category.",
         "Days 31 to 60 — Price the cost. The moment exists; now it needs a number. The least spectacular and most decisive phase: it fixes the price ceiling for the next three years.",
         "Days 61 to 90 — Close the objection and convert. The photo group is dismantled once, publicly, cleanly. Then cold re-engagement of every prospect touched.",
       ]},
@@ -716,7 +716,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
         "From tool to protection — this is the reframe that carries the price.",
       ]},
       { kind: "h", text: "The first week, one by one" },
-      { kind: "p", text: "Seven dated pieces, each with its surface, length, pillar and the reframe it performs. Day 1 opens on an overheard sentence and sells nothing; day 3 publishes the full costing that will serve as a source for three months; day 7 re-engages every prospect from the last six months under the subject line \u201cYour last dispute\u201d." },
+      { kind: "p", text: "Seven dated pieces, each with its surface, length, pillar and the reframe it performs. Day 1 opens on an overheard sentence and sells nothing; day 3 publishes the first costing, the source that days 31 to 60 will refine; day 7 re-engages every prospect from the last six months under the subject line \u201cYour last dispute\u201d." },
       { kind: "quote", text: "What changes commercially from week one: the opening question is no longer \u201chow do you manage your sites today?\u201d but \u201cwhen was your last dispute?\u201d. One question shifts the reference class faster than three months of content." },
     ],
   },
@@ -766,7 +766,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
         "\u201cAcross our three hundred accounts, there were ninety-one in twelve months.\u201d",
         "\u201cThe question isn't whether SILLAGE costs more than a tracking tool. It's what the next one costs.\u201d",
       ]},
-      { kind: "h", text: "The three objections" },
+      { kind: "h", text: "The two price objections" },
       { kind: "pair", beforeLabel: "The objection", afterLabel: "The reframe", before: "\u201cIt's more expensive than BATIFLOW.\u201d", after: "\u201cYes. We don't do the same thing. If your problem is holding the schedule, take BATIFLOW, genuinely. If your problem is what happens eight months later, we're the only ones on that ground. These aren't two prices for the same thing, they're two prices for two moments.\u201d" },
       { kind: "pair", beforeLabel: "The objection", afterLabel: "The reframe", before: "\u201cWe already have a photo group chat.\u201d", after: "\u201cYou already take the photographs — taking them was never the problem. On the day of the dispute you have to produce an ordered, dated chronology with the client's sign-off. In a group chat, none of those three things exist. A photograph is not an exhibit.\u201d" },
       { kind: "h", text: "The discount position" },
@@ -776,7 +776,7 @@ const RAW_DOC: Record<Lang, SampleDoc> = {
   {
     n: "07",
     title: "Founder Bio System",
-    subtitle: "Four formats, one rupture.",
+    subtitle: "Four formats, one rupture. Extract: two formats of four.",
     blocks: [
       { kind: "h", text: "The fifty-word bio" },
       { kind: "quote", text: "Claire Vasseur spent ten years supervising building sites before paying fourteen thousand euros for work she had done well and could not prove. She founded SILLAGE in Lyon to establish what was executed on a construction site. Three hundred firms use it." },
@@ -1248,6 +1248,9 @@ const PAGE: Record<
   },
 }
 
+const norm = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim()
+const sameAs = (a: string | undefined, b: string) => !a || norm(a) === norm(b)
+
 function build(lang: Lang): SampleDoc {
   const raw = RAW_DOC[lang]
   const six = SIX[lang]
@@ -1259,7 +1262,7 @@ function build(lang: Lang): SampleDoc {
       if ("from" in it) {
         const src = byN.get(it.from)
         if (!src) throw new Error(`sample-sillage : partie ${it.from} introuvable`)
-        blocks.push({ kind: "section", n: `${pc.n}.${k + 1}`, title: it.title, note: it.note ?? src.subtitle })
+        blocks.push({ kind: "section", n: `${pc.n}.${k + 1}`, title: it.title, note: sameAs(it.note ?? src.subtitle, it.title) ? undefined : (it.note ?? src.subtitle) })
         blocks.push(...src.blocks)
       } else {
         blocks.push({ kind: "section", n: `${pc.n}.${k + 1}`, title: it.title, note: it.note })

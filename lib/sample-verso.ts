@@ -103,7 +103,7 @@ const RAW: Record<Lang, RawAudit> = {
           {
             kind: "list",
             items: [
-              "Le mot que personne n'emploie : conservation. Aucun des quatre ne le prononce, alors que c'est précisément ce que quatre d'entre eux fabriquent.",
+              "Le mot que personne n'emploie : conservation. Aucun des quatre ne le prononce, alors que c'est ce que produit, au fond, une reliure d'art.",
               "L'angle mort commun : tous décrivent un processus, aucun ne décrit une durée. Le savoir-faire est présenté comme une fin, jamais comme le moyen d'obtenir un objet qui tient un siècle.",
               "Ce que l'ancienneté ne peut pas faire : Maison Livre occupe 1897, une position que personne ne peut lui prendre — mais qui ne dit rien de ce qu'elle produit aujourd'hui. Une date protège du présent, elle ne conquiert rien.",
             ],
@@ -141,7 +141,7 @@ const RAW: Record<Lang, RawAudit> = {
             kind: "table",
             head: ["À retirer", "Pourquoi"],
             rows: [
-              ["artisanat, artisanal", "Employé par trois concurrents sur quatre. Vous rend interchangeable."],
+              ["artisanat, artisanal", "Présent dans le discours de trois concurrents sur quatre. Vous rend interchangeable."],
               ["au service de", "Vous place en exécutant. C'est la formulation qui plafonne le prix."],
               ["sur mesure", "Attendu, donc invisible. Personne ne vend du prêt-à-porter dans ce métier."],
               ["projets", "Recouvre tout, donc ne qualifie personne."],
@@ -306,7 +306,7 @@ const RAW: Record<Lang, RawAudit> = {
             kind: "table",
             head: ["Retire", "Why"],
             rows: [
-              ["craft, artisanal", "Used by three competitors of four. Makes you interchangeable."],
+              ["craft, artisanal", "Present in the language of three competitors of four. Makes you interchangeable."],
               ["at the service of", "Places you as executor. This is the phrasing that caps the price."],
               ["bespoke", "Expected, therefore invisible. Nobody sells off-the-shelf in this trade."],
               ["projects", "Covers everything, so qualifies nobody."],
@@ -386,7 +386,7 @@ const PLATFORM: Record<Lang, AuditBlock[]> = {
     { kind: "list", items: [
       "Pour qui : les galeries, les musées et les collectionneurs qui achètent un objet pour le transmettre, pas pour l'exposer un soir.",
       "Contre quoi : le façonnage vendu au devis, où la reliure se compare au prix de la page.",
-      "Preuve : chaque pièce numérotée, documentée, restaurable à l'identique ; neuf personnes et six ans d'ouvrages qui reviennent à l'atelier pour être entretenus, jamais refaits.",
+      "Preuve : six ans, neuf personnes, un carnet plein à trois mois. Ce qui reste à établir : la numérotation et la fiche de conservation de chaque pièce (mouvement 3), qui rendent la durée vérifiable.",
     ] },
   ],
   en: [
@@ -395,7 +395,7 @@ const PLATFORM: Record<Lang, AuditBlock[]> = {
     { kind: "list", items: [
       "For whom: the galleries, museums and collectors who buy an object to hand it on, not to show it for one evening.",
       "Against what: finishing sold by the quote, where binding is compared on the price per page.",
-      "Proof: every piece numbered, documented, restorable to the identical state; nine people and six years of volumes that come back to the workshop to be maintained, never remade.",
+      "Proof: six years, nine people, an order book full three months ahead. What remains to establish: the numbering and conservation record of every piece (move 3), which make the duration verifiable.",
     ] },
   ],
 }
@@ -491,12 +491,12 @@ const PASTE: Record<Lang, AuditBlock[]> = {
   fr: [
     { kind: "p", text: "Un seul bloc de texte, à coller en tête de n'importe quel outil d'écriture IA. Il porte la position, les refus et les mots à retirer : l'outil écrit dans la voix de la maison sans avoir à la deviner." },
     { kind: "quote", text: "Tu écris pour VERSO. Position : VERSO relie les ouvrages destinés à durer plus longtemps que ceux qui les commandent. Ne décris jamais le savoir-faire ; parle de ce que devient l'objet une fois entre les mains de quelqu'un. Ton : celui du conservateur. Tu constates, tu ne plaides pas. Mots à employer : conservation, siècle, transmission, pièce numérotée, restaurable, fonds. Mots interdits : artisanat, artisanal, au service de, sur mesure, projets, exception, passion. Avant chaque phrase, demande-toi : un concurrent pourrait-il l'écrire sans mentir ? Si oui, réécris-la." },
-    { kind: "p", text: "Version courte pour une biographie : « VERSO relie à Bordeaux, depuis six ans, les ouvrages que galeries, musées et collectionneurs veulent voir durer. Chaque pièce est numérotée, documentée, restaurable. »" },
+    { kind: "p", text: "Version courte pour une biographie, à employer une fois le mouvement 3 en place : « VERSO relie à Bordeaux, depuis six ans, les ouvrages que galeries, musées et collectionneurs veulent voir durer. Chaque pièce est numérotée, documentée, restaurable. »" },
   ],
   en: [
     { kind: "p", text: "A single block of text, to paste at the top of any AI writing tool. It carries the position, the refusals and the words to retire: the tool writes in the house's voice without having to guess it." },
     { kind: "quote", text: "You are writing for VERSO. Position: VERSO binds the volumes meant to last longer than the people who commission them. Never describe the craft; speak of what the object becomes once it is in someone's hands. Tone: the conservator. You state, you do not plead. Words to use: conservation, century, transmission, numbered piece, restorable, holdings. Forbidden words: craft, artisanal, at the service of, bespoke, projects, exceptional, passion. Before every sentence, ask yourself: could a competitor write it without lying? If so, rewrite it." },
-    { kind: "p", text: "Short version for a bio: “VERSO has bound, in Bordeaux for six years, the volumes that galleries, museums and collectors want to last. Every piece is numbered, documented, restorable.”" },
+    { kind: "p", text: "Short version for a bio, to use once move 3 is in place: “VERSO has bound, in Bordeaux for six years, the volumes that galleries, museums and collectors want to last. Every piece is numbered, documented, restorable.”" },
   ],
 }
 
