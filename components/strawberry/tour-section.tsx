@@ -43,6 +43,19 @@ const T = {
     ptsLabel: "Sur ce terrain précisément",
     sceneCta: "Voir",
     outro: "Vous avez déjà tout ce qu'il faut. Ce qui manque, c'est une identité pour le rendre visible.",
+    proprietary: "Ce n'est pas une méthode empruntée. C'est celle que Strawberry Production a développée, et qu'aucun autre studio n'applique.",
+    closing: "Chaque commande traverse les cinq étapes, dans cet ordre, sans en sauter une.",
+    stepLabel: (n: number) => `Étape ${n} sur 5`,
+    producesLabel: "Ce que cette étape produit",
+    pieceWord: "Pièce",
+    methodCta: "Voir la méthode en détail",
+    stages: [
+      { letter: "S", name: "SOUL", verb: "Trouver l'âme", pieces: [0] },
+      { letter: "T", name: "TERRITORY", verb: "Cartographier le territoire", pieces: [1] },
+      { letter: "R", name: "REFRAME", verb: "Recadrer le champ", pieces: [2] },
+      { letter: "A", name: "ARCHITECTURE", verb: "Bâtir l'architecture", pieces: [3] },
+      { letter: "W", name: "WEAPONIZE", verb: "Incarner l'univers", pieces: [4, 5] },
+    ],
     cta: "Commander l'architecture →",
         scenes: [
       {
@@ -142,6 +155,19 @@ const T = {
     ptsLabel: "On this ground specifically",
     sceneCta: "See",
     outro: "You already have everything you need. What is missing is an identity to make it visible.",
+    proprietary: "This is not a borrowed framework. It is the one Strawberry Production developed, and no other studio applies it.",
+    closing: "Every commission moves through the five stages, in this order, none skipped.",
+    stepLabel: (n: number) => `Stage ${n} of 5`,
+    producesLabel: "What this stage produces",
+    pieceWord: "Piece",
+    methodCta: "See the method in detail",
+    stages: [
+      { letter: "S", name: "SOUL", verb: "Find the soul", pieces: [0] },
+      { letter: "T", name: "TERRITORY", verb: "Map the territory", pieces: [1] },
+      { letter: "R", name: "REFRAME", verb: "Reframe the field", pieces: [2] },
+      { letter: "A", name: "ARCHITECTURE", verb: "Build the architecture", pieces: [3] },
+      { letter: "W", name: "WEAPONIZE", verb: "Embody the universe", pieces: [4, 5] },
+    ],
     cta: "Order the architecture →",
         scenes: [
       {
@@ -403,6 +429,14 @@ export function TourSection() {
           />
         </div>
 
+        {/* Le mécanisme propriétaire, dit juste avant les scènes : c'est ce
+            qui distingue S.T.R.A.W. d'un cadre emprunté. Ce texte vivait dans
+            une section à part, en bas de la home — une redite, retirée. */}
+        <p className="mx-auto mt-10 max-w-[600px] font-serif text-[clamp(1.05rem,2vw,1.3rem)] leading-[1.55] text-white/85">
+          {t.proprietary}
+        </p>
+        <p className="mx-auto mt-4 max-w-[560px] font-sans text-[14px] leading-relaxed text-chalk-55">{t.closing}</p>
+
         {/* Les quatre terrains, en bandeau.
             Ils disent « c'est pour vous » ; les six scènes qui suivent
             disent « voici ce que vous recevez ». On se reconnaît avant de
@@ -430,35 +464,40 @@ export function TourSection() {
 
       <div ref={pinRef} className="tour-pin">
         <div className="tour-sticky">
-          {t.scenes.map((s, i) => (
-            <article key={s.k} className={`tour-scene ts-${i + 1}`}>
+          {/* Une scène par étape de S.T.R.A.W. — le titre est l'étape, pas le
+              livrable. Les livrables viennent dessous : ce que l'étape produit.
+              WEAPONIZE en produit deux (les playbooks et le langage), posés
+              côte à côte pour tenir dans l'écran. */}
+          {t.stages.map((st, i) => (
+            <article key={st.letter + i} className={`tour-scene ts-${i + 1}${st.pieces.length > 1 ? " ts-dense" : ""}`}>
               <div className="ts-bg" aria-hidden />
               <div className="ts-inner mx-auto max-w-[1180px]">
-                <div className="ts-k">{s.k}</div>
-                <h3 className="ts-t">{s.t}</h3>
-                <div className="ts-after-label">{t.afterLabel}</div>
-                <p className="ts-line">{s.line}</p>
-                {/* De la prose, pas quatre étiquettes.
-                    Le découpage symptôme / racine / ce qu'on lit / ce qui
-                    change était un gabarit : il forçait chaque terrain dans
-                    la même grille et empêchait de dire ce que l'offre a de
-                    particulier. Un paragraphe, puis ce qu'on emporte. */}
-                <div className="ts-points-label">{t.ptsLabel}</div>
-                <ul className="ts-points list-none p-0">
-                  {s.points.map((x) => (
-                    <li key={x}>
-                      {/* Les puces sont maintenant des phrases entières et
-                          non des libellés suivis d'une précision : le gras
-                          n'aurait plus rien à isoler. */}
-                      {x}
-                    </li>
-                  ))}
-                </ul>
-                {/* Le numéro de scène est retiré : la jauge à droite dit déjà
-                    où l'on en est, et « 02 / 04 » en gris parasitait la seule
-                    action de la scène. Reste le nom de l'offre et la flèche. */}
-                <Link href={s.href} className="ts-link no-underline">
-                  {t.sceneCta} {s.t}
+                <div className="ts-k">
+                  {st.letter} · {t.stepLabel(i + 1)}
+                </div>
+                <h3 className="ts-t">{st.name}</h3>
+                <p className="ts-line">{st.verb}</p>
+                <div className="ts-points-label">{t.producesLabel}</div>
+                <div className={st.pieces.length > 1 ? "ts-pieces ts-pieces-2" : "ts-pieces"}>
+                  {st.pieces.map((pi) => {
+                    const pc = t.scenes[pi]
+                    return (
+                      <div key={pi} className="ts-piece">
+                        <div className="ts-piece-k">
+                          {t.pieceWord} {String(pi + 1).padStart(2, "0")} · {pc.t}
+                        </div>
+                        <p className="ts-piece-line">{pc.line}</p>
+                        <ul className="ts-points list-none p-0">
+                          {pc.points.map((x) => (
+                            <li key={x}>{x}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )
+                  })}
+                </div>
+                <Link href="/strawberry-method" className="ts-link no-underline">
+                  {t.methodCta}
                   <span aria-hidden>→</span>
                 </Link>
               </div>

@@ -7,7 +7,6 @@ import { ProblemSection } from "@/components/strawberry/problem-section"
 import { WhySection } from "@/components/strawberry/why-section"
 import { DiagnosisSection } from "@/components/strawberry/diagnosis-section"
 import { ImpactStats } from "@/components/strawberry/impact-stats"
-import { MechanismStrip } from "@/components/strawberry/mechanism-strip"
 import { FaqSection } from "@/components/strawberry/faq-section"
 import { FAQ_AUDIT } from "@/lib/faqs"
 import { CTABanner } from "@/components/strawberry/cta-banner"
@@ -85,7 +84,6 @@ export default async function Home({
       <MethodSection lang={lang} />
       <ReadMarquee />
       <ImpactStats lang={lang} />
-      <MechanismStrip lang={lang} />
       {/* La section « après le paiement » et le livre sont retirés de la
           home : trop de boutons d'achat qui se suivent avant celui-ci
           finissent par se neutraliser les uns les autres. Le livre reste

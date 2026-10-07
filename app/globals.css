@@ -1205,6 +1205,36 @@ footer {
 /* Les puces étant devenues des phrases entières, elles se lisent en blanc
    cassé plutôt qu'en gris : il n'y a plus de libellé à détacher du reste. */
 .ts-points li { color: rgba(255,255,255,0.72); }
+/* Les livrables d'une étape S.T.R.A.W. : le nom de la pièce, sa phrase,
+   puis ses puces. Deux pièces (WEAPONIZE) : côte à côte, en plus serré, pour
+   que la scène tienne dans l'écran. */
+.ts-pieces { display: grid; gap: 1.6rem; max-width: 62ch; }
+.ts-pieces-2 { grid-template-columns: 1fr 1fr; gap: 2.6rem; max-width: 1060px; }
+.ts-piece-k { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.55rem; }
+.ts-piece-line { margin: 0 0 0.9rem; max-width: 54ch; font-family: var(--font-sans); font-weight: 600; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.45; color: var(--cream, #f3efe9); }
+.ts-pieces-2 .ts-points { gap: 0.5rem; }
+.ts-pieces-2 .ts-points li { font-size: clamp(0.84rem, 1.05vw, 0.94rem); line-height: 1.42; }
+@media (max-width: 900px) { .ts-pieces-2 { grid-template-columns: 1fr; gap: 1.8rem; } }
+/* Scène épinglée : le contenu se centre SOUS la barre de navigation fixe
+   (72 px), pas sous le haut de l'écran — sinon la ligne « Étape n sur 5 »
+   passait derrière la barre. */
+.tour-pin.tour-on .tour-scene { padding-top: 72px; padding-bottom: 12px; box-sizing: border-box; }
+/* WEAPONIZE porte deux livrables : titre un peu plus compact. */
+.tour-pin.tour-on .ts-dense .ts-t { font-size: clamp(2.8rem, 8vw, 5.6rem); margin: .35rem 0 .8rem; }
+.tour-pin.tour-on .ts-dense .ts-points-label { margin-top: 1.1rem; }
+/* Écrans peu hauts (portables) : tout se resserre un peu pour tenir. */
+@media (max-height: 880px) {
+  .tour-pin.tour-on .ts-t { font-size: clamp(2.6rem, 8vw, 5.4rem); margin: .3rem 0 .7rem; }
+  .tour-pin.tour-on .ts-dense .ts-t { font-size: clamp(2.4rem, 6.5vw, 4.4rem); }
+  .tour-pin.tour-on .ts-points-label { margin-top: 1rem; margin-bottom: .6rem; }
+  .tour-pin.tour-on .ts-points { gap: .5rem; }
+  .tour-pin.tour-on .ts-piece-line { margin-bottom: .6rem; }
+  .tour-pin.tour-on .ts-link { margin-top: 1rem; }
+}
+@media (max-height: 800px) {
+  .tour-pin.tour-on .ts-dense .ts-t { font-size: clamp(2.2rem, 5.6vw, 3.8rem); }
+  .tour-pin.tour-on .ts-dense .ts-piece-line { font-size: .95rem; }
+}
 .ts-points li::before {
   content: "";
   position: absolute;
